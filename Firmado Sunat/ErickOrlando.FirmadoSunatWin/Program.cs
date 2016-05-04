@@ -16,7 +16,7 @@ namespace ErickOrlando.FirmadoSunatWin
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new frmEnviarSunat());
+            Application.Run(new FrmEnviarSunat());
         }
     }
 }
