@@ -119,16 +119,18 @@ namespace ErickOrlando.FirmadoSunat
             {
                 xmlDoc.PreserveWhitespace = true;
                 xmlDoc.Load(documento);
-                var tipo = 1;
+                int tipo;
 
                 if (TipoDocumento == 1 || TipoDocumento == 2 || TipoDocumento == 3 || TipoDocumento == 4)
                     tipo = 1;
                 else
                     tipo = 0;
 
-                var yoo = xmlDoc.GetElementsByTagName("ExtensionContent", CommonExtensionComponents)
+                var nodoExtension = xmlDoc.GetElementsByTagName("ExtensionContent", CommonExtensionComponents)
                     .Item(tipo);
-                yoo?.RemoveAll();
+                if (nodoExtension == null)
+                    throw new InvalidOperationException("No se pudo encontrar el nodo ExtensionContent en el XML");
+                nodoExtension.RemoveAll();
 
                 // Creamos el objeto SignedXml.
                 var signedXml = new SignedXml(xmlDoc) { SigningKey = (RSA)certificate.PrivateKey };
@@ -151,7 +153,7 @@ namespace ErickOrlando.FirmadoSunat
                 xmlSignature.Id = "SignatureErickOrlando";
                 signedXml.ComputeSignature();
 
-                yoo?.AppendChild(signedXml.GetXml());
+                nodoExtension.AppendChild(signedXml.GetXml());
 
                 var settings = new XmlWriterSettings() { Encoding = Encoding.GetEncoding("ISO-8859-1") };
 
