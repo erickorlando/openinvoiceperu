@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tns="http://service.gem.factura.comppago.registro.servicio.sunat.gob.pe/" name="billService" targetNamespace="http://service.gem.factura.comppago.registro.servicio.sunat.gob.pe/" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <import namespace="http://service.sunat.gob.pe" location="https://www.sunat.gob.pe:443/ol-ti-itcpgem-beta/billService?wsdl=1" />
+  <types />
+  <binding xmlns:ns1="http://service.sunat.gob.pe" name="BillServicePortBinding" type="ns1:billService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <operation name="sendBill">
+      <soap:operation soapAction="urn:sendBill" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="sendSummary">
+      <soap:operation soapAction="urn:sendSummary" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="sendPack">
+      <soap:operation soapAction="urn:sendPack" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+    <operation name="getStatus">
+      <soap:operation soapAction="urn:getStatus" />
+      <input>
+        <soap:body use="literal" />
+      </input>
+      <output>
+        <soap:body use="literal" />
+      </output>
+    </operation>
+  </binding>
+  <service name="billService">
+    <port name="BillServicePort" binding="tns:BillServicePortBinding">
+      <soap:address location="https://www.sunat.gob.pe:443/ol-ti-itcpgem-beta/billService" />
+    </port>
+  </service>
+</definitions>
