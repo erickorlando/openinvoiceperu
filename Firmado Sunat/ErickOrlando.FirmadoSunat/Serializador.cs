@@ -25,9 +25,14 @@ namespace ErickOrlando.FirmadoSunat
         /// </summary>
         public string PasswordCertificado { get; set; }
         /// <summary>
+        /// Hash de la Firma del Documento
+        /// </summary>
+        public string DigestValue { get; set; }
+        /// <summary>
         /// Tipo de Documento segun SUNAT
         /// </summary>
         public int TipoDocumento { get; set; }
+
         public Serializador()
         {
             TipoDocumento = 1; // Factura es Por Defecto.
@@ -102,7 +107,7 @@ namespace ErickOrlando.FirmadoSunat
             return resultado;
         }
 
-        private string FirmarXml(string tramaXml)
+        public string FirmarXml(string tramaXml)
         {
 
             // Vamos a firmar el XML con la ruta del certificado que está como serializado.
@@ -152,6 +157,10 @@ namespace ErickOrlando.FirmadoSunat
                 xmlSignature.KeyInfo = keyInfo;
                 xmlSignature.Id = "SignatureErickOrlando";
                 signedXml.ComputeSignature();
+
+                // Recuperamos el valor Hash de la firma para este documento.
+                if (reference.DigestValue != null)
+                    DigestValue = Convert.ToBase64String(reference.DigestValue);
 
                 nodoExtension.AppendChild(signedXml.GetXml());
 
