@@ -8,6 +8,9 @@ Se ha incluido un proyecto de ejemplo que permite interactuar con el WS de SUNAT
 Se ha incluido un formulario que permite escoger el RUC, el usuario y clave SOL, el Certificado Digital para la posterior firma del documento y envío al Servidor de SUNAT.
 Además se ha incluido la configuracion para el Servicio Web de Retenciones y Percepciones.
 
+## Próximamente
+Clases para generar los XML de los distintos Tipos de Documento (Siempre y cuando hayan 5 o más colaboradores para este proyecto). Así que pasa la voz! No te quedes.
+
 ### Consideraciones ###
 El proyecto se ha desarrollado con VS2015 Update 2, pero usando como base el 
 .NET Framework 4.5.
