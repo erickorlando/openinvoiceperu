@@ -8,6 +8,9 @@ Se ha incluido un proyecto de ejemplo que permite interactuar con el WS de SUNAT
 Se ha incluido un formulario que permite escoger el RUC, el usuario y clave SOL, el Certificado Digital para la posterior firma del documento y envío al Servidor de SUNAT.
 Además se ha incluido la configuracion para el Servicio Web de Retenciones y Percepciones.
 
+## Novedades del 24/05/2016 ##
+Participa en la encuesta [aqui](https://encuesta.fbapp.io/hiukbq)
+
 ## Próximamente
 Clases para generar los XML de los distintos Tipos de Documento (Siempre y cuando hayan 5 o más colaboradores para este proyecto). Así que pasa la voz! No te quedes.
 
