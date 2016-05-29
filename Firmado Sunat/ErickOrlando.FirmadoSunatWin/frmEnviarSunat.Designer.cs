@@ -78,7 +78,7 @@
             // 
             this.txtSource.Location = new System.Drawing.Point(10, 324);
             this.txtSource.Name = "txtSource";
-            this.txtSource.Size = new System.Drawing.Size(319, 25);
+            this.txtSource.Size = new System.Drawing.Size(319, 21);
             this.txtSource.TabIndex = 13;
             // 
             // label1
@@ -86,7 +86,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 301);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(196, 19);
+            this.label1.Size = new System.Drawing.Size(163, 13);
             this.label1.TabIndex = 12;
             this.label1.Text = "Seleccione el Documento XML:";
             // 
@@ -105,7 +105,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 19);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(112, 19);
+            this.label2.Size = new System.Drawing.Size(92, 13);
             this.label2.TabIndex = 0;
             this.label2.Text = "Numero de RUC:";
             // 
@@ -114,7 +114,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(10, 78);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(88, 19);
+            this.label3.Size = new System.Drawing.Size(73, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Usuario SOL:";
             // 
@@ -123,14 +123,14 @@
             this.txtNroRuc.Location = new System.Drawing.Point(10, 40);
             this.txtNroRuc.MaxLength = 11;
             this.txtNroRuc.Name = "txtNroRuc";
-            this.txtNroRuc.Size = new System.Drawing.Size(153, 25);
+            this.txtNroRuc.Size = new System.Drawing.Size(153, 21);
             this.txtNroRuc.TabIndex = 1;
             // 
             // txtUsuarioSol
             // 
             this.txtUsuarioSol.Location = new System.Drawing.Point(10, 98);
             this.txtUsuarioSol.Name = "txtUsuarioSol";
-            this.txtUsuarioSol.Size = new System.Drawing.Size(153, 25);
+            this.txtUsuarioSol.Size = new System.Drawing.Size(153, 21);
             this.txtUsuarioSol.TabIndex = 3;
             // 
             // label4
@@ -138,7 +138,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(10, 128);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 19);
+            this.label4.Size = new System.Drawing.Size(60, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Clave SOL:";
             // 
@@ -147,7 +147,7 @@
             this.txtClaveSol.Location = new System.Drawing.Point(10, 149);
             this.txtClaveSol.Name = "txtClaveSol";
             this.txtClaveSol.PasswordChar = '*';
-            this.txtClaveSol.Size = new System.Drawing.Size(153, 25);
+            this.txtClaveSol.Size = new System.Drawing.Size(153, 21);
             this.txtClaveSol.TabIndex = 5;
             // 
             // groupBox1
@@ -166,7 +166,7 @@
             this.rbRetenciones.AutoSize = true;
             this.rbRetenciones.Location = new System.Drawing.Point(28, 66);
             this.rbRetenciones.Name = "rbRetenciones";
-            this.rbRetenciones.Size = new System.Drawing.Size(196, 23);
+            this.rbRetenciones.Size = new System.Drawing.Size(166, 17);
             this.rbRetenciones.TabIndex = 0;
             this.rbRetenciones.Text = "Retenciones y Percepciones";
             this.rbRetenciones.UseVisualStyleBackColor = true;
@@ -177,7 +177,7 @@
             this.rbDocumentos.Checked = true;
             this.rbDocumentos.Location = new System.Drawing.Point(28, 37);
             this.rbDocumentos.Name = "rbDocumentos";
-            this.rbDocumentos.Size = new System.Drawing.Size(173, 23);
+            this.rbDocumentos.Size = new System.Drawing.Size(145, 17);
             this.rbDocumentos.TabIndex = 0;
             this.rbDocumentos.TabStop = true;
             this.rbDocumentos.Text = "Factura, Boleta, NC, ND";
@@ -188,7 +188,7 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(10, 189);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(157, 19);
+            this.label5.Size = new System.Drawing.Size(135, 13);
             this.label5.TabIndex = 7;
             this.label5.Text = "Seleccione el Certificado:";
             // 
@@ -196,7 +196,7 @@
             // 
             this.txtRutaCertificado.Location = new System.Drawing.Point(10, 212);
             this.txtRutaCertificado.Name = "txtRutaCertificado";
-            this.txtRutaCertificado.Size = new System.Drawing.Size(319, 25);
+            this.txtRutaCertificado.Size = new System.Drawing.Size(319, 21);
             this.txtRutaCertificado.TabIndex = 8;
             // 
             // label6
@@ -204,7 +204,7 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(10, 248);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(173, 19);
+            this.label6.Size = new System.Drawing.Size(147, 13);
             this.label6.TabIndex = 10;
             this.label6.Text = "Contraseña del Certificado:";
             // 
@@ -212,7 +212,8 @@
             // 
             this.txtPassCertificado.Location = new System.Drawing.Point(10, 271);
             this.txtPassCertificado.Name = "txtPassCertificado";
-            this.txtPassCertificado.Size = new System.Drawing.Size(319, 25);
+            this.txtPassCertificado.PasswordChar = '*';
+            this.txtPassCertificado.Size = new System.Drawing.Size(319, 21);
             this.txtPassCertificado.TabIndex = 11;
             // 
             // btnBrowseCert
@@ -238,7 +239,7 @@
             "Percepción"});
             this.cboTipoDoc.Location = new System.Drawing.Point(180, 150);
             this.cboTipoDoc.Name = "cboTipoDoc";
-            this.cboTipoDoc.Size = new System.Drawing.Size(201, 25);
+            this.cboTipoDoc.Size = new System.Drawing.Size(201, 20);
             this.cboTipoDoc.TabIndex = 17;
             // 
             // label7
@@ -246,13 +247,13 @@
             this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(176, 128);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(133, 19);
+            this.label7.Size = new System.Drawing.Size(111, 13);
             this.label7.TabIndex = 4;
             this.label7.Text = "Tipo de Documento:";
             // 
             // FrmEnviarSunat
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 531);
             this.Controls.Add(this.cboTipoDoc);

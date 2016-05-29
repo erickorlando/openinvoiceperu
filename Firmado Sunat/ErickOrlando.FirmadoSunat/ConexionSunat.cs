@@ -64,13 +64,13 @@ namespace ErickOrlando.FirmadoSunat
             }
             catch (Exception ex)
             {
-                var msg = string.Concat(ex.InnerException?.Message ?? string.Empty, ex.Message);
+                var msg = string.Concat(ex.InnerException.Message ?? string.Empty, ex.Message);
                 var faultCode = "<faultcode>";
                 if (msg.Contains(faultCode))
                 {
                     var posicion = msg.IndexOf(faultCode, StringComparison.Ordinal);
                     var codigoError = msg.Substring(posicion + faultCode.Length, 4);
-                    msg = $"El Código de Error es {codigoError}";
+                    msg = string.Format("El Código de Error es {0}", codigoError);
                 }
                 response = new Tuple<string, bool>(msg, false);
             }
