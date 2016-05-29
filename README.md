@@ -11,8 +11,8 @@ Además se ha incluido la configuracion para el Servicio Web de Retenciones y Pe
 ## Novedades del 24/05/2016 ##
 Participa en la encuesta [aqui](https://encuesta.fbapp.io/hiukbq)
 
-## Próximamente
-Clases para generar los XML de los distintos Tipos de Documento (Siempre y cuando hayan 5 o más colaboradores para este proyecto). Así que pasa la voz! No te quedes.
+## Novedades del 29/05/2016 ##
+Clases para generar los XML de los distintos Tipos de Documento.
 
 ### Consideraciones ###
 El proyecto se ha desarrollado con VS2015 Update 2, pero usando como base el 
