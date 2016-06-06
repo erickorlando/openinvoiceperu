@@ -14,6 +14,9 @@ Participa en la encuesta [aqui](https://encuesta.fbapp.io/hiukbq)
 ## Novedades del 29/05/2016 ##
 Clases para generar los XML de los distintos Tipos de Documento.
 
+## Novedades del 06/06/2016 ##
+Documentacion Oficial de SUNAT en formato PDF
+
 ### Consideraciones ###
 El proyecto se ha desarrollado con VS2015 Update 2, pero usando como base el 
 .NET Framework 4.5.
