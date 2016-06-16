@@ -61,6 +61,15 @@ namespace ErickOrlando.FirmadoSunatWin.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Desea abrir el archivo de resultado?.
+        /// </summary>
+        internal static string abrirArchivo {
+            get {
+                return ResourceManager.GetString("abrirArchivo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Certificados Digitales (*.cer;*.pfx;*.p7b)|*.cer;*.pfx;*.p7b.
         /// </summary>
         internal static string formatosCertificado {
@@ -75,6 +84,15 @@ namespace ErickOrlando.FirmadoSunatWin.Properties {
         internal static string formatosXml {
             get {
                 return ResourceManager.GetString("formatosXml", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Confirme.
+        /// </summary>
+        internal static string msgConfirme {
+            get {
+                return ResourceManager.GetString("msgConfirme", resourceCulture);
             }
         }
         

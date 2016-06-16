@@ -1,9 +1,13 @@
 ﻿using System;
-using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Text;
 using System.Windows.Forms;
+using System.Xml.Linq;
 using ErickOrlando.FirmadoSunat;
 using ErickOrlando.FirmadoSunatWin.Properties;
+using Ionic.Zip;
+using ErickOrlando.FirmadoSunat.Estructuras;
 
 namespace ErickOrlando.FirmadoSunatWin
 {
@@ -43,7 +47,6 @@ namespace ErickOrlando.FirmadoSunatWin
             try
             {
                 string codigoTipoDoc;
-                string letraTipoDoc;
                 switch (cboTipoDoc.SelectedIndex)
                 {
                     case 0:
@@ -80,8 +83,6 @@ namespace ErickOrlando.FirmadoSunatWin
                     txtClaveSol.Text, rbRetenciones.Checked ? "ServicioSunatRetenciones" : string.Empty))
                 {
 
-                    //var archivoOriginal = Path.GetFileName(txtSource.Text);
-
                     var byteArray = File.ReadAllBytes(txtSource.Text);
 
                     Cursor = Cursors.WaitCursor;
@@ -99,14 +100,49 @@ namespace ErickOrlando.FirmadoSunatWin
                     {
                         var returnByte = Convert.FromBase64String(resultado.Item1);
 
-                        var rutaArchivo = $"{Directory.GetCurrentDirectory()}R.{nombreArchivo}.zip";
-                        var fs = new FileStream(rutaArchivo, FileMode.Create);
+                        var rutaArchivo = $"{Directory.GetCurrentDirectory()}\\R-{nombreArchivo}.zip";
+                        var fs = new FileStream(rutaArchivo, FileMode.Create, FileAccess.Write);
                         fs.Write(returnByte, 0, returnByte.Length);
                         fs.Close();
 
-                        txtResult.Text = Resources.procesoCorrecto;
+                        var sb = new StringBuilder();
 
-                        Process.Start(rutaArchivo);
+                        // Añadimos la respuesta del Servicio.
+                        sb.AppendLine(Resources.procesoCorrecto);
+
+                        // Extraemos el XML contenido en el archivo de respuesta como un XML.
+                        var rutaArchivoXmlRespuesta = rutaArchivo.Replace(".zip", ".xml");
+                        // Procedemos a desempaquetar el archivo y leer el contenido de la respuesta SUNAT.
+                        using (var streamZip = ZipFile.Read(File.Open(rutaArchivo,
+                                    FileMode.Open,
+                                    FileAccess.ReadWrite)))
+                        {
+                            // Nos aseguramos de que el ZIP contiene al menos un elemento.
+                            if (streamZip.Entries.Any())
+                            {
+                                streamZip.Entries.First()
+                                    .Extract(".", ExtractExistingFileAction.OverwriteSilently);
+                            }
+                        }
+                        // Como ya lo tenemos extraido, leemos el contenido de dicho archivo.
+                        var xDoc = XDocument.Parse(File.ReadAllText(rutaArchivoXmlRespuesta));
+
+                        var respuesta = xDoc.Descendants(XName.Get("DocumentResponse", EspacioNombres.cac))
+                            .Descendants(XName.Get("Response", EspacioNombres.cac))
+                            .Descendants().ToList();
+
+                        if (respuesta.Any())
+                        {
+                            // La respuesta se compone de 3 valores
+                            // cbc:ReferenceID
+                            // cbc:ResponseCode
+                            // cbc:Description
+                            // Obtendremos unicamente la Descripción (la última).
+                            sb.AppendLine(((XText)respuesta.Nodes().Last()).Value);
+                        }
+
+                        txtResult.Text = sb.ToString();
+                        sb.Length = 0; // Limpiamos memoria del StringBuilder.
                     }
                     else
                         txtResult.Text = resultado.Item1;

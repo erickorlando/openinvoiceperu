@@ -129,4 +129,10 @@
   <data name="formatosXml" xml:space="preserve">
     <value>Documentos XML sin firma (*.xml)|*.xml</value>
   </data>
+  <data name="abrirArchivo" xml:space="preserve">
+    <value>Desea abrir el archivo de resultado?</value>
+  </data>
+  <data name="msgConfirme" xml:space="preserve">
+    <value>Confirme</value>
+  </data>
 </root>
