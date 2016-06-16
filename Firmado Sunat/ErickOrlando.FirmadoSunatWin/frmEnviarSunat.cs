@@ -12,6 +12,8 @@ namespace ErickOrlando.FirmadoSunatWin
         public FrmEnviarSunat()
         {
             InitializeComponent();
+
+            Load += (s, e) => cboTipoDoc.SelectedIndex = 0;
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -45,31 +47,24 @@ namespace ErickOrlando.FirmadoSunatWin
                 switch (cboTipoDoc.SelectedIndex)
                 {
                     case 0:
-                        letraTipoDoc = "F";
                         codigoTipoDoc = "01";
                         break;
                     case 1:
-                        letraTipoDoc = "B";
                         codigoTipoDoc = "03";
                         break;
                     case 2:
-                        letraTipoDoc = "F";
                         codigoTipoDoc = "07";
                         break;
                     case 3:
-                        letraTipoDoc = "F";
                         codigoTipoDoc = "08";
                         break;
                     case 4:
-                        letraTipoDoc = "R";
                         codigoTipoDoc = "20";
                         break;
                     case 5:
-                        letraTipoDoc = "P";
                         codigoTipoDoc = "40";
                         break;
                     default:
-                        letraTipoDoc = "F";
                         codigoTipoDoc = "01";
                         break;
                 }
@@ -94,7 +89,7 @@ namespace ErickOrlando.FirmadoSunatWin
                     // Firmamos el XML.
                     var tramaFirmado = serializar.FirmarXml(Convert.ToBase64String(byteArray));
                     // Le damos un nuevo nombre al archivo
-                    var nombreArchivo = $"{txtNroRuc.Text}-{codigoTipoDoc}-{letraTipoDoc}{txtSerieCorrelativo.Text}";
+                    var nombreArchivo = $"{txtNroRuc.Text}-{codigoTipoDoc}-{txtSerieCorrelativo.Text}";
                     // Ahora lo empaquetamos en un ZIP.
                     var tramaZip = serializar.GenerarZip(tramaFirmado, nombreArchivo);
 

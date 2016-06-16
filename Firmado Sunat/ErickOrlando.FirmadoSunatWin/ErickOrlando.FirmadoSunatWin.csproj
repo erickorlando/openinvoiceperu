@@ -89,6 +89,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="DocumentosEjemplo\20101295673-01-FF11-01.zip">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

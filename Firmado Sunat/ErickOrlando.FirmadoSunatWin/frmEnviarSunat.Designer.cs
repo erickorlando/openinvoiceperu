@@ -57,16 +57,19 @@
             // 
             // btnBrowse
             // 
+            this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowse.Location = new System.Drawing.Point(340, 320);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(103, 32);
             this.btnBrowse.TabIndex = 16;
-            this.btnBrowse.Text = "&Examinar";
+            this.btnBrowse.Text = "Exami&nar";
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // txtResult
             // 
+            this.txtResult.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtResult.BackColor = System.Drawing.SystemColors.Info;
             this.txtResult.Location = new System.Drawing.Point(10, 437);
             this.txtResult.Multiline = true;
@@ -78,6 +81,10 @@
             // 
             // txtSource
             // 
+            this.txtSource.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtSource.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtSource.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.txtSource.Location = new System.Drawing.Point(10, 324);
             this.txtSource.Name = "txtSource";
             this.txtSource.Size = new System.Drawing.Size(319, 25);
@@ -94,6 +101,7 @@
             // 
             // btnGen
             // 
+            this.btnGen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnGen.Location = new System.Drawing.Point(340, 437);
             this.btnGen.Name = "btnGen";
             this.btnGen.Size = new System.Drawing.Size(103, 32);
@@ -130,6 +138,10 @@
             // 
             // txtUsuarioSol
             // 
+            this.txtUsuarioSol.AutoCompleteCustomSource.AddRange(new string[] {
+            "MODDATOS"});
+            this.txtUsuarioSol.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtUsuarioSol.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtUsuarioSol.Location = new System.Drawing.Point(10, 98);
             this.txtUsuarioSol.Name = "txtUsuarioSol";
             this.txtUsuarioSol.Size = new System.Drawing.Size(153, 25);
@@ -154,6 +166,8 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.rbRetenciones);
             this.groupBox1.Controls.Add(this.rbDocumentos);
             this.groupBox1.Location = new System.Drawing.Point(180, 19);
@@ -196,6 +210,10 @@
             // 
             // txtRutaCertificado
             // 
+            this.txtRutaCertificado.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtRutaCertificado.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.txtRutaCertificado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.txtRutaCertificado.Location = new System.Drawing.Point(10, 212);
             this.txtRutaCertificado.Name = "txtRutaCertificado";
             this.txtRutaCertificado.Size = new System.Drawing.Size(319, 25);
@@ -220,18 +238,18 @@
             // 
             // btnBrowseCert
             // 
+            this.btnBrowseCert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBrowseCert.Location = new System.Drawing.Point(340, 207);
             this.btnBrowseCert.Name = "btnBrowseCert";
             this.btnBrowseCert.Size = new System.Drawing.Size(103, 32);
             this.btnBrowseCert.TabIndex = 11;
-            this.btnBrowseCert.Text = "&Examinar";
+            this.btnBrowseCert.Text = "E&xaminar";
             this.btnBrowseCert.UseVisualStyleBackColor = true;
             this.btnBrowseCert.Click += new System.EventHandler(this.btnBrowseCert_Click);
             // 
             // cboTipoDoc
             // 
             this.cboTipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboTipoDoc.FormattingEnabled = true;
             this.cboTipoDoc.Items.AddRange(new object[] {
             "Factura",
             "Boleta",
@@ -299,7 +317,6 @@
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimizeBox = false;
             this.Name = "FrmEnviarSunat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Prueba de Envio a SUNAT";
