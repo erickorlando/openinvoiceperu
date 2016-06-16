@@ -97,6 +97,6 @@ Pon especial énfasis en la interpolación de cadenas.
 
 Si quieres colaborar con tu granito de arena puedes hacer un Pull Request.
 
-Si tienes dudas escribeme a mi página de [Faceebok](http://m.me/erickorlandoblog)
+Si tienes dudas escribeme a mi página de [Facebook](http://m.me/erickorlandoblog)
 
 Visita mi [Blog](http://erickorlando.com)
