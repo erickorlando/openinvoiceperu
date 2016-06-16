@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using ErickOrlando.FirmadoSunat;
+using ErickOrlando.FirmadoSunatWin.Properties;
 
 namespace ErickOrlando.FirmadoSunatWin
 {
@@ -20,8 +20,8 @@ namespace ErickOrlando.FirmadoSunatWin
             {
                 using (var ofd = new OpenFileDialog())
                 {
-                    ofd.Title = "Seleccione un Documento XML SUNAT";
-                    ofd.Filter = "Documentos XML sin firma (*.xml)|*.xml";
+                    ofd.Title = Resources.seleccionXml;
+                    ofd.Filter = Resources.formatosXml;
                     ofd.FilterIndex = 1;
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
@@ -94,7 +94,7 @@ namespace ErickOrlando.FirmadoSunatWin
                     // Firmamos el XML.
                     var tramaFirmado = serializar.FirmarXml(Convert.ToBase64String(byteArray));
                     // Le damos un nuevo nombre al archivo
-                    var nombreArchivo = $"{txtNroRuc.Text}-{codigoTipoDoc}-{letraTipoDoc}001-001";
+                    var nombreArchivo = $"{txtNroRuc.Text}-{codigoTipoDoc}-{letraTipoDoc}{txtSerieCorrelativo.Text}";
                     // Ahora lo empaquetamos en un ZIP.
                     var tramaZip = serializar.GenerarZip(tramaFirmado, nombreArchivo);
 
@@ -109,7 +109,7 @@ namespace ErickOrlando.FirmadoSunatWin
                         fs.Write(returnByte, 0, returnByte.Length);
                         fs.Close();
 
-                        txtResult.Text = "Proceso enviado a SUNAT correctamente!";
+                        txtResult.Text = Resources.procesoCorrecto;
 
                         Process.Start(rutaArchivo);
                     }
@@ -138,8 +138,8 @@ namespace ErickOrlando.FirmadoSunatWin
             {
                 using (var ofd = new OpenFileDialog())
                 {
-                    ofd.Title = "Seleccione un Certificado";
-                    ofd.Filter = "Certificados Digitales (*.cer;*.pfx;*.p7b)|*.cer;*.pfx;*.p7b";
+                    ofd.Title = Resources.seleccioneCertificado;
+                    ofd.Filter = Resources.formatosCertificado;
                     ofd.FilterIndex = 1;
                     if (ofd.ShowDialog() == DialogResult.OK)
                     {
