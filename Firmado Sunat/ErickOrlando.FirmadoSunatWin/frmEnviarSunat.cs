@@ -91,6 +91,12 @@ namespace ErickOrlando.FirmadoSunatWin
                     var tramaFirmado = serializar.FirmarXml(Convert.ToBase64String(byteArray));
                     // Le damos un nuevo nombre al archivo
                     var nombreArchivo = $"{txtNroRuc.Text}-{codigoTipoDoc}-{txtSerieCorrelativo.Text}";
+                    // Escribimos el archivo XML ya firmado en una nueva ubicación.
+                    using (var fs = File.Create($"{nombreArchivo}.xml"))
+                    {
+                        var byteFirmado = Convert.FromBase64String(tramaFirmado);
+                        fs.Write(byteFirmado, 0, byteFirmado.Length);
+                    }
                     // Ahora lo empaquetamos en un ZIP.
                     var tramaZip = serializar.GenerarZip(tramaFirmado, nombreArchivo);
 
