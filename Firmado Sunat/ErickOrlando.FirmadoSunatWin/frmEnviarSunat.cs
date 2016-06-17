@@ -1,13 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.ServiceModel;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
 using ErickOrlando.FirmadoSunat;
+using ErickOrlando.FirmadoSunat.Estructuras;
 using ErickOrlando.FirmadoSunatWin.Properties;
 using Ionic.Zip;
-using ErickOrlando.FirmadoSunat.Estructuras;
 
 namespace ErickOrlando.FirmadoSunatWin
 {
@@ -43,7 +44,6 @@ namespace ErickOrlando.FirmadoSunatWin
 
         private void btnGen_Click(object sender, EventArgs e)
         {
-
             try
             {
                 string codigoTipoDoc;
@@ -82,7 +82,6 @@ namespace ErickOrlando.FirmadoSunatWin
                 using (var conexion = new ConexionSunat(txtNroRuc.Text, txtUsuarioSol.Text,
                     txtClaveSol.Text, rbRetenciones.Checked ? "ServicioSunatRetenciones" : string.Empty))
                 {
-
                     var byteArray = File.ReadAllBytes(txtSource.Text);
 
                     Cursor = Cursors.WaitCursor;
@@ -120,8 +119,8 @@ namespace ErickOrlando.FirmadoSunatWin
                         var rutaArchivoXmlRespuesta = rutaArchivo.Replace(".zip", ".xml");
                         // Procedemos a desempaquetar el archivo y leer el contenido de la respuesta SUNAT.
                         using (var streamZip = ZipFile.Read(File.Open(rutaArchivo,
-                                    FileMode.Open,
-                                    FileAccess.ReadWrite)))
+                            FileMode.Open,
+                            FileAccess.ReadWrite)))
                         {
                             // Nos aseguramos de que el ZIP contiene al menos un elemento.
                             if (streamZip.Entries.Any())
@@ -144,6 +143,7 @@ namespace ErickOrlando.FirmadoSunatWin
                             // cbc:ResponseCode
                             // cbc:Description
                             // Obtendremos unicamente la Descripción (la última).
+                            sb.AppendLine($"Respuesta de SUNAT a las {DateTime.Now}");
                             sb.AppendLine(((XText)respuesta.Nodes().Last()).Value);
                         }
 
@@ -152,10 +152,9 @@ namespace ErickOrlando.FirmadoSunatWin
                     }
                     else
                         txtResult.Text = resultado.Item1;
-
                 }
             }
-            catch (System.ServiceModel.FaultException exSer)
+            catch (FaultException exSer)
             {
                 txtResult.Text = exSer.ToString();
             }
