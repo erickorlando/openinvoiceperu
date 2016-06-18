@@ -125,8 +125,12 @@ namespace ErickOrlando.FirmadoSunatWin
                             // Nos aseguramos de que el ZIP contiene al menos un elemento.
                             if (streamZip.Entries.Any())
                             {
-                                streamZip.Entries.First()
+                                if (rbRetenciones.Checked)
+                                    streamZip.Entries.Last()
                                     .Extract(".", ExtractExistingFileAction.OverwriteSilently);
+                                else
+                                    streamZip.Entries.First()
+                                        .Extract(".", ExtractExistingFileAction.OverwriteSilently);
                             }
                         }
                         // Como ya lo tenemos extraido, leemos el contenido de dicho archivo.
