@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ErickOrlando.FirmadoSunatWin</RootNamespace>
-    <AssemblyName>ErickOrlando.FirmadoSunatWin</AssemblyName>
+    <AssemblyName>FirmadoSunatWin</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publicar\</PublishUrl>
@@ -80,10 +80,19 @@
     <Compile Include="FrmEnviarSunat.Designer.cs">
       <DependentUpon>FrmEnviarSunat.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmTicket.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTicket.Designer.cs">
+      <DependentUpon>FrmTicket.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FrmEnviarSunat.resx">
       <DependentUpon>FrmEnviarSunat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTicket.resx">
+      <DependentUpon>FrmTicket.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
