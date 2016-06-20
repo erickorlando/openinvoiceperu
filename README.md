@@ -4,6 +4,10 @@ Repositorio para la conexión con el Servicio Web de Facturación Electrónica S
 ## Novedades del 16/06/2016 ##
 Ahora el programa puede leer la respuesta que envía a SUNAT una vez que el proceso se completó correctamente.
 
+## Novedades del 18/06/2016 ##
+El programa permite enviar Resúmenes Diarios de Boletas y Comunicaciones de Baja.
+También permite consultar un N° de Ticket a través del método getStatus del Servicio sendBill.
+
 ## Como crear un XML con las clases de generacion ##
 Por ejemplo para crear un XML de Factura (Invoice) se debe escribir lo siguiente:
 
@@ -88,15 +92,33 @@ using (var fs = new FileStream(ruta, FileMode.Create))
 // Abrir el documento XML con el programa predeterminado de extensiones XML
 System.Diagnostics.Process.Start(ruta);
 ```
-### Consideraciones ###
+
+
+## Ramas (branches) ##
+
+El proyecto contiene tres ramas:
+
+- master (versión estable)
+- beta (versión para pruebas)
+- sqa (versión para Homologación)
+
+## Consideraciones ##
 El proyecto se ha desarrollado con VS2015 Update 2, pero usando como base el 
-.NET Framework 4.5.
+.NET Framework 4.5, fácilmente se puede trabajar con VS2013 e incluso VS2012.
 
-Si tienes problemas para compilar revisa las [características de C# 6.0](https://msdn.microsoft.com/es-es/magazine/dn879355.aspx) que se usan en este proyecto.
-Pon especial énfasis en la interpolación de cadenas.
-
-Si quieres colaborar con tu granito de arena puedes hacer un Pull Request.
+Se ha modificado el proyecto para que tenga soporte total con C# 5.0 a pedido de muchos.
+Si quieres colaborar con tu granito de arena puedes hacer un Fork.
 
 Si tienes dudas escribeme a mi página de [Facebook](http://m.me/erickorlandoblog)
 
-Visita mi [Blog](http://erickorlando.com)
+Y no te olvides de darte una vuelta por mi [Blog](http://erickorlando.com/2016/05/07/proyecto-opensource-facturacion-electronica-sunat/)
+
+## Disclaimer ##
+
+Este software se entrega como tal y eres libre de modificarlo a tu gusto, si tienes errores con SUNAT fijate en el código devuelto:
+
+- Del 0100 al 1999 Excepciones (Usuarios mal escritos, RUCs no validos, etc.)
+- Del 2000 al 3999 Errores que generan rechazo (Se envia pero rebota)
+- Del 4000 en adelante Observaciones (Correcciones menores)
+
+Si tienes mas dudas con SUNAT comunícate con ellos al +51 1 3150730.
