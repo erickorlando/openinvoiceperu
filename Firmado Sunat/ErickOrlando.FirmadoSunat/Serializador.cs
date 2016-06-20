@@ -6,15 +6,13 @@ using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using ErickOrlando.FirmadoSunat.Estructuras;
 using Ionic.Zip;
 
 namespace ErickOrlando.FirmadoSunat
 {
     public class Serializador
     {
-
-        private const string CommonExtensionComponents =
-            "urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2";
 
         /// <summary>
         /// Cadena Base64 del certificado Digital
@@ -47,7 +45,7 @@ namespace ErickOrlando.FirmadoSunat
         public string GenerarXmlFisico<T>(T request, string nombreArchivo)
         {
             var serializer = new XmlSerializer(typeof(T));
-            var filename = Directory.GetCurrentDirectory() + $@"\{nombreArchivo}.xml";
+            var filename = string.Format("{0}\\{1}.xml", Directory.GetCurrentDirectory(), nombreArchivo);
 
             using (var writer = new StreamWriter(filename))
             {
@@ -94,9 +92,9 @@ namespace ErickOrlando.FirmadoSunat
             var memDestino = new MemoryStream();
             string resultado;
 
-            using (var fileZip = new ZipFile($"{nombreArchivo}.zip"))
+            using (var fileZip = new ZipFile(string.Format("{0}.zip", nombreArchivo)))
             {
-                fileZip.AddEntry($"{nombreArchivo}.xml", memOrigen);
+                fileZip.AddEntry(string.Format("{0}.xml", nombreArchivo), memOrigen);
                 fileZip.Save(memDestino);
                 resultado = Convert.ToBase64String(memDestino.ToArray());
             }
@@ -131,7 +129,7 @@ namespace ErickOrlando.FirmadoSunat
                 else
                     tipo = 0;
 
-                var nodoExtension = xmlDoc.GetElementsByTagName("ExtensionContent", CommonExtensionComponents)
+                var nodoExtension = xmlDoc.GetElementsByTagName("ExtensionContent", EspacioNombres.ext)
                     .Item(tipo);
                 if (nodoExtension == null)
                     throw new InvalidOperationException("No se pudo encontrar el nodo ExtensionContent en el XML");

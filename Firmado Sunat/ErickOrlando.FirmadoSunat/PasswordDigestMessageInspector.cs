@@ -32,7 +32,7 @@ namespace ErickOrlando.FirmadoSunat
 
             // Modificamos el XML Generado.
             var nodo = securityToken.GetElementsByTagName("wsse:Nonce").Item(0);
-            nodo?.RemoveAll();
+            if (nodo != null) nodo.RemoveAll();
 
             MessageHeader securityHeader = MessageHeader.CreateHeader("Security",
                 "http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd",

@@ -98,19 +98,21 @@ namespace ErickOrlando.FirmadoSunatWin
                     // Firmamos el XML.
                     var tramaFirmado = serializar.FirmarXml(Convert.ToBase64String(byteArray));
                     // Le damos un nuevo nombre al archivo
-                    var nombreArchivo = $"{txtNroRuc.Text}-{codigoTipoDoc}-{txtSerieCorrelativo.Text}";
+                    var nombreArchivo = string.Format("{0}-{1}-{2}", txtNroRuc.Text, codigoTipoDoc,
+                        txtSerieCorrelativo.Text);
                     // Escribimos el archivo XML ya firmado en una nueva ubicación.
-                    using (var fs = File.Create($"{nombreArchivo}.xml"))
+                    using (var fs = File.Create(string.Format("{0}.xml", nombreArchivo)))
                     {
                         var byteFirmado = Convert.FromBase64String(tramaFirmado);
                         fs.Write(byteFirmado, 0, byteFirmado.Length);
                     }
+
                     // Ahora lo empaquetamos en un ZIP.
                     var tramaZip = serializar.GenerarZip(tramaFirmado, nombreArchivo);
 
                     if (rbResumen.Checked)
                     {
-                        var rptaSunat = conexion.EnviarResumenBaja(tramaZip, $"{nombreArchivo}.zip");
+                        var rptaSunat = conexion.EnviarResumenBaja(tramaZip, string.Format("{0}.zip", nombreArchivo));
 
                         if (rptaSunat.Item2)
                         {
@@ -119,22 +121,26 @@ namespace ErickOrlando.FirmadoSunatWin
                             // Añadimos la respuesta del Servicio.
                             sb.AppendLine(Resources.procesoCorrecto);
 
-                            sb.AppendLine($"Procesamiento correcto, el numero de Ticket es {rptaSunat.Item1}");
+                            sb.AppendLine(string.Format("Procesamiento correcto, el numero de Ticket es {0}",
+                                rptaSunat.Item1));
 
 
                             txtResult.Text = sb.ToString();
                             sb.Length = 0;
                         }
+                        else
+                            txtResult.Text = rptaSunat.Item1;
                     }
                     else
                     {
-                        var resultado = conexion.EnviarDocumento(tramaZip, $"{nombreArchivo}.zip");
+                        var resultado = conexion.EnviarDocumento(tramaZip, string.Format("{0}.zip", nombreArchivo));
 
                         if (resultado.Item2)
                         {
                             var returnByte = Convert.FromBase64String(resultado.Item1);
 
-                            var rutaArchivo = $"{Directory.GetCurrentDirectory()}\\R-{nombreArchivo}.zip";
+                            var rutaArchivo = string.Format("{0}\\R-{1}.zip", Directory.GetCurrentDirectory(),
+                                nombreArchivo);
                             var fs = new FileStream(rutaArchivo, FileMode.Create, FileAccess.Write);
                             fs.Write(returnByte, 0, returnByte.Length);
                             fs.Close();
@@ -176,7 +182,7 @@ namespace ErickOrlando.FirmadoSunatWin
                                 // cbc:ResponseCode
                                 // cbc:Description
                                 // Obtendremos unicamente la Descripción (la última).
-                                sb.AppendLine($"Respuesta de SUNAT a las {DateTime.Now}");
+                                sb.AppendLine(string.Format("Respuesta de SUNAT a las {0}", DateTime.Now));
                                 sb.AppendLine(((XText)respuesta.Nodes().Last()).Value);
                             }
 
@@ -243,7 +249,8 @@ namespace ErickOrlando.FirmadoSunatWin
                         {
                             var returnByte = Convert.FromBase64String(resultado.Item1);
 
-                            var rutaArchivo = $"{Directory.GetCurrentDirectory()}\\R-{frm.txtNroTicket.Text}.zip";
+                            var rutaArchivo = string.Format("{0}\\R-{1}.zip", Directory.GetCurrentDirectory(),
+                                frm.txtNroTicket.Text);
                             var fs = new FileStream(rutaArchivo, FileMode.Create, FileAccess.Write);
                             fs.Write(returnByte, 0, returnByte.Length);
                             fs.Close();
@@ -270,7 +277,7 @@ namespace ErickOrlando.FirmadoSunatWin
                                         streamZip.Entries.First()
                                             .Extract(".", ExtractExistingFileAction.OverwriteSilently);
                                 }
-                                
+
                             }
                             // Como ya lo tenemos extraido, leemos el contenido de dicho archivo.
                             var xDoc = XDocument.Parse(File.ReadAllText(rutaArchivoXmlRespuesta));
@@ -286,7 +293,7 @@ namespace ErickOrlando.FirmadoSunatWin
                                 // cbc:ResponseCode
                                 // cbc:Description
                                 // Obtendremos unicamente la Descripción (la última).
-                                sb.AppendLine($"Respuesta de SUNAT a las {DateTime.Now}");
+                                sb.AppendLine(string.Format("Respuesta de SUNAT a las {0}", DateTime.Now));
                                 sb.AppendLine(((XText)respuesta.Nodes().Last()).Value);
                             }
 
