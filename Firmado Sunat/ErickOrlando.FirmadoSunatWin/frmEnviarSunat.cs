@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.ServiceModel;
+using System.Speech.Synthesis;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
@@ -194,6 +195,8 @@ namespace ErickOrlando.FirmadoSunatWin
                     }
 
                 }
+
+                Hablar();
             }
             catch (FaultException exSer)
             {
@@ -207,6 +210,15 @@ namespace ErickOrlando.FirmadoSunatWin
             {
                 Cursor = Cursors.Default;
             }
+        }
+
+        private void Hablar()
+        {
+            if (string.IsNullOrEmpty(txtResult.Text)) return;
+            var synth = new SpeechSynthesizer();
+
+            synth.SetOutputToDefaultAudioDevice();
+            synth.Speak(txtResult.Text);
         }
 
         private void btnBrowseCert_Click(object sender, EventArgs e)
@@ -303,6 +315,8 @@ namespace ErickOrlando.FirmadoSunatWin
                         else
                             txtResult.Text = resultado.Item1;
                     }
+
+                    Hablar();
                 }
             }
             catch (Exception ex)
