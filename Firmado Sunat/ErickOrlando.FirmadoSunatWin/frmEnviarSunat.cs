@@ -196,7 +196,7 @@ namespace ErickOrlando.FirmadoSunatWin
 
                 }
 
-                Hablar();
+                //Hablar();
             }
             catch (FaultException exSer)
             {
@@ -218,7 +218,7 @@ namespace ErickOrlando.FirmadoSunatWin
             var synth = new SpeechSynthesizer();
 
             synth.SetOutputToDefaultAudioDevice();
-            synth.Speak(txtResult.Text);
+            synth.SpeakAsync(txtResult.Text);
         }
 
         private void btnBrowseCert_Click(object sender, EventArgs e)

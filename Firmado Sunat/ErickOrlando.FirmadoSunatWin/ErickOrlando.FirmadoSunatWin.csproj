@@ -108,73 +108,6 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DocumentosEjemplo\20101295673-01-FF11-01.zip">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\CCTS_CCT_SchemaModule-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\CodeList_CurrencyCode_ISO_7_04.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\CodeList_LanguageCode_ISO_7_04.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\CodeList_MIMEMediaTypeCode_IANA_7_04.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\CodeList_UnitCode_UNECE_7_04.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-CommonAggregateComponents-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-CommonBasicComponents-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-CommonExtensionComponents-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-CoreComponentParameters-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-CreditNote-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-DebitNote-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-ExtensionContentDatatype-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-QualifiedDatatypes-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBLPE-Invoice-1.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBLPE-SunatAggregateComponents-1.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UnqualifiedDataTypeSchemaModule-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -197,32 +130,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="code.ico" />
-    <Content Include="DocumentosEjemplo\BoletaB11.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DocumentosEjemplo\BoletaB12.xml" />
-    <Content Include="DocumentosEjemplo\BoletaB13.xml" />
-    <Content Include="DocumentosEjemplo\BoletaB14.xml" />
-    <Content Include="DocumentosEjemplo\ComunicacionBaja.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DocumentosEjemplo\EjemploRetencion.xml" />
-    <Content Include="DocumentosEjemplo\FacturaF11.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DocumentosEjemplo\FacturaF12.xml" />
-    <Content Include="DocumentosEjemplo\FacturaF13.xml" />
-    <Content Include="DocumentosEjemplo\FacturaF14.xml" />
-    <Content Include="DocumentosEjemplo\FacturaGuia.xml" />
-    <Content Include="DocumentosEjemplo\NotaCreditoF11.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DocumentosEjemplo\NotaDebitoF11.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DocumentosEjemplo\ResumenDiario.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">
