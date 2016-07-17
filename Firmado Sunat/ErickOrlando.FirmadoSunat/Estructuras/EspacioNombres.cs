@@ -1,6 +1,6 @@
 ﻿// ReSharper disable InconsistentNaming
 
-namespace ErickOrlando.FirmadoSunat.Estructuras
+namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 {
     public class EspacioNombres
     {

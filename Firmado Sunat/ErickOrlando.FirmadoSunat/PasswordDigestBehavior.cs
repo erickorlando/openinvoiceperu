@@ -2,7 +2,7 @@
 using System.ServiceModel.Description;
 using System.ServiceModel.Dispatcher;
 
-namespace ErickOrlando.FirmadoSunat
+namespace OpenInvoicePeru.FirmadoSunat
 {
     public class PasswordDigestBehavior : IEndpointBehavior
     {

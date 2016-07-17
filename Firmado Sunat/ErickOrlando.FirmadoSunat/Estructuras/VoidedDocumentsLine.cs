@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ErickOrlando.FirmadoSunat.Estructuras
+namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 {
     [Serializable]
     public class VoidedDocumentsLine

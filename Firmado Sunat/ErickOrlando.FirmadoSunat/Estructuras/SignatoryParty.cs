@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace ErickOrlando.FirmadoSunat.Estructuras
+namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 {
     [Serializable]
     public class SignatoryParty

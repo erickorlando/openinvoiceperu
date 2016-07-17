@@ -7,8 +7,8 @@
     <ProjectGuid>{B837B42F-7123-432A-BC65-79E9DBE475A2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ErickOrlando.FirmadoSunatWin</RootNamespace>
-    <AssemblyName>FirmadoSunatWin</AssemblyName>
+    <RootNamespace>OpenInvoicePeru.FirmadoSunatWin</RootNamespace>
+    <AssemblyName>OpenInvoicePeru</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publicar\</PublishUrl>
@@ -78,6 +78,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDocumento.Designer.cs">
+      <DependentUpon>FrmDocumento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEnviarSunat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +98,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmDocumento.resx">
+      <DependentUpon>FrmDocumento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEnviarSunat.resx">
       <DependentUpon>FrmEnviarSunat.cs</DependentUpon>
     </EmbeddedResource>
@@ -123,9 +132,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ErickOrlando.FirmadoSunat\ErickOrlando.FirmadoSunat.csproj">
+    <ProjectReference Include="..\ErickOrlando.FirmadoSunat\OpenInvoicePeru.FirmadoSunat.csproj">
       <Project>{1cfd1d28-d342-413d-a6e1-7616cb9708e2}</Project>
-      <Name>ErickOrlando.FirmadoSunat</Name>
+      <Name>OpenInvoicePeru.FirmadoSunat</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

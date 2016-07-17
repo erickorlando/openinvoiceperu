@@ -1,4 +1,4 @@
-﻿namespace ErickOrlando.FirmadoSunatWin
+﻿namespace OpenInvoicePeru.FirmadoSunatWin
 {
     partial class FrmTicket
     {

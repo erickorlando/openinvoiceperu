@@ -1,6 +1,6 @@
 ﻿using System.Windows.Forms;
 
-namespace ErickOrlando.FirmadoSunatWin
+namespace OpenInvoicePeru.FirmadoSunatWin
 {
     public partial class FrmTicket : Form
     {

@@ -4,7 +4,7 @@ using System.ServiceModel.Dispatcher;
 using System.Xml;
 using Microsoft.Web.Services3.Security.Tokens;
 
-namespace ErickOrlando.FirmadoSunat
+namespace OpenInvoicePeru.FirmadoSunat
 {
     public class PasswordDigestMessageInspector : IClientMessageInspector
     {

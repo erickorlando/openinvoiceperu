@@ -6,12 +6,12 @@ using System.Speech.Synthesis;
 using System.Text;
 using System.Windows.Forms;
 using System.Xml.Linq;
-using ErickOrlando.FirmadoSunat;
-using ErickOrlando.FirmadoSunat.Estructuras;
-using ErickOrlando.FirmadoSunatWin.Properties;
 using Ionic.Zip;
+using OpenInvoicePeru.FirmadoSunat;
+using OpenInvoicePeru.FirmadoSunat.Estructuras;
+using OpenInvoicePeru.FirmadoSunatWin.Properties;
 
-namespace ErickOrlando.FirmadoSunatWin
+namespace OpenInvoicePeru.FirmadoSunatWin
 {
     public partial class FrmEnviarSunat : Form
     {

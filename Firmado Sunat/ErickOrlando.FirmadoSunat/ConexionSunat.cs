@@ -1,8 +1,8 @@
 ﻿using System;
 using System.ServiceModel;
-using ErickOrlando.FirmadoSunat.Sunat;
+using OpenInvoicePeru.FirmadoSunat.Service_References.Sunat;
 
-namespace ErickOrlando.FirmadoSunat
+namespace OpenInvoicePeru.FirmadoSunat
 {
     /// <summary>
     /// Clase para la conexión con el WS de SUNAT
