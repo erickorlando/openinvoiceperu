@@ -54,16 +54,17 @@
             this.label8 = new System.Windows.Forms.Label();
             this.txtSerieCorrelativo = new System.Windows.Forms.TextBox();
             this.btnGetStatus = new System.Windows.Forms.Button();
+            this.btnGenerar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnBrowse
             // 
             this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowse.Location = new System.Drawing.Point(340, 320);
+            this.btnBrowse.Location = new System.Drawing.Point(340, 322);
             this.btnBrowse.Name = "btnBrowse";
-            this.btnBrowse.Size = new System.Drawing.Size(103, 32);
-            this.btnBrowse.TabIndex = 16;
+            this.btnBrowse.Size = new System.Drawing.Size(103, 24);
+            this.btnBrowse.TabIndex = 17;
             this.btnBrowse.Text = "Exami&nar";
             this.btnBrowse.UseVisualStyleBackColor = true;
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
@@ -107,7 +108,7 @@
             this.btnGen.Location = new System.Drawing.Point(340, 437);
             this.btnGen.Name = "btnGen";
             this.btnGen.Size = new System.Drawing.Size(103, 32);
-            this.btnGen.TabIndex = 19;
+            this.btnGen.TabIndex = 21;
             this.btnGen.Text = "&Enviar";
             this.btnGen.UseVisualStyleBackColor = true;
             this.btnGen.Click += new System.EventHandler(this.btnGen_Click);
@@ -186,14 +187,14 @@
             this.rbResumen.Location = new System.Drawing.Point(28, 74);
             this.rbResumen.Name = "rbResumen";
             this.rbResumen.Size = new System.Drawing.Size(197, 17);
-            this.rbResumen.TabIndex = 1;
+            this.rbResumen.TabIndex = 2;
             this.rbResumen.Text = "Resumen y Comunicacion de baja";
             this.rbResumen.UseVisualStyleBackColor = true;
             // 
             // rbRetenciones
             // 
             this.rbRetenciones.AutoSize = true;
-            this.rbRetenciones.Location = new System.Drawing.Point(28, 51);
+            this.rbRetenciones.Location = new System.Drawing.Point(28, 47);
             this.rbRetenciones.Name = "rbRetenciones";
             this.rbRetenciones.Size = new System.Drawing.Size(166, 17);
             this.rbRetenciones.TabIndex = 1;
@@ -292,7 +293,7 @@
             this.label8.Location = new System.Drawing.Point(10, 362);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(177, 13);
-            this.label8.TabIndex = 17;
+            this.label8.TabIndex = 18;
             this.label8.Text = "Serie-Correlativo del Documento:";
             // 
             // txtSerieCorrelativo
@@ -300,7 +301,7 @@
             this.txtSerieCorrelativo.Location = new System.Drawing.Point(10, 385);
             this.txtSerieCorrelativo.Name = "txtSerieCorrelativo";
             this.txtSerieCorrelativo.Size = new System.Drawing.Size(319, 21);
-            this.txtSerieCorrelativo.TabIndex = 18;
+            this.txtSerieCorrelativo.TabIndex = 19;
             // 
             // btnGetStatus
             // 
@@ -308,10 +309,20 @@
             this.btnGetStatus.Location = new System.Drawing.Point(340, 475);
             this.btnGetStatus.Name = "btnGetStatus";
             this.btnGetStatus.Size = new System.Drawing.Size(103, 53);
-            this.btnGetStatus.TabIndex = 19;
+            this.btnGetStatus.TabIndex = 22;
             this.btnGetStatus.Text = "Consultar N° Ticket";
             this.btnGetStatus.UseVisualStyleBackColor = true;
             this.btnGetStatus.Click += new System.EventHandler(this.btnGetStatus_Click);
+            // 
+            // btnGenerar
+            // 
+            this.btnGenerar.Location = new System.Drawing.Point(340, 297);
+            this.btnGenerar.Name = "btnGenerar";
+            this.btnGenerar.Size = new System.Drawing.Size(103, 23);
+            this.btnGenerar.TabIndex = 16;
+            this.btnGenerar.Text = "&Generar...";
+            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
             // FrmEnviarSunat
             // 
@@ -319,6 +330,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(457, 593);
+            this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.cboTipoDoc);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnGetStatus);
@@ -381,5 +393,6 @@
         private System.Windows.Forms.TextBox txtSerieCorrelativo;
         private System.Windows.Forms.RadioButton rbResumen;
         private System.Windows.Forms.Button btnGetStatus;
+        private System.Windows.Forms.Button btnGenerar;
     }
 }

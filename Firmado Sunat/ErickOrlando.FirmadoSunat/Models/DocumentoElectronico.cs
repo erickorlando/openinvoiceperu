@@ -28,6 +28,12 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public string TipoOperacion { get; set; }
 
         public ObservableCollection<DetalleDocumento> Items { get; set; }
+
+        public DocumentoElectronico()
+        {
+            Emisor = new Contribuyente();
+            Receptor = new Contribuyente();
+        }
     }
 
 }

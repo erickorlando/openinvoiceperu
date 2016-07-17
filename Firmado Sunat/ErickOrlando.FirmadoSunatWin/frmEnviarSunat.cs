@@ -324,5 +324,13 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 txtResult.Text = ex.Message;
             }
         }
+
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            using (var frm = new FrmDocumento())
+            {
+                frm.ShowDialog(this);
+            }
+        }
     }
 }

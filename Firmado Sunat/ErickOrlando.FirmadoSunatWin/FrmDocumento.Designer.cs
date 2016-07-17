@@ -184,7 +184,7 @@
             // tipoOperacionLabel
             // 
             tipoOperacionLabel.AutoSize = true;
-            tipoOperacionLabel.Location = new System.Drawing.Point(259, 211);
+            tipoOperacionLabel.Location = new System.Drawing.Point(254, 211);
             tipoOperacionLabel.Name = "tipoOperacionLabel";
             tipoOperacionLabel.Size = new System.Drawing.Size(83, 13);
             tipoOperacionLabel.TabIndex = 21;
@@ -248,7 +248,7 @@
             "A CED. DIPLOMATICA DE IDENTIDAD"});
             this.comboBox1.Location = new System.Drawing.Point(110, 13);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
+            this.comboBox1.Size = new System.Drawing.Size(187, 21);
             this.comboBox1.TabIndex = 1;
             // 
             // label2
@@ -828,9 +828,9 @@
             "06 Factura Guía",
             "07 Venta Arroz Pilado",
             "08 Factura - Comprobante de Percepción"});
-            this.tipoOperacionComboBox.Location = new System.Drawing.Point(348, 208);
+            this.tipoOperacionComboBox.Location = new System.Drawing.Point(348, 207);
             this.tipoOperacionComboBox.Name = "tipoOperacionComboBox";
-            this.tipoOperacionComboBox.Size = new System.Drawing.Size(161, 21);
+            this.tipoOperacionComboBox.Size = new System.Drawing.Size(242, 21);
             this.tipoOperacionComboBox.TabIndex = 22;
             // 
             // totalIgvTextBox
@@ -876,6 +876,7 @@
             this.btnAgregar.Text = "&Agregar";
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
