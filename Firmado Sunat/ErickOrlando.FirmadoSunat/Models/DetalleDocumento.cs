@@ -10,6 +10,8 @@
         public string TipoPrecio { get; set; }
         public decimal Impuesto { get; set; }
         public string TipoImpuesto { get; set; }
+        public decimal ImpuestoSelectivo { get; set; }
+        public decimal OtroImpuesto { get; set; }
         public string Descripcion { get; set; }
         public string CodigoItem { get; set; }
         public decimal PrecioReferencial { get; set; }

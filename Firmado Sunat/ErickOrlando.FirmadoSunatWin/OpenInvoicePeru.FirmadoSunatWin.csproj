@@ -64,7 +64,9 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Speech" />
     <Reference Include="System.Xml.Linq" />
@@ -78,6 +80,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDetalleDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetalleDocumento.Designer.cs">
+      <DependentUpon>FrmDetalleDocumento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDocumento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -98,6 +106,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmDetalleDocumento.resx">
+      <DependentUpon>FrmDetalleDocumento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDocumento.resx">
       <DependentUpon>FrmDocumento.cs</DependentUpon>
     </EmbeddedResource>
@@ -118,6 +129,9 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.Contribuyente.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DetalleDocumento.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DocumentoElectronico.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -139,6 +153,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="code.ico" />
+    <None Include="Resources\iconxml.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\new.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\ok.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

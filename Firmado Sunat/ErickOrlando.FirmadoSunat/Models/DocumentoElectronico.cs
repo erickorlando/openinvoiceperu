@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.ObjectModel;
 
 namespace OpenInvoicePeru.FirmadoSunat.Models
 {
@@ -15,7 +15,6 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public string Moneda { get; set; }
 
         public decimal Gravadas { get; set; }
-        public decimal NoGravadas { get; set; }
         public decimal Gratuitas { get; set; }
         public decimal Inafectas { get; set; }
         public decimal Exoneradas { get; set; }
@@ -28,7 +27,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public string MontoEnLetras { get; set; }
         public string TipoOperacion { get; set; }
 
-        public ICollection<DetalleDocumento> Items { get; set; }
+        public ObservableCollection<DetalleDocumento> Items { get; set; }
     }
 
 }
