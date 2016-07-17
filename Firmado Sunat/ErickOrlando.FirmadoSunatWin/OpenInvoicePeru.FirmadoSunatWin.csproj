@@ -153,6 +153,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="code.ico" />
+    <None Include="Resources\iconcopy.png" />
     <None Include="Resources\iconxml.png" />
     <None Include="Resources\delete.png" />
     <None Include="Resources\new.png" />

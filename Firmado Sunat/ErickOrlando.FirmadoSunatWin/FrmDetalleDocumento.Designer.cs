@@ -41,9 +41,10 @@
             System.Windows.Forms.Label impuestoSelectivoLabel;
             System.Windows.Forms.Label otroImpuestoLabel;
             System.Windows.Forms.Label totalVentaLabel;
+            System.Windows.Forms.Label tipoPrecioLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetalleDocumento));
-            this.detalleDocumentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.idNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.detalleDocumentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoItemTextBox = new System.Windows.Forms.TextBox();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
             this.precioUnitarioTextBox = new System.Windows.Forms.TextBox();
@@ -59,6 +60,9 @@
             this.toolOk = new System.Windows.Forms.ToolStripButton();
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnCalcIgv = new System.Windows.Forms.Button();
+            this.btnCalcIsc = new System.Windows.Forms.Button();
+            this.tipoPrecioComboBox = new System.Windows.Forms.ComboBox();
             idLabel = new System.Windows.Forms.Label();
             codigoItemLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
@@ -71,8 +75,9 @@
             impuestoSelectivoLabel = new System.Windows.Forms.Label();
             otroImpuestoLabel = new System.Windows.Forms.Label();
             totalVentaLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).BeginInit();
+            tipoPrecioLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.idNumericUpDown)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).BeginInit();
             this.barraBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
@@ -93,7 +98,7 @@
             codigoItemLabel.Name = "codigoItemLabel";
             codigoItemLabel.Size = new System.Drawing.Size(66, 13);
             codigoItemLabel.TabIndex = 2;
-            codigoItemLabel.Text = "Codigo Item:";
+            codigoItemLabel.Text = "Código Item:";
             // 
             // descripcionLabel
             // 
@@ -125,7 +130,7 @@
             // cantidadLabel
             // 
             cantidadLabel.AutoSize = true;
-            cantidadLabel.Location = new System.Drawing.Point(12, 165);
+            cantidadLabel.Location = new System.Drawing.Point(12, 195);
             cantidadLabel.Name = "cantidadLabel";
             cantidadLabel.Size = new System.Drawing.Size(52, 13);
             cantidadLabel.TabIndex = 10;
@@ -134,7 +139,7 @@
             // unidadMedidaLabel
             // 
             unidadMedidaLabel.AutoSize = true;
-            unidadMedidaLabel.Location = new System.Drawing.Point(12, 191);
+            unidadMedidaLabel.Location = new System.Drawing.Point(12, 221);
             unidadMedidaLabel.Name = "unidadMedidaLabel";
             unidadMedidaLabel.Size = new System.Drawing.Size(82, 13);
             unidadMedidaLabel.TabIndex = 12;
@@ -143,7 +148,7 @@
             // impuestoLabel
             // 
             impuestoLabel.AutoSize = true;
-            impuestoLabel.Location = new System.Drawing.Point(12, 217);
+            impuestoLabel.Location = new System.Drawing.Point(12, 247);
             impuestoLabel.Name = "impuestoLabel";
             impuestoLabel.Size = new System.Drawing.Size(53, 13);
             impuestoLabel.TabIndex = 14;
@@ -152,7 +157,7 @@
             // tipoImpuestoLabel
             // 
             tipoImpuestoLabel.AutoSize = true;
-            tipoImpuestoLabel.Location = new System.Drawing.Point(12, 243);
+            tipoImpuestoLabel.Location = new System.Drawing.Point(12, 273);
             tipoImpuestoLabel.Name = "tipoImpuestoLabel";
             tipoImpuestoLabel.Size = new System.Drawing.Size(77, 13);
             tipoImpuestoLabel.TabIndex = 16;
@@ -161,7 +166,7 @@
             // impuestoSelectivoLabel
             // 
             impuestoSelectivoLabel.AutoSize = true;
-            impuestoSelectivoLabel.Location = new System.Drawing.Point(12, 269);
+            impuestoSelectivoLabel.Location = new System.Drawing.Point(12, 299);
             impuestoSelectivoLabel.Name = "impuestoSelectivoLabel";
             impuestoSelectivoLabel.Size = new System.Drawing.Size(100, 13);
             impuestoSelectivoLabel.TabIndex = 18;
@@ -170,7 +175,7 @@
             // otroImpuestoLabel
             // 
             otroImpuestoLabel.AutoSize = true;
-            otroImpuestoLabel.Location = new System.Drawing.Point(12, 295);
+            otroImpuestoLabel.Location = new System.Drawing.Point(12, 325);
             otroImpuestoLabel.Name = "otroImpuestoLabel";
             otroImpuestoLabel.Size = new System.Drawing.Size(76, 13);
             otroImpuestoLabel.TabIndex = 20;
@@ -179,33 +184,37 @@
             // totalVentaLabel
             // 
             totalVentaLabel.AutoSize = true;
-            totalVentaLabel.Location = new System.Drawing.Point(12, 321);
+            totalVentaLabel.Location = new System.Drawing.Point(12, 351);
             totalVentaLabel.Name = "totalVentaLabel";
             totalVentaLabel.Size = new System.Drawing.Size(65, 13);
             totalVentaLabel.TabIndex = 22;
             totalVentaLabel.Text = "Total Venta:";
             // 
-            // detalleDocumentoBindingSource
+            // tipoPrecioLabel
             // 
-            this.detalleDocumentoBindingSource.DataSource = typeof(OpenInvoicePeru.FirmadoSunat.Models.DetalleDocumento);
+            tipoPrecioLabel.AutoSize = true;
+            tipoPrecioLabel.Location = new System.Drawing.Point(12, 166);
+            tipoPrecioLabel.Name = "tipoPrecioLabel";
+            tipoPrecioLabel.Size = new System.Drawing.Size(64, 13);
+            tipoPrecioLabel.TabIndex = 27;
+            tipoPrecioLabel.Text = "Tipo Precio:";
             // 
             // idNumericUpDown
             // 
             this.idNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.detalleDocumentoBindingSource, "Id", true));
             this.idNumericUpDown.Location = new System.Drawing.Point(112, 33);
-            this.idNumericUpDown.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
             this.idNumericUpDown.Name = "idNumericUpDown";
             this.idNumericUpDown.Size = new System.Drawing.Size(100, 20);
-            this.idNumericUpDown.TabIndex = 2;
+            this.idNumericUpDown.TabIndex = 0;
             this.idNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
+            // 
+            // detalleDocumentoBindingSource
+            // 
+            this.detalleDocumentoBindingSource.DataSource = typeof(OpenInvoicePeru.FirmadoSunat.Models.DetalleDocumento);
             // 
             // codigoItemTextBox
             // 
@@ -213,7 +222,7 @@
             this.codigoItemTextBox.Location = new System.Drawing.Point(112, 58);
             this.codigoItemTextBox.Name = "codigoItemTextBox";
             this.codigoItemTextBox.Size = new System.Drawing.Size(100, 20);
-            this.codigoItemTextBox.TabIndex = 3;
+            this.codigoItemTextBox.TabIndex = 1;
             // 
             // descripcionTextBox
             // 
@@ -221,7 +230,7 @@
             this.descripcionTextBox.Location = new System.Drawing.Point(112, 84);
             this.descripcionTextBox.Name = "descripcionTextBox";
             this.descripcionTextBox.Size = new System.Drawing.Size(240, 20);
-            this.descripcionTextBox.TabIndex = 5;
+            this.descripcionTextBox.TabIndex = 2;
             // 
             // precioUnitarioTextBox
             // 
@@ -229,7 +238,7 @@
             this.precioUnitarioTextBox.Location = new System.Drawing.Point(112, 110);
             this.precioUnitarioTextBox.Name = "precioUnitarioTextBox";
             this.precioUnitarioTextBox.Size = new System.Drawing.Size(100, 20);
-            this.precioUnitarioTextBox.TabIndex = 7;
+            this.precioUnitarioTextBox.TabIndex = 3;
             // 
             // precioReferencialTextBox
             // 
@@ -237,15 +246,15 @@
             this.precioReferencialTextBox.Location = new System.Drawing.Point(112, 136);
             this.precioReferencialTextBox.Name = "precioReferencialTextBox";
             this.precioReferencialTextBox.Size = new System.Drawing.Size(100, 20);
-            this.precioReferencialTextBox.TabIndex = 9;
+            this.precioReferencialTextBox.TabIndex = 4;
             // 
             // cantidadTextBox
             // 
             this.cantidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Cantidad", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.cantidadTextBox.Location = new System.Drawing.Point(112, 162);
+            this.cantidadTextBox.Location = new System.Drawing.Point(112, 192);
             this.cantidadTextBox.Name = "cantidadTextBox";
             this.cantidadTextBox.Size = new System.Drawing.Size(100, 20);
-            this.cantidadTextBox.TabIndex = 11;
+            this.cantidadTextBox.TabIndex = 6;
             // 
             // unidadMedidaComboBox
             // 
@@ -256,18 +265,18 @@
             "KG",
             "ONZ",
             "LTR"});
-            this.unidadMedidaComboBox.Location = new System.Drawing.Point(112, 188);
+            this.unidadMedidaComboBox.Location = new System.Drawing.Point(112, 218);
             this.unidadMedidaComboBox.Name = "unidadMedidaComboBox";
             this.unidadMedidaComboBox.Size = new System.Drawing.Size(100, 21);
-            this.unidadMedidaComboBox.TabIndex = 13;
+            this.unidadMedidaComboBox.TabIndex = 7;
             // 
             // impuestoTextBox
             // 
             this.impuestoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Impuesto", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.impuestoTextBox.Location = new System.Drawing.Point(112, 214);
+            this.impuestoTextBox.Location = new System.Drawing.Point(112, 244);
             this.impuestoTextBox.Name = "impuestoTextBox";
             this.impuestoTextBox.Size = new System.Drawing.Size(100, 20);
-            this.impuestoTextBox.TabIndex = 15;
+            this.impuestoTextBox.TabIndex = 8;
             // 
             // tipoImpuestoComboBox
             // 
@@ -293,34 +302,35 @@
             "35 Inafecto – Retiro por premio",
             "36 Inafecto - Retiro por publicidad",
             "40 Exportación"});
-            this.tipoImpuestoComboBox.Location = new System.Drawing.Point(112, 240);
+            this.tipoImpuestoComboBox.Location = new System.Drawing.Point(112, 270);
             this.tipoImpuestoComboBox.Name = "tipoImpuestoComboBox";
             this.tipoImpuestoComboBox.Size = new System.Drawing.Size(240, 21);
-            this.tipoImpuestoComboBox.TabIndex = 17;
+            this.tipoImpuestoComboBox.TabIndex = 10;
             // 
             // impuestoSelectivoTextBox
             // 
             this.impuestoSelectivoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "ImpuestoSelectivo", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.impuestoSelectivoTextBox.Location = new System.Drawing.Point(112, 266);
+            this.impuestoSelectivoTextBox.Location = new System.Drawing.Point(112, 296);
             this.impuestoSelectivoTextBox.Name = "impuestoSelectivoTextBox";
             this.impuestoSelectivoTextBox.Size = new System.Drawing.Size(100, 20);
-            this.impuestoSelectivoTextBox.TabIndex = 19;
+            this.impuestoSelectivoTextBox.TabIndex = 11;
             // 
             // otroImpuestoTextBox
             // 
             this.otroImpuestoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "OtroImpuesto", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.otroImpuestoTextBox.Location = new System.Drawing.Point(112, 292);
+            this.otroImpuestoTextBox.Location = new System.Drawing.Point(112, 322);
             this.otroImpuestoTextBox.Name = "otroImpuestoTextBox";
             this.otroImpuestoTextBox.Size = new System.Drawing.Size(100, 20);
-            this.otroImpuestoTextBox.TabIndex = 21;
+            this.otroImpuestoTextBox.TabIndex = 13;
             // 
             // totalVentaTextBox
             // 
+            this.totalVentaTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.totalVentaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "TotalVenta", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.totalVentaTextBox.Location = new System.Drawing.Point(112, 318);
+            this.totalVentaTextBox.Location = new System.Drawing.Point(112, 348);
             this.totalVentaTextBox.Name = "totalVentaTextBox";
             this.totalVentaTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalVentaTextBox.TabIndex = 23;
+            this.totalVentaTextBox.TabIndex = 14;
             // 
             // barraBotones
             // 
@@ -340,6 +350,7 @@
             this.toolOk.Name = "toolOk";
             this.toolOk.Size = new System.Drawing.Size(68, 22);
             this.toolOk.Text = "&Aceptar";
+            this.toolOk.Click += new System.EventHandler(this.toolOk_Click);
             // 
             // toolCancel
             // 
@@ -348,17 +359,55 @@
             this.toolCancel.Name = "toolCancel";
             this.toolCancel.Size = new System.Drawing.Size(73, 22);
             this.toolCancel.Text = "&Cancelar";
+            this.toolCancel.Click += new System.EventHandler(this.toolCancel_Click);
             // 
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.DataSource = this.detalleDocumentoBindingSource;
             // 
+            // btnCalcIgv
+            // 
+            this.btnCalcIgv.Location = new System.Drawing.Point(227, 242);
+            this.btnCalcIgv.Name = "btnCalcIgv";
+            this.btnCalcIgv.Size = new System.Drawing.Size(125, 23);
+            this.btnCalcIgv.TabIndex = 9;
+            this.btnCalcIgv.Text = "C&alcular IGV";
+            this.btnCalcIgv.UseVisualStyleBackColor = true;
+            this.btnCalcIgv.Click += new System.EventHandler(this.btnCalcIgv_Click);
+            // 
+            // btnCalcIsc
+            // 
+            this.btnCalcIsc.Location = new System.Drawing.Point(227, 294);
+            this.btnCalcIsc.Name = "btnCalcIsc";
+            this.btnCalcIsc.Size = new System.Drawing.Size(125, 23);
+            this.btnCalcIsc.TabIndex = 12;
+            this.btnCalcIsc.Text = "Ca&lcular ISC";
+            this.btnCalcIsc.UseVisualStyleBackColor = true;
+            this.btnCalcIsc.Click += new System.EventHandler(this.btnCalcIsc_Click);
+            // 
+            // tipoPrecioComboBox
+            // 
+            this.tipoPrecioComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "TipoPrecio", true));
+            this.tipoPrecioComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoPrecioComboBox.FormattingEnabled = true;
+            this.tipoPrecioComboBox.Items.AddRange(new object[] {
+            "01 Precio unitario (incluye el IGV)",
+            "02 Valor referencial unitario en operaciones no onerosas"});
+            this.tipoPrecioComboBox.Location = new System.Drawing.Point(112, 163);
+            this.tipoPrecioComboBox.Name = "tipoPrecioComboBox";
+            this.tipoPrecioComboBox.Size = new System.Drawing.Size(240, 21);
+            this.tipoPrecioComboBox.TabIndex = 5;
+            // 
             // FrmDetalleDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 358);
+            this.ClientSize = new System.Drawing.Size(397, 379);
+            this.Controls.Add(tipoPrecioLabel);
+            this.Controls.Add(this.tipoPrecioComboBox);
+            this.Controls.Add(this.btnCalcIsc);
+            this.Controls.Add(this.btnCalcIgv);
             this.Controls.Add(this.barraBotones);
             this.Controls.Add(totalVentaLabel);
             this.Controls.Add(this.totalVentaTextBox);
@@ -392,8 +441,8 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle del Documento";
-            ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.idNumericUpDown)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).EndInit();
             this.barraBotones.ResumeLayout(false);
             this.barraBotones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
@@ -421,5 +470,8 @@
         private System.Windows.Forms.ToolStripButton toolOk;
         private System.Windows.Forms.ToolStripButton toolCancel;
         private System.Windows.Forms.ErrorProvider errorProvider1;
+        private System.Windows.Forms.Button btnCalcIsc;
+        private System.Windows.Forms.Button btnCalcIgv;
+        private System.Windows.Forms.ComboBox tipoPrecioComboBox;
     }
 }

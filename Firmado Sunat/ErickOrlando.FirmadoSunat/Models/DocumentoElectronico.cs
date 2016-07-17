@@ -27,12 +27,20 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public string MontoEnLetras { get; set; }
         public string TipoOperacion { get; set; }
 
+        public decimal CalculoIgv { get; set; }
+        public decimal CalculoIsc { get; set; }
+        public decimal CalculoDetraccion { get; set; }
+
         public ObservableCollection<DetalleDocumento> Items { get; set; }
 
         public DocumentoElectronico()
         {
             Emisor = new Contribuyente();
             Receptor = new Contribuyente();
+            CalculoIgv = 0.18m;
+            CalculoIsc = 0.03m;
+            CalculoDetraccion = 0.04m;
+            Items = new ObservableCollection<DetalleDocumento>();
         }
     }
 
