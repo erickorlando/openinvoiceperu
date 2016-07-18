@@ -1,5 +1,8 @@
-﻿namespace OpenInvoicePeru.FirmadoSunat.Models
+﻿using System;
+
+namespace OpenInvoicePeru.FirmadoSunat.Models
 {
+    [Serializable]
     public class Contribuyente
     {
         public string NroDocumento { get; set; }

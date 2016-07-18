@@ -1,8 +1,10 @@
-﻿using System.Collections.ObjectModel;
+﻿using System;
+using System.Collections.ObjectModel;
 
 namespace OpenInvoicePeru.FirmadoSunat.Models
 {
-    public class DocumentoElectronico
+    [Serializable]
+    public class DocumentoElectronico : ICloneable
     {
 
         public string TipoDocumento { get; set; }
@@ -41,6 +43,11 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
             CalculoIsc = 0.03m;
             CalculoDetraccion = 0.04m;
             Items = new ObservableCollection<DetalleDocumento>();
+        }
+
+        public object Clone()
+        {
+            return Utiles.Copia(this);
         }
     }
 

@@ -15,6 +15,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 {
     public partial class FrmEnviarSunat : Form
     {
+        private FrmDocumento _frmDocumento;
         public FrmEnviarSunat()
         {
             InitializeComponent();
@@ -327,9 +328,24 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 
         private void btnGenerar_Click(object sender, EventArgs e)
         {
-            using (var frm = new FrmDocumento())
+            try
             {
-                frm.ShowDialog(this);
+                Cursor.Current = Cursors.WaitCursor;
+                if (_frmDocumento == null) _frmDocumento = new FrmDocumento();
+                var rpta = _frmDocumento.ShowDialog(this);
+
+                if (rpta != DialogResult.OK) return;
+
+                txtSource.Text = _frmDocumento.RutaArchivo;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
             }
         }
     }

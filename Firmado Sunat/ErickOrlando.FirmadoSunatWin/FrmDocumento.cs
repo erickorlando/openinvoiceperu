@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Configuration;
 using System.Linq;
+using System.Net.Http;
 using System.Windows.Forms;
 using OpenInvoicePeru.FirmadoSunat.Models;
 
@@ -8,7 +10,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
     public partial class FrmDocumento : Form
     {
         private readonly DocumentoElectronico _documento;
-
+        public string RutaArchivo { get; set; }
         public FrmDocumento()
         {
             InitializeComponent();
@@ -127,9 +129,41 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             }
         }
 
-        private void toolGenerar_Click(object sender, EventArgs e)
+        private async void toolGenerar_Click(object sender, EventArgs e)
         {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                var proxy = new HttpClient { BaseAddress = new Uri(ConfigurationManager.AppSettings["UrlOpenInvoicePeruApi"]) };
 
+                var doc = (DocumentoElectronico)_documento.Clone();
+
+                doc.Emisor = emisorBindingSource.Current as Contribuyente;
+                doc.Emisor.TipoDocumento = "6";
+
+                doc.Receptor = receptorBindingSource.Current as Contribuyente;
+
+                doc.Moneda = cboMoneda.SelectedText;
+
+                foreach (var item in doc.Items)
+                {
+                    item.TipoImpuesto = item.TipoImpuesto.Substring(0, 2);
+                    item.TipoPrecio = item.TipoPrecio.Substring(0, 2);
+                }
+
+                var response = await proxy.PostAsJsonAsync("api/invoice", doc);
+                RutaArchivo = await response.Content.ReadAsAsync<string>();
+
+                DialogResult = DialogResult.OK;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
     }
 }
