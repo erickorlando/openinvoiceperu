@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using Ionic.Zip;
 using OpenInvoicePeru.FirmadoSunat;
 using OpenInvoicePeru.FirmadoSunat.Estructuras;
+using OpenInvoicePeru.FirmadoSunat.Models;
 using OpenInvoicePeru.FirmadoSunatWin.Properties;
 
 namespace OpenInvoicePeru.FirmadoSunatWin
@@ -331,12 +332,26 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
-                if (_frmDocumento == null) _frmDocumento = new FrmDocumento();
+                if (_frmDocumento == null)
+                {
+                    if (string.IsNullOrEmpty(txtNroRuc.Text))
+                        _frmDocumento = new FrmDocumento();
+                    else
+                    {
+                        var documento = new DocumentoElectronico
+                        {
+                            Emisor = { NroDocumento = txtNroRuc.Text },
+                            FechaEmision = DateTime.Today.ToShortDateString()
+                        };
+                        _frmDocumento = new FrmDocumento(documento);
+                    }
+                }
                 var rpta = _frmDocumento.ShowDialog(this);
 
                 if (rpta != DialogResult.OK) return;
 
                 txtSource.Text = _frmDocumento.RutaArchivo;
+                txtSerieCorrelativo.Text = _frmDocumento.IdDocumento;
 
             }
             catch (Exception ex)

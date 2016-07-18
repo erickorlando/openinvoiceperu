@@ -104,6 +104,7 @@
     <Compile Include="Estructuras\UBLExtensions.cs" />
     <Compile Include="Estructuras\VoidedDocuments.cs" />
     <Compile Include="Estructuras\VoidedDocumentsLine.cs" />
+    <Compile Include="Generador.cs" />
     <Compile Include="Models\Contribuyente.cs" />
     <Compile Include="Models\DetalleDocumento.cs" />
     <Compile Include="Models\DocumentoElectronico.cs" />

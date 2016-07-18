@@ -10,7 +10,9 @@ namespace OpenInvoicePeru.FirmadoSunatWin
     public partial class FrmDocumento : Form
     {
         private readonly DocumentoElectronico _documento;
+
         public string RutaArchivo { get; set; }
+        public string IdDocumento { get; set; }
         public FrmDocumento()
         {
             InitializeComponent();
@@ -19,7 +21,17 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 FechaEmision = DateTime.Today.ToShortDateString(),
                 IdDocumento = "FF11-00001"
             };
+            Inicializar();
+        }
 
+        public FrmDocumento(DocumentoElectronico documento)
+        {
+            InitializeComponent();
+            _documento = documento;
+            Inicializar();
+        }
+        private void Inicializar()
+        {
             documentoElectronicoBindingSource.DataSource = _documento;
             documentoElectronicoBindingSource.ResetBindings(false);
 
@@ -134,16 +146,22 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             try
             {
                 Cursor.Current = Cursors.WaitCursor;
+
+                totalVentaTextBox.Focus();
+
                 var proxy = new HttpClient { BaseAddress = new Uri(ConfigurationManager.AppSettings["UrlOpenInvoicePeruApi"]) };
 
                 var doc = (DocumentoElectronico)_documento.Clone();
 
                 doc.Emisor = emisorBindingSource.Current as Contribuyente;
-                doc.Emisor.TipoDocumento = "6";
+                if (doc.Emisor != null) doc.Emisor.TipoDocumento = "6";
 
                 doc.Receptor = receptorBindingSource.Current as Contribuyente;
+                if (doc.Receptor != null) doc.Receptor.TipoDocumento = cboTipoDocRec.Text.Substring(0, 1);
 
-                doc.Moneda = cboMoneda.SelectedText;
+                doc.Moneda = cboMoneda.Text;
+                doc.TipoDocumento = cboTipoDoc.Text.Substring(0, 2);
+                doc.TipoOperacion = tipoOperacionComboBox.Text.Substring(0, 2);
 
                 foreach (var item in doc.Items)
                 {
@@ -153,6 +171,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 
                 var response = await proxy.PostAsJsonAsync("api/invoice", doc);
                 RutaArchivo = await response.Content.ReadAsAsync<string>();
+                IdDocumento = doc.IdDocumento;
 
                 DialogResult = DialogResult.OK;
             }
