@@ -170,6 +170,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="code.ico" />
+    <Content Include="DireccionesSunat.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <None Include="Resources\iconcopy.png" />
     <None Include="Resources\iconxml.png" />
     <None Include="Resources\delete.png" />

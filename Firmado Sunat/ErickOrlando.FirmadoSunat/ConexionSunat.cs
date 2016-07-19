@@ -7,34 +7,32 @@ namespace OpenInvoicePeru.FirmadoSunat
     /// <summary>
     /// Clase para la conexión con el WS de SUNAT
     /// </summary>
-    public class ConexionSunat : IDisposable
+    public sealed class ConexionSunat : IDisposable
     {
+        public class Parametros
+        {
+            public string Ruc { get; set; }
+            public string UserName { get; set; }
+            public string Password { get; set; }
+            public bool Retencion { get; set; }
+            public string EndPointUrl { get; set; }
+        }
+
         private billServiceClient _proxy;
 
-        /// <summary>
-        /// Nombre del Endpoint que referencia al Servicio de SUNAT
-        /// </summary>
-        public string EndPointServicio { get; set; }
-        /// <summary>
-        /// Constructor de la Clase ConexionSunat
-        /// </summary>
-        /// <param name="ruc">Numero de RUC del contribuyente</param>
-        /// <param name="username">Usuario SOL</param>
-        /// <param name="password">Clave SOL</param>
-        /// <param name="endPointServicio">Nombre del Endpoint (Opcional)</param>
-        public ConexionSunat(string ruc, string username, string password, string endPointServicio = null)
+        private bool Retencion { get; set; }
+
+        public ConexionSunat(Parametros parametros)
         {
             System.Net.ServicePointManager.UseNagleAlgorithm = true;
             System.Net.ServicePointManager.Expect100Continue = false;
             System.Net.ServicePointManager.CheckCertificateRevocationList = true;
 
-            EndPointServicio = string.IsNullOrEmpty(endPointServicio) ? "ServicioSunat" : endPointServicio;
-
-            _proxy = new billServiceClient(EndPointServicio);
-
+            _proxy = new billServiceClient("ServicioSunat", parametros.EndPointUrl);
+            Retencion = parametros.Retencion;
 
             // Agregamos el behavior configurado para soportar WS-Security.
-            var behavior = new PasswordDigestBehavior(string.Concat(ruc, username), password);
+            var behavior = new PasswordDigestBehavior(string.Concat(parametros.Ruc, parametros.UserName), parametros.Password);
             _proxy.Endpoint.EndpointBehaviors.Add(behavior);
         }
         /// <summary>
@@ -59,7 +57,7 @@ namespace OpenInvoicePeru.FirmadoSunat
             }
             catch (FaultException ex)
             {
-                response = new Tuple<string, bool>(EndPointServicio == "ServicioSunat"
+                response = new Tuple<string, bool>(Retencion
                     ? ex.Code.Name : ex.Message, false);
             }
             catch (Exception ex)
@@ -162,7 +160,7 @@ namespace OpenInvoicePeru.FirmadoSunat
         #region IDisposable Support
         private bool _disposedValue; // To detect redundant calls
 
-        protected virtual void Dispose(bool disposing)
+        private void Dispose(bool disposing)
         {
             if (!_disposedValue)
             {
