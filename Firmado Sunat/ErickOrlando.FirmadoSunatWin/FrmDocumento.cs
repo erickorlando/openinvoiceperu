@@ -67,7 +67,6 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             _documento.TotalIgv = _documento.Items.Sum(d => d.Impuesto);
             _documento.TotalIsc = _documento.Items.Sum(d => d.ImpuestoSelectivo);
             _documento.TotalOtrosTributos = _documento.Items.Sum(d => d.OtroImpuesto);
-            _documento.TotalVenta = _documento.Items.Sum(d => d.TotalVenta);
 
             _documento.Gravadas = _documento.Items
                 .Where(d => d.TipoImpuesto.Contains("Gravado"))
@@ -84,8 +83,16 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             _documento.Gratuitas = _documento.Items
                 .Where(d => d.TipoImpuesto.Contains("21"))
                 .Sum(d => d.Suma);
-            // Las gratuitas no deben sumar el valor Total de Venta.
-            _documento.TotalVenta = _documento.TotalVenta - _documento.Gratuitas;
+
+            // Cuando existe ISC se debe recalcular el IGV.
+            if (_documento.TotalIsc > 0)
+            {
+                _documento.TotalIgv = (_documento.Gravadas + _documento.TotalIsc) * _documento.CalculoIgv;
+                // Se recalcula nuevamente el Total de Venta.
+            }
+
+            _documento.TotalVenta = _documento.Gravadas + _documento.Exoneradas + _documento.Inafectas +
+                                    _documento.TotalIgv + _documento.TotalIsc + _documento.TotalOtrosTributos;
 
             documentoElectronicoBindingSource.ResetBindings(false);
         }

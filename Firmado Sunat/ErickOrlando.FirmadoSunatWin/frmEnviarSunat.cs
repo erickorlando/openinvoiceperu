@@ -215,18 +215,13 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                                             xmlnsManager.AddNamespace("ar", EspacioNombres.ar);
                                             xmlnsManager.AddNamespace("cac",EspacioNombres.cac);
                                             xmlnsManager.AddNamespace("cbc",EspacioNombres.cbc);
-
-                                            var nodeId = xmlDoc.SelectSingleNode(EspacioNombres.nodoId, xmlnsManager)?.InnerText;
-                                            var responseDate = xmlDoc.SelectSingleNode(EspacioNombres.nodoResponseDate,
-                                                xmlnsManager)?.InnerText;
-                                            var responseTime = xmlDoc.SelectSingleNode(EspacioNombres.nodoResponseTime,
-                                                xmlnsManager)?.InnerText;
+                                            
                                             var responseCode = xmlDoc.SelectSingleNode(EspacioNombres.nodoResponseCode,
                                                 xmlnsManager)?.InnerText;
                                             var description = xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
                                                 xmlnsManager)?.InnerText;
 
-                                            sb.AppendFormat("ID: {0}\n Fecha:{1}\n Hora:{2}\n Codigo:{3}\n Descripción:{4}", nodeId, responseDate, responseTime, responseCode, description);
+                                            sb.AppendFormat("Código:{0}\n Descripción:{1}", responseCode, description);
 
                                         }
                                         catch (Exception ex)

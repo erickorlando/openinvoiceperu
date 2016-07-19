@@ -40,7 +40,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
             Emisor = new Contribuyente();
             Receptor = new Contribuyente();
             CalculoIgv = 0.18m;
-            CalculoIsc = 0.03m;
+            CalculoIsc = 0.10m;
             CalculoDetraccion = 0.04m;
             Items = new ObservableCollection<DetalleDocumento>();
         }

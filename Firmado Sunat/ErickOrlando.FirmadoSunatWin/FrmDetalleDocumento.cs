@@ -58,7 +58,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
         {
             _detalle.Suma = _detalle.PrecioUnitario * _detalle.Cantidad;
             _detalle.Impuesto = _detalle.Suma * _documento.CalculoIgv;
-            _detalle.TotalVenta = _detalle.Suma + _detalle.Impuesto;
+            _detalle.TotalVenta = _detalle.Suma ;
 
             detalleDocumentoBindingSource.ResetBindings(false);
         }
@@ -67,9 +67,6 @@ namespace OpenInvoicePeru.FirmadoSunatWin
         {
             _detalle.Suma = _detalle.PrecioUnitario * _detalle.Cantidad;
             _detalle.ImpuestoSelectivo = _detalle.Suma * _documento.CalculoIsc;
-            // Recalculamos el IGV.
-            _detalle.Impuesto = (_detalle.Suma + _detalle.ImpuestoSelectivo) * _documento.CalculoIgv;
-            _detalle.TotalVenta = _detalle.Suma + _detalle.Impuesto;
 
             detalleDocumentoBindingSource.ResetBindings(false);
         }

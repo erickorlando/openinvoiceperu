@@ -347,7 +347,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                             TaxCategory = new TaxCategory
                             {
                                 TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
-                                TierRange = "10",
+                                TierRange = "01",
                                 TaxScheme = new TaxScheme()
                                 {
                                     ID = "2000",
