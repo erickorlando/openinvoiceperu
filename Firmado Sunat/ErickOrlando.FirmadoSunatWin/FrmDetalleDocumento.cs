@@ -34,9 +34,22 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 
         private void toolOk_Click(object sender, EventArgs e)
         {
+            tipoPrecioComboBox.Focus();
 
             _detalle.TipoPrecio = tipoPrecioComboBox.Text;
             _detalle.TipoImpuesto = tipoImpuestoComboBox.Text;
+
+            // Evaluamos el tipo de Impuesto.
+            if (!_detalle.TipoImpuesto.Contains("Gravado"))
+            {
+                _detalle.Suma = _detalle.PrecioUnitario * _detalle.Cantidad;
+                _detalle.TotalVenta = _detalle.Suma;
+            }
+            else
+            {
+                if (_detalle.OtroImpuesto > 0)
+                    _detalle.TotalVenta = _detalle.TotalVenta + _detalle.OtroImpuesto;
+            }
 
             DialogResult = DialogResult.OK;
         }

@@ -84,6 +84,8 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             _documento.Gratuitas = _documento.Items
                 .Where(d => d.TipoImpuesto.Contains("21"))
                 .Sum(d => d.Suma);
+            // Las gratuitas no deben sumar el valor Total de Venta.
+            _documento.TotalVenta = _documento.TotalVenta - _documento.Gratuitas;
 
             documentoElectronicoBindingSource.ResetBindings(false);
         }
