@@ -21,6 +21,8 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public decimal Inafectas { get; set; }
         public decimal Exoneradas { get; set; }
 
+        public decimal DescuentoGlobal { get; set; }
+
         public decimal TotalVenta { get; set; }
         public decimal TotalIgv { get; set; }
         public decimal TotalIsc { get; set; }

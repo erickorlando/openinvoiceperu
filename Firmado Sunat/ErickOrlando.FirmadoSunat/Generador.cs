@@ -159,8 +159,12 @@ namespace OpenInvoicePeru.FirmadoSunat
                     {
                         currencyID = documento.Moneda,
                         value = documento.TotalVenta
+                    },
+                    AllowanceTotalAmount = new PayableAmount
+                    {
+                        currencyID = documento.Moneda,
+                        value = documento.DescuentoGlobal
                     }
-                    // TODO: agregar descuentos.
                 },
                 TaxTotals = new List<TaxTotal>
                 {
@@ -262,6 +266,19 @@ namespace OpenInvoicePeru.FirmadoSunat
                             ID = 1002,
                             Value = "Articulos gratuitos"
                         });
+            }
+            if (documento.DescuentoGlobal > 0)
+            {
+                invoice.UblExtensions.Extension2.ExtensionContent
+                    .AdditionalInformation.AdditionalMonetaryTotals.Add(new AdditionalMonetaryTotal
+                    {
+                        ID = "2005",
+                        PayableAmount = new PayableAmount
+                        {
+                            currencyID = documento.Moneda,
+                            value = documento.DescuentoGlobal
+                        }
+                    });
             }
 
             foreach (var detalleDocumento in documento.Items)

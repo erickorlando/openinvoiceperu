@@ -8,7 +8,7 @@
 <GenericObjectDataSource DisplayName="DocumentoElectronico" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
    <Children>
       <GenericObjectDataSource DisplayName="Items" Version="1.0">
-         <TypeInfo>OpenInvoicePeru.FirmadoSunat.Models.DetalleDocumento, OpenInvoicePeru.FirmadoSunat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+         <TypeInfo>OpenInvoicePeru.FirmadoSunat.Models.DetalleDocumento, OpenInvoicePeru.FirmadoSunat, Version=1.0.0.718, Culture=neutral, PublicKeyToken=null</TypeInfo>
          <TypeUISetting>
             <PropertyUISettings>
                <PropertyUISetting Name="Cantidad">
@@ -70,7 +70,7 @@
          </TypeUISetting>
       </GenericObjectDataSource>
    </Children>
-   <TypeInfo>OpenInvoicePeru.FirmadoSunat.Models.DocumentoElectronico, OpenInvoicePeru.FirmadoSunat, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
+   <TypeInfo>OpenInvoicePeru.FirmadoSunat.Models.DocumentoElectronico, OpenInvoicePeru.FirmadoSunat, Version=1.0.0.718, Culture=neutral, PublicKeyToken=null</TypeInfo>
    <TypeUISetting>
       <PropertyUISettings>
          <PropertyUISetting Name="MontoEnLetras">
@@ -191,6 +191,13 @@
             </ControlSettings>
          </PropertyUISetting>
          <PropertyUISetting Name="CalculoIsc">
+            <ControlSettings>
+               <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
+                  <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+               </ControlSetting>
+            </ControlSettings>
+         </PropertyUISetting>
+         <PropertyUISetting Name="DescuentoGlobal">
             <ControlSettings>
                <ControlSetting ArtifactName="Microsoft:System.Windows.Forms:Form">
                   <BindableControlInfo Name="TextBox" Type="System.Windows.Forms.TextBox" AssemblyName="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />

@@ -42,6 +42,9 @@
             System.Windows.Forms.Label calculoIgvLabel;
             System.Windows.Forms.Label calculoIscLabel;
             System.Windows.Forms.Label calculoDetraccionLabel;
+            System.Windows.Forms.Label urbanizacionLabel;
+            System.Windows.Forms.Label urbanizacionLabel1;
+            System.Windows.Forms.Label descuentoGlobalLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDocumento));
             this.label1 = new System.Windows.Forms.Label();
             this.cboTipoDocRec = new System.Windows.Forms.ComboBox();
@@ -49,6 +52,7 @@
             this.txtNroDocEm = new System.Windows.Forms.TextBox();
             this.emisorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.grpEmisor = new System.Windows.Forms.GroupBox();
+            this.urbanizacionTextBox = new System.Windows.Forms.TextBox();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
@@ -64,6 +68,8 @@
             this.txtNombreLegalEm = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.grpReceptor = new System.Windows.Forms.GroupBox();
+            this.urbanizacionRecTextBox = new System.Windows.Forms.TextBox();
+            this.receptorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -73,7 +79,6 @@
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.txtUbigeoRec = new System.Windows.Forms.TextBox();
-            this.receptorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.txtDistritoRec = new System.Windows.Forms.TextBox();
             this.txtDptoRec = new System.Windows.Forms.TextBox();
             this.txtProvRec = new System.Windows.Forms.TextBox();
@@ -123,6 +128,7 @@
             this.calculoIscTextBox = new System.Windows.Forms.TextBox();
             this.calculoDetraccionTextBox = new System.Windows.Forms.TextBox();
             this.btnDuplicar = new System.Windows.Forms.Button();
+            this.descuentoGlobalTextBox = new System.Windows.Forms.TextBox();
             montoEnLetrasLabel = new System.Windows.Forms.Label();
             gravadasLabel = new System.Windows.Forms.Label();
             exoneradasLabel = new System.Windows.Forms.Label();
@@ -136,6 +142,9 @@
             calculoIgvLabel = new System.Windows.Forms.Label();
             calculoIscLabel = new System.Windows.Forms.Label();
             calculoDetraccionLabel = new System.Windows.Forms.Label();
+            urbanizacionLabel = new System.Windows.Forms.Label();
+            urbanizacionLabel1 = new System.Windows.Forms.Label();
+            descuentoGlobalLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.emisorBindingSource)).BeginInit();
             this.grpEmisor.SuspendLayout();
             this.grpReceptor.SuspendLayout();
@@ -149,119 +158,146 @@
             // montoEnLetrasLabel
             // 
             montoEnLetrasLabel.AutoSize = true;
-            montoEnLetrasLabel.Location = new System.Drawing.Point(234, 249);
+            montoEnLetrasLabel.Location = new System.Drawing.Point(231, 288);
             montoEnLetrasLabel.Name = "montoEnLetrasLabel";
             montoEnLetrasLabel.Size = new System.Drawing.Size(88, 13);
-            montoEnLetrasLabel.TabIndex = 17;
+            montoEnLetrasLabel.TabIndex = 21;
             montoEnLetrasLabel.Text = "Monto En Letras:";
             // 
             // gravadasLabel
             // 
             gravadasLabel.AutoSize = true;
-            gravadasLabel.Location = new System.Drawing.Point(5, 493);
+            gravadasLabel.Location = new System.Drawing.Point(6, 555);
             gravadasLabel.Name = "gravadasLabel";
             gravadasLabel.Size = new System.Drawing.Size(56, 13);
-            gravadasLabel.TabIndex = 24;
+            gravadasLabel.TabIndex = 29;
             gravadasLabel.Text = "Gravadas:";
             // 
             // exoneradasLabel
             // 
             exoneradasLabel.AutoSize = true;
-            exoneradasLabel.Location = new System.Drawing.Point(5, 519);
+            exoneradasLabel.Location = new System.Drawing.Point(6, 581);
             exoneradasLabel.Name = "exoneradasLabel";
             exoneradasLabel.Size = new System.Drawing.Size(66, 13);
-            exoneradasLabel.TabIndex = 26;
+            exoneradasLabel.TabIndex = 31;
             exoneradasLabel.Text = "Exoneradas:";
             // 
             // inafectasLabel
             // 
             inafectasLabel.AutoSize = true;
-            inafectasLabel.Location = new System.Drawing.Point(5, 545);
+            inafectasLabel.Location = new System.Drawing.Point(6, 607);
             inafectasLabel.Name = "inafectasLabel";
             inafectasLabel.Size = new System.Drawing.Size(54, 13);
-            inafectasLabel.TabIndex = 28;
+            inafectasLabel.TabIndex = 33;
             inafectasLabel.Text = "Inafectas:";
             // 
             // gratuitasLabel
             // 
             gratuitasLabel.AutoSize = true;
-            gratuitasLabel.Location = new System.Drawing.Point(5, 571);
+            gratuitasLabel.Location = new System.Drawing.Point(6, 633);
             gratuitasLabel.Name = "gratuitasLabel";
             gratuitasLabel.Size = new System.Drawing.Size(52, 13);
-            gratuitasLabel.TabIndex = 30;
+            gratuitasLabel.TabIndex = 35;
             gratuitasLabel.Text = "Gratuitas:";
             // 
             // tipoOperacionLabel
             // 
             tipoOperacionLabel.AutoSize = true;
-            tipoOperacionLabel.Location = new System.Drawing.Point(234, 214);
+            tipoOperacionLabel.Location = new System.Drawing.Point(231, 253);
             tipoOperacionLabel.Name = "tipoOperacionLabel";
             tipoOperacionLabel.Size = new System.Drawing.Size(83, 13);
-            tipoOperacionLabel.TabIndex = 13;
+            tipoOperacionLabel.TabIndex = 19;
             tipoOperacionLabel.Text = "Tipo Operacion:";
             // 
             // totalIgvLabel
             // 
             totalIgvLabel.AutoSize = true;
-            totalIgvLabel.Location = new System.Drawing.Point(680, 490);
+            totalIgvLabel.Location = new System.Drawing.Point(676, 552);
             totalIgvLabel.Name = "totalIgvLabel";
             totalIgvLabel.Size = new System.Drawing.Size(55, 13);
-            totalIgvLabel.TabIndex = 32;
+            totalIgvLabel.TabIndex = 37;
             totalIgvLabel.Text = "Total IGV:";
             // 
             // totalIscLabel
             // 
             totalIscLabel.AutoSize = true;
-            totalIscLabel.Location = new System.Drawing.Point(680, 516);
+            totalIscLabel.Location = new System.Drawing.Point(676, 578);
             totalIscLabel.Name = "totalIscLabel";
             totalIscLabel.Size = new System.Drawing.Size(54, 13);
-            totalIscLabel.TabIndex = 34;
+            totalIscLabel.TabIndex = 39;
             totalIscLabel.Text = "Total ISC:";
             // 
             // totalOtrosTributosLabel
             // 
             totalOtrosTributosLabel.AutoSize = true;
-            totalOtrosTributosLabel.Location = new System.Drawing.Point(680, 542);
+            totalOtrosTributosLabel.Location = new System.Drawing.Point(676, 604);
             totalOtrosTributosLabel.Name = "totalOtrosTributosLabel";
             totalOtrosTributosLabel.Size = new System.Drawing.Size(103, 13);
-            totalOtrosTributosLabel.TabIndex = 36;
+            totalOtrosTributosLabel.TabIndex = 41;
             totalOtrosTributosLabel.Text = "Total Otros Tributos:";
             // 
             // totalVentaLabel
             // 
             totalVentaLabel.AutoSize = true;
-            totalVentaLabel.Location = new System.Drawing.Point(680, 568);
+            totalVentaLabel.Location = new System.Drawing.Point(676, 630);
             totalVentaLabel.Name = "totalVentaLabel";
             totalVentaLabel.Size = new System.Drawing.Size(65, 13);
-            totalVentaLabel.TabIndex = 38;
+            totalVentaLabel.TabIndex = 0;
             totalVentaLabel.Text = "Total Venta:";
             // 
             // calculoIgvLabel
             // 
             calculoIgvLabel.AutoSize = true;
-            calculoIgvLabel.Location = new System.Drawing.Point(356, 32);
+            calculoIgvLabel.Location = new System.Drawing.Point(318, 31);
             calculoIgvLabel.Name = "calculoIgvLabel";
             calculoIgvLabel.Size = new System.Drawing.Size(66, 13);
-            calculoIgvLabel.TabIndex = 2;
+            calculoIgvLabel.TabIndex = 3;
             calculoIgvLabel.Text = "Calculo IGV:";
             // 
             // calculoIscLabel
             // 
             calculoIscLabel.AutoSize = true;
-            calculoIscLabel.Location = new System.Drawing.Point(542, 31);
+            calculoIscLabel.Location = new System.Drawing.Point(504, 30);
             calculoIscLabel.Name = "calculoIscLabel";
             calculoIscLabel.Size = new System.Drawing.Size(65, 13);
-            calculoIscLabel.TabIndex = 4;
+            calculoIscLabel.TabIndex = 5;
             calculoIscLabel.Text = "Calculo ISC:";
             // 
             // calculoDetraccionLabel
             // 
             calculoDetraccionLabel.AutoSize = true;
-            calculoDetraccionLabel.Location = new System.Drawing.Point(717, 32);
+            calculoDetraccionLabel.Location = new System.Drawing.Point(679, 31);
             calculoDetraccionLabel.Name = "calculoDetraccionLabel";
             calculoDetraccionLabel.Size = new System.Drawing.Size(100, 13);
-            calculoDetraccionLabel.TabIndex = 6;
+            calculoDetraccionLabel.TabIndex = 7;
             calculoDetraccionLabel.Text = "Calculo Detraccion:";
+            // 
+            // urbanizacionLabel
+            // 
+            urbanizacionLabel.AutoSize = true;
+            urbanizacionLabel.Location = new System.Drawing.Point(303, 40);
+            urbanizacionLabel.Name = "urbanizacionLabel";
+            urbanizacionLabel.Size = new System.Drawing.Size(72, 13);
+            urbanizacionLabel.TabIndex = 10;
+            urbanizacionLabel.Text = "Urbanizacion:";
+            // 
+            // urbanizacionLabel1
+            // 
+            urbanizacionLabel1.AutoSize = true;
+            urbanizacionLabel1.Location = new System.Drawing.Point(310, 40);
+            urbanizacionLabel1.Name = "urbanizacionLabel1";
+            urbanizacionLabel1.Size = new System.Drawing.Size(72, 13);
+            urbanizacionLabel1.TabIndex = 11;
+            urbanizacionLabel1.Text = "Urbanizacion:";
+            // 
+            // descuentoGlobalLabel
+            // 
+            descuentoGlobalLabel.AutoSize = true;
+            descuentoGlobalLabel.Location = new System.Drawing.Point(231, 318);
+            descuentoGlobalLabel.Name = "descuentoGlobalLabel";
+            descuentoGlobalLabel.Size = new System.Drawing.Size(69, 13);
+            descuentoGlobalLabel.TabIndex = 23;
+            descuentoGlobalLabel.Text = "Dcto. Global:";
             // 
             // label1
             // 
@@ -286,7 +322,7 @@
             this.cboTipoDocRec.Location = new System.Drawing.Point(110, 13);
             this.cboTipoDocRec.Name = "cboTipoDocRec";
             this.cboTipoDocRec.Size = new System.Drawing.Size(210, 21);
-            this.cboTipoDocRec.TabIndex = 0;
+            this.cboTipoDocRec.TabIndex = 1;
             // 
             // label2
             // 
@@ -300,9 +336,9 @@
             // txtNroDocEm
             // 
             this.txtNroDocEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "NroDocumento", true));
-            this.txtNroDocEm.Location = new System.Drawing.Point(173, 37);
+            this.txtNroDocEm.Location = new System.Drawing.Point(194, 37);
             this.txtNroDocEm.Name = "txtNroDocEm";
-            this.txtNroDocEm.Size = new System.Drawing.Size(124, 20);
+            this.txtNroDocEm.Size = new System.Drawing.Size(103, 20);
             this.txtNroDocEm.TabIndex = 1;
             // 
             // emisorBindingSource
@@ -311,6 +347,8 @@
             // 
             // grpEmisor
             // 
+            this.grpEmisor.Controls.Add(this.urbanizacionTextBox);
+            this.grpEmisor.Controls.Add(urbanizacionLabel);
             this.grpEmisor.Controls.Add(this.label9);
             this.grpEmisor.Controls.Add(this.label8);
             this.grpEmisor.Controls.Add(this.label7);
@@ -329,10 +367,18 @@
             this.grpEmisor.Controls.Add(this.label4);
             this.grpEmisor.Location = new System.Drawing.Point(4, 55);
             this.grpEmisor.Name = "grpEmisor";
-            this.grpEmisor.Size = new System.Drawing.Size(492, 147);
-            this.grpEmisor.TabIndex = 8;
+            this.grpEmisor.Size = new System.Drawing.Size(492, 176);
+            this.grpEmisor.TabIndex = 9;
             this.grpEmisor.TabStop = false;
             this.grpEmisor.Text = "Datos del Emisor";
+            // 
+            // urbanizacionTextBox
+            // 
+            this.urbanizacionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Urbanizacion", true));
+            this.urbanizacionTextBox.Location = new System.Drawing.Point(384, 37);
+            this.urbanizacionTextBox.Name = "urbanizacionTextBox";
+            this.urbanizacionTextBox.Size = new System.Drawing.Size(100, 20);
+            this.urbanizacionTextBox.TabIndex = 11;
             // 
             // label9
             // 
@@ -349,7 +395,7 @@
             this.label8.Location = new System.Drawing.Point(303, 121);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(42, 13);
-            this.label8.TabIndex = 14;
+            this.label8.TabIndex = 16;
             this.label8.Text = "Distrito:";
             // 
             // label7
@@ -358,7 +404,7 @@
             this.label7.Location = new System.Drawing.Point(303, 92);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 13);
-            this.label7.TabIndex = 12;
+            this.label7.TabIndex = 14;
             this.label7.Text = "Departamento:";
             // 
             // label6
@@ -367,13 +413,13 @@
             this.label6.Location = new System.Drawing.Point(303, 66);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 13);
-            this.label6.TabIndex = 10;
+            this.label6.TabIndex = 12;
             this.label6.Text = "Provincia:";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(303, 40);
+            this.label5.Location = new System.Drawing.Point(4, 150);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(55, 13);
             this.label5.TabIndex = 8;
@@ -391,9 +437,9 @@
             // txtUbigeoEm
             // 
             this.txtUbigeoEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Ubigeo", true));
-            this.txtUbigeoEm.Location = new System.Drawing.Point(173, 118);
+            this.txtUbigeoEm.Location = new System.Drawing.Point(194, 118);
             this.txtUbigeoEm.Name = "txtUbigeoEm";
-            this.txtUbigeoEm.Size = new System.Drawing.Size(124, 20);
+            this.txtUbigeoEm.Size = new System.Drawing.Size(103, 20);
             this.txtUbigeoEm.TabIndex = 7;
             // 
             // txtDistritoEm
@@ -402,7 +448,7 @@
             this.txtDistritoEm.Location = new System.Drawing.Point(384, 118);
             this.txtDistritoEm.Name = "txtDistritoEm";
             this.txtDistritoEm.Size = new System.Drawing.Size(100, 20);
-            this.txtDistritoEm.TabIndex = 15;
+            this.txtDistritoEm.TabIndex = 17;
             // 
             // txtDptoEm
             // 
@@ -410,7 +456,7 @@
             this.txtDptoEm.Location = new System.Drawing.Point(384, 89);
             this.txtDptoEm.Name = "txtDptoEm";
             this.txtDptoEm.Size = new System.Drawing.Size(100, 20);
-            this.txtDptoEm.TabIndex = 13;
+            this.txtDptoEm.TabIndex = 15;
             // 
             // txtProvEm
             // 
@@ -418,14 +464,14 @@
             this.txtProvEm.Location = new System.Drawing.Point(384, 63);
             this.txtProvEm.Name = "txtProvEm";
             this.txtProvEm.Size = new System.Drawing.Size(100, 20);
-            this.txtProvEm.TabIndex = 11;
+            this.txtProvEm.TabIndex = 13;
             // 
             // txtDirEm
             // 
             this.txtDirEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Direccion", true));
-            this.txtDirEm.Location = new System.Drawing.Point(384, 37);
+            this.txtDirEm.Location = new System.Drawing.Point(103, 147);
             this.txtDirEm.Name = "txtDirEm";
-            this.txtDirEm.Size = new System.Drawing.Size(100, 20);
+            this.txtDirEm.Size = new System.Drawing.Size(194, 20);
             this.txtDirEm.TabIndex = 9;
             // 
             // txtNombreComEm
@@ -455,6 +501,8 @@
             // 
             // grpReceptor
             // 
+            this.grpReceptor.Controls.Add(this.urbanizacionRecTextBox);
+            this.grpReceptor.Controls.Add(urbanizacionLabel1);
             this.grpReceptor.Controls.Add(this.label10);
             this.grpReceptor.Controls.Add(this.label11);
             this.grpReceptor.Controls.Add(this.cboTipoDocRec);
@@ -475,10 +523,22 @@
             this.grpReceptor.Controls.Add(this.txtNroDocRec);
             this.grpReceptor.Location = new System.Drawing.Point(502, 55);
             this.grpReceptor.Name = "grpReceptor";
-            this.grpReceptor.Size = new System.Drawing.Size(500, 147);
-            this.grpReceptor.TabIndex = 10;
+            this.grpReceptor.Size = new System.Drawing.Size(542, 176);
+            this.grpReceptor.TabIndex = 12;
             this.grpReceptor.TabStop = false;
             this.grpReceptor.Text = "Datos del Receptor";
+            // 
+            // urbanizacionRecTextBox
+            // 
+            this.urbanizacionRecTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "Urbanizacion", true));
+            this.urbanizacionRecTextBox.Location = new System.Drawing.Point(394, 37);
+            this.urbanizacionRecTextBox.Name = "urbanizacionRecTextBox";
+            this.urbanizacionRecTextBox.Size = new System.Drawing.Size(100, 20);
+            this.urbanizacionRecTextBox.TabIndex = 12;
+            // 
+            // receptorBindingSource
+            // 
+            this.receptorBindingSource.DataSource = typeof(OpenInvoicePeru.FirmadoSunat.Models.Contribuyente);
             // 
             // label10
             // 
@@ -495,7 +555,7 @@
             this.label11.Location = new System.Drawing.Point(310, 121);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(42, 13);
-            this.label11.TabIndex = 15;
+            this.label11.TabIndex = 17;
             this.label11.Text = "Distrito:";
             // 
             // label12
@@ -504,7 +564,7 @@
             this.label12.Location = new System.Drawing.Point(310, 95);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(77, 13);
-            this.label12.TabIndex = 13;
+            this.label12.TabIndex = 15;
             this.label12.Text = "Departamento:";
             // 
             // label13
@@ -513,13 +573,13 @@
             this.label13.Location = new System.Drawing.Point(310, 69);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 13);
-            this.label13.TabIndex = 11;
+            this.label13.TabIndex = 13;
             this.label13.Text = "Provincia:";
             // 
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(310, 43);
+            this.label14.Location = new System.Drawing.Point(9, 150);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(55, 13);
             this.label14.TabIndex = 9;
@@ -560,17 +620,13 @@
             this.txtUbigeoRec.Size = new System.Drawing.Size(100, 20);
             this.txtUbigeoRec.TabIndex = 8;
             // 
-            // receptorBindingSource
-            // 
-            this.receptorBindingSource.DataSource = typeof(OpenInvoicePeru.FirmadoSunat.Models.Contribuyente);
-            // 
             // txtDistritoRec
             // 
             this.txtDistritoRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "Distrito", true));
             this.txtDistritoRec.Location = new System.Drawing.Point(394, 118);
             this.txtDistritoRec.Name = "txtDistritoRec";
             this.txtDistritoRec.Size = new System.Drawing.Size(100, 20);
-            this.txtDistritoRec.TabIndex = 16;
+            this.txtDistritoRec.TabIndex = 18;
             // 
             // txtDptoRec
             // 
@@ -578,7 +634,7 @@
             this.txtDptoRec.Location = new System.Drawing.Point(394, 92);
             this.txtDptoRec.Name = "txtDptoRec";
             this.txtDptoRec.Size = new System.Drawing.Size(100, 20);
-            this.txtDptoRec.TabIndex = 14;
+            this.txtDptoRec.TabIndex = 16;
             // 
             // txtProvRec
             // 
@@ -586,14 +642,14 @@
             this.txtProvRec.Location = new System.Drawing.Point(394, 66);
             this.txtProvRec.Name = "txtProvRec";
             this.txtProvRec.Size = new System.Drawing.Size(100, 20);
-            this.txtProvRec.TabIndex = 12;
+            this.txtProvRec.TabIndex = 14;
             // 
             // txtDirRec
             // 
             this.txtDirRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "Direccion", true));
-            this.txtDirRec.Location = new System.Drawing.Point(394, 40);
+            this.txtDirRec.Location = new System.Drawing.Point(108, 147);
             this.txtDirRec.Name = "txtDirRec";
-            this.txtDirRec.Size = new System.Drawing.Size(100, 20);
+            this.txtDirRec.Size = new System.Drawing.Size(196, 20);
             this.txtDirRec.TabIndex = 10;
             // 
             // txtNombreComRec
@@ -623,10 +679,10 @@
             // textBox17
             // 
             this.textBox17.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "IdDocumento", true));
-            this.textBox17.Location = new System.Drawing.Point(84, 211);
+            this.textBox17.Location = new System.Drawing.Point(87, 249);
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(100, 20);
-            this.textBox17.TabIndex = 12;
+            this.textBox17.TabIndex = 14;
             // 
             // documentoElectronicoBindingSource
             // 
@@ -635,16 +691,16 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1, 214);
+            this.label18.Location = new System.Drawing.Point(4, 252);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(77, 13);
-            this.label18.TabIndex = 11;
+            this.label18.TabIndex = 13;
             this.label18.Text = "Id Documento:";
             // 
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(1, 246);
+            this.label19.Location = new System.Drawing.Point(4, 284);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(79, 13);
             this.label19.TabIndex = 15;
@@ -654,7 +710,7 @@
             // 
             this.dtpFecha.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "FechaEmision", true));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(84, 243);
+            this.dtpFecha.Location = new System.Drawing.Point(87, 281);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(100, 20);
             this.dtpFecha.TabIndex = 16;
@@ -665,7 +721,7 @@
             this.label20.Location = new System.Drawing.Point(8, 31);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(104, 13);
-            this.label20.TabIndex = 0;
+            this.label20.TabIndex = 1;
             this.label20.Text = "Tipo de Documento:";
             // 
             // cboTipoDoc
@@ -681,15 +737,15 @@
             this.cboTipoDoc.Location = new System.Drawing.Point(131, 28);
             this.cboTipoDoc.Name = "cboTipoDoc";
             this.cboTipoDoc.Size = new System.Drawing.Size(175, 21);
-            this.cboTipoDoc.TabIndex = 1;
+            this.cboTipoDoc.TabIndex = 2;
             // 
             // label21
             // 
             this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(1, 276);
+            this.label21.Location = new System.Drawing.Point(4, 314);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(49, 13);
-            this.label21.TabIndex = 19;
+            this.label21.TabIndex = 17;
             this.label21.Text = "Moneda:";
             // 
             // cboMoneda
@@ -699,16 +755,16 @@
             this.cboMoneda.Items.AddRange(new object[] {
             "PEN",
             "USD"});
-            this.cboMoneda.Location = new System.Drawing.Point(84, 273);
+            this.cboMoneda.Location = new System.Drawing.Point(87, 311);
             this.cboMoneda.Name = "cboMoneda";
             this.cboMoneda.Size = new System.Drawing.Size(100, 21);
-            this.cboMoneda.TabIndex = 20;
+            this.cboMoneda.TabIndex = 18;
             // 
             // dgvDetalle
             // 
             this.dgvDetalle.AllowUserToAddRows = false;
             this.dgvDetalle.AutoGenerateColumns = false;
-            this.dgvDetalle.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.cantidadDataGridViewTextBoxColumn,
@@ -724,88 +780,102 @@
             this.codigoItemDataGridViewTextBoxColumn,
             this.totalVentaDataGridViewTextBoxColumn});
             this.dgvDetalle.DataSource = this.detallesBindingSource;
-            this.dgvDetalle.Location = new System.Drawing.Point(4, 300);
+            this.dgvDetalle.Location = new System.Drawing.Point(7, 362);
             this.dgvDetalle.Name = "dgvDetalle";
-            this.dgvDetalle.Size = new System.Drawing.Size(886, 181);
-            this.dgvDetalle.TabIndex = 21;
+            this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetalle.Size = new System.Drawing.Size(879, 181);
+            this.dgvDetalle.TabIndex = 25;
             // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Width = 41;
             // 
             // cantidadDataGridViewTextBoxColumn
             // 
             this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad";
             this.cantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad";
             this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
+            this.cantidadDataGridViewTextBoxColumn.Width = 74;
             // 
             // unidadMedidaDataGridViewTextBoxColumn
             // 
             this.unidadMedidaDataGridViewTextBoxColumn.DataPropertyName = "UnidadMedida";
             this.unidadMedidaDataGridViewTextBoxColumn.HeaderText = "Unidad Medida";
             this.unidadMedidaDataGridViewTextBoxColumn.Name = "unidadMedidaDataGridViewTextBoxColumn";
+            this.unidadMedidaDataGridViewTextBoxColumn.Width = 104;
             // 
             // precioUnitarioDataGridViewTextBoxColumn
             // 
             this.precioUnitarioDataGridViewTextBoxColumn.DataPropertyName = "PrecioUnitario";
             this.precioUnitarioDataGridViewTextBoxColumn.HeaderText = "Precio Unitario";
             this.precioUnitarioDataGridViewTextBoxColumn.Name = "precioUnitarioDataGridViewTextBoxColumn";
+            this.precioUnitarioDataGridViewTextBoxColumn.Width = 101;
             // 
             // precioReferencialDataGridViewTextBoxColumn
             // 
             this.precioReferencialDataGridViewTextBoxColumn.DataPropertyName = "PrecioReferencial";
             this.precioReferencialDataGridViewTextBoxColumn.HeaderText = "Precio Referencial";
             this.precioReferencialDataGridViewTextBoxColumn.Name = "precioReferencialDataGridViewTextBoxColumn";
+            this.precioReferencialDataGridViewTextBoxColumn.Width = 119;
             // 
             // tipoPrecioDataGridViewTextBoxColumn
             // 
             this.tipoPrecioDataGridViewTextBoxColumn.DataPropertyName = "TipoPrecio";
             this.tipoPrecioDataGridViewTextBoxColumn.HeaderText = "Tipo Precio";
             this.tipoPrecioDataGridViewTextBoxColumn.Name = "tipoPrecioDataGridViewTextBoxColumn";
+            this.tipoPrecioDataGridViewTextBoxColumn.Width = 86;
             // 
             // impuestoDataGridViewTextBoxColumn
             // 
             this.impuestoDataGridViewTextBoxColumn.DataPropertyName = "Impuesto";
             this.impuestoDataGridViewTextBoxColumn.HeaderText = "Impuesto";
             this.impuestoDataGridViewTextBoxColumn.Name = "impuestoDataGridViewTextBoxColumn";
+            this.impuestoDataGridViewTextBoxColumn.Width = 75;
             // 
             // tipoImpuestoDataGridViewTextBoxColumn
             // 
             this.tipoImpuestoDataGridViewTextBoxColumn.DataPropertyName = "TipoImpuesto";
             this.tipoImpuestoDataGridViewTextBoxColumn.HeaderText = "Tipo Impuesto";
             this.tipoImpuestoDataGridViewTextBoxColumn.Name = "tipoImpuestoDataGridViewTextBoxColumn";
+            this.tipoImpuestoDataGridViewTextBoxColumn.Width = 99;
             // 
             // impuestoSelectivoDataGridViewTextBoxColumn
             // 
             this.impuestoSelectivoDataGridViewTextBoxColumn.DataPropertyName = "ImpuestoSelectivo";
             this.impuestoSelectivoDataGridViewTextBoxColumn.HeaderText = "Impuesto Selectivo";
             this.impuestoSelectivoDataGridViewTextBoxColumn.Name = "impuestoSelectivoDataGridViewTextBoxColumn";
+            this.impuestoSelectivoDataGridViewTextBoxColumn.Width = 122;
             // 
             // otroImpuestoDataGridViewTextBoxColumn
             // 
             this.otroImpuestoDataGridViewTextBoxColumn.DataPropertyName = "OtroImpuesto";
             this.otroImpuestoDataGridViewTextBoxColumn.HeaderText = "Otro Impuesto";
             this.otroImpuestoDataGridViewTextBoxColumn.Name = "otroImpuestoDataGridViewTextBoxColumn";
+            this.otroImpuestoDataGridViewTextBoxColumn.Width = 98;
             // 
             // descripcionDataGridViewTextBoxColumn
             // 
             this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
             this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
             this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            this.descripcionDataGridViewTextBoxColumn.Width = 88;
             // 
             // codigoItemDataGridViewTextBoxColumn
             // 
             this.codigoItemDataGridViewTextBoxColumn.DataPropertyName = "CodigoItem";
             this.codigoItemDataGridViewTextBoxColumn.HeaderText = "Codigo Item";
             this.codigoItemDataGridViewTextBoxColumn.Name = "codigoItemDataGridViewTextBoxColumn";
+            this.codigoItemDataGridViewTextBoxColumn.Width = 88;
             // 
             // totalVentaDataGridViewTextBoxColumn
             // 
             this.totalVentaDataGridViewTextBoxColumn.DataPropertyName = "TotalVenta";
             this.totalVentaDataGridViewTextBoxColumn.HeaderText = "Total Venta";
             this.totalVentaDataGridViewTextBoxColumn.Name = "totalVentaDataGridViewTextBoxColumn";
+            this.totalVentaDataGridViewTextBoxColumn.Width = 87;
             // 
             // detallesBindingSource
             // 
@@ -815,42 +885,42 @@
             // montoEnLetrasTextBox
             // 
             this.montoEnLetrasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoEnLetras", true));
-            this.montoEnLetrasTextBox.Location = new System.Drawing.Point(328, 246);
+            this.montoEnLetrasTextBox.Location = new System.Drawing.Point(325, 285);
             this.montoEnLetrasTextBox.Name = "montoEnLetrasTextBox";
             this.montoEnLetrasTextBox.Size = new System.Drawing.Size(337, 20);
-            this.montoEnLetrasTextBox.TabIndex = 18;
+            this.montoEnLetrasTextBox.TabIndex = 22;
             // 
             // gravadasTextBox
             // 
             this.gravadasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "Gravadas", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.gravadasTextBox.Location = new System.Drawing.Point(74, 490);
+            this.gravadasTextBox.Location = new System.Drawing.Point(75, 552);
             this.gravadasTextBox.Name = "gravadasTextBox";
             this.gravadasTextBox.Size = new System.Drawing.Size(100, 20);
-            this.gravadasTextBox.TabIndex = 25;
+            this.gravadasTextBox.TabIndex = 30;
             // 
             // exoneradasTextBox
             // 
             this.exoneradasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "Exoneradas", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.exoneradasTextBox.Location = new System.Drawing.Point(74, 516);
+            this.exoneradasTextBox.Location = new System.Drawing.Point(75, 578);
             this.exoneradasTextBox.Name = "exoneradasTextBox";
             this.exoneradasTextBox.Size = new System.Drawing.Size(100, 20);
-            this.exoneradasTextBox.TabIndex = 27;
+            this.exoneradasTextBox.TabIndex = 32;
             // 
             // inafectasTextBox
             // 
             this.inafectasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "Inafectas", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.inafectasTextBox.Location = new System.Drawing.Point(74, 542);
+            this.inafectasTextBox.Location = new System.Drawing.Point(75, 604);
             this.inafectasTextBox.Name = "inafectasTextBox";
             this.inafectasTextBox.Size = new System.Drawing.Size(100, 20);
-            this.inafectasTextBox.TabIndex = 29;
+            this.inafectasTextBox.TabIndex = 34;
             // 
             // gratuitasTextBox
             // 
             this.gratuitasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "Gratuitas", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.gratuitasTextBox.Location = new System.Drawing.Point(74, 568);
+            this.gratuitasTextBox.Location = new System.Drawing.Point(75, 630);
             this.gratuitasTextBox.Name = "gratuitasTextBox";
             this.gratuitasTextBox.Size = new System.Drawing.Size(100, 20);
-            this.gratuitasTextBox.TabIndex = 31;
+            this.gratuitasTextBox.TabIndex = 36;
             // 
             // tipoOperacionComboBox
             // 
@@ -866,51 +936,51 @@
             "06 Factura Guía",
             "07 Venta Arroz Pilado",
             "08 Factura - Comprobante de Percepción"});
-            this.tipoOperacionComboBox.Location = new System.Drawing.Point(328, 210);
+            this.tipoOperacionComboBox.Location = new System.Drawing.Point(325, 249);
             this.tipoOperacionComboBox.Name = "tipoOperacionComboBox";
             this.tipoOperacionComboBox.Size = new System.Drawing.Size(242, 21);
-            this.tipoOperacionComboBox.TabIndex = 14;
+            this.tipoOperacionComboBox.TabIndex = 20;
             // 
             // totalIgvTextBox
             // 
             this.totalIgvTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "TotalIgv", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.totalIgvTextBox.Location = new System.Drawing.Point(790, 487);
+            this.totalIgvTextBox.Location = new System.Drawing.Point(786, 549);
             this.totalIgvTextBox.Name = "totalIgvTextBox";
             this.totalIgvTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalIgvTextBox.TabIndex = 33;
+            this.totalIgvTextBox.TabIndex = 38;
             // 
             // totalIscTextBox
             // 
             this.totalIscTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "TotalIsc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.totalIscTextBox.Location = new System.Drawing.Point(790, 513);
+            this.totalIscTextBox.Location = new System.Drawing.Point(786, 575);
             this.totalIscTextBox.Name = "totalIscTextBox";
             this.totalIscTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalIscTextBox.TabIndex = 35;
+            this.totalIscTextBox.TabIndex = 40;
             // 
             // totalOtrosTributosTextBox
             // 
             this.totalOtrosTributosTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "TotalOtrosTributos", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.totalOtrosTributosTextBox.Location = new System.Drawing.Point(790, 539);
+            this.totalOtrosTributosTextBox.Location = new System.Drawing.Point(786, 601);
             this.totalOtrosTributosTextBox.Name = "totalOtrosTributosTextBox";
             this.totalOtrosTributosTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalOtrosTributosTextBox.TabIndex = 37;
+            this.totalOtrosTributosTextBox.TabIndex = 42;
             // 
             // totalVentaTextBox
             // 
             this.totalVentaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "TotalVenta", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.totalVentaTextBox.Location = new System.Drawing.Point(790, 565);
+            this.totalVentaTextBox.Location = new System.Drawing.Point(786, 627);
             this.totalVentaTextBox.Name = "totalVentaTextBox";
             this.totalVentaTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalVentaTextBox.TabIndex = 39;
+            this.totalVentaTextBox.TabIndex = 1;
             // 
             // btnAgregar
             // 
             this.btnAgregar.Image = global::OpenInvoicePeru.FirmadoSunatWin.Properties.Resources._new;
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAgregar.Location = new System.Drawing.Point(896, 341);
+            this.btnAgregar.Location = new System.Drawing.Point(892, 403);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(88, 23);
-            this.btnAgregar.TabIndex = 22;
+            this.btnAgregar.TabIndex = 26;
             this.btnAgregar.Text = "&Agregar";
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -920,10 +990,10 @@
             // 
             this.btnEliminar.Image = global::OpenInvoicePeru.FirmadoSunatWin.Properties.Resources.delete;
             this.btnEliminar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnEliminar.Location = new System.Drawing.Point(896, 394);
+            this.btnEliminar.Location = new System.Drawing.Point(892, 456);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(88, 23);
-            this.btnEliminar.TabIndex = 23;
+            this.btnEliminar.TabIndex = 28;
             this.btnEliminar.Text = "&Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -935,8 +1005,8 @@
             this.toolGenerar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1027, 25);
-            this.toolStrip1.TabIndex = 32;
+            this.toolStrip1.Size = new System.Drawing.Size(1049, 25);
+            this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
             // toolGenerar
@@ -951,45 +1021,55 @@
             // calculoIgvTextBox
             // 
             this.calculoIgvTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "CalculoIgv", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.calculoIgvTextBox.Location = new System.Drawing.Point(425, 29);
+            this.calculoIgvTextBox.Location = new System.Drawing.Point(387, 28);
             this.calculoIgvTextBox.Name = "calculoIgvTextBox";
             this.calculoIgvTextBox.Size = new System.Drawing.Size(100, 20);
-            this.calculoIgvTextBox.TabIndex = 3;
+            this.calculoIgvTextBox.TabIndex = 4;
             // 
             // calculoIscTextBox
             // 
             this.calculoIscTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "CalculoIsc", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.calculoIscTextBox.Location = new System.Drawing.Point(610, 28);
+            this.calculoIscTextBox.Location = new System.Drawing.Point(572, 27);
             this.calculoIscTextBox.Name = "calculoIscTextBox";
             this.calculoIscTextBox.Size = new System.Drawing.Size(100, 20);
-            this.calculoIscTextBox.TabIndex = 5;
+            this.calculoIscTextBox.TabIndex = 6;
             // 
             // calculoDetraccionTextBox
             // 
             this.calculoDetraccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "CalculoDetraccion", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.calculoDetraccionTextBox.Location = new System.Drawing.Point(823, 29);
+            this.calculoDetraccionTextBox.Location = new System.Drawing.Point(785, 28);
             this.calculoDetraccionTextBox.Name = "calculoDetraccionTextBox";
             this.calculoDetraccionTextBox.Size = new System.Drawing.Size(88, 20);
-            this.calculoDetraccionTextBox.TabIndex = 7;
+            this.calculoDetraccionTextBox.TabIndex = 8;
             // 
             // btnDuplicar
             // 
             this.btnDuplicar.Image = global::OpenInvoicePeru.FirmadoSunatWin.Properties.Resources.iconcopy;
             this.btnDuplicar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDuplicar.Location = new System.Drawing.Point(896, 367);
+            this.btnDuplicar.Location = new System.Drawing.Point(892, 429);
             this.btnDuplicar.Name = "btnDuplicar";
             this.btnDuplicar.Size = new System.Drawing.Size(88, 23);
-            this.btnDuplicar.TabIndex = 22;
+            this.btnDuplicar.TabIndex = 27;
             this.btnDuplicar.Text = "&Duplicar";
             this.btnDuplicar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDuplicar.UseVisualStyleBackColor = true;
             this.btnDuplicar.Click += new System.EventHandler(this.btnDuplicar_Click);
             // 
+            // descuentoGlobalTextBox
+            // 
+            this.descuentoGlobalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "DescuentoGlobal", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
+            this.descuentoGlobalTextBox.Location = new System.Drawing.Point(325, 315);
+            this.descuentoGlobalTextBox.Name = "descuentoGlobalTextBox";
+            this.descuentoGlobalTextBox.Size = new System.Drawing.Size(89, 20);
+            this.descuentoGlobalTextBox.TabIndex = 24;
+            // 
             // FrmDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1027, 605);
+            this.ClientSize = new System.Drawing.Size(1049, 670);
+            this.Controls.Add(descuentoGlobalLabel);
+            this.Controls.Add(this.descuentoGlobalTextBox);
             this.Controls.Add(calculoDetraccionLabel);
             this.Controls.Add(this.calculoDetraccionTextBox);
             this.Controls.Add(calculoIscLabel);
@@ -1036,6 +1116,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmDocumento";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenInvoicePeru - Generación de Documento Electrónico (BETA)";
             ((System.ComponentModel.ISupportInitialize)(this.emisorBindingSource)).EndInit();
@@ -1136,5 +1217,8 @@
         private System.Windows.Forms.TextBox calculoIscTextBox;
         private System.Windows.Forms.TextBox calculoDetraccionTextBox;
         private System.Windows.Forms.Button btnDuplicar;
+        private System.Windows.Forms.TextBox descuentoGlobalTextBox;
+        private System.Windows.Forms.TextBox urbanizacionTextBox;
+        private System.Windows.Forms.TextBox urbanizacionRecTextBox;
     }
 }
