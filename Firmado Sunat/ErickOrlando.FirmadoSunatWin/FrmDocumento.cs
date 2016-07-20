@@ -77,7 +77,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 .Sum(d => d.Suma);
 
             _documento.Inafectas = _documento.Items
-                .Where(d => d.TipoImpuesto.Contains("Inafecto"))
+                .Where(d => d.TipoImpuesto.Contains("Inafecto") || d.TipoImpuesto.Contains("40"))
                 .Sum(d => d.Suma);
 
             _documento.Gratuitas = _documento.Items

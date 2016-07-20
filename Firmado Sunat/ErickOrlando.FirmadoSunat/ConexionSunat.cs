@@ -57,7 +57,7 @@ namespace OpenInvoicePeru.FirmadoSunat
             }
             catch (FaultException ex)
             {
-                response = new Tuple<string, bool>(Retencion
+                response = new Tuple<string, bool>(!Retencion
                     ? ex.Code.Name : ex.Message, false);
             }
             catch (Exception ex)
