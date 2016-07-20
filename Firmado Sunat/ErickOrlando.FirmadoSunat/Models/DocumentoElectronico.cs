@@ -35,6 +35,8 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public decimal CalculoIsc { get; set; }
         public decimal CalculoDetraccion { get; set; }
 
+        public decimal MontoPercepcion { get; set; }
+
         public ObservableCollection<DetalleDocumento> Items { get; set; }
 
         public DocumentoElectronico()

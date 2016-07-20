@@ -280,6 +280,24 @@ namespace OpenInvoicePeru.FirmadoSunat
                         }
                     });
             }
+            if (documento.MontoPercepcion > 0)
+            {
+                invoice.UblExtensions.Extension2.ExtensionContent
+                    .AdditionalInformation.AdditionalMonetaryTotals.Add(new AdditionalMonetaryTotal
+                    {
+                        ID = "2001",
+                        PayableAmount = new PayableAmount
+                        {
+                            currencyID = documento.Moneda,
+                            value = documento.MontoPercepcion
+                        },
+                        TotalAmount = new PayableAmount
+                        {
+                            currencyID = documento.Moneda,
+                            value = documento.Gravadas + documento.MontoPercepcion
+                        }
+                    });
+            }
 
             foreach (var detalleDocumento in documento.Items)
             {

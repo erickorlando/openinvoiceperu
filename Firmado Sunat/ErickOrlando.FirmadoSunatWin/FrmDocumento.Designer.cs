@@ -45,6 +45,7 @@
             System.Windows.Forms.Label urbanizacionLabel;
             System.Windows.Forms.Label urbanizacionLabel1;
             System.Windows.Forms.Label descuentoGlobalLabel;
+            System.Windows.Forms.Label montoPercepcionLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDocumento));
             this.label1 = new System.Windows.Forms.Label();
             this.cboTipoDocRec = new System.Windows.Forms.ComboBox();
@@ -129,6 +130,7 @@
             this.calculoDetraccionTextBox = new System.Windows.Forms.TextBox();
             this.btnDuplicar = new System.Windows.Forms.Button();
             this.descuentoGlobalTextBox = new System.Windows.Forms.TextBox();
+            this.montoPercepcionTextBox = new System.Windows.Forms.TextBox();
             montoEnLetrasLabel = new System.Windows.Forms.Label();
             gravadasLabel = new System.Windows.Forms.Label();
             exoneradasLabel = new System.Windows.Forms.Label();
@@ -145,6 +147,7 @@
             urbanizacionLabel = new System.Windows.Forms.Label();
             urbanizacionLabel1 = new System.Windows.Forms.Label();
             descuentoGlobalLabel = new System.Windows.Forms.Label();
+            montoPercepcionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.emisorBindingSource)).BeginInit();
             this.grpEmisor.SuspendLayout();
             this.grpReceptor.SuspendLayout();
@@ -887,7 +890,7 @@
             this.montoEnLetrasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoEnLetras", true));
             this.montoEnLetrasTextBox.Location = new System.Drawing.Point(325, 285);
             this.montoEnLetrasTextBox.Name = "montoEnLetrasTextBox";
-            this.montoEnLetrasTextBox.Size = new System.Drawing.Size(337, 20);
+            this.montoEnLetrasTextBox.Size = new System.Drawing.Size(282, 20);
             this.montoEnLetrasTextBox.TabIndex = 22;
             // 
             // gravadasTextBox
@@ -1005,7 +1008,7 @@
             this.toolGenerar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1049, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1064, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1063,11 +1066,30 @@
             this.descuentoGlobalTextBox.Size = new System.Drawing.Size(89, 20);
             this.descuentoGlobalTextBox.TabIndex = 24;
             // 
+            // montoPercepcionLabel
+            // 
+            montoPercepcionLabel.AutoSize = true;
+            montoPercepcionLabel.Location = new System.Drawing.Point(615, 252);
+            montoPercepcionLabel.Name = "montoPercepcionLabel";
+            montoPercepcionLabel.Size = new System.Drawing.Size(97, 13);
+            montoPercepcionLabel.TabIndex = 43;
+            montoPercepcionLabel.Text = "Monto Percepcion:";
+            // 
+            // montoPercepcionTextBox
+            // 
+            this.montoPercepcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoPercepcion", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
+            this.montoPercepcionTextBox.Location = new System.Drawing.Point(718, 249);
+            this.montoPercepcionTextBox.Name = "montoPercepcionTextBox";
+            this.montoPercepcionTextBox.Size = new System.Drawing.Size(88, 20);
+            this.montoPercepcionTextBox.TabIndex = 44;
+            // 
             // FrmDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 670);
+            this.ClientSize = new System.Drawing.Size(1064, 670);
+            this.Controls.Add(montoPercepcionLabel);
+            this.Controls.Add(this.montoPercepcionTextBox);
             this.Controls.Add(descuentoGlobalLabel);
             this.Controls.Add(this.descuentoGlobalTextBox);
             this.Controls.Add(calculoDetraccionLabel);
@@ -1220,5 +1242,6 @@
         private System.Windows.Forms.TextBox descuentoGlobalTextBox;
         private System.Windows.Forms.TextBox urbanizacionTextBox;
         private System.Windows.Forms.TextBox urbanizacionRecTextBox;
+        private System.Windows.Forms.TextBox montoPercepcionTextBox;
     }
 }
