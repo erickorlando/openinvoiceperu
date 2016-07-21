@@ -96,8 +96,8 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
                         }
                         if (additionalMonetaryTotal.Percent > 0)
                         {
-                            writer.WriteElementString("sac:Percent",
-                                additionalMonetaryTotal.Percent.ToString("#%"));
+                            writer.WriteElementString("cbc:Percent",
+                                additionalMonetaryTotal.Percent.ToString(Constantes.Constantes.FormatoNumerico));
                         }
                         #endregion
 

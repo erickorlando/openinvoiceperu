@@ -61,16 +61,6 @@ namespace OpenInvoicePeru.FirmadoSunatWin.Properties {
         }
         
         /// <summary>
-        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap _new {
-            get {
-                object obj = ResourceManager.GetObject("new", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
         ///   Busca una cadena traducida similar a Desea abrir el archivo de resultado?.
         /// </summary>
         internal static string abrirArchivo {
@@ -143,6 +133,16 @@ namespace OpenInvoicePeru.FirmadoSunatWin.Properties {
         internal static string msgConfirme {
             get {
                 return ResourceManager.GetString("msgConfirme", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap nuevo {
+            get {
+                object obj = ResourceManager.GetObject("nuevo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

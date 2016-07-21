@@ -46,6 +46,7 @@
             System.Windows.Forms.Label urbanizacionLabel1;
             System.Windows.Forms.Label descuentoGlobalLabel;
             System.Windows.Forms.Label montoPercepcionLabel;
+            System.Windows.Forms.Label montoDetraccionLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDocumento));
             this.label1 = new System.Windows.Forms.Label();
             this.cboTipoDocRec = new System.Windows.Forms.ComboBox();
@@ -98,6 +99,8 @@
             this.cboMoneda = new System.Windows.Forms.ComboBox();
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.codigoItemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.unidadMedidaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.precioUnitarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -107,8 +110,6 @@
             this.tipoImpuestoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.impuestoSelectivoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.otroImpuestoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoItemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.totalVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.detallesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.montoEnLetrasTextBox = new System.Windows.Forms.TextBox();
@@ -131,6 +132,15 @@
             this.btnDuplicar = new System.Windows.Forms.Button();
             this.descuentoGlobalTextBox = new System.Windows.Forms.TextBox();
             this.montoPercepcionTextBox = new System.Windows.Forms.TextBox();
+            this.tbPaginas = new System.Windows.Forms.TabControl();
+            this.tpDetalles = new System.Windows.Forms.TabPage();
+            this.tpAdicionales = new System.Windows.Forms.TabPage();
+            this.datoAdicionalesDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datoAdicionalesBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.montoDetraccionTextBox = new System.Windows.Forms.TextBox();
+            this.btnCalcDetraccion = new System.Windows.Forms.Button();
             montoEnLetrasLabel = new System.Windows.Forms.Label();
             gravadasLabel = new System.Windows.Forms.Label();
             exoneradasLabel = new System.Windows.Forms.Label();
@@ -148,6 +158,7 @@
             urbanizacionLabel1 = new System.Windows.Forms.Label();
             descuentoGlobalLabel = new System.Windows.Forms.Label();
             montoPercepcionLabel = new System.Windows.Forms.Label();
+            montoDetraccionLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.emisorBindingSource)).BeginInit();
             this.grpEmisor.SuspendLayout();
             this.grpReceptor.SuspendLayout();
@@ -156,12 +167,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detallesBindingSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
+            this.tbPaginas.SuspendLayout();
+            this.tpDetalles.SuspendLayout();
+            this.tpAdicionales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalesDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // montoEnLetrasLabel
             // 
             montoEnLetrasLabel.AutoSize = true;
-            montoEnLetrasLabel.Location = new System.Drawing.Point(231, 288);
+            montoEnLetrasLabel.Location = new System.Drawing.Point(196, 287);
             montoEnLetrasLabel.Name = "montoEnLetrasLabel";
             montoEnLetrasLabel.Size = new System.Drawing.Size(88, 13);
             montoEnLetrasLabel.TabIndex = 21;
@@ -206,11 +222,11 @@
             // tipoOperacionLabel
             // 
             tipoOperacionLabel.AutoSize = true;
-            tipoOperacionLabel.Location = new System.Drawing.Point(231, 253);
+            tipoOperacionLabel.Location = new System.Drawing.Point(196, 252);
             tipoOperacionLabel.Name = "tipoOperacionLabel";
             tipoOperacionLabel.Size = new System.Drawing.Size(83, 13);
             tipoOperacionLabel.TabIndex = 19;
-            tipoOperacionLabel.Text = "Tipo Operacion:";
+            tipoOperacionLabel.Text = "Tipo Operación:";
             // 
             // totalIgvLabel
             // 
@@ -255,7 +271,7 @@
             calculoIgvLabel.Name = "calculoIgvLabel";
             calculoIgvLabel.Size = new System.Drawing.Size(66, 13);
             calculoIgvLabel.TabIndex = 3;
-            calculoIgvLabel.Text = "Calculo IGV:";
+            calculoIgvLabel.Text = "Cálculo IGV:";
             // 
             // calculoIscLabel
             // 
@@ -264,7 +280,7 @@
             calculoIscLabel.Name = "calculoIscLabel";
             calculoIscLabel.Size = new System.Drawing.Size(65, 13);
             calculoIscLabel.TabIndex = 5;
-            calculoIscLabel.Text = "Calculo ISC:";
+            calculoIscLabel.Text = "Cálculo ISC:";
             // 
             // calculoDetraccionLabel
             // 
@@ -273,7 +289,7 @@
             calculoDetraccionLabel.Name = "calculoDetraccionLabel";
             calculoDetraccionLabel.Size = new System.Drawing.Size(100, 13);
             calculoDetraccionLabel.TabIndex = 7;
-            calculoDetraccionLabel.Text = "Calculo Detraccion:";
+            calculoDetraccionLabel.Text = "Calculo Detracción:";
             // 
             // urbanizacionLabel
             // 
@@ -282,7 +298,7 @@
             urbanizacionLabel.Name = "urbanizacionLabel";
             urbanizacionLabel.Size = new System.Drawing.Size(72, 13);
             urbanizacionLabel.TabIndex = 10;
-            urbanizacionLabel.Text = "Urbanizacion:";
+            urbanizacionLabel.Text = "Urbanización:";
             // 
             // urbanizacionLabel1
             // 
@@ -291,16 +307,25 @@
             urbanizacionLabel1.Name = "urbanizacionLabel1";
             urbanizacionLabel1.Size = new System.Drawing.Size(72, 13);
             urbanizacionLabel1.TabIndex = 11;
-            urbanizacionLabel1.Text = "Urbanizacion:";
+            urbanizacionLabel1.Text = "Urbanización:";
             // 
             // descuentoGlobalLabel
             // 
             descuentoGlobalLabel.AutoSize = true;
-            descuentoGlobalLabel.Location = new System.Drawing.Point(231, 318);
+            descuentoGlobalLabel.Location = new System.Drawing.Point(196, 317);
             descuentoGlobalLabel.Name = "descuentoGlobalLabel";
             descuentoGlobalLabel.Size = new System.Drawing.Size(69, 13);
             descuentoGlobalLabel.TabIndex = 23;
             descuentoGlobalLabel.Text = "Dcto. Global:";
+            // 
+            // montoPercepcionLabel
+            // 
+            montoPercepcionLabel.AutoSize = true;
+            montoPercepcionLabel.Location = new System.Drawing.Point(539, 252);
+            montoPercepcionLabel.Name = "montoPercepcionLabel";
+            montoPercepcionLabel.Size = new System.Drawing.Size(97, 13);
+            montoPercepcionLabel.TabIndex = 43;
+            montoPercepcionLabel.Text = "Monto Percepción:";
             // 
             // label1
             // 
@@ -770,6 +795,8 @@
             this.dgvDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
             this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
+            this.codigoItemDataGridViewTextBoxColumn,
+            this.descripcionDataGridViewTextBoxColumn,
             this.cantidadDataGridViewTextBoxColumn,
             this.unidadMedidaDataGridViewTextBoxColumn,
             this.precioUnitarioDataGridViewTextBoxColumn,
@@ -779,14 +806,13 @@
             this.tipoImpuestoDataGridViewTextBoxColumn,
             this.impuestoSelectivoDataGridViewTextBoxColumn,
             this.otroImpuestoDataGridViewTextBoxColumn,
-            this.descripcionDataGridViewTextBoxColumn,
-            this.codigoItemDataGridViewTextBoxColumn,
             this.totalVentaDataGridViewTextBoxColumn});
             this.dgvDetalle.DataSource = this.detallesBindingSource;
-            this.dgvDetalle.Location = new System.Drawing.Point(7, 362);
+            this.dgvDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvDetalle.Location = new System.Drawing.Point(3, 3);
             this.dgvDetalle.Name = "dgvDetalle";
             this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvDetalle.Size = new System.Drawing.Size(879, 181);
+            this.dgvDetalle.Size = new System.Drawing.Size(868, 174);
             this.dgvDetalle.TabIndex = 25;
             // 
             // idDataGridViewTextBoxColumn
@@ -795,6 +821,20 @@
             this.idDataGridViewTextBoxColumn.HeaderText = "Id";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.Width = 41;
+            // 
+            // codigoItemDataGridViewTextBoxColumn
+            // 
+            this.codigoItemDataGridViewTextBoxColumn.DataPropertyName = "CodigoItem";
+            this.codigoItemDataGridViewTextBoxColumn.HeaderText = "Codigo Item";
+            this.codigoItemDataGridViewTextBoxColumn.Name = "codigoItemDataGridViewTextBoxColumn";
+            this.codigoItemDataGridViewTextBoxColumn.Width = 88;
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            this.descripcionDataGridViewTextBoxColumn.Width = 88;
             // 
             // cantidadDataGridViewTextBoxColumn
             // 
@@ -859,20 +899,6 @@
             this.otroImpuestoDataGridViewTextBoxColumn.Name = "otroImpuestoDataGridViewTextBoxColumn";
             this.otroImpuestoDataGridViewTextBoxColumn.Width = 98;
             // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            this.descripcionDataGridViewTextBoxColumn.Width = 88;
-            // 
-            // codigoItemDataGridViewTextBoxColumn
-            // 
-            this.codigoItemDataGridViewTextBoxColumn.DataPropertyName = "CodigoItem";
-            this.codigoItemDataGridViewTextBoxColumn.HeaderText = "Codigo Item";
-            this.codigoItemDataGridViewTextBoxColumn.Name = "codigoItemDataGridViewTextBoxColumn";
-            this.codigoItemDataGridViewTextBoxColumn.Width = 88;
-            // 
             // totalVentaDataGridViewTextBoxColumn
             // 
             this.totalVentaDataGridViewTextBoxColumn.DataPropertyName = "TotalVenta";
@@ -888,9 +914,9 @@
             // montoEnLetrasTextBox
             // 
             this.montoEnLetrasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoEnLetras", true));
-            this.montoEnLetrasTextBox.Location = new System.Drawing.Point(325, 285);
+            this.montoEnLetrasTextBox.Location = new System.Drawing.Point(290, 284);
             this.montoEnLetrasTextBox.Name = "montoEnLetrasTextBox";
-            this.montoEnLetrasTextBox.Size = new System.Drawing.Size(282, 20);
+            this.montoEnLetrasTextBox.Size = new System.Drawing.Size(244, 20);
             this.montoEnLetrasTextBox.TabIndex = 22;
             // 
             // gravadasTextBox
@@ -939,7 +965,7 @@
             "06 Factura Guía",
             "07 Venta Arroz Pilado",
             "08 Factura - Comprobante de Percepción"});
-            this.tipoOperacionComboBox.Location = new System.Drawing.Point(325, 249);
+            this.tipoOperacionComboBox.Location = new System.Drawing.Point(290, 248);
             this.tipoOperacionComboBox.Name = "tipoOperacionComboBox";
             this.tipoOperacionComboBox.Size = new System.Drawing.Size(242, 21);
             this.tipoOperacionComboBox.TabIndex = 20;
@@ -978,7 +1004,7 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Image = global::OpenInvoicePeru.FirmadoSunatWin.Properties.Resources._new;
+            this.btnAgregar.Image = global::OpenInvoicePeru.FirmadoSunatWin.Properties.Resources.nuevo;
             this.btnAgregar.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnAgregar.Location = new System.Drawing.Point(892, 403);
             this.btnAgregar.Name = "btnAgregar";
@@ -1061,33 +1087,124 @@
             // descuentoGlobalTextBox
             // 
             this.descuentoGlobalTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "DescuentoGlobal", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.descuentoGlobalTextBox.Location = new System.Drawing.Point(325, 315);
+            this.descuentoGlobalTextBox.Location = new System.Drawing.Point(290, 314);
             this.descuentoGlobalTextBox.Name = "descuentoGlobalTextBox";
             this.descuentoGlobalTextBox.Size = new System.Drawing.Size(89, 20);
             this.descuentoGlobalTextBox.TabIndex = 24;
             // 
-            // montoPercepcionLabel
-            // 
-            montoPercepcionLabel.AutoSize = true;
-            montoPercepcionLabel.Location = new System.Drawing.Point(615, 252);
-            montoPercepcionLabel.Name = "montoPercepcionLabel";
-            montoPercepcionLabel.Size = new System.Drawing.Size(97, 13);
-            montoPercepcionLabel.TabIndex = 43;
-            montoPercepcionLabel.Text = "Monto Percepcion:";
-            // 
             // montoPercepcionTextBox
             // 
             this.montoPercepcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoPercepcion", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.montoPercepcionTextBox.Location = new System.Drawing.Point(718, 249);
+            this.montoPercepcionTextBox.Location = new System.Drawing.Point(640, 249);
             this.montoPercepcionTextBox.Name = "montoPercepcionTextBox";
             this.montoPercepcionTextBox.Size = new System.Drawing.Size(88, 20);
             this.montoPercepcionTextBox.TabIndex = 44;
+            // 
+            // tbPaginas
+            // 
+            this.tbPaginas.Controls.Add(this.tpDetalles);
+            this.tbPaginas.Controls.Add(this.tpAdicionales);
+            this.tbPaginas.Location = new System.Drawing.Point(7, 340);
+            this.tbPaginas.Name = "tbPaginas";
+            this.tbPaginas.SelectedIndex = 0;
+            this.tbPaginas.Size = new System.Drawing.Size(882, 206);
+            this.tbPaginas.TabIndex = 45;
+            // 
+            // tpDetalles
+            // 
+            this.tpDetalles.Controls.Add(this.dgvDetalle);
+            this.tpDetalles.Location = new System.Drawing.Point(4, 22);
+            this.tpDetalles.Name = "tpDetalles";
+            this.tpDetalles.Padding = new System.Windows.Forms.Padding(3);
+            this.tpDetalles.Size = new System.Drawing.Size(874, 180);
+            this.tpDetalles.TabIndex = 0;
+            this.tpDetalles.Text = "Detalle de Documentos";
+            this.tpDetalles.UseVisualStyleBackColor = true;
+            // 
+            // tpAdicionales
+            // 
+            this.tpAdicionales.AutoScroll = true;
+            this.tpAdicionales.Controls.Add(this.datoAdicionalesDataGridView);
+            this.tpAdicionales.Location = new System.Drawing.Point(4, 22);
+            this.tpAdicionales.Name = "tpAdicionales";
+            this.tpAdicionales.Padding = new System.Windows.Forms.Padding(3);
+            this.tpAdicionales.Size = new System.Drawing.Size(874, 180);
+            this.tpAdicionales.TabIndex = 1;
+            this.tpAdicionales.Text = "Datos Adicionales";
+            this.tpAdicionales.UseVisualStyleBackColor = true;
+            // 
+            // datoAdicionalesDataGridView
+            // 
+            this.datoAdicionalesDataGridView.AllowUserToAddRows = false;
+            this.datoAdicionalesDataGridView.AutoGenerateColumns = false;
+            this.datoAdicionalesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.datoAdicionalesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datoAdicionalesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.datoAdicionalesDataGridView.DataSource = this.datoAdicionalesBindingSource;
+            this.datoAdicionalesDataGridView.Location = new System.Drawing.Point(1, 0);
+            this.datoAdicionalesDataGridView.Name = "datoAdicionalesDataGridView";
+            this.datoAdicionalesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datoAdicionalesDataGridView.Size = new System.Drawing.Size(870, 177);
+            this.datoAdicionalesDataGridView.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn1
+            // 
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "Codigo";
+            this.dataGridViewTextBoxColumn1.HeaderText = "Codigo";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.Width = 65;
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Contenido";
+            this.dataGridViewTextBoxColumn2.HeaderText = "Contenido";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
+            this.dataGridViewTextBoxColumn2.Width = 80;
+            // 
+            // datoAdicionalesBindingSource
+            // 
+            this.datoAdicionalesBindingSource.DataMember = "DatoAdicionales";
+            this.datoAdicionalesBindingSource.DataSource = this.documentoElectronicoBindingSource;
+            // 
+            // montoDetraccionLabel
+            // 
+            montoDetraccionLabel.AutoSize = true;
+            montoDetraccionLabel.Location = new System.Drawing.Point(539, 287);
+            montoDetraccionLabel.Name = "montoDetraccionLabel";
+            montoDetraccionLabel.Size = new System.Drawing.Size(95, 13);
+            montoDetraccionLabel.TabIndex = 45;
+            montoDetraccionLabel.Text = "Monto Detracción:";
+            // 
+            // montoDetraccionTextBox
+            // 
+            this.montoDetraccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoDetraccion", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
+            this.montoDetraccionTextBox.Location = new System.Drawing.Point(640, 284);
+            this.montoDetraccionTextBox.Name = "montoDetraccionTextBox";
+            this.montoDetraccionTextBox.Size = new System.Drawing.Size(88, 20);
+            this.montoDetraccionTextBox.TabIndex = 46;
+            // 
+            // btnCalcDetraccion
+            // 
+            this.btnCalcDetraccion.Location = new System.Drawing.Point(734, 282);
+            this.btnCalcDetraccion.Name = "btnCalcDetraccion";
+            this.btnCalcDetraccion.Size = new System.Drawing.Size(120, 23);
+            this.btnCalcDetraccion.TabIndex = 47;
+            this.btnCalcDetraccion.Text = "&Calcular Detracción";
+            this.btnCalcDetraccion.UseVisualStyleBackColor = true;
+            this.btnCalcDetraccion.Click += new System.EventHandler(this.btnCalcDetraccion_Click);
             // 
             // FrmDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 670);
+            this.Controls.Add(this.btnCalcDetraccion);
+            this.Controls.Add(montoDetraccionLabel);
+            this.Controls.Add(this.montoDetraccionTextBox);
+            this.Controls.Add(this.tbPaginas);
             this.Controls.Add(montoPercepcionLabel);
             this.Controls.Add(this.montoPercepcionTextBox);
             this.Controls.Add(descuentoGlobalLabel);
@@ -1122,7 +1239,6 @@
             this.Controls.Add(this.gravadasTextBox);
             this.Controls.Add(montoEnLetrasLabel);
             this.Controls.Add(this.montoEnLetrasTextBox);
-            this.Controls.Add(this.dgvDetalle);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.grpReceptor);
             this.Controls.Add(this.cboMoneda);
@@ -1152,6 +1268,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.detallesBindingSource)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
+            this.tbPaginas.ResumeLayout(false);
+            this.tpDetalles.ResumeLayout(false);
+            this.tpAdicionales.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalesDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1216,19 +1337,6 @@
         private System.Windows.Forms.TextBox totalIscTextBox;
         private System.Windows.Forms.TextBox totalOtrosTributosTextBox;
         private System.Windows.Forms.TextBox totalVentaTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unidadMedidaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioUnitarioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioReferencialDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoPrecioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn impuestoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoImpuestoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn impuestoSelectivoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn otroImpuestoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoItemDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalVentaDataGridViewTextBoxColumn;
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.BindingSource emisorBindingSource;
@@ -1243,5 +1351,27 @@
         private System.Windows.Forms.TextBox urbanizacionTextBox;
         private System.Windows.Forms.TextBox urbanizacionRecTextBox;
         private System.Windows.Forms.TextBox montoPercepcionTextBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn codigoItemDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn unidadMedidaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioUnitarioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn precioReferencialDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoPrecioDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn impuestoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn tipoImpuestoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn impuestoSelectivoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn otroImpuestoDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn totalVentaDataGridViewTextBoxColumn;
+        private System.Windows.Forms.TabControl tbPaginas;
+        private System.Windows.Forms.TabPage tpDetalles;
+        private System.Windows.Forms.TabPage tpAdicionales;
+        private System.Windows.Forms.DataGridView datoAdicionalesDataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private System.Windows.Forms.BindingSource datoAdicionalesBindingSource;
+        private System.Windows.Forms.TextBox montoDetraccionTextBox;
+        private System.Windows.Forms.Button btnCalcDetraccion;
     }
 }

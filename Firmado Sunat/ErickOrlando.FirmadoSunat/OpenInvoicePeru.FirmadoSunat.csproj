@@ -106,6 +106,7 @@
     <Compile Include="Estructuras\VoidedDocumentsLine.cs" />
     <Compile Include="Generador.cs" />
     <Compile Include="Models\Contribuyente.cs" />
+    <Compile Include="Models\DatoAdicional.cs" />
     <Compile Include="Models\DetalleDocumento.cs" />
     <Compile Include="Models\DocumentoElectronico.cs" />
     <Compile Include="PasswordDigestBehavior.cs" />

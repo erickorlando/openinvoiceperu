@@ -62,7 +62,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                                 {
                                     new AdditionalProperty
                                     {
-                                        ID = 1000,
+                                        ID = "1000",
                                         Value = documento.MontoEnLetras
                                     }
                                 }
@@ -263,7 +263,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                 invoice.UblExtensions.Extension2.ExtensionContent
                         .AdditionalInformation.AdditionalProperties.Add(new AdditionalProperty
                         {
-                            ID = 1002,
+                            ID = "1002",
                             Value = "Articulos gratuitos"
                         });
             }
@@ -296,6 +296,32 @@ namespace OpenInvoicePeru.FirmadoSunat
                             currencyID = documento.Moneda,
                             value = documento.Gravadas + documento.MontoPercepcion
                         }
+                    });
+            }
+
+            // Datos Adicionales a la Factura.
+            foreach (var adicional in documento.DatoAdicionales)
+            {
+                invoice.UblExtensions.Extension2.ExtensionContent
+                    .AdditionalInformation.AdditionalProperties.Add(new AdditionalProperty
+                    {
+                        ID = adicional.Codigo,
+                        Value = adicional.Contenido
+                    });
+            }
+
+            if (documento.MontoDetraccion > 0)
+            {
+                invoice.UblExtensions.Extension2.ExtensionContent
+                    .AdditionalInformation.AdditionalMonetaryTotals.Add(new AdditionalMonetaryTotal
+                    {
+                        ID = "2003",
+                        PayableAmount = new PayableAmount
+                        {
+                            currencyID = documento.Moneda,
+                            value = documento.MontoDetraccion
+                        },
+                        Percent = documento.CalculoDetraccion *100
                     });
             }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace OpenInvoicePeru.FirmadoSunat.Models
@@ -36,6 +37,9 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public decimal CalculoDetraccion { get; set; }
 
         public decimal MontoPercepcion { get; set; }
+        public decimal MontoDetraccion { get; set; }
+
+        public List<DatoAdicional> DatoAdicionales { get; set; }
 
         public ObservableCollection<DetalleDocumento> Items { get; set; }
 
@@ -47,6 +51,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
             CalculoIsc = 0.10m;
             CalculoDetraccion = 0.04m;
             Items = new ObservableCollection<DetalleDocumento>();
+            DatoAdicionales = new List<DatoAdicional>();
         }
 
         public object Clone()

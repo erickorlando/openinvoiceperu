@@ -49,16 +49,33 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            var detalle = new DetalleDocumento();
-
-            using (var frm = new FrmDetalleDocumento(detalle, _documento))
+            switch (tbPaginas.SelectedIndex)
             {
-                if (frm.ShowDialog(this) != DialogResult.OK) return;
+                case 0:
+                    var detalle = new DetalleDocumento();
 
-                _documento.Items.Add(detalle);
+                    using (var frm = new FrmDetalleDocumento(detalle, _documento))
+                    {
+                        if (frm.ShowDialog(this) != DialogResult.OK) return;
 
-                CalcularTotales();
+                        _documento.Items.Add(detalle);
+
+                        CalcularTotales();
+                    }
+                    break;
+                case 1:
+                    var datoAdicional = new DatoAdicional();
+                    using (var frm = new FrmDatosAdicionales(datoAdicional))
+                    {
+                        if (frm.ShowDialog(this) != DialogResult.OK) return;
+
+                        _documento.DatoAdicionales.Add(datoAdicional);
+                        documentoElectronicoBindingSource.ResetBindings(false);
+                    }
+                    break;
+
             }
+
         }
 
         private void CalcularTotales()
@@ -178,6 +195,11 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                     item.TipoPrecio = item.TipoPrecio.Substring(0, 2);
                 }
 
+                foreach (var adicional in doc.DatoAdicionales)
+                {
+                    adicional.Codigo = adicional.Codigo.Substring(0, 4);
+                }
+
                 var response = await proxy.PostAsJsonAsync("api/invoice", doc);
                 RutaArchivo = await response.Content.ReadAsAsync<string>();
                 IdDocumento = doc.IdDocumento;
@@ -192,6 +214,13 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             {
                 Cursor.Current = Cursors.Default;
             }
+        }
+
+        private void btnCalcDetraccion_Click(object sender, EventArgs e)
+        {
+            _documento.MontoDetraccion = _documento.Gravadas * _documento.CalculoDetraccion;
+
+            documentoElectronicoBindingSource.ResetBindings(false);
         }
     }
 }
