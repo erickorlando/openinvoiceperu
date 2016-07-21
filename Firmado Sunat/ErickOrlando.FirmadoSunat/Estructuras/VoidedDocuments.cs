@@ -4,7 +4,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace ErickOrlando.FirmadoSunat.Estructuras
+namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 {
     public class VoidedDocuments : IXmlSerializable
     {

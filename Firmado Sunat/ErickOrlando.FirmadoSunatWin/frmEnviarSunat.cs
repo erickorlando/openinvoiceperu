@@ -5,21 +5,54 @@ using System.ServiceModel;
 using System.Speech.Synthesis;
 using System.Text;
 using System.Windows.Forms;
+using System.Xml;
 using System.Xml.Linq;
-using ErickOrlando.FirmadoSunat;
-using ErickOrlando.FirmadoSunat.Estructuras;
-using ErickOrlando.FirmadoSunatWin.Properties;
 using Ionic.Zip;
+using OpenInvoicePeru.FirmadoSunat;
+using OpenInvoicePeru.FirmadoSunat.Estructuras;
+using OpenInvoicePeru.FirmadoSunat.Models;
+using OpenInvoicePeru.FirmadoSunatWin.Properties;
 
-namespace ErickOrlando.FirmadoSunatWin
+namespace OpenInvoicePeru.FirmadoSunatWin
 {
     public partial class FrmEnviarSunat : Form
     {
+        private FrmDocumento _frmDocumento;
         public FrmEnviarSunat()
         {
             InitializeComponent();
 
-            Load += (s, e) => cboTipoDoc.SelectedIndex = 0;
+            Load += (s, e) =>
+            {
+
+                try
+                {
+                    Cursor.Current = Cursors.WaitCursor;
+
+                    cboTipoDoc.SelectedIndex = 0;
+                    cboUrlServicio.DisplayMember = "Item1";
+                    cboUrlServicio.ValueMember = "Item2";
+                    // Cargamos las URL provistas por el archivo de Texto.
+                    var lineas = File.ReadAllLines("DireccionesSunat.txt");
+                    foreach (var linea in lineas)
+                    {
+                        var valores = linea.Split('|');
+                        var servicio = new Tuple<string, string>(valores.First(), valores.Last());
+
+                        cboUrlServicio.Items.Add(servicio);
+                    }
+
+                    cboUrlServicio.SelectedIndex = 0;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                finally
+                {
+                    Cursor.Current = Cursors.Default;
+                }
+            };
         }
 
         private void btnBrowse_Click(object sender, EventArgs e)
@@ -89,8 +122,15 @@ namespace ErickOrlando.FirmadoSunatWin
                 // Validacion extra cuando sea un documento de resumen.
                 if (rbResumen.Checked) serializar.TipoDocumento = 0;
 
-                using (var conexion = new ConexionSunat(txtNroRuc.Text, txtUsuarioSol.Text,
-                    txtClaveSol.Text, rbRetenciones.Checked ? "ServicioSunatRetenciones" : string.Empty))
+                var param = new ConexionSunat.Parametros
+                {
+                    EndPointUrl = ValorSeleccionado(),
+                    Retencion = rbRetenciones.Checked,
+                    Ruc = txtNroRuc.Text,
+                    UserName = txtUsuarioSol.Text,
+                    Password = txtClaveSol.Text
+                };
+                using (var conexion = new ConexionSunat(param))
                 {
                     var byteArray = File.ReadAllBytes(txtSource.Text);
 
@@ -151,42 +191,47 @@ namespace ErickOrlando.FirmadoSunatWin
                             // Añadimos la respuesta del Servicio.
                             sb.AppendLine(Resources.procesoCorrecto);
 
-                            // Extraemos el XML contenido en el archivo de respuesta como un XML.
-                            var rutaArchivoXmlRespuesta = rutaArchivo.Replace(".zip", ".xml");
                             // Procedemos a desempaquetar el archivo y leer el contenido de la respuesta SUNAT.
                             using (var streamZip = ZipFile.Read(File.Open(rutaArchivo,
                                 FileMode.Open,
                                 FileAccess.ReadWrite)))
                             {
-                                // Nos aseguramos de que el ZIP contiene al menos un elemento.
-                                if (streamZip.Entries.Any())
+                                foreach (var entry in streamZip.Entries)
                                 {
-                                    if (rbRetenciones.Checked)
-                                        streamZip.Entries.Last()
-                                        .Extract(".", ExtractExistingFileAction.OverwriteSilently);
-                                    else
-                                        streamZip.Entries.First()
-                                            .Extract(".", ExtractExistingFileAction.OverwriteSilently);
+                                    if (!entry.FileName.EndsWith(".xml")) continue;
+                                    using (var ms = new MemoryStream())
+                                    {
+                                        entry.Extract(ms);
+                                        ms.Position = 0;
+                                        var responseReader = new StreamReader(ms);
+                                        var responseString = responseReader.ReadToEnd();
+                                        try
+                                        {
+                                            var xmlDoc = new XmlDocument();
+                                            xmlDoc.LoadXml(responseString);
+
+                                            var xmlnsManager = new XmlNamespaceManager(xmlDoc.NameTable);
+
+                                            xmlnsManager.AddNamespace("ar", EspacioNombres.ar);
+                                            xmlnsManager.AddNamespace("cac",EspacioNombres.cac);
+                                            xmlnsManager.AddNamespace("cbc",EspacioNombres.cbc);
+                                            
+                                            var responseCode = xmlDoc.SelectSingleNode(EspacioNombres.nodoResponseCode,
+                                                xmlnsManager)?.InnerText;
+                                            var description = xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
+                                                xmlnsManager)?.InnerText;
+
+                                            sb.AppendFormat("Código:{0}\n Descripción:{1}", responseCode, description);
+
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            sb.AppendLine(ex.Message);
+                                        }
+                                    }
                                 }
                             }
-                            // Como ya lo tenemos extraido, leemos el contenido de dicho archivo.
-                            var xDoc = XDocument.Parse(File.ReadAllText(rutaArchivoXmlRespuesta));
-
-                            var respuesta = xDoc.Descendants(XName.Get("DocumentResponse", EspacioNombres.cac))
-                                .Descendants(XName.Get("Response", EspacioNombres.cac))
-                                .Descendants().ToList();
-
-                            if (respuesta.Any())
-                            {
-                                // La respuesta se compone de 3 valores
-                                // cbc:ReferenceID
-                                // cbc:ResponseCode
-                                // cbc:Description
-                                // Obtendremos unicamente la Descripción (la última).
-                                sb.AppendLine(string.Format("Respuesta de SUNAT a las {0}", DateTime.Now));
-                                sb.AppendLine(((XText)respuesta.Nodes().Last()).Value);
-                            }
-
+                          
                             txtResult.Text = sb.ToString();
                             sb.Length = 0; // Limpiamos memoria del StringBuilder.
                         }
@@ -195,8 +240,8 @@ namespace ErickOrlando.FirmadoSunatWin
                     }
 
                 }
-
-                Hablar();
+                if (chkVoz.Checked)
+                    Hablar();
             }
             catch (FaultException exSer)
             {
@@ -210,15 +255,6 @@ namespace ErickOrlando.FirmadoSunatWin
             {
                 Cursor = Cursors.Default;
             }
-        }
-
-        private void Hablar()
-        {
-            if (string.IsNullOrEmpty(txtResult.Text)) return;
-            var synth = new SpeechSynthesizer();
-
-            synth.SetOutputToDefaultAudioDevice();
-            synth.Speak(txtResult.Text);
         }
 
         private void btnBrowseCert_Click(object sender, EventArgs e)
@@ -251,9 +287,15 @@ namespace ErickOrlando.FirmadoSunatWin
                     if (frm.ShowDialog() != DialogResult.OK) return;
                     if (string.IsNullOrEmpty(frm.txtNroTicket.Text)) return;
 
-
-                    using (var conexion = new ConexionSunat(txtNroRuc.Text, txtUsuarioSol.Text,
-                        txtClaveSol.Text, rbRetenciones.Checked ? "ServicioSunatRetenciones" : string.Empty))
+                    var param = new ConexionSunat.Parametros
+                    {
+                        EndPointUrl = ValorSeleccionado(),
+                        Retencion = rbRetenciones.Checked,
+                        Ruc = txtNroRuc.Text,
+                        UserName = txtUsuarioSol.Text,
+                        Password = txtClaveSol.Text
+                    };
+                    using (var conexion = new ConexionSunat(param))
                     {
                         var resultado = conexion.ObtenerEstado(frm.txtNroTicket.Text);
 
@@ -323,6 +365,58 @@ namespace ErickOrlando.FirmadoSunatWin
             {
                 txtResult.Text = ex.Message;
             }
+        }
+
+        private void btnGenerar_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+                if (_frmDocumento == null)
+                {
+                    if (string.IsNullOrEmpty(txtNroRuc.Text))
+                        _frmDocumento = new FrmDocumento();
+                    else
+                    {
+                        var documento = new DocumentoElectronico
+                        {
+                            Emisor = { NroDocumento = txtNroRuc.Text },
+                            FechaEmision = DateTime.Today.ToShortDateString()
+                        };
+                        _frmDocumento = new FrmDocumento(documento);
+                    }
+                }
+                var rpta = _frmDocumento.ShowDialog(this);
+
+                if (rpta != DialogResult.OK) return;
+
+                txtSource.Text = _frmDocumento.RutaArchivo;
+                txtSerieCorrelativo.Text = _frmDocumento.IdDocumento;
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+        }
+
+        private void Hablar()
+        {
+            if (string.IsNullOrEmpty(txtResult.Text)) return;
+            var synth = new SpeechSynthesizer();
+
+            synth.SetOutputToDefaultAudioDevice();
+            synth.SpeakAsync(txtResult.Text);
+        }
+
+        private string ValorSeleccionado()
+        {
+            var tupla = cboUrlServicio.SelectedItem as Tuple<string, string>;
+            return tupla == null ? string.Empty : tupla.Item2;
         }
     }
 }

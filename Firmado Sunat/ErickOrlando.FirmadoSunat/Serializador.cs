@@ -6,10 +6,10 @@ using System.Security.Cryptography.Xml;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
-using ErickOrlando.FirmadoSunat.Estructuras;
 using Ionic.Zip;
+using OpenInvoicePeru.FirmadoSunat.Estructuras;
 
-namespace ErickOrlando.FirmadoSunat
+namespace OpenInvoicePeru.FirmadoSunat
 {
     public class Serializador
     {

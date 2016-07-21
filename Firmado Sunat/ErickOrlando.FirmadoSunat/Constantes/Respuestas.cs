@@ -1,4 +1,4 @@
-﻿namespace ErickOrlando.FirmadoSunat.Constantes
+﻿namespace OpenInvoicePeru.FirmadoSunat.Constantes
 {
     public static class ErrorGenerico
     {

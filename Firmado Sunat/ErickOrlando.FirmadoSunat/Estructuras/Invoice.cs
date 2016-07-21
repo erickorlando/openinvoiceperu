@@ -4,7 +4,7 @@ using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
 
-namespace ErickOrlando.FirmadoSunat.Estructuras
+namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 {
     [Serializable]
     public class Invoice : IXmlSerializable
@@ -96,8 +96,8 @@ namespace ErickOrlando.FirmadoSunat.Estructuras
                         }
                         if (additionalMonetaryTotal.Percent > 0)
                         {
-                            writer.WriteElementString("sac:Percent",
-                                additionalMonetaryTotal.Percent.ToString("#%"));
+                            writer.WriteElementString("cbc:Percent",
+                                additionalMonetaryTotal.Percent.ToString(Constantes.Constantes.FormatoNumerico));
                         }
                         #endregion
 
@@ -233,7 +233,8 @@ namespace ErickOrlando.FirmadoSunat.Estructuras
             writer.WriteStartElement("cac:PostalAddress");
             writer.WriteElementString("cbc:ID", AccountingSupplierParty.Party.PostalAddress.ID);
             writer.WriteElementString("cbc:StreetName", AccountingSupplierParty.Party.PostalAddress.StreetName);
-            writer.WriteElementString("cbc:CitySubdivisionName", AccountingSupplierParty.Party.PostalAddress.CitySubdivisionName);
+            if (!string.IsNullOrEmpty(AccountingSupplierParty.Party.PostalAddress.CitySubdivisionName))
+                writer.WriteElementString("cbc:CitySubdivisionName", AccountingSupplierParty.Party.PostalAddress.CitySubdivisionName);
             writer.WriteElementString("cbc:CityName", AccountingSupplierParty.Party.PostalAddress.CityName);
             writer.WriteElementString("cbc:CountrySubentity", AccountingSupplierParty.Party.PostalAddress.CountrySubentity);
             writer.WriteElementString("cbc:District", AccountingSupplierParty.Party.PostalAddress.District);

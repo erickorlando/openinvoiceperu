@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ErickOrlando.FirmadoSunatWin
+namespace OpenInvoicePeru.FirmadoSunatWin
 {
     static class Program
     {

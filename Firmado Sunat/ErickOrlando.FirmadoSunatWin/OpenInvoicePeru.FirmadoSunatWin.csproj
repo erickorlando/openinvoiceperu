@@ -7,8 +7,8 @@
     <ProjectGuid>{B837B42F-7123-432A-BC65-79E9DBE475A2}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ErickOrlando.FirmadoSunatWin</RootNamespace>
-    <AssemblyName>FirmadoSunatWin</AssemblyName>
+    <RootNamespace>OpenInvoicePeru.FirmadoSunatWin</RootNamespace>
+    <AssemblyName>OpenInvoicePeru</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>publicar\</PublishUrl>
@@ -63,10 +63,29 @@
       <HintPath>..\packages\DotNetZip.1.9.8\lib\net20\Ionic.Zip.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Speech" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -78,6 +97,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FrmDatosAdicionales.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDatosAdicionales.Designer.cs">
+      <DependentUpon>FrmDatosAdicionales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDetalleDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDetalleDocumento.Designer.cs">
+      <DependentUpon>FrmDetalleDocumento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmDocumento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDocumento.Designer.cs">
+      <DependentUpon>FrmDocumento.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEnviarSunat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,6 +129,15 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FrmDatosAdicionales.resx">
+      <DependentUpon>FrmDatosAdicionales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDetalleDocumento.resx">
+      <DependentUpon>FrmDetalleDocumento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmDocumento.resx">
+      <DependentUpon>FrmDocumento.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEnviarSunat.resx">
       <DependentUpon>FrmEnviarSunat.cs</DependentUpon>
     </EmbeddedResource>
@@ -108,74 +154,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <None Include="DocumentosEjemplo\20101295673-01-FF11-01.zip">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\CCTS_CCT_SchemaModule-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\CodeList_CurrencyCode_ISO_7_04.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\CodeList_LanguageCode_ISO_7_04.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\CodeList_MIMEMediaTypeCode_IANA_7_04.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\CodeList_UnitCode_UNECE_7_04.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-CommonAggregateComponents-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-CommonBasicComponents-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-CommonExtensionComponents-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-CoreComponentParameters-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-CreditNote-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-DebitNote-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-ExtensionContentDatatype-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBL-QualifiedDatatypes-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBLPE-Invoice-1.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UBLPE-SunatAggregateComponents-1.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-    <None Include="DocumentosEjemplo\common\UnqualifiedDataTypeSchemaModule-2.0.xsd">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.Contribuyente.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DatoAdicional.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DetalleDocumento.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DocumentoElectronico.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -190,39 +173,22 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ErickOrlando.FirmadoSunat\ErickOrlando.FirmadoSunat.csproj">
+    <ProjectReference Include="..\ErickOrlando.FirmadoSunat\OpenInvoicePeru.FirmadoSunat.csproj">
       <Project>{1cfd1d28-d342-413d-a6e1-7616cb9708e2}</Project>
-      <Name>ErickOrlando.FirmadoSunat</Name>
+      <Name>OpenInvoicePeru.FirmadoSunat</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="code.ico" />
-    <Content Include="DocumentosEjemplo\BoletaB11.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    <Content Include="DireccionesSunat.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="DocumentosEjemplo\BoletaB12.xml" />
-    <Content Include="DocumentosEjemplo\BoletaB13.xml" />
-    <Content Include="DocumentosEjemplo\BoletaB14.xml" />
-    <Content Include="DocumentosEjemplo\ComunicacionBaja.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DocumentosEjemplo\EjemploRetencion.xml" />
-    <Content Include="DocumentosEjemplo\FacturaF11.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DocumentosEjemplo\FacturaF12.xml" />
-    <Content Include="DocumentosEjemplo\FacturaF13.xml" />
-    <Content Include="DocumentosEjemplo\FacturaF14.xml" />
-    <Content Include="DocumentosEjemplo\FacturaGuia.xml" />
-    <Content Include="DocumentosEjemplo\NotaCreditoF11.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DocumentosEjemplo\NotaDebitoF11.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="DocumentosEjemplo\ResumenDiario.xml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="Resources\iconcopy.png" />
+    <None Include="Resources\iconxml.png" />
+    <None Include="Resources\delete.png" />
+    <None Include="Resources\new.png" />
+    <None Include="Resources\cancel.png" />
+    <None Include="Resources\ok.png" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.5">

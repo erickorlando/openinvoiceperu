@@ -7,8 +7,8 @@
     <ProjectGuid>{1CFD1D28-D342-413D-A6E1-7616CB9708E2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ErickOrlando.FirmadoSunat</RootNamespace>
-    <AssemblyName>ErickOrlando.FirmadoSunat</AssemblyName>
+    <RootNamespace>OpenInvoicePeru.FirmadoSunat</RootNamespace>
+    <AssemblyName>OpenInvoicePeru.FirmadoSunat</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -34,6 +34,7 @@
       <HintPath>..\packages\DotNetZip.1.9.8\lib\net20\Ionic.Zip.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="Microsoft.Web.Services3, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Web.Services3.3.0.0.0\lib\net20\Microsoft.Web.Services3.dll</HintPath>
       <Private>True</Private>
@@ -103,6 +104,11 @@
     <Compile Include="Estructuras\UBLExtensions.cs" />
     <Compile Include="Estructuras\VoidedDocuments.cs" />
     <Compile Include="Estructuras\VoidedDocumentsLine.cs" />
+    <Compile Include="Generador.cs" />
+    <Compile Include="Models\Contribuyente.cs" />
+    <Compile Include="Models\DatoAdicional.cs" />
+    <Compile Include="Models\DetalleDocumento.cs" />
+    <Compile Include="Models\DocumentoElectronico.cs" />
     <Compile Include="PasswordDigestBehavior.cs" />
     <Compile Include="PasswordDigestMessageInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,6 +118,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Utiles.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
@@ -121,21 +128,6 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\Sunat\billService1.wsdl" />
-    <None Include="Service References\Sunat\ErickOrlando.FirmadoSunat.Sunat.getStatusResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\Sunat\ErickOrlando.FirmadoSunat.Sunat.sendBillResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\Sunat\ErickOrlando.FirmadoSunat.Sunat.sendPackResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\Sunat\ErickOrlando.FirmadoSunat.Sunat.sendSummaryResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\Sunat\ErickOrlando.FirmadoSunat.Sunat.statusResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -150,6 +142,21 @@
     <None Include="Service References\Sunat\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Service References\Sunat\OpenInvoicePeru.FirmadoSunat.Sunat.getStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Sunat\OpenInvoicePeru.FirmadoSunat.Sunat.sendBillResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Sunat\OpenInvoicePeru.FirmadoSunat.Sunat.sendPackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Sunat\OpenInvoicePeru.FirmadoSunat.Sunat.sendSummaryResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Sunat\OpenInvoicePeru.FirmadoSunat.Sunat.statusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="Service References\Sunat\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>

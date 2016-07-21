@@ -1,8 +1,8 @@
 ﻿// ReSharper disable InconsistentNaming
 
-namespace ErickOrlando.FirmadoSunat.Estructuras
+namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 {
-    public class EspacioNombres
+    public static class EspacioNombres
     {
         public const string xmlnsRetention = "urn:sunat:names:specification:ubl:peru:schema:xsd:Retention-1";
         public const string xmlnsInvoice = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
@@ -19,6 +19,15 @@ namespace ErickOrlando.FirmadoSunat.Estructuras
         public const string qdt = "urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2";
         public const string ds = "http://www.w3.org/2000/09/xmldsig#";
         public const string xsi = "http://www.w3.org/2001/XMLSchema-instance";
+        public const string ar = "urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2";
+
+        public const string nodoId = "/ar:ApplicationResponse/cbc:ID";
+        public const string nodoResponseDate = "/ar:ApplicationResponse/cbc:ResponseDate";
+        public const string nodoResponseTime = "ar:ApplicationResponse/cbc:ResponseTime";
+        public const string nodoResponseCode =
+            "/ar:ApplicationResponse/cac:DocumentResponse/cac:Response/cbc:ResponseCode";
+        public const string nodoDescription =
+            "/ar:ApplicationResponse/cac:DocumentResponse/cac:Response/cbc:Description";
 
     }
 }
