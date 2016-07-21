@@ -14,7 +14,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
         public SignatureCac Signature { get; set; }
         public AccountingSupplierParty AccountingSupplierParty { get; set; }
         public string InvoiceTypeCode { get; set; }
-        public string ID { get; set; }
+        public string Id { get; set; }
         public AccountingSupplierParty AccountingCustomerParty { get; set; }
         public List<InvoiceLine> InvoiceLines { get; set; }
         public string DocumentCurrencyCode { get; set; }
@@ -76,7 +76,6 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
             writer.WriteStartElement("sac:AdditionalInformation");
             {
 
-
                 #region AdditionalMonetaryTotal
 
                 {
@@ -113,7 +112,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
                     foreach (var additionalProperty in ext2.AdditionalProperties)
                     {
                         writer.WriteStartElement("sac:AdditionalProperty");
-                        writer.WriteElementString("cbc:ID", additionalProperty.ID.ToString());
+                        writer.WriteElementString("cbc:ID", additionalProperty.ID);
 
                         #region Value
 
@@ -127,6 +126,110 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 
                 #endregion
 
+                #region SUNATEmbededDespatchAdvice
+                // Para el caso de Factura-Guia.
+                if (!string.IsNullOrEmpty(ext2.SunatEmbededDespatchAdvice.DeliveryAddress.ID))
+                {
+                    writer.WriteStartElement("sac:SUNATEmbededDespatchAdvice");
+                    {
+                        #region DeliveryAddress
+                        writer.WriteStartElement("cac:DeliveryAddress");
+                        {
+                            writer.WriteElementString("cbc:ID", ext2.SunatEmbededDespatchAdvice.DeliveryAddress.ID);
+                            writer.WriteElementString("cbc:StreetName", ext2.SunatEmbededDespatchAdvice.DeliveryAddress.StreetName);
+                            if (!string.IsNullOrEmpty(ext2.SunatEmbededDespatchAdvice.DeliveryAddress.CitySubdivisionName))
+                                writer.WriteElementString("cbc:CitySubdivisionName", ext2.SunatEmbededDespatchAdvice.DeliveryAddress.CitySubdivisionName);
+                            writer.WriteElementString("cbc:CityName", ext2.SunatEmbededDespatchAdvice.DeliveryAddress.CityName);
+                            writer.WriteElementString("cbc:CountrySubentity", ext2.SunatEmbededDespatchAdvice.DeliveryAddress.CountrySubentity);
+                            writer.WriteElementString("cbc:District", ext2.SunatEmbededDespatchAdvice.DeliveryAddress.District);
+                            writer.WriteStartElement("cac:Country");
+                            {
+                                writer.WriteElementString("cbc:IdentificationCode", ext2.SunatEmbededDespatchAdvice.DeliveryAddress.Country.IdentificationCode);
+                            }
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                        #endregion
+
+                        #region OriginAddress
+                        writer.WriteStartElement("cac:OriginAddress");
+                        {
+                            writer.WriteElementString("cbc:ID", ext2.SunatEmbededDespatchAdvice.OriginAddress.ID);
+                            writer.WriteElementString("cbc:StreetName", ext2.SunatEmbededDespatchAdvice.OriginAddress.StreetName);
+                            if (!string.IsNullOrEmpty(ext2.SunatEmbededDespatchAdvice.OriginAddress.CitySubdivisionName))
+                                writer.WriteElementString("cbc:CitySubdivisionName", ext2.SunatEmbededDespatchAdvice.OriginAddress.CitySubdivisionName);
+                            writer.WriteElementString("cbc:CityName", ext2.SunatEmbededDespatchAdvice.OriginAddress.CityName);
+                            writer.WriteElementString("cbc:CountrySubentity", ext2.SunatEmbededDespatchAdvice.OriginAddress.CountrySubentity);
+                            writer.WriteElementString("cbc:District", ext2.SunatEmbededDespatchAdvice.OriginAddress.District);
+                            writer.WriteStartElement("cac:Country");
+                            {
+                                writer.WriteElementString("cbc:IdentificationCode", ext2.SunatEmbededDespatchAdvice.OriginAddress.Country.IdentificationCode);
+                            }
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                        #endregion
+
+                        #region SUNATCarrierParty
+                        writer.WriteStartElement("sac:SUNATCarrierParty");
+                        {
+                            writer.WriteElementString("cbc:CustomerAssignedAccountID", ext2.SunatEmbededDespatchAdvice.SunatCarrierParty.CustomerAssignedAccountID);
+                            writer.WriteElementString("cbc:AdditionalAccountID", ext2.SunatEmbededDespatchAdvice.SunatCarrierParty.AdditionalAccountID);
+                            writer.WriteStartElement("cac:Party");
+                            {
+                                writer.WriteStartElement("cac:PartyLegalEntity");
+                                {
+                                    writer.WriteElementString("cbc:RegistrationName", ext2.SunatEmbededDespatchAdvice.SunatCarrierParty.Party.PartyLegalEntity.RegistrationName);
+                                }
+                                writer.WriteEndElement();
+                            }
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                        #endregion
+
+                        #region DriverParty
+                        writer.WriteStartElement("sac:DriverParty");
+                        {
+                            writer.WriteStartElement("cac:Party");
+                            {
+                                writer.WriteStartElement("cac:PartyIdentification");
+                                {
+                                    writer.WriteElementString("cbc:ID", ext2.SunatEmbededDespatchAdvice.DriverParty.PartyIdentification.ID.value);
+                                }
+                                writer.WriteEndElement();
+                            }
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                        #endregion
+
+                        #region SUNATRoadTransport
+                        writer.WriteStartElement("sac:SUNATRoadTransport");
+                        {
+                            writer.WriteElementString("cbc:LicensePlateID", ext2.SunatEmbededDespatchAdvice.SunatRoadTransport.LicensePlateId);
+                            writer.WriteElementString("cbc:TransportAuthorizationCode", ext2.SunatEmbededDespatchAdvice.SunatRoadTransport.TransportAuthorizationCode);
+                            writer.WriteElementString("cbc:BrandName", ext2.SunatEmbededDespatchAdvice.SunatRoadTransport.BrandName);
+                        }
+                        writer.WriteEndElement();
+                        #endregion
+
+                        writer.WriteElementString("cbc:TransportModeCode", ext2.SunatEmbededDespatchAdvice.TransportModeCode);
+
+                        #region GrossWeightMeasure
+                        writer.WriteStartElement("cbc:GrossWeightMeasure");
+                        {
+                            writer.WriteAttributeString("unitCode", ext2.SunatEmbededDespatchAdvice.GrossWeightMeasure.unitCode);
+                            writer.WriteValue(ext2.SunatEmbededDespatchAdvice.GrossWeightMeasure.Value.ToString(Constantes.Constantes.FormatoNumerico, Formato));
+                        }
+                        writer.WriteEndElement();
+                        #endregion
+                    }
+                    writer.WriteEndElement();
+                }
+                #endregion
+
+                #region SUNATTransaction
                 if (!string.IsNullOrEmpty(ext2.SunatTransaction.Id))
                 {
                     writer.WriteStartElement("sac:SUNATTransaction");
@@ -134,7 +237,8 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
                         writer.WriteElementString("cbc:ID", ext2.SunatTransaction.Id);
                     }
                     writer.WriteEndElement();
-                }
+                } 
+                #endregion
 
             }
             writer.WriteEndElement();
@@ -147,7 +251,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
             #endregion
 
             #region UBLExtension
-            var ext1 = UblExtensions.Extension1;
+
             writer.WriteStartElement("ext:UBLExtension");
             #region ExtensionContent
             writer.WriteStartElement("ext:ExtensionContent");
@@ -164,7 +268,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 
             writer.WriteElementString("cbc:UBLVersionID", UblVersionId);
             writer.WriteElementString("cbc:CustomizationID", CustomizationId);
-            writer.WriteElementString("cbc:ID", ID);
+            writer.WriteElementString("cbc:ID", Id);
             writer.WriteElementString("cbc:IssueDate", IssueDate.ToString("yyyy-MM-dd"));
             writer.WriteElementString("cbc:InvoiceTypeCode", InvoiceTypeCode);
             writer.WriteElementString("cbc:DocumentCurrencyCode", DocumentCurrencyCode);
@@ -213,7 +317,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 
             writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingSupplierParty.CustomerAssignedAccountID);
             writer.WriteElementString("cbc:AdditionalAccountID",
-                AccountingSupplierParty.AdditionalAccountID.ToString());
+                AccountingSupplierParty.AdditionalAccountID);
 
             #region Party
             writer.WriteStartElement("cac:Party");
@@ -272,7 +376,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 
             writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingCustomerParty.CustomerAssignedAccountID);
             writer.WriteElementString("cbc:AdditionalAccountID",
-                AccountingCustomerParty.AdditionalAccountID.ToString());
+                AccountingCustomerParty.AdditionalAccountID);
 
             #region Party
             writer.WriteStartElement("cac:Party");
@@ -465,7 +569,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
                         #region TaxCategory
                         writer.WriteStartElement("cac:TaxCategory");
                         //writer.WriteElementString("cbc:ID", invoiceLine.TaxTotal.TaxSubtotal.TaxCategory.ID);
-                        writer.WriteElementString("cbc:TaxExemptionReasonCode", taxTotal.TaxSubtotal.TaxCategory.TaxExemptionReasonCode.ToString());
+                        writer.WriteElementString("cbc:TaxExemptionReasonCode", taxTotal.TaxSubtotal.TaxCategory.TaxExemptionReasonCode);
                         if (!string.IsNullOrEmpty(taxTotal.TaxSubtotal.TaxCategory.TierRange))
                             writer.WriteElementString("cbc:TierRange", taxTotal.TaxSubtotal.TaxCategory.TierRange);
 

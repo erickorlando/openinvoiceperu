@@ -132,7 +132,7 @@
             // 
             // toolOk
             // 
-            this.toolOk.Image = global::OpenInvoicePeru.FirmadoSunatWin.Properties.Resources.ok;
+            this.toolOk.Image = global::OpenInvoicePeru.FirmadoSunatWin.Properties.Resources.aceptar;
             this.toolOk.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolOk.Name = "toolOk";
             this.toolOk.Size = new System.Drawing.Size(68, 22);
@@ -141,7 +141,7 @@
             // 
             // toolCancel
             // 
-            this.toolCancel.Image = global::OpenInvoicePeru.FirmadoSunatWin.Properties.Resources.cancel;
+            this.toolCancel.Image = global::OpenInvoicePeru.FirmadoSunatWin.Properties.Resources.cancelar;
             this.toolCancel.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolCancel.Name = "toolCancel";
             this.toolCancel.Size = new System.Drawing.Size(73, 22);

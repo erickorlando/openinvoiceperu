@@ -200,6 +200,13 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                     adicional.Codigo = adicional.Codigo.Substring(0, 4);
                 }
 
+                if (doc.DatosGuiaTransportista != null)
+                {
+                    doc.DatosGuiaTransportista.ModoTransporte = doc.DatosGuiaTransportista.ModoTransporte.Substring(0, 2);
+                    doc.DatosGuiaTransportista.TipoDocTransportista =
+                        doc.DatosGuiaTransportista.TipoDocTransportista.Substring(0, 1);
+                }
+
                 var response = await proxy.PostAsJsonAsync("api/invoice", doc);
                 RutaArchivo = await response.Content.ReadAsAsync<string>();
                 IdDocumento = doc.IdDocumento;
@@ -221,6 +228,33 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             _documento.MontoDetraccion = _documento.Gravadas * _documento.CalculoDetraccion;
 
             documentoElectronicoBindingSource.ResetBindings(false);
+        }
+
+        private void btnGuia_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                var datosGuia = _documento.DatosGuiaTransportista ?? new DatosGuia();
+
+                using (var frm = new FrmDatosGuia(datosGuia))
+                {
+                    if (frm.ShowDialog(this) != DialogResult.OK) return;
+
+                    _documento.DatosGuiaTransportista = datosGuia;
+                    documentoElectronicoBindingSource.ResetBindings(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
         }
     }
 }

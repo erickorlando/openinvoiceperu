@@ -45,7 +45,7 @@ namespace OpenInvoicePeru.FirmadoSunat
         public string GenerarXmlFisico<T>(T request, string nombreArchivo)
         {
             var serializer = new XmlSerializer(typeof(T));
-            var filename = string.Format("{0}\\{1}.xml", Directory.GetCurrentDirectory(), nombreArchivo);
+            var filename = $"{Directory.GetCurrentDirectory()}\\{nombreArchivo}.xml";
 
             using (var writer = new StreamWriter(filename))
             {
@@ -92,9 +92,9 @@ namespace OpenInvoicePeru.FirmadoSunat
             var memDestino = new MemoryStream();
             string resultado;
 
-            using (var fileZip = new ZipFile(string.Format("{0}.zip", nombreArchivo)))
+            using (var fileZip = new ZipFile($"{nombreArchivo}.zip"))
             {
-                fileZip.AddEntry(string.Format("{0}.xml", nombreArchivo), memOrigen);
+                fileZip.AddEntry($"{nombreArchivo}.xml", memOrigen);
                 fileZip.Save(memDestino);
                 resultado = Convert.ToBase64String(memDestino.ToArray());
             }

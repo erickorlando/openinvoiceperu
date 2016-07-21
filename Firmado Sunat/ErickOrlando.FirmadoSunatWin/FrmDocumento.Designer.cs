@@ -141,6 +141,7 @@
             this.datoAdicionalesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.montoDetraccionTextBox = new System.Windows.Forms.TextBox();
             this.btnCalcDetraccion = new System.Windows.Forms.Button();
+            this.btnGuia = new System.Windows.Forms.Button();
             montoEnLetrasLabel = new System.Windows.Forms.Label();
             gravadasLabel = new System.Windows.Forms.Label();
             exoneradasLabel = new System.Windows.Forms.Label();
@@ -326,6 +327,15 @@
             montoPercepcionLabel.Size = new System.Drawing.Size(97, 13);
             montoPercepcionLabel.TabIndex = 43;
             montoPercepcionLabel.Text = "Monto Percepción:";
+            // 
+            // montoDetraccionLabel
+            // 
+            montoDetraccionLabel.AutoSize = true;
+            montoDetraccionLabel.Location = new System.Drawing.Point(539, 287);
+            montoDetraccionLabel.Name = "montoDetraccionLabel";
+            montoDetraccionLabel.Size = new System.Drawing.Size(95, 13);
+            montoDetraccionLabel.TabIndex = 45;
+            montoDetraccionLabel.Text = "Monto Detracción:";
             // 
             // label1
             // 
@@ -1169,15 +1179,6 @@
             this.datoAdicionalesBindingSource.DataMember = "DatoAdicionales";
             this.datoAdicionalesBindingSource.DataSource = this.documentoElectronicoBindingSource;
             // 
-            // montoDetraccionLabel
-            // 
-            montoDetraccionLabel.AutoSize = true;
-            montoDetraccionLabel.Location = new System.Drawing.Point(539, 287);
-            montoDetraccionLabel.Name = "montoDetraccionLabel";
-            montoDetraccionLabel.Size = new System.Drawing.Size(95, 13);
-            montoDetraccionLabel.TabIndex = 45;
-            montoDetraccionLabel.Text = "Monto Detracción:";
-            // 
             // montoDetraccionTextBox
             // 
             this.montoDetraccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoDetraccion", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
@@ -1196,11 +1197,22 @@
             this.btnCalcDetraccion.UseVisualStyleBackColor = true;
             this.btnCalcDetraccion.Click += new System.EventHandler(this.btnCalcDetraccion_Click);
             // 
+            // btnGuia
+            // 
+            this.btnGuia.Location = new System.Drawing.Point(385, 312);
+            this.btnGuia.Name = "btnGuia";
+            this.btnGuia.Size = new System.Drawing.Size(149, 23);
+            this.btnGuia.TabIndex = 48;
+            this.btnGuia.Text = "&Guia de Rem. Transportista";
+            this.btnGuia.UseVisualStyleBackColor = true;
+            this.btnGuia.Click += new System.EventHandler(this.btnGuia_Click);
+            // 
             // FrmDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1064, 670);
+            this.Controls.Add(this.btnGuia);
             this.Controls.Add(this.btnCalcDetraccion);
             this.Controls.Add(montoDetraccionLabel);
             this.Controls.Add(this.montoDetraccionTextBox);
@@ -1373,5 +1385,6 @@
         private System.Windows.Forms.BindingSource datoAdicionalesBindingSource;
         private System.Windows.Forms.TextBox montoDetraccionTextBox;
         private System.Windows.Forms.Button btnCalcDetraccion;
+        private System.Windows.Forms.Button btnGuia;
     }
 }

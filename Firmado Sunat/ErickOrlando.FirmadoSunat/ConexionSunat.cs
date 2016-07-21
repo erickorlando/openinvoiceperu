@@ -68,7 +68,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                 {
                     var posicion = msg.IndexOf(faultCode, StringComparison.Ordinal);
                     var codigoError = msg.Substring(posicion + faultCode.Length, 4);
-                    msg = string.Format("El Código de Error es {0}", codigoError);
+                    msg = $"El Código de Error es {codigoError}";
                 }
                 response = new Tuple<string, bool>(msg, false);
             }
@@ -108,7 +108,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                 {
                     var posicion = msg.IndexOf(faultCode, StringComparison.Ordinal);
                     var codigoError = msg.Substring(posicion + faultCode.Length, 4);
-                    msg = string.Format("El Código de Error es {0}", codigoError);
+                    msg = $"El Código de Error es {codigoError}";
                 }
                 response = new Tuple<string, bool>(msg, false);
             }
@@ -149,7 +149,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                 {
                     var posicion = msg.IndexOf(faultCode, StringComparison.Ordinal);
                     var codigoError = msg.Substring(posicion + faultCode.Length, 4);
-                    msg = string.Format("El Código de Error es {0}", codigoError);
+                    msg = $"El Código de Error es {codigoError}";
                 }
                 response = new Tuple<string, bool>(msg, false);
             }

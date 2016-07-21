@@ -70,7 +70,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                         }
                     }
                 },
-                ID = documento.IdDocumento,
+                Id = documento.IdDocumento,
                 IssueDate = DateTime.Parse(documento.FechaEmision),
                 InvoiceTypeCode = documento.TipoDocumento,
                 DocumentCurrencyCode = documento.Moneda,
@@ -95,7 +95,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                     {
                         ExternalReference = new ExternalReference
                         {
-                            URI = string.Format("{0}-{1}", documento.Emisor.NroDocumento, documento.IdDocumento)
+                            URI = $"{documento.Emisor.NroDocumento}-{documento.IdDocumento}"
                         }
                     }
                 },
@@ -252,7 +252,8 @@ namespace OpenInvoicePeru.FirmadoSunat
                 });
             }
             /* Tipo de Operación - Catalogo N° 17 */
-            if (!string.IsNullOrEmpty(documento.TipoOperacion))
+            if (!string.IsNullOrEmpty(documento.TipoOperacion)
+                && documento.DatosGuiaTransportista == null)
             {
                 invoice.UblExtensions.Extension2.ExtensionContent
                     .AdditionalInformation.SunatTransaction.Id = documento.TipoOperacion;
@@ -323,6 +324,75 @@ namespace OpenInvoicePeru.FirmadoSunat
                         },
                         Percent = documento.CalculoDetraccion *100
                     });
+            }
+
+            // Para datos de Guia de Remision Transportista.
+            if (documento.DatosGuiaTransportista != null)
+            {
+                invoice.UblExtensions.Extension2.ExtensionContent
+                    .AdditionalInformation.SunatEmbededDespatchAdvice = new SunatEmbededDespatchAdvice
+                    {
+                        DeliveryAddress = new PostalAddress
+                        {
+                            ID =  documento.DatosGuiaTransportista.DireccionDestino.Ubigeo,
+                            StreetName = documento.DatosGuiaTransportista.DireccionDestino.Direccion,
+                            CitySubdivisionName = documento.DatosGuiaTransportista.DireccionDestino.Urbanizacion,
+                            CityName = documento.DatosGuiaTransportista.DireccionDestino.Departamento,
+                            CountrySubentity = documento.DatosGuiaTransportista.DireccionDestino.Provincia,
+                            District = documento.DatosGuiaTransportista.DireccionDestino.Distrito,
+                            Country = new Country
+                            {
+                                IdentificationCode = "PE"
+                            }
+                        },
+                        OriginAddress = new PostalAddress
+                        {
+                            ID =  documento.DatosGuiaTransportista.DireccionOrigen.Ubigeo,
+                            StreetName = documento.DatosGuiaTransportista.DireccionOrigen.Direccion,
+                            CitySubdivisionName = documento.DatosGuiaTransportista.DireccionOrigen.Urbanizacion,
+                            CityName = documento.DatosGuiaTransportista.DireccionOrigen.Departamento,
+                            CountrySubentity = documento.DatosGuiaTransportista.DireccionOrigen.Provincia,
+                            District = documento.DatosGuiaTransportista.DireccionOrigen.Distrito,
+                            Country = new Country
+                            {
+                                IdentificationCode = "PE"
+                            }
+                        },
+                        SunatCarrierParty = new AccountingSupplierParty
+                        {
+                            CustomerAssignedAccountID = documento.DatosGuiaTransportista.RucTransportista,
+                            AdditionalAccountID = "06",
+                            Party = new Party
+                            {
+                                PartyLegalEntity = new PartyLegalEntity
+                                {
+                                    RegistrationName = documento.DatosGuiaTransportista.NombreTransportista
+                                }
+                            }
+                        },
+                        DriverParty = new AgentParty
+                        {
+                            PartyIdentification = new PartyIdentification
+                            {
+                                ID = new PartyIdentificationID
+                                {
+                                    value = documento.DatosGuiaTransportista.NroLicenciaConducir
+                                }
+                            }
+                        },
+                        SunatRoadTransport = new SunatRoadTransport
+                        {
+                            LicensePlateId = documento.DatosGuiaTransportista.PlacaVehiculo,
+                            TransportAuthorizationCode = documento.DatosGuiaTransportista.CodigoAutorizacion,
+                            BrandName = documento.DatosGuiaTransportista.MarcaVehiculo
+                        },
+                        TransportModeCode = documento.DatosGuiaTransportista.ModoTransporte,
+                        GrossWeightMeasure = new InvoicedQuantity
+                        {
+                            unitCode = documento.DatosGuiaTransportista.UnidadMedida,
+                            Value = documento.DatosGuiaTransportista.PesoBruto
+                        }
+                    };
             }
 
             foreach (var detalleDocumento in documento.Items)

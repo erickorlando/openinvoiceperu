@@ -8,19 +8,15 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
     {
         public List<AdditionalMonetaryTotal> AdditionalMonetaryTotals { get; set; }
         public List<AdditionalProperty> AdditionalProperties { get; set; }
-
-        public SunatTransaction SunatTransaction { get; set; }
+        public SunatEmbededDespatchAdvice SunatEmbededDespatchAdvice { get; set; }
+        public SunatTransaction SunatTransaction { get; private set; }
 
         public AdditionalInformation()
         {
             AdditionalMonetaryTotals = new List<AdditionalMonetaryTotal>();
             AdditionalProperties = new List<AdditionalProperty>();
+            SunatEmbededDespatchAdvice = new SunatEmbededDespatchAdvice();
             SunatTransaction = new SunatTransaction();
         }
-    }
-
-    public class SunatTransaction
-    {
-        public string Id { get; set; }
     }
 }

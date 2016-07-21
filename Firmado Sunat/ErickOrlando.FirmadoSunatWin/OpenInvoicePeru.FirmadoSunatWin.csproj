@@ -103,6 +103,12 @@
     <Compile Include="FrmDatosAdicionales.Designer.cs">
       <DependentUpon>FrmDatosAdicionales.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDatosGuia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDatosGuia.Designer.cs">
+      <DependentUpon>FrmDatosGuia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDetalleDocumento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -132,6 +138,9 @@
     <EmbeddedResource Include="FrmDatosAdicionales.resx">
       <DependentUpon>FrmDatosAdicionales.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDatosGuia.resx">
+      <DependentUpon>FrmDatosGuia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDetalleDocumento.resx">
       <DependentUpon>FrmDetalleDocumento.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,6 +166,7 @@
     <None Include="packages.config" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.Contribuyente.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DatoAdicional.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DatosGuia.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DetalleDocumento.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DocumentoElectronico.datasource" />
     <None Include="Properties\Settings.settings">

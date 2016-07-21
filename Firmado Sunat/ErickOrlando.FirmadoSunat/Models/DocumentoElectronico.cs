@@ -42,6 +42,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public List<DatoAdicional> DatoAdicionales { get; set; }
 
         public ObservableCollection<DetalleDocumento> Items { get; set; }
+        public DatosGuia DatosGuiaTransportista { get; set; }
 
         public DocumentoElectronico()
         {

@@ -1,4 +1,4 @@
-# OpenInvoicePeru v1.0.0.0718 #
+# OpenInvoicePeru v1.0.0.0721 #
 OpenInvoicePeru es un proyecto Open Source construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT.
 Permite la generacion de XML, empaquetado, envío y recepción de documentos electrónicos.
 
@@ -18,15 +18,12 @@ Actualmente se encuentra en versión Beta.
 El proyecto contiene tres ramas:
 
 - master (versión estable)
-- beta (versión para pruebas)
-- sqa (versión para Homologación) [pronto será eliminada]
+- beta (esta versión)
 
 ## Consideraciones ##
-El proyecto se ha desarrollado con VS2015 Update 3, pero usando como base el 
-.NET Framework 4.5, fácilmente se puede trabajar con VS2013 e inclusive VS2012.
-Se recomienda usar aun así [VS2015 Community Edition](http://visualstudio.com), es gratis.
+El proyecto se ha desarrollado con VS2015 Update 3, pero usando como base el .NET Framework 4.5.
+Se recomienda usar encarecidamente VS2015, la edición [Community Edition](https://www.visualstudio.com/downloads/download-visual-studio-vs), es gratis y mucho mejor que sus predecesores.
 
-Se ha modificado el proyecto para que tenga soporte total con C# 5.0 a pedido de muchos.
 Si quieres colaborar con tu granito de arena puedes hacer un Fork.
 
 Si tienes dudas escribeme a mi página de [Facebook](http://m.me/erickorlandoblog)

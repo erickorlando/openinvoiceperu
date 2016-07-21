@@ -94,8 +94,11 @@
     <Compile Include="Estructuras\SignatoryParty.cs" />
     <Compile Include="Estructuras\SignatureCac.cs" />
     <Compile Include="Estructuras\SummaryDocuments.cs" />
+    <Compile Include="Estructuras\SunatEmbededDespatchAdvice.cs" />
     <Compile Include="Estructuras\SUNATRetentionDocumentReference.cs" />
     <Compile Include="Estructuras\SUNATRetentionInformation.cs" />
+    <Compile Include="Estructuras\SunatRoadTransport.cs" />
+    <Compile Include="Estructuras\SunatTransaction.cs" />
     <Compile Include="Estructuras\TaxCategory.cs" />
     <Compile Include="Estructuras\TaxScheme.cs" />
     <Compile Include="Estructuras\TaxSubtotal.cs" />
@@ -107,6 +110,7 @@
     <Compile Include="Generador.cs" />
     <Compile Include="Models\Contribuyente.cs" />
     <Compile Include="Models\DatoAdicional.cs" />
+    <Compile Include="Models\DatosGuia.cs" />
     <Compile Include="Models\DetalleDocumento.cs" />
     <Compile Include="Models\DocumentoElectronico.cs" />
     <Compile Include="PasswordDigestBehavior.cs" />

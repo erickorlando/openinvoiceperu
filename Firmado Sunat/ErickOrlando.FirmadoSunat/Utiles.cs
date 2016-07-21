@@ -25,10 +25,10 @@ namespace OpenInvoicePeru.FirmadoSunat
         {
             // Verificamos que sea serializable antes de hacer la copia            
             if (!typeof(T).IsSerializable)
-                throw new ArgumentException(string.Format("La clase {0} no es serializable", typeof(T).ToString()));
+                throw new ArgumentException($"La clase {typeof(T)} no es serializable");
 
             // En caso de ser nulo el objeto, se devuelve tal cual
-            if (Object.ReferenceEquals(origen, null))
+            if (ReferenceEquals(origen, null))
                 return default(T);
 
             //Creamos un stream en memoria            
@@ -45,7 +45,6 @@ namespace OpenInvoicePeru.FirmadoSunat
                 }
                 catch (SerializationException ex)
                 { throw new ArgumentException(ex.Message, ex); }
-                catch { throw; }
             }
         }
     }
