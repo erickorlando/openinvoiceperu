@@ -48,6 +48,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public List<DocumentoRelacionado> Relacionados { get; set; }
         public ObservableCollection<DetalleDocumento> Items { get; set; }
         public DatosGuia DatosGuiaTransportista { get; set; }
+        public List<Discrepancia> Discrepancias { get; set; }
 
         public DocumentoElectronico()
         {
@@ -59,6 +60,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
             Items = new ObservableCollection<DetalleDocumento>();
             DatoAdicionales = new List<DatoAdicional>();
             Relacionados = new List<DocumentoRelacionado>();
+            Discrepancias = new List<Discrepancia>();
         }
 
         public object Clone()

@@ -115,6 +115,12 @@
     <Compile Include="FrmDetalleDocumento.Designer.cs">
       <DependentUpon>FrmDetalleDocumento.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDiscrepancia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDiscrepancia.Designer.cs">
+      <DependentUpon>FrmDiscrepancia.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDocumento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -150,6 +156,9 @@
     <EmbeddedResource Include="FrmDetalleDocumento.resx">
       <DependentUpon>FrmDetalleDocumento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDiscrepancia.resx">
+      <DependentUpon>FrmDiscrepancia.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDocumento.resx">
       <DependentUpon>FrmDocumento.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +186,7 @@
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DatoAdicional.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DatosGuia.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DetalleDocumento.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.Discrepancia.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DocumentoElectronico.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DocumentoRelacionado.datasource" />
     <None Include="Properties\Settings.settings">

@@ -311,7 +311,21 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                     doc.MonedaAnticipo = monedaAnticipoComboBox.Text;
                 }
 
-                var response = await proxy.PostAsJsonAsync("api/invoice", doc);
+                string metodoApi;
+                switch (_documento.TipoDocumento)
+                {
+                    case "07":
+                        metodoApi = "api/creditnote";
+                        break;
+                    case "08":
+                        metodoApi = "api/debitnote";
+                        break;
+                    default:
+                        metodoApi = "api/invoice";
+                        break;
+                }
+
+                var response = await proxy.PostAsJsonAsync(metodoApi, doc);
                 RutaArchivo = await response.Content.ReadAsAsync<string>();
                 IdDocumento = doc.IdDocumento;
 

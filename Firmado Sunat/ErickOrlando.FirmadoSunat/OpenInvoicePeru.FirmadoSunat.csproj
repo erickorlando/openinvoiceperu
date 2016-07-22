@@ -112,6 +112,7 @@
     <Compile Include="Models\DatoAdicional.cs" />
     <Compile Include="Models\DatosGuia.cs" />
     <Compile Include="Models\DetalleDocumento.cs" />
+    <Compile Include="Models\Discrepancia.cs" />
     <Compile Include="Models\DocumentoElectronico.cs" />
     <Compile Include="Models\DocumentoRelacionado.cs" />
     <Compile Include="PasswordDigestBehavior.cs" />
