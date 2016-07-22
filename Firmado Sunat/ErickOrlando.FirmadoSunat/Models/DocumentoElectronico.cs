@@ -39,6 +39,11 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public decimal MontoPercepcion { get; set; }
         public decimal MontoDetraccion { get; set; }
 
+        public string TipoDocAnticipo { get; set; }
+        public string DocAnticipo { get; set; }
+        public string MonedaAnticipo { get; set; }
+        public decimal MontoAnticipo { get; set; }
+
         public List<DatoAdicional> DatoAdicionales { get; set; }
 
         public ObservableCollection<DetalleDocumento> Items { get; set; }

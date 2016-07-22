@@ -299,6 +299,28 @@ namespace OpenInvoicePeru.FirmadoSunat
                         }
                     });
             }
+            if (documento.MontoAnticipo > 0)
+            {
+                invoice.PrepaidPayment = new BillingPayment
+                {
+                    Id = new PartyIdentificationID
+                    {
+                        schemeID = documento.TipoDocAnticipo,
+                        value = documento.DocAnticipo
+                    },
+                    PaidAmount = new PayableAmount
+                    {
+                        currencyID = documento.MonedaAnticipo,
+                        value = documento.MontoAnticipo
+                    },
+                    InstructionId = documento.Emisor.NroDocumento
+                };
+                invoice.LegalMonetaryTotal.PrepaidAmount = new PayableAmount
+                {
+                    currencyID = documento.MonedaAnticipo,
+                    value = documento.MontoAnticipo
+                };
+            }
 
             // Datos Adicionales a la Factura.
             foreach (var adicional in documento.DatoAdicionales)

@@ -173,6 +173,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             {
                 Cursor.Current = Cursors.WaitCursor;
 
+                documentoElectronicoBindingSource.EndEdit();
                 totalVentaTextBox.Focus();
 
                 var proxy = new HttpClient { BaseAddress = new Uri(ConfigurationManager.AppSettings["UrlOpenInvoicePeruApi"]) };
@@ -205,6 +206,12 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                     doc.DatosGuiaTransportista.ModoTransporte = doc.DatosGuiaTransportista.ModoTransporte.Substring(0, 2);
                     doc.DatosGuiaTransportista.TipoDocTransportista =
                         doc.DatosGuiaTransportista.TipoDocTransportista.Substring(0, 1);
+                }
+
+                if (doc.MontoAnticipo > 0)
+                {
+                    doc.TipoDocAnticipo = doc.TipoDocAnticipo.Substring(0, 2);
+                    doc.MonedaAnticipo = monedaAnticipoComboBox.Text;
                 }
 
                 var response = await proxy.PostAsJsonAsync("api/invoice", doc);

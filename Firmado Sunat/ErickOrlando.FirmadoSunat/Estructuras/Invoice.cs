@@ -20,6 +20,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
         public string DocumentCurrencyCode { get; set; }
         public List<TaxTotal> TaxTotals { get; set; }
         public LegalMonetaryTotal LegalMonetaryTotal { get; set; }
+        public BillingPayment PrepaidPayment { get; set; }
         public string UblVersionId { get; set; }
         public string CustomizationId { get; set; }
         public IFormatProvider Formato { get; set; }
@@ -33,7 +34,6 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
             InvoiceLines = new List<InvoiceLine>();
             TaxTotals = new List<TaxTotal>();
             LegalMonetaryTotal = new LegalMonetaryTotal();
-
             UblVersionId = "2.0";
             CustomizationId = "1.0";
             Formato = new System.Globalization.CultureInfo("es-PE");
@@ -399,6 +399,34 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
             writer.WriteEndElement();
             #endregion
 
+            #region PrepaidPayment
+            if (PrepaidPayment != null)
+            {
+                writer.WriteStartElement("cac:PrepaidPayment");
+                {
+                    writer.WriteStartElement("cbc:ID");
+                    {
+                        writer.WriteAttributeString("schemeID", PrepaidPayment.Id.schemeID);
+                        writer.WriteValue(PrepaidPayment.Id.value);
+                    }
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("cbc:PaidAmount");
+                    {
+                        writer.WriteAttributeString("currencyID", PrepaidPayment.PaidAmount.currencyID);
+                        writer.WriteValue(PrepaidPayment.PaidAmount.value.ToString(Constantes.Constantes.FormatoNumerico, Formato));
+                    }
+                    writer.WriteEndElement();
+                    writer.WriteStartElement("cbc:InstructionID");
+                    {
+                        writer.WriteAttributeString("schemeID", "6");
+                        writer.WriteValue(PrepaidPayment.InstructionId);
+                    }
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
+            } 
+            #endregion
+
             #region TaxTotal
             foreach (var taxTotal in TaxTotals)
             {
@@ -456,6 +484,15 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
                     {
                         writer.WriteAttributeString("currencyID", LegalMonetaryTotal.AllowanceTotalAmount.currencyID);
                         writer.WriteValue(LegalMonetaryTotal.AllowanceTotalAmount.value.ToString(Constantes.Constantes.FormatoNumerico, Formato));
+                    }
+                    writer.WriteEndElement();
+                }
+                if (LegalMonetaryTotal.PrepaidAmount.value > 0)
+                {
+                    writer.WriteStartElement("cbc:PrepaidAmount");
+                    {
+                        writer.WriteAttributeString("currencyID", LegalMonetaryTotal.PrepaidAmount.currencyID);
+                        writer.WriteValue(LegalMonetaryTotal.PrepaidAmount.value.ToString(Constantes.Constantes.FormatoNumerico, Formato));
                     }
                     writer.WriteEndElement();
                 }

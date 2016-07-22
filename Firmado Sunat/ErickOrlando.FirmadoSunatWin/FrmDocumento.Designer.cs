@@ -47,6 +47,10 @@
             System.Windows.Forms.Label descuentoGlobalLabel;
             System.Windows.Forms.Label montoPercepcionLabel;
             System.Windows.Forms.Label montoDetraccionLabel;
+            System.Windows.Forms.Label tipoDocAnticipoLabel;
+            System.Windows.Forms.Label docAnticipoLabel;
+            System.Windows.Forms.Label montoAnticipoLabel;
+            System.Windows.Forms.Label monedaAnticipoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDocumento));
             this.label1 = new System.Windows.Forms.Label();
             this.cboTipoDocRec = new System.Windows.Forms.ComboBox();
@@ -142,6 +146,11 @@
             this.montoDetraccionTextBox = new System.Windows.Forms.TextBox();
             this.btnCalcDetraccion = new System.Windows.Forms.Button();
             this.btnGuia = new System.Windows.Forms.Button();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tipoDocAnticipoComboBox = new System.Windows.Forms.ComboBox();
+            this.docAnticipoTextBox = new System.Windows.Forms.TextBox();
+            this.montoAnticipoTextBox = new System.Windows.Forms.TextBox();
+            this.monedaAnticipoComboBox = new System.Windows.Forms.ComboBox();
             montoEnLetrasLabel = new System.Windows.Forms.Label();
             gravadasLabel = new System.Windows.Forms.Label();
             exoneradasLabel = new System.Windows.Forms.Label();
@@ -160,6 +169,10 @@
             descuentoGlobalLabel = new System.Windows.Forms.Label();
             montoPercepcionLabel = new System.Windows.Forms.Label();
             montoDetraccionLabel = new System.Windows.Forms.Label();
+            tipoDocAnticipoLabel = new System.Windows.Forms.Label();
+            docAnticipoLabel = new System.Windows.Forms.Label();
+            montoAnticipoLabel = new System.Windows.Forms.Label();
+            monedaAnticipoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.emisorBindingSource)).BeginInit();
             this.grpEmisor.SuspendLayout();
             this.grpReceptor.SuspendLayout();
@@ -173,6 +186,7 @@
             this.tpAdicionales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalesBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // montoEnLetrasLabel
@@ -1044,7 +1058,7 @@
             this.toolGenerar});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1064, 25);
+            this.toolStrip1.Size = new System.Drawing.Size(1048, 25);
             this.toolStrip1.TabIndex = 0;
             this.toolStrip1.Text = "toolStrip1";
             // 
@@ -1189,7 +1203,7 @@
             // 
             // btnCalcDetraccion
             // 
-            this.btnCalcDetraccion.Location = new System.Drawing.Point(734, 282);
+            this.btnCalcDetraccion.Location = new System.Drawing.Point(608, 312);
             this.btnCalcDetraccion.Name = "btnCalcDetraccion";
             this.btnCalcDetraccion.Size = new System.Drawing.Size(120, 23);
             this.btnCalcDetraccion.TabIndex = 47;
@@ -1207,11 +1221,111 @@
             this.btnGuia.UseVisualStyleBackColor = true;
             this.btnGuia.Click += new System.EventHandler(this.btnGuia_Click);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(monedaAnticipoLabel);
+            this.groupBox1.Controls.Add(this.monedaAnticipoComboBox);
+            this.groupBox1.Controls.Add(montoAnticipoLabel);
+            this.groupBox1.Controls.Add(this.montoAnticipoTextBox);
+            this.groupBox1.Controls.Add(docAnticipoLabel);
+            this.groupBox1.Controls.Add(this.docAnticipoTextBox);
+            this.groupBox1.Controls.Add(tipoDocAnticipoLabel);
+            this.groupBox1.Controls.Add(this.tipoDocAnticipoComboBox);
+            this.groupBox1.Location = new System.Drawing.Point(764, 237);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(232, 122);
+            this.groupBox1.TabIndex = 49;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Regularización de Anticipos";
+            // 
+            // tipoDocAnticipoLabel
+            // 
+            tipoDocAnticipoLabel.AutoSize = true;
+            tipoDocAnticipoLabel.Location = new System.Drawing.Point(7, 22);
+            tipoDocAnticipoLabel.Name = "tipoDocAnticipoLabel";
+            tipoDocAnticipoLabel.Size = new System.Drawing.Size(95, 13);
+            tipoDocAnticipoLabel.TabIndex = 0;
+            tipoDocAnticipoLabel.Text = "Tipo Doc Anticipo:";
+            // 
+            // tipoDocAnticipoComboBox
+            // 
+            this.tipoDocAnticipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "TipoDocAnticipo", true));
+            this.tipoDocAnticipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoDocAnticipoComboBox.DropDownWidth = 360;
+            this.tipoDocAnticipoComboBox.FormattingEnabled = true;
+            this.tipoDocAnticipoComboBox.Items.AddRange(new object[] {
+            "04 Ticket de Salida - ENAPU",
+            "05 Código SCOP",
+            "99 Otros",
+            "01 Factura – emitida para corregir error en el RUC",
+            "02 Factura – emitida por anticipos",
+            "03 Boleta de Venta – emitida por anticipos"});
+            this.tipoDocAnticipoComboBox.Location = new System.Drawing.Point(104, 19);
+            this.tipoDocAnticipoComboBox.Name = "tipoDocAnticipoComboBox";
+            this.tipoDocAnticipoComboBox.Size = new System.Drawing.Size(100, 21);
+            this.tipoDocAnticipoComboBox.TabIndex = 1;
+            // 
+            // docAnticipoLabel
+            // 
+            docAnticipoLabel.AutoSize = true;
+            docAnticipoLabel.Location = new System.Drawing.Point(7, 49);
+            docAnticipoLabel.Name = "docAnticipoLabel";
+            docAnticipoLabel.Size = new System.Drawing.Size(71, 13);
+            docAnticipoLabel.TabIndex = 2;
+            docAnticipoLabel.Text = "Doc Anticipo:";
+            // 
+            // docAnticipoTextBox
+            // 
+            this.docAnticipoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "DocAnticipo", true));
+            this.docAnticipoTextBox.Location = new System.Drawing.Point(104, 46);
+            this.docAnticipoTextBox.Name = "docAnticipoTextBox";
+            this.docAnticipoTextBox.Size = new System.Drawing.Size(100, 20);
+            this.docAnticipoTextBox.TabIndex = 3;
+            // 
+            // montoAnticipoLabel
+            // 
+            montoAnticipoLabel.AutoSize = true;
+            montoAnticipoLabel.Location = new System.Drawing.Point(7, 73);
+            montoAnticipoLabel.Name = "montoAnticipoLabel";
+            montoAnticipoLabel.Size = new System.Drawing.Size(81, 13);
+            montoAnticipoLabel.TabIndex = 4;
+            montoAnticipoLabel.Text = "Monto Anticipo:";
+            // 
+            // montoAnticipoTextBox
+            // 
+            this.montoAnticipoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoAnticipo", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
+            this.montoAnticipoTextBox.Location = new System.Drawing.Point(104, 70);
+            this.montoAnticipoTextBox.Name = "montoAnticipoTextBox";
+            this.montoAnticipoTextBox.Size = new System.Drawing.Size(100, 20);
+            this.montoAnticipoTextBox.TabIndex = 5;
+            // 
+            // monedaAnticipoLabel
+            // 
+            monedaAnticipoLabel.AutoSize = true;
+            monedaAnticipoLabel.Location = new System.Drawing.Point(7, 97);
+            monedaAnticipoLabel.Name = "monedaAnticipoLabel";
+            monedaAnticipoLabel.Size = new System.Drawing.Size(90, 13);
+            monedaAnticipoLabel.TabIndex = 6;
+            monedaAnticipoLabel.Text = "Moneda Anticipo:";
+            // 
+            // monedaAnticipoComboBox
+            // 
+            this.monedaAnticipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MonedaAnticipo", true));
+            this.monedaAnticipoComboBox.FormattingEnabled = true;
+            this.monedaAnticipoComboBox.Items.AddRange(new object[] {
+            "PEN",
+            "USD"});
+            this.monedaAnticipoComboBox.Location = new System.Drawing.Point(104, 94);
+            this.monedaAnticipoComboBox.Name = "monedaAnticipoComboBox";
+            this.monedaAnticipoComboBox.Size = new System.Drawing.Size(100, 21);
+            this.monedaAnticipoComboBox.TabIndex = 7;
+            // 
             // FrmDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1064, 670);
+            this.ClientSize = new System.Drawing.Size(1048, 670);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnGuia);
             this.Controls.Add(this.btnCalcDetraccion);
             this.Controls.Add(montoDetraccionLabel);
@@ -1285,6 +1399,8 @@
             this.tpAdicionales.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalesDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalesBindingSource)).EndInit();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1386,5 +1502,10 @@
         private System.Windows.Forms.TextBox montoDetraccionTextBox;
         private System.Windows.Forms.Button btnCalcDetraccion;
         private System.Windows.Forms.Button btnGuia;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.ComboBox monedaAnticipoComboBox;
+        private System.Windows.Forms.TextBox montoAnticipoTextBox;
+        private System.Windows.Forms.TextBox docAnticipoTextBox;
+        private System.Windows.Forms.ComboBox tipoDocAnticipoComboBox;
     }
 }
