@@ -55,7 +55,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             cboMoneda.SelectedIndex = 0;
             cboTipoDocRec.SelectedIndex = 3;
             tipoOperacionComboBox.SelectedIndex = 0;
-        } 
+        }
 
         private void CalcularTotales()
         {
@@ -124,7 +124,6 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                             if (frm.ShowDialog(this) != DialogResult.OK) return;
 
                             _documento.DatoAdicionales.Add(datoAdicional);
-                            documentoElectronicoBindingSource.ResetBindings(false);
                         }
                         break;
                     case 2:
@@ -134,7 +133,15 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                             if (frm.ShowDialog(this) != DialogResult.OK) return;
 
                             _documento.Relacionados.Add(documentoRelacionado);
-                            documentoElectronicoBindingSource.ResetBindings(false);
+                        }
+                        break;
+                    case 3:
+                        var discrepancia = new Discrepancia();
+                        using (var frm = new FrmDiscrepancia(discrepancia))
+                        {
+                            if (frm.ShowDialog(this) != DialogResult.OK) return;
+
+                            _documento.Discrepancias.Add(discrepancia);
                         }
                         break;
                 }
@@ -145,6 +152,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             }
             finally
             {
+                documentoElectronicoBindingSource.ResetBindings(false);
                 Cursor.Current = Cursors.Default;
             }
 
@@ -207,8 +215,14 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 
                         _documento.Relacionados.Remove(docRelacionado);
                         break;
+                    case 3:
+                        var discrepancia = discrepanciasBindingSource.Current as Discrepancia;
+                        if (discrepancia == null) return;
+
+                        _documento.Discrepancias.Remove(discrepancia);
+                        break;
                 }
-                
+
             }
             catch (Exception ex)
             {
@@ -298,6 +312,11 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                     relacionado.TipoDocumento = relacionado.TipoDocumento.Substring(0, 2);
                 }
 
+                foreach (var discrepancia in doc.Discrepancias)
+                {
+                    discrepancia.Tipo = discrepancia.Tipo.Substring(0, 2);
+                }
+
                 if (doc.DatosGuiaTransportista != null)
                 {
                     doc.DatosGuiaTransportista.ModoTransporte = doc.DatosGuiaTransportista.ModoTransporte.Substring(0, 2);
@@ -312,7 +331,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 }
 
                 string metodoApi;
-                switch (_documento.TipoDocumento)
+                switch (doc.TipoDocumento)
                 {
                     case "07":
                         metodoApi = "api/creditnote";

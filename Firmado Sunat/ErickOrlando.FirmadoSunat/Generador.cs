@@ -580,33 +580,6 @@ namespace OpenInvoicePeru.FirmadoSunat
                                             currencyID = documento.Moneda,
                                             value = documento.Gravadas
                                         }
-                                    },
-                                    new AdditionalMonetaryTotal
-                                    {
-                                        ID = "1002",
-                                        PayableAmount = new PayableAmount
-                                        {
-                                            currencyID = documento.Moneda,
-                                            value = documento.Inafectas
-                                        }
-                                    },
-                                    new AdditionalMonetaryTotal
-                                    {
-                                        ID = "1003",
-                                        PayableAmount = new PayableAmount
-                                        {
-                                            currencyID = documento.Moneda,
-                                            value = documento.Exoneradas
-                                        }
-                                    },
-                                    new AdditionalMonetaryTotal
-                                    {
-                                        ID = "1004",
-                                        PayableAmount = new PayableAmount
-                                        {
-                                            currencyID = documento.Moneda,
-                                            value = documento.Gratuitas
-                                        }
                                     }
                                 },
                                 AdditionalProperties = new List<AdditionalProperty>()
@@ -831,6 +804,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                         }
                     }
                 });
+                creditNote.CreditNoteLines.Add(linea);
             }
 
             return creditNote;
@@ -857,33 +831,6 @@ namespace OpenInvoicePeru.FirmadoSunat
                                         {
                                             currencyID = documento.Moneda,
                                             value = documento.Gravadas
-                                        }
-                                    },
-                                    new AdditionalMonetaryTotal
-                                    {
-                                        ID = "1002",
-                                        PayableAmount = new PayableAmount
-                                        {
-                                            currencyID = documento.Moneda,
-                                            value = documento.Inafectas
-                                        }
-                                    },
-                                    new AdditionalMonetaryTotal
-                                    {
-                                        ID = "1003",
-                                        PayableAmount = new PayableAmount
-                                        {
-                                            currencyID = documento.Moneda,
-                                            value = documento.Exoneradas
-                                        }
-                                    },
-                                    new AdditionalMonetaryTotal
-                                    {
-                                        ID = "1004",
-                                        PayableAmount = new PayableAmount
-                                        {
-                                            currencyID = documento.Moneda,
-                                            value = documento.Gratuitas
                                         }
                                     }
                                 },
@@ -1109,6 +1056,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                         }
                     }
                 });
+                debitNote.DebitNoteLines.Add(linea);
             }
 
             return debitNote;

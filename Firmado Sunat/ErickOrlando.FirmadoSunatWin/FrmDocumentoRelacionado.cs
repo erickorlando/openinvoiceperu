@@ -5,7 +5,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 {
     public partial class FrmDocumentoRelacionado : Form
     {
-        private DocumentoRelacionado _documentoRelacionado;
+        private readonly DocumentoRelacionado _documentoRelacionado;
 
         public FrmDocumentoRelacionado()
         {

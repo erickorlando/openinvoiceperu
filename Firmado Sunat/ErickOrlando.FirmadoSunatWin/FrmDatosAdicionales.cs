@@ -13,7 +13,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 {
     public partial class FrmDatosAdicionales : Form
     {
-        private DatoAdicional _dato;
+        private readonly DatoAdicional _dato;
 
         public FrmDatosAdicionales()
         {

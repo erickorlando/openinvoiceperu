@@ -13,7 +13,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 {
     public partial class FrmDatosGuia : Form
     {
-        private DatosGuia _datosGuia;
+        private readonly DatosGuia _datosGuia;
 
         public FrmDatosGuia()
         {

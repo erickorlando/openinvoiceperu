@@ -47,6 +47,33 @@
             ((System.ComponentModel.ISupportInitialize)(this.discrepanciaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
+            // tipoLabel
+            // 
+            tipoLabel.AutoSize = true;
+            tipoLabel.Location = new System.Drawing.Point(6, 37);
+            tipoLabel.Name = "tipoLabel";
+            tipoLabel.Size = new System.Drawing.Size(31, 13);
+            tipoLabel.TabIndex = 7;
+            tipoLabel.Text = "Tipo:";
+            // 
+            // nroReferenciaLabel
+            // 
+            nroReferenciaLabel.AutoSize = true;
+            nroReferenciaLabel.Location = new System.Drawing.Point(6, 64);
+            nroReferenciaLabel.Name = "nroReferenciaLabel";
+            nroReferenciaLabel.Size = new System.Drawing.Size(82, 13);
+            nroReferenciaLabel.TabIndex = 8;
+            nroReferenciaLabel.Text = "Nro Referencia:";
+            // 
+            // descripcionLabel
+            // 
+            descripcionLabel.AutoSize = true;
+            descripcionLabel.Location = new System.Drawing.Point(6, 90);
+            descripcionLabel.Name = "descripcionLabel";
+            descripcionLabel.Size = new System.Drawing.Size(66, 13);
+            descripcionLabel.TabIndex = 9;
+            descripcionLabel.Text = "Descripcion:";
+            // 
             // barraBotones
             // 
             this.barraBotones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -78,32 +105,32 @@
             // 
             this.discrepanciaBindingSource.DataSource = typeof(OpenInvoicePeru.FirmadoSunat.Models.Discrepancia);
             // 
-            // tipoLabel
-            // 
-            tipoLabel.AutoSize = true;
-            tipoLabel.Location = new System.Drawing.Point(6, 37);
-            tipoLabel.Name = "tipoLabel";
-            tipoLabel.Size = new System.Drawing.Size(31, 13);
-            tipoLabel.TabIndex = 7;
-            tipoLabel.Text = "Tipo:";
-            // 
             // tipoComboBox
             // 
+            this.tipoComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+            this.tipoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.tipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.discrepanciaBindingSource, "Tipo", true));
             this.tipoComboBox.FormattingEnabled = true;
+            this.tipoComboBox.Items.AddRange(new object[] {
+            "--Notas de Crédito--",
+            "01 Anulación de la operación",
+            "02 Anulación por error en el RUC",
+            "03 Corrección por error en la descripción",
+            "04 Descuento global",
+            "05 Descuento por ítem",
+            "06 Devolución total",
+            "07 Devolución por ítem",
+            "08 Bonificación",
+            "09 Disminución en el valor",
+            "10 Otros Conceptos",
+            "--Notas de Débito--",
+            "01 Intereses por mora",
+            "02 Aumento en el valor",
+            "03 Penalidades/otros conceptos"});
             this.tipoComboBox.Location = new System.Drawing.Point(95, 34);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(265, 21);
             this.tipoComboBox.TabIndex = 8;
-            // 
-            // nroReferenciaLabel
-            // 
-            nroReferenciaLabel.AutoSize = true;
-            nroReferenciaLabel.Location = new System.Drawing.Point(6, 64);
-            nroReferenciaLabel.Name = "nroReferenciaLabel";
-            nroReferenciaLabel.Size = new System.Drawing.Size(82, 13);
-            nroReferenciaLabel.TabIndex = 8;
-            nroReferenciaLabel.Text = "Nro Referencia:";
             // 
             // nroReferenciaTextBox
             // 
@@ -112,15 +139,6 @@
             this.nroReferenciaTextBox.Name = "nroReferenciaTextBox";
             this.nroReferenciaTextBox.Size = new System.Drawing.Size(100, 20);
             this.nroReferenciaTextBox.TabIndex = 9;
-            // 
-            // descripcionLabel
-            // 
-            descripcionLabel.AutoSize = true;
-            descripcionLabel.Location = new System.Drawing.Point(6, 90);
-            descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(66, 13);
-            descripcionLabel.TabIndex = 9;
-            descripcionLabel.Text = "Descripcion:";
             // 
             // descripcionTextBox
             // 
