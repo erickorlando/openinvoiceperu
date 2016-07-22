@@ -147,10 +147,15 @@
             this.btnCalcDetraccion = new System.Windows.Forms.Button();
             this.btnGuia = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tipoDocAnticipoComboBox = new System.Windows.Forms.ComboBox();
-            this.docAnticipoTextBox = new System.Windows.Forms.TextBox();
-            this.montoAnticipoTextBox = new System.Windows.Forms.TextBox();
             this.monedaAnticipoComboBox = new System.Windows.Forms.ComboBox();
+            this.montoAnticipoTextBox = new System.Windows.Forms.TextBox();
+            this.docAnticipoTextBox = new System.Windows.Forms.TextBox();
+            this.tipoDocAnticipoComboBox = new System.Windows.Forms.ComboBox();
+            this.tpRelacionados = new System.Windows.Forms.TabPage();
+            this.relacionadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.relacionadosDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             montoEnLetrasLabel = new System.Windows.Forms.Label();
             gravadasLabel = new System.Windows.Forms.Label();
             exoneradasLabel = new System.Windows.Forms.Label();
@@ -187,6 +192,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalesDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalesBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
+            this.tpRelacionados.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.relacionadosBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.relacionadosDataGridView)).BeginInit();
             this.SuspendLayout();
             // 
             // montoEnLetrasLabel
@@ -350,6 +358,42 @@
             montoDetraccionLabel.Size = new System.Drawing.Size(95, 13);
             montoDetraccionLabel.TabIndex = 45;
             montoDetraccionLabel.Text = "Monto Detracción:";
+            // 
+            // tipoDocAnticipoLabel
+            // 
+            tipoDocAnticipoLabel.AutoSize = true;
+            tipoDocAnticipoLabel.Location = new System.Drawing.Point(7, 22);
+            tipoDocAnticipoLabel.Name = "tipoDocAnticipoLabel";
+            tipoDocAnticipoLabel.Size = new System.Drawing.Size(95, 13);
+            tipoDocAnticipoLabel.TabIndex = 0;
+            tipoDocAnticipoLabel.Text = "Tipo Doc Anticipo:";
+            // 
+            // docAnticipoLabel
+            // 
+            docAnticipoLabel.AutoSize = true;
+            docAnticipoLabel.Location = new System.Drawing.Point(7, 49);
+            docAnticipoLabel.Name = "docAnticipoLabel";
+            docAnticipoLabel.Size = new System.Drawing.Size(71, 13);
+            docAnticipoLabel.TabIndex = 2;
+            docAnticipoLabel.Text = "Doc Anticipo:";
+            // 
+            // montoAnticipoLabel
+            // 
+            montoAnticipoLabel.AutoSize = true;
+            montoAnticipoLabel.Location = new System.Drawing.Point(7, 73);
+            montoAnticipoLabel.Name = "montoAnticipoLabel";
+            montoAnticipoLabel.Size = new System.Drawing.Size(81, 13);
+            montoAnticipoLabel.TabIndex = 4;
+            montoAnticipoLabel.Text = "Monto Anticipo:";
+            // 
+            // monedaAnticipoLabel
+            // 
+            monedaAnticipoLabel.AutoSize = true;
+            monedaAnticipoLabel.Location = new System.Drawing.Point(7, 97);
+            monedaAnticipoLabel.Name = "monedaAnticipoLabel";
+            monedaAnticipoLabel.Size = new System.Drawing.Size(90, 13);
+            monedaAnticipoLabel.TabIndex = 6;
+            monedaAnticipoLabel.Text = "Moneda Anticipo:";
             // 
             // label1
             // 
@@ -1128,6 +1172,7 @@
             // 
             this.tbPaginas.Controls.Add(this.tpDetalles);
             this.tbPaginas.Controls.Add(this.tpAdicionales);
+            this.tbPaginas.Controls.Add(this.tpRelacionados);
             this.tbPaginas.Location = new System.Drawing.Point(7, 340);
             this.tbPaginas.Name = "tbPaginas";
             this.tbPaginas.SelectedIndex = 0;
@@ -1238,14 +1283,33 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Regularización de Anticipos";
             // 
-            // tipoDocAnticipoLabel
+            // monedaAnticipoComboBox
             // 
-            tipoDocAnticipoLabel.AutoSize = true;
-            tipoDocAnticipoLabel.Location = new System.Drawing.Point(7, 22);
-            tipoDocAnticipoLabel.Name = "tipoDocAnticipoLabel";
-            tipoDocAnticipoLabel.Size = new System.Drawing.Size(95, 13);
-            tipoDocAnticipoLabel.TabIndex = 0;
-            tipoDocAnticipoLabel.Text = "Tipo Doc Anticipo:";
+            this.monedaAnticipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MonedaAnticipo", true));
+            this.monedaAnticipoComboBox.FormattingEnabled = true;
+            this.monedaAnticipoComboBox.Items.AddRange(new object[] {
+            "PEN",
+            "USD"});
+            this.monedaAnticipoComboBox.Location = new System.Drawing.Point(104, 94);
+            this.monedaAnticipoComboBox.Name = "monedaAnticipoComboBox";
+            this.monedaAnticipoComboBox.Size = new System.Drawing.Size(100, 21);
+            this.monedaAnticipoComboBox.TabIndex = 7;
+            // 
+            // montoAnticipoTextBox
+            // 
+            this.montoAnticipoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoAnticipo", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
+            this.montoAnticipoTextBox.Location = new System.Drawing.Point(104, 70);
+            this.montoAnticipoTextBox.Name = "montoAnticipoTextBox";
+            this.montoAnticipoTextBox.Size = new System.Drawing.Size(100, 20);
+            this.montoAnticipoTextBox.TabIndex = 5;
+            // 
+            // docAnticipoTextBox
+            // 
+            this.docAnticipoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "DocAnticipo", true));
+            this.docAnticipoTextBox.Location = new System.Drawing.Point(104, 46);
+            this.docAnticipoTextBox.Name = "docAnticipoTextBox";
+            this.docAnticipoTextBox.Size = new System.Drawing.Size(100, 20);
+            this.docAnticipoTextBox.TabIndex = 3;
             // 
             // tipoDocAnticipoComboBox
             // 
@@ -1265,60 +1329,55 @@
             this.tipoDocAnticipoComboBox.Size = new System.Drawing.Size(100, 21);
             this.tipoDocAnticipoComboBox.TabIndex = 1;
             // 
-            // docAnticipoLabel
+            // tpRelacionados
             // 
-            docAnticipoLabel.AutoSize = true;
-            docAnticipoLabel.Location = new System.Drawing.Point(7, 49);
-            docAnticipoLabel.Name = "docAnticipoLabel";
-            docAnticipoLabel.Size = new System.Drawing.Size(71, 13);
-            docAnticipoLabel.TabIndex = 2;
-            docAnticipoLabel.Text = "Doc Anticipo:";
+            this.tpRelacionados.AutoScroll = true;
+            this.tpRelacionados.Controls.Add(this.relacionadosDataGridView);
+            this.tpRelacionados.Location = new System.Drawing.Point(4, 22);
+            this.tpRelacionados.Name = "tpRelacionados";
+            this.tpRelacionados.Padding = new System.Windows.Forms.Padding(3);
+            this.tpRelacionados.Size = new System.Drawing.Size(874, 180);
+            this.tpRelacionados.TabIndex = 2;
+            this.tpRelacionados.Text = "Documentos Relacionados";
+            this.tpRelacionados.UseVisualStyleBackColor = true;
             // 
-            // docAnticipoTextBox
+            // relacionadosBindingSource
             // 
-            this.docAnticipoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "DocAnticipo", true));
-            this.docAnticipoTextBox.Location = new System.Drawing.Point(104, 46);
-            this.docAnticipoTextBox.Name = "docAnticipoTextBox";
-            this.docAnticipoTextBox.Size = new System.Drawing.Size(100, 20);
-            this.docAnticipoTextBox.TabIndex = 3;
+            this.relacionadosBindingSource.DataMember = "Relacionados";
+            this.relacionadosBindingSource.DataSource = this.documentoElectronicoBindingSource;
             // 
-            // montoAnticipoLabel
+            // relacionadosDataGridView
             // 
-            montoAnticipoLabel.AutoSize = true;
-            montoAnticipoLabel.Location = new System.Drawing.Point(7, 73);
-            montoAnticipoLabel.Name = "montoAnticipoLabel";
-            montoAnticipoLabel.Size = new System.Drawing.Size(81, 13);
-            montoAnticipoLabel.TabIndex = 4;
-            montoAnticipoLabel.Text = "Monto Anticipo:";
+            this.relacionadosDataGridView.AllowUserToAddRows = false;
+            this.relacionadosDataGridView.AllowUserToDeleteRows = false;
+            this.relacionadosDataGridView.AutoGenerateColumns = false;
+            this.relacionadosDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.relacionadosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.relacionadosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn3});
+            this.relacionadosDataGridView.DataSource = this.relacionadosBindingSource;
+            this.relacionadosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.relacionadosDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.relacionadosDataGridView.Name = "relacionadosDataGridView";
+            this.relacionadosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.relacionadosDataGridView.Size = new System.Drawing.Size(868, 174);
+            this.relacionadosDataGridView.TabIndex = 0;
             // 
-            // montoAnticipoTextBox
+            // dataGridViewTextBoxColumn4
             // 
-            this.montoAnticipoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoAnticipo", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.montoAnticipoTextBox.Location = new System.Drawing.Point(104, 70);
-            this.montoAnticipoTextBox.Name = "montoAnticipoTextBox";
-            this.montoAnticipoTextBox.Size = new System.Drawing.Size(100, 20);
-            this.montoAnticipoTextBox.TabIndex = 5;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "TipoDocumento";
+            this.dataGridViewTextBoxColumn4.HeaderText = "Tipo de Documento";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.Width = 126;
             // 
-            // monedaAnticipoLabel
+            // dataGridViewTextBoxColumn3
             // 
-            monedaAnticipoLabel.AutoSize = true;
-            monedaAnticipoLabel.Location = new System.Drawing.Point(7, 97);
-            monedaAnticipoLabel.Name = "monedaAnticipoLabel";
-            monedaAnticipoLabel.Size = new System.Drawing.Size(90, 13);
-            monedaAnticipoLabel.TabIndex = 6;
-            monedaAnticipoLabel.Text = "Moneda Anticipo:";
-            // 
-            // monedaAnticipoComboBox
-            // 
-            this.monedaAnticipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MonedaAnticipo", true));
-            this.monedaAnticipoComboBox.FormattingEnabled = true;
-            this.monedaAnticipoComboBox.Items.AddRange(new object[] {
-            "PEN",
-            "USD"});
-            this.monedaAnticipoComboBox.Location = new System.Drawing.Point(104, 94);
-            this.monedaAnticipoComboBox.Name = "monedaAnticipoComboBox";
-            this.monedaAnticipoComboBox.Size = new System.Drawing.Size(100, 21);
-            this.monedaAnticipoComboBox.TabIndex = 7;
+            this.dataGridViewTextBoxColumn3.DataPropertyName = "NroDocumento";
+            this.dataGridViewTextBoxColumn3.HeaderText = "Nro. Documento";
+            this.dataGridViewTextBoxColumn3.Name = "dataGridViewTextBoxColumn3";
+            this.dataGridViewTextBoxColumn3.Width = 110;
             // 
             // FrmDocumento
             // 
@@ -1401,6 +1460,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalesBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.tpRelacionados.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.relacionadosBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.relacionadosDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1507,5 +1569,10 @@
         private System.Windows.Forms.TextBox montoAnticipoTextBox;
         private System.Windows.Forms.TextBox docAnticipoTextBox;
         private System.Windows.Forms.ComboBox tipoDocAnticipoComboBox;
+        private System.Windows.Forms.TabPage tpRelacionados;
+        private System.Windows.Forms.DataGridView relacionadosDataGridView;
+        private System.Windows.Forms.BindingSource relacionadosBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
     }
 }

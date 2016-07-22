@@ -121,6 +121,12 @@
     <Compile Include="FrmDocumento.Designer.cs">
       <DependentUpon>FrmDocumento.cs</DependentUpon>
     </Compile>
+    <Compile Include="FrmDocumentoRelacionado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmDocumentoRelacionado.Designer.cs">
+      <DependentUpon>FrmDocumentoRelacionado.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmEnviarSunat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -147,6 +153,9 @@
     <EmbeddedResource Include="FrmDocumento.resx">
       <DependentUpon>FrmDocumento.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FrmDocumentoRelacionado.resx">
+      <DependentUpon>FrmDocumentoRelacionado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmEnviarSunat.resx">
       <DependentUpon>FrmEnviarSunat.cs</DependentUpon>
     </EmbeddedResource>
@@ -169,6 +178,7 @@
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DatosGuia.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DetalleDocumento.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DocumentoElectronico.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DocumentoRelacionado.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

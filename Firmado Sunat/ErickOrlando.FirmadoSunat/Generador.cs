@@ -257,6 +257,25 @@ namespace OpenInvoicePeru.FirmadoSunat
             {
                 invoice.UblExtensions.Extension2.ExtensionContent
                     .AdditionalInformation.SunatTransaction.Id = documento.TipoOperacion;
+                // Si es Emisor Itinerante.
+                if (documento.TipoOperacion == "05")
+                {
+                    invoice.UblExtensions.Extension2.ExtensionContent
+                        .AdditionalInformation.AdditionalProperties.Add(new AdditionalProperty
+                        {
+                            ID = "3000", // En el catalogo aparece como 2005 pero es 3000
+                            Value = "Venta realizada por emisor itinerante"
+                        });
+                }
+            }
+
+            foreach (var relacionado in documento.Relacionados)
+            {
+                invoice.DespatchDocumentReferences.Add(new InvoiceDocumentReference
+                {
+                    DocumentTypeCode = relacionado.TipoDocumento,
+                    ID = relacionado.NroDocumento
+                });
             }
 
             if (documento.Gratuitas > 0)

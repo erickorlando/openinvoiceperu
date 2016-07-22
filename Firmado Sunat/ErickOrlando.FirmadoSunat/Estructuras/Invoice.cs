@@ -17,6 +17,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
         public string Id { get; set; }
         public AccountingSupplierParty AccountingCustomerParty { get; set; }
         public List<InvoiceLine> InvoiceLines { get; set; }
+        public List<InvoiceDocumentReference> DespatchDocumentReferences { get; set; }
         public string DocumentCurrencyCode { get; set; }
         public List<TaxTotal> TaxTotals { get; set; }
         public LegalMonetaryTotal LegalMonetaryTotal { get; set; }
@@ -29,6 +30,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
         {
             AccountingSupplierParty = new AccountingSupplierParty();
             AccountingCustomerParty = new AccountingSupplierParty();
+            DespatchDocumentReferences = new List<InvoiceDocumentReference>();
             UblExtensions = new UBLExtensions();
             Signature = new SignatureCac();
             InvoiceLines = new List<InvoiceLine>();
@@ -272,6 +274,18 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
             writer.WriteElementString("cbc:IssueDate", IssueDate.ToString("yyyy-MM-dd"));
             writer.WriteElementString("cbc:InvoiceTypeCode", InvoiceTypeCode);
             writer.WriteElementString("cbc:DocumentCurrencyCode", DocumentCurrencyCode);
+
+            #region DespatchDocumentReferences
+            foreach (var reference in DespatchDocumentReferences)
+            {
+                writer.WriteStartElement("cac:DespatchDocumentReference");
+                {
+                    writer.WriteElementString("cbc:ID", reference.ID);
+                    writer.WriteElementString("cbc:DocumentTypeCode", reference.DocumentTypeCode);
+                }
+                writer.WriteEndElement();
+            } 
+            #endregion
 
             #region Signature
             writer.WriteStartElement("cac:Signature");

@@ -45,7 +45,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public decimal MontoAnticipo { get; set; }
 
         public List<DatoAdicional> DatoAdicionales { get; set; }
-
+        public List<DocumentoRelacionado> Relacionados { get; set; }
         public ObservableCollection<DetalleDocumento> Items { get; set; }
         public DatosGuia DatosGuiaTransportista { get; set; }
 
@@ -58,6 +58,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
             CalculoDetraccion = 0.04m;
             Items = new ObservableCollection<DetalleDocumento>();
             DatoAdicionales = new List<DatoAdicional>();
+            Relacionados = new List<DocumentoRelacionado>();
         }
 
         public object Clone()

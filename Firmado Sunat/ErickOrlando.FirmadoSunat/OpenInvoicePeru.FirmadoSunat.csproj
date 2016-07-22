@@ -113,6 +113,7 @@
     <Compile Include="Models\DatosGuia.cs" />
     <Compile Include="Models\DetalleDocumento.cs" />
     <Compile Include="Models\DocumentoElectronico.cs" />
+    <Compile Include="Models\DocumentoRelacionado.cs" />
     <Compile Include="PasswordDigestBehavior.cs" />
     <Compile Include="PasswordDigestMessageInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -9,10 +9,16 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 {
     public partial class FrmDocumento : Form
     {
+        #region Variables Privadas
         private readonly DocumentoElectronico _documento;
+        #endregion
 
+        #region Propiedades
         public string RutaArchivo { get; set; }
         public string IdDocumento { get; set; }
+        #endregion
+
+        #region Constructores
         public FrmDocumento()
         {
             InitializeComponent();
@@ -30,6 +36,10 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             _documento = documento;
             Inicializar();
         }
+        #endregion
+
+        #region Metodos Privados
+
         private void Inicializar()
         {
             documentoElectronicoBindingSource.DataSource = _documento;
@@ -45,38 +55,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             cboMoneda.SelectedIndex = 0;
             cboTipoDocRec.SelectedIndex = 3;
             tipoOperacionComboBox.SelectedIndex = 0;
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            switch (tbPaginas.SelectedIndex)
-            {
-                case 0:
-                    var detalle = new DetalleDocumento();
-
-                    using (var frm = new FrmDetalleDocumento(detalle, _documento))
-                    {
-                        if (frm.ShowDialog(this) != DialogResult.OK) return;
-
-                        _documento.Items.Add(detalle);
-
-                        CalcularTotales();
-                    }
-                    break;
-                case 1:
-                    var datoAdicional = new DatoAdicional();
-                    using (var frm = new FrmDatosAdicionales(datoAdicional))
-                    {
-                        if (frm.ShowDialog(this) != DialogResult.OK) return;
-
-                        _documento.DatoAdicionales.Add(datoAdicional);
-                        documentoElectronicoBindingSource.ResetBindings(false);
-                    }
-                    break;
-
-            }
-
-        }
+        } 
 
         private void CalcularTotales()
         {
@@ -114,6 +93,63 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             documentoElectronicoBindingSource.ResetBindings(false);
         }
 
+        #endregion
+
+        #region Detalles
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                switch (tbPaginas.SelectedIndex)
+                {
+                    case 0:
+                        var detalle = new DetalleDocumento();
+
+                        using (var frm = new FrmDetalleDocumento(detalle, _documento))
+                        {
+                            if (frm.ShowDialog(this) != DialogResult.OK) return;
+
+                            _documento.Items.Add(detalle);
+
+                            CalcularTotales();
+                        }
+                        break;
+                    case 1:
+                        var datoAdicional = new DatoAdicional();
+                        using (var frm = new FrmDatosAdicionales(datoAdicional))
+                        {
+                            if (frm.ShowDialog(this) != DialogResult.OK) return;
+
+                            _documento.DatoAdicionales.Add(datoAdicional);
+                            documentoElectronicoBindingSource.ResetBindings(false);
+                        }
+                        break;
+                    case 2:
+                        var documentoRelacionado = new DocumentoRelacionado();
+                        using (var frm = new FrmDocumentoRelacionado(documentoRelacionado))
+                        {
+                            if (frm.ShowDialog(this) != DialogResult.OK) return;
+
+                            _documento.Relacionados.Add(documentoRelacionado);
+                            documentoElectronicoBindingSource.ResetBindings(false);
+                        }
+                        break;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                Cursor.Current = Cursors.Default;
+            }
+
+        }
+
         private void btnDuplicar_Click(object sender, EventArgs e)
         {
 
@@ -122,9 +158,8 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 Cursor.Current = Cursors.WaitCursor;
 
                 var registro = detallesBindingSource.Current as DetalleDocumento;
-                if (registro == null) return;
 
-                var copia = registro.Clone() as DetalleDocumento;
+                var copia = registro?.Clone() as DetalleDocumento;
                 if (copia == null) return;
 
                 copia.Id = copia.Id + 1;
@@ -150,12 +185,67 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             {
                 Cursor.Current = Cursors.WaitCursor;
 
-                var registro = detallesBindingSource.Current as DetalleDocumento;
-                if (registro == null) return;
+                switch (tbPaginas.SelectedIndex)
+                {
+                    case 0:
+                        var registro = detallesBindingSource.Current as DetalleDocumento;
+                        if (registro == null) return;
 
-                _documento.Items.Remove(registro);
+                        _documento.Items.Remove(registro);
 
-                CalcularTotales();
+                        CalcularTotales();
+                        break;
+                    case 1:
+                        var docAdicional = datoAdicionalesBindingSource.Current as DatoAdicional;
+                        if (docAdicional == null) return;
+
+                        _documento.DatoAdicionales.Remove(docAdicional);
+                        break;
+                    case 2:
+                        var docRelacionado = relacionadosBindingSource.Current as DocumentoRelacionado;
+                        if (docRelacionado == null) return;
+
+                        _documento.Relacionados.Remove(docRelacionado);
+                        break;
+                }
+                
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            finally
+            {
+                documentoElectronicoBindingSource.ResetBindings(false);
+                Cursor.Current = Cursors.Default;
+            }
+        }
+        #endregion
+
+        #region Botones Adicionales
+        private void btnCalcDetraccion_Click(object sender, EventArgs e)
+        {
+            _documento.MontoDetraccion = _documento.Gravadas * _documento.CalculoDetraccion;
+
+            documentoElectronicoBindingSource.ResetBindings(false);
+        }
+
+        private void btnGuia_Click(object sender, EventArgs e)
+        {
+
+            try
+            {
+                Cursor.Current = Cursors.WaitCursor;
+
+                var datosGuia = _documento.DatosGuiaTransportista ?? new DatosGuia();
+
+                using (var frm = new FrmDatosGuia(datosGuia))
+                {
+                    if (frm.ShowDialog(this) != DialogResult.OK) return;
+
+                    _documento.DatosGuiaTransportista = datosGuia;
+                    documentoElectronicoBindingSource.ResetBindings(false);
+                }
             }
             catch (Exception ex)
             {
@@ -166,7 +256,9 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 Cursor.Current = Cursors.Default;
             }
         }
+        #endregion
 
+        #region Generar XML
         private async void toolGenerar_Click(object sender, EventArgs e)
         {
             try
@@ -201,6 +293,11 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                     adicional.Codigo = adicional.Codigo.Substring(0, 4);
                 }
 
+                foreach (var relacionado in doc.Relacionados)
+                {
+                    relacionado.TipoDocumento = relacionado.TipoDocumento.Substring(0, 2);
+                }
+
                 if (doc.DatosGuiaTransportista != null)
                 {
                     doc.DatosGuiaTransportista.ModoTransporte = doc.DatosGuiaTransportista.ModoTransporte.Substring(0, 2);
@@ -229,39 +326,6 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 Cursor.Current = Cursors.Default;
             }
         }
-
-        private void btnCalcDetraccion_Click(object sender, EventArgs e)
-        {
-            _documento.MontoDetraccion = _documento.Gravadas * _documento.CalculoDetraccion;
-
-            documentoElectronicoBindingSource.ResetBindings(false);
-        }
-
-        private void btnGuia_Click(object sender, EventArgs e)
-        {
-
-            try
-            {
-                Cursor.Current = Cursors.WaitCursor;
-
-                var datosGuia = _documento.DatosGuiaTransportista ?? new DatosGuia();
-
-                using (var frm = new FrmDatosGuia(datosGuia))
-                {
-                    if (frm.ShowDialog(this) != DialogResult.OK) return;
-
-                    _documento.DatosGuiaTransportista = datosGuia;
-                    documentoElectronicoBindingSource.ResetBindings(false);
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-            }
-            finally
-            {
-                Cursor.Current = Cursors.Default;
-            }
-        }
+        #endregion
     }
 }
