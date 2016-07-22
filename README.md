@@ -5,20 +5,20 @@ Permite la generacion de XML, empaquetado, envío y recepción de documentos ele
 Actualmente se encuentra en versión Beta.
 
 # Características #
-- Generacion de XML para Facturas.
+- Generacion de XML para Facturas, Boletas, Notas de Crédito y Débito.
 - Firmado del XML con un certificado digital elegido por el usuario.
 - Envío al servicio Web de SUNAT de los documentos electrónicos (Boleta, Factura, NC, ND y Documento de Retención).
 - Envío de Resumen Diario y Comunicación de Baja.
 - Lectura del contenido del CDR de SUNAT.
 - Consulta de Tickets de los Resúmenes y Bajas.
-- API REST bajo ASP.NET Web API para la generacion del XML.
+- API REST bajo ASP.NET Web API para la generacion del XML (Bajo construcción aun).
 
 ## Ramas (branches) ##
 
-El proyecto contiene tres ramas:
+El proyecto contiene dos ramas:
 
 - master (versión estable)
-- beta (esta versión)
+- beta (versión de desarrollo y pruebas)
 
 ## Consideraciones ##
 El proyecto se ha desarrollado con VS2015 Update 3, pero usando como base el .NET Framework 4.5.
