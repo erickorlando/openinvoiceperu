@@ -85,7 +85,7 @@ namespace OpenInvoicePeru.ApiClientCSharp
                TramaXmlSinFirma = documentoResponse.Data.TramaXmlSinFirma,
                CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("certificado.pfx")),
                PasswordCertificado = string.Empty,
-               DocumentoRetencion = false
+               UnSoloNodoExtension = false
             };
 
             var requestFirma = new RestRequest("Firmar", Method.POST)

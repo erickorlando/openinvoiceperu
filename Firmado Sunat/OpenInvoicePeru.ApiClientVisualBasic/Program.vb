@@ -7,7 +7,7 @@ Imports RestSharp
 
 Module Program
 
-    Private ReadOnly BaseUrl As String = "http://localhost:50888/OpenInvoicePeru/api"
+	Private ReadOnly BaseUrl As String = "http://localhost:50888/OpenInvoicePeru/api"
 
 	Sub Main(args As String())
 		Console.WriteLine("Prueba de API REST de OpenInvoicePeru (Visual Basic)")
@@ -29,7 +29,7 @@ Module Program
 				.TipoDocumento = "6",
 				.NombreLegal = "RANSA COMERCIAL S.A."
 			},
-            .IdDocumento = "FF11-001",
+			.IdDocumento = "FF11-001",
 			.FechaEmision = DateTime.Today.AddDays(-5).ToShortDateString(),
 			.Moneda = "PEN",
 			.MontoEnLetras = "SON CIENTO DIECIOCHO SOLES CON 0/100",
@@ -43,7 +43,7 @@ Module Program
 			.Items = New ObservableCollection(Of DetalleDocumento)() 
 		}
 
-        documento.Items.Add(New DetalleDocumento() With {
+		documento.Items.Add(New DetalleDocumento() With {
 					.Id = 1,
 					.Cantidad = 5,
 					.PrecioReferencial = 20,
@@ -57,13 +57,13 @@ Module Program
 					.TotalVenta = 100,
 					.Suma = 100
 				})
-        
+		
 		Console.WriteLine("Generando XML....")
-        Dim client As New RestClient(BaseUrl)
+		Dim client As New RestClient(BaseUrl)
 
 		Dim requestInvoice As New RestRequest("GenerarFactura", Method.POST)
 		requestInvoice.RequestFormat = DataFormat.Json
-        requestInvoice.AddBody(documento)
+		requestInvoice.AddBody(documento)
 
 		Dim documentoResponse = client.Execute(Of DocumentoResponse)(requestInvoice)
 
@@ -73,7 +73,7 @@ Module Program
 			.TramaXmlSinFirma = documentoResponse.Data.TramaXmlSinFirma,
 			.CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("certificado.pfx")),
 			.PasswordCertificado = String.Empty,
-			.DocumentoRetencion = False
+			.UnSoloNodoExtension = False
 		}
 
 		Dim requestFirma As New RestRequest("Firmar", Method.POST) With { 

@@ -42,6 +42,9 @@
     <Compile Include="..\erickorlando.firmadosunat\models\ComunicacionBaja.cs">
       <Link>Estructuras\ComunicacionBaja.cs</Link>
     </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\ConsultaTicketRequest.cs">
+      <Link>Estructuras\ConsultaTicketRequest.cs</Link>
+    </Compile>
     <Compile Include="..\erickorlando.firmadosunat\models\Contribuyente.cs">
       <Link>Estructuras\Contribuyente.cs</Link>
     </Compile>
@@ -80,6 +83,9 @@
     </Compile>
     <Compile Include="..\ErickOrlando.FirmadoSunat\Models\EnviarDocumentoResponse.cs">
       <Link>Estructuras\EnviarDocumentoResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\EnvioDocumentoComun.cs">
+      <Link>Estructuras\EnvioDocumentoComun.cs</Link>
     </Compile>
     <Compile Include="..\erickorlando.firmadosunat\models\FirmadoRequest.cs">
       <Link>Estructuras\FirmadoRequest.cs</Link>

@@ -105,6 +105,7 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ConsultarTicketController.cs" />
     <Compile Include="Controllers\GenerarNotaCreditoController.cs" />
     <Compile Include="Controllers\GenerarNotaDebitoController.cs" />
     <Compile Include="Controllers\FirmarController.cs" />
