@@ -17,6 +17,7 @@ namespace OpenInvoicePeruApi.Controllers
                 var serializador = new Serializador();
 
                 response.TramaXmlSinFirma = serializador.GenerarXml(invoice);
+                response.Exito = true;
             }
             catch (Exception ex)
             {

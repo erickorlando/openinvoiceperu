@@ -24,6 +24,7 @@ namespace OpenInvoicePeruApi.Controllers
                 response.TramaXmlFirmado = serializador.FirmarXml(request.TramaXmlSinFirma);
                 response.ResumenFirma = serializador.DigestValue;
                 response.ValorFirma = serializador.ValorFirma;
+                response.Exito = true;
             }
             catch (Exception ex)
             {

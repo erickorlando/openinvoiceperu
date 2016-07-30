@@ -22,6 +22,7 @@ namespace OpenInvoicePeruApi.Controllers
                 var serializador = new Serializador();
 
                 response.TramaXmlSinFirma = serializador.GenerarXml(notaDebito);
+                response.Exito = true;
             }
             catch (Exception ex)
             {

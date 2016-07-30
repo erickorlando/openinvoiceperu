@@ -121,6 +121,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+    <None Include="Properties\PublishProfiles\openinvoiceperuapi - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\openinvoiceperuapi - Web Deploy.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
