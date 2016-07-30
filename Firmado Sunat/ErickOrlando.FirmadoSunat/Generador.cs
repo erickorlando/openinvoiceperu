@@ -1061,5 +1061,278 @@ namespace OpenInvoicePeru.FirmadoSunat
 
             return debitNote;
         }
+
+        public static VoidedDocuments GenerarVoidedDocuments(ComunicacionBaja comunicacion)
+        {
+            var voidedDocument = new VoidedDocuments
+            {
+                ID = comunicacion.IdDocumento,
+                IssueDate = Convert.ToDateTime(comunicacion.FechaEmision),
+                ReferenceDate = Convert.ToDateTime(comunicacion.FechaReferencia),
+                CustomizationID = "1.0",
+                UBLVersionID = "2.0",
+                Signature = new SignatureCac
+                {
+                    ID = comunicacion.IdDocumento,
+                    SignatoryParty = new SignatoryParty
+                    {
+                        PartyIdentification = new PartyIdentification
+                        {
+                            ID = new PartyIdentificationID
+                            {
+                                value = comunicacion.Emisor.NroDocumento
+                            }
+                        },
+                        PartyName = new PartyName
+                        {
+                            Name= comunicacion.Emisor.NombreLegal
+                        }
+                    },
+                    DigitalSignatureAttachment = new DigitalSignatureAttachment
+                    {
+                        ExternalReference = new ExternalReference
+                        {
+                            URI = $"{comunicacion.Emisor.NroDocumento}-{comunicacion.IdDocumento}"
+                        }
+                    }
+                },
+                AccountingSupplierParty = new AccountingSupplierParty
+                {
+                    CustomerAssignedAccountID = comunicacion.Emisor.NroDocumento,
+                    AdditionalAccountID = comunicacion.Emisor.TipoDocumento,
+                    Party = new Party
+                    {
+                        PartyLegalEntity = new PartyLegalEntity
+                        {
+                            RegistrationName = comunicacion.Emisor.NombreLegal
+                        }
+                    }
+                }
+            };
+            
+            foreach (var baja in comunicacion.Bajas)
+            {
+                voidedDocument.VoidedDocumentsLines.Add(new VoidedDocumentsLine
+                {
+                    LineID = baja.Id,
+                    DocumentTypeCode = baja.TipoDocumento,
+                    DocumentSerialID = baja.Serie,
+                    DocumentNumberID = Convert.ToInt32(baja.Correlativo),
+                    VoidReasonDescription = baja.MotivoBaja
+                });    
+            }
+
+            return voidedDocument;
+        }
+
+        public static SummaryDocuments GenerarSummaryDocuments(ResumenDiario resumen)
+        {
+            var summary = new SummaryDocuments
+            {
+                ID = resumen.IdDocumento,
+                IssueDate = Convert.ToDateTime(resumen.FechaEmision),
+                ReferenceDate = Convert.ToDateTime(resumen.FechaReferencia),
+                CustomizationID = "1.0",
+                UBLVersionID = "2.0",
+                Signature = new SignatureCac
+                {
+                    ID = resumen.IdDocumento,
+                    SignatoryParty = new SignatoryParty
+                    {
+                        PartyIdentification = new PartyIdentification
+                        {
+                            ID = new PartyIdentificationID
+                            {
+                                value = resumen.Emisor.NroDocumento
+                            }
+                        },
+                        PartyName = new PartyName
+                        {
+                            Name = resumen.Emisor.NombreLegal
+                        }
+                    },
+                    DigitalSignatureAttachment = new DigitalSignatureAttachment
+                    {
+                        ExternalReference = new ExternalReference
+                        {
+                            URI = $"{resumen.Emisor.NroDocumento}-{resumen.IdDocumento}"
+                        }
+                    }
+                },
+                AccountingSupplierParty = new AccountingSupplierParty
+                {
+                    CustomerAssignedAccountID = resumen.Emisor.NroDocumento,
+                    AdditionalAccountID = resumen.Emisor.TipoDocumento,
+                    Party = new Party
+                    {
+                        PartyLegalEntity = new PartyLegalEntity
+                        {
+                            RegistrationName = resumen.Emisor.NombreLegal
+                        }
+                    }
+                }
+            };
+
+            foreach (var grupo in resumen.Resumenes)
+            {
+                var linea = new VoidedDocumentsLine
+                {
+                    LineID = grupo.Id,
+                    DocumentTypeCode = grupo.TipoDocumento,
+                    DocumentSerialID = grupo.Serie,
+                    StartDocumentNumberID = grupo.CorrelativoInicio,
+                    EndDocumentNumberID = grupo.CorrelativoFin,
+                    TotalAmount = new PayableAmount
+                    {
+                        currencyID = grupo.Moneda,
+                        value = grupo.TotalVenta
+                    },
+                    BillingPayments = new List<BillingPayment>()
+                    {
+                      new BillingPayment
+                      {
+                          PaidAmount = new PayableAmount
+                          {
+                              currencyID = grupo.Moneda,
+                              value = grupo.Gravadas
+                          },
+                          InstructionId = "01"
+                      },
+                      new BillingPayment
+                      {
+                          PaidAmount = new PayableAmount
+                          {
+                              currencyID = grupo.Moneda,
+                              value = grupo.Exoneradas
+                          },
+                          InstructionId = "02"
+                      },
+                      new BillingPayment
+                      {
+                          PaidAmount = new PayableAmount
+                          {
+                              currencyID = grupo.Moneda,
+                              value = grupo.Inafectas
+                          },
+                          InstructionId = "03"
+                      },  
+                    },
+                    AllowanceCharge = new AllowanceCharge
+                    {
+                        ChargeIndicator = false,
+                        Amount = new PayableAmount
+                        {
+                            currencyID = grupo.Moneda,
+                            value = grupo.TotalDescuentos
+                        }
+                    },
+                    TaxTotals = new List<TaxTotal>()
+                    {
+                        new TaxTotal
+                        {
+                            TaxAmount = new PayableAmount
+                            {
+                                currencyID = grupo.Moneda,
+                                value = grupo.TotalIsc
+                            },
+                            TaxSubtotal = new TaxSubtotal
+                            {
+                                TaxAmount = new PayableAmount
+                                {
+                                    currencyID = grupo.Moneda,
+                                    value = grupo.TotalIsc
+                                },
+                                TaxCategory = new TaxCategory
+                                {
+                                    TaxScheme = new TaxScheme
+                                    {
+                                        ID = "2000",
+                                        Name = "ISC",
+                                        TaxTypeCode = "EXC"
+                                    }
+                                }
+                            }
+                        },
+                        new TaxTotal
+                        {
+                            TaxAmount = new PayableAmount
+                            {
+                                currencyID = grupo.Moneda,
+                                value = grupo.TotalIgv
+                            },
+                            TaxSubtotal = new TaxSubtotal
+                            {
+                                TaxAmount = new PayableAmount
+                                {
+                                    currencyID = grupo.Moneda,
+                                    value = grupo.TotalIgv
+                                },
+                                TaxCategory = new TaxCategory
+                                {
+                                    TaxScheme = new TaxScheme
+                                    {
+                                        ID = "1000",
+                                        Name = "IGV",
+                                        TaxTypeCode = "VAT"
+                                    }
+                                }
+                            }
+                        },
+                        new TaxTotal
+                        {
+                            TaxAmount = new PayableAmount
+                            {
+                                currencyID = grupo.Moneda,
+                                value = grupo.TotalOtrosImpuestos
+                            },
+                            TaxSubtotal = new TaxSubtotal
+                            {
+                                TaxAmount = new PayableAmount
+                                {
+                                    currencyID = grupo.Moneda,
+                                    value = grupo.TotalOtrosImpuestos
+                                },
+                                TaxCategory = new TaxCategory
+                                {
+                                    TaxScheme = new TaxScheme
+                                    {
+                                        ID = "9999",
+                                        Name = "OTROS",
+                                        TaxTypeCode = "OTH"
+                                    }
+                                }
+                            }
+                        },
+                    }
+                };
+                if (grupo.Exportacion > 0)
+                {
+                    linea.BillingPayments.Add(new BillingPayment
+                    {
+                        PaidAmount = new PayableAmount
+                        {
+                            currencyID = grupo.Moneda,
+                            value = grupo.Exportacion
+                        },
+                        InstructionId = "04"
+                    });
+                }
+                if (grupo.Gratuitas > 0)
+                {
+                    linea.BillingPayments.Add(new BillingPayment
+                    {
+                        PaidAmount = new PayableAmount
+                        {
+                            currencyID = grupo.Moneda,
+                            value = grupo.Gratuitas
+                        },
+                        InstructionId = "05"
+                    });
+                }
+                summary.SummaryDocumentsLines.Add(linea);
+            }
+
+            return summary;
+        }
     }
 }

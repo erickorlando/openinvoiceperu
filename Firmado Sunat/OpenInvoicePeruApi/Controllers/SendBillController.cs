@@ -61,17 +61,19 @@ namespace OpenInvoicePeruApi.Controllers
                                     xmlnsManager.AddNamespace("cac", EspacioNombres.cac);
                                     xmlnsManager.AddNamespace("cbc", EspacioNombres.cbc);
 
-
                                     response.CodigoRespuesta = xmlDoc.SelectSingleNode(EspacioNombres.nodoResponseCode,
                                         xmlnsManager)?.InnerText;
 
                                     response.MensajeRespuesta = xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
                                         xmlnsManager)?.InnerText;
+                                    response.Exito = true;
 
                                 }
                                 catch (Exception ex)
                                 {
-                                    response.MensajeRespuesta = ex.Message;
+                                    response.MensajeError = ex.Message;
+                                    response.Pila = ex.StackTrace;
+                                    response.Exito = false;
                                 }
                             }
                         }
@@ -80,7 +82,7 @@ namespace OpenInvoicePeruApi.Controllers
             }
             else
             {
-                response.CodigoRespuesta = "X";
+                response.Exito = true;
                 response.MensajeRespuesta = resultado.Item1;
             }
 

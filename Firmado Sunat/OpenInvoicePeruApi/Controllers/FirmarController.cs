@@ -18,7 +18,7 @@ namespace OpenInvoicePeruApi.Controllers
 
             try
             {
-                var serializador = new Serializador()
+                var serializador = new Serializador
                 {
                     RutaCertificadoDigital = request.CertificadoDigital,
                     PasswordCertificado = request.PasswordCertificado,
@@ -31,7 +31,9 @@ namespace OpenInvoicePeruApi.Controllers
             }
             catch (Exception ex)
             {
-                response.TramaXmlFirmado = ex.Message;
+                response.MensajeError = ex.Message;
+                response.Pila = ex.StackTrace;
+                response.Exito = false;
             }
 
             return response;

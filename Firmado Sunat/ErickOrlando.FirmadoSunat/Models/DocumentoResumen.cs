@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace OpenInvoicePeru.FirmadoSunat.Models
+{
+    public abstract class DocumentoResumen
+    {
+        public Contribuyente Emisor { get; set; }
+        public string IdDocumento { get; set; }
+        public string FechaEmision { get; set; }
+        public string FechaReferencia { get; set; }
+    }
+}

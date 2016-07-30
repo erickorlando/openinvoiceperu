@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace OpenInvoicePeru.FirmadoSunat.Models
 {
-    public class DocumentoResponse : RespuestaComun
+    public class ResumenDiario : DocumentoResumen
     {
-        public string TramaXmlSinFirma { get; set; }
+        public List<GrupoResumen> Resumenes { get; set; }
     }
 }

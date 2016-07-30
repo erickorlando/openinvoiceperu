@@ -53,6 +53,8 @@
     <Compile Include="Controllers\FirmarControllerTests.cs" />
     <Compile Include="Controllers\InvoiceControllerTests.cs" />
     <Compile Include="Controllers\SendBillControllerTests.cs" />
+    <Compile Include="Controllers\SummaryDocumentControllerTests.cs" />
+    <Compile Include="Controllers\VoidedDocumentControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +62,9 @@
       <Project>{82D7B299-2366-480A-B8FD-3F3B04AD3AFA}</Project>
       <Name>OpenInvoicePeruApi</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -19,13 +19,16 @@ namespace OpenInvoicePeruApi.Controllers
             {
                 var notaCredito = Generador.GenerarCreditNote(documento);
 
-                var serializador = new Serializador { TipoDocumento = 1 };
+                var serializador = new Serializador();
 
                 response.TramaXmlSinFirma = serializador.GenerarXml(notaCredito);
+                response.Exito = true;
             }
             catch (Exception ex)
             {
-                response.TramaXmlSinFirma = ex.Message;
+                response.MensajeError = ex.Message;
+                response.Pila = ex.StackTrace;
+                response.Exito = false;
             }
 
             return response;
