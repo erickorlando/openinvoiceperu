@@ -9,26 +9,30 @@ using OpenInvoicePeru.FirmadoSunat.Models;
 
 namespace OpenInvoicePeruApi.Controllers
 {
-    public class SummaryDocumentController : ApiController
+    public class GenerarNotaCreditoController : ApiController
     {
-        public DocumentoResponse Post([FromBody] ResumenDiario resumen)
+
+        public DocumentoResponse Post([FromBody] DocumentoElectronico documento)
         {
             var response = new DocumentoResponse();
             try
             {
-                var summary = Generador.GenerarSummaryDocuments(resumen);
+                var notaCredito = Generador.GenerarCreditNote(documento);
+
                 var serializador = new Serializador();
-                response.TramaXmlSinFirma = serializador.GenerarXml(summary);
+
+                response.TramaXmlSinFirma = serializador.GenerarXml(notaCredito);
                 response.Exito = true;
             }
             catch (Exception ex)
             {
-                response.Exito = false;
                 response.MensajeError = ex.Message;
                 response.Pila = ex.StackTrace;
+                response.Exito = false;
             }
 
             return response;
         }
+
     }
 }

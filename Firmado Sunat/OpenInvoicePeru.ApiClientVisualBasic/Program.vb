@@ -1,6 +1,7 @@
-﻿Imports System.Collections.ObjectModel
+﻿Option Strict On
+
+Imports System.Collections.ObjectModel
 Imports System.IO
-Imports Newtonsoft.Json
 Imports OpenInvoicePeru.FirmadoSunat.Models
 Imports RestSharp
 
@@ -10,98 +11,96 @@ Module Program
 
 	Sub Main(args As String())
 		Console.WriteLine("Prueba de API REST de OpenInvoicePeru (Visual Basic)")
-		Dim client As New RestClient(BaseUrl)
-
-		Dim requestInvoice As New RestRequest("invoice", Method.POST)
-
-		Dim documento As New DocumentoElectronico() With { _
-			.Emisor = New Contribuyente() With { _
-				.NroDocumento = "20100070970", _
-				.TipoDocumento = "6", _
-				.Direccion = "CAL.MORELLI NRO. 181 INT. P-2", _
-				.Urbanizacion = "-", _
-				.Departamento = "LIMA", _
-				.Provincia = "LIMA", _
-				.Distrito = "SAN BORJA", _
-				.NombreComercial = "PLAZA VEA", _
-				.NombreLegal = "SUPERMERCADOS PERUANOS SOCIEDAD ANONIMA" _
-			}, _
-			.Receptor = New Contribuyente() With { _
-				.NroDocumento = "20100039207", _
-				.TipoDocumento = "6", _
-				.NombreLegal = "RANSA COMERCIAL S.A." _
-			}, _
-            .IdDocumento = "FF11-001", _
-			.FechaEmision = DateTime.Today.AddDays(-5).ToShortDateString(), _
-			.Moneda = "PEN", _
-			.MontoEnLetras = "SON CIENTO DIECIOCHO SOLES CON 0/100", _
-			.CalculoIgv = 0.18D, _
-			.CalculoIsc = 0.10D, _
-			.CalculoDetraccion = 0.04D, _
-			.TipoDocumento = "01", _
-			.TotalIgv = 18, _
-			.TotalVenta = 118, _
-			.Gravadas = 100, _
+		
+		Dim documento As New DocumentoElectronico() With {
+			.Emisor = New Contribuyente() With {
+				.NroDocumento = "20100070970",
+				.TipoDocumento = "6",
+				.Direccion = "CAL.MORELLI NRO. 181 INT. P-2",
+				.Urbanizacion = "-",
+				.Departamento = "LIMA",
+				.Provincia = "LIMA",
+				.Distrito = "SAN BORJA",
+				.NombreComercial = "PLAZA VEA",
+				.NombreLegal = "SUPERMERCADOS PERUANOS SOCIEDAD ANONIMA"
+			},
+			.Receptor = New Contribuyente() With {
+				.NroDocumento = "20100039207",
+				.TipoDocumento = "6",
+				.NombreLegal = "RANSA COMERCIAL S.A."
+			},
+            .IdDocumento = "FF11-001",
+			.FechaEmision = DateTime.Today.AddDays(-5).ToShortDateString(),
+			.Moneda = "PEN",
+			.MontoEnLetras = "SON CIENTO DIECIOCHO SOLES CON 0/100",
+			.CalculoIgv = 0.18D,
+			.CalculoIsc = 0.10D,
+			.CalculoDetraccion = 0.04D,
+			.TipoDocumento = "01",
+			.TotalIgv = 18,
+			.TotalVenta = 118,
+			.Gravadas = 100,
 			.Items = New ObservableCollection(Of DetalleDocumento)() 
 		}
 
-        documento.Items.Add(New DetalleDocumento() With { _
-					.Id = 1, _
-					.Cantidad = 5, _
-					.PrecioReferencial = 20, _
-					.PrecioUnitario = 20, _
-					.TipoPrecio = "01", _
-					.CodigoItem = "1234234", _
-					.Descripcion = "Arroz Costeño", _
-					.UnidadMedida = "KG", _
-					.Impuesto = 18, _
-					.TipoImpuesto = "10", _
-					.TotalVenta = 100, _
-					.Suma = 100 _
+        documento.Items.Add(New DetalleDocumento() With {
+					.Id = 1,
+					.Cantidad = 5,
+					.PrecioReferencial = 20,
+					.PrecioUnitario = 20,
+					.TipoPrecio = "01",
+					.CodigoItem = "1234234",
+					.Descripcion = "Arroz Costeño",
+					.UnidadMedida = "KG",
+					.Impuesto = 18,
+					.TipoImpuesto = "10",
+					.TotalVenta = 100,
+					.Suma = 100
 				})
         
 		Console.WriteLine("Generando XML....")
+        Dim client As New RestClient(BaseUrl)
 
-		Dim json As Object = JsonConvert.SerializeObject(documento)
-		requestInvoice.AddParameter("application/json;charset=utf-8", json, ParameterType.RequestBody)
+		Dim requestInvoice As New RestRequest("GenerarFactura", Method.POST)
 		requestInvoice.RequestFormat = DataFormat.Json
+        requestInvoice.AddBody(documento)
 
-		Dim documentoResponse As Object = client.Execute(Of DocumentoResponse)(requestInvoice)
+		Dim documentoResponse = client.Execute(Of DocumentoResponse)(requestInvoice)
 
 		Console.WriteLine("Firmando XML...")
 		' Firmado del Documento.
-		Dim firmado As New FirmadoRequest() With { _
-			.TramaXmlSinFirma = documentoResponse.Data.TramaXmlSinFirma, _
-			.CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("certificado.pfx")), _
-			.PasswordCertificado = String.Empty, _
-			.DocumentoRetencion = False _
+		Dim firmado As New FirmadoRequest() With {
+			.TramaXmlSinFirma = documentoResponse.Data.TramaXmlSinFirma,
+			.CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("certificado.pfx")),
+			.PasswordCertificado = String.Empty,
+			.DocumentoRetencion = False
 		}
 
-		Dim requestFirma As New RestRequest("firmar", Method.POST) With { _
-			.RequestFormat = DataFormat.Json _
+		Dim requestFirma As New RestRequest("Firmar", Method.POST) With { 
+			.RequestFormat = DataFormat.Json 
 		}
 		requestFirma.AddBody(firmado)
 
-		Dim responseFirma As Object = client.Execute(Of FirmadoResponse)(requestFirma)
+		Dim responseFirma = client.Execute(Of FirmadoResponse)(requestFirma)
 
 		Console.WriteLine("Enviando a SUNAT....")
 
-		Dim sendBill As New SendBillRequest() With { _
-			.Ruc = documento.Emisor.NroDocumento, _
-			.UsuarioSol = "MODDATOS", _
-			.ClaveSol = "MODDATOS", _
-			.EndPointUrl = "https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService", _
-			.IdDocumento = documento.IdDocumento, _
-			.TipoDocumento = documento.TipoDocumento, _
-			.TramaXmlFirmado = responseFirma.Data.TramaXmlFirmado _
+		Dim sendBill As New EnviarDocumentoRequest() With { 
+			.Ruc = documento.Emisor.NroDocumento, 
+			.UsuarioSol = "MODDATOS", 
+			.ClaveSol = "MODDATOS", 
+			.EndPointUrl = "https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService", 
+			.IdDocumento = documento.IdDocumento, 
+			.TipoDocumento = documento.TipoDocumento, 
+			.TramaXmlFirmado = responseFirma.Data.TramaXmlFirmado 
 		}
 
-		Dim requestSendBill As New RestRequest("sendbill", Method.POST) With { _
-			.RequestFormat = DataFormat.Json _
+		Dim requestSendBill As New RestRequest("EnviarDocumento", Method.POST) With { 
+			.RequestFormat = DataFormat.Json 
 		}
 		requestSendBill.AddBody(sendBill)
 
-		Dim responseSendBill As Object = client.Execute(Of SendBillResponse)(requestSendBill)
+		Dim responseSendBill = client.Execute(Of EnviarDocumentoResponse)(requestSendBill)
 
 		Console.WriteLine("Respuesta de SUNAT:")
 		Console.WriteLine(responseSendBill.Data.MensajeRespuesta)

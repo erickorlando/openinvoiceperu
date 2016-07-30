@@ -75,6 +75,12 @@
     <Compile Include="..\erickorlando.firmadosunat\models\DocumentoResumenDetalle.cs">
       <Link>Estructuras\DocumentoResumenDetalle.cs</Link>
     </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\EnviarDocumentoRequest.cs">
+      <Link>Estructuras\EnviarDocumentoRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\EnviarDocumentoResponse.cs">
+      <Link>Estructuras\EnviarDocumentoResponse.cs</Link>
+    </Compile>
     <Compile Include="..\erickorlando.firmadosunat\models\FirmadoRequest.cs">
       <Link>Estructuras\FirmadoRequest.cs</Link>
     </Compile>
@@ -89,12 +95,6 @@
     </Compile>
     <Compile Include="..\erickorlando.firmadosunat\models\ResumenDiario.cs">
       <Link>Estructuras\ResumenDiario.cs</Link>
-    </Compile>
-    <Compile Include="..\erickorlando.firmadosunat\models\SendBillRequest.cs">
-      <Link>Estructuras\SendBillRequest.cs</Link>
-    </Compile>
-    <Compile Include="..\erickorlando.firmadosunat\models\SendBillResponse.cs">
-      <Link>Estructuras\SendBillResponse.cs</Link>
     </Compile>
     <Compile Include="..\erickorlando.firmadosunat\Utiles.cs">
       <Link>Estructuras\Utiles.cs</Link>

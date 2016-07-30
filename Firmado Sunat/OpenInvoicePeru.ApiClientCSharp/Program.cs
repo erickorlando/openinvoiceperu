@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
 using System.IO;
-using Newtonsoft.Json;
 using OpenInvoicePeru.FirmadoSunat.Models;
 using RestSharp;
 
@@ -14,10 +13,7 @@ namespace OpenInvoicePeru.ApiClientCSharp
         static void Main(string[] args)
         {
             Console.WriteLine("Prueba de API REST de OpenInvoicePeru (C#)");
-            var client = new RestClient(_baseUrl);
-
-            var requestInvoice = new RestRequest("invoice", Method.POST);
-            
+          
             var documento = new DocumentoElectronico
             {
                 Emisor = new Contribuyente
@@ -71,9 +67,14 @@ namespace OpenInvoicePeru.ApiClientCSharp
 
             Console.WriteLine("Generando XML....");
 
-            var json = JsonConvert.SerializeObject(documento);
-            requestInvoice.AddParameter("application/json;charset=utf-8",json, ParameterType.RequestBody);
-            requestInvoice.RequestFormat = DataFormat.Json;
+            var client = new RestClient(_baseUrl);
+
+            var requestInvoice = new RestRequest("GenerarFactura", Method.POST)
+            {
+                RequestFormat = DataFormat.Json
+            };
+
+            requestInvoice.AddBody(documento);
 
             var documentoResponse = client.Execute<DocumentoResponse>(requestInvoice);
 
@@ -87,7 +88,7 @@ namespace OpenInvoicePeru.ApiClientCSharp
                DocumentoRetencion = false
             };
 
-            var requestFirma = new RestRequest("firmar", Method.POST)
+            var requestFirma = new RestRequest("Firmar", Method.POST)
             {
                 RequestFormat = DataFormat.Json
             };
@@ -97,7 +98,7 @@ namespace OpenInvoicePeru.ApiClientCSharp
             
             Console.WriteLine("Enviando a SUNAT....");
 
-            var sendBill = new SendBillRequest
+            var sendBill = new EnviarDocumentoRequest
             {
                 Ruc = documento.Emisor.NroDocumento,
                 UsuarioSol = "MODDATOS",
@@ -108,13 +109,13 @@ namespace OpenInvoicePeru.ApiClientCSharp
                 TramaXmlFirmado = responseFirma.Data.TramaXmlFirmado
             };
 
-            var requestSendBill = new RestRequest("sendbill", Method.POST)
+            var requestSendBill = new RestRequest("EnviarDocumento", Method.POST)
             {
                 RequestFormat = DataFormat.Json
             };
             requestSendBill.AddBody(sendBill);
 
-            var responseSendBill = client.Execute<SendBillResponse>(requestSendBill);
+            var responseSendBill = client.Execute<EnviarDocumentoResponse>(requestSendBill);
             
             Console.WriteLine("Respuesta de SUNAT:");
             Console.WriteLine(responseSendBill.Data.MensajeRespuesta);

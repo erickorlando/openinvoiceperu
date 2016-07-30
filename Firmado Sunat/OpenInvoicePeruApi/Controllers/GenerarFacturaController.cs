@@ -1,27 +1,22 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using OpenInvoicePeru.FirmadoSunat;
 using OpenInvoicePeru.FirmadoSunat.Models;
 
 namespace OpenInvoicePeruApi.Controllers
 {
-    public class DebitNoteController : ApiController
+    public class GenerarFacturaController : ApiController
     {
-
         public DocumentoResponse Post([FromBody] DocumentoElectronico documento)
         {
             var response = new DocumentoResponse();
             try
             {
-                var notaDebito = Generador.GenerarDebitNote(documento);
+                var invoice = Generador.GenerarInvoice(documento);
 
                 var serializador = new Serializador();
 
-                response.TramaXmlSinFirma = serializador.GenerarXml(notaDebito);
+                response.TramaXmlSinFirma = serializador.GenerarXml(invoice);
             }
             catch (Exception ex)
             {
@@ -32,6 +27,5 @@ namespace OpenInvoicePeruApi.Controllers
 
             return response;
         }
-
     }
 }

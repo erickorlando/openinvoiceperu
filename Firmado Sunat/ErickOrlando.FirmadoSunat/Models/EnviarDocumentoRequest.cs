@@ -1,6 +1,6 @@
 ﻿namespace OpenInvoicePeru.FirmadoSunat.Models
 {
-    public class SendBillRequest
+    public class EnviarDocumentoRequest
     {
         public string TramaXmlFirmado { get; set; }
         public string Ruc { get; set; }

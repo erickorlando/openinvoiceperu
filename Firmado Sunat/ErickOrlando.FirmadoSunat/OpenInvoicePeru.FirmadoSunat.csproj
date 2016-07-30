@@ -120,14 +120,15 @@
     <Compile Include="Models\DocumentoResumenDetalle.cs" />
     <Compile Include="Models\DocumentoElectronico.cs" />
     <Compile Include="Models\DocumentoRelacionado.cs" />
+    <Compile Include="Models\EnviarResumenResponse.cs" />
     <Compile Include="Models\FirmadoRequest.cs" />
     <Compile Include="Models\FirmadoResponse.cs" />
     <Compile Include="Models\DocumentoResponse.cs" />
     <Compile Include="Models\GrupoResumen.cs" />
     <Compile Include="Models\RespuestaComun.cs" />
     <Compile Include="Models\ResumenDiario.cs" />
-    <Compile Include="Models\SendBillRequest.cs" />
-    <Compile Include="Models\SendBillResponse.cs" />
+    <Compile Include="Models\EnviarDocumentoRequest.cs" />
+    <Compile Include="Models\EnviarDocumentoResponse.cs" />
     <Compile Include="PasswordDigestBehavior.cs" />
     <Compile Include="PasswordDigestMessageInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

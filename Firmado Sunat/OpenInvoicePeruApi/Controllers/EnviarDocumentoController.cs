@@ -13,11 +13,11 @@ using OpenInvoicePeru.FirmadoSunat.Models;
 
 namespace OpenInvoicePeruApi.Controllers
 {
-    public class SendBillController : ApiController
+    public class EnviarDocumentoController : ApiController
     {
-        public SendBillResponse Post([FromBody]SendBillRequest request)
+        public EnviarDocumentoResponse Post([FromBody]EnviarDocumentoRequest request)
         {
-            var response = new SendBillResponse();
+            var response = new EnviarDocumentoResponse();
 
             var serializador = new Serializador();
             var nombreArchivo = $"{request.Ruc}-{request.TipoDocumento}-{request.IdDocumento}";

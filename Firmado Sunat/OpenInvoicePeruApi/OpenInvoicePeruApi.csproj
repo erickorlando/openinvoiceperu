@@ -105,13 +105,14 @@
   <ItemGroup>
     <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\CreditNoteController.cs" />
-    <Compile Include="Controllers\DebitNoteController.cs" />
+    <Compile Include="Controllers\GenerarNotaCreditoController.cs" />
+    <Compile Include="Controllers\GenerarNotaDebitoController.cs" />
     <Compile Include="Controllers\FirmarController.cs" />
-    <Compile Include="Controllers\InvoiceController.cs" />
-    <Compile Include="Controllers\SendBillController.cs" />
-    <Compile Include="Controllers\SummaryDocumentController.cs" />
-    <Compile Include="Controllers\VoidedDocumentController.cs" />
+    <Compile Include="Controllers\GenerarFacturaController.cs" />
+    <Compile Include="Controllers\EnviarDocumentoController.cs" />
+    <Compile Include="Controllers\EnviarResumenController.cs" />
+    <Compile Include="Controllers\GenerarResumenDiarioController.cs" />
+    <Compile Include="Controllers\GenerarComunicacionBajaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

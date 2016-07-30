@@ -1,6 +1,6 @@
 ﻿namespace OpenInvoicePeru.FirmadoSunat.Models
 {
-    public class SendBillResponse : RespuestaComun
+    public class EnviarDocumentoResponse : RespuestaComun
     {
         public string CodigoRespuesta { get; set; }
         public string MensajeRespuesta { get; set; }
