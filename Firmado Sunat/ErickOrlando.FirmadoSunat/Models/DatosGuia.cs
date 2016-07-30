@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace OpenInvoicePeru.FirmadoSunat.Models
 {
+#if TESTING
     [Serializable]
+#endif
     public class DatosGuia
     {
         public Contribuyente DireccionDestino { get; set; }

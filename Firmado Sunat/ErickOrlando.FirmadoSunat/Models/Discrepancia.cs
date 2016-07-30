@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace OpenInvoicePeru.FirmadoSunat.Models
 {
+#if TESTING
     [Serializable]
+#endif
     public class Discrepancia
     {
         public string NroReferencia { get; set; }

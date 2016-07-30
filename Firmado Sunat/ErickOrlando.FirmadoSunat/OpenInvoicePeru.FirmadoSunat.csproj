@@ -17,7 +17,7 @@
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DefineConstants>TRACE;DEBUG</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -118,6 +118,7 @@
     <Compile Include="Models\DocumentoRelacionado.cs" />
     <Compile Include="Models\FirmadoRequest.cs" />
     <Compile Include="Models\FirmadoResponse.cs" />
+    <Compile Include="Models\DocumentoResponse.cs" />
     <Compile Include="Models\SendBillRequest.cs" />
     <Compile Include="Models\SendBillResponse.cs" />
     <Compile Include="PasswordDigestBehavior.cs" />

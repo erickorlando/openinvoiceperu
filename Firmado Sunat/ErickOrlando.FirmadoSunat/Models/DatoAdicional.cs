@@ -6,7 +6,9 @@ using System.Threading.Tasks;
 
 namespace OpenInvoicePeru.FirmadoSunat.Models
 {
+#if TESTING
     [Serializable]
+#endif
     public class DatoAdicional
     {
         public string Codigo { get; set; }

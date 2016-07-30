@@ -32,6 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net4\RestSharp.dll</HintPath>
       <Private>True</Private>
@@ -45,10 +49,52 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\Contribuyente.cs">
+      <Link>Estructuras\Contribuyente.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DatoAdicional.cs">
+      <Link>Estructuras\DatoAdicional.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DatosGuia.cs">
+      <Link>Estructuras\DatosGuia.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DetalleDocumento.cs">
+      <Link>Estructuras\DetalleDocumento.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\Discrepancia.cs">
+      <Link>Estructuras\Discrepancia.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DocumentoElectronico.cs">
+      <Link>Estructuras\DocumentoElectronico.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DocumentoRelacionado.cs">
+      <Link>Estructuras\DocumentoRelacionado.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DocumentoResponse.cs">
+      <Link>Estructuras\DocumentoResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\FirmadoRequest.cs">
+      <Link>Estructuras\FirmadoRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\FirmadoResponse.cs">
+      <Link>Estructuras\FirmadoResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\SendBillRequest.cs">
+      <Link>Estructuras\SendBillRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\SendBillResponse.cs">
+      <Link>Estructuras\SendBillResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\ErickOrlando.FirmadoSunat\Utiles.cs">
+      <Link>Estructuras\Utiles.cs</Link>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="certificado.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

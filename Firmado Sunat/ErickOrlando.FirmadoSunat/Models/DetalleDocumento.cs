@@ -2,7 +2,9 @@
 
 namespace OpenInvoicePeru.FirmadoSunat.Models
 {
+#if TESTING
     [Serializable]
+#endif
     public class DetalleDocumento : ICloneable
     {
         public int Id { get; set; }

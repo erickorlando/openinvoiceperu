@@ -79,9 +79,9 @@ namespace OpenInvoicePeru.FirmadoSunat
                     // Segun el Certificado Digital escogido.
                 }
                 // Con firma.
-                resultado = FirmarXml(Convert.ToBase64String(memStr.ToArray()));
+                //resultado = FirmarXml(Convert.ToBase64String(memStr.ToArray()));
                 // Sin Firma.
-                //resultado = Convert.ToBase64String(memStr.ToArray());
+                resultado = Convert.ToBase64String(memStr.ToArray());
             }
             return resultado;
         }

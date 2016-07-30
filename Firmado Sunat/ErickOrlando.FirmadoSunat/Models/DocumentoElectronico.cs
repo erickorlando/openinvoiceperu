@@ -4,7 +4,9 @@ using System.Collections.ObjectModel;
 
 namespace OpenInvoicePeru.FirmadoSunat.Models
 {
+#if TESTING
     [Serializable]
+#endif
     public class DocumentoElectronico : ICloneable
     {
 
