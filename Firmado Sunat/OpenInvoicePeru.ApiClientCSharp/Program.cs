@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
-using System.Linq;
-using System.Text;
 using Newtonsoft.Json;
 using OpenInvoicePeru.FirmadoSunat.Models;
 using RestSharp;
@@ -12,11 +9,11 @@ namespace OpenInvoicePeru.ApiClientCSharp
 {
     class Program
     {
-        private static string _baseUrl = "http://localhost:50888/OpenInvoicePeru/api";
+        private static readonly string _baseUrl = "http://localhost:50888/OpenInvoicePeru/api";
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Prueba de API REST de OpenInvoicePeru");
+            Console.WriteLine("Prueba de API REST de OpenInvoicePeru (C#)");
             var client = new RestClient(_baseUrl);
 
             var requestInvoice = new RestRequest("invoice", Method.POST);

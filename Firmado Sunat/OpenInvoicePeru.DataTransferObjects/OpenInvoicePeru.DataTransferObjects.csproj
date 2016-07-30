@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DAAF9962-BAF0-4873-B21A-165357AAE7FC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenInvoicePeru.DataTransferObjects</RootNamespace>
+    <AssemblyName>OpenInvoicePeru.DataTransferObjects</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\erickorlando.firmadosunat\models\ComunicacionBaja.cs">
+      <Link>Estructuras\ComunicacionBaja.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\Contribuyente.cs">
+      <Link>Estructuras\Contribuyente.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\DatoAdicional.cs">
+      <Link>Estructuras\DatoAdicional.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\DatosGuia.cs">
+      <Link>Estructuras\DatosGuia.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\DetalleDocumento.cs">
+      <Link>Estructuras\DetalleDocumento.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\Discrepancia.cs">
+      <Link>Estructuras\Discrepancia.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\DocumentoBaja.cs">
+      <Link>Estructuras\DocumentoBaja.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\DocumentoElectronico.cs">
+      <Link>Estructuras\DocumentoElectronico.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\DocumentoRelacionado.cs">
+      <Link>Estructuras\DocumentoRelacionado.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\DocumentoResponse.cs">
+      <Link>Estructuras\DocumentoResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\DocumentoResumen.cs">
+      <Link>Estructuras\DocumentoResumen.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\DocumentoResumenDetalle.cs">
+      <Link>Estructuras\DocumentoResumenDetalle.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\FirmadoRequest.cs">
+      <Link>Estructuras\FirmadoRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\FirmadoResponse.cs">
+      <Link>Estructuras\FirmadoResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\GrupoResumen.cs">
+      <Link>Estructuras\GrupoResumen.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\RespuestaComun.cs">
+      <Link>Estructuras\RespuestaComun.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\ResumenDiario.cs">
+      <Link>Estructuras\ResumenDiario.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\SendBillRequest.cs">
+      <Link>Estructuras\SendBillRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\models\SendBillResponse.cs">
+      <Link>Estructuras\SendBillResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\erickorlando.firmadosunat\Utiles.cs">
+      <Link>Estructuras\Utiles.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="certificado.pfx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

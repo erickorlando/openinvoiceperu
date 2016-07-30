@@ -49,74 +49,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\ComunicacionBaja.cs">
-      <Link>Estructuras\ComunicacionBaja.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\Contribuyente.cs">
-      <Link>Estructuras\Contribuyente.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DatoAdicional.cs">
-      <Link>Estructuras\DatoAdicional.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DatosGuia.cs">
-      <Link>Estructuras\DatosGuia.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DetalleDocumento.cs">
-      <Link>Estructuras\DetalleDocumento.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\Discrepancia.cs">
-      <Link>Estructuras\Discrepancia.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DocumentoBaja.cs">
-      <Link>Estructuras\DocumentoBaja.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DocumentoElectronico.cs">
-      <Link>Estructuras\DocumentoElectronico.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DocumentoRelacionado.cs">
-      <Link>Estructuras\DocumentoRelacionado.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DocumentoResponse.cs">
-      <Link>Estructuras\DocumentoResponse.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DocumentoResumen.cs">
-      <Link>Estructuras\DocumentoResumen.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\DocumentoResumenDetalle.cs">
-      <Link>Estructuras\DocumentoResumenDetalle.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\FirmadoRequest.cs">
-      <Link>Estructuras\FirmadoRequest.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\FirmadoResponse.cs">
-      <Link>Estructuras\FirmadoResponse.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\GrupoResumen.cs">
-      <Link>Estructuras\GrupoResumen.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\RespuestaComun.cs">
-      <Link>Estructuras\RespuestaComun.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\ResumenDiario.cs">
-      <Link>Estructuras\ResumenDiario.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\SendBillRequest.cs">
-      <Link>Estructuras\SendBillRequest.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Models\SendBillResponse.cs">
-      <Link>Estructuras\SendBillResponse.cs</Link>
-    </Compile>
-    <Compile Include="..\ErickOrlando.FirmadoSunat\Utiles.cs">
-      <Link>Estructuras\Utiles.cs</Link>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="certificado.pfx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenInvoicePeru.DataTransferObjects\OpenInvoicePeru.DataTransferObjects.csproj">
+      <Project>{daaf9962-baf0-4873-b21a-165357aae7fc}</Project>
+      <Name>OpenInvoicePeru.DataTransferObjects</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

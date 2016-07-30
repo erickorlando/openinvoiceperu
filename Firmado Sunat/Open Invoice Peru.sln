@@ -23,9 +23,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeruApi", "OpenI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeruApi.Tests", "OpenInvoicePeruApi.Tests\OpenInvoicePeruApi.Tests.csproj", "{36A56148-E60C-4D60-89FD-B03DE83E18CE}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Clientes Api REST", "04. Clientes Api REST", "{1A3D6DED-0A77-4121-B8EF-471719D761B9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Clientes Api REST (NET 4.0)", "04. Clientes Api REST (NET 4.0)", "{1A3D6DED-0A77-4121-B8EF-471719D761B9}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeru.ApiClientCSharp", "OpenInvoicePeru.ApiClientCSharp\OpenInvoicePeru.ApiClientCSharp.csproj", "{9608BF0E-765A-4EA6-B755-495F4795F765}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "OpenInvoicePeru.ApiClientVisualBasic", "OpenInvoicePeru.ApiClientVisualBasic\OpenInvoicePeru.ApiClientVisualBasic.vbproj", "{4764985E-53F8-42AD-A337-0084B4E36E61}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeru.DataTransferObjects", "OpenInvoicePeru.DataTransferObjects\OpenInvoicePeru.DataTransferObjects.csproj", "{DAAF9962-BAF0-4873-B21A-165357AAE7FC}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -67,6 +71,22 @@ Global
 		{9608BF0E-765A-4EA6-B755-495F4795F765}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9608BF0E-765A-4EA6-B755-495F4795F765}.Release|x64.ActiveCfg = Release|Any CPU
 		{9608BF0E-765A-4EA6-B755-495F4795F765}.Release|x64.Build.0 = Release|Any CPU
+		{4764985E-53F8-42AD-A337-0084B4E36E61}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4764985E-53F8-42AD-A337-0084B4E36E61}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4764985E-53F8-42AD-A337-0084B4E36E61}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4764985E-53F8-42AD-A337-0084B4E36E61}.Debug|x64.Build.0 = Debug|Any CPU
+		{4764985E-53F8-42AD-A337-0084B4E36E61}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4764985E-53F8-42AD-A337-0084B4E36E61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4764985E-53F8-42AD-A337-0084B4E36E61}.Release|x64.ActiveCfg = Release|Any CPU
+		{4764985E-53F8-42AD-A337-0084B4E36E61}.Release|x64.Build.0 = Release|Any CPU
+		{DAAF9962-BAF0-4873-B21A-165357AAE7FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAAF9962-BAF0-4873-B21A-165357AAE7FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAAF9962-BAF0-4873-B21A-165357AAE7FC}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{DAAF9962-BAF0-4873-B21A-165357AAE7FC}.Debug|x64.Build.0 = Debug|Any CPU
+		{DAAF9962-BAF0-4873-B21A-165357AAE7FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAAF9962-BAF0-4873-B21A-165357AAE7FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAAF9962-BAF0-4873-B21A-165357AAE7FC}.Release|x64.ActiveCfg = Release|Any CPU
+		{DAAF9962-BAF0-4873-B21A-165357AAE7FC}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -77,5 +97,7 @@ Global
 		{82D7B299-2366-480A-B8FD-3F3B04AD3AFA} = {7C30E289-3418-4984-8FD9-7D4582DF6297}
 		{36A56148-E60C-4D60-89FD-B03DE83E18CE} = {7C30E289-3418-4984-8FD9-7D4582DF6297}
 		{9608BF0E-765A-4EA6-B755-495F4795F765} = {1A3D6DED-0A77-4121-B8EF-471719D761B9}
+		{4764985E-53F8-42AD-A337-0084B4E36E61} = {1A3D6DED-0A77-4121-B8EF-471719D761B9}
+		{DAAF9962-BAF0-4873-B21A-165357AAE7FC} = {1A3D6DED-0A77-4121-B8EF-471719D761B9}
 	EndGlobalSection
 EndGlobal
