@@ -91,8 +91,11 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 
                         {
                             writer.WriteStartElement("cbc:PayableAmount");
-                            writer.WriteAttributeString("currencyID", additionalMonetaryTotal.PayableAmount.currencyID);
-                            writer.WriteValue(additionalMonetaryTotal.PayableAmount.value.ToString(Constantes.Constantes.FormatoNumerico, Formato));
+                            {
+                                writer.WriteAttributeString("currencyID", additionalMonetaryTotal.PayableAmount.currencyID);
+                                writer.WriteValue(additionalMonetaryTotal.PayableAmount.value.ToString(Constantes.Constantes.FormatoNumerico, Formato));
+
+                            }
                             writer.WriteEndElement();
                         }
                         if (additionalMonetaryTotal.Percent > 0)

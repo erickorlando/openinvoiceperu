@@ -30,6 +30,11 @@ namespace OpenInvoicePeru.FirmadoSunat
         /// Tipo de Documento segun SUNAT
         /// </summary>
         public int TipoDocumento { get; set; }
+        
+        /// <summary>
+        /// Resumen de la Firma
+        /// </summary>
+        public string ValorFirma { get; set; }
 
         public Serializador()
         {
@@ -159,6 +164,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                 // Recuperamos el valor Hash de la firma para este documento.
                 if (reference.DigestValue != null)
                     DigestValue = Convert.ToBase64String(reference.DigestValue);
+                ValorFirma = Convert.ToBase64String(signedXml.SignatureValue);
 
                 nodoExtension.AppendChild(signedXml.GetXml());
 
