@@ -48,7 +48,11 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="UnitTest1.cs" />
+    <Compile Include="Controllers\CreditNoteControllerTests.cs" />
+    <Compile Include="Controllers\DebitNoteControllerTests.cs" />
+    <Compile Include="Controllers\FirmarControllerTests.cs" />
+    <Compile Include="Controllers\InvoiceControllerTests.cs" />
+    <Compile Include="Controllers\SendBillControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -16,9 +16,6 @@ namespace OpenInvoicePeruApi.Controllers
 
                 var serializador = new Serializador { TipoDocumento = 1 };
 
-                //return serializador.GenerarXmlFisico(invoice,
-                //    $"{documento.Emisor.NroDocumento}-{documento.TipoDocumento}-{documento.IdDocumento}");
-
                 response.TramaXmlSinFirma = serializador.GenerarXml(invoice);
             }
             catch (Exception ex)

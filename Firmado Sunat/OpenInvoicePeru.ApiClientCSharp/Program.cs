@@ -80,7 +80,7 @@ namespace OpenInvoicePeru.ApiClientCSharp
 
             var documentoResponse = client.Execute<DocumentoResponse>(requestInvoice);
 
-            Console.WriteLine("Firmando XML");
+            Console.WriteLine("Firmando XML...");
             // Firmado del Documento.
             var firmado = new FirmadoRequest
             {

@@ -16,16 +16,23 @@ namespace OpenInvoicePeruApi.Controllers
         {
             var response = new FirmadoResponse();
 
-            var serializador = new Serializador()
+            try
             {
-                RutaCertificadoDigital = request.CertificadoDigital,
-                PasswordCertificado = request.PasswordCertificado,
-                TipoDocumento = request.DocumentoRetencion ? 0 : 1
-            };
+                var serializador = new Serializador()
+                {
+                    RutaCertificadoDigital = request.CertificadoDigital,
+                    PasswordCertificado = request.PasswordCertificado,
+                    TipoDocumento = request.DocumentoRetencion ? 0 : 1
+                };
 
-            response.TramaXmlFirmado =  serializador.FirmarXml(request.TramaXmlSinFirma);
-            response.ResumenFirma = serializador.DigestValue;
-            response.ValorFirma = serializador.ValorFirma;
+                response.TramaXmlFirmado = serializador.FirmarXml(request.TramaXmlSinFirma);
+                response.ResumenFirma = serializador.DigestValue;
+                response.ValorFirma = serializador.ValorFirma;
+            }
+            catch (Exception ex)
+            {
+                response.TramaXmlFirmado = ex.Message;
+            }
 
             return response;
         }

@@ -12,14 +12,23 @@ namespace OpenInvoicePeruApi.Controllers
     public class DebitNoteController : ApiController
     {
 
-        public string Post([FromBody] DocumentoElectronico documento)
+        public DocumentoResponse Post([FromBody] DocumentoElectronico documento)
         {
-            var invoice = Generador.GenerarDebitNote(documento);
+            var response = new DocumentoResponse();
+            try
+            {
+                var notaDebito = Generador.GenerarDebitNote(documento);
 
-            var serializador = new Serializador { TipoDocumento = 1 };
+                var serializador = new Serializador { TipoDocumento = 1 };
 
-            return serializador.GenerarXmlFisico(invoice,
-                $"{documento.Emisor.NroDocumento}-{documento.TipoDocumento}-{documento.IdDocumento}");
+                response.TramaXmlSinFirma = serializador.GenerarXml(notaDebito);
+            }
+            catch (Exception ex)
+            {
+                response.TramaXmlSinFirma = ex.Message;
+            }
+
+            return response;
         }
 
     }
