@@ -113,7 +113,7 @@ Module Program
             Dim responseSendBill = client.Execute(Of EnviarDocumentoResponse)(requestSendBill)
 
             If Not responseSendBill.Data.Exito Then
-                Throw New ApplicationException(responseFirma.Data.MensajeError)
+                Throw New ApplicationException(responseSendBill.Data.MensajeError)
             End If
 
             Console.WriteLine("Respuesta de SUNAT:")

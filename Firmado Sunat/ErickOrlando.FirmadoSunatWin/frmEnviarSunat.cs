@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.ServiceModel;
 using System.Speech.Synthesis;
 using System.Text;
@@ -18,9 +20,13 @@ namespace OpenInvoicePeru.FirmadoSunatWin
     public partial class FrmEnviarSunat : Form
     {
         private FrmDocumento _frmDocumento;
+        private HttpClient _client;
+
         public FrmEnviarSunat()
         {
             InitializeComponent();
+
+            _client = new HttpClient { BaseAddress = new Uri(ConfigurationManager.AppSettings["UrlOpenInvoicePeruApi"]) };
 
             Load += (s, e) =>
             {
@@ -76,7 +82,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             }
         }
 
-        private void btnGen_Click(object sender, EventArgs e)
+        private async void btnGen_Click(object sender, EventArgs e)
         {
             try
             {
@@ -111,138 +117,170 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                         codigoTipoDoc = "01";
                         break;
                 }
-                // Una vez validado el XML seleccionado procedemos con obtener el Certificado.
-                var serializar = new Serializador
+                //// Una vez validado el XML seleccionado procedemos con obtener el Certificado.
+                //var serializar = new Serializador
+                //{
+                //    RutaCertificadoDigital = Convert.ToBase64String(File.ReadAllBytes(txtRutaCertificado.Text)),
+                //    PasswordCertificado = txtPassCertificado.Text,
+                //    TipoDocumento = rbRetenciones.Checked ? 0 : 1
+                //};
+
+                //// Validacion extra cuando sea un documento de resumen.
+                //if (rbResumen.Checked) serializar.TipoDocumento = 0;
+
+                //var param = new ConexionSunat.Parametros
+                //{
+                //    EndPointUrl = ValorSeleccionado(),
+                //    Retencion = rbRetenciones.Checked,
+                //    Ruc = txtNroRuc.Text,
+                //    UserName = txtUsuarioSol.Text,
+                //    Password = txtClaveSol.Text
+                //};
+                //using (var conexion = new ConexionSunat(param))
+                //{
+                //    var byteArray = File.ReadAllBytes(txtSource.Text);
+
+                //    Cursor = Cursors.WaitCursor;
+
+                //    // Firmamos el XML.
+                //    var tramaFirmado = serializar.FirmarXml(Convert.ToBase64String(byteArray));
+                //    // Le damos un nuevo nombre al archivo
+                //    var nombreArchivo = $"{txtNroRuc.Text}-{codigoTipoDoc}-{txtSerieCorrelativo.Text}";
+                //    // Escribimos el archivo XML ya firmado en una nueva ubicación.
+                //    using (var fs = File.Create($"{nombreArchivo}.xml"))
+                //    {
+                //        var byteFirmado = Convert.FromBase64String(tramaFirmado);
+                //        fs.Write(byteFirmado, 0, byteFirmado.Length);
+                //    }
+
+                //    // Ahora lo empaquetamos en un ZIP.
+                //    var tramaZip = serializar.GenerarZip(tramaFirmado, nombreArchivo);
+
+                //    if (rbResumen.Checked)
+                //    {
+                //        var rptaSunat = conexion.EnviarResumenBaja(tramaZip, $"{nombreArchivo}.zip");
+
+                //        if (rptaSunat.Item2)
+                //        {
+                //            var sb = new StringBuilder();
+
+                //            // Añadimos la respuesta del Servicio.
+                //            sb.AppendLine(Resources.procesoCorrecto);
+
+                //            sb.AppendLine($"Procesamiento correcto, el numero de Ticket es {rptaSunat.Item1}");
+
+
+                //            txtResult.Text = sb.ToString();
+                //            sb.Length = 0;
+                //        }
+                //        else
+                //            txtResult.Text = rptaSunat.Item1;
+                //    }
+                //    else
+                //    {
+                //        var resultado = conexion.EnviarDocumento(tramaZip, $"{nombreArchivo}.zip");
+
+                //        if (resultado.Item2)
+                //        {
+                //            var returnByte = Convert.FromBase64String(resultado.Item1);
+
+                //            var rutaArchivo = $"{Directory.GetCurrentDirectory()}\\R-{nombreArchivo}.zip";
+                //            var fs = new FileStream(rutaArchivo, FileMode.Create, FileAccess.Write);
+                //            fs.Write(returnByte, 0, returnByte.Length);
+                //            fs.Close();
+
+                //            var sb = new StringBuilder();
+
+                //            // Añadimos la respuesta del Servicio.
+                //            sb.AppendLine(Resources.procesoCorrecto);
+
+                //            // Procedemos a desempaquetar el archivo y leer el contenido de la respuesta SUNAT.
+                //            using (var streamZip = ZipFile.Read(File.Open(rutaArchivo,
+                //                FileMode.Open,
+                //                FileAccess.ReadWrite)))
+                //            {
+                //                foreach (var entry in streamZip.Entries)
+                //                {
+                //                    if (!entry.FileName.EndsWith(".xml")) continue;
+                //                    using (var ms = new MemoryStream())
+                //                    {
+                //                        entry.Extract(ms);
+                //                        ms.Position = 0;
+                //                        var responseReader = new StreamReader(ms);
+                //                        var responseString = responseReader.ReadToEnd();
+                //                        try
+                //                        {
+                //                            var xmlDoc = new XmlDocument();
+                //                            xmlDoc.LoadXml(responseString);
+
+                //                            var xmlnsManager = new XmlNamespaceManager(xmlDoc.NameTable);
+
+                //                            xmlnsManager.AddNamespace("ar", EspacioNombres.ar);
+                //                            xmlnsManager.AddNamespace("cac",EspacioNombres.cac);
+                //                            xmlnsManager.AddNamespace("cbc",EspacioNombres.cbc);
+
+                //                            var responseCode = xmlDoc.SelectSingleNode(EspacioNombres.nodoResponseCode,
+                //                                xmlnsManager)?.InnerText;
+                //                            var description = xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
+                //                                xmlnsManager)?.InnerText;
+
+                //                            sb.AppendFormat("Código:{0}\n Descripción:{1}", responseCode, description);
+
+                //                        }
+                //                        catch (Exception ex)
+                //                        {
+                //                            sb.AppendLine(ex.Message);
+                //                        }
+                //                    }
+                //                }
+                //            }
+
+                //            txtResult.Text = sb.ToString();
+                //            sb.Length = 0; // Limpiamos memoria del StringBuilder.
+                //        }
+                //        else
+                //            txtResult.Text = resultado.Item1;
+                //    }
+
+                //}
+
+                var tramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(txtSource.Text));
+
+                var firmadoRequest = new FirmadoRequest
                 {
-                    RutaCertificadoDigital = Convert.ToBase64String(File.ReadAllBytes(txtRutaCertificado.Text)),
+                    TramaXmlSinFirma = tramaXmlSinFirma,
+                    CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes(txtRutaCertificado.Text)),
                     PasswordCertificado = txtPassCertificado.Text,
-                    TipoDocumento = rbRetenciones.Checked ? 0 : 1
+                    UnSoloNodoExtension = !rbRetenciones.Checked
                 };
 
-                // Validacion extra cuando sea un documento de resumen.
-                if (rbResumen.Checked) serializar.TipoDocumento = 0;
+                var jsonFirmado = await _client.PostAsJsonAsync("api/Firmar", firmadoRequest);
+                var respuestaFirmado = await jsonFirmado.Content.ReadAsAsync<FirmadoResponse>();
+                if (!respuestaFirmado.Exito)
+                    throw new ApplicationException(respuestaFirmado.MensajeError);
 
-                var param = new ConexionSunat.Parametros
+                var enviarDocumentoRequest = new EnviarDocumentoRequest
                 {
-                    EndPointUrl = ValorSeleccionado(),
-                    Retencion = rbRetenciones.Checked,
                     Ruc = txtNroRuc.Text,
-                    UserName = txtUsuarioSol.Text,
-                    Password = txtClaveSol.Text
+                    UsuarioSol = txtUsuarioSol.Text,
+                    ClaveSol = txtClaveSol.Text,
+                    EndPointUrl = ValorSeleccionado(),
+                    IdDocumento = txtSerieCorrelativo.Text,
+                    TipoDocumento = codigoTipoDoc,
+                    TramaXmlFirmado = respuestaFirmado.TramaXmlFirmado
                 };
-                using (var conexion = new ConexionSunat(param))
-                {
-                    var byteArray = File.ReadAllBytes(txtSource.Text);
 
-                    Cursor = Cursors.WaitCursor;
+                var jsonEnvioDocumento = await _client.PostAsJsonAsync("api/EnviarDocumento", enviarDocumentoRequest);
 
-                    // Firmamos el XML.
-                    var tramaFirmado = serializar.FirmarXml(Convert.ToBase64String(byteArray));
-                    // Le damos un nuevo nombre al archivo
-                    var nombreArchivo = $"{txtNroRuc.Text}-{codigoTipoDoc}-{txtSerieCorrelativo.Text}";
-                    // Escribimos el archivo XML ya firmado en una nueva ubicación.
-                    using (var fs = File.Create($"{nombreArchivo}.xml"))
-                    {
-                        var byteFirmado = Convert.FromBase64String(tramaFirmado);
-                        fs.Write(byteFirmado, 0, byteFirmado.Length);
-                    }
+                var respuestaEnvio = await jsonEnvioDocumento.Content.ReadAsAsync<EnviarDocumentoResponse>();
 
-                    // Ahora lo empaquetamos en un ZIP.
-                    var tramaZip = serializar.GenerarZip(tramaFirmado, nombreArchivo);
+                if (!respuestaEnvio.Exito)
+                    throw new ApplicationException(respuestaEnvio.MensajeError);
 
-                    if (rbResumen.Checked)
-                    {
-                        var rptaSunat = conexion.EnviarResumenBaja(tramaZip, $"{nombreArchivo}.zip");
+                txtResult.Text = $"{Resources.procesoCorrecto}{Environment.NewLine}{respuestaEnvio.MensajeRespuesta}";
 
-                        if (rptaSunat.Item2)
-                        {
-                            var sb = new StringBuilder();
-
-                            // Añadimos la respuesta del Servicio.
-                            sb.AppendLine(Resources.procesoCorrecto);
-
-                            sb.AppendLine($"Procesamiento correcto, el numero de Ticket es {rptaSunat.Item1}");
-
-
-                            txtResult.Text = sb.ToString();
-                            sb.Length = 0;
-                        }
-                        else
-                            txtResult.Text = rptaSunat.Item1;
-                    }
-                    else
-                    {
-                        var resultado = conexion.EnviarDocumento(tramaZip, $"{nombreArchivo}.zip");
-
-                        if (resultado.Item2)
-                        {
-                            var returnByte = Convert.FromBase64String(resultado.Item1);
-
-                            var rutaArchivo = $"{Directory.GetCurrentDirectory()}\\R-{nombreArchivo}.zip";
-                            var fs = new FileStream(rutaArchivo, FileMode.Create, FileAccess.Write);
-                            fs.Write(returnByte, 0, returnByte.Length);
-                            fs.Close();
-
-                            var sb = new StringBuilder();
-
-                            // Añadimos la respuesta del Servicio.
-                            sb.AppendLine(Resources.procesoCorrecto);
-
-                            // Procedemos a desempaquetar el archivo y leer el contenido de la respuesta SUNAT.
-                            using (var streamZip = ZipFile.Read(File.Open(rutaArchivo,
-                                FileMode.Open,
-                                FileAccess.ReadWrite)))
-                            {
-                                foreach (var entry in streamZip.Entries)
-                                {
-                                    if (!entry.FileName.EndsWith(".xml")) continue;
-                                    using (var ms = new MemoryStream())
-                                    {
-                                        entry.Extract(ms);
-                                        ms.Position = 0;
-                                        var responseReader = new StreamReader(ms);
-                                        var responseString = responseReader.ReadToEnd();
-                                        try
-                                        {
-                                            var xmlDoc = new XmlDocument();
-                                            xmlDoc.LoadXml(responseString);
-
-                                            var xmlnsManager = new XmlNamespaceManager(xmlDoc.NameTable);
-
-                                            xmlnsManager.AddNamespace("ar", EspacioNombres.ar);
-                                            xmlnsManager.AddNamespace("cac",EspacioNombres.cac);
-                                            xmlnsManager.AddNamespace("cbc",EspacioNombres.cbc);
-                                            
-                                            var responseCode = xmlDoc.SelectSingleNode(EspacioNombres.nodoResponseCode,
-                                                xmlnsManager)?.InnerText;
-                                            var description = xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
-                                                xmlnsManager)?.InnerText;
-
-                                            sb.AppendFormat("Código:{0}\n Descripción:{1}", responseCode, description);
-
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            sb.AppendLine(ex.Message);
-                                        }
-                                    }
-                                }
-                            }
-                          
-                            txtResult.Text = sb.ToString();
-                            sb.Length = 0; // Limpiamos memoria del StringBuilder.
-                        }
-                        else
-                            txtResult.Text = resultado.Item1;
-                    }
-
-                }
                 if (chkVoz.Checked)
                     Hablar();
-            }
-            catch (FaultException exSer)
-            {
-                txtResult.Text = exSer.ToString();
             }
             catch (Exception ex)
             {

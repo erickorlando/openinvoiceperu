@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Windows.Forms;
@@ -334,18 +335,26 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 switch (doc.TipoDocumento)
                 {
                     case "07":
-                        metodoApi = "api/creditnote";
+                        metodoApi = "api/generarnotacredito";
                         break;
                     case "08":
-                        metodoApi = "api/debitnote";
+                        metodoApi = "api/generarnotadebito";
                         break;
                     default:
-                        metodoApi = "api/invoice";
+                        metodoApi = "api/generarfactura";
                         break;
                 }
 
                 var response = await proxy.PostAsJsonAsync(metodoApi, doc);
-                RutaArchivo = await response.Content.ReadAsAsync<string>();
+                var respuesta = await response.Content.ReadAsAsync<DocumentoResponse>();
+                if (!respuesta.Exito)
+                    throw new ApplicationException(respuesta.MensajeError);
+
+                RutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, 
+                    $"/XML/{doc.IdDocumento}.xml");
+
+                File.WriteAllBytes(RutaArchivo, Convert.FromBase64String(respuesta.TramaXmlSinFirma));
+
                 IdDocumento = doc.IdDocumento;
 
                 DialogResult = DialogResult.OK;

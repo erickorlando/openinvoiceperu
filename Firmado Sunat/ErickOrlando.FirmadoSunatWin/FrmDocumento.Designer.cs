@@ -148,6 +148,12 @@
             this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.relacionadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tbDiscrepancias = new System.Windows.Forms.TabPage();
+            this.discrepanciasDataGridView = new System.Windows.Forms.DataGridView();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discrepanciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.montoDetraccionTextBox = new System.Windows.Forms.TextBox();
             this.btnCalcDetraccion = new System.Windows.Forms.Button();
             this.btnGuia = new System.Windows.Forms.Button();
@@ -156,12 +162,6 @@
             this.montoAnticipoTextBox = new System.Windows.Forms.TextBox();
             this.docAnticipoTextBox = new System.Windows.Forms.TextBox();
             this.tipoDocAnticipoComboBox = new System.Windows.Forms.ComboBox();
-            this.tbDiscrepancias = new System.Windows.Forms.TabPage();
-            this.discrepanciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.discrepanciasDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             montoEnLetrasLabel = new System.Windows.Forms.Label();
             gravadasLabel = new System.Windows.Forms.Label();
             exoneradasLabel = new System.Windows.Forms.Label();
@@ -200,10 +200,10 @@
             this.tpRelacionados.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.relacionadosDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.relacionadosBindingSource)).BeginInit();
-            this.groupBox1.SuspendLayout();
             this.tbDiscrepancias.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.discrepanciasBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.discrepanciasDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.discrepanciasBindingSource)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // montoEnLetrasLabel
@@ -497,7 +497,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(303, 121);
+            this.label8.Location = new System.Drawing.Point(305, 120);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(42, 13);
             this.label8.TabIndex = 16;
@@ -506,7 +506,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(303, 92);
+            this.label7.Location = new System.Drawing.Point(305, 66);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 13);
             this.label7.TabIndex = 14;
@@ -515,7 +515,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(303, 66);
+            this.label6.Location = new System.Drawing.Point(305, 91);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 13);
             this.label6.TabIndex = 12;
@@ -550,7 +550,7 @@
             // txtDistritoEm
             // 
             this.txtDistritoEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Distrito", true));
-            this.txtDistritoEm.Location = new System.Drawing.Point(384, 118);
+            this.txtDistritoEm.Location = new System.Drawing.Point(384, 117);
             this.txtDistritoEm.Name = "txtDistritoEm";
             this.txtDistritoEm.Size = new System.Drawing.Size(100, 20);
             this.txtDistritoEm.TabIndex = 17;
@@ -558,7 +558,7 @@
             // txtDptoEm
             // 
             this.txtDptoEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Departamento", true));
-            this.txtDptoEm.Location = new System.Drawing.Point(384, 89);
+            this.txtDptoEm.Location = new System.Drawing.Point(384, 63);
             this.txtDptoEm.Name = "txtDptoEm";
             this.txtDptoEm.Size = new System.Drawing.Size(100, 20);
             this.txtDptoEm.TabIndex = 15;
@@ -566,7 +566,7 @@
             // txtProvEm
             // 
             this.txtProvEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Provincia", true));
-            this.txtProvEm.Location = new System.Drawing.Point(384, 63);
+            this.txtProvEm.Location = new System.Drawing.Point(384, 88);
             this.txtProvEm.Name = "txtProvEm";
             this.txtProvEm.Size = new System.Drawing.Size(100, 20);
             this.txtProvEm.TabIndex = 13;
@@ -666,7 +666,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(310, 95);
+            this.label12.Location = new System.Drawing.Point(310, 68);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(77, 13);
             this.label12.TabIndex = 15;
@@ -675,7 +675,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(310, 69);
+            this.label13.Location = new System.Drawing.Point(310, 93);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(54, 13);
             this.label13.TabIndex = 13;
@@ -736,7 +736,7 @@
             // txtDptoRec
             // 
             this.txtDptoRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "Departamento", true));
-            this.txtDptoRec.Location = new System.Drawing.Point(394, 92);
+            this.txtDptoRec.Location = new System.Drawing.Point(394, 65);
             this.txtDptoRec.Name = "txtDptoRec";
             this.txtDptoRec.Size = new System.Drawing.Size(100, 20);
             this.txtDptoRec.TabIndex = 16;
@@ -744,7 +744,7 @@
             // txtProvRec
             // 
             this.txtProvRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "Provincia", true));
-            this.txtProvRec.Location = new System.Drawing.Point(394, 66);
+            this.txtProvRec.Location = new System.Drawing.Point(394, 90);
             this.txtProvRec.Name = "txtProvRec";
             this.txtProvRec.Size = new System.Drawing.Size(100, 20);
             this.txtProvRec.TabIndex = 14;
@@ -1297,6 +1297,62 @@
             this.relacionadosBindingSource.DataMember = "Relacionados";
             this.relacionadosBindingSource.DataSource = this.documentoElectronicoBindingSource;
             // 
+            // tbDiscrepancias
+            // 
+            this.tbDiscrepancias.AutoScroll = true;
+            this.tbDiscrepancias.Controls.Add(this.discrepanciasDataGridView);
+            this.tbDiscrepancias.Location = new System.Drawing.Point(4, 22);
+            this.tbDiscrepancias.Name = "tbDiscrepancias";
+            this.tbDiscrepancias.Padding = new System.Windows.Forms.Padding(3);
+            this.tbDiscrepancias.Size = new System.Drawing.Size(874, 180);
+            this.tbDiscrepancias.TabIndex = 3;
+            this.tbDiscrepancias.Text = "Discrepancias";
+            this.tbDiscrepancias.UseVisualStyleBackColor = true;
+            // 
+            // discrepanciasDataGridView
+            // 
+            this.discrepanciasDataGridView.AllowUserToAddRows = false;
+            this.discrepanciasDataGridView.AllowUserToDeleteRows = false;
+            this.discrepanciasDataGridView.AutoGenerateColumns = false;
+            this.discrepanciasDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.discrepanciasDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7});
+            this.discrepanciasDataGridView.DataSource = this.discrepanciasBindingSource;
+            this.discrepanciasDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.discrepanciasDataGridView.Location = new System.Drawing.Point(3, 3);
+            this.discrepanciasDataGridView.Name = "discrepanciasDataGridView";
+            this.discrepanciasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.discrepanciasDataGridView.Size = new System.Drawing.Size(868, 174);
+            this.discrepanciasDataGridView.TabIndex = 0;
+            // 
+            // dataGridViewTextBoxColumn5
+            // 
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "NroReferencia";
+            this.dataGridViewTextBoxColumn5.HeaderText = "Nro. Referencia";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
+            this.dataGridViewTextBoxColumn5.Width = 107;
+            // 
+            // dataGridViewTextBoxColumn6
+            // 
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Tipo";
+            this.dataGridViewTextBoxColumn6.HeaderText = "Tipo";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
+            this.dataGridViewTextBoxColumn6.Width = 53;
+            // 
+            // dataGridViewTextBoxColumn7
+            // 
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Descripcion";
+            this.dataGridViewTextBoxColumn7.HeaderText = "Descripcion";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            this.dataGridViewTextBoxColumn7.Width = 88;
+            // 
+            // discrepanciasBindingSource
+            // 
+            this.discrepanciasBindingSource.DataMember = "Discrepancias";
+            this.discrepanciasBindingSource.DataSource = this.documentoElectronicoBindingSource;
+            // 
             // montoDetraccionTextBox
             // 
             this.montoDetraccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoDetraccion", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
@@ -1388,62 +1444,6 @@
             this.tipoDocAnticipoComboBox.Size = new System.Drawing.Size(100, 21);
             this.tipoDocAnticipoComboBox.TabIndex = 1;
             // 
-            // tbDiscrepancias
-            // 
-            this.tbDiscrepancias.AutoScroll = true;
-            this.tbDiscrepancias.Controls.Add(this.discrepanciasDataGridView);
-            this.tbDiscrepancias.Location = new System.Drawing.Point(4, 22);
-            this.tbDiscrepancias.Name = "tbDiscrepancias";
-            this.tbDiscrepancias.Padding = new System.Windows.Forms.Padding(3);
-            this.tbDiscrepancias.Size = new System.Drawing.Size(874, 180);
-            this.tbDiscrepancias.TabIndex = 3;
-            this.tbDiscrepancias.Text = "Discrepancias";
-            this.tbDiscrepancias.UseVisualStyleBackColor = true;
-            // 
-            // discrepanciasBindingSource
-            // 
-            this.discrepanciasBindingSource.DataMember = "Discrepancias";
-            this.discrepanciasBindingSource.DataSource = this.documentoElectronicoBindingSource;
-            // 
-            // discrepanciasDataGridView
-            // 
-            this.discrepanciasDataGridView.AllowUserToAddRows = false;
-            this.discrepanciasDataGridView.AllowUserToDeleteRows = false;
-            this.discrepanciasDataGridView.AutoGenerateColumns = false;
-            this.discrepanciasDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.discrepanciasDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataGridViewTextBoxColumn5,
-            this.dataGridViewTextBoxColumn6,
-            this.dataGridViewTextBoxColumn7});
-            this.discrepanciasDataGridView.DataSource = this.discrepanciasBindingSource;
-            this.discrepanciasDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.discrepanciasDataGridView.Location = new System.Drawing.Point(3, 3);
-            this.discrepanciasDataGridView.Name = "discrepanciasDataGridView";
-            this.discrepanciasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.discrepanciasDataGridView.Size = new System.Drawing.Size(868, 174);
-            this.discrepanciasDataGridView.TabIndex = 0;
-            // 
-            // dataGridViewTextBoxColumn5
-            // 
-            this.dataGridViewTextBoxColumn5.DataPropertyName = "NroReferencia";
-            this.dataGridViewTextBoxColumn5.HeaderText = "Nro. Referencia";
-            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
-            this.dataGridViewTextBoxColumn5.Width = 107;
-            // 
-            // dataGridViewTextBoxColumn6
-            // 
-            this.dataGridViewTextBoxColumn6.DataPropertyName = "Tipo";
-            this.dataGridViewTextBoxColumn6.HeaderText = "Tipo";
-            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
-            this.dataGridViewTextBoxColumn6.Width = 53;
-            // 
-            // dataGridViewTextBoxColumn7
-            // 
-            this.dataGridViewTextBoxColumn7.DataPropertyName = "Descripcion";
-            this.dataGridViewTextBoxColumn7.HeaderText = "Descripcion";
-            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
-            this.dataGridViewTextBoxColumn7.Width = 88;
-            // 
             // FrmDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1526,11 +1526,11 @@
             this.tpRelacionados.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.relacionadosDataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.relacionadosBindingSource)).EndInit();
+            this.tbDiscrepancias.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.discrepanciasDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.discrepanciasBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tbDiscrepancias.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.discrepanciasBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.discrepanciasDataGridView)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
