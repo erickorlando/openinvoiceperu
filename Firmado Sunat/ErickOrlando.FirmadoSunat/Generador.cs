@@ -135,16 +135,6 @@ namespace OpenInvoicePeru.FirmadoSunat
                         {
                             Name = documento.Receptor.NombreComercial ?? string.Empty
                         },
-                        PostalAddress = new PostalAddress
-                        {
-                            ID = documento.Receptor.Ubigeo ?? string.Empty,
-                            StreetName = documento.Receptor.Direccion ?? string.Empty,
-                            CitySubdivisionName = documento.Receptor.Urbanizacion ?? string.Empty,
-                            CountrySubentity = documento.Receptor.Departamento ?? string.Empty,
-                            CityName = documento.Receptor.Provincia ?? string.Empty,
-                            District = documento.Receptor.Distrito ?? string.Empty,
-                            Country = new Country { IdentificationCode = "PE" }
-                        },
                         PartyLegalEntity = new PartyLegalEntity
                         {
                             RegistrationName = documento.Receptor.NombreLegal

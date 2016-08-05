@@ -1,17 +1,19 @@
-# OpenInvoicePeru v1.0.0.0721 #
+# OpenInvoicePeru v1.1.0.0805 #
 OpenInvoicePeru es un proyecto Open Source construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT.
-Permite la generacion de XML, empaquetado, envío y recepción de documentos electrónicos.
+Permite la generacion de XML, empaquetado, envío y recepción de documentos electrónicos a través de una API REST.
 
 Actualmente se encuentra en versión Beta.
 
 # Características #
-- Generacion de XML para Facturas, Boletas, Notas de Crédito y Débito.
+- Generacion de XML para Facturas, Boletas, Notas de Crédito, Notas de Débito y Retenciones.
 - Firmado del XML con un certificado digital elegido por el usuario.
-- Envío al servicio Web de SUNAT de los documentos electrónicos (Boleta, Factura, NC, ND y Documento de Retención).
+- Envío al servicio Web de SUNAT de los documentos electrónicos (Boleta, Factura, NC, ND, y Documento de Retención).
 - Envío de Resumen Diario y Comunicación de Baja.
-- Lectura del contenido del CDR de SUNAT.
+- Desempaquetado y Lectura del contenido del CDR de SUNAT.
 - Consulta de Tickets de los Resúmenes y Bajas.
-- API REST bajo ASP.NET Web API para la generacion del XML (Bajo construcción aun).
+- API REST bajo ASP.NET Web API 2.
+- Aplicación Windows de prueba de envío a SUNAT (bajo remodelación aun).
+- Ejemplos en VB y C# para el consumo de la API REST con PostSharp bajo .NET 4.0.
 
 ## Ramas (branches) ##
 

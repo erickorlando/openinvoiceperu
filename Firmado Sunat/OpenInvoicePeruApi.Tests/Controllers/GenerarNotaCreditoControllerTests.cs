@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 namespace OpenInvoicePeruApi.Controllers.Tests
 {
     [TestClass()]
-    public class InvoiceControllerTests
+    public class GenerarNotaCreditoControllerTests
     {
         [TestMethod()]
         public void PostTest()

@@ -3,15 +3,8 @@ using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
-using System.ServiceModel;
 using System.Speech.Synthesis;
-using System.Text;
 using System.Windows.Forms;
-using System.Xml;
-using System.Xml.Linq;
-using Ionic.Zip;
-using OpenInvoicePeru.FirmadoSunat;
-using OpenInvoicePeru.FirmadoSunat.Estructuras;
 using OpenInvoicePeru.FirmadoSunat.Models;
 using OpenInvoicePeru.FirmadoSunatWin.Properties;
 
@@ -19,9 +12,12 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 {
     public partial class FrmEnviarSunat : Form
     {
+        #region Variables Privadas
         private FrmDocumento _frmDocumento;
         private readonly HttpClient _client;
+        #endregion
 
+        #region Constructor
         public FrmEnviarSunat()
         {
             InitializeComponent();
@@ -60,7 +56,9 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 }
             };
         }
+        #endregion
 
+        #region Botones de Busqueda
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             try
@@ -82,6 +80,29 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             }
         }
 
+        private void btnBrowseCert_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                using (var ofd = new OpenFileDialog())
+                {
+                    ofd.Title = Resources.seleccioneCertificado;
+                    ofd.Filter = Resources.formatosCertificado;
+                    ofd.FilterIndex = 1;
+                    if (ofd.ShowDialog() == DialogResult.OK)
+                    {
+                        txtRutaCertificado.Text = ofd.FileName;
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        #endregion
+
+        #region LLamadas Asincronas
         private async void btnGen_Click(object sender, EventArgs e)
         {
             try
@@ -151,7 +172,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 
                 if (!respuestaEnvio.Exito)
                     throw new ApplicationException(respuestaEnvio.MensajeError);
- 
+
                 txtResult.Text = $"{Resources.procesoCorrecto}{Environment.NewLine}{respuestaEnvio.MensajeRespuesta}";
 
                 if (chkVoz.Checked)
@@ -164,27 +185,6 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             finally
             {
                 Cursor = Cursors.Default;
-            }
-        }
-
-        private void btnBrowseCert_Click(object sender, EventArgs e)
-        {
-            try
-            {
-                using (var ofd = new OpenFileDialog())
-                {
-                    ofd.Title = Resources.seleccioneCertificado;
-                    ofd.Filter = Resources.formatosCertificado;
-                    ofd.FilterIndex = 1;
-                    if (ofd.ShowDialog() == DialogResult.OK)
-                    {
-                        txtRutaCertificado.Text = ofd.FileName;
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
             }
         }
 
@@ -231,7 +231,9 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 Cursor = Cursors.Default;
             }
         }
+        #endregion
 
+        #region Generacion de XML
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             try
@@ -268,7 +270,9 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 Cursor.Current = Cursors.Default;
             }
         }
+        #endregion
 
+        #region Metodos Privados
         private void Hablar()
         {
             if (string.IsNullOrEmpty(txtResult.Text)) return;
@@ -282,6 +286,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
         {
             var tupla = cboUrlServicio.SelectedItem as Tuple<string, string>;
             return tupla == null ? string.Empty : tupla.Item2;
-        }
+        } 
+        #endregion
     }
 }
