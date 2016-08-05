@@ -1,6 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
-using OpenInvoicePeru.FirmadoSunat.Service_References.Sunat;
+using OpenInvoicePeru.FirmadoSunat.Sunat;
 
 namespace OpenInvoicePeru.FirmadoSunat
 {
