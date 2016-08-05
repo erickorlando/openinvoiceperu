@@ -43,7 +43,6 @@
             System.Windows.Forms.Label calculoIscLabel;
             System.Windows.Forms.Label calculoDetraccionLabel;
             System.Windows.Forms.Label urbanizacionLabel;
-            System.Windows.Forms.Label urbanizacionLabel1;
             System.Windows.Forms.Label descuentoGlobalLabel;
             System.Windows.Forms.Label montoPercepcionLabel;
             System.Windows.Forms.Label montoDetraccionLabel;
@@ -74,22 +73,9 @@
             this.txtNombreLegalEm = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.grpReceptor = new System.Windows.Forms.GroupBox();
-            this.urbanizacionRecTextBox = new System.Windows.Forms.TextBox();
             this.receptorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
-            this.txtUbigeoRec = new System.Windows.Forms.TextBox();
-            this.txtDistritoRec = new System.Windows.Forms.TextBox();
-            this.txtDptoRec = new System.Windows.Forms.TextBox();
-            this.txtProvRec = new System.Windows.Forms.TextBox();
-            this.txtDirRec = new System.Windows.Forms.TextBox();
-            this.txtNombreComRec = new System.Windows.Forms.TextBox();
             this.txtNombreLegalRec = new System.Windows.Forms.TextBox();
             this.txtNroDocRec = new System.Windows.Forms.TextBox();
             this.textBox17 = new System.Windows.Forms.TextBox();
@@ -176,7 +162,6 @@
             calculoIscLabel = new System.Windows.Forms.Label();
             calculoDetraccionLabel = new System.Windows.Forms.Label();
             urbanizacionLabel = new System.Windows.Forms.Label();
-            urbanizacionLabel1 = new System.Windows.Forms.Label();
             descuentoGlobalLabel = new System.Windows.Forms.Label();
             montoPercepcionLabel = new System.Windows.Forms.Label();
             montoDetraccionLabel = new System.Windows.Forms.Label();
@@ -212,7 +197,7 @@
             montoEnLetrasLabel.Location = new System.Drawing.Point(196, 287);
             montoEnLetrasLabel.Name = "montoEnLetrasLabel";
             montoEnLetrasLabel.Size = new System.Drawing.Size(88, 13);
-            montoEnLetrasLabel.TabIndex = 21;
+            montoEnLetrasLabel.TabIndex = 18;
             montoEnLetrasLabel.Text = "Monto En Letras:";
             // 
             // gravadasLabel
@@ -221,7 +206,7 @@
             gravadasLabel.Location = new System.Drawing.Point(6, 555);
             gravadasLabel.Name = "gravadasLabel";
             gravadasLabel.Size = new System.Drawing.Size(56, 13);
-            gravadasLabel.TabIndex = 29;
+            gravadasLabel.TabIndex = 33;
             gravadasLabel.Text = "Gravadas:";
             // 
             // exoneradasLabel
@@ -230,7 +215,7 @@
             exoneradasLabel.Location = new System.Drawing.Point(6, 581);
             exoneradasLabel.Name = "exoneradasLabel";
             exoneradasLabel.Size = new System.Drawing.Size(66, 13);
-            exoneradasLabel.TabIndex = 31;
+            exoneradasLabel.TabIndex = 35;
             exoneradasLabel.Text = "Exoneradas:";
             // 
             // inafectasLabel
@@ -239,7 +224,7 @@
             inafectasLabel.Location = new System.Drawing.Point(6, 607);
             inafectasLabel.Name = "inafectasLabel";
             inafectasLabel.Size = new System.Drawing.Size(54, 13);
-            inafectasLabel.TabIndex = 33;
+            inafectasLabel.TabIndex = 37;
             inafectasLabel.Text = "Inafectas:";
             // 
             // gratuitasLabel
@@ -248,7 +233,7 @@
             gratuitasLabel.Location = new System.Drawing.Point(6, 633);
             gratuitasLabel.Name = "gratuitasLabel";
             gratuitasLabel.Size = new System.Drawing.Size(52, 13);
-            gratuitasLabel.TabIndex = 35;
+            gratuitasLabel.TabIndex = 39;
             gratuitasLabel.Text = "Gratuitas:";
             // 
             // tipoOperacionLabel
@@ -257,7 +242,7 @@
             tipoOperacionLabel.Location = new System.Drawing.Point(196, 252);
             tipoOperacionLabel.Name = "tipoOperacionLabel";
             tipoOperacionLabel.Size = new System.Drawing.Size(83, 13);
-            tipoOperacionLabel.TabIndex = 19;
+            tipoOperacionLabel.TabIndex = 16;
             tipoOperacionLabel.Text = "Tipo Operación:";
             // 
             // totalIgvLabel
@@ -266,7 +251,7 @@
             totalIgvLabel.Location = new System.Drawing.Point(676, 552);
             totalIgvLabel.Name = "totalIgvLabel";
             totalIgvLabel.Size = new System.Drawing.Size(55, 13);
-            totalIgvLabel.TabIndex = 37;
+            totalIgvLabel.TabIndex = 41;
             totalIgvLabel.Text = "Total IGV:";
             // 
             // totalIscLabel
@@ -275,7 +260,7 @@
             totalIscLabel.Location = new System.Drawing.Point(676, 578);
             totalIscLabel.Name = "totalIscLabel";
             totalIscLabel.Size = new System.Drawing.Size(54, 13);
-            totalIscLabel.TabIndex = 39;
+            totalIscLabel.TabIndex = 43;
             totalIscLabel.Text = "Total ISC:";
             // 
             // totalOtrosTributosLabel
@@ -284,7 +269,7 @@
             totalOtrosTributosLabel.Location = new System.Drawing.Point(676, 604);
             totalOtrosTributosLabel.Name = "totalOtrosTributosLabel";
             totalOtrosTributosLabel.Size = new System.Drawing.Size(103, 13);
-            totalOtrosTributosLabel.TabIndex = 41;
+            totalOtrosTributosLabel.TabIndex = 45;
             totalOtrosTributosLabel.Text = "Total Otros Tributos:";
             // 
             // totalVentaLabel
@@ -293,7 +278,7 @@
             totalVentaLabel.Location = new System.Drawing.Point(676, 630);
             totalVentaLabel.Name = "totalVentaLabel";
             totalVentaLabel.Size = new System.Drawing.Size(65, 13);
-            totalVentaLabel.TabIndex = 0;
+            totalVentaLabel.TabIndex = 47;
             totalVentaLabel.Text = "Total Venta:";
             // 
             // calculoIgvLabel
@@ -302,7 +287,7 @@
             calculoIgvLabel.Location = new System.Drawing.Point(318, 31);
             calculoIgvLabel.Name = "calculoIgvLabel";
             calculoIgvLabel.Size = new System.Drawing.Size(66, 13);
-            calculoIgvLabel.TabIndex = 3;
+            calculoIgvLabel.TabIndex = 2;
             calculoIgvLabel.Text = "Cálculo IGV:";
             // 
             // calculoIscLabel
@@ -311,7 +296,7 @@
             calculoIscLabel.Location = new System.Drawing.Point(504, 30);
             calculoIscLabel.Name = "calculoIscLabel";
             calculoIscLabel.Size = new System.Drawing.Size(65, 13);
-            calculoIscLabel.TabIndex = 5;
+            calculoIscLabel.TabIndex = 4;
             calculoIscLabel.Text = "Cálculo ISC:";
             // 
             // calculoDetraccionLabel
@@ -320,7 +305,7 @@
             calculoDetraccionLabel.Location = new System.Drawing.Point(679, 31);
             calculoDetraccionLabel.Name = "calculoDetraccionLabel";
             calculoDetraccionLabel.Size = new System.Drawing.Size(100, 13);
-            calculoDetraccionLabel.TabIndex = 7;
+            calculoDetraccionLabel.TabIndex = 6;
             calculoDetraccionLabel.Text = "Calculo Detracción:";
             // 
             // urbanizacionLabel
@@ -332,22 +317,13 @@
             urbanizacionLabel.TabIndex = 10;
             urbanizacionLabel.Text = "Urbanización:";
             // 
-            // urbanizacionLabel1
-            // 
-            urbanizacionLabel1.AutoSize = true;
-            urbanizacionLabel1.Location = new System.Drawing.Point(310, 40);
-            urbanizacionLabel1.Name = "urbanizacionLabel1";
-            urbanizacionLabel1.Size = new System.Drawing.Size(72, 13);
-            urbanizacionLabel1.TabIndex = 11;
-            urbanizacionLabel1.Text = "Urbanización:";
-            // 
             // descuentoGlobalLabel
             // 
             descuentoGlobalLabel.AutoSize = true;
             descuentoGlobalLabel.Location = new System.Drawing.Point(196, 317);
             descuentoGlobalLabel.Name = "descuentoGlobalLabel";
             descuentoGlobalLabel.Size = new System.Drawing.Size(69, 13);
-            descuentoGlobalLabel.TabIndex = 23;
+            descuentoGlobalLabel.TabIndex = 20;
             descuentoGlobalLabel.Text = "Dcto. Global:";
             // 
             // montoPercepcionLabel
@@ -356,7 +332,7 @@
             montoPercepcionLabel.Location = new System.Drawing.Point(539, 252);
             montoPercepcionLabel.Name = "montoPercepcionLabel";
             montoPercepcionLabel.Size = new System.Drawing.Size(97, 13);
-            montoPercepcionLabel.TabIndex = 43;
+            montoPercepcionLabel.TabIndex = 23;
             montoPercepcionLabel.Text = "Monto Percepción:";
             // 
             // montoDetraccionLabel
@@ -365,7 +341,7 @@
             montoDetraccionLabel.Location = new System.Drawing.Point(539, 287);
             montoDetraccionLabel.Name = "montoDetraccionLabel";
             montoDetraccionLabel.Size = new System.Drawing.Size(95, 13);
-            montoDetraccionLabel.TabIndex = 45;
+            montoDetraccionLabel.TabIndex = 25;
             montoDetraccionLabel.Text = "Monto Detracción:";
             // 
             // tipoDocAnticipoLabel
@@ -407,7 +383,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(9, 16);
+            this.label1.Location = new System.Drawing.Point(37, 63);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(54, 13);
             this.label1.TabIndex = 0;
@@ -424,9 +400,9 @@
             "6 REG. UNICO DE CONTRIBUYENTES",
             "7 PASAPORTE",
             "A CED. DIPLOMATICA DE IDENTIDAD"});
-            this.cboTipoDocRec.Location = new System.Drawing.Point(110, 13);
+            this.cboTipoDocRec.Location = new System.Drawing.Point(138, 60);
             this.cboTipoDocRec.Name = "cboTipoDocRec";
-            this.cboTipoDocRec.Size = new System.Drawing.Size(210, 21);
+            this.cboTipoDocRec.Size = new System.Drawing.Size(194, 21);
             this.cboTipoDocRec.TabIndex = 1;
             // 
             // label2
@@ -473,7 +449,7 @@
             this.grpEmisor.Location = new System.Drawing.Point(4, 55);
             this.grpEmisor.Name = "grpEmisor";
             this.grpEmisor.Size = new System.Drawing.Size(492, 176);
-            this.grpEmisor.TabIndex = 9;
+            this.grpEmisor.TabIndex = 8;
             this.grpEmisor.TabStop = false;
             this.grpEmisor.Text = "Datos del Emisor";
             // 
@@ -509,7 +485,7 @@
             this.label7.Location = new System.Drawing.Point(305, 66);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(77, 13);
-            this.label7.TabIndex = 14;
+            this.label7.TabIndex = 12;
             this.label7.Text = "Departamento:";
             // 
             // label6
@@ -518,7 +494,7 @@
             this.label6.Location = new System.Drawing.Point(305, 91);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(54, 13);
-            this.label6.TabIndex = 12;
+            this.label6.TabIndex = 14;
             this.label6.Text = "Provincia:";
             // 
             // label5
@@ -561,7 +537,7 @@
             this.txtDptoEm.Location = new System.Drawing.Point(384, 63);
             this.txtDptoEm.Name = "txtDptoEm";
             this.txtDptoEm.Size = new System.Drawing.Size(100, 20);
-            this.txtDptoEm.TabIndex = 15;
+            this.txtDptoEm.TabIndex = 13;
             // 
             // txtProvEm
             // 
@@ -569,7 +545,7 @@
             this.txtProvEm.Location = new System.Drawing.Point(384, 88);
             this.txtProvEm.Name = "txtProvEm";
             this.txtProvEm.Size = new System.Drawing.Size(100, 20);
-            this.txtProvEm.TabIndex = 13;
+            this.txtProvEm.TabIndex = 15;
             // 
             // txtDirEm
             // 
@@ -606,180 +582,56 @@
             // 
             // grpReceptor
             // 
-            this.grpReceptor.Controls.Add(this.urbanizacionRecTextBox);
-            this.grpReceptor.Controls.Add(urbanizacionLabel1);
-            this.grpReceptor.Controls.Add(this.label10);
-            this.grpReceptor.Controls.Add(this.label11);
             this.grpReceptor.Controls.Add(this.cboTipoDocRec);
             this.grpReceptor.Controls.Add(this.label1);
-            this.grpReceptor.Controls.Add(this.label12);
-            this.grpReceptor.Controls.Add(this.label13);
-            this.grpReceptor.Controls.Add(this.label14);
-            this.grpReceptor.Controls.Add(this.label15);
             this.grpReceptor.Controls.Add(this.label16);
             this.grpReceptor.Controls.Add(this.label17);
-            this.grpReceptor.Controls.Add(this.txtUbigeoRec);
-            this.grpReceptor.Controls.Add(this.txtDistritoRec);
-            this.grpReceptor.Controls.Add(this.txtDptoRec);
-            this.grpReceptor.Controls.Add(this.txtProvRec);
-            this.grpReceptor.Controls.Add(this.txtDirRec);
-            this.grpReceptor.Controls.Add(this.txtNombreComRec);
             this.grpReceptor.Controls.Add(this.txtNombreLegalRec);
             this.grpReceptor.Controls.Add(this.txtNroDocRec);
             this.grpReceptor.Location = new System.Drawing.Point(502, 55);
             this.grpReceptor.Name = "grpReceptor";
-            this.grpReceptor.Size = new System.Drawing.Size(542, 176);
-            this.grpReceptor.TabIndex = 12;
+            this.grpReceptor.Size = new System.Drawing.Size(494, 176);
+            this.grpReceptor.TabIndex = 9;
             this.grpReceptor.TabStop = false;
             this.grpReceptor.Text = "Datos del Receptor";
-            // 
-            // urbanizacionRecTextBox
-            // 
-            this.urbanizacionRecTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "Urbanizacion", true));
-            this.urbanizacionRecTextBox.Location = new System.Drawing.Point(394, 37);
-            this.urbanizacionRecTextBox.Name = "urbanizacionRecTextBox";
-            this.urbanizacionRecTextBox.Size = new System.Drawing.Size(100, 20);
-            this.urbanizacionRecTextBox.TabIndex = 12;
             // 
             // receptorBindingSource
             // 
             this.receptorBindingSource.DataSource = typeof(OpenInvoicePeru.FirmadoSunat.Models.Contribuyente);
             // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(9, 120);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(44, 13);
-            this.label10.TabIndex = 7;
-            this.label10.Text = "Ubigeo:";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(310, 121);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(42, 13);
-            this.label11.TabIndex = 17;
-            this.label11.Text = "Distrito:";
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(310, 68);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(77, 13);
-            this.label12.TabIndex = 15;
-            this.label12.Text = "Departamento:";
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(310, 93);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(54, 13);
-            this.label13.TabIndex = 13;
-            this.label13.Text = "Provincia:";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(9, 150);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(55, 13);
-            this.label14.TabIndex = 9;
-            this.label14.Text = "Dirección:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(9, 95);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(96, 13);
-            this.label15.TabIndex = 5;
-            this.label15.Text = "Nombre Comercial:";
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(9, 69);
+            this.label16.Location = new System.Drawing.Point(37, 116);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(76, 13);
-            this.label16.TabIndex = 3;
+            this.label16.TabIndex = 4;
             this.label16.Text = "Nombre Legal:";
             // 
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(9, 43);
+            this.label17.Location = new System.Drawing.Point(37, 90);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(56, 13);
-            this.label17.TabIndex = 1;
+            this.label17.TabIndex = 2;
             this.label17.Text = "Nro. Doc.:";
-            // 
-            // txtUbigeoRec
-            // 
-            this.txtUbigeoRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "Ubigeo", true));
-            this.txtUbigeoRec.Location = new System.Drawing.Point(204, 118);
-            this.txtUbigeoRec.Name = "txtUbigeoRec";
-            this.txtUbigeoRec.Size = new System.Drawing.Size(100, 20);
-            this.txtUbigeoRec.TabIndex = 8;
-            // 
-            // txtDistritoRec
-            // 
-            this.txtDistritoRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "Distrito", true));
-            this.txtDistritoRec.Location = new System.Drawing.Point(394, 118);
-            this.txtDistritoRec.Name = "txtDistritoRec";
-            this.txtDistritoRec.Size = new System.Drawing.Size(100, 20);
-            this.txtDistritoRec.TabIndex = 18;
-            // 
-            // txtDptoRec
-            // 
-            this.txtDptoRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "Departamento", true));
-            this.txtDptoRec.Location = new System.Drawing.Point(394, 65);
-            this.txtDptoRec.Name = "txtDptoRec";
-            this.txtDptoRec.Size = new System.Drawing.Size(100, 20);
-            this.txtDptoRec.TabIndex = 16;
-            // 
-            // txtProvRec
-            // 
-            this.txtProvRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "Provincia", true));
-            this.txtProvRec.Location = new System.Drawing.Point(394, 90);
-            this.txtProvRec.Name = "txtProvRec";
-            this.txtProvRec.Size = new System.Drawing.Size(100, 20);
-            this.txtProvRec.TabIndex = 14;
-            // 
-            // txtDirRec
-            // 
-            this.txtDirRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "Direccion", true));
-            this.txtDirRec.Location = new System.Drawing.Point(108, 147);
-            this.txtDirRec.Name = "txtDirRec";
-            this.txtDirRec.Size = new System.Drawing.Size(196, 20);
-            this.txtDirRec.TabIndex = 10;
-            // 
-            // txtNombreComRec
-            // 
-            this.txtNombreComRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "NombreComercial", true));
-            this.txtNombreComRec.Location = new System.Drawing.Point(110, 92);
-            this.txtNombreComRec.Name = "txtNombreComRec";
-            this.txtNombreComRec.Size = new System.Drawing.Size(194, 20);
-            this.txtNombreComRec.TabIndex = 6;
             // 
             // txtNombreLegalRec
             // 
             this.txtNombreLegalRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "NombreLegal", true));
-            this.txtNombreLegalRec.Location = new System.Drawing.Point(110, 66);
+            this.txtNombreLegalRec.Location = new System.Drawing.Point(138, 113);
             this.txtNombreLegalRec.Name = "txtNombreLegalRec";
             this.txtNombreLegalRec.Size = new System.Drawing.Size(194, 20);
-            this.txtNombreLegalRec.TabIndex = 4;
+            this.txtNombreLegalRec.TabIndex = 5;
             // 
             // txtNroDocRec
             // 
             this.txtNroDocRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "NroDocumento", true));
-            this.txtNroDocRec.Location = new System.Drawing.Point(204, 40);
+            this.txtNroDocRec.Location = new System.Drawing.Point(232, 87);
             this.txtNroDocRec.Name = "txtNroDocRec";
             this.txtNroDocRec.Size = new System.Drawing.Size(100, 20);
-            this.txtNroDocRec.TabIndex = 2;
+            this.txtNroDocRec.TabIndex = 3;
             // 
             // textBox17
             // 
@@ -787,7 +639,7 @@
             this.textBox17.Location = new System.Drawing.Point(87, 249);
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(100, 20);
-            this.textBox17.TabIndex = 14;
+            this.textBox17.TabIndex = 11;
             // 
             // documentoElectronicoBindingSource
             // 
@@ -799,7 +651,7 @@
             this.label18.Location = new System.Drawing.Point(4, 252);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(77, 13);
-            this.label18.TabIndex = 13;
+            this.label18.TabIndex = 10;
             this.label18.Text = "Id Documento:";
             // 
             // label19
@@ -808,7 +660,7 @@
             this.label19.Location = new System.Drawing.Point(4, 284);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(79, 13);
-            this.label19.TabIndex = 15;
+            this.label19.TabIndex = 12;
             this.label19.Text = "Fecha Emisión:";
             // 
             // dtpFecha
@@ -818,7 +670,7 @@
             this.dtpFecha.Location = new System.Drawing.Point(87, 281);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(100, 20);
-            this.dtpFecha.TabIndex = 16;
+            this.dtpFecha.TabIndex = 13;
             // 
             // label20
             // 
@@ -826,7 +678,7 @@
             this.label20.Location = new System.Drawing.Point(8, 31);
             this.label20.Name = "label20";
             this.label20.Size = new System.Drawing.Size(104, 13);
-            this.label20.TabIndex = 1;
+            this.label20.TabIndex = 0;
             this.label20.Text = "Tipo de Documento:";
             // 
             // cboTipoDoc
@@ -841,7 +693,7 @@
             this.cboTipoDoc.Location = new System.Drawing.Point(131, 28);
             this.cboTipoDoc.Name = "cboTipoDoc";
             this.cboTipoDoc.Size = new System.Drawing.Size(175, 21);
-            this.cboTipoDoc.TabIndex = 2;
+            this.cboTipoDoc.TabIndex = 1;
             // 
             // label21
             // 
@@ -849,7 +701,7 @@
             this.label21.Location = new System.Drawing.Point(4, 314);
             this.label21.Name = "label21";
             this.label21.Size = new System.Drawing.Size(49, 13);
-            this.label21.TabIndex = 17;
+            this.label21.TabIndex = 14;
             this.label21.Text = "Moneda:";
             // 
             // cboMoneda
@@ -862,7 +714,7 @@
             this.cboMoneda.Location = new System.Drawing.Point(87, 311);
             this.cboMoneda.Name = "cboMoneda";
             this.cboMoneda.Size = new System.Drawing.Size(100, 21);
-            this.cboMoneda.TabIndex = 18;
+            this.cboMoneda.TabIndex = 15;
             // 
             // dgvDetalle
             // 
@@ -993,7 +845,7 @@
             this.montoEnLetrasTextBox.Location = new System.Drawing.Point(290, 284);
             this.montoEnLetrasTextBox.Name = "montoEnLetrasTextBox";
             this.montoEnLetrasTextBox.Size = new System.Drawing.Size(244, 20);
-            this.montoEnLetrasTextBox.TabIndex = 22;
+            this.montoEnLetrasTextBox.TabIndex = 19;
             // 
             // gravadasTextBox
             // 
@@ -1001,7 +853,7 @@
             this.gravadasTextBox.Location = new System.Drawing.Point(75, 552);
             this.gravadasTextBox.Name = "gravadasTextBox";
             this.gravadasTextBox.Size = new System.Drawing.Size(100, 20);
-            this.gravadasTextBox.TabIndex = 30;
+            this.gravadasTextBox.TabIndex = 34;
             // 
             // exoneradasTextBox
             // 
@@ -1009,7 +861,7 @@
             this.exoneradasTextBox.Location = new System.Drawing.Point(75, 578);
             this.exoneradasTextBox.Name = "exoneradasTextBox";
             this.exoneradasTextBox.Size = new System.Drawing.Size(100, 20);
-            this.exoneradasTextBox.TabIndex = 32;
+            this.exoneradasTextBox.TabIndex = 36;
             // 
             // inafectasTextBox
             // 
@@ -1017,7 +869,7 @@
             this.inafectasTextBox.Location = new System.Drawing.Point(75, 604);
             this.inafectasTextBox.Name = "inafectasTextBox";
             this.inafectasTextBox.Size = new System.Drawing.Size(100, 20);
-            this.inafectasTextBox.TabIndex = 34;
+            this.inafectasTextBox.TabIndex = 38;
             // 
             // gratuitasTextBox
             // 
@@ -1025,7 +877,7 @@
             this.gratuitasTextBox.Location = new System.Drawing.Point(75, 630);
             this.gratuitasTextBox.Name = "gratuitasTextBox";
             this.gratuitasTextBox.Size = new System.Drawing.Size(100, 20);
-            this.gratuitasTextBox.TabIndex = 36;
+            this.gratuitasTextBox.TabIndex = 40;
             // 
             // tipoOperacionComboBox
             // 
@@ -1044,7 +896,7 @@
             this.tipoOperacionComboBox.Location = new System.Drawing.Point(290, 248);
             this.tipoOperacionComboBox.Name = "tipoOperacionComboBox";
             this.tipoOperacionComboBox.Size = new System.Drawing.Size(242, 21);
-            this.tipoOperacionComboBox.TabIndex = 20;
+            this.tipoOperacionComboBox.TabIndex = 17;
             // 
             // totalIgvTextBox
             // 
@@ -1052,7 +904,7 @@
             this.totalIgvTextBox.Location = new System.Drawing.Point(786, 549);
             this.totalIgvTextBox.Name = "totalIgvTextBox";
             this.totalIgvTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalIgvTextBox.TabIndex = 38;
+            this.totalIgvTextBox.TabIndex = 42;
             // 
             // totalIscTextBox
             // 
@@ -1060,7 +912,7 @@
             this.totalIscTextBox.Location = new System.Drawing.Point(786, 575);
             this.totalIscTextBox.Name = "totalIscTextBox";
             this.totalIscTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalIscTextBox.TabIndex = 40;
+            this.totalIscTextBox.TabIndex = 44;
             // 
             // totalOtrosTributosTextBox
             // 
@@ -1068,7 +920,7 @@
             this.totalOtrosTributosTextBox.Location = new System.Drawing.Point(786, 601);
             this.totalOtrosTributosTextBox.Name = "totalOtrosTributosTextBox";
             this.totalOtrosTributosTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalOtrosTributosTextBox.TabIndex = 42;
+            this.totalOtrosTributosTextBox.TabIndex = 46;
             // 
             // totalVentaTextBox
             // 
@@ -1076,7 +928,7 @@
             this.totalVentaTextBox.Location = new System.Drawing.Point(786, 627);
             this.totalVentaTextBox.Name = "totalVentaTextBox";
             this.totalVentaTextBox.Size = new System.Drawing.Size(100, 20);
-            this.totalVentaTextBox.TabIndex = 1;
+            this.totalVentaTextBox.TabIndex = 48;
             // 
             // btnAgregar
             // 
@@ -1085,7 +937,7 @@
             this.btnAgregar.Location = new System.Drawing.Point(892, 403);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(88, 23);
-            this.btnAgregar.TabIndex = 26;
+            this.btnAgregar.TabIndex = 29;
             this.btnAgregar.Text = "&Agregar";
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -1098,7 +950,7 @@
             this.btnEliminar.Location = new System.Drawing.Point(892, 456);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(88, 23);
-            this.btnEliminar.TabIndex = 28;
+            this.btnEliminar.TabIndex = 31;
             this.btnEliminar.Text = "&Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -1129,7 +981,7 @@
             this.calculoIgvTextBox.Location = new System.Drawing.Point(387, 28);
             this.calculoIgvTextBox.Name = "calculoIgvTextBox";
             this.calculoIgvTextBox.Size = new System.Drawing.Size(100, 20);
-            this.calculoIgvTextBox.TabIndex = 4;
+            this.calculoIgvTextBox.TabIndex = 3;
             // 
             // calculoIscTextBox
             // 
@@ -1137,7 +989,7 @@
             this.calculoIscTextBox.Location = new System.Drawing.Point(572, 27);
             this.calculoIscTextBox.Name = "calculoIscTextBox";
             this.calculoIscTextBox.Size = new System.Drawing.Size(100, 20);
-            this.calculoIscTextBox.TabIndex = 6;
+            this.calculoIscTextBox.TabIndex = 5;
             // 
             // calculoDetraccionTextBox
             // 
@@ -1145,7 +997,7 @@
             this.calculoDetraccionTextBox.Location = new System.Drawing.Point(785, 28);
             this.calculoDetraccionTextBox.Name = "calculoDetraccionTextBox";
             this.calculoDetraccionTextBox.Size = new System.Drawing.Size(88, 20);
-            this.calculoDetraccionTextBox.TabIndex = 8;
+            this.calculoDetraccionTextBox.TabIndex = 7;
             // 
             // btnDuplicar
             // 
@@ -1154,7 +1006,7 @@
             this.btnDuplicar.Location = new System.Drawing.Point(892, 429);
             this.btnDuplicar.Name = "btnDuplicar";
             this.btnDuplicar.Size = new System.Drawing.Size(88, 23);
-            this.btnDuplicar.TabIndex = 27;
+            this.btnDuplicar.TabIndex = 30;
             this.btnDuplicar.Text = "&Duplicar";
             this.btnDuplicar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnDuplicar.UseVisualStyleBackColor = true;
@@ -1166,7 +1018,7 @@
             this.descuentoGlobalTextBox.Location = new System.Drawing.Point(290, 314);
             this.descuentoGlobalTextBox.Name = "descuentoGlobalTextBox";
             this.descuentoGlobalTextBox.Size = new System.Drawing.Size(89, 20);
-            this.descuentoGlobalTextBox.TabIndex = 24;
+            this.descuentoGlobalTextBox.TabIndex = 21;
             // 
             // montoPercepcionTextBox
             // 
@@ -1174,7 +1026,7 @@
             this.montoPercepcionTextBox.Location = new System.Drawing.Point(640, 249);
             this.montoPercepcionTextBox.Name = "montoPercepcionTextBox";
             this.montoPercepcionTextBox.Size = new System.Drawing.Size(88, 20);
-            this.montoPercepcionTextBox.TabIndex = 44;
+            this.montoPercepcionTextBox.TabIndex = 24;
             // 
             // tbPaginas
             // 
@@ -1186,7 +1038,7 @@
             this.tbPaginas.Name = "tbPaginas";
             this.tbPaginas.SelectedIndex = 0;
             this.tbPaginas.Size = new System.Drawing.Size(882, 206);
-            this.tbPaginas.TabIndex = 45;
+            this.tbPaginas.TabIndex = 32;
             // 
             // tpDetalles
             // 
@@ -1359,14 +1211,14 @@
             this.montoDetraccionTextBox.Location = new System.Drawing.Point(640, 284);
             this.montoDetraccionTextBox.Name = "montoDetraccionTextBox";
             this.montoDetraccionTextBox.Size = new System.Drawing.Size(88, 20);
-            this.montoDetraccionTextBox.TabIndex = 46;
+            this.montoDetraccionTextBox.TabIndex = 26;
             // 
             // btnCalcDetraccion
             // 
             this.btnCalcDetraccion.Location = new System.Drawing.Point(608, 312);
             this.btnCalcDetraccion.Name = "btnCalcDetraccion";
             this.btnCalcDetraccion.Size = new System.Drawing.Size(120, 23);
-            this.btnCalcDetraccion.TabIndex = 47;
+            this.btnCalcDetraccion.TabIndex = 27;
             this.btnCalcDetraccion.Text = "&Calcular Detracción";
             this.btnCalcDetraccion.UseVisualStyleBackColor = true;
             this.btnCalcDetraccion.Click += new System.EventHandler(this.btnCalcDetraccion_Click);
@@ -1376,7 +1228,7 @@
             this.btnGuia.Location = new System.Drawing.Point(385, 312);
             this.btnGuia.Name = "btnGuia";
             this.btnGuia.Size = new System.Drawing.Size(149, 23);
-            this.btnGuia.TabIndex = 48;
+            this.btnGuia.TabIndex = 22;
             this.btnGuia.Text = "&Guia de Rem. Transportista";
             this.btnGuia.UseVisualStyleBackColor = true;
             this.btnGuia.Click += new System.EventHandler(this.btnGuia_Click);
@@ -1394,7 +1246,7 @@
             this.groupBox1.Location = new System.Drawing.Point(764, 237);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(232, 122);
-            this.groupBox1.TabIndex = 49;
+            this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Regularización de Anticipos";
             // 
@@ -1558,20 +1410,8 @@
         private System.Windows.Forms.TextBox txtNombreComEm;
         private System.Windows.Forms.TextBox txtNombreLegalEm;
         private System.Windows.Forms.GroupBox grpReceptor;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
-        private System.Windows.Forms.TextBox txtUbigeoRec;
-        private System.Windows.Forms.TextBox txtDistritoRec;
-        private System.Windows.Forms.TextBox txtDptoRec;
-        private System.Windows.Forms.TextBox txtProvRec;
-        private System.Windows.Forms.TextBox txtDirRec;
-        private System.Windows.Forms.TextBox txtNombreComRec;
         private System.Windows.Forms.TextBox txtNombreLegalRec;
         private System.Windows.Forms.TextBox txtNroDocRec;
         private System.Windows.Forms.TextBox textBox17;
@@ -1607,7 +1447,6 @@
         private System.Windows.Forms.Button btnDuplicar;
         private System.Windows.Forms.TextBox descuentoGlobalTextBox;
         private System.Windows.Forms.TextBox urbanizacionTextBox;
-        private System.Windows.Forms.TextBox urbanizacionRecTextBox;
         private System.Windows.Forms.TextBox montoPercepcionTextBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn codigoItemDataGridViewTextBoxColumn;
