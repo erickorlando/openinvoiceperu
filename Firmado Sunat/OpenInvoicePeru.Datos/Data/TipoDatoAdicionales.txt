@@ -1,0 +1,30 @@
+﻿3000|Detracciones: CODIGO DE BB Y SS SUJETOS A DETRACCION
+3001|Detracciones: NUMERO DE CTA EN EL BN
+3002|Detracciones: Recursos Hidrobiológicos - Nombre y matrícula de la embarcación
+3003|Detracciones: Recursos Hidrobiológicos - Tipo y cantidad de especie vendida
+3004|Detracciones: Recursos Hidrobiológicos - Lugar de descarga
+3005|Detracciones: Recursos Hidrobiológicos - Fecha de descarga
+3006|Detracciones: Transporte Bienes vía terrestre – Numero Registro MTC
+3007|Detracciones: Transporte Bienes vía terrestre – configuración vehicular
+3008|Detracciones: Transporte Bienes vía terrestre – punto de origen
+3009|Detracciones: Transporte Bienes vía terrestre – punto destino
+3010|Detracciones: Transporte Bienes vía terrestre – valor referencial preliminar
+4000|Beneficio hospedajes: Código País de emisión del pasaporte
+4001|Beneficio hospedajes: Código País de residencia del sujeto no domiciliado
+4002|Beneficio Hospedajes: Fecha de ingreso al país
+4003|Beneficio Hospedajes: Fecha de ingreso al establecimiento
+4004|Beneficio Hospedajes: Fecha de salida del establecimiento
+4005|Beneficio Hospedajes: Número de días de permanencia
+4006|Beneficio Hospedajes: Fecha de consumo
+4007|Beneficio Hospedajes: Paquete turístico - Nombres y Apellidos del Huésped
+4008|Beneficio Hospedajes: Paquete turístico – Tipo documento identidad del huésped
+4009|Beneficio Hospedajes: Paquete turístico – Numero de documento identidad de huésped
+5000|Proveedores Estado: Número de Expediente
+5001|Proveedores Estado: Código de unidad ejecutora
+5002|Proveedores Estado: N° de proceso de selección
+5003|Proveedores Estado: N° de contrato
+6000|Comercialización de Oro: Código Único Concesión Minera
+6001|Comercialización de Oro: N° declaración compromiso
+6002|Comercialización de Oro: N° Reg. Especial .Comerci. Oro
+6003|Comercialización de Oro: N° Resolución que autoriza Planta de Beneficio
+6004|Comercialización de Oro: Ley Mineral (% concent. oro)

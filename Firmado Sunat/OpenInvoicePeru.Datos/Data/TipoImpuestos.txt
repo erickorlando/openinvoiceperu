@@ -1,0 +1,18 @@
+﻿10|Gravado - Operación Onerosa
+11|Gravado – Retiro por premio
+12|Gravado – Retiro por donación
+13|Gravado – Retiro
+14|Gravado – Retiro por publicidad
+15|Gravado – Bonificaciones
+16|Gravado – Retiro por entrega a trabajadores
+17|Gravado – IVAP
+20|Exonerado - Operación Onerosa
+21|Exonerado – Transferencia Gratuita
+30|Inafecto - Operación Onerosa
+31|Inafecto – Retiro por Bonificación
+32|Inafecto – Retiro
+33|Inafecto – Retiro por Muestras Médicas
+34|Inafecto - Retiro por Convenio Colectivo
+35|Inafecto – Retiro por premio
+36|Inafecto - Retiro por publicidad
+40|Exportación

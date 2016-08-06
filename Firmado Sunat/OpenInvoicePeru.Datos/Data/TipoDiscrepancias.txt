@@ -1,0 +1,13 @@
+﻿01|Anulación de la operación|07
+02|Anulación por error en el RUC|07
+03|Corrección por error en la descripción|07
+04|Descuento global|07
+05|Descuento por ítem|07
+06|Devolución total|07
+07|Devolución por ítem|07
+08|Bonificación|07
+09|Disminución en el valor|07
+10|Otros Conceptos|07
+01|Intereses por mora|08
+02|Aumento en el valor|08
+03|Penalidades/otros conceptos|08

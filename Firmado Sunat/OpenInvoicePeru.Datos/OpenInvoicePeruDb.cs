@@ -27,6 +27,7 @@ namespace OpenInvoicePeru.Datos
         public virtual DbSet<TipoDocumentoContribuyente> TipoDocumentoContribuyentes { get; set; }
         public virtual DbSet<TipoOperacion> TipoOperaciones { get; set; }
         public virtual DbSet<TipoImpuesto> TipoImpuestos { get; set; }
+        public virtual DbSet<TipoPrecio> TipoPrecios { get; set; }
         public virtual DbSet<TipoDocumentoRelacionado> TipoDocumentoRelacionados { get; set; }
         public virtual DbSet<TipoDocumentoAnticipo> TipoDocumentoAnticipos { get; set; }
         public virtual DbSet<TipoDiscrepancia> TipoDiscrepancias { get; set; }

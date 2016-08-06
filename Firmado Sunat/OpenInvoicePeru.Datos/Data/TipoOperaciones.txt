@@ -1,0 +1,8 @@
+﻿01|Venta lnterna
+02|Exportación
+03|No Domiciliados
+04|Venta Interna – Anticipos
+05|Venta Itinerante
+06|Factura Guía
+07|Venta Arroz Pilado
+08|Factura - Comprobante de Percepción
