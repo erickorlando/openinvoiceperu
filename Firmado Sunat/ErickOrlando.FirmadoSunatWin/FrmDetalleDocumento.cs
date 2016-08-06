@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Linq;
 using System.Windows.Forms;
+using OpenInvoicePeru.Datos;
 using OpenInvoicePeru.FirmadoSunat.Models;
 
 namespace OpenInvoicePeru.FirmadoSunatWin
@@ -23,8 +25,17 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             detalleDocumentoBindingSource.DataSource = detalle;
             detalleDocumentoBindingSource.ResetBindings(false);
 
-            tipoImpuestoComboBox.SelectedIndex = 0;
-            tipoPrecioComboBox.SelectedIndex = 0;
+            Load += (s, e) =>
+            {
+                using (var ctx = new OpenInvoicePeruDb())
+                {
+                    tipoImpuestoBindingSource.DataSource = ctx.TipoImpuestos.ToList();
+                    tipoImpuestoBindingSource.ResetBindings(false);
+
+                    tipoPrecioBindingSource.DataSource = ctx.TipoPrecios.ToList();
+                    tipoPrecioBindingSource.ResetBindings(false);
+                }
+            };
         }
 
         private void toolCancel_Click(object sender, EventArgs e)
@@ -35,12 +46,10 @@ namespace OpenInvoicePeru.FirmadoSunatWin
         private void toolOk_Click(object sender, EventArgs e)
         {
             tipoPrecioComboBox.Focus();
-
-            _detalle.TipoPrecio = tipoPrecioComboBox.Text;
-            _detalle.TipoImpuesto = tipoImpuestoComboBox.Text;
+            _detalle.UnidadMedida = unidadMedidaComboBox.Text;
 
             // Evaluamos el tipo de Impuesto.
-            if (!_detalle.TipoImpuesto.Contains("Gravado"))
+            if (!_detalle.TipoImpuesto.StartsWith("1"))
             {
                 _detalle.Suma = _detalle.PrecioUnitario * _detalle.Cantidad;
                 _detalle.TotalVenta = _detalle.Suma;

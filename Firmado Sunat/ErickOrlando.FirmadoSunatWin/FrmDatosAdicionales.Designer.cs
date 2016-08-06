@@ -38,10 +38,12 @@
             this.barraBotones = new System.Windows.Forms.ToolStrip();
             this.toolOk = new System.Windows.Forms.ToolStripButton();
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
+            this.tipoDatoAdicionalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             codigoLabel = new System.Windows.Forms.Label();
             contenidoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalBindingSource)).BeginInit();
             this.barraBotones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDatoAdicionalBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // codigoLabel
@@ -49,7 +51,7 @@
             codigoLabel.AutoSize = true;
             codigoLabel.Location = new System.Drawing.Point(12, 43);
             codigoLabel.Name = "codigoLabel";
-            codigoLabel.Size = new System.Drawing.Size(43, 13);
+            codigoLabel.Size = new System.Drawing.Size(48, 13);
             codigoLabel.TabIndex = 1;
             codigoLabel.Text = "Codigo:";
             // 
@@ -58,7 +60,7 @@
             contenidoLabel.AutoSize = true;
             contenidoLabel.Location = new System.Drawing.Point(12, 74);
             contenidoLabel.Name = "contenidoLabel";
-            contenidoLabel.Size = new System.Drawing.Size(58, 13);
+            contenidoLabel.Size = new System.Drawing.Size(65, 13);
             contenidoLabel.TabIndex = 3;
             contenidoLabel.Text = "Contenido:";
             // 
@@ -70,53 +72,22 @@
             // 
             this.codigoComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.codigoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.codigoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.datoAdicionalBindingSource, "Codigo", true));
+            this.codigoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.datoAdicionalBindingSource, "Codigo", true));
+            this.codigoComboBox.DataSource = this.tipoDatoAdicionalBindingSource;
+            this.codigoComboBox.DisplayMember = "Descripcion";
             this.codigoComboBox.FormattingEnabled = true;
-            this.codigoComboBox.Items.AddRange(new object[] {
-            "3000 Detracciones: CODIGO DE BB Y SS SUJETOS A DETRACCION",
-            "3001 Detracciones: NUMERO DE CTA EN EL BN",
-            "3002 Detracciones: Recursos Hidrobiológicos-Nombre y matrícula de la embarcación",
-            "3003 Detracciones: Recursos Hidrobiológicos-Tipo y cantidad de especie vendida",
-            "3004 Detracciones: Recursos Hidrobiológicos -Lugar de descarga",
-            "3005 Detracciones: Recursos Hidrobiológicos -Fecha de descarga",
-            "3006 Detracciones: Transporte Bienes vía terrestre – Numero Registro MTC",
-            "3007 Detracciones: Transporte Bienes vía terrestre – configuración vehicular",
-            "3008 Detracciones: Transporte Bienes vía terrestre – punto de origen",
-            "3009 Detracciones: Transporte Bienes vía terrestre – punto destino",
-            "3010 Detracciones: Transporte Bienes vía terrestre – valor referencial preliminar" +
-                "",
-            "4000 Beneficio hospedajes: Código País de emisión del pasaporte",
-            "4001 Beneficio hospedajes: Código País de residencia del sujeto no domiciliado",
-            "4002 Beneficio Hospedajes: Fecha de ingreso al país",
-            "4003 Beneficio Hospedajes: Fecha de ingreso al establecimiento",
-            "4004 Beneficio Hospedajes: Fecha de salida del establecimiento",
-            "4005 Beneficio Hospedajes: Número de días de permanencia",
-            "4006 Beneficio Hospedajes: Fecha de consumo",
-            "4007 Beneficio Hospedajes: Paquete turístico - Nombres y Apellidos del Huésped",
-            "4008 Beneficio Hospedajes: Paquete turístico – Tipo documento identidad del huésp" +
-                "ed",
-            "4009 Beneficio Hospedajes: Paquete turístico – Numero de documento identidad de h" +
-                "uésped",
-            "5000 Proveedores Estado: Número de Expediente",
-            "5001 Proveedores Estado : Código de unidad ejecutora",
-            "5002 Proveedores Estado : N° de proceso de selección",
-            "5003 Proveedores Estado : N° de contrato",
-            "6000 Comercialización de Oro : Código Único Concesión Minera",
-            "6001 Comercialización de Oro : N° declaración compromiso",
-            "6002 Comercialización de Oro : N° Reg. Especial .Comerci. Oro",
-            "6003 Comercialización de Oro : N° Resolución que autoriza Planta de Beneficio",
-            "6004 Comercialización de Oro : Ley Mineral (% concent. oro)"});
-            this.codigoComboBox.Location = new System.Drawing.Point(71, 40);
+            this.codigoComboBox.Location = new System.Drawing.Point(80, 40);
             this.codigoComboBox.Name = "codigoComboBox";
             this.codigoComboBox.Size = new System.Drawing.Size(336, 21);
             this.codigoComboBox.TabIndex = 2;
+            this.codigoComboBox.ValueMember = "Codigo";
             // 
             // contenidoTextBox
             // 
             this.contenidoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.datoAdicionalBindingSource, "Contenido", true));
-            this.contenidoTextBox.Location = new System.Drawing.Point(71, 71);
+            this.contenidoTextBox.Location = new System.Drawing.Point(80, 71);
             this.contenidoTextBox.Name = "contenidoTextBox";
-            this.contenidoTextBox.Size = new System.Drawing.Size(336, 20);
+            this.contenidoTextBox.Size = new System.Drawing.Size(336, 22);
             this.contenidoTextBox.TabIndex = 4;
             // 
             // barraBotones
@@ -126,7 +97,7 @@
             this.toolCancel});
             this.barraBotones.Location = new System.Drawing.Point(0, 0);
             this.barraBotones.Name = "barraBotones";
-            this.barraBotones.Size = new System.Drawing.Size(419, 25);
+            this.barraBotones.Size = new System.Drawing.Size(440, 25);
             this.barraBotones.TabIndex = 5;
             this.barraBotones.Text = "toolStrip1";
             // 
@@ -147,16 +118,21 @@
             this.toolCancel.Size = new System.Drawing.Size(73, 22);
             this.toolCancel.Text = "&Cancelar";
             // 
+            // tipoDatoAdicionalBindingSource
+            // 
+            this.tipoDatoAdicionalBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDatoAdicional);
+            // 
             // FrmDatosAdicionales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(419, 113);
+            this.ClientSize = new System.Drawing.Size(440, 113);
             this.Controls.Add(this.barraBotones);
             this.Controls.Add(contenidoLabel);
             this.Controls.Add(this.contenidoTextBox);
             this.Controls.Add(codigoLabel);
             this.Controls.Add(this.codigoComboBox);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -168,6 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalBindingSource)).EndInit();
             this.barraBotones.ResumeLayout(false);
             this.barraBotones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDatoAdicionalBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -181,5 +158,6 @@
         private System.Windows.Forms.ToolStrip barraBotones;
         private System.Windows.Forms.ToolStripButton toolOk;
         private System.Windows.Forms.ToolStripButton toolCancel;
+        private System.Windows.Forms.BindingSource tipoDatoAdicionalBindingSource;
     }
 }

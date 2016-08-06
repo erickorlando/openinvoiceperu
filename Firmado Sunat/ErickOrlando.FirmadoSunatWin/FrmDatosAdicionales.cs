@@ -1,12 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using OpenInvoicePeru.Datos;
 using OpenInvoicePeru.FirmadoSunat.Models;
 
 namespace OpenInvoicePeru.FirmadoSunatWin
@@ -26,7 +21,15 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             _dato = dato;
             datoAdicionalBindingSource.DataSource = _dato;
             datoAdicionalBindingSource.ResetBindings(false);
-            Load += (s,e) => codigoComboBox.SelectedIndex = 0;
+            Load += (s, e) =>
+            {
+                using (var ctx = new OpenInvoicePeruDb())
+                {
+                    tipoDatoAdicionalBindingSource.DataSource = ctx.TipoDatoAdicionales.ToList();
+                    tipoDatoAdicionalBindingSource.ResetBindings(false);
+                }
+            };
+            toolCancel.Click += (s, e) => DialogResult = DialogResult.Cancel;
         }
 
         private void toolOk_Click(object sender, EventArgs e)
@@ -38,7 +41,6 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 
                 datoAdicionalBindingSource.EndEdit();
                 datoAdicionalBindingSource.RaiseListChangedEvents = false;
-                _dato.Codigo = codigoComboBox.Text;
                 DialogResult = DialogResult.OK;
             }
             catch (Exception ex)

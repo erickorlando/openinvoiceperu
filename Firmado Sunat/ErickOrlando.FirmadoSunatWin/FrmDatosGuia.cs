@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Linq;
 using System.Windows.Forms;
+using OpenInvoicePeru.Datos;
 using OpenInvoicePeru.FirmadoSunat.Models;
 
 namespace OpenInvoicePeru.FirmadoSunatWin
@@ -28,11 +22,21 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             datosGuiaBindingSource.DataSource = _datosGuia;
             datosGuiaBindingSource.ResetBindings(false);
 
+            Load += (s, e) =>
+            {
+                using (var ctx = new OpenInvoicePeruDb())
+                {
+                    tipoDocumentoContribuyenteBindingSource.DataSource = ctx.TipoDocumentoContribuyentes.ToList(); 
+                    tipoDocumentoContribuyenteBindingSource.ResetBindings(false);
+
+                    modalidadTransporteBindingSource.DataSource = ctx.ModalidadTransportes.ToList();
+                    modalidadTransporteBindingSource.ResetBindings(false);
+                }
+            };
+
             toolOk.Click += (s, e) =>
             {
                 datosGuiaBindingSource.EndEdit();
-                _datosGuia.TipoDocTransportista = tipoDocTransportistaComboBox.Text;
-                _datosGuia.ModoTransporte = modoTransporteComboBox.Text;
                 _datosGuia.UnidadMedida = unidadMedidaComboBox.Text;
                 
                 DialogResult = DialogResult.OK;

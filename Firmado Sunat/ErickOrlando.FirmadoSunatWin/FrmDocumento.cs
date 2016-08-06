@@ -170,7 +170,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                         break;
                     case 3:
                         var discrepancia = new Discrepancia();
-                        using (var frm = new FrmDiscrepancia(discrepancia))
+                        using (var frm = new FrmDiscrepancia(discrepancia, _documento.TipoDocumento))
                         {
                             if (frm.ShowDialog(this) != DialogResult.OK) return;
 

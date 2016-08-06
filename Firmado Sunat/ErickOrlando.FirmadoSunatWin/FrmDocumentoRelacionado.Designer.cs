@@ -38,11 +38,31 @@
             this.documentoRelacionadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tipoDocumentoComboBox = new System.Windows.Forms.ComboBox();
             this.nroDocumentoTextBox = new System.Windows.Forms.TextBox();
+            this.tipoDocumentoRelacionadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             tipoDocumentoLabel = new System.Windows.Forms.Label();
             nroDocumentoLabel = new System.Windows.Forms.Label();
             this.barraBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentoRelacionadoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoRelacionadoBindingSource)).BeginInit();
             this.SuspendLayout();
+            // 
+            // tipoDocumentoLabel
+            // 
+            tipoDocumentoLabel.AutoSize = true;
+            tipoDocumentoLabel.Location = new System.Drawing.Point(9, 41);
+            tipoDocumentoLabel.Name = "tipoDocumentoLabel";
+            tipoDocumentoLabel.Size = new System.Drawing.Size(95, 13);
+            tipoDocumentoLabel.TabIndex = 7;
+            tipoDocumentoLabel.Text = "Tipo Documento:";
+            // 
+            // nroDocumentoLabel
+            // 
+            nroDocumentoLabel.AutoSize = true;
+            nroDocumentoLabel.Location = new System.Drawing.Point(9, 68);
+            nroDocumentoLabel.Name = "nroDocumentoLabel";
+            nroDocumentoLabel.Size = new System.Drawing.Size(92, 13);
+            nroDocumentoLabel.TabIndex = 8;
+            nroDocumentoLabel.Text = "Nro Documento:";
             // 
             // barraBotones
             // 
@@ -75,50 +95,29 @@
             // 
             this.documentoRelacionadoBindingSource.DataSource = typeof(OpenInvoicePeru.FirmadoSunat.Models.DocumentoRelacionado);
             // 
-            // tipoDocumentoLabel
-            // 
-            tipoDocumentoLabel.AutoSize = true;
-            tipoDocumentoLabel.Location = new System.Drawing.Point(9, 41);
-            tipoDocumentoLabel.Name = "tipoDocumentoLabel";
-            tipoDocumentoLabel.Size = new System.Drawing.Size(89, 13);
-            tipoDocumentoLabel.TabIndex = 7;
-            tipoDocumentoLabel.Text = "Tipo Documento:";
-            // 
             // tipoDocumentoComboBox
             // 
-            this.tipoDocumentoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoRelacionadoBindingSource, "TipoDocumento", true));
+            this.tipoDocumentoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.documentoRelacionadoBindingSource, "TipoDocumento", true));
+            this.tipoDocumentoComboBox.DataSource = this.tipoDocumentoRelacionadoBindingSource;
+            this.tipoDocumentoComboBox.DisplayMember = "Descripcion";
             this.tipoDocumentoComboBox.FormattingEnabled = true;
-            this.tipoDocumentoComboBox.Items.AddRange(new object[] {
-            "01 FACTURA",
-            "03 BOLETA DE VENTA",
-            "07 NOTA DE CREDITO",
-            "08 NOTA DE DEBITO",
-            "09 GUIA DE REMISIÓN REMITENTE",
-            "13 DOCUMENTO EMITIDO POR BANCOS, II.FF., CREDITICIAS Y DE SEGUROS",
-            "18 DOCUMENTOS EMITIDOS POR LAS AFP",
-            "31 GUIA DE REMISIÓN TRANSPORTISTA",
-            "56 COMPROBANTE DE PAGO SEAE"});
             this.tipoDocumentoComboBox.Location = new System.Drawing.Point(104, 38);
             this.tipoDocumentoComboBox.Name = "tipoDocumentoComboBox";
             this.tipoDocumentoComboBox.Size = new System.Drawing.Size(236, 21);
             this.tipoDocumentoComboBox.TabIndex = 8;
-            // 
-            // nroDocumentoLabel
-            // 
-            nroDocumentoLabel.AutoSize = true;
-            nroDocumentoLabel.Location = new System.Drawing.Point(9, 68);
-            nroDocumentoLabel.Name = "nroDocumentoLabel";
-            nroDocumentoLabel.Size = new System.Drawing.Size(85, 13);
-            nroDocumentoLabel.TabIndex = 8;
-            nroDocumentoLabel.Text = "Nro Documento:";
+            this.tipoDocumentoComboBox.ValueMember = "Codigo";
             // 
             // nroDocumentoTextBox
             // 
             this.nroDocumentoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoRelacionadoBindingSource, "NroDocumento", true));
             this.nroDocumentoTextBox.Location = new System.Drawing.Point(104, 65);
             this.nroDocumentoTextBox.Name = "nroDocumentoTextBox";
-            this.nroDocumentoTextBox.Size = new System.Drawing.Size(152, 20);
+            this.nroDocumentoTextBox.Size = new System.Drawing.Size(152, 22);
             this.nroDocumentoTextBox.TabIndex = 9;
+            // 
+            // tipoDocumentoRelacionadoBindingSource
+            // 
+            this.tipoDocumentoRelacionadoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoRelacionado);
             // 
             // FrmDocumentoRelacionado
             // 
@@ -130,6 +129,7 @@
             this.Controls.Add(tipoDocumentoLabel);
             this.Controls.Add(this.tipoDocumentoComboBox);
             this.Controls.Add(this.barraBotones);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -140,6 +140,7 @@
             this.barraBotones.ResumeLayout(false);
             this.barraBotones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentoRelacionadoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoRelacionadoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -153,5 +154,6 @@
         private System.Windows.Forms.BindingSource documentoRelacionadoBindingSource;
         private System.Windows.Forms.ComboBox tipoDocumentoComboBox;
         private System.Windows.Forms.TextBox nroDocumentoTextBox;
+        private System.Windows.Forms.BindingSource tipoDocumentoRelacionadoBindingSource;
     }
 }

@@ -40,11 +40,13 @@
             this.tipoComboBox = new System.Windows.Forms.ComboBox();
             this.nroReferenciaTextBox = new System.Windows.Forms.TextBox();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
+            this.tipoDiscrepanciaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             tipoLabel = new System.Windows.Forms.Label();
             nroReferenciaLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
             this.barraBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.discrepanciaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDiscrepanciaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // tipoLabel
@@ -52,7 +54,7 @@
             tipoLabel.AutoSize = true;
             tipoLabel.Location = new System.Drawing.Point(6, 37);
             tipoLabel.Name = "tipoLabel";
-            tipoLabel.Size = new System.Drawing.Size(31, 13);
+            tipoLabel.Size = new System.Drawing.Size(32, 13);
             tipoLabel.TabIndex = 7;
             tipoLabel.Text = "Tipo:";
             // 
@@ -61,7 +63,7 @@
             nroReferenciaLabel.AutoSize = true;
             nroReferenciaLabel.Location = new System.Drawing.Point(6, 64);
             nroReferenciaLabel.Name = "nroReferenciaLabel";
-            nroReferenciaLabel.Size = new System.Drawing.Size(82, 13);
+            nroReferenciaLabel.Size = new System.Drawing.Size(86, 13);
             nroReferenciaLabel.TabIndex = 8;
             nroReferenciaLabel.Text = "Nro Referencia:";
             // 
@@ -70,7 +72,7 @@
             descripcionLabel.AutoSize = true;
             descripcionLabel.Location = new System.Drawing.Point(6, 90);
             descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(66, 13);
+            descripcionLabel.Size = new System.Drawing.Size(70, 13);
             descripcionLabel.TabIndex = 9;
             descripcionLabel.Text = "Descripcion:";
             // 
@@ -109,35 +111,22 @@
             // 
             this.tipoComboBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.tipoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-            this.tipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.discrepanciaBindingSource, "Tipo", true));
+            this.tipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.discrepanciaBindingSource, "Tipo", true));
+            this.tipoComboBox.DataSource = this.tipoDiscrepanciaBindingSource;
+            this.tipoComboBox.DisplayMember = "Descripcion";
             this.tipoComboBox.FormattingEnabled = true;
-            this.tipoComboBox.Items.AddRange(new object[] {
-            "--Notas de Crédito--",
-            "01 Anulación de la operación",
-            "02 Anulación por error en el RUC",
-            "03 Corrección por error en la descripción",
-            "04 Descuento global",
-            "05 Descuento por ítem",
-            "06 Devolución total",
-            "07 Devolución por ítem",
-            "08 Bonificación",
-            "09 Disminución en el valor",
-            "10 Otros Conceptos",
-            "--Notas de Débito--",
-            "01 Intereses por mora",
-            "02 Aumento en el valor",
-            "03 Penalidades/otros conceptos"});
             this.tipoComboBox.Location = new System.Drawing.Point(95, 34);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(265, 21);
             this.tipoComboBox.TabIndex = 8;
+            this.tipoComboBox.ValueMember = "Codigo";
             // 
             // nroReferenciaTextBox
             // 
             this.nroReferenciaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.discrepanciaBindingSource, "NroReferencia", true));
             this.nroReferenciaTextBox.Location = new System.Drawing.Point(95, 61);
             this.nroReferenciaTextBox.Name = "nroReferenciaTextBox";
-            this.nroReferenciaTextBox.Size = new System.Drawing.Size(100, 20);
+            this.nroReferenciaTextBox.Size = new System.Drawing.Size(100, 22);
             this.nroReferenciaTextBox.TabIndex = 9;
             // 
             // descripcionTextBox
@@ -145,8 +134,12 @@
             this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.discrepanciaBindingSource, "Descripcion", true));
             this.descripcionTextBox.Location = new System.Drawing.Point(95, 87);
             this.descripcionTextBox.Name = "descripcionTextBox";
-            this.descripcionTextBox.Size = new System.Drawing.Size(265, 20);
+            this.descripcionTextBox.Size = new System.Drawing.Size(265, 22);
             this.descripcionTextBox.TabIndex = 10;
+            // 
+            // tipoDiscrepanciaBindingSource
+            // 
+            this.tipoDiscrepanciaBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDiscrepancia);
             // 
             // FrmDiscrepancia
             // 
@@ -160,6 +153,7 @@
             this.Controls.Add(tipoLabel);
             this.Controls.Add(this.tipoComboBox);
             this.Controls.Add(this.barraBotones);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -171,6 +165,7 @@
             this.barraBotones.ResumeLayout(false);
             this.barraBotones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.discrepanciaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDiscrepanciaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -185,5 +180,6 @@
         private System.Windows.Forms.ComboBox tipoComboBox;
         private System.Windows.Forms.TextBox nroReferenciaTextBox;
         private System.Windows.Forms.TextBox descripcionTextBox;
+        private System.Windows.Forms.BindingSource tipoDiscrepanciaBindingSource;
     }
 }

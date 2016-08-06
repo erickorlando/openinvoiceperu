@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System.Linq;
+using System.Windows.Forms;
+using OpenInvoicePeru.Datos;
 using OpenInvoicePeru.FirmadoSunat.Models;
 
 namespace OpenInvoicePeru.FirmadoSunatWin
@@ -18,6 +20,15 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             _documentoRelacionado = documentoRelacionado;
             documentoRelacionadoBindingSource.DataSource = _documentoRelacionado;
             documentoRelacionadoBindingSource.ResetBindings(false);
+
+            Load += (s, e) =>
+            {
+                using (var ctx = new OpenInvoicePeruDb())
+                {
+                    tipoDocumentoRelacionadoBindingSource.DataSource = ctx.TipoDocumentoRelacionados.ToList();
+                    tipoDocumentoRelacionadoBindingSource.ResetBindings(false);
+                }
+            };
 
             toolOk.Click += (s, e) =>
             {

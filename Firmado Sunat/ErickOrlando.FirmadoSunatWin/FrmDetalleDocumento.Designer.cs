@@ -63,6 +63,8 @@
             this.btnCalcIgv = new System.Windows.Forms.Button();
             this.btnCalcIsc = new System.Windows.Forms.Button();
             this.tipoPrecioComboBox = new System.Windows.Forms.ComboBox();
+            this.tipoPrecioBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tipoImpuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             idLabel = new System.Windows.Forms.Label();
             codigoItemLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
@@ -80,6 +82,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).BeginInit();
             this.barraBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoPrecioBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // idLabel
@@ -87,7 +91,7 @@
             idLabel.AutoSize = true;
             idLabel.Location = new System.Drawing.Point(12, 35);
             idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(19, 13);
+            idLabel.Size = new System.Drawing.Size(20, 13);
             idLabel.TabIndex = 1;
             idLabel.Text = "Id:";
             // 
@@ -96,7 +100,7 @@
             codigoItemLabel.AutoSize = true;
             codigoItemLabel.Location = new System.Drawing.Point(12, 61);
             codigoItemLabel.Name = "codigoItemLabel";
-            codigoItemLabel.Size = new System.Drawing.Size(66, 13);
+            codigoItemLabel.Size = new System.Drawing.Size(73, 13);
             codigoItemLabel.TabIndex = 2;
             codigoItemLabel.Text = "Código Item:";
             // 
@@ -105,7 +109,7 @@
             descripcionLabel.AutoSize = true;
             descripcionLabel.Location = new System.Drawing.Point(12, 87);
             descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(66, 13);
+            descripcionLabel.Size = new System.Drawing.Size(70, 13);
             descripcionLabel.TabIndex = 4;
             descripcionLabel.Text = "Descripcion:";
             // 
@@ -114,7 +118,7 @@
             precioUnitarioLabel.AutoSize = true;
             precioUnitarioLabel.Location = new System.Drawing.Point(12, 113);
             precioUnitarioLabel.Name = "precioUnitarioLabel";
-            precioUnitarioLabel.Size = new System.Drawing.Size(79, 13);
+            precioUnitarioLabel.Size = new System.Drawing.Size(86, 13);
             precioUnitarioLabel.TabIndex = 6;
             precioUnitarioLabel.Text = "Precio Unitario:";
             // 
@@ -123,7 +127,7 @@
             precioReferencialLabel.AutoSize = true;
             precioReferencialLabel.Location = new System.Drawing.Point(12, 139);
             precioReferencialLabel.Name = "precioReferencialLabel";
-            precioReferencialLabel.Size = new System.Drawing.Size(97, 13);
+            precioReferencialLabel.Size = new System.Drawing.Size(101, 13);
             precioReferencialLabel.TabIndex = 8;
             precioReferencialLabel.Text = "Precio Referencial:";
             // 
@@ -132,7 +136,7 @@
             cantidadLabel.AutoSize = true;
             cantidadLabel.Location = new System.Drawing.Point(12, 195);
             cantidadLabel.Name = "cantidadLabel";
-            cantidadLabel.Size = new System.Drawing.Size(52, 13);
+            cantidadLabel.Size = new System.Drawing.Size(57, 13);
             cantidadLabel.TabIndex = 10;
             cantidadLabel.Text = "Cantidad:";
             // 
@@ -141,7 +145,7 @@
             unidadMedidaLabel.AutoSize = true;
             unidadMedidaLabel.Location = new System.Drawing.Point(12, 221);
             unidadMedidaLabel.Name = "unidadMedidaLabel";
-            unidadMedidaLabel.Size = new System.Drawing.Size(82, 13);
+            unidadMedidaLabel.Size = new System.Drawing.Size(90, 13);
             unidadMedidaLabel.TabIndex = 12;
             unidadMedidaLabel.Text = "Unidad Medida:";
             // 
@@ -150,7 +154,7 @@
             impuestoLabel.AutoSize = true;
             impuestoLabel.Location = new System.Drawing.Point(12, 247);
             impuestoLabel.Name = "impuestoLabel";
-            impuestoLabel.Size = new System.Drawing.Size(53, 13);
+            impuestoLabel.Size = new System.Drawing.Size(58, 13);
             impuestoLabel.TabIndex = 14;
             impuestoLabel.Text = "Impuesto:";
             // 
@@ -159,7 +163,7 @@
             tipoImpuestoLabel.AutoSize = true;
             tipoImpuestoLabel.Location = new System.Drawing.Point(12, 273);
             tipoImpuestoLabel.Name = "tipoImpuestoLabel";
-            tipoImpuestoLabel.Size = new System.Drawing.Size(77, 13);
+            tipoImpuestoLabel.Size = new System.Drawing.Size(83, 13);
             tipoImpuestoLabel.TabIndex = 16;
             tipoImpuestoLabel.Text = "Tipo Impuesto:";
             // 
@@ -168,7 +172,7 @@
             impuestoSelectivoLabel.AutoSize = true;
             impuestoSelectivoLabel.Location = new System.Drawing.Point(12, 299);
             impuestoSelectivoLabel.Name = "impuestoSelectivoLabel";
-            impuestoSelectivoLabel.Size = new System.Drawing.Size(100, 13);
+            impuestoSelectivoLabel.Size = new System.Drawing.Size(106, 13);
             impuestoSelectivoLabel.TabIndex = 18;
             impuestoSelectivoLabel.Text = "Impuesto Selectivo:";
             // 
@@ -177,7 +181,7 @@
             otroImpuestoLabel.AutoSize = true;
             otroImpuestoLabel.Location = new System.Drawing.Point(12, 325);
             otroImpuestoLabel.Name = "otroImpuestoLabel";
-            otroImpuestoLabel.Size = new System.Drawing.Size(76, 13);
+            otroImpuestoLabel.Size = new System.Drawing.Size(85, 13);
             otroImpuestoLabel.TabIndex = 20;
             otroImpuestoLabel.Text = "Otro Impuesto:";
             // 
@@ -186,7 +190,7 @@
             totalVentaLabel.AutoSize = true;
             totalVentaLabel.Location = new System.Drawing.Point(12, 351);
             totalVentaLabel.Name = "totalVentaLabel";
-            totalVentaLabel.Size = new System.Drawing.Size(65, 13);
+            totalVentaLabel.Size = new System.Drawing.Size(66, 13);
             totalVentaLabel.TabIndex = 22;
             totalVentaLabel.Text = "Total Venta:";
             // 
@@ -195,16 +199,16 @@
             tipoPrecioLabel.AutoSize = true;
             tipoPrecioLabel.Location = new System.Drawing.Point(12, 166);
             tipoPrecioLabel.Name = "tipoPrecioLabel";
-            tipoPrecioLabel.Size = new System.Drawing.Size(64, 13);
+            tipoPrecioLabel.Size = new System.Drawing.Size(66, 13);
             tipoPrecioLabel.TabIndex = 27;
             tipoPrecioLabel.Text = "Tipo Precio:";
             // 
             // idNumericUpDown
             // 
             this.idNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.detalleDocumentoBindingSource, "Id", true));
-            this.idNumericUpDown.Location = new System.Drawing.Point(112, 33);
+            this.idNumericUpDown.Location = new System.Drawing.Point(118, 33);
             this.idNumericUpDown.Name = "idNumericUpDown";
-            this.idNumericUpDown.Size = new System.Drawing.Size(100, 20);
+            this.idNumericUpDown.Size = new System.Drawing.Size(100, 22);
             this.idNumericUpDown.TabIndex = 0;
             this.idNumericUpDown.Value = new decimal(new int[] {
             1,
@@ -219,41 +223,41 @@
             // codigoItemTextBox
             // 
             this.codigoItemTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "CodigoItem", true));
-            this.codigoItemTextBox.Location = new System.Drawing.Point(112, 58);
+            this.codigoItemTextBox.Location = new System.Drawing.Point(118, 58);
             this.codigoItemTextBox.Name = "codigoItemTextBox";
-            this.codigoItemTextBox.Size = new System.Drawing.Size(100, 20);
+            this.codigoItemTextBox.Size = new System.Drawing.Size(100, 22);
             this.codigoItemTextBox.TabIndex = 1;
             // 
             // descripcionTextBox
             // 
             this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Descripcion", true));
-            this.descripcionTextBox.Location = new System.Drawing.Point(112, 84);
+            this.descripcionTextBox.Location = new System.Drawing.Point(118, 84);
             this.descripcionTextBox.Name = "descripcionTextBox";
-            this.descripcionTextBox.Size = new System.Drawing.Size(240, 20);
+            this.descripcionTextBox.Size = new System.Drawing.Size(240, 22);
             this.descripcionTextBox.TabIndex = 2;
             // 
             // precioUnitarioTextBox
             // 
             this.precioUnitarioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "PrecioUnitario", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.precioUnitarioTextBox.Location = new System.Drawing.Point(112, 110);
+            this.precioUnitarioTextBox.Location = new System.Drawing.Point(118, 110);
             this.precioUnitarioTextBox.Name = "precioUnitarioTextBox";
-            this.precioUnitarioTextBox.Size = new System.Drawing.Size(100, 20);
+            this.precioUnitarioTextBox.Size = new System.Drawing.Size(100, 22);
             this.precioUnitarioTextBox.TabIndex = 3;
             // 
             // precioReferencialTextBox
             // 
             this.precioReferencialTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "PrecioReferencial", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.precioReferencialTextBox.Location = new System.Drawing.Point(112, 136);
+            this.precioReferencialTextBox.Location = new System.Drawing.Point(118, 136);
             this.precioReferencialTextBox.Name = "precioReferencialTextBox";
-            this.precioReferencialTextBox.Size = new System.Drawing.Size(100, 20);
+            this.precioReferencialTextBox.Size = new System.Drawing.Size(100, 22);
             this.precioReferencialTextBox.TabIndex = 4;
             // 
             // cantidadTextBox
             // 
             this.cantidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Cantidad", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.cantidadTextBox.Location = new System.Drawing.Point(112, 192);
+            this.cantidadTextBox.Location = new System.Drawing.Point(118, 192);
             this.cantidadTextBox.Name = "cantidadTextBox";
-            this.cantidadTextBox.Size = new System.Drawing.Size(100, 20);
+            this.cantidadTextBox.Size = new System.Drawing.Size(100, 22);
             this.cantidadTextBox.TabIndex = 6;
             // 
             // unidadMedidaComboBox
@@ -265,7 +269,7 @@
             "KG",
             "ONZ",
             "LTR"});
-            this.unidadMedidaComboBox.Location = new System.Drawing.Point(112, 218);
+            this.unidadMedidaComboBox.Location = new System.Drawing.Point(118, 218);
             this.unidadMedidaComboBox.Name = "unidadMedidaComboBox";
             this.unidadMedidaComboBox.Size = new System.Drawing.Size(100, 21);
             this.unidadMedidaComboBox.TabIndex = 7;
@@ -273,63 +277,47 @@
             // impuestoTextBox
             // 
             this.impuestoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Impuesto", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.impuestoTextBox.Location = new System.Drawing.Point(112, 244);
+            this.impuestoTextBox.Location = new System.Drawing.Point(118, 244);
             this.impuestoTextBox.Name = "impuestoTextBox";
-            this.impuestoTextBox.Size = new System.Drawing.Size(100, 20);
+            this.impuestoTextBox.Size = new System.Drawing.Size(100, 22);
             this.impuestoTextBox.TabIndex = 8;
             // 
             // tipoImpuestoComboBox
             // 
-            this.tipoImpuestoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "TipoImpuesto", true));
+            this.tipoImpuestoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.detalleDocumentoBindingSource, "TipoImpuesto", true));
+            this.tipoImpuestoComboBox.DataSource = this.tipoImpuestoBindingSource;
+            this.tipoImpuestoComboBox.DisplayMember = "Descripcion";
             this.tipoImpuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoImpuestoComboBox.FormattingEnabled = true;
-            this.tipoImpuestoComboBox.Items.AddRange(new object[] {
-            "10 Gravado - Operación Onerosa",
-            "11 Gravado – Retiro por premio",
-            "12 Gravado – Retiro por donación",
-            "13 Gravado – Retiro",
-            "14 Gravado – Retiro por publicidad",
-            "15 Gravado – Bonificaciones",
-            "16 Gravado – Retiro por entrega a trabajadores",
-            "17 Gravado – IVAP",
-            "20 Exonerado - Operación Onerosa",
-            "21 Exonerado – Transferencia Gratuita",
-            "30 Inafecto - Operación Onerosa",
-            "31 Inafecto – Retiro por Bonificación",
-            "32 Inafecto – Retiro",
-            "33 Inafecto – Retiro por Muestras Médicas",
-            "34 Inafecto - Retiro por Convenio Colectivo",
-            "35 Inafecto – Retiro por premio",
-            "36 Inafecto - Retiro por publicidad",
-            "40 Exportación"});
-            this.tipoImpuestoComboBox.Location = new System.Drawing.Point(112, 270);
+            this.tipoImpuestoComboBox.Location = new System.Drawing.Point(118, 270);
             this.tipoImpuestoComboBox.Name = "tipoImpuestoComboBox";
             this.tipoImpuestoComboBox.Size = new System.Drawing.Size(240, 21);
             this.tipoImpuestoComboBox.TabIndex = 10;
+            this.tipoImpuestoComboBox.ValueMember = "Codigo";
             // 
             // impuestoSelectivoTextBox
             // 
             this.impuestoSelectivoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "ImpuestoSelectivo", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.impuestoSelectivoTextBox.Location = new System.Drawing.Point(112, 296);
+            this.impuestoSelectivoTextBox.Location = new System.Drawing.Point(118, 296);
             this.impuestoSelectivoTextBox.Name = "impuestoSelectivoTextBox";
-            this.impuestoSelectivoTextBox.Size = new System.Drawing.Size(100, 20);
+            this.impuestoSelectivoTextBox.Size = new System.Drawing.Size(100, 22);
             this.impuestoSelectivoTextBox.TabIndex = 11;
             // 
             // otroImpuestoTextBox
             // 
             this.otroImpuestoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "OtroImpuesto", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.otroImpuestoTextBox.Location = new System.Drawing.Point(112, 322);
+            this.otroImpuestoTextBox.Location = new System.Drawing.Point(118, 322);
             this.otroImpuestoTextBox.Name = "otroImpuestoTextBox";
-            this.otroImpuestoTextBox.Size = new System.Drawing.Size(100, 20);
+            this.otroImpuestoTextBox.Size = new System.Drawing.Size(100, 22);
             this.otroImpuestoTextBox.TabIndex = 13;
             // 
             // totalVentaTextBox
             // 
             this.totalVentaTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.totalVentaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "TotalVenta", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.totalVentaTextBox.Location = new System.Drawing.Point(112, 348);
+            this.totalVentaTextBox.Location = new System.Drawing.Point(118, 348);
             this.totalVentaTextBox.Name = "totalVentaTextBox";
-            this.totalVentaTextBox.Size = new System.Drawing.Size(100, 20);
+            this.totalVentaTextBox.Size = new System.Drawing.Size(100, 22);
             this.totalVentaTextBox.TabIndex = 14;
             // 
             // barraBotones
@@ -368,7 +356,7 @@
             // 
             // btnCalcIgv
             // 
-            this.btnCalcIgv.Location = new System.Drawing.Point(227, 242);
+            this.btnCalcIgv.Location = new System.Drawing.Point(233, 242);
             this.btnCalcIgv.Name = "btnCalcIgv";
             this.btnCalcIgv.Size = new System.Drawing.Size(125, 23);
             this.btnCalcIgv.TabIndex = 9;
@@ -378,7 +366,7 @@
             // 
             // btnCalcIsc
             // 
-            this.btnCalcIsc.Location = new System.Drawing.Point(227, 294);
+            this.btnCalcIsc.Location = new System.Drawing.Point(233, 294);
             this.btnCalcIsc.Name = "btnCalcIsc";
             this.btnCalcIsc.Size = new System.Drawing.Size(125, 23);
             this.btnCalcIsc.TabIndex = 12;
@@ -388,16 +376,24 @@
             // 
             // tipoPrecioComboBox
             // 
-            this.tipoPrecioComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "TipoPrecio", true));
+            this.tipoPrecioComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.detalleDocumentoBindingSource, "TipoPrecio", true));
+            this.tipoPrecioComboBox.DataSource = this.tipoPrecioBindingSource;
+            this.tipoPrecioComboBox.DisplayMember = "Descripcion";
             this.tipoPrecioComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoPrecioComboBox.FormattingEnabled = true;
-            this.tipoPrecioComboBox.Items.AddRange(new object[] {
-            "01 Precio unitario (incluye el IGV)",
-            "02 Valor referencial unitario en operaciones no onerosas"});
-            this.tipoPrecioComboBox.Location = new System.Drawing.Point(112, 163);
+            this.tipoPrecioComboBox.Location = new System.Drawing.Point(118, 163);
             this.tipoPrecioComboBox.Name = "tipoPrecioComboBox";
             this.tipoPrecioComboBox.Size = new System.Drawing.Size(240, 21);
             this.tipoPrecioComboBox.TabIndex = 5;
+            this.tipoPrecioComboBox.ValueMember = "Codigo";
+            // 
+            // tipoPrecioBindingSource
+            // 
+            this.tipoPrecioBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoPrecio);
+            // 
+            // tipoImpuestoBindingSource
+            // 
+            this.tipoImpuestoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoImpuesto);
             // 
             // FrmDetalleDocumento
             // 
@@ -433,6 +429,7 @@
             this.Controls.Add(this.codigoItemTextBox);
             this.Controls.Add(idLabel);
             this.Controls.Add(this.idNumericUpDown);
+            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
@@ -446,6 +443,8 @@
             this.barraBotones.ResumeLayout(false);
             this.barraBotones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoPrecioBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -473,5 +472,7 @@
         private System.Windows.Forms.Button btnCalcIsc;
         private System.Windows.Forms.Button btnCalcIgv;
         private System.Windows.Forms.ComboBox tipoPrecioComboBox;
+        private System.Windows.Forms.BindingSource tipoImpuestoBindingSource;
+        private System.Windows.Forms.BindingSource tipoPrecioBindingSource;
     }
 }
