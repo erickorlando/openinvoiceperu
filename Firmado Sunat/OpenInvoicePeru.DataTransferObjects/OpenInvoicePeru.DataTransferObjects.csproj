@@ -102,9 +102,6 @@
     <Compile Include="..\erickorlando.firmadosunat\models\ResumenDiario.cs">
       <Link>Estructuras\ResumenDiario.cs</Link>
     </Compile>
-    <Compile Include="..\erickorlando.firmadosunat\Utiles.cs">
-      <Link>Estructuras\Utiles.cs</Link>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

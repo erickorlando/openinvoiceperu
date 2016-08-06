@@ -4,10 +4,7 @@ using System.Collections.ObjectModel;
 
 namespace OpenInvoicePeru.FirmadoSunat.Models
 {
-#if TESTING
-    [Serializable]
-#endif
-    public class DocumentoElectronico : ICloneable
+    public class DocumentoElectronico 
     {
 
         public string TipoDocumento { get; set; }
@@ -54,8 +51,14 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
 
         public DocumentoElectronico()
         {
-            Emisor = new Contribuyente();
-            Receptor = new Contribuyente();
+            Emisor = new Contribuyente
+            {
+                TipoDocumento = "6" // RUC.
+            };
+            Receptor = new Contribuyente
+            {
+                TipoDocumento = "6" // RUC.
+            };
             CalculoIgv = 0.18m;
             CalculoIsc = 0.10m;
             CalculoDetraccion = 0.04m;
@@ -63,12 +66,11 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
             DatoAdicionales = new List<DatoAdicional>();
             Relacionados = new List<DocumentoRelacionado>();
             Discrepancias = new List<Discrepancia>();
+            TipoDocumento = "01"; // Factura.
+            TipoOperacion = "01"; // Venta Interna.
+            Moneda = "PEN"; // Soles.
         }
 
-        public object Clone()
-        {
-            return Utiles.Copia(this);
-        }
     }
 
 }

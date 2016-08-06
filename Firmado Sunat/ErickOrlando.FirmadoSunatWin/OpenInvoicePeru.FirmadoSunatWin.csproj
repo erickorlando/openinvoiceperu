@@ -218,6 +218,18 @@
       <DesignTime>True</DesignTime>
     </Compile>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.DireccionSunat.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.ModalidadTransporte.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.Moneda.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoDatoAdicional.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoDiscrepancia.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoDocumento.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoDocumentoAnticipo.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoDocumentoContribuyente.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoDocumentoRelacionado.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoImpuesto.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoOperacion.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoPrecio.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.Contribuyente.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DatoAdicional.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DatosGuia.datasource" />

@@ -1,14 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace OpenInvoicePeru.FirmadoSunat.Models
+﻿namespace OpenInvoicePeru.FirmadoSunat.Models
 {
-#if TESTING
-    [Serializable]
-#endif
     public class Discrepancia
     {
         public string NroReferencia { get; set; }

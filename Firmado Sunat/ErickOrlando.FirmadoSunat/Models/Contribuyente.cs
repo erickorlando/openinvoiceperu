@@ -1,10 +1,5 @@
-﻿using System;
-
-namespace OpenInvoicePeru.FirmadoSunat.Models
+﻿namespace OpenInvoicePeru.FirmadoSunat.Models
 {
-#if TESTING
-    [Serializable]
-#endif
     public class Contribuyente
     {
         public string NroDocumento { get; set; }

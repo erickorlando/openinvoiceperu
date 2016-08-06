@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Windows.Forms;
+using OpenInvoicePeru.Datos;
 using OpenInvoicePeru.FirmadoSunat.Models;
 
 namespace OpenInvoicePeru.FirmadoSunatWin
@@ -39,6 +40,42 @@ namespace OpenInvoicePeru.FirmadoSunatWin
         }
         #endregion
 
+        #region Evento Load
+        private void FrmDocumento_Load(object sender, EventArgs e)
+        {
+            try
+            {
+                Cursor = Cursors.WaitCursor;
+
+                using (var ctx = new OpenInvoicePeruDb())
+                {
+                    tipoDocumentoBindingSource.DataSource = ctx.TipoDocumentos.ToList();
+                    tipoDocumentoBindingSource.ResetBindings(false);
+
+                    tipoDocumentoContribuyenteBindingSource.DataSource = ctx.TipoDocumentoContribuyentes.ToList();
+                    tipoDocumentoContribuyenteBindingSource.ResetBindings(false);
+
+                    tipoDocumentoAnticipoBindingSource.DataSource = ctx.TipoDocumentoAnticipos.ToList();
+                    tipoDocumentoAnticipoBindingSource.ResetBindings(false);
+
+                    tipoOperacionBindingSource.DataSource = ctx.TipoOperaciones.ToList();
+                    tipoOperacionBindingSource.ResetBindings(false);
+
+                    monedaBindingSource.DataSource = ctx.Monedas.ToList();
+                    monedaBindingSource.ResetBindings(false);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            finally
+            {
+                Cursor = Cursors.Default;
+            }
+        } 
+        #endregion
+
         #region Metodos Privados
 
         private void Inicializar()
@@ -51,11 +88,6 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 
             receptorBindingSource.DataSource = _documento.Receptor;
             receptorBindingSource.ResetBindings(false);
-
-            cboTipoDoc.SelectedIndex = 0;
-            cboMoneda.SelectedIndex = 0;
-            cboTipoDocRec.SelectedIndex = 3;
-            tipoOperacionComboBox.SelectedIndex = 0;
         }
 
         private void CalcularTotales()
@@ -66,7 +98,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             _documento.TotalOtrosTributos = _documento.Items.Sum(d => d.OtroImpuesto);
 
             _documento.Gravadas = _documento.Items
-                .Where(d => d.TipoImpuesto.Contains("Gravado"))
+                .Where(d => d.TipoImpuesto.StartsWith("1"))
                 .Sum(d => d.Suma);
 
             _documento.Exoneradas = _documento.Items
@@ -74,7 +106,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 .Sum(d => d.Suma);
 
             _documento.Inafectas = _documento.Items
-                .Where(d => d.TipoImpuesto.Contains("Inafecto") || d.TipoImpuesto.Contains("40"))
+                .Where(d => d.TipoImpuesto.StartsWith("3") || d.TipoImpuesto.Contains("40"))
                 .Sum(d => d.Suma);
 
             _documento.Gratuitas = _documento.Items
@@ -167,9 +199,25 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 Cursor.Current = Cursors.WaitCursor;
 
                 var registro = detallesBindingSource.Current as DetalleDocumento;
+                if (registro == null) throw new ArgumentNullException(nameof(registro));
 
-                var copia = registro?.Clone() as DetalleDocumento;
-                if (copia == null) return;
+                var copia = new DetalleDocumento
+                {
+                    Id = registro.Id,
+                    Cantidad = registro.Cantidad,
+                    CodigoItem = registro.CodigoItem,
+                    Descripcion = registro.Descripcion,
+                    PrecioUnitario = registro.PrecioUnitario,
+                    PrecioReferencial = registro.PrecioReferencial,
+                    UnidadMedida =  registro.UnidadMedida,
+                    Impuesto = registro.Impuesto,
+                    ImpuestoSelectivo = registro.ImpuestoSelectivo,
+                    TipoImpuesto = registro.TipoImpuesto,
+                    TipoPrecio = registro.TipoPrecio,
+                    TotalVenta = registro.TotalVenta,
+                    Suma = registro.Suma,
+                    OtroImpuesto = registro.OtroImpuesto
+                };
 
                 copia.Id = copia.Id + 1;
                 _documento.Items.Add(copia);
@@ -285,77 +333,31 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 
                 var proxy = new HttpClient { BaseAddress = new Uri(ConfigurationManager.AppSettings["UrlOpenInvoicePeruApi"]) };
 
-                var doc = (DocumentoElectronico)_documento.Clone();
-
-                doc.Emisor = emisorBindingSource.Current as Contribuyente;
-                if (doc.Emisor != null) doc.Emisor.TipoDocumento = "6";
-
-                doc.Receptor = receptorBindingSource.Current as Contribuyente;
-                if (doc.Receptor != null) doc.Receptor.TipoDocumento = cboTipoDocRec.Text.Substring(0, 1);
-
-                doc.Moneda = cboMoneda.Text;
-                doc.TipoDocumento = cboTipoDoc.Text.Substring(0, 2);
-                doc.TipoOperacion = tipoOperacionComboBox.Text.Substring(0, 2);
-
-                foreach (var item in doc.Items)
-                {
-                    item.TipoImpuesto = item.TipoImpuesto.Substring(0, 2);
-                    item.TipoPrecio = item.TipoPrecio.Substring(0, 2);
-                }
-
-                foreach (var adicional in doc.DatoAdicionales)
-                {
-                    adicional.Codigo = adicional.Codigo.Substring(0, 4);
-                }
-
-                foreach (var relacionado in doc.Relacionados)
-                {
-                    relacionado.TipoDocumento = relacionado.TipoDocumento.Substring(0, 2);
-                }
-
-                foreach (var discrepancia in doc.Discrepancias)
-                {
-                    discrepancia.Tipo = discrepancia.Tipo.Substring(0, 2);
-                }
-
-                if (doc.DatosGuiaTransportista != null)
-                {
-                    doc.DatosGuiaTransportista.ModoTransporte = doc.DatosGuiaTransportista.ModoTransporte.Substring(0, 2);
-                    doc.DatosGuiaTransportista.TipoDocTransportista =
-                        doc.DatosGuiaTransportista.TipoDocTransportista.Substring(0, 1);
-                }
-
-                if (doc.MontoAnticipo > 0)
-                {
-                    doc.TipoDocAnticipo = doc.TipoDocAnticipo.Substring(0, 2);
-                    doc.MonedaAnticipo = monedaAnticipoComboBox.Text;
-                }
-
                 string metodoApi;
-                switch (doc.TipoDocumento)
+                switch (_documento.TipoDocumento)
                 {
                     case "07":
-                        metodoApi = "api/generarnotacredito";
+                        metodoApi = "api/GenerarNotaCredito";
                         break;
                     case "08":
-                        metodoApi = "api/generarnotadebito";
+                        metodoApi = "api/GenerarNotaDebito";
                         break;
                     default:
-                        metodoApi = "api/generarfactura";
+                        metodoApi = "api/GenerarFactura";
                         break;
                 }
 
-                var response = await proxy.PostAsJsonAsync(metodoApi, doc);
+                var response = await proxy.PostAsJsonAsync(metodoApi, _documento);
                 var respuesta = await response.Content.ReadAsAsync<DocumentoResponse>();
                 if (!respuesta.Exito)
                     throw new ApplicationException(respuesta.MensajeError);
 
                 RutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, 
-                    $"/XML/{doc.IdDocumento}.xml");
+                    $"/XML/{_documento.IdDocumento}.xml");
 
                 File.WriteAllBytes(RutaArchivo, Convert.FromBase64String(respuesta.TramaXmlSinFirma));
 
-                IdDocumento = doc.IdDocumento;
+                IdDocumento = _documento.IdDocumento;
 
                 DialogResult = DialogResult.OK;
             }
@@ -369,5 +371,6 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             }
         }
         #endregion
+
     }
 }

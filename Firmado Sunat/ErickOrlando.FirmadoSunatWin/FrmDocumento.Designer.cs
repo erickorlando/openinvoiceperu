@@ -53,6 +53,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDocumento));
             this.label1 = new System.Windows.Forms.Label();
             this.cboTipoDocRec = new System.Windows.Forms.ComboBox();
+            this.receptorBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.tipoDocumentoContribuyenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label2 = new System.Windows.Forms.Label();
             this.txtNroDocEm = new System.Windows.Forms.TextBox();
             this.emisorBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -73,7 +75,6 @@
             this.txtNombreLegalEm = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.grpReceptor = new System.Windows.Forms.GroupBox();
-            this.receptorBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.txtNombreLegalRec = new System.Windows.Forms.TextBox();
@@ -85,8 +86,10 @@
             this.dtpFecha = new System.Windows.Forms.DateTimePicker();
             this.label20 = new System.Windows.Forms.Label();
             this.cboTipoDoc = new System.Windows.Forms.ComboBox();
+            this.tipoDocumentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label21 = new System.Windows.Forms.Label();
             this.cboMoneda = new System.Windows.Forms.ComboBox();
+            this.monedaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgvDetalle = new System.Windows.Forms.DataGridView();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.codigoItemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -108,6 +111,7 @@
             this.inafectasTextBox = new System.Windows.Forms.TextBox();
             this.gratuitasTextBox = new System.Windows.Forms.TextBox();
             this.tipoOperacionComboBox = new System.Windows.Forms.ComboBox();
+            this.tipoOperacionBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.totalIgvTextBox = new System.Windows.Forms.TextBox();
             this.totalIscTextBox = new System.Windows.Forms.TextBox();
             this.totalOtrosTributosTextBox = new System.Windows.Forms.TextBox();
@@ -148,6 +152,7 @@
             this.montoAnticipoTextBox = new System.Windows.Forms.TextBox();
             this.docAnticipoTextBox = new System.Windows.Forms.TextBox();
             this.tipoDocAnticipoComboBox = new System.Windows.Forms.ComboBox();
+            this.tipoDocumentoAnticipoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             montoEnLetrasLabel = new System.Windows.Forms.Label();
             gravadasLabel = new System.Windows.Forms.Label();
             exoneradasLabel = new System.Windows.Forms.Label();
@@ -169,13 +174,17 @@
             docAnticipoLabel = new System.Windows.Forms.Label();
             montoAnticipoLabel = new System.Windows.Forms.Label();
             monedaAnticipoLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.receptorBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoContribuyenteBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.emisorBindingSource)).BeginInit();
             this.grpEmisor.SuspendLayout();
             this.grpReceptor.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.receptorBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentoElectronicoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monedaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detallesBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoOperacionBindingSource)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.tbPaginas.SuspendLayout();
             this.tpDetalles.SuspendLayout();
@@ -189,6 +198,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.discrepanciasDataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.discrepanciasBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoAnticipoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // montoEnLetrasLabel
@@ -391,19 +401,24 @@
             // 
             // cboTipoDocRec
             // 
+            this.cboTipoDocRec.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.receptorBindingSource, "TipoDocumento", true));
+            this.cboTipoDocRec.DataSource = this.tipoDocumentoContribuyenteBindingSource;
+            this.cboTipoDocRec.DisplayMember = "Descripcion";
             this.cboTipoDocRec.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocRec.FormattingEnabled = true;
-            this.cboTipoDocRec.Items.AddRange(new object[] {
-            "0 DOC.TRIB.NO.DOM.SIN.RUC",
-            "1 DOC. NACIONAL DE IDENTIDAD",
-            "4 CARNET DE EXTRANJERIA",
-            "6 REG. UNICO DE CONTRIBUYENTES",
-            "7 PASAPORTE",
-            "A CED. DIPLOMATICA DE IDENTIDAD"});
             this.cboTipoDocRec.Location = new System.Drawing.Point(138, 60);
             this.cboTipoDocRec.Name = "cboTipoDocRec";
             this.cboTipoDocRec.Size = new System.Drawing.Size(194, 21);
             this.cboTipoDocRec.TabIndex = 1;
+            this.cboTipoDocRec.ValueMember = "Codigo";
+            // 
+            // receptorBindingSource
+            // 
+            this.receptorBindingSource.DataSource = typeof(OpenInvoicePeru.FirmadoSunat.Models.Contribuyente);
+            // 
+            // tipoDocumentoContribuyenteBindingSource
+            // 
+            this.tipoDocumentoContribuyenteBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoContribuyente);
             // 
             // label2
             // 
@@ -595,10 +610,6 @@
             this.grpReceptor.TabStop = false;
             this.grpReceptor.Text = "Datos del Receptor";
             // 
-            // receptorBindingSource
-            // 
-            this.receptorBindingSource.DataSource = typeof(OpenInvoicePeru.FirmadoSunat.Models.Contribuyente);
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
@@ -683,17 +694,20 @@
             // 
             // cboTipoDoc
             // 
+            this.cboTipoDoc.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.documentoElectronicoBindingSource, "TipoDocumento", true));
+            this.cboTipoDoc.DataSource = this.tipoDocumentoBindingSource;
+            this.cboTipoDoc.DisplayMember = "Descripcion";
             this.cboTipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDoc.FormattingEnabled = true;
-            this.cboTipoDoc.Items.AddRange(new object[] {
-            "01 Factura",
-            "03 Boleta",
-            "07 Nota de Crédito",
-            "08 Nota de Débito"});
             this.cboTipoDoc.Location = new System.Drawing.Point(131, 28);
             this.cboTipoDoc.Name = "cboTipoDoc";
             this.cboTipoDoc.Size = new System.Drawing.Size(175, 21);
             this.cboTipoDoc.TabIndex = 1;
+            this.cboTipoDoc.ValueMember = "Codigo";
+            // 
+            // tipoDocumentoBindingSource
+            // 
+            this.tipoDocumentoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumento);
             // 
             // label21
             // 
@@ -707,14 +721,18 @@
             // cboMoneda
             // 
             this.cboMoneda.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.documentoElectronicoBindingSource, "Moneda", true));
+            this.cboMoneda.DataSource = this.monedaBindingSource;
+            this.cboMoneda.DisplayMember = "Descripcion";
             this.cboMoneda.FormattingEnabled = true;
-            this.cboMoneda.Items.AddRange(new object[] {
-            "PEN",
-            "USD"});
             this.cboMoneda.Location = new System.Drawing.Point(87, 311);
             this.cboMoneda.Name = "cboMoneda";
             this.cboMoneda.Size = new System.Drawing.Size(100, 21);
             this.cboMoneda.TabIndex = 15;
+            this.cboMoneda.ValueMember = "Codigo";
+            // 
+            // monedaBindingSource
+            // 
+            this.monedaBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.Moneda);
             // 
             // dgvDetalle
             // 
@@ -881,22 +899,20 @@
             // 
             // tipoOperacionComboBox
             // 
-            this.tipoOperacionComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "TipoOperacion", true));
+            this.tipoOperacionComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.documentoElectronicoBindingSource, "TipoOperacion", true));
+            this.tipoOperacionComboBox.DataSource = this.tipoOperacionBindingSource;
+            this.tipoOperacionComboBox.DisplayMember = "Descripcion";
             this.tipoOperacionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoOperacionComboBox.FormattingEnabled = true;
-            this.tipoOperacionComboBox.Items.AddRange(new object[] {
-            "01 Venta lnterna",
-            "02 Exportación",
-            "03 No Domiciliados",
-            "04 Venta Interna – Anticipos",
-            "05 Venta Itinerante",
-            "06 Factura Guía",
-            "07 Venta Arroz Pilado",
-            "08 Factura - Comprobante de Percepción"});
             this.tipoOperacionComboBox.Location = new System.Drawing.Point(290, 248);
             this.tipoOperacionComboBox.Name = "tipoOperacionComboBox";
             this.tipoOperacionComboBox.Size = new System.Drawing.Size(242, 21);
             this.tipoOperacionComboBox.TabIndex = 17;
+            this.tipoOperacionComboBox.ValueMember = "Codigo";
+            // 
+            // tipoOperacionBindingSource
+            // 
+            this.tipoOperacionBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoOperacion);
             // 
             // totalIgvTextBox
             // 
@@ -1252,15 +1268,15 @@
             // 
             // monedaAnticipoComboBox
             // 
-            this.monedaAnticipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MonedaAnticipo", true));
+            this.monedaAnticipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.documentoElectronicoBindingSource, "MonedaAnticipo", true));
+            this.monedaAnticipoComboBox.DataSource = this.monedaBindingSource;
+            this.monedaAnticipoComboBox.DisplayMember = "Descripcion";
             this.monedaAnticipoComboBox.FormattingEnabled = true;
-            this.monedaAnticipoComboBox.Items.AddRange(new object[] {
-            "PEN",
-            "USD"});
             this.monedaAnticipoComboBox.Location = new System.Drawing.Point(104, 94);
             this.monedaAnticipoComboBox.Name = "monedaAnticipoComboBox";
             this.monedaAnticipoComboBox.Size = new System.Drawing.Size(100, 21);
             this.monedaAnticipoComboBox.TabIndex = 7;
+            this.monedaAnticipoComboBox.ValueMember = "Codigo";
             // 
             // montoAnticipoTextBox
             // 
@@ -1280,21 +1296,21 @@
             // 
             // tipoDocAnticipoComboBox
             // 
-            this.tipoDocAnticipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "TipoDocAnticipo", true));
+            this.tipoDocAnticipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.documentoElectronicoBindingSource, "TipoDocAnticipo", true));
+            this.tipoDocAnticipoComboBox.DataSource = this.tipoDocumentoAnticipoBindingSource;
+            this.tipoDocAnticipoComboBox.DisplayMember = "Descripcion";
             this.tipoDocAnticipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoDocAnticipoComboBox.DropDownWidth = 360;
             this.tipoDocAnticipoComboBox.FormattingEnabled = true;
-            this.tipoDocAnticipoComboBox.Items.AddRange(new object[] {
-            "04 Ticket de Salida - ENAPU",
-            "05 Código SCOP",
-            "99 Otros",
-            "01 Factura – emitida para corregir error en el RUC",
-            "02 Factura – emitida por anticipos",
-            "03 Boleta de Venta – emitida por anticipos"});
             this.tipoDocAnticipoComboBox.Location = new System.Drawing.Point(104, 19);
             this.tipoDocAnticipoComboBox.Name = "tipoDocAnticipoComboBox";
             this.tipoDocAnticipoComboBox.Size = new System.Drawing.Size(100, 21);
             this.tipoDocAnticipoComboBox.TabIndex = 1;
+            this.tipoDocAnticipoComboBox.ValueMember = "Codigo";
+            // 
+            // tipoDocumentoAnticipoBindingSource
+            // 
+            this.tipoDocumentoAnticipoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoAnticipo);
             // 
             // FrmDocumento
             // 
@@ -1359,15 +1375,20 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenInvoicePeru - Generación de Documento Electrónico (BETA)";
+            this.Load += new System.EventHandler(this.FrmDocumento_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.receptorBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoContribuyenteBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.emisorBindingSource)).EndInit();
             this.grpEmisor.ResumeLayout(false);
             this.grpEmisor.PerformLayout();
             this.grpReceptor.ResumeLayout(false);
             this.grpReceptor.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.receptorBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.documentoElectronicoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.monedaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDetalle)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detallesBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoOperacionBindingSource)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tbPaginas.ResumeLayout(false);
@@ -1383,6 +1404,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.discrepanciasBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoAnticipoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1487,5 +1509,10 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.BindingSource discrepanciasBindingSource;
+        private System.Windows.Forms.BindingSource tipoDocumentoContribuyenteBindingSource;
+        private System.Windows.Forms.BindingSource tipoDocumentoBindingSource;
+        private System.Windows.Forms.BindingSource tipoOperacionBindingSource;
+        private System.Windows.Forms.BindingSource tipoDocumentoAnticipoBindingSource;
+        private System.Windows.Forms.BindingSource monedaBindingSource;
     }
 }

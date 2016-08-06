@@ -1,11 +1,6 @@
-﻿using System;
-
-namespace OpenInvoicePeru.FirmadoSunat.Models
+﻿namespace OpenInvoicePeru.FirmadoSunat.Models
 {
-#if TESTING
-    [Serializable]
-#endif
-    public class DetalleDocumento : ICloneable
+    public class DetalleDocumento
     {
         public int Id { get; set; }
         public decimal Cantidad { get; set; }
@@ -21,10 +16,5 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
         public string Descripcion { get; set; }
         public string CodigoItem { get; set; }
         public decimal PrecioReferencial { get; set; }
-
-        public object Clone()
-        {
-            return Utiles.Copia(this);
-        }
     }
 }
