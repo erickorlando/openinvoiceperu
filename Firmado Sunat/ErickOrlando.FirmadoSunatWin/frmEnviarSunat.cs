@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Speech.Synthesis;
 using System.Windows.Forms;
 using OpenInvoicePeru.Datos;
+using OpenInvoicePeru.Datos.Entidades;
 using OpenInvoicePeru.FirmadoSunat.Models;
 using OpenInvoicePeru.FirmadoSunatWin.Properties;
 
@@ -32,28 +33,12 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                 {
                     Cursor.Current = Cursors.WaitCursor;
 
-                    //cboTipoDoc.SelectedIndex = 0;
-                    //cboUrlServicio.DisplayMember = "Item1";
-                    //cboUrlServicio.ValueMember = "Item2";
-                    //// Cargamos las URL provistas por el archivo de Texto.
-                    //var lineas = File.ReadAllLines("DireccionesSunat.txt");
-                    //foreach (var linea in lineas)
-                    //{
-                    //    var valores = linea.Split('|');
-                    //    var servicio = new Tuple<string, string>(valores.First(), valores.Last());
-
-                    //    cboUrlServicio.Items.Add(servicio);
-                    //}
-
-                    cboUrlServicio.DisplayMember = "Codigo";
-                    cboUrlServicio.ValueMember = "Descripcion";
-
                     using (var ctx = new OpenInvoicePeruDb())
                     {
-                        cboUrlServicio.DataSource = ctx.DireccionesSunat.ToList();
+                        direccionSunatBindingSource.DataSource = ctx.DireccionesSunat.ToList();
+                        direccionSunatBindingSource.ResetBindings(false);
                     }
 
-                    cboUrlServicio.SelectedIndex = 0;
                 }
                 catch (Exception ex)
                 {
@@ -293,8 +278,8 @@ namespace OpenInvoicePeru.FirmadoSunatWin
 
         private string ValorSeleccionado()
         {
-            var tupla = cboUrlServicio.SelectedItem as Tuple<string, string>;
-            return tupla == null ? string.Empty : tupla.Item2;
+            var direccionSunat = direccionSunatBindingSource.Current as DireccionSunat;
+            return direccionSunat == null ? string.Empty : direccionSunat.Descripcion;
         } 
         #endregion
     }

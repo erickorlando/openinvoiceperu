@@ -353,7 +353,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                     throw new ApplicationException(respuesta.MensajeError);
 
                 RutaArchivo = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, 
-                    $"/XML/{_documento.IdDocumento}.xml");
+                    $"{_documento.IdDocumento}.xml");
 
                 File.WriteAllBytes(RutaArchivo, Convert.FromBase64String(respuesta.TramaXmlSinFirma));
 

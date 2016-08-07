@@ -33,7 +33,6 @@ namespace OpenInvoicePeru.FirmadoSunatWin
             toolOk.Click += (s, e) =>
             {
                 documentoRelacionadoBindingSource.EndEdit();
-                _documentoRelacionado.TipoDocumento = tipoDocumentoComboBox.Text;
                 DialogResult = DialogResult.OK;
             };
 

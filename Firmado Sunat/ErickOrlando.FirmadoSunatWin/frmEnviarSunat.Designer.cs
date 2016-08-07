@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEnviarSunat));
             this.btnBrowse = new System.Windows.Forms.Button();
             this.txtResult = new System.Windows.Forms.TextBox();
@@ -58,7 +59,9 @@
             this.label9 = new System.Windows.Forms.Label();
             this.cboUrlServicio = new System.Windows.Forms.ComboBox();
             this.chkVoz = new System.Windows.Forms.CheckBox();
+            this.direccionSunatBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.direccionSunatBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnBrowse
@@ -338,11 +341,14 @@
             // 
             // cboUrlServicio
             // 
+            this.cboUrlServicio.DataSource = this.direccionSunatBindingSource;
+            this.cboUrlServicio.DisplayMember = "Codigo";
             this.cboUrlServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboUrlServicio.Location = new System.Drawing.Point(10, 25);
             this.cboUrlServicio.Name = "cboUrlServicio";
             this.cboUrlServicio.Size = new System.Drawing.Size(433, 20);
             this.cboUrlServicio.TabIndex = 1;
+            this.cboUrlServicio.ValueMember = "Descripcion";
             // 
             // chkVoz
             // 
@@ -356,6 +362,10 @@
             this.chkVoz.TabIndex = 25;
             this.chkVoz.Text = "Hablar en voz alta";
             this.chkVoz.UseVisualStyleBackColor = true;
+            // 
+            // direccionSunatBindingSource
+            // 
+            this.direccionSunatBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.DireccionSunat);
             // 
             // FrmEnviarSunat
             // 
@@ -397,6 +407,7 @@
             this.Text = "OpenInvoicePeru - Prueba de Envio a SUNAT";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.direccionSunatBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -433,5 +444,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.ComboBox cboUrlServicio;
         private System.Windows.Forms.CheckBox chkVoz;
+        private System.Windows.Forms.BindingSource direccionSunatBindingSource;
     }
 }

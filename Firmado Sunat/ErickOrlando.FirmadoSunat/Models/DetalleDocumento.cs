@@ -16,5 +16,13 @@
         public string Descripcion { get; set; }
         public string CodigoItem { get; set; }
         public decimal PrecioReferencial { get; set; }
+
+        public DetalleDocumento()
+        {
+            Id = 1;
+            UnidadMedida = "NIU";
+            TipoPrecio = "01";
+            TipoImpuesto = "10";
+        }
     }
 }
