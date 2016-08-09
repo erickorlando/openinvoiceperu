@@ -101,8 +101,7 @@ namespace OpenInvoicePeru.FirmadoSunat
             }
             catch (Exception ex)
             {
-                string msg;
-                msg = ex.InnerException != null ? string.Concat(ex.InnerException.Message, ex.Message) : ex.Message;
+                var msg = ex.InnerException != null ? string.Concat(ex.InnerException.Message, ex.Message) : ex.Message;
                 var faultCode = "<faultcode>";
                 if (msg.Contains(faultCode))
                 {

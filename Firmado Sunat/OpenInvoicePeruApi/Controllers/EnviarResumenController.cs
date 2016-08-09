@@ -32,6 +32,11 @@ namespace OpenInvoicePeruApi.Controllers
                     response.NroTicket = resultado.Item1;
                     response.Exito = true;
                 }
+                else
+                {
+                    response.MensajeError = resultado.Item1;
+                    response.Exito = false;
+                }
             }
             catch (Exception ex)
             {

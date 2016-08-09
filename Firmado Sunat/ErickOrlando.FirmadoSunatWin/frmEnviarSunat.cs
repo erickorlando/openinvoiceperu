@@ -141,7 +141,7 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                     TramaXmlSinFirma = tramaXmlSinFirma,
                     CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes(txtRutaCertificado.Text)),
                     PasswordCertificado = txtPassCertificado.Text,
-                    UnSoloNodoExtension = rbRetenciones.Checked
+                    UnSoloNodoExtension = rbRetenciones.Checked || rbResumen.Checked
                 };
 
                 var jsonFirmado = await _client.PostAsJsonAsync("api/Firmar", firmadoRequest);
@@ -160,7 +160,12 @@ namespace OpenInvoicePeru.FirmadoSunatWin
                     TramaXmlFirmado = respuestaFirmado.TramaXmlFirmado
                 };
 
-                var jsonEnvioDocumento = await _client.PostAsJsonAsync("api/EnviarDocumento", enviarDocumentoRequest);
+                File.WriteAllBytes($"{txtNroRuc.Text}-{codigoTipoDoc}-{DateTime.Today.ToString("yyyyMMdd")}-1.xml",
+                    Convert.FromBase64String(respuestaFirmado.TramaXmlFirmado));
+
+                var apiMetodo = rbResumen.Checked ? "api/EnviarResumen" : "api/EnviarDocumento";
+
+                var jsonEnvioDocumento = await _client.PostAsJsonAsync(apiMetodo, enviarDocumentoRequest);
 
                 var respuestaEnvio = await jsonEnvioDocumento.Content.ReadAsAsync<EnviarDocumentoResponse>();
 
