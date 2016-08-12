@@ -41,7 +41,7 @@ Module Program
                         .TotalIgv = 18,
                         .TotalVenta = 118,
                         .Gravadas = 100,
-                        .Items = New ObservableCollection(Of DetalleDocumento)()
+                        .Items = New List(Of DetalleDocumento)()
                     }
 
             documento.Items.Add(New DetalleDocumento() With {

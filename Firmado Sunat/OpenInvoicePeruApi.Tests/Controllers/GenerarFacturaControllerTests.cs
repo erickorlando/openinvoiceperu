@@ -47,7 +47,7 @@ namespace OpenInvoicePeruApi.Controllers.Tests
                 TotalIgv = 18,
                 TotalVenta = 118,
                 Gravadas = 100,
-                Items = new ObservableCollection<DetalleDocumento>()
+                Items = new List<DetalleDocumento>()
                     {
                         new DetalleDocumento
                         {

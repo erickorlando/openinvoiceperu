@@ -45,7 +45,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
 
         public List<DatoAdicional> DatoAdicionales { get; set; }
         public List<DocumentoRelacionado> Relacionados { get; set; }
-        public ObservableCollection<DetalleDocumento> Items { get; set; }
+        public List<DetalleDocumento> Items { get; set; }
         public DatosGuia DatosGuiaTransportista { get; set; }
         public List<Discrepancia> Discrepancias { get; set; }
 
@@ -62,7 +62,7 @@ namespace OpenInvoicePeru.FirmadoSunat.Models
             CalculoIgv = 0.18m;
             CalculoIsc = 0.10m;
             CalculoDetraccion = 0.04m;
-            Items = new ObservableCollection<DetalleDocumento>();
+            Items = new List<DetalleDocumento>();
             DatoAdicionales = new List<DatoAdicional>();
             Relacionados = new List<DocumentoRelacionado>();
             Discrepancias = new List<Discrepancia>();

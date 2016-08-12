@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using OpenInvoicePeru.FirmadoSunat.Models;
@@ -47,7 +48,7 @@ namespace OpenInvoicePeru.ApiClientCSharp
                     TotalIgv = 18,
                     TotalVenta = 118,
                     Gravadas = 100,
-                    Items = new ObservableCollection<DetalleDocumento>()
+                    Items = new List<DetalleDocumento>()
                     {
                         new DetalleDocumento
                         {

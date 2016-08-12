@@ -66,6 +66,7 @@ namespace OpenInvoicePeruApi.Controllers
 
                                     response.MensajeRespuesta = xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
                                         xmlnsManager)?.InnerText;
+                                    response.TramaZipCdr = resultado.Item1;
                                     response.Exito = true;
 
                                 }
