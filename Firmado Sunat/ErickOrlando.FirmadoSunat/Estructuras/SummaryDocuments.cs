@@ -185,14 +185,14 @@ namespace OpenInvoicePeru.FirmadoSunat.Estructuras
 
                     writer.WriteStartElement("cac:AllowanceCharge");
                     {
-                        writer.WriteElementString("cbc:ChargeIndicator", item.AllowanceCharge.ChargeIndicator.ToString());
+                        writer.WriteElementString("cbc:ChargeIndicator", item.AllowanceCharge.ChargeIndicator ? "true" : "false");
 
                         writer.WriteStartElement("cbc:Amount");
                         {
                             writer.WriteAttributeString("currencyID", item.AllowanceCharge.Amount.currencyID);
                             writer.WriteValue(item.AllowanceCharge.Amount.value.ToString(Constantes.Constantes.FormatoNumerico));
                         }
-                        writer.WriteEndElement();  
+                        writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
 

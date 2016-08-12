@@ -1209,7 +1209,7 @@ namespace OpenInvoicePeru.FirmadoSunat
                     },
                     AllowanceCharge = new AllowanceCharge
                     {
-                        ChargeIndicator = false,
+                        ChargeIndicator = true,
                         Amount = new PayableAmount
                         {
                             currencyID = grupo.Moneda,
