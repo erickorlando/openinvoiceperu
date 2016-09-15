@@ -57,5 +57,5 @@ Si tienes mas dudas con SUNAT comunícate con ellos al +51 1 3150730.
 ## Asesoría personalizada ##
 
 Si necesitas que te apoye con la Homologación (Emisor o Proveedor) puedes contactarme 
-directamente a mi Skype (erick.orlando) y podemos concertar una reunión virtual.
+directamente a mi correo personal (erickorlando@live.com.pe) y podemos concertar una reunión virtual.
 Recuerda que si bien mi proyecto es de código abierto, yo vendo el soporte y consultoría técnica.
