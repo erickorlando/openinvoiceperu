@@ -34,6 +34,8 @@ Para poder ejecutar correctamente el proyecto debes iniciar la depuración de lo
 * OpenInvoicePeru.WinApp (Proyecto Windows)
 * OpenInvoicePeru.WebApi (API REST)
 
+![Open Invoice Perú](https://raw.githubusercontent.com/erickorlando/facturacionelectronicasunat/master/InicioMultiple.png "Open Invoice Perú")
+
 Si quieres colaborar con tu granito de arena puedes hacer un Fork.
 
 Si tienes dudas escribeme a mi página de [Facebook](http://m.me/erickorlandoblog)
