@@ -1,0 +1,2 @@
+﻿01|Precio unitario (incluye el IGV)
+02|Valor referencial unitario en operaciones no onerosas

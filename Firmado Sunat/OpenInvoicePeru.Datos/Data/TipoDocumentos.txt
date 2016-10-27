@@ -1,4 +1,0 @@
-﻿01|Factura
-03|Boleta
-07|Nota de Crédito
-08|Nota de Débito

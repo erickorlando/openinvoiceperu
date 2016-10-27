@@ -1,0 +1,6 @@
+﻿01|Factura – emitida para corregir error en el RUC
+02|Factura – emitida por anticipos
+03|Boleta de Venta – emitida por anticipos
+04|Ticket de Salida - ENAPU
+05|Código SCOP
+99|Otros
