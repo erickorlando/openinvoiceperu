@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("API REST para la generacion, envio y recepcion de documentos electronicos SUNAT")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Erick Orlando")]
-[assembly: AssemblyProduct("OpenInvoicePeruApi")]
+[assembly: AssemblyProduct("OpenInvoicePeru.WebApi")]
 [assembly: AssemblyCopyright("Copyright ©  2016")]
 [assembly: AssemblyTrademark("Erick Orlando")]
 [assembly: AssemblyCulture("")]

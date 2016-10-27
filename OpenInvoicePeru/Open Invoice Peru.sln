@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeru.Firmado", "OpenInvoicePeru.FirmadoSunat\OpenInvoicePeru.Firmado.csproj", "{1CFD1D28-D342-413D-A6E1-7616CB9708E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeru.Firmado", "OpenInvoicePeru.Firmado\OpenInvoicePeru.Firmado.csproj", "{1CFD1D28-D342-413D-A6E1-7616CB9708E2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeru.WinApp", "OpenInvoicePeru.FirmadoSunatWin\OpenInvoicePeru.WinApp.csproj", "{B837B42F-7123-432A-BC65-79E9DBE475A2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeru.WinApp", "OpenInvoicePeru.WinApp\OpenInvoicePeru.WinApp.csproj", "{B837B42F-7123-432A-BC65-79E9DBE475A2}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Archivos Adicionales", "00. Archivos Adicionales", "{6E1A7EDA-167E-4F0E-94F5-08DE9FF0AF78}"
 	ProjectSection(SolutionItems) = preProject
@@ -19,9 +19,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02. Proyecto Windows", "02.
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03. API REST", "03. API REST", "{7C30E289-3418-4984-8FD9-7D4582DF6297}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeru.WebApi", "OpenInvoicePeruApi.WebApi\OpenInvoicePeru.WebApi.csproj", "{82D7B299-2366-480A-B8FD-3F3B04AD3AFA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeru.WebApi", "OpenInvoicePeru.WebApi\OpenInvoicePeru.WebApi.csproj", "{82D7B299-2366-480A-B8FD-3F3B04AD3AFA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeru.Tests", "OpenInvoicePeruApi.Tests\OpenInvoicePeru.Tests.csproj", "{36A56148-E60C-4D60-89FD-B03DE83E18CE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeru.Tests", "OpenInvoicePeru.Tests\OpenInvoicePeru.Tests.csproj", "{36A56148-E60C-4D60-89FD-B03DE83E18CE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "04. Clientes Api REST (NET 4.0)", "04. Clientes Api REST (NET 4.0)", "{1A3D6DED-0A77-4121-B8EF-471719D761B9}"
 EndProject

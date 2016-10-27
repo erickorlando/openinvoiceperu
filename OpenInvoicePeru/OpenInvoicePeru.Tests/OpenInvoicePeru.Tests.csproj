@@ -71,11 +71,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenInvoicePeru.FirmadoSunat\OpenInvoicePeru.Firmado.csproj">
+    <ProjectReference Include="..\OpenInvoicePeru.Firmado\OpenInvoicePeru.Firmado.csproj">
       <Project>{1cfd1d28-d342-413d-a6e1-7616cb9708e2}</Project>
       <Name>OpenInvoicePeru.Firmado</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OpenInvoicePeruApi.WebApi\OpenInvoicePeru.WebApi.csproj">
+    <ProjectReference Include="..\OpenInvoicePeru.WebApi\OpenInvoicePeru.WebApi.csproj">
       <Project>{82D7B299-2366-480A-B8FD-3F3B04AD3AFA}</Project>
       <Name>OpenInvoicePeru.WebApi</Name>
     </ProjectReference>

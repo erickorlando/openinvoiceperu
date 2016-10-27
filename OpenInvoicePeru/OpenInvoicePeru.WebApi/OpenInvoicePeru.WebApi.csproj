@@ -61,10 +61,6 @@
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
-      <HintPath>..\packages\Swashbuckle.Core.5.3.2\lib\net40\Swashbuckle.Core.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Web.DynamicData" />
@@ -104,7 +100,6 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="App_Start\SwaggerConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ConsultarTicketController.cs" />
     <Compile Include="Controllers\GenerarNotaCreditoController.cs" />
@@ -134,7 +129,7 @@
     <Folder Include="Properties\PublishProfiles\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenInvoicePeru.FirmadoSunat\OpenInvoicePeru.Firmado.csproj">
+    <ProjectReference Include="..\OpenInvoicePeru.Firmado\OpenInvoicePeru.Firmado.csproj">
       <Project>{1cfd1d28-d342-413d-a6e1-7616cb9708e2}</Project>
       <Name>OpenInvoicePeru.Firmado</Name>
     </ProjectReference>
@@ -154,7 +149,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57780</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50888/OpenInvoicePeru</IISUrl>
+          <IISUrl>http://localhost:50888/OpenInvoicePeruApi</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

@@ -251,7 +251,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenInvoicePeru.FirmadoSunat\OpenInvoicePeru.Firmado.csproj">
+    <ProjectReference Include="..\OpenInvoicePeru.Firmado\OpenInvoicePeru.Firmado.csproj">
       <Project>{1cfd1d28-d342-413d-a6e1-7616cb9708e2}</Project>
       <Name>OpenInvoicePeru.Firmado</Name>
     </ProjectReference>

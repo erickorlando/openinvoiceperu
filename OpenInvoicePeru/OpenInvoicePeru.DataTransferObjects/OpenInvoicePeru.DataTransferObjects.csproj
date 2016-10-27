@@ -39,67 +39,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\ComunicacionBaja.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\ComunicacionBaja.cs">
       <Link>Estructuras\ComunicacionBaja.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.FirmadoSunat\Models\ConsultaTicketRequest.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\Models\ConsultaTicketRequest.cs">
       <Link>Estructuras\ConsultaTicketRequest.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\Contribuyente.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\Contribuyente.cs">
       <Link>Estructuras\Contribuyente.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\DatoAdicional.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\DatoAdicional.cs">
       <Link>Estructuras\DatoAdicional.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\DatosGuia.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\DatosGuia.cs">
       <Link>Estructuras\DatosGuia.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\DetalleDocumento.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\DetalleDocumento.cs">
       <Link>Estructuras\DetalleDocumento.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\Discrepancia.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\Discrepancia.cs">
       <Link>Estructuras\Discrepancia.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\DocumentoBaja.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\DocumentoBaja.cs">
       <Link>Estructuras\DocumentoBaja.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\DocumentoElectronico.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\DocumentoElectronico.cs">
       <Link>Estructuras\DocumentoElectronico.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\DocumentoRelacionado.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\DocumentoRelacionado.cs">
       <Link>Estructuras\DocumentoRelacionado.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\DocumentoResponse.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\DocumentoResponse.cs">
       <Link>Estructuras\DocumentoResponse.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\DocumentoResumen.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\DocumentoResumen.cs">
       <Link>Estructuras\DocumentoResumen.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\DocumentoResumenDetalle.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\DocumentoResumenDetalle.cs">
       <Link>Estructuras\DocumentoResumenDetalle.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.FirmadoSunat\Models\EnviarDocumentoRequest.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\Models\EnviarDocumentoRequest.cs">
       <Link>Estructuras\EnviarDocumentoRequest.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.FirmadoSunat\Models\EnviarDocumentoResponse.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\Models\EnviarDocumentoResponse.cs">
       <Link>Estructuras\EnviarDocumentoResponse.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.FirmadoSunat\Models\EnvioDocumentoComun.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\Models\EnvioDocumentoComun.cs">
       <Link>Estructuras\EnvioDocumentoComun.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\FirmadoRequest.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\FirmadoRequest.cs">
       <Link>Estructuras\FirmadoRequest.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\FirmadoResponse.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\FirmadoResponse.cs">
       <Link>Estructuras\FirmadoResponse.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\GrupoResumen.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\GrupoResumen.cs">
       <Link>Estructuras\GrupoResumen.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\RespuestaComun.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\RespuestaComun.cs">
       <Link>Estructuras\RespuestaComun.cs</Link>
     </Compile>
-    <Compile Include="..\OpenInvoicePeru.firmadosunat\models\ResumenDiario.cs">
+    <Compile Include="..\OpenInvoicePeru.Firmado\models\ResumenDiario.cs">
       <Link>Estructuras\ResumenDiario.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
