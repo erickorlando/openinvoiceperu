@@ -31,7 +31,7 @@ Puedes usar la versión Professional o Enterprise si lo deseas.
 
 Para poder ejecutar correctamente el proyecto debes iniciar la depuración de los siguientes proyectos al [mismo tiempo](https://msdn.microsoft.com/es-es/library/ms165413.aspx):
 
-* OpenInvoicePeru.FirmadoSunatWin (Proyecto Windows)
+* OpenInvoicePeru.WinApp (Proyecto Windows)
 * OpenInvoicePeru.WebApi (API REST)
 
 Si quieres colaborar con tu granito de arena puedes hacer un Fork.
