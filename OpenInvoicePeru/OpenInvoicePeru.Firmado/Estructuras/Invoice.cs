@@ -345,7 +345,7 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             //writer.WriteStartElement("cbc:Name");
             //writer.WriteCData(AccountingSupllierParty.Party.PartyName.Name);
             //writer.WriteEndElement();
-            writer.WriteElementString("cbc:Name", AccountingSupplierParty.Party.PartyName.Name);
+            writer.WriteElementString("cbc:Name", AccountingSupplierParty.Party.PartyName.Name); // This will fix Issue #12
 
             writer.WriteEndElement();
             #endregion
