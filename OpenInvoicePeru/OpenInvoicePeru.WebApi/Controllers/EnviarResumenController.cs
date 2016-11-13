@@ -11,7 +11,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
         {
             var response = new EnviarResumenResponse();
             var serializador = new Serializador();
-            var nombreArchivo = $"{request.Ruc}-{request.TipoDocumento}-{request.IdDocumento}";
+            var nombreArchivo = $"{request.Ruc}-{request.IdDocumento}";
 
             try
             {
