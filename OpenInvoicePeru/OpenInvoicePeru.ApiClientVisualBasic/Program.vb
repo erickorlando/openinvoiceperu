@@ -114,19 +114,19 @@ Module Program
                     .TramaXmlFirmado = responseFirma.Data.TramaXmlFirmado
                     }
 
-            Dim requestSendBill As New RestRequest("EnviarDocumento", Method.POST) With {
+            Dim restRequest As New RestRequest("EnviarDocumento", Method.POST) With {
                     .RequestFormat = DataFormat.Json
                     }
-            requestSendBill.AddBody(sendBill)
+            restRequest.AddBody(sendBill)
 
-            Dim responseSendBill = client.Execute(Of EnviarDocumentoResponse)(requestSendBill)
+            Dim restResponse = client.Execute(Of EnviarDocumentoResponse)(restRequest)
 
-            If Not responseSendBill.Data.Exito Then
-                Throw New ApplicationException(responseSendBill.Data.MensajeError)
+            If Not restResponse.Data.Exito Then
+                Throw New ApplicationException(restResponse.Data.MensajeError)
             End If
 
             Console.WriteLine("Respuesta de SUNAT:")
-            Console.WriteLine(responseSendBill.Data.MensajeRespuesta)
+            Console.WriteLine(restResponse.Data.MensajeRespuesta)
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         Finally
@@ -216,23 +216,14 @@ Module Program
 
             requestSendBill.AddBody(sendBill)
 
-            Dim responseSendBill = client.Execute(Of EnviarDocumentoResponse)(requestSendBill)
+            Dim responseSendBill = client.Execute(Of EnviarResumenResponse)(requestSendBill)
 
             If Not responseSendBill.Data.Exito Then
                 Throw New ApplicationException(responseSendBill.Data.MensajeError)
             Else
-                File.WriteAllBytes(String.Format(".\{0}.xml",
-                                             responseSendBill.Data.NombreArchivo),
-                               Convert.FromBase64String(responseFirma.Data.TramaXmlFirmado))
-
-                File.WriteAllBytes(String.Format(".\R-{0}.zip",
-                                             responseSendBill.Data.NombreArchivo),
-                               Convert.FromBase64String(responseSendBill.Data.TramaZipCdr))
+                Console.WriteLine("Nro de Ticket: {0}", responseSendBill.Data.NroTicket)
             End If
 
-
-            Console.WriteLine("Respuesta de SUNAT:")
-            Console.WriteLine(responseSendBill.Data.MensajeRespuesta)
         Catch ex As Exception
             Console.WriteLine(ex.Message)
         Finally

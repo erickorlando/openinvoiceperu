@@ -247,23 +247,18 @@ namespace OpenInvoicePeru.ApiClientCSharp
                     TramaXmlFirmado = responseFirma.Data.TramaXmlFirmado
                 };
 
-                var requestSendBill = new RestRequest("EnviarResumen", Method.POST) { RequestFormat = DataFormat.Json };
+                var restRequest = new RestRequest("EnviarResumen", Method.POST) { RequestFormat = DataFormat.Json };
 
-                requestSendBill.AddBody(sendBill);
+                restRequest.AddBody(sendBill);
 
-                var responseSendBill = client.Execute<EnviarDocumentoResponse>(requestSendBill);
+                var restResponse = client.Execute<EnviarResumenResponse>(restRequest);
 
-                if (!responseSendBill.Data.Exito)
+                if (!restResponse.Data.Exito)
                 {
-                    throw new ApplicationException(responseSendBill.Data.MensajeError);
+                    throw new ApplicationException(restResponse.Data.MensajeError);
                 }
-                File.WriteAllBytes(string.Format(".\\{0}.xml", responseSendBill.Data.NombreArchivo), Convert.FromBase64String(responseFirma.Data.TramaXmlFirmado));
 
-                File.WriteAllBytes(string.Format(".\\R-{0}.zip", responseSendBill.Data.NombreArchivo), Convert.FromBase64String(responseSendBill.Data.TramaZipCdr));
-
-
-                Console.WriteLine("Respuesta de SUNAT:");
-                Console.WriteLine(responseSendBill.Data.MensajeRespuesta);
+                Console.WriteLine("Nro de Ticket: {0}", restResponse.Data.NroTicket);
             }
             catch (Exception ex)
             {
