@@ -158,7 +158,7 @@ namespace OpenInvoicePeru.Firmado
 
                 keyInfo.AddClause(x509Data);
                 xmlSignature.KeyInfo = keyInfo;
-                xmlSignature.Id = "SignatureErickOrlando";
+                xmlSignature.Id = "SignOpenInvoicePeru";
                 signedXml.ComputeSignature();
 
                 // Recuperamos el valor Hash de la firma para este documento.
