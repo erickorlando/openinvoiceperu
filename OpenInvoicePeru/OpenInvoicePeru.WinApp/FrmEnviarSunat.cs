@@ -164,25 +164,34 @@ namespace OpenInvoicePeru.WinApp
 
                 var jsonEnvioDocumento = await _client.PostAsJsonAsync(apiMetodo, enviarDocumentoRequest);
 
-                var respuestaEnvio = await jsonEnvioDocumento.Content.ReadAsAsync<EnviarDocumentoResponse>();
+                RespuestaComun respuestaEnvio;
+                if (rbResumen.Checked)
+                {
+                    respuestaEnvio = await jsonEnvioDocumento.Content.ReadAsAsync<EnviarDocumentoResponse>();
+                    var rpta = (EnviarDocumentoResponse) respuestaEnvio;
+                    txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{rpta.MensajeRespuesta}";
+                    try
+                    {
+                        File.WriteAllBytes($"{Program.CarpetaXml}\\{respuestaEnvio.NombreArchivo}.xml",
+                                    Convert.FromBase64String(respuestaFirmado.TramaXmlFirmado));
+
+                        File.WriteAllBytes($"{Program.CarpetaCdr}\\R-{respuestaEnvio.NombreArchivo}.zip",
+                            Convert.FromBase64String(rpta.TramaZipCdr));
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    respuestaEnvio = await jsonEnvioDocumento.Content.ReadAsAsync<EnviarResumenResponse>();
+                    var rpta = (EnviarResumenResponse) respuestaEnvio;
+                    txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{rpta.NroTicket}";
+                }
 
                 if (!respuestaEnvio.Exito)
                     throw new ApplicationException(respuestaEnvio.MensajeError);
-
-                txtResult.Text = $"{Resources.procesoCorrecto}{Environment.NewLine}{respuestaEnvio.MensajeRespuesta}";
-
-                try
-                {
-                    File.WriteAllBytes($"{Program.CarpetaXml}\\{respuestaEnvio.NombreArchivo}.xml",
-                                Convert.FromBase64String(respuestaFirmado.TramaXmlFirmado));
-
-                    File.WriteAllBytes($"{Program.CarpetaCdr}\\R-{respuestaEnvio.NombreArchivo}.zip",
-                        Convert.FromBase64String(respuestaEnvio.TramaZipCdr));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, Application.ProductName, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
 
                 if (chkVoz.Checked)
                     Hablar();
@@ -226,7 +235,7 @@ namespace OpenInvoicePeru.WinApp
                     if (!respuestaEnvio.Exito)
                         throw new ApplicationException(respuestaEnvio.MensajeError);
 
-                    txtResult.Text = $"{Resources.procesoCorrecto}{Environment.NewLine}{respuestaEnvio.MensajeRespuesta}";
+                    txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{respuestaEnvio.MensajeRespuesta}";
 
                     Hablar();
                 }
