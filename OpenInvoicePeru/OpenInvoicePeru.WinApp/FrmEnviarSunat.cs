@@ -165,18 +165,21 @@ namespace OpenInvoicePeru.WinApp
                 var jsonEnvioDocumento = await _client.PostAsJsonAsync(apiMetodo, enviarDocumentoRequest);
 
                 RespuestaComun respuestaEnvio;
-                if (rbResumen.Checked)
+                if (!rbResumen.Checked)
                 {
                     respuestaEnvio = await jsonEnvioDocumento.Content.ReadAsAsync<EnviarDocumentoResponse>();
                     var rpta = (EnviarDocumentoResponse) respuestaEnvio;
-                    txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{rpta.MensajeRespuesta}";
+                    txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{rpta.MensajeRespuesta} siendo las {DateTime.Now}";
                     try
                     {
-                        File.WriteAllBytes($"{Program.CarpetaXml}\\{respuestaEnvio.NombreArchivo}.xml",
-                                    Convert.FromBase64String(respuestaFirmado.TramaXmlFirmado));
+                        if (rpta.Exito)
+                        {
+                            File.WriteAllBytes($"{Program.CarpetaXml}\\{respuestaEnvio.NombreArchivo}.xml",
+                                Convert.FromBase64String(respuestaFirmado.TramaXmlFirmado));
 
-                        File.WriteAllBytes($"{Program.CarpetaCdr}\\R-{respuestaEnvio.NombreArchivo}.zip",
-                            Convert.FromBase64String(rpta.TramaZipCdr));
+                            File.WriteAllBytes($"{Program.CarpetaCdr}\\R-{respuestaEnvio.NombreArchivo}.zip",
+                                Convert.FromBase64String(rpta.TramaZipCdr));
+                        }
                     }
                     catch (Exception ex)
                     {
