@@ -36,16 +36,16 @@ namespace OpenInvoicePeru.WinApp
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDatosAdicionales));
             this.datoAdicionalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoComboBox = new System.Windows.Forms.ComboBox();
+            this.tipoDatoAdicionalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.contenidoTextBox = new System.Windows.Forms.TextBox();
             this.barraBotones = new System.Windows.Forms.ToolStrip();
             this.toolOk = new System.Windows.Forms.ToolStripButton();
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
-            this.tipoDatoAdicionalBindingSource = new System.Windows.Forms.BindingSource(this.components);
             codigoLabel = new System.Windows.Forms.Label();
             contenidoLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalBindingSource)).BeginInit();
-            this.barraBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.tipoDatoAdicionalBindingSource)).BeginInit();
+            this.barraBotones.SuspendLayout();
             this.SuspendLayout();
             // 
             // codigoLabel
@@ -68,7 +68,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // datoAdicionalBindingSource
             // 
-            this.datoAdicionalBindingSource.DataSource = typeof(DatoAdicional);
+            this.datoAdicionalBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.DatoAdicional);
             // 
             // codigoComboBox
             // 
@@ -76,13 +76,17 @@ namespace OpenInvoicePeru.WinApp
             this.codigoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.codigoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.datoAdicionalBindingSource, "Codigo", true));
             this.codigoComboBox.DataSource = this.tipoDatoAdicionalBindingSource;
-            this.codigoComboBox.DisplayMember = "Descripcion";
+            this.codigoComboBox.DisplayMember = "DescripcionCompleta";
             this.codigoComboBox.FormattingEnabled = true;
             this.codigoComboBox.Location = new System.Drawing.Point(80, 40);
             this.codigoComboBox.Name = "codigoComboBox";
             this.codigoComboBox.Size = new System.Drawing.Size(336, 21);
             this.codigoComboBox.TabIndex = 2;
             this.codigoComboBox.ValueMember = "Codigo";
+            // 
+            // tipoDatoAdicionalBindingSource
+            // 
+            this.tipoDatoAdicionalBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDatoAdicional);
             // 
             // contenidoTextBox
             // 
@@ -120,10 +124,6 @@ namespace OpenInvoicePeru.WinApp
             this.toolCancel.Size = new System.Drawing.Size(73, 22);
             this.toolCancel.Text = "&Cancelar";
             // 
-            // tipoDatoAdicionalBindingSource
-            // 
-            this.tipoDatoAdicionalBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDatoAdicional);
-            // 
             // FrmDatosAdicionales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -144,9 +144,9 @@ namespace OpenInvoicePeru.WinApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos Adicionales";
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDatoAdicionalBindingSource)).EndInit();
             this.barraBotones.ResumeLayout(false);
             this.barraBotones.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoDatoAdicionalBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -39,8 +39,8 @@ namespace OpenInvoicePeru.WinApp
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
             this.documentoRelacionadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tipoDocumentoComboBox = new System.Windows.Forms.ComboBox();
-            this.nroDocumentoTextBox = new System.Windows.Forms.TextBox();
             this.tipoDocumentoRelacionadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.nroDocumentoTextBox = new System.Windows.Forms.TextBox();
             tipoDocumentoLabel = new System.Windows.Forms.Label();
             nroDocumentoLabel = new System.Windows.Forms.Label();
             this.barraBotones.SuspendLayout();
@@ -95,19 +95,23 @@ namespace OpenInvoicePeru.WinApp
             // 
             // documentoRelacionadoBindingSource
             // 
-            this.documentoRelacionadoBindingSource.DataSource = typeof(DocumentoRelacionado);
+            this.documentoRelacionadoBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.DocumentoRelacionado);
             // 
             // tipoDocumentoComboBox
             // 
             this.tipoDocumentoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.documentoRelacionadoBindingSource, "TipoDocumento", true));
             this.tipoDocumentoComboBox.DataSource = this.tipoDocumentoRelacionadoBindingSource;
-            this.tipoDocumentoComboBox.DisplayMember = "Descripcion";
+            this.tipoDocumentoComboBox.DisplayMember = "DescripcionCompleta";
             this.tipoDocumentoComboBox.FormattingEnabled = true;
             this.tipoDocumentoComboBox.Location = new System.Drawing.Point(104, 38);
             this.tipoDocumentoComboBox.Name = "tipoDocumentoComboBox";
             this.tipoDocumentoComboBox.Size = new System.Drawing.Size(236, 21);
             this.tipoDocumentoComboBox.TabIndex = 8;
             this.tipoDocumentoComboBox.ValueMember = "Codigo";
+            // 
+            // tipoDocumentoRelacionadoBindingSource
+            // 
+            this.tipoDocumentoRelacionadoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoRelacionado);
             // 
             // nroDocumentoTextBox
             // 
@@ -116,10 +120,6 @@ namespace OpenInvoicePeru.WinApp
             this.nroDocumentoTextBox.Name = "nroDocumentoTextBox";
             this.nroDocumentoTextBox.Size = new System.Drawing.Size(152, 22);
             this.nroDocumentoTextBox.TabIndex = 9;
-            // 
-            // tipoDocumentoRelacionadoBindingSource
-            // 
-            this.tipoDocumentoRelacionadoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoRelacionado);
             // 
             // FrmDocumentoRelacionado
             // 

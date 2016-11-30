@@ -56,12 +56,14 @@ namespace OpenInvoicePeru.WinApp
             this.datosGuiaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.rucTransportistaTextBox = new System.Windows.Forms.TextBox();
             this.tipoDocTransportistaComboBox = new System.Windows.Forms.ComboBox();
+            this.tipoDocumentoContribuyenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nombreTransportistaTextBox = new System.Windows.Forms.TextBox();
             this.nroLicenciaConducirTextBox = new System.Windows.Forms.TextBox();
             this.placaVehiculoTextBox = new System.Windows.Forms.TextBox();
             this.marcaVehiculoTextBox = new System.Windows.Forms.TextBox();
             this.unidadMedidaComboBox = new System.Windows.Forms.ComboBox();
             this.modoTransporteComboBox = new System.Windows.Forms.ComboBox();
+            this.modalidadTransporteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoAutorizacionTextBox = new System.Windows.Forms.TextBox();
             this.pesoBrutoTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -81,8 +83,6 @@ namespace OpenInvoicePeru.WinApp
             this.barraBotones = new System.Windows.Forms.ToolStrip();
             this.toolOk = new System.Windows.Forms.ToolStripButton();
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
-            this.tipoDocumentoContribuyenteBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.modalidadTransporteBindingSource = new System.Windows.Forms.BindingSource(this.components);
             rucTransportistaLabel = new System.Windows.Forms.Label();
             tipoDocTransportistaLabel = new System.Windows.Forms.Label();
             nombreTransportistaLabel = new System.Windows.Forms.Label();
@@ -106,11 +106,11 @@ namespace OpenInvoicePeru.WinApp
             provinciaLabel1 = new System.Windows.Forms.Label();
             distritoLabel1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.datosGuiaBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoContribuyenteBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modalidadTransporteBindingSource)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.barraBotones.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoContribuyenteBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modalidadTransporteBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // rucTransportistaLabel
@@ -313,7 +313,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // datosGuiaBindingSource
             // 
-            this.datosGuiaBindingSource.DataSource = typeof(DatosGuia);
+            this.datosGuiaBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.DatosGuia);
             // 
             // rucTransportistaTextBox
             // 
@@ -327,7 +327,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.tipoDocTransportistaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.datosGuiaBindingSource, "TipoDocTransportista", true));
             this.tipoDocTransportistaComboBox.DataSource = this.tipoDocumentoContribuyenteBindingSource;
-            this.tipoDocTransportistaComboBox.DisplayMember = "Descripcion";
+            this.tipoDocTransportistaComboBox.DisplayMember = "DescripcionCompleta";
             this.tipoDocTransportistaComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoDocTransportistaComboBox.FormattingEnabled = true;
             this.tipoDocTransportistaComboBox.Location = new System.Drawing.Point(158, 70);
@@ -335,6 +335,10 @@ namespace OpenInvoicePeru.WinApp
             this.tipoDocTransportistaComboBox.Size = new System.Drawing.Size(220, 21);
             this.tipoDocTransportistaComboBox.TabIndex = 3;
             this.tipoDocTransportistaComboBox.ValueMember = "Codigo";
+            // 
+            // tipoDocumentoContribuyenteBindingSource
+            // 
+            this.tipoDocumentoContribuyenteBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoContribuyente);
             // 
             // nombreTransportistaTextBox
             // 
@@ -386,7 +390,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.modoTransporteComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.datosGuiaBindingSource, "ModoTransporte", true));
             this.modoTransporteComboBox.DataSource = this.modalidadTransporteBindingSource;
-            this.modoTransporteComboBox.DisplayMember = "Descripcion";
+            this.modoTransporteComboBox.DisplayMember = "DescripcionCompleta";
             this.modoTransporteComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.modoTransporteComboBox.FormattingEnabled = true;
             this.modoTransporteComboBox.Location = new System.Drawing.Point(158, 149);
@@ -394,6 +398,10 @@ namespace OpenInvoicePeru.WinApp
             this.modoTransporteComboBox.Size = new System.Drawing.Size(220, 21);
             this.modoTransporteComboBox.TabIndex = 9;
             this.modoTransporteComboBox.ValueMember = "Codigo";
+            // 
+            // modalidadTransporteBindingSource
+            // 
+            this.modalidadTransporteBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.ModalidadTransporte);
             // 
             // codigoAutorizacionTextBox
             // 
@@ -576,14 +584,6 @@ namespace OpenInvoicePeru.WinApp
             this.toolCancel.Size = new System.Drawing.Size(73, 22);
             this.toolCancel.Text = "&Cancelar";
             // 
-            // tipoDocumentoContribuyenteBindingSource
-            // 
-            this.tipoDocumentoContribuyenteBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoContribuyente);
-            // 
-            // modalidadTransporteBindingSource
-            // 
-            this.modalidadTransporteBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.ModalidadTransporte);
-            // 
             // FrmDatosGuia
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -621,14 +621,14 @@ namespace OpenInvoicePeru.WinApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos de Guia Remisión Transportista";
             ((System.ComponentModel.ISupportInitialize)(this.datosGuiaBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoContribuyenteBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.modalidadTransporteBindingSource)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.barraBotones.ResumeLayout(false);
             this.barraBotones.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoContribuyenteBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.modalidadTransporteBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
