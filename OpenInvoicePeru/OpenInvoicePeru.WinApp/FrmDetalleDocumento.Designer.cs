@@ -55,6 +55,7 @@ namespace OpenInvoicePeru.WinApp
             this.unidadMedidaComboBox = new System.Windows.Forms.ComboBox();
             this.impuestoTextBox = new System.Windows.Forms.TextBox();
             this.tipoImpuestoComboBox = new System.Windows.Forms.ComboBox();
+            this.tipoImpuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.impuestoSelectivoTextBox = new System.Windows.Forms.TextBox();
             this.otroImpuestoTextBox = new System.Windows.Forms.TextBox();
             this.totalVentaTextBox = new System.Windows.Forms.TextBox();
@@ -66,7 +67,6 @@ namespace OpenInvoicePeru.WinApp
             this.btnCalcIsc = new System.Windows.Forms.Button();
             this.tipoPrecioComboBox = new System.Windows.Forms.ComboBox();
             this.tipoPrecioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tipoImpuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             idLabel = new System.Windows.Forms.Label();
             codigoItemLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
@@ -82,10 +82,10 @@ namespace OpenInvoicePeru.WinApp
             tipoPrecioLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.idNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoBindingSource)).BeginInit();
             this.barraBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoPrecioBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // idLabel
@@ -220,7 +220,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // detalleDocumentoBindingSource
             // 
-            this.detalleDocumentoBindingSource.DataSource = typeof(DetalleDocumento);
+            this.detalleDocumentoBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.DetalleDocumento);
             // 
             // codigoItemTextBox
             // 
@@ -288,7 +288,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.tipoImpuestoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.detalleDocumentoBindingSource, "TipoImpuesto", true));
             this.tipoImpuestoComboBox.DataSource = this.tipoImpuestoBindingSource;
-            this.tipoImpuestoComboBox.DisplayMember = "Descripcion";
+            this.tipoImpuestoComboBox.DisplayMember = "DescripcionCompleta";
             this.tipoImpuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoImpuestoComboBox.FormattingEnabled = true;
             this.tipoImpuestoComboBox.Location = new System.Drawing.Point(118, 270);
@@ -296,6 +296,10 @@ namespace OpenInvoicePeru.WinApp
             this.tipoImpuestoComboBox.Size = new System.Drawing.Size(240, 21);
             this.tipoImpuestoComboBox.TabIndex = 10;
             this.tipoImpuestoComboBox.ValueMember = "Codigo";
+            // 
+            // tipoImpuestoBindingSource
+            // 
+            this.tipoImpuestoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoImpuesto);
             // 
             // impuestoSelectivoTextBox
             // 
@@ -380,7 +384,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.tipoPrecioComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.detalleDocumentoBindingSource, "TipoPrecio", true));
             this.tipoPrecioComboBox.DataSource = this.tipoPrecioBindingSource;
-            this.tipoPrecioComboBox.DisplayMember = "Descripcion";
+            this.tipoPrecioComboBox.DisplayMember = "DescripcionCompleta";
             this.tipoPrecioComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoPrecioComboBox.FormattingEnabled = true;
             this.tipoPrecioComboBox.Location = new System.Drawing.Point(118, 163);
@@ -392,10 +396,6 @@ namespace OpenInvoicePeru.WinApp
             // tipoPrecioBindingSource
             // 
             this.tipoPrecioBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoPrecio);
-            // 
-            // tipoImpuestoBindingSource
-            // 
-            this.tipoImpuestoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoImpuesto);
             // 
             // FrmDetalleDocumento
             // 
@@ -442,11 +442,11 @@ namespace OpenInvoicePeru.WinApp
             this.Text = "Detalle del Documento";
             ((System.ComponentModel.ISupportInitialize)(this.idNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoBindingSource)).EndInit();
             this.barraBotones.ResumeLayout(false);
             this.barraBotones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoPrecioBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
