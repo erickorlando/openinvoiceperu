@@ -97,7 +97,7 @@ namespace OpenInvoicePeru.Firmado
             }
             catch (FaultException ex)
             {
-                response = new Tuple<string, bool>(ex.Code.Name, false);
+                response = new Tuple<string, bool>(string.Concat(ex.Code.Name, ex.Message), false);
             }
             catch (Exception ex)
             {

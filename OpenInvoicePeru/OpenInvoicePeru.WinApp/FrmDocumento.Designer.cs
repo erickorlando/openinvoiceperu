@@ -405,7 +405,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.cboTipoDocRec.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.receptorBindingSource, "TipoDocumento", true));
             this.cboTipoDocRec.DataSource = this.tipoDocumentoContribuyenteBindingSource;
-            this.cboTipoDocRec.DisplayMember = "Descripcion";
+            this.cboTipoDocRec.DisplayMember = "DescripcionCompleta";
             this.cboTipoDocRec.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocRec.FormattingEnabled = true;
             this.cboTipoDocRec.Location = new System.Drawing.Point(138, 60);
@@ -416,7 +416,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // receptorBindingSource
             // 
-            this.receptorBindingSource.DataSource = typeof(Contribuyente);
+            this.receptorBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.Contribuyente);
             // 
             // tipoDocumentoContribuyenteBindingSource
             // 
@@ -441,7 +441,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // emisorBindingSource
             // 
-            this.emisorBindingSource.DataSource = typeof(Contribuyente);
+            this.emisorBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.Contribuyente);
             // 
             // grpEmisor
             // 
@@ -656,7 +656,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // documentoElectronicoBindingSource
             // 
-            this.documentoElectronicoBindingSource.DataSource = typeof(DocumentoElectronico);
+            this.documentoElectronicoBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.DocumentoElectronico);
             // 
             // label18
             // 
@@ -903,7 +903,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.tipoOperacionComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.documentoElectronicoBindingSource, "TipoOperacion", true));
             this.tipoOperacionComboBox.DataSource = this.tipoOperacionBindingSource;
-            this.tipoOperacionComboBox.DisplayMember = "Descripcion";
+            this.tipoOperacionComboBox.DisplayMember = "DescripcionCompleta";
             this.tipoOperacionComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoOperacionComboBox.FormattingEnabled = true;
             this.tipoOperacionComboBox.Location = new System.Drawing.Point(290, 248);
@@ -1247,7 +1247,7 @@ namespace OpenInvoicePeru.WinApp
             this.btnGuia.Name = "btnGuia";
             this.btnGuia.Size = new System.Drawing.Size(149, 23);
             this.btnGuia.TabIndex = 22;
-            this.btnGuia.Text = "&Guia de Rem. Transportista";
+            this.btnGuia.Text = "G&uia de Rem. Transportista";
             this.btnGuia.UseVisualStyleBackColor = true;
             this.btnGuia.Click += new System.EventHandler(this.btnGuia_Click);
             // 
@@ -1300,7 +1300,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.tipoDocAnticipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.documentoElectronicoBindingSource, "TipoDocAnticipo", true));
             this.tipoDocAnticipoComboBox.DataSource = this.tipoDocumentoAnticipoBindingSource;
-            this.tipoDocAnticipoComboBox.DisplayMember = "Descripcion";
+            this.tipoDocAnticipoComboBox.DisplayMember = "DescripcionCompleta";
             this.tipoDocAnticipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoDocAnticipoComboBox.DropDownWidth = 360;
             this.tipoDocAnticipoComboBox.FormattingEnabled = true;

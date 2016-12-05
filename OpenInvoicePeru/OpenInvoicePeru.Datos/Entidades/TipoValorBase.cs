@@ -10,5 +10,7 @@ namespace OpenInvoicePeru.Datos.Entidades
         [Required]
         [StringLength(250)]
         public string Descripcion { get; set; }
+
+        public string DescripcionCompleta => $"{Codigo}: {Descripcion}";
     }
 }

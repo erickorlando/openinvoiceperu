@@ -58,8 +58,8 @@
             this.btnGenerar = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.cboUrlServicio = new System.Windows.Forms.ComboBox();
-            this.chkVoz = new System.Windows.Forms.CheckBox();
             this.direccionSunatBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.chkVoz = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.direccionSunatBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -350,6 +350,10 @@
             this.cboUrlServicio.TabIndex = 1;
             this.cboUrlServicio.ValueMember = "Descripcion";
             // 
+            // direccionSunatBindingSource
+            // 
+            this.direccionSunatBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.DireccionSunat);
+            // 
             // chkVoz
             // 
             this.chkVoz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -362,10 +366,6 @@
             this.chkVoz.TabIndex = 25;
             this.chkVoz.Text = "Hablar en voz alta";
             this.chkVoz.UseVisualStyleBackColor = true;
-            // 
-            // direccionSunatBindingSource
-            // 
-            this.direccionSunatBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.DireccionSunat);
             // 
             // FrmEnviarSunat
             // 

@@ -84,6 +84,9 @@
     <Compile Include="..\OpenInvoicePeru.Firmado\Models\EnviarDocumentoResponse.cs">
       <Link>Estructuras\EnviarDocumentoResponse.cs</Link>
     </Compile>
+    <Compile Include="..\OpenInvoicePeru.Firmado\Models\EnviarResumenResponse.cs">
+      <Link>Estructuras\EnviarResumenResponse.cs</Link>
+    </Compile>
     <Compile Include="..\OpenInvoicePeru.Firmado\Models\EnvioDocumentoComun.cs">
       <Link>Estructuras\EnvioDocumentoComun.cs</Link>
     </Compile>

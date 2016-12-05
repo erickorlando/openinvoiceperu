@@ -40,9 +40,9 @@ namespace OpenInvoicePeru.WinApp
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
             this.discrepanciaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tipoComboBox = new System.Windows.Forms.ComboBox();
+            this.tipoDiscrepanciaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.nroReferenciaTextBox = new System.Windows.Forms.TextBox();
             this.descripcionTextBox = new System.Windows.Forms.TextBox();
-            this.tipoDiscrepanciaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             tipoLabel = new System.Windows.Forms.Label();
             nroReferenciaLabel = new System.Windows.Forms.Label();
             descripcionLabel = new System.Windows.Forms.Label();
@@ -107,7 +107,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // discrepanciaBindingSource
             // 
-            this.discrepanciaBindingSource.DataSource = typeof(Discrepancia);
+            this.discrepanciaBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.Discrepancia);
             // 
             // tipoComboBox
             // 
@@ -115,13 +115,17 @@ namespace OpenInvoicePeru.WinApp
             this.tipoComboBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
             this.tipoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.discrepanciaBindingSource, "Tipo", true));
             this.tipoComboBox.DataSource = this.tipoDiscrepanciaBindingSource;
-            this.tipoComboBox.DisplayMember = "Descripcion";
+            this.tipoComboBox.DisplayMember = "DescripcionCompleta";
             this.tipoComboBox.FormattingEnabled = true;
             this.tipoComboBox.Location = new System.Drawing.Point(95, 34);
             this.tipoComboBox.Name = "tipoComboBox";
             this.tipoComboBox.Size = new System.Drawing.Size(265, 21);
             this.tipoComboBox.TabIndex = 8;
             this.tipoComboBox.ValueMember = "Codigo";
+            // 
+            // tipoDiscrepanciaBindingSource
+            // 
+            this.tipoDiscrepanciaBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDiscrepancia);
             // 
             // nroReferenciaTextBox
             // 
@@ -138,10 +142,6 @@ namespace OpenInvoicePeru.WinApp
             this.descripcionTextBox.Name = "descripcionTextBox";
             this.descripcionTextBox.Size = new System.Drawing.Size(265, 22);
             this.descripcionTextBox.TabIndex = 10;
-            // 
-            // tipoDiscrepanciaBindingSource
-            // 
-            this.tipoDiscrepanciaBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDiscrepancia);
             // 
             // FrmDiscrepancia
             // 
