@@ -42,25 +42,6 @@ namespace OpenInvoicePeru.Firmado
             TipoDocumento = 1; // Factura es Por Defecto.
         }
         /// <summary>
-        /// Generar el XML en base a una Clase con el atributo Serializable
-        /// </summary>
-        /// <typeparam name="T">Clase a serializar</typeparam>
-        /// <param name="request">Instancia de la Clase</param>
-        /// <param name="nombreArchivo">Nombre del archivo resultante</param>
-        /// <returns>Devuelve la ruta del Archivo generado</returns>
-        public string GenerarXmlFisico<T>(T request, string nombreArchivo)
-        {
-            var serializer = new XmlSerializer(typeof(T));
-            var filename = $"{Directory.GetCurrentDirectory()}\\{nombreArchivo}.xml";
-
-            using (var writer = new StreamWriter(filename))
-            {
-                serializer.Serialize(writer, request);
-            }
-
-            return filename;
-        }
-        /// <summary>
         /// Genera el XML basado en una clase con el atributo Serializable
         /// </summary>
         /// <typeparam name="T">Clase a serializar</typeparam>
