@@ -342,10 +342,9 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             #region PartyName
             writer.WriteStartElement("cac:PartyName");
 
-            //writer.WriteStartElement("cbc:Name");
-            //writer.WriteCData(AccountingSupllierParty.Party.PartyName.Name);
-            //writer.WriteEndElement();
-            writer.WriteElementString("cbc:Name", AccountingSupplierParty.Party.PartyName.Name); // This will fix Issue #12
+            writer.WriteStartElement("cbc:Name");
+            writer.WriteCData(AccountingSupplierParty.Party.PartyName.Name);
+            writer.WriteEndElement();
 
             writer.WriteEndElement();
             #endregion
@@ -373,11 +372,9 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             #region PartyLegalEntity
             writer.WriteStartElement("cac:PartyLegalEntity");
 
-            //writer.WriteStartElement("cbc:RegistrationName");
-            //writer.WriteCData(AccountingSupllierParty.Party.PartyLegalEntity.RegistrationName);
-            //writer.WriteEndElement();
-            writer.WriteElementString("cbc:RegistrationName",
-                AccountingSupplierParty.Party.PartyLegalEntity.RegistrationName);
+            writer.WriteStartElement("cbc:RegistrationName");
+            writer.WriteCData(AccountingSupplierParty.Party.PartyLegalEntity.RegistrationName);
+            writer.WriteEndElement();
 
             writer.WriteEndElement();
             #endregion
@@ -401,11 +398,9 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             #region cbc:PartyLegalEntity
             writer.WriteStartElement("cac:PartyLegalEntity");
 
-            //writer.WriteStartElement("cbc:RegistrationName");
-            //writer.WriteCData(AccountingCustomerParty.Party.PartyLegalEntity.RegistrationName);
-            //writer.WriteEndElement();
-            writer.WriteElementString("cbc:RegistrationName",
-                AccountingCustomerParty.Party.PartyLegalEntity.RegistrationName);
+            writer.WriteStartElement("cbc:RegistrationName");
+            writer.WriteCData(AccountingCustomerParty.Party.PartyLegalEntity.RegistrationName);
+            writer.WriteEndElement();
 
             writer.WriteEndElement();
             #endregion

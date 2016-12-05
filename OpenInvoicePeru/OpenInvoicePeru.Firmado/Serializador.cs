@@ -13,6 +13,7 @@ namespace OpenInvoicePeru.Firmado
 {
     public class Serializador
     {
+        private readonly string _encodingIso = "ISO-8859-1";
 
         /// <summary>
         /// Cadena Base64 del certificado Digital
@@ -41,25 +42,6 @@ namespace OpenInvoicePeru.Firmado
             TipoDocumento = 1; // Factura es Por Defecto.
         }
         /// <summary>
-        /// Generar el XML en base a una Clase con el atributo Serializable
-        /// </summary>
-        /// <typeparam name="T">Clase a serializar</typeparam>
-        /// <param name="request">Instancia de la Clase</param>
-        /// <param name="nombreArchivo">Nombre del archivo resultante</param>
-        /// <returns>Devuelve la ruta del Archivo generado</returns>
-        public string GenerarXmlFisico<T>(T request, string nombreArchivo)
-        {
-            var serializer = new XmlSerializer(typeof(T));
-            var filename = $"{Directory.GetCurrentDirectory()}\\{nombreArchivo}.xml";
-
-            using (var writer = new StreamWriter(filename))
-            {
-                serializer.Serialize(writer, request);
-            }
-
-            return filename;
-        }
-        /// <summary>
         /// Genera el XML basado en una clase con el atributo Serializable
         /// </summary>
         /// <typeparam name="T">Clase a serializar</typeparam>
@@ -72,16 +54,12 @@ namespace OpenInvoicePeru.Firmado
 
             using (var memStr = new MemoryStream())
             {
-                using (var stream = new StreamWriter(memStr, Encoding.GetEncoding("ISO-8859-1")))
+                using (var stream = new StreamWriter(memStr))
                 {
                     serializer.Serialize(stream, objectToSerialize);
-                    // Como debemos devolver el XML Firmado aplicamos la firma
-                    // Segun el Certificado Digital escogido.
                 }
-                // Con firma.
-                //resultado = FirmarXml(Convert.ToBase64String(memStr.ToArray()));
-                // Sin Firma.
-                resultado = Convert.ToBase64String(memStr.ToArray());
+                var betterBytes = Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(_encodingIso), memStr.ToArray());
+                resultado = Convert.ToBase64String(betterBytes);
             }
             return resultado;
         }
@@ -123,7 +101,11 @@ namespace OpenInvoicePeru.Firmado
 
             string resultado;
 
-            using (var documento = new MemoryStream(Convert.FromBase64String(tramaXml)))
+            var betterBytes = Encoding.Convert(Encoding.UTF8, 
+                Encoding.GetEncoding(_encodingIso), 
+                Convert.FromBase64String(tramaXml));
+
+            using (var documento = new MemoryStream(betterBytes))
             {
                 xmlDoc.PreserveWhitespace = true;
                 xmlDoc.Load(documento);
@@ -168,12 +150,11 @@ namespace OpenInvoicePeru.Firmado
 
                 nodoExtension.AppendChild(signedXml.GetXml());
 
-                var settings = new XmlWriterSettings() { Encoding = Encoding.GetEncoding("ISO-8859-1") };
-
                 using (var memDoc = new MemoryStream())
                 {
 
-                    using (var writer = XmlWriter.Create(memDoc, settings))
+                    using (var writer = XmlWriter.Create(memDoc, 
+                        new XmlWriterSettings { Encoding = Encoding.GetEncoding(_encodingIso) }))
                     {
                         xmlDoc.WriteTo(writer);
                     }

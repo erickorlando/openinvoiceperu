@@ -124,7 +124,7 @@ namespace OpenInvoicePeru.Firmado.Estructuras
 
             writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingSupplierParty.CustomerAssignedAccountID);
             writer.WriteElementString("cbc:AdditionalAccountID",
-                AccountingSupplierParty.AdditionalAccountID.ToString());
+                AccountingSupplierParty.AdditionalAccountID);
 
             #region Party
             writer.WriteStartElement("cac:Party");
@@ -133,8 +133,9 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             writer.WriteStartElement("cac:PartyLegalEntity");
 
             {
-                writer.WriteElementString("cbc:RegistrationName",
-                            AccountingSupplierParty.Party.PartyLegalEntity.RegistrationName);
+                writer.WriteStartElement("cbc:RegistrationName");
+                writer.WriteCData(AccountingSupplierParty.Party.PartyLegalEntity.RegistrationName);
+                writer.WriteEndElement();
             }
 
             writer.WriteEndElement();
