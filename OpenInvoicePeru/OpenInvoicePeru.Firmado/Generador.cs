@@ -358,7 +358,7 @@ namespace OpenInvoicePeru.Firmado
             }
 
             // Para datos de Guia de Remision Transportista.
-            if (documento.DatosGuiaTransportista != null)
+            if (!string.IsNullOrEmpty(documento.DatosGuiaTransportista?.RucTransportista))
             {
                 invoice.UblExtensions.Extension2.ExtensionContent
                     .AdditionalInformation.SunatEmbededDespatchAdvice = new SunatEmbededDespatchAdvice

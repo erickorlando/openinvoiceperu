@@ -13,6 +13,7 @@ namespace OpenInvoicePeru.Firmado
 {
     public class Serializador
     {
+        private readonly string _encodingIso = "ISO-8859-1";
 
         /// <summary>
         /// Cadena Base64 del certificado Digital
@@ -72,16 +73,12 @@ namespace OpenInvoicePeru.Firmado
 
             using (var memStr = new MemoryStream())
             {
-                using (var stream = new StreamWriter(memStr, Encoding.GetEncoding("ISO-8859-1")))
+                using (var stream = new StreamWriter(memStr, Encoding.GetEncoding(_encodingIso)))
                 {
                     serializer.Serialize(stream, objectToSerialize);
-                    // Como debemos devolver el XML Firmado aplicamos la firma
-                    // Segun el Certificado Digital escogido.
                 }
-                // Con firma.
-                //resultado = FirmarXml(Convert.ToBase64String(memStr.ToArray()));
-                // Sin Firma.
-                resultado = Convert.ToBase64String(memStr.ToArray());
+                var betterBytes = Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(_encodingIso), memStr.ToArray());
+                resultado = Convert.ToBase64String(betterBytes);
             }
             return resultado;
         }
@@ -168,7 +165,7 @@ namespace OpenInvoicePeru.Firmado
 
                 nodoExtension.AppendChild(signedXml.GetXml());
 
-                var settings = new XmlWriterSettings() { Encoding = Encoding.GetEncoding("ISO-8859-1") };
+                var settings = new XmlWriterSettings() { Encoding = Encoding.GetEncoding(_encodingIso) };
 
                 using (var memDoc = new MemoryStream())
                 {
