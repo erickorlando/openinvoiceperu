@@ -26,6 +26,7 @@ Module Program
         Console.WriteLine("Prueba de API REST de OpenInvoicePeru (Visual Basic)")
         CrearFactura()
         CrearResumenDiario()
+        CrearComunicacionBaja()
     End Sub
 
     Private Sub CrearFactura()
@@ -231,5 +232,89 @@ Module Program
         End Try
     End Sub
 
+    Private sub CrearComunicacionBaja()
+         Try
+            Console.WriteLine("Ejemplo de Comunicación de Baja")
+            Dim documentoBaja As New ComunicacionBaja() With {
+                .IdDocumento = String.Format("RA-{0:yyyyMMdd}-001", Date.Today),
+                .FechaEmision = Date.Today.ToString("yyyy-MM-dd"),
+                .FechaReferencia = Date.Today.AddDays(-1).ToString("yyyy-MM-dd"),
+                .Emisor = CrearEmisor(),
+                .Bajas = New List(Of DocumentoBaja)()
+            }
+
+            documentoBaja.Bajas.Add(New DocumentoBaja() With {
+                .Id = 1,
+                .Correlativo = "33386",
+                .TipoDocumento = "03",
+                .Serie = "BB50",
+                .MotivoBaja = "Anulación por otro tipo de documento"})
+
+            documentoBaja.Bajas.Add(New DocumentoBaja() With {
+                .Id = 2,
+                .Correlativo = "86486",
+                .TipoDocumento = "01",
+                .Serie = "FF14",
+                .MotivoBaja = "Anulación por otro datos erroneos"})
+            
+            Console.WriteLine("Generando XML....")
+            Dim client As New RestClient(_baseUrl)
+            Dim requestInvoice As New RestRequest("GenerarComunicacionBaja", Method.POST)
+            requestInvoice.RequestFormat = DataFormat.Json
+            requestInvoice.AddBody(documentoBaja)
+            Dim documentoResponse = client.Execute(Of DocumentoResponse)(requestInvoice)
+            If Not documentoResponse.Data.Exito Then
+                Throw New ApplicationException(documentoResponse.Data.MensajeError)
+            End If
+            Console.WriteLine("Firmando XML...")
+            ' Firmado del Documento.
+            Dim firmado As New FirmadoRequest() With {
+                .TramaXmlSinFirma = documentoResponse.Data.TramaXmlSinFirma,
+                .CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("Certificado.pfx")),
+                .PasswordCertificado = String.Empty,
+                .UnSoloNodoExtension = True
+            }
+
+            Dim requestFirma As New RestRequest("Firmar", Method.POST) With {
+            .RequestFormat = DataFormat.Json}
+            requestFirma.AddBody(firmado)
+
+            Dim responseFirma = client.Execute(Of FirmadoResponse)(requestFirma)
+
+            If Not responseFirma.Data.Exito Then
+                Throw New ApplicationException(responseFirma.Data.MensajeError)
+            End If
+
+            Console.WriteLine("Enviando a SUNAT....")
+
+            Dim sendBill As New EnviarDocumentoRequest() With {
+                .Ruc = documentoBaja.Emisor.NroDocumento,
+                .UsuarioSol = "MODDATOS",
+                .ClaveSol = "MODDATOS",
+                .EndPointUrl = _urlSunat,
+                .IdDocumento = documentoBaja.IdDocumento,
+                .TramaXmlFirmado = responseFirma.Data.TramaXmlFirmado
+            }
+
+            Dim requestSendBill As New RestRequest("EnviarResumen", Method.POST) With {
+                .RequestFormat = DataFormat.Json
+            }
+
+            requestSendBill.AddBody(sendBill)
+
+            Dim responseSendBill = client.Execute(Of EnviarResumenResponse)(requestSendBill)
+
+            If Not responseSendBill.Data.Exito Then
+                Throw New ApplicationException(responseSendBill.Data.MensajeError)
+            Else
+                Console.WriteLine("Nro de Ticket: {0}", responseSendBill.Data.NroTicket)
+            End If
+
+        Catch ex As Exception
+            Console.WriteLine(ex.Message)
+        Finally
+            Console.ReadLine()
+        End Try
+    End sub
 
 End Module
