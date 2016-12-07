@@ -134,6 +134,9 @@ namespace OpenInvoicePeru.WinApp
                         break;
                 }
 
+                if (string.IsNullOrEmpty(txtSerieCorrelativo.Text))
+                    throw new InvalidOperationException("La Serie y el Correlativo no pueden estar vacíos");
+
                 var tramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(txtSource.Text));
 
                 var firmadoRequest = new FirmadoRequest
