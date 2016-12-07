@@ -230,13 +230,7 @@
     <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoImpuesto.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoOperacion.datasource" />
     <None Include="Properties\DataSources\OpenInvoicePeru.Datos.Entidades.TipoPrecio.datasource" />
-    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.Contribuyente.datasource" />
-    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DatoAdicional.datasource" />
-    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DatosGuia.datasource" />
-    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DetalleDocumento.datasource" />
-    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.Discrepancia.datasource" />
-    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DocumentoElectronico.datasource" />
-    <None Include="Properties\DataSources\OpenInvoicePeru.FirmadoSunat.Models.DocumentoRelacionado.datasource" />
+    <None Include="Properties\DataSources\OpenInvoicePeru.Firmado.Models.DocumentoElectronico.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

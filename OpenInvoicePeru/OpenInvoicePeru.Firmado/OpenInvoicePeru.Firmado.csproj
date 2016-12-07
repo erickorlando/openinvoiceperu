@@ -96,6 +96,7 @@
     <Compile Include="Estructuras\SignatoryParty.cs" />
     <Compile Include="Estructuras\SignatureCac.cs" />
     <Compile Include="Estructuras\SummaryDocuments.cs" />
+    <Compile Include="Estructuras\SunatCosts.cs" />
     <Compile Include="Estructuras\SunatEmbededDespatchAdvice.cs" />
     <Compile Include="Estructuras\SUNATRetentionDocumentReference.cs" />
     <Compile Include="Estructuras\SUNATRetentionInformation.cs" />
