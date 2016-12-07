@@ -28,6 +28,7 @@ namespace OpenInvoicePeru.Firmado.Models
 
         public string MontoEnLetras { get; set; }
         public string TipoOperacion { get; set; }
+        public string PlacaVehiculo { get; set; }
 
         public decimal CalculoIgv { get; set; }
         public decimal CalculoIsc { get; set; }

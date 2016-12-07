@@ -241,6 +241,15 @@ namespace OpenInvoicePeru.Firmado
                     }
                 });
             }
+
+            /* Numero de Placa del Vehiculo - Gastos art.37° Renta */
+            if (!string.IsNullOrEmpty(documento.PlacaVehiculo))
+            {
+                invoice.UblExtensions.Extension2.ExtensionContent
+                    .AdditionalInformation.SunatCosts.RoadTransport
+                    .LicensePlateId = documento.PlacaVehiculo;
+            }
+
             /* Tipo de Operación - Catalogo N° 17 */
             if (!string.IsNullOrEmpty(documento.TipoOperacion)
                 && documento.DatosGuiaTransportista == null)

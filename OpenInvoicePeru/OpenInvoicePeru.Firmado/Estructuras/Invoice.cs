@@ -234,6 +234,21 @@ namespace OpenInvoicePeru.Firmado.Estructuras
                 }
                 #endregion
 
+                #region SUNATCosts
+                if (!string.IsNullOrEmpty(ext2.SunatCosts.RoadTransport.LicensePlateId))
+                {
+                    writer.WriteStartElement("sac:SUNATCosts");
+                    {
+                        writer.WriteStartElement("cac:RoadTransport");
+                        {
+                            writer.WriteElementString("cbc:LicensePlateID", ext2.SunatCosts.RoadTransport.LicensePlateId);
+                        }
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                }
+                #endregion
+
                 #region SUNATTransaction
                 if (!string.IsNullOrEmpty(ext2.SunatTransaction.Id))
                 {
