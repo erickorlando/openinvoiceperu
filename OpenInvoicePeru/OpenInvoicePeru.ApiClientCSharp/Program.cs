@@ -16,6 +16,7 @@ namespace OpenInvoicePeru.ApiClientCSharp
             Console.WriteLine("Prueba de API REST de OpenInvoicePeru (C#)");
             CrearFactura();
             CrearResumenDiario();
+            CrearComunicacionBaja();
         }
 
         private static Contribuyente CrearEmisor()
@@ -244,6 +245,104 @@ namespace OpenInvoicePeru.ApiClientCSharp
                     ClaveSol = "MODDATOS",
                     EndPointUrl = UrlSunat,
                     IdDocumento = documentoResumenDiario.IdDocumento,
+                    TramaXmlFirmado = responseFirma.Data.TramaXmlFirmado
+                };
+
+                var restRequest = new RestRequest("EnviarResumen", Method.POST) { RequestFormat = DataFormat.Json };
+
+                restRequest.AddBody(sendBill);
+
+                var restResponse = client.Execute<EnviarResumenResponse>(restRequest);
+
+                if (!restResponse.Data.Exito)
+                {
+                    throw new ApplicationException(restResponse.Data.MensajeError);
+                }
+
+                Console.WriteLine("Nro de Ticket: {0}", restResponse.Data.NroTicket);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        private static void CrearComunicacionBaja()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo de Comunicación de Baja");
+                var documentoBaja = new ComunicacionBaja
+                {
+                    IdDocumento = string.Format("RA-{0:yyyyMMdd}-001", DateTime.Today),
+                    FechaEmision = DateTime.Today.ToString("yyyy-MM-dd"),
+                    FechaReferencia = DateTime.Today.AddDays(-1).ToString("yyyy-MM-dd"),
+                    Emisor = CrearEmisor(),
+                    Bajas = new List<DocumentoBaja>()
+                };
+
+                documentoBaja.Bajas.Add(new DocumentoBaja
+                {
+                    Id = 1,
+                    Correlativo = "33386",
+                    TipoDocumento = "03",
+                    Serie = "BB50",
+                    MotivoBaja = "Anulación por otro tipo de documento"
+                });
+                documentoBaja.Bajas.Add(new DocumentoBaja
+                {
+                    Id = 2,
+                    Correlativo = "86486",
+                    TipoDocumento = "01",
+                    Serie = "FF14",
+                    MotivoBaja = "Anulación por otro datos erroneos"
+                });
+
+                Console.WriteLine("Generando XML....");
+                var client = new RestClient(BaseUrl);
+                var requestInvoice = new RestRequest("GenerarComunicacionBaja", Method.POST)
+                {
+                    RequestFormat = DataFormat.Json
+                };
+                requestInvoice.AddBody(documentoBaja);
+                var documentoResponse = client.Execute<DocumentoResponse>(requestInvoice);
+                if (!documentoResponse.Data.Exito)
+                {
+                    throw new ApplicationException(documentoResponse.Data.MensajeError);
+                }
+                Console.WriteLine("Firmando XML...");
+                // Firmado del Documento.
+                var firmado = new FirmadoRequest
+                {
+                    TramaXmlSinFirma = documentoResponse.Data.TramaXmlSinFirma,
+                    CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("Certificado.pfx")),
+                    PasswordCertificado = string.Empty,
+                    UnSoloNodoExtension = true
+                };
+
+                var requestFirma = new RestRequest("Firmar", Method.POST) { RequestFormat = DataFormat.Json };
+                requestFirma.AddBody(firmado);
+
+                var responseFirma = client.Execute<FirmadoResponse>(requestFirma);
+
+                if (!responseFirma.Data.Exito)
+                {
+                    throw new ApplicationException(responseFirma.Data.MensajeError);
+                }
+
+                Console.WriteLine("Enviando a SUNAT....");
+
+                var sendBill = new EnviarDocumentoRequest
+                {
+                    Ruc = documentoBaja.Emisor.NroDocumento,
+                    UsuarioSol = "MODDATOS",
+                    ClaveSol = "MODDATOS",
+                    EndPointUrl = UrlSunat,
+                    IdDocumento = documentoBaja.IdDocumento,
                     TramaXmlFirmado = responseFirma.Data.TramaXmlFirmado
                 };
 
