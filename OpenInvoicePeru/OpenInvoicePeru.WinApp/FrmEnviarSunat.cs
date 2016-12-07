@@ -175,7 +175,7 @@ namespace OpenInvoicePeru.WinApp
                     txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{rpta.MensajeRespuesta} siendo las {DateTime.Now}";
                     try
                     {
-                        if (rpta.Exito)
+                        if (rpta.Exito && !string.IsNullOrEmpty(rpta.TramaZipCdr))
                         {
                             File.WriteAllBytes($"{Program.CarpetaXml}\\{respuestaEnvio.NombreArchivo}.xml",
                                 Convert.FromBase64String(respuestaFirmado.TramaXmlFirmado));

@@ -250,7 +250,8 @@ namespace OpenInvoicePeru.Firmado.Estructuras
                 #endregion
 
                 #region SUNATTransaction
-                if (!string.IsNullOrEmpty(ext2.SunatTransaction.Id))
+                if (!string.IsNullOrEmpty(ext2.SunatTransaction.Id) 
+                    && string.IsNullOrEmpty(ext2.SunatCosts.RoadTransport.LicensePlateId))
                 {
                     writer.WriteStartElement("sac:SUNATTransaction");
                     {
