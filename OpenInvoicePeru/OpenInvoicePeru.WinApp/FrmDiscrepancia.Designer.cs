@@ -31,21 +31,21 @@ namespace OpenInvoicePeru.WinApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label tipoLabel;
-            System.Windows.Forms.Label nroReferenciaLabel;
-            System.Windows.Forms.Label descripcionLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel tipoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel nroReferenciaLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel descripcionLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDiscrepancia));
             this.barraBotones = new System.Windows.Forms.ToolStrip();
             this.toolOk = new System.Windows.Forms.ToolStripButton();
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
             this.discrepanciaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tipoComboBox = new System.Windows.Forms.ComboBox();
+            this.tipoComboBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tipoDiscrepanciaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nroReferenciaTextBox = new System.Windows.Forms.TextBox();
-            this.descripcionTextBox = new System.Windows.Forms.TextBox();
-            tipoLabel = new System.Windows.Forms.Label();
-            nroReferenciaLabel = new System.Windows.Forms.Label();
-            descripcionLabel = new System.Windows.Forms.Label();
+            this.nroReferenciaTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.descripcionTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            tipoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            nroReferenciaLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            descripcionLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.barraBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.discrepanciaBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoDiscrepanciaBindingSource)).BeginInit();
@@ -179,9 +179,9 @@ namespace OpenInvoicePeru.WinApp
         private System.Windows.Forms.ToolStripButton toolOk;
         private System.Windows.Forms.ToolStripButton toolCancel;
         private System.Windows.Forms.BindingSource discrepanciaBindingSource;
-        private System.Windows.Forms.ComboBox tipoComboBox;
-        private System.Windows.Forms.TextBox nroReferenciaTextBox;
-        private System.Windows.Forms.TextBox descripcionTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox tipoComboBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox nroReferenciaTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox descripcionTextBox;
         private System.Windows.Forms.BindingSource tipoDiscrepanciaBindingSource;
     }
 }

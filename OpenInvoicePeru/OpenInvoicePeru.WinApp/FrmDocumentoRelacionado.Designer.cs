@@ -31,18 +31,18 @@ namespace OpenInvoicePeru.WinApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label tipoDocumentoLabel;
-            System.Windows.Forms.Label nroDocumentoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel tipoDocumentoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel nroDocumentoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDocumentoRelacionado));
             this.barraBotones = new System.Windows.Forms.ToolStrip();
             this.toolOk = new System.Windows.Forms.ToolStripButton();
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
             this.documentoRelacionadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.tipoDocumentoComboBox = new System.Windows.Forms.ComboBox();
+            this.tipoDocumentoComboBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tipoDocumentoRelacionadoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.nroDocumentoTextBox = new System.Windows.Forms.TextBox();
-            tipoDocumentoLabel = new System.Windows.Forms.Label();
-            nroDocumentoLabel = new System.Windows.Forms.Label();
+            this.nroDocumentoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            tipoDocumentoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            nroDocumentoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.barraBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.documentoRelacionadoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoDocumentoRelacionadoBindingSource)).BeginInit();
@@ -154,8 +154,8 @@ namespace OpenInvoicePeru.WinApp
         private System.Windows.Forms.ToolStripButton toolOk;
         private System.Windows.Forms.ToolStripButton toolCancel;
         private System.Windows.Forms.BindingSource documentoRelacionadoBindingSource;
-        private System.Windows.Forms.ComboBox tipoDocumentoComboBox;
-        private System.Windows.Forms.TextBox nroDocumentoTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox tipoDocumentoComboBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox nroDocumentoTextBox;
         private System.Windows.Forms.BindingSource tipoDocumentoRelacionadoBindingSource;
     }
 }

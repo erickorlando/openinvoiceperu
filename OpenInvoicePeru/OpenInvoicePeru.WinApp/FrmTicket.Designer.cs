@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmTicket));
-            this.txtNroTicket = new System.Windows.Forms.TextBox();
-            this.btnOK = new System.Windows.Forms.Button();
+            this.txtNroTicket = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.btnOK = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.SuspendLayout();
             // 
             // txtNroTicket
@@ -48,7 +48,6 @@
             this.btnOK.Size = new System.Drawing.Size(122, 23);
             this.btnOK.TabIndex = 1;
             this.btnOK.Text = "&Aceptar";
-            this.btnOK.UseVisualStyleBackColor = true;
             // 
             // FrmTicket
             // 
@@ -73,7 +72,7 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button btnOK;
-        public System.Windows.Forms.TextBox txtNroTicket;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnOK;
+        public ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNroTicket;
     }
 }

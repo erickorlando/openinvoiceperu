@@ -31,18 +31,18 @@ namespace OpenInvoicePeru.WinApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label codigoLabel;
-            System.Windows.Forms.Label contenidoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel codigoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel contenidoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDatosAdicionales));
             this.datoAdicionalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.codigoComboBox = new System.Windows.Forms.ComboBox();
+            this.codigoComboBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tipoDatoAdicionalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contenidoTextBox = new System.Windows.Forms.TextBox();
+            this.contenidoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.barraBotones = new System.Windows.Forms.ToolStrip();
             this.toolOk = new System.Windows.Forms.ToolStripButton();
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
-            codigoLabel = new System.Windows.Forms.Label();
-            contenidoLabel = new System.Windows.Forms.Label();
+            codigoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            contenidoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoDatoAdicionalBindingSource)).BeginInit();
             this.barraBotones.SuspendLayout();
@@ -155,8 +155,8 @@ namespace OpenInvoicePeru.WinApp
         #endregion
 
         private System.Windows.Forms.BindingSource datoAdicionalBindingSource;
-        private System.Windows.Forms.ComboBox codigoComboBox;
-        private System.Windows.Forms.TextBox contenidoTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox codigoComboBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox contenidoTextBox;
         private System.Windows.Forms.ToolStrip barraBotones;
         private System.Windows.Forms.ToolStripButton toolOk;
         private System.Windows.Forms.ToolStripButton toolCancel;

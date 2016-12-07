@@ -1,4 +1,6 @@
-﻿namespace OpenInvoicePeru.WinApp
+﻿using System.Windows.Forms;
+
+namespace OpenInvoicePeru.WinApp
 {
     partial class FrmEnviarSunat
     {
@@ -30,37 +32,39 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEnviarSunat));
-            this.btnBrowse = new System.Windows.Forms.Button();
-            this.txtResult = new System.Windows.Forms.TextBox();
-            this.txtSource = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.btnGen = new System.Windows.Forms.Button();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.txtNroRuc = new System.Windows.Forms.TextBox();
-            this.txtUsuarioSol = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
-            this.txtClaveSol = new System.Windows.Forms.TextBox();
+            this.btnBrowse = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.txtResult = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.txtSource = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.label1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.btnGen = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.label2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.label3 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtNroRuc = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.txtUsuarioSol = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.label4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtClaveSol = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbResumen = new System.Windows.Forms.RadioButton();
             this.rbRetenciones = new System.Windows.Forms.RadioButton();
             this.rbDocumentos = new System.Windows.Forms.RadioButton();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtRutaCertificado = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.txtPassCertificado = new System.Windows.Forms.TextBox();
-            this.btnBrowseCert = new System.Windows.Forms.Button();
-            this.cboTipoDoc = new System.Windows.Forms.ComboBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.txtSerieCorrelativo = new System.Windows.Forms.TextBox();
-            this.btnGetStatus = new System.Windows.Forms.Button();
-            this.btnGenerar = new System.Windows.Forms.Button();
-            this.label9 = new System.Windows.Forms.Label();
-            this.cboUrlServicio = new System.Windows.Forms.ComboBox();
+            this.label5 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtRutaCertificado = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.label6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtPassCertificado = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.btnBrowseCert = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.cboTipoDoc = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.label7 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.label8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.txtSerieCorrelativo = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.btnGetStatus = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnGenerar = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.label9 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            this.cboUrlServicio = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.direccionSunatBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.chkVoz = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboTipoDoc)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboUrlServicio)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.direccionSunatBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
@@ -71,8 +75,7 @@
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(103, 24);
             this.btnBrowse.TabIndex = 19;
-            this.btnBrowse.Text = "Exami&nar";
-            this.btnBrowse.UseVisualStyleBackColor = true;
+            this.btnBrowse.Values.Text = "Exami&nar";
             this.btnBrowse.Click += new System.EventHandler(this.btnBrowse_Click);
             // 
             // txtResult
@@ -96,17 +99,16 @@
             this.txtSource.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.txtSource.Location = new System.Drawing.Point(10, 357);
             this.txtSource.Name = "txtSource";
-            this.txtSource.Size = new System.Drawing.Size(319, 21);
+            this.txtSource.Size = new System.Drawing.Size(319, 23);
             this.txtSource.TabIndex = 17;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(10, 334);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(163, 13);
+            this.label1.Size = new System.Drawing.Size(179, 20);
             this.label1.TabIndex = 16;
-            this.label1.Text = "Seleccione el Documento XML:";
+            this.label1.Values.Text = "Seleccione el Documento XML:";
             // 
             // btnGen
             // 
@@ -115,34 +117,31 @@
             this.btnGen.Name = "btnGen";
             this.btnGen.Size = new System.Drawing.Size(103, 32);
             this.btnGen.TabIndex = 23;
-            this.btnGen.Text = "&Enviar";
-            this.btnGen.UseVisualStyleBackColor = true;
+            this.btnGen.Values.Text = "&Enviar";
             this.btnGen.Click += new System.EventHandler(this.btnGen_Click);
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(10, 52);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(92, 13);
+            this.label2.Size = new System.Drawing.Size(102, 20);
             this.label2.TabIndex = 2;
-            this.label2.Text = "Numero de RUC:";
+            this.label2.Values.Text = "Numero de RUC:";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(10, 111);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 13);
+            this.label3.Size = new System.Drawing.Size(80, 20);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Usuario SOL:";
+            this.label3.Values.Text = "Usuario SOL:";
             // 
             // txtNroRuc
             // 
             this.txtNroRuc.Location = new System.Drawing.Point(10, 73);
             this.txtNroRuc.MaxLength = 11;
             this.txtNroRuc.Name = "txtNroRuc";
-            this.txtNroRuc.Size = new System.Drawing.Size(153, 21);
+            this.txtNroRuc.Size = new System.Drawing.Size(153, 23);
             this.txtNroRuc.TabIndex = 3;
             // 
             // txtUsuarioSol
@@ -153,24 +152,23 @@
             this.txtUsuarioSol.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtUsuarioSol.Location = new System.Drawing.Point(10, 131);
             this.txtUsuarioSol.Name = "txtUsuarioSol";
-            this.txtUsuarioSol.Size = new System.Drawing.Size(153, 21);
+            this.txtUsuarioSol.Size = new System.Drawing.Size(153, 23);
             this.txtUsuarioSol.TabIndex = 5;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(10, 161);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(60, 13);
+            this.label4.Size = new System.Drawing.Size(68, 20);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Clave SOL:";
+            this.label4.Values.Text = "Clave SOL:";
             // 
             // txtClaveSol
             // 
             this.txtClaveSol.Location = new System.Drawing.Point(10, 182);
             this.txtClaveSol.Name = "txtClaveSol";
             this.txtClaveSol.PasswordChar = '*';
-            this.txtClaveSol.Size = new System.Drawing.Size(153, 21);
+            this.txtClaveSol.Size = new System.Drawing.Size(153, 23);
             this.txtClaveSol.TabIndex = 7;
             // 
             // groupBox1
@@ -221,12 +219,11 @@
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(10, 222);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(135, 13);
+            this.label5.Size = new System.Drawing.Size(146, 20);
             this.label5.TabIndex = 11;
-            this.label5.Text = "Seleccione el Certificado:";
+            this.label5.Values.Text = "Seleccione el Certificado:";
             // 
             // txtRutaCertificado
             // 
@@ -236,24 +233,23 @@
             this.txtRutaCertificado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.txtRutaCertificado.Location = new System.Drawing.Point(10, 245);
             this.txtRutaCertificado.Name = "txtRutaCertificado";
-            this.txtRutaCertificado.Size = new System.Drawing.Size(319, 21);
+            this.txtRutaCertificado.Size = new System.Drawing.Size(319, 23);
             this.txtRutaCertificado.TabIndex = 12;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(10, 281);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(147, 13);
+            this.label6.Size = new System.Drawing.Size(157, 20);
             this.label6.TabIndex = 14;
-            this.label6.Text = "Contraseña del Certificado:";
+            this.label6.Values.Text = "Contraseña del Certificado:";
             // 
             // txtPassCertificado
             // 
             this.txtPassCertificado.Location = new System.Drawing.Point(10, 304);
             this.txtPassCertificado.Name = "txtPassCertificado";
             this.txtPassCertificado.PasswordChar = '*';
-            this.txtPassCertificado.Size = new System.Drawing.Size(319, 21);
+            this.txtPassCertificado.Size = new System.Drawing.Size(319, 23);
             this.txtPassCertificado.TabIndex = 15;
             // 
             // btnBrowseCert
@@ -263,13 +259,13 @@
             this.btnBrowseCert.Name = "btnBrowseCert";
             this.btnBrowseCert.Size = new System.Drawing.Size(103, 32);
             this.btnBrowseCert.TabIndex = 13;
-            this.btnBrowseCert.Text = "E&xaminar";
-            this.btnBrowseCert.UseVisualStyleBackColor = true;
+            this.btnBrowseCert.Values.Text = "E&xaminar";
             this.btnBrowseCert.Click += new System.EventHandler(this.btnBrowseCert_Click);
             // 
             // cboTipoDoc
             // 
             this.cboTipoDoc.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboTipoDoc.DropDownWidth = 201;
             this.cboTipoDoc.Items.AddRange(new object[] {
             "Factura",
             "Boleta",
@@ -281,32 +277,30 @@
             "Comunicacion de Baja"});
             this.cboTipoDoc.Location = new System.Drawing.Point(180, 183);
             this.cboTipoDoc.Name = "cboTipoDoc";
-            this.cboTipoDoc.Size = new System.Drawing.Size(201, 20);
+            this.cboTipoDoc.Size = new System.Drawing.Size(201, 21);
             this.cboTipoDoc.TabIndex = 10;
             // 
             // label7
             // 
-            this.label7.AutoSize = true;
             this.label7.Location = new System.Drawing.Point(176, 161);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(111, 13);
+            this.label7.Size = new System.Drawing.Size(122, 20);
             this.label7.TabIndex = 9;
-            this.label7.Text = "Tipo de Documento:";
+            this.label7.Values.Text = "Tipo de Documento:";
             // 
             // label8
             // 
-            this.label8.AutoSize = true;
             this.label8.Location = new System.Drawing.Point(10, 395);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(177, 13);
+            this.label8.Size = new System.Drawing.Size(192, 20);
             this.label8.TabIndex = 20;
-            this.label8.Text = "Serie-Correlativo del Documento:";
+            this.label8.Values.Text = "Serie-Correlativo del Documento:";
             // 
             // txtSerieCorrelativo
             // 
             this.txtSerieCorrelativo.Location = new System.Drawing.Point(10, 418);
             this.txtSerieCorrelativo.Name = "txtSerieCorrelativo";
-            this.txtSerieCorrelativo.Size = new System.Drawing.Size(319, 21);
+            this.txtSerieCorrelativo.Size = new System.Drawing.Size(319, 23);
             this.txtSerieCorrelativo.TabIndex = 21;
             // 
             // btnGetStatus
@@ -316,8 +310,7 @@
             this.btnGetStatus.Name = "btnGetStatus";
             this.btnGetStatus.Size = new System.Drawing.Size(103, 53);
             this.btnGetStatus.TabIndex = 24;
-            this.btnGetStatus.Text = "Consultar N° Ticket";
-            this.btnGetStatus.UseVisualStyleBackColor = true;
+            this.btnGetStatus.Values.Text = "Consultar N° Ticket";
             this.btnGetStatus.Click += new System.EventHandler(this.btnGetStatus_Click);
             // 
             // btnGenerar
@@ -326,27 +319,26 @@
             this.btnGenerar.Name = "btnGenerar";
             this.btnGenerar.Size = new System.Drawing.Size(103, 23);
             this.btnGenerar.TabIndex = 18;
-            this.btnGenerar.Text = "&Generar...";
-            this.btnGenerar.UseVisualStyleBackColor = true;
+            this.btnGenerar.Values.Text = "&Generar";
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
             // label9
             // 
-            this.label9.AutoSize = true;
             this.label9.Location = new System.Drawing.Point(10, 9);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(86, 13);
+            this.label9.Size = new System.Drawing.Size(95, 20);
             this.label9.TabIndex = 0;
-            this.label9.Text = "Url del Servicio:";
+            this.label9.Values.Text = "Url del Servicio:";
             // 
             // cboUrlServicio
             // 
             this.cboUrlServicio.DataSource = this.direccionSunatBindingSource;
             this.cboUrlServicio.DisplayMember = "Codigo";
             this.cboUrlServicio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboUrlServicio.DropDownWidth = 433;
             this.cboUrlServicio.Location = new System.Drawing.Point(10, 25);
             this.cboUrlServicio.Name = "cboUrlServicio";
-            this.cboUrlServicio.Size = new System.Drawing.Size(433, 20);
+            this.cboUrlServicio.Size = new System.Drawing.Size(433, 21);
             this.cboUrlServicio.TabIndex = 1;
             this.cboUrlServicio.ValueMember = "Descripcion";
             // 
@@ -407,6 +399,8 @@
             this.Text = "OpenInvoicePeru - Prueba de Envio a SUNAT";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.cboTipoDoc)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.cboUrlServicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.direccionSunatBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -415,34 +409,34 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnBrowse;
-        private System.Windows.Forms.TextBox txtResult;
-        private System.Windows.Forms.TextBox txtSource;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnGen;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtNroRuc;
-        private System.Windows.Forms.TextBox txtUsuarioSol;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtClaveSol;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnBrowse;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtResult;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtSource;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel label1;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnGen;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel label2;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel label3;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNroRuc;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtUsuarioSol;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel label4;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtClaveSol;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton rbRetenciones;
         private System.Windows.Forms.RadioButton rbDocumentos;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtRutaCertificado;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtPassCertificado;
-        private System.Windows.Forms.Button btnBrowseCert;
-        private System.Windows.Forms.ComboBox cboTipoDoc;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox txtSerieCorrelativo;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel label5;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtRutaCertificado;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel label6;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtPassCertificado;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnBrowseCert;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboTipoDoc;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel label7;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel label8;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtSerieCorrelativo;
         private System.Windows.Forms.RadioButton rbResumen;
-        private System.Windows.Forms.Button btnGetStatus;
-        private System.Windows.Forms.Button btnGenerar;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.ComboBox cboUrlServicio;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnGetStatus;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnGenerar;
+        private ComponentFactory.Krypton.Toolkit.KryptonLabel label9;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboUrlServicio;
         private System.Windows.Forms.CheckBox chkVoz;
         private System.Windows.Forms.BindingSource direccionSunatBindingSource;
     }

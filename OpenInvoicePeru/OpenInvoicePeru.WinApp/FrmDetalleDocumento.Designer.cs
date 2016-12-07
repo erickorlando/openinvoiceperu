@@ -1,4 +1,5 @@
-﻿using OpenInvoicePeru.Firmado.Models;
+﻿using System.Windows.Forms;
+using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
@@ -31,55 +32,55 @@ namespace OpenInvoicePeru.WinApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label idLabel;
-            System.Windows.Forms.Label codigoItemLabel;
-            System.Windows.Forms.Label descripcionLabel;
-            System.Windows.Forms.Label precioUnitarioLabel;
-            System.Windows.Forms.Label precioReferencialLabel;
-            System.Windows.Forms.Label cantidadLabel;
-            System.Windows.Forms.Label unidadMedidaLabel;
-            System.Windows.Forms.Label impuestoLabel;
-            System.Windows.Forms.Label tipoImpuestoLabel;
-            System.Windows.Forms.Label impuestoSelectivoLabel;
-            System.Windows.Forms.Label otroImpuestoLabel;
-            System.Windows.Forms.Label totalVentaLabel;
-            System.Windows.Forms.Label tipoPrecioLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel idLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel codigoItemLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel descripcionLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel precioUnitarioLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel precioReferencialLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel cantidadLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel unidadMedidaLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel impuestoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel tipoImpuestoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel impuestoSelectivoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel otroImpuestoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel totalVentaLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel tipoPrecioLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetalleDocumento));
             this.idNumericUpDown = new System.Windows.Forms.NumericUpDown();
             this.detalleDocumentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.codigoItemTextBox = new System.Windows.Forms.TextBox();
-            this.descripcionTextBox = new System.Windows.Forms.TextBox();
-            this.precioUnitarioTextBox = new System.Windows.Forms.TextBox();
-            this.precioReferencialTextBox = new System.Windows.Forms.TextBox();
-            this.cantidadTextBox = new System.Windows.Forms.TextBox();
-            this.unidadMedidaComboBox = new System.Windows.Forms.ComboBox();
-            this.impuestoTextBox = new System.Windows.Forms.TextBox();
-            this.tipoImpuestoComboBox = new System.Windows.Forms.ComboBox();
+            this.codigoItemTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.descripcionTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.precioUnitarioTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.precioReferencialTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.cantidadTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.unidadMedidaComboBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.impuestoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.tipoImpuestoComboBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tipoImpuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.impuestoSelectivoTextBox = new System.Windows.Forms.TextBox();
-            this.otroImpuestoTextBox = new System.Windows.Forms.TextBox();
-            this.totalVentaTextBox = new System.Windows.Forms.TextBox();
+            this.impuestoSelectivoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.otroImpuestoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.totalVentaTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.barraBotones = new System.Windows.Forms.ToolStrip();
             this.toolOk = new System.Windows.Forms.ToolStripButton();
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnCalcIgv = new System.Windows.Forms.Button();
-            this.btnCalcIsc = new System.Windows.Forms.Button();
-            this.tipoPrecioComboBox = new System.Windows.Forms.ComboBox();
+            this.btnCalcIgv = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnCalcIsc = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.tipoPrecioComboBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tipoPrecioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            idLabel = new System.Windows.Forms.Label();
-            codigoItemLabel = new System.Windows.Forms.Label();
-            descripcionLabel = new System.Windows.Forms.Label();
-            precioUnitarioLabel = new System.Windows.Forms.Label();
-            precioReferencialLabel = new System.Windows.Forms.Label();
-            cantidadLabel = new System.Windows.Forms.Label();
-            unidadMedidaLabel = new System.Windows.Forms.Label();
-            impuestoLabel = new System.Windows.Forms.Label();
-            tipoImpuestoLabel = new System.Windows.Forms.Label();
-            impuestoSelectivoLabel = new System.Windows.Forms.Label();
-            otroImpuestoLabel = new System.Windows.Forms.Label();
-            totalVentaLabel = new System.Windows.Forms.Label();
-            tipoPrecioLabel = new System.Windows.Forms.Label();
+            idLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            codigoItemLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            descripcionLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            precioUnitarioLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            precioReferencialLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            cantidadLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            unidadMedidaLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            impuestoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            tipoImpuestoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            impuestoSelectivoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            otroImpuestoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            totalVentaLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            tipoPrecioLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.idNumericUpDown)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoBindingSource)).BeginInit();
@@ -289,7 +290,7 @@ namespace OpenInvoicePeru.WinApp
             this.tipoImpuestoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.detalleDocumentoBindingSource, "TipoImpuesto", true));
             this.tipoImpuestoComboBox.DataSource = this.tipoImpuestoBindingSource;
             this.tipoImpuestoComboBox.DisplayMember = "DescripcionCompleta";
-            this.tipoImpuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoImpuestoComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.tipoImpuestoComboBox.FormattingEnabled = true;
             this.tipoImpuestoComboBox.Location = new System.Drawing.Point(118, 270);
             this.tipoImpuestoComboBox.Name = "tipoImpuestoComboBox";
@@ -367,7 +368,6 @@ namespace OpenInvoicePeru.WinApp
             this.btnCalcIgv.Size = new System.Drawing.Size(125, 23);
             this.btnCalcIgv.TabIndex = 9;
             this.btnCalcIgv.Text = "C&alcular IGV";
-            this.btnCalcIgv.UseVisualStyleBackColor = true;
             this.btnCalcIgv.Click += new System.EventHandler(this.btnCalcIgv_Click);
             // 
             // btnCalcIsc
@@ -377,7 +377,6 @@ namespace OpenInvoicePeru.WinApp
             this.btnCalcIsc.Size = new System.Drawing.Size(125, 23);
             this.btnCalcIsc.TabIndex = 12;
             this.btnCalcIsc.Text = "Ca&lcular ISC";
-            this.btnCalcIsc.UseVisualStyleBackColor = true;
             this.btnCalcIsc.Click += new System.EventHandler(this.btnCalcIsc_Click);
             // 
             // tipoPrecioComboBox
@@ -385,7 +384,7 @@ namespace OpenInvoicePeru.WinApp
             this.tipoPrecioComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.detalleDocumentoBindingSource, "TipoPrecio", true));
             this.tipoPrecioComboBox.DataSource = this.tipoPrecioBindingSource;
             this.tipoPrecioComboBox.DisplayMember = "DescripcionCompleta";
-            this.tipoPrecioComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoPrecioComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             this.tipoPrecioComboBox.FormattingEnabled = true;
             this.tipoPrecioComboBox.Location = new System.Drawing.Point(118, 163);
             this.tipoPrecioComboBox.Name = "tipoPrecioComboBox";
@@ -456,24 +455,24 @@ namespace OpenInvoicePeru.WinApp
 
         private System.Windows.Forms.BindingSource detalleDocumentoBindingSource;
         private System.Windows.Forms.NumericUpDown idNumericUpDown;
-        private System.Windows.Forms.TextBox codigoItemTextBox;
-        private System.Windows.Forms.TextBox descripcionTextBox;
-        private System.Windows.Forms.TextBox precioUnitarioTextBox;
-        private System.Windows.Forms.TextBox precioReferencialTextBox;
-        private System.Windows.Forms.TextBox cantidadTextBox;
-        private System.Windows.Forms.ComboBox unidadMedidaComboBox;
-        private System.Windows.Forms.TextBox impuestoTextBox;
-        private System.Windows.Forms.ComboBox tipoImpuestoComboBox;
-        private System.Windows.Forms.TextBox impuestoSelectivoTextBox;
-        private System.Windows.Forms.TextBox otroImpuestoTextBox;
-        private System.Windows.Forms.TextBox totalVentaTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox codigoItemTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox descripcionTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox precioUnitarioTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox precioReferencialTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox cantidadTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox unidadMedidaComboBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox impuestoTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox tipoImpuestoComboBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox impuestoSelectivoTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox otroImpuestoTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox totalVentaTextBox;
         private System.Windows.Forms.ToolStrip barraBotones;
         private System.Windows.Forms.ToolStripButton toolOk;
         private System.Windows.Forms.ToolStripButton toolCancel;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Button btnCalcIsc;
-        private System.Windows.Forms.Button btnCalcIgv;
-        private System.Windows.Forms.ComboBox tipoPrecioComboBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCalcIsc;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCalcIgv;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox tipoPrecioComboBox;
         private System.Windows.Forms.BindingSource tipoImpuestoBindingSource;
         private System.Windows.Forms.BindingSource tipoPrecioBindingSource;
     }

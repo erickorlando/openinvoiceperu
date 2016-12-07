@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Http;
 using System.Speech.Synthesis;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 using OpenInvoicePeru.Datos;
 using OpenInvoicePeru.Datos.Entidades;
 using OpenInvoicePeru.Firmado.Models;
@@ -12,7 +13,7 @@ using OpenInvoicePeru.WinApp.Properties;
 
 namespace OpenInvoicePeru.WinApp
 {
-    public partial class FrmEnviarSunat : Form
+    public partial class FrmEnviarSunat : KryptonForm
     {
         #region Variables Privadas
         private FrmDocumento _frmDocumento;
