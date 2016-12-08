@@ -62,7 +62,7 @@ namespace OpenInvoicePeru.WinApp
             this.label2 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtNroDocEm = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.emisorBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.grpEmisor = new System.Windows.Forms.GroupBox();
+            this.grpEmisor = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.urbanizacionTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.label9 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.label8 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -78,7 +78,7 @@ namespace OpenInvoicePeru.WinApp
             this.txtNombreComEm = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtNombreLegalEm = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.label4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.grpReceptor = new System.Windows.Forms.GroupBox();
+            this.grpReceptor = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.label16 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.label17 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtNombreLegalRec = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -87,27 +87,27 @@ namespace OpenInvoicePeru.WinApp
             this.documentoElectronicoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label18 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.label19 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
-            this.dtpFecha = new System.Windows.Forms.DateTimePicker();
+            this.dtpFecha = new ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker();
             this.label20 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.cboTipoDoc = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tipoDocumentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.label21 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.cboMoneda = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.monedaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.dgvDetalle = new System.Windows.Forms.DataGridView();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.codigoItemDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cantidadDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.unidadMedidaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioUnitarioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.precioReferencialDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoPrecioDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.impuestoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tipoImpuestoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.impuestoSelectivoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.otroImpuestoDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.totalVentaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dgvDetalle = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.idDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.codigoItemDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.unidadMedidaDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.precioUnitarioDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.precioReferencialDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.tipoPrecioDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.impuestoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.tipoImpuestoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.impuestoSelectivoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.otroImpuestoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.totalVentaDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.detallesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.montoEnLetrasTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.gravadasTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -133,25 +133,25 @@ namespace OpenInvoicePeru.WinApp
             this.tbPaginas = new System.Windows.Forms.TabControl();
             this.tpDetalles = new System.Windows.Forms.TabPage();
             this.tpAdicionales = new System.Windows.Forms.TabPage();
-            this.datoAdicionalesDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datoAdicionalesDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.dataGridViewTextBoxColumn1 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.datoAdicionalesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tpRelacionados = new System.Windows.Forms.TabPage();
-            this.relacionadosDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.relacionadosDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.dataGridViewTextBoxColumn4 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn3 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.relacionadosBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.tbDiscrepancias = new System.Windows.Forms.TabPage();
-            this.discrepanciasDataGridView = new System.Windows.Forms.DataGridView();
-            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.discrepanciasDataGridView = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
+            this.dataGridViewTextBoxColumn5 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.discrepanciasBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.montoDetraccionTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.btnCalcDetraccion = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.btnGuia = new ComponentFactory.Krypton.Toolkit.KryptonButton();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
             this.monedaAnticipoComboBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.montoAnticipoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.docAnticipoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -458,24 +458,24 @@ namespace OpenInvoicePeru.WinApp
             // 
             // grpEmisor
             // 
-            this.grpEmisor.Controls.Add(this.urbanizacionTextBox);
-            this.grpEmisor.Controls.Add(urbanizacionLabel);
-            this.grpEmisor.Controls.Add(this.label9);
-            this.grpEmisor.Controls.Add(this.label8);
-            this.grpEmisor.Controls.Add(this.label7);
-            this.grpEmisor.Controls.Add(this.label6);
-            this.grpEmisor.Controls.Add(this.label5);
-            this.grpEmisor.Controls.Add(this.label3);
-            this.grpEmisor.Controls.Add(this.label2);
-            this.grpEmisor.Controls.Add(this.txtUbigeoEm);
-            this.grpEmisor.Controls.Add(this.txtDistritoEm);
-            this.grpEmisor.Controls.Add(this.txtDptoEm);
-            this.grpEmisor.Controls.Add(this.txtProvEm);
-            this.grpEmisor.Controls.Add(this.txtDirEm);
-            this.grpEmisor.Controls.Add(this.txtNombreComEm);
-            this.grpEmisor.Controls.Add(this.txtNombreLegalEm);
-            this.grpEmisor.Controls.Add(this.txtNroDocEm);
-            this.grpEmisor.Controls.Add(this.label4);
+            this.grpEmisor.Panel.Controls.Add(this.urbanizacionTextBox);
+            this.grpEmisor.Panel.Controls.Add(urbanizacionLabel);
+            this.grpEmisor.Panel.Controls.Add(this.label9);
+            this.grpEmisor.Panel.Controls.Add(this.label8);
+            this.grpEmisor.Panel.Controls.Add(this.label7);
+            this.grpEmisor.Panel.Controls.Add(this.label6);
+            this.grpEmisor.Panel.Controls.Add(this.label5);
+            this.grpEmisor.Panel.Controls.Add(this.label3);
+            this.grpEmisor.Panel.Controls.Add(this.label2);
+            this.grpEmisor.Panel.Controls.Add(this.txtUbigeoEm);
+            this.grpEmisor.Panel.Controls.Add(this.txtDistritoEm);
+            this.grpEmisor.Panel.Controls.Add(this.txtDptoEm);
+            this.grpEmisor.Panel.Controls.Add(this.txtProvEm);
+            this.grpEmisor.Panel.Controls.Add(this.txtDirEm);
+            this.grpEmisor.Panel.Controls.Add(this.txtNombreComEm);
+            this.grpEmisor.Panel.Controls.Add(this.txtNombreLegalEm);
+            this.grpEmisor.Panel.Controls.Add(this.txtNroDocEm);
+            this.grpEmisor.Panel.Controls.Add(this.label4);
             this.grpEmisor.Location = new System.Drawing.Point(4, 55);
             this.grpEmisor.Name = "grpEmisor";
             this.grpEmisor.Size = new System.Drawing.Size(510, 176);
@@ -612,12 +612,12 @@ namespace OpenInvoicePeru.WinApp
             // 
             // grpReceptor
             // 
-            this.grpReceptor.Controls.Add(this.cboTipoDocRec);
-            this.grpReceptor.Controls.Add(this.label1);
-            this.grpReceptor.Controls.Add(this.label16);
-            this.grpReceptor.Controls.Add(this.label17);
-            this.grpReceptor.Controls.Add(this.txtNombreLegalRec);
-            this.grpReceptor.Controls.Add(this.txtNroDocRec);
+            this.grpReceptor.Panel.Controls.Add(this.cboTipoDocRec);
+            this.grpReceptor.Panel.Controls.Add(this.label1);
+            this.grpReceptor.Panel.Controls.Add(this.label16);
+            this.grpReceptor.Panel.Controls.Add(this.label17);
+            this.grpReceptor.Panel.Controls.Add(this.txtNombreLegalRec);
+            this.grpReceptor.Panel.Controls.Add(this.txtNroDocRec);
             this.grpReceptor.Location = new System.Drawing.Point(520, 55);
             this.grpReceptor.Name = "grpReceptor";
             this.grpReceptor.Size = new System.Drawing.Size(476, 176);
@@ -692,7 +692,7 @@ namespace OpenInvoicePeru.WinApp
             // dtpFecha
             // 
             this.dtpFecha.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "FechaEmision", true));
-            this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFecha.Format = DateTimePickerFormat.Short;
             this.dtpFecha.Location = new System.Drawing.Point(87, 281);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(100, 22);
@@ -753,8 +753,8 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.dgvDetalle.AllowUserToAddRows = false;
             this.dgvDetalle.AutoGenerateColumns = false;
-            this.dgvDetalle.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvDetalle.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgvDetalle.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.dgvDetalle.Columns.AddRange(new DataGridViewColumn[] {
             this.idDataGridViewTextBoxColumn,
             this.codigoItemDataGridViewTextBoxColumn,
             this.descripcionDataGridViewTextBoxColumn,
@@ -772,7 +772,7 @@ namespace OpenInvoicePeru.WinApp
             this.dgvDetalle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvDetalle.Location = new System.Drawing.Point(3, 3);
             this.dgvDetalle.Name = "dgvDetalle";
-            this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvDetalle.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetalle.Size = new System.Drawing.Size(868, 174);
             this.dgvDetalle.TabIndex = 25;
             // 
@@ -1089,15 +1089,15 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.datoAdicionalesDataGridView.AllowUserToAddRows = false;
             this.datoAdicionalesDataGridView.AutoGenerateColumns = false;
-            this.datoAdicionalesDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.datoAdicionalesDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.datoAdicionalesDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.datoAdicionalesDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.datoAdicionalesDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.datoAdicionalesDataGridView.Columns.AddRange(new DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.dataGridViewTextBoxColumn2});
             this.datoAdicionalesDataGridView.DataSource = this.datoAdicionalesBindingSource;
             this.datoAdicionalesDataGridView.Location = new System.Drawing.Point(1, 0);
             this.datoAdicionalesDataGridView.Name = "datoAdicionalesDataGridView";
-            this.datoAdicionalesDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.datoAdicionalesDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.datoAdicionalesDataGridView.Size = new System.Drawing.Size(870, 177);
             this.datoAdicionalesDataGridView.TabIndex = 0;
             // 
@@ -1138,16 +1138,16 @@ namespace OpenInvoicePeru.WinApp
             this.relacionadosDataGridView.AllowUserToAddRows = false;
             this.relacionadosDataGridView.AllowUserToDeleteRows = false;
             this.relacionadosDataGridView.AutoGenerateColumns = false;
-            this.relacionadosDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.relacionadosDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.relacionadosDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.relacionadosDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.relacionadosDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.relacionadosDataGridView.Columns.AddRange(new DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn4,
             this.dataGridViewTextBoxColumn3});
             this.relacionadosDataGridView.DataSource = this.relacionadosBindingSource;
             this.relacionadosDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.relacionadosDataGridView.Location = new System.Drawing.Point(3, 3);
             this.relacionadosDataGridView.Name = "relacionadosDataGridView";
-            this.relacionadosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.relacionadosDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.relacionadosDataGridView.Size = new System.Drawing.Size(868, 174);
             this.relacionadosDataGridView.TabIndex = 0;
             // 
@@ -1188,8 +1188,8 @@ namespace OpenInvoicePeru.WinApp
             this.discrepanciasDataGridView.AllowUserToAddRows = false;
             this.discrepanciasDataGridView.AllowUserToDeleteRows = false;
             this.discrepanciasDataGridView.AutoGenerateColumns = false;
-            this.discrepanciasDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.discrepanciasDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.discrepanciasDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            this.discrepanciasDataGridView.Columns.AddRange(new DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn5,
             this.dataGridViewTextBoxColumn6,
             this.dataGridViewTextBoxColumn7});
@@ -1197,7 +1197,7 @@ namespace OpenInvoicePeru.WinApp
             this.discrepanciasDataGridView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.discrepanciasDataGridView.Location = new System.Drawing.Point(3, 3);
             this.discrepanciasDataGridView.Name = "discrepanciasDataGridView";
-            this.discrepanciasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.discrepanciasDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             this.discrepanciasDataGridView.Size = new System.Drawing.Size(868, 174);
             this.discrepanciasDataGridView.TabIndex = 0;
             // 
@@ -1255,14 +1255,14 @@ namespace OpenInvoicePeru.WinApp
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(monedaAnticipoLabel);
-            this.groupBox1.Controls.Add(this.monedaAnticipoComboBox);
-            this.groupBox1.Controls.Add(montoAnticipoLabel);
-            this.groupBox1.Controls.Add(this.montoAnticipoTextBox);
-            this.groupBox1.Controls.Add(docAnticipoLabel);
-            this.groupBox1.Controls.Add(this.docAnticipoTextBox);
-            this.groupBox1.Controls.Add(tipoDocAnticipoLabel);
-            this.groupBox1.Controls.Add(this.tipoDocAnticipoComboBox);
+            this.groupBox1.Panel.Controls.Add(monedaAnticipoLabel);
+            this.groupBox1.Panel.Controls.Add(this.monedaAnticipoComboBox);
+            this.groupBox1.Panel.Controls.Add(montoAnticipoLabel);
+            this.groupBox1.Panel.Controls.Add(this.montoAnticipoTextBox);
+            this.groupBox1.Panel.Controls.Add(docAnticipoLabel);
+            this.groupBox1.Panel.Controls.Add(this.docAnticipoTextBox);
+            this.groupBox1.Panel.Controls.Add(tipoDocAnticipoLabel);
+            this.groupBox1.Panel.Controls.Add(this.tipoDocAnticipoComboBox);
             this.groupBox1.Location = new System.Drawing.Point(764, 237);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(232, 122);
@@ -1431,7 +1431,7 @@ namespace OpenInvoicePeru.WinApp
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboTipoDocRec;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label2;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNroDocEm;
-        private System.Windows.Forms.GroupBox grpEmisor;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox grpEmisor;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label9;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label8;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label7;
@@ -1446,7 +1446,7 @@ namespace OpenInvoicePeru.WinApp
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtDirEm;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNombreComEm;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNombreLegalEm;
-        private System.Windows.Forms.GroupBox grpReceptor;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox grpReceptor;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label16;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label17;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtNombreLegalRec;
@@ -1454,12 +1454,12 @@ namespace OpenInvoicePeru.WinApp
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox textBox17;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label18;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label19;
-        private System.Windows.Forms.DateTimePicker dtpFecha;
+        private ComponentFactory.Krypton.Toolkit.KryptonDateTimePicker dtpFecha;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label20;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboTipoDoc;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label21;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboMoneda;
-        private System.Windows.Forms.DataGridView dgvDetalle;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView dgvDetalle;
         private System.Windows.Forms.BindingSource documentoElectronicoBindingSource;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox montoEnLetrasTextBox;
         private System.Windows.Forms.BindingSource detallesBindingSource;
@@ -1485,44 +1485,44 @@ namespace OpenInvoicePeru.WinApp
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox descuentoGlobalTextBox;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox urbanizacionTextBox;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox montoPercepcionTextBox;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn codigoItemDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn unidadMedidaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioUnitarioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn precioReferencialDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoPrecioDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn impuestoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn tipoImpuestoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn impuestoSelectivoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn otroImpuestoDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn totalVentaDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn codigoItemDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn unidadMedidaDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn precioUnitarioDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn precioReferencialDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn tipoPrecioDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn impuestoDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn tipoImpuestoDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn impuestoSelectivoDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn otroImpuestoDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn totalVentaDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabControl tbPaginas;
         private System.Windows.Forms.TabPage tpDetalles;
         private System.Windows.Forms.TabPage tpAdicionales;
-        private System.Windows.Forms.DataGridView datoAdicionalesDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView datoAdicionalesDataGridView;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
         private System.Windows.Forms.BindingSource datoAdicionalesBindingSource;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox montoDetraccionTextBox;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnCalcDetraccion;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnGuia;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox groupBox1;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox monedaAnticipoComboBox;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox montoAnticipoTextBox;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox docAnticipoTextBox;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox tipoDocAnticipoComboBox;
         private System.Windows.Forms.TabPage tpRelacionados;
-        private System.Windows.Forms.DataGridView relacionadosDataGridView;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView relacionadosDataGridView;
         private System.Windows.Forms.BindingSource relacionadosBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn dataGridViewTextBoxColumn3;
         private System.Windows.Forms.TabPage tbDiscrepancias;
-        private System.Windows.Forms.DataGridView discrepanciasDataGridView;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
-        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridView discrepanciasDataGridView;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
         private System.Windows.Forms.BindingSource discrepanciasBindingSource;
         private System.Windows.Forms.BindingSource tipoDocumentoContribuyenteBindingSource;
         private System.Windows.Forms.BindingSource tipoDocumentoBindingSource;

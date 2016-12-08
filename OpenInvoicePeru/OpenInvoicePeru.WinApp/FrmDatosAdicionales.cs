@@ -1,15 +1,14 @@
 ﻿using System;
 using System.Linq;
 using System.Windows.Forms;
+using ComponentFactory.Krypton.Toolkit;
 using OpenInvoicePeru.Datos;
 using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
-    public partial class FrmDatosAdicionales : Form
+    public partial class FrmDatosAdicionales : KryptonForm
     {
-        private readonly DatoAdicional _dato;
-
         public FrmDatosAdicionales()
         {
             InitializeComponent();
@@ -18,8 +17,7 @@ namespace OpenInvoicePeru.WinApp
         public FrmDatosAdicionales(DatoAdicional dato)
         {
             InitializeComponent();
-            _dato = dato;
-            datoAdicionalBindingSource.DataSource = _dato;
+            datoAdicionalBindingSource.DataSource = dato;
             datoAdicionalBindingSource.ResetBindings(false);
             Load += (s, e) =>
             {

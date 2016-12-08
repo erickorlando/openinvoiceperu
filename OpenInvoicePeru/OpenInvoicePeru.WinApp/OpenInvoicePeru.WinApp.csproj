@@ -148,12 +148,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmConfiguracion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmConfiguracion.Designer.cs">
-      <DependentUpon>FrmConfiguracion.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmDatosAdicionales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -204,9 +198,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmConfiguracion.resx">
-      <DependentUpon>FrmConfiguracion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmDatosAdicionales.resx">
       <DependentUpon>FrmDatosAdicionales.cs</DependentUpon>
     </EmbeddedResource>

@@ -43,10 +43,10 @@ namespace OpenInvoicePeru.WinApp
             this.txtUsuarioSol = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.label4 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtClaveSol = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.rbResumen = new System.Windows.Forms.RadioButton();
-            this.rbRetenciones = new System.Windows.Forms.RadioButton();
-            this.rbDocumentos = new System.Windows.Forms.RadioButton();
+            this.groupBox1 = new ComponentFactory.Krypton.Toolkit.KryptonGroupBox();
+            this.rbResumen = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
+            this.rbRetenciones = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
+            this.rbDocumentos = new ComponentFactory.Krypton.Toolkit.KryptonRadioButton();
             this.label5 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.txtRutaCertificado = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.label6 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -61,7 +61,10 @@ namespace OpenInvoicePeru.WinApp
             this.label9 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.cboUrlServicio = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.direccionSunatBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.chkVoz = new System.Windows.Forms.CheckBox();
+            this.chkVoz = new ComponentFactory.Krypton.Toolkit.KryptonCheckBox();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox1.Panel)).BeginInit();
+            this.groupBox1.Panel.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboTipoDoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUrlServicio)).BeginInit();
@@ -71,7 +74,7 @@ namespace OpenInvoicePeru.WinApp
             // btnBrowse
             // 
             this.btnBrowse.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowse.Location = new System.Drawing.Point(340, 355);
+            this.btnBrowse.Location = new System.Drawing.Point(362, 355);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(103, 24);
             this.btnBrowse.TabIndex = 19;
@@ -88,7 +91,7 @@ namespace OpenInvoicePeru.WinApp
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
             this.txtResult.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtResult.Size = new System.Drawing.Size(319, 143);
+            this.txtResult.Size = new System.Drawing.Size(341, 143);
             this.txtResult.TabIndex = 22;
             // 
             // txtSource
@@ -99,7 +102,7 @@ namespace OpenInvoicePeru.WinApp
             this.txtSource.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.txtSource.Location = new System.Drawing.Point(10, 357);
             this.txtSource.Name = "txtSource";
-            this.txtSource.Size = new System.Drawing.Size(319, 23);
+            this.txtSource.Size = new System.Drawing.Size(341, 23);
             this.txtSource.TabIndex = 17;
             // 
             // label1
@@ -113,9 +116,9 @@ namespace OpenInvoicePeru.WinApp
             // btnGen
             // 
             this.btnGen.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGen.Location = new System.Drawing.Point(340, 470);
+            this.btnGen.Location = new System.Drawing.Point(358, 470);
             this.btnGen.Name = "btnGen";
-            this.btnGen.Size = new System.Drawing.Size(103, 32);
+            this.btnGen.Size = new System.Drawing.Size(115, 32);
             this.btnGen.TabIndex = 23;
             this.btnGen.Values.Text = "&Enviar";
             this.btnGen.Click += new System.EventHandler(this.btnGen_Click);
@@ -175,47 +178,42 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.rbResumen);
-            this.groupBox1.Controls.Add(this.rbRetenciones);
-            this.groupBox1.Controls.Add(this.rbDocumentos);
             this.groupBox1.Location = new System.Drawing.Point(180, 52);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(266, 104);
+            // 
+            // groupBox1.Panel
+            // 
+            this.groupBox1.Panel.Controls.Add(this.rbResumen);
+            this.groupBox1.Panel.Controls.Add(this.rbRetenciones);
+            this.groupBox1.Panel.Controls.Add(this.rbDocumentos);
+            this.groupBox1.Size = new System.Drawing.Size(288, 104);
             this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Grupo de Documentos";
+            this.groupBox1.Values.Heading = "Grupo de Documentos";
             // 
             // rbResumen
             // 
-            this.rbResumen.AutoSize = true;
-            this.rbResumen.Location = new System.Drawing.Point(28, 73);
+            this.rbResumen.Location = new System.Drawing.Point(28, 57);
             this.rbResumen.Name = "rbResumen";
-            this.rbResumen.Size = new System.Drawing.Size(197, 17);
+            this.rbResumen.Size = new System.Drawing.Size(206, 20);
             this.rbResumen.TabIndex = 2;
-            this.rbResumen.Text = "Resumen y Comunicacion de baja";
-            this.rbResumen.UseVisualStyleBackColor = true;
+            this.rbResumen.Values.Text = "Resumen y Comunicacion de baja";
             // 
             // rbRetenciones
             // 
-            this.rbRetenciones.AutoSize = true;
-            this.rbRetenciones.Location = new System.Drawing.Point(28, 46);
+            this.rbRetenciones.Location = new System.Drawing.Point(28, 30);
             this.rbRetenciones.Name = "rbRetenciones";
-            this.rbRetenciones.Size = new System.Drawing.Size(166, 17);
+            this.rbRetenciones.Size = new System.Drawing.Size(173, 20);
             this.rbRetenciones.TabIndex = 1;
-            this.rbRetenciones.Text = "Retenciones y Percepciones";
-            this.rbRetenciones.UseVisualStyleBackColor = true;
+            this.rbRetenciones.Values.Text = "Retenciones y Percepciones";
             // 
             // rbDocumentos
             // 
-            this.rbDocumentos.AutoSize = true;
             this.rbDocumentos.Checked = true;
-            this.rbDocumentos.Location = new System.Drawing.Point(28, 21);
+            this.rbDocumentos.Location = new System.Drawing.Point(28, 5);
             this.rbDocumentos.Name = "rbDocumentos";
-            this.rbDocumentos.Size = new System.Drawing.Size(145, 17);
+            this.rbDocumentos.Size = new System.Drawing.Size(150, 20);
             this.rbDocumentos.TabIndex = 0;
-            this.rbDocumentos.TabStop = true;
-            this.rbDocumentos.Text = "Factura, Boleta, NC, ND";
-            this.rbDocumentos.UseVisualStyleBackColor = true;
+            this.rbDocumentos.Values.Text = "Factura, Boleta, NC, ND";
             // 
             // label5
             // 
@@ -233,7 +231,7 @@ namespace OpenInvoicePeru.WinApp
             this.txtRutaCertificado.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.RecentlyUsedList;
             this.txtRutaCertificado.Location = new System.Drawing.Point(10, 245);
             this.txtRutaCertificado.Name = "txtRutaCertificado";
-            this.txtRutaCertificado.Size = new System.Drawing.Size(319, 23);
+            this.txtRutaCertificado.Size = new System.Drawing.Size(341, 23);
             this.txtRutaCertificado.TabIndex = 12;
             // 
             // label6
@@ -255,7 +253,7 @@ namespace OpenInvoicePeru.WinApp
             // btnBrowseCert
             // 
             this.btnBrowseCert.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBrowseCert.Location = new System.Drawing.Point(340, 240);
+            this.btnBrowseCert.Location = new System.Drawing.Point(362, 240);
             this.btnBrowseCert.Name = "btnBrowseCert";
             this.btnBrowseCert.Size = new System.Drawing.Size(103, 32);
             this.btnBrowseCert.TabIndex = 13;
@@ -300,26 +298,28 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.txtSerieCorrelativo.Location = new System.Drawing.Point(10, 418);
             this.txtSerieCorrelativo.Name = "txtSerieCorrelativo";
-            this.txtSerieCorrelativo.Size = new System.Drawing.Size(319, 23);
+            this.txtSerieCorrelativo.Size = new System.Drawing.Size(341, 23);
             this.txtSerieCorrelativo.TabIndex = 21;
             // 
             // btnGetStatus
             // 
             this.btnGetStatus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnGetStatus.Location = new System.Drawing.Point(340, 508);
+            this.btnGetStatus.AutoSize = true;
+            this.btnGetStatus.Location = new System.Drawing.Point(358, 508);
             this.btnGetStatus.Name = "btnGetStatus";
-            this.btnGetStatus.Size = new System.Drawing.Size(103, 53);
+            this.btnGetStatus.Size = new System.Drawing.Size(115, 64);
             this.btnGetStatus.TabIndex = 24;
             this.btnGetStatus.Values.Text = "Consultar N° Ticket";
             this.btnGetStatus.Click += new System.EventHandler(this.btnGetStatus_Click);
             // 
             // btnGenerar
             // 
-            this.btnGenerar.Location = new System.Drawing.Point(340, 330);
+            this.btnGenerar.AutoSize = true;
+            this.btnGenerar.Location = new System.Drawing.Point(362, 324);
             this.btnGenerar.Name = "btnGenerar";
-            this.btnGenerar.Size = new System.Drawing.Size(103, 23);
+            this.btnGenerar.Size = new System.Drawing.Size(103, 27);
             this.btnGenerar.TabIndex = 18;
-            this.btnGenerar.Values.Text = "&Generar";
+            this.btnGenerar.Values.Text = "&Generar XML";
             this.btnGenerar.Click += new System.EventHandler(this.btnGenerar_Click);
             // 
             // label9
@@ -349,22 +349,20 @@ namespace OpenInvoicePeru.WinApp
             // chkVoz
             // 
             this.chkVoz.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.chkVoz.AutoSize = true;
             this.chkVoz.Checked = true;
             this.chkVoz.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkVoz.Location = new System.Drawing.Point(335, 567);
+            this.chkVoz.Location = new System.Drawing.Point(357, 578);
             this.chkVoz.Name = "chkVoz";
-            this.chkVoz.Size = new System.Drawing.Size(118, 17);
+            this.chkVoz.Size = new System.Drawing.Size(122, 20);
             this.chkVoz.TabIndex = 25;
-            this.chkVoz.Text = "Hablar en voz alta";
-            this.chkVoz.UseVisualStyleBackColor = true;
+            this.chkVoz.Values.Text = "Hablar en voz alta";
             // 
             // FrmEnviarSunat
             // 
             this.AcceptButton = this.btnGen;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(457, 628);
+            this.ClientSize = new System.Drawing.Size(479, 628);
             this.Controls.Add(this.chkVoz);
             this.Controls.Add(this.btnGenerar);
             this.Controls.Add(this.cboUrlServicio);
@@ -392,13 +390,16 @@ namespace OpenInvoicePeru.WinApp
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmEnviarSunat";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenInvoicePeru - Prueba de Envio a SUNAT";
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox1.Panel)).EndInit();
+            this.groupBox1.Panel.ResumeLayout(false);
+            this.groupBox1.Panel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.groupBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.cboTipoDoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.cboUrlServicio)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.direccionSunatBindingSource)).EndInit();
@@ -420,9 +421,9 @@ namespace OpenInvoicePeru.WinApp
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtUsuarioSol;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label4;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtClaveSol;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton rbRetenciones;
-        private System.Windows.Forms.RadioButton rbDocumentos;
+        private ComponentFactory.Krypton.Toolkit.KryptonGroupBox groupBox1;
+        private ComponentFactory.Krypton.Toolkit.KryptonRadioButton rbRetenciones;
+        private ComponentFactory.Krypton.Toolkit.KryptonRadioButton rbDocumentos;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label5;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtRutaCertificado;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label6;
@@ -432,12 +433,12 @@ namespace OpenInvoicePeru.WinApp
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label7;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label8;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox txtSerieCorrelativo;
-        private System.Windows.Forms.RadioButton rbResumen;
+        private ComponentFactory.Krypton.Toolkit.KryptonRadioButton rbResumen;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnGetStatus;
         private ComponentFactory.Krypton.Toolkit.KryptonButton btnGenerar;
         private ComponentFactory.Krypton.Toolkit.KryptonLabel label9;
         private ComponentFactory.Krypton.Toolkit.KryptonComboBox cboUrlServicio;
-        private System.Windows.Forms.CheckBox chkVoz;
+        private ComponentFactory.Krypton.Toolkit.KryptonCheckBox chkVoz;
         private System.Windows.Forms.BindingSource direccionSunatBindingSource;
     }
 }
