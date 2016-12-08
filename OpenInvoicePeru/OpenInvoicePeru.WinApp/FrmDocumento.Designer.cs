@@ -54,7 +54,6 @@ namespace OpenInvoicePeru.WinApp
             ComponentFactory.Krypton.Toolkit.KryptonLabel montoAnticipoLabel;
             ComponentFactory.Krypton.Toolkit.KryptonLabel monedaAnticipoLabel;
             ComponentFactory.Krypton.Toolkit.KryptonLabel placaVehiculoLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDocumento));
             this.label1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.cboTipoDocRec = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.receptorBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -272,7 +271,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // totalIgvLabel
             // 
-            totalIgvLabel.Location = new System.Drawing.Point(676, 552);
+            totalIgvLabel.Location = new System.Drawing.Point(660, 552);
             totalIgvLabel.Name = "totalIgvLabel";
             totalIgvLabel.Size = new System.Drawing.Size(63, 20);
             totalIgvLabel.TabIndex = 44;
@@ -280,7 +279,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // totalIscLabel
             // 
-            totalIscLabel.Location = new System.Drawing.Point(676, 578);
+            totalIscLabel.Location = new System.Drawing.Point(660, 578);
             totalIscLabel.Name = "totalIscLabel";
             totalIscLabel.Size = new System.Drawing.Size(61, 20);
             totalIscLabel.TabIndex = 46;
@@ -288,7 +287,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // totalOtrosTributosLabel
             // 
-            totalOtrosTributosLabel.Location = new System.Drawing.Point(676, 604);
+            totalOtrosTributosLabel.Location = new System.Drawing.Point(660, 604);
             totalOtrosTributosLabel.Name = "totalOtrosTributosLabel";
             totalOtrosTributosLabel.Size = new System.Drawing.Size(122, 20);
             totalOtrosTributosLabel.TabIndex = 48;
@@ -296,7 +295,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // totalVentaLabel
             // 
-            totalVentaLabel.Location = new System.Drawing.Point(676, 630);
+            totalVentaLabel.Location = new System.Drawing.Point(660, 630);
             totalVentaLabel.Name = "totalVentaLabel";
             totalVentaLabel.Size = new System.Drawing.Size(75, 20);
             totalVentaLabel.TabIndex = 50;
@@ -304,7 +303,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // calculoIgvLabel
             // 
-            calculoIgvLabel.Location = new System.Drawing.Point(318, 31);
+            calculoIgvLabel.Location = new System.Drawing.Point(313, 31);
             calculoIgvLabel.Name = "calculoIgvLabel";
             calculoIgvLabel.Size = new System.Drawing.Size(76, 20);
             calculoIgvLabel.TabIndex = 2;
@@ -328,7 +327,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // urbanizacionLabel
             // 
-            urbanizacionLabel.Location = new System.Drawing.Point(303, 40);
+            urbanizacionLabel.Location = new System.Drawing.Point(304, 13);
             urbanizacionLabel.Name = "urbanizacionLabel";
             urbanizacionLabel.Size = new System.Drawing.Size(84, 20);
             urbanizacionLabel.TabIndex = 9;
@@ -360,7 +359,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoDocAnticipoLabel
             // 
-            tipoDocAnticipoLabel.Location = new System.Drawing.Point(7, 22);
+            tipoDocAnticipoLabel.Location = new System.Drawing.Point(8, 6);
             tipoDocAnticipoLabel.Name = "tipoDocAnticipoLabel";
             tipoDocAnticipoLabel.Size = new System.Drawing.Size(111, 20);
             tipoDocAnticipoLabel.TabIndex = 0;
@@ -368,7 +367,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // docAnticipoLabel
             // 
-            docAnticipoLabel.Location = new System.Drawing.Point(7, 49);
+            docAnticipoLabel.Location = new System.Drawing.Point(8, 29);
             docAnticipoLabel.Name = "docAnticipoLabel";
             docAnticipoLabel.Size = new System.Drawing.Size(84, 20);
             docAnticipoLabel.TabIndex = 2;
@@ -376,7 +375,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // montoAnticipoLabel
             // 
-            montoAnticipoLabel.Location = new System.Drawing.Point(7, 73);
+            montoAnticipoLabel.Location = new System.Drawing.Point(8, 53);
             montoAnticipoLabel.Name = "montoAnticipoLabel";
             montoAnticipoLabel.Size = new System.Drawing.Size(99, 20);
             montoAnticipoLabel.TabIndex = 4;
@@ -384,7 +383,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // monedaAnticipoLabel
             // 
-            monedaAnticipoLabel.Location = new System.Drawing.Point(7, 97);
+            monedaAnticipoLabel.Location = new System.Drawing.Point(8, 77);
             monedaAnticipoLabel.Name = "monedaAnticipoLabel";
             monedaAnticipoLabel.Size = new System.Drawing.Size(107, 20);
             monedaAnticipoLabel.TabIndex = 6;
@@ -400,7 +399,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // label1
             // 
-            this.label1.Location = new System.Drawing.Point(37, 63);
+            this.label1.Location = new System.Drawing.Point(37, 11);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 20);
             this.label1.TabIndex = 0;
@@ -414,7 +413,7 @@ namespace OpenInvoicePeru.WinApp
             this.cboTipoDocRec.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboTipoDocRec.DropDownWidth = 194;
             this.cboTipoDocRec.FormattingEnabled = true;
-            this.cboTipoDocRec.Location = new System.Drawing.Point(138, 60);
+            this.cboTipoDocRec.Location = new System.Drawing.Point(138, 8);
             this.cboTipoDocRec.Name = "cboTipoDocRec";
             this.cboTipoDocRec.Size = new System.Drawing.Size(194, 21);
             this.cboTipoDocRec.TabIndex = 1;
@@ -430,7 +429,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // label2
             // 
-            this.label2.Location = new System.Drawing.Point(4, 39);
+            this.label2.Location = new System.Drawing.Point(5, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 20);
             this.label2.TabIndex = 0;
@@ -439,7 +438,7 @@ namespace OpenInvoicePeru.WinApp
             // txtNroDocEm
             // 
             this.txtNroDocEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "NroDocumento", true));
-            this.txtNroDocEm.Location = new System.Drawing.Point(200, 37);
+            this.txtNroDocEm.Location = new System.Drawing.Point(201, 10);
             this.txtNroDocEm.Name = "txtNroDocEm";
             this.txtNroDocEm.Size = new System.Drawing.Size(100, 23);
             this.txtNroDocEm.TabIndex = 1;
@@ -455,6 +454,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // grpEmisor.Panel
             // 
+            this.grpEmisor.Panel.Controls.Add(this.txtDptoEm);
             this.grpEmisor.Panel.Controls.Add(this.urbanizacionTextBox);
             this.grpEmisor.Panel.Controls.Add(urbanizacionLabel);
             this.grpEmisor.Panel.Controls.Add(this.label9);
@@ -466,7 +466,6 @@ namespace OpenInvoicePeru.WinApp
             this.grpEmisor.Panel.Controls.Add(this.label2);
             this.grpEmisor.Panel.Controls.Add(this.txtUbigeoEm);
             this.grpEmisor.Panel.Controls.Add(this.txtDistritoEm);
-            this.grpEmisor.Panel.Controls.Add(this.txtDptoEm);
             this.grpEmisor.Panel.Controls.Add(this.txtProvEm);
             this.grpEmisor.Panel.Controls.Add(this.txtDirEm);
             this.grpEmisor.Panel.Controls.Add(this.txtNombreComEm);
@@ -480,14 +479,14 @@ namespace OpenInvoicePeru.WinApp
             // urbanizacionTextBox
             // 
             this.urbanizacionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Urbanizacion", true));
-            this.urbanizacionTextBox.Location = new System.Drawing.Point(390, 37);
+            this.urbanizacionTextBox.Location = new System.Drawing.Point(391, 10);
             this.urbanizacionTextBox.Name = "urbanizacionTextBox";
             this.urbanizacionTextBox.Size = new System.Drawing.Size(100, 23);
             this.urbanizacionTextBox.TabIndex = 10;
             // 
             // label9
             // 
-            this.label9.Location = new System.Drawing.Point(4, 120);
+            this.label9.Location = new System.Drawing.Point(5, 93);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(53, 20);
             this.label9.TabIndex = 6;
@@ -495,7 +494,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // label8
             // 
-            this.label8.Location = new System.Drawing.Point(305, 120);
+            this.label8.Location = new System.Drawing.Point(306, 93);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 20);
             this.label8.TabIndex = 15;
@@ -503,7 +502,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // label7
             // 
-            this.label7.Location = new System.Drawing.Point(305, 66);
+            this.label7.Location = new System.Drawing.Point(306, 39);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(92, 20);
             this.label7.TabIndex = 11;
@@ -511,7 +510,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // label6
             // 
-            this.label6.Location = new System.Drawing.Point(305, 91);
+            this.label6.Location = new System.Drawing.Point(306, 64);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(63, 20);
             this.label6.TabIndex = 13;
@@ -519,7 +518,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // label5
             // 
-            this.label5.Location = new System.Drawing.Point(4, 150);
+            this.label5.Location = new System.Drawing.Point(5, 123);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(64, 20);
             this.label5.TabIndex = 8;
@@ -527,7 +526,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // label3
             // 
-            this.label3.Location = new System.Drawing.Point(4, 65);
+            this.label3.Location = new System.Drawing.Point(5, 38);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(91, 20);
             this.label3.TabIndex = 2;
@@ -536,7 +535,7 @@ namespace OpenInvoicePeru.WinApp
             // txtUbigeoEm
             // 
             this.txtUbigeoEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Ubigeo", true));
-            this.txtUbigeoEm.Location = new System.Drawing.Point(200, 118);
+            this.txtUbigeoEm.Location = new System.Drawing.Point(201, 91);
             this.txtUbigeoEm.Name = "txtUbigeoEm";
             this.txtUbigeoEm.Size = new System.Drawing.Size(100, 23);
             this.txtUbigeoEm.TabIndex = 7;
@@ -544,7 +543,7 @@ namespace OpenInvoicePeru.WinApp
             // txtDistritoEm
             // 
             this.txtDistritoEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Distrito", true));
-            this.txtDistritoEm.Location = new System.Drawing.Point(390, 117);
+            this.txtDistritoEm.Location = new System.Drawing.Point(391, 90);
             this.txtDistritoEm.Name = "txtDistritoEm";
             this.txtDistritoEm.Size = new System.Drawing.Size(100, 23);
             this.txtDistritoEm.TabIndex = 16;
@@ -552,7 +551,7 @@ namespace OpenInvoicePeru.WinApp
             // txtDptoEm
             // 
             this.txtDptoEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Departamento", true));
-            this.txtDptoEm.Location = new System.Drawing.Point(390, 63);
+            this.txtDptoEm.Location = new System.Drawing.Point(391, 36);
             this.txtDptoEm.Name = "txtDptoEm";
             this.txtDptoEm.Size = new System.Drawing.Size(100, 23);
             this.txtDptoEm.TabIndex = 12;
@@ -560,7 +559,7 @@ namespace OpenInvoicePeru.WinApp
             // txtProvEm
             // 
             this.txtProvEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Provincia", true));
-            this.txtProvEm.Location = new System.Drawing.Point(390, 88);
+            this.txtProvEm.Location = new System.Drawing.Point(391, 61);
             this.txtProvEm.Name = "txtProvEm";
             this.txtProvEm.Size = new System.Drawing.Size(100, 23);
             this.txtProvEm.TabIndex = 14;
@@ -568,7 +567,7 @@ namespace OpenInvoicePeru.WinApp
             // txtDirEm
             // 
             this.txtDirEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "Direccion", true));
-            this.txtDirEm.Location = new System.Drawing.Point(109, 147);
+            this.txtDirEm.Location = new System.Drawing.Point(110, 120);
             this.txtDirEm.Name = "txtDirEm";
             this.txtDirEm.Size = new System.Drawing.Size(191, 23);
             this.txtDirEm.TabIndex = 8;
@@ -576,7 +575,7 @@ namespace OpenInvoicePeru.WinApp
             // txtNombreComEm
             // 
             this.txtNombreComEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "NombreComercial", true));
-            this.txtNombreComEm.Location = new System.Drawing.Point(109, 88);
+            this.txtNombreComEm.Location = new System.Drawing.Point(110, 61);
             this.txtNombreComEm.Name = "txtNombreComEm";
             this.txtNombreComEm.Size = new System.Drawing.Size(191, 23);
             this.txtNombreComEm.TabIndex = 5;
@@ -584,14 +583,14 @@ namespace OpenInvoicePeru.WinApp
             // txtNombreLegalEm
             // 
             this.txtNombreLegalEm.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.emisorBindingSource, "NombreLegal", true));
-            this.txtNombreLegalEm.Location = new System.Drawing.Point(109, 63);
+            this.txtNombreLegalEm.Location = new System.Drawing.Point(110, 36);
             this.txtNombreLegalEm.Name = "txtNombreLegalEm";
             this.txtNombreLegalEm.Size = new System.Drawing.Size(191, 23);
             this.txtNombreLegalEm.TabIndex = 3;
             // 
             // label4
             // 
-            this.label4.Location = new System.Drawing.Point(4, 91);
+            this.label4.Location = new System.Drawing.Point(5, 64);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(116, 20);
             this.label4.TabIndex = 4;
@@ -610,13 +609,13 @@ namespace OpenInvoicePeru.WinApp
             this.grpReceptor.Panel.Controls.Add(this.label17);
             this.grpReceptor.Panel.Controls.Add(this.txtNombreLegalRec);
             this.grpReceptor.Panel.Controls.Add(this.txtNroDocRec);
-            this.grpReceptor.Size = new System.Drawing.Size(476, 176);
+            this.grpReceptor.Size = new System.Drawing.Size(452, 176);
             this.grpReceptor.TabIndex = 12;
             this.grpReceptor.Values.Heading = "Datos del Receptor";
             // 
             // label16
             // 
-            this.label16.Location = new System.Drawing.Point(37, 116);
+            this.label16.Location = new System.Drawing.Point(37, 64);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(91, 20);
             this.label16.TabIndex = 4;
@@ -624,7 +623,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // label17
             // 
-            this.label17.Location = new System.Drawing.Point(37, 90);
+            this.label17.Location = new System.Drawing.Point(37, 38);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(64, 20);
             this.label17.TabIndex = 2;
@@ -633,7 +632,7 @@ namespace OpenInvoicePeru.WinApp
             // txtNombreLegalRec
             // 
             this.txtNombreLegalRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "NombreLegal", true));
-            this.txtNombreLegalRec.Location = new System.Drawing.Point(138, 113);
+            this.txtNombreLegalRec.Location = new System.Drawing.Point(138, 61);
             this.txtNombreLegalRec.Name = "txtNombreLegalRec";
             this.txtNombreLegalRec.Size = new System.Drawing.Size(194, 23);
             this.txtNombreLegalRec.TabIndex = 5;
@@ -641,7 +640,7 @@ namespace OpenInvoicePeru.WinApp
             // txtNroDocRec
             // 
             this.txtNroDocRec.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.receptorBindingSource, "NroDocumento", true));
-            this.txtNroDocRec.Location = new System.Drawing.Point(232, 87);
+            this.txtNroDocRec.Location = new System.Drawing.Point(232, 35);
             this.txtNroDocRec.Name = "txtNroDocRec";
             this.txtNroDocRec.Size = new System.Drawing.Size(100, 23);
             this.txtNroDocRec.TabIndex = 3;
@@ -649,7 +648,7 @@ namespace OpenInvoicePeru.WinApp
             // textBox17
             // 
             this.textBox17.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "IdDocumento", true));
-            this.textBox17.Location = new System.Drawing.Point(87, 249);
+            this.textBox17.Location = new System.Drawing.Point(91, 249);
             this.textBox17.Name = "textBox17";
             this.textBox17.Size = new System.Drawing.Size(100, 23);
             this.textBox17.TabIndex = 14;
@@ -678,7 +677,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.dtpFecha.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "FechaEmision", true));
             this.dtpFecha.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFecha.Location = new System.Drawing.Point(87, 281);
+            this.dtpFecha.Location = new System.Drawing.Point(91, 281);
             this.dtpFecha.Name = "dtpFecha";
             this.dtpFecha.Size = new System.Drawing.Size(100, 21);
             this.dtpFecha.TabIndex = 16;
@@ -724,7 +723,7 @@ namespace OpenInvoicePeru.WinApp
             this.cboMoneda.DisplayMember = "Descripcion";
             this.cboMoneda.DropDownWidth = 100;
             this.cboMoneda.FormattingEnabled = true;
-            this.cboMoneda.Location = new System.Drawing.Point(87, 311);
+            this.cboMoneda.Location = new System.Drawing.Point(91, 311);
             this.cboMoneda.Name = "cboMoneda";
             this.cboMoneda.Size = new System.Drawing.Size(100, 21);
             this.cboMoneda.TabIndex = 18;
@@ -868,7 +867,7 @@ namespace OpenInvoicePeru.WinApp
             // gravadasTextBox
             // 
             this.gravadasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "Gravadas", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.gravadasTextBox.Location = new System.Drawing.Point(75, 552);
+            this.gravadasTextBox.Location = new System.Drawing.Point(87, 552);
             this.gravadasTextBox.Name = "gravadasTextBox";
             this.gravadasTextBox.Size = new System.Drawing.Size(100, 23);
             this.gravadasTextBox.TabIndex = 37;
@@ -876,7 +875,7 @@ namespace OpenInvoicePeru.WinApp
             // exoneradasTextBox
             // 
             this.exoneradasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "Exoneradas", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.exoneradasTextBox.Location = new System.Drawing.Point(75, 578);
+            this.exoneradasTextBox.Location = new System.Drawing.Point(87, 578);
             this.exoneradasTextBox.Name = "exoneradasTextBox";
             this.exoneradasTextBox.Size = new System.Drawing.Size(100, 23);
             this.exoneradasTextBox.TabIndex = 39;
@@ -884,7 +883,7 @@ namespace OpenInvoicePeru.WinApp
             // inafectasTextBox
             // 
             this.inafectasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "Inafectas", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.inafectasTextBox.Location = new System.Drawing.Point(75, 604);
+            this.inafectasTextBox.Location = new System.Drawing.Point(87, 604);
             this.inafectasTextBox.Name = "inafectasTextBox";
             this.inafectasTextBox.Size = new System.Drawing.Size(100, 23);
             this.inafectasTextBox.TabIndex = 41;
@@ -892,7 +891,7 @@ namespace OpenInvoicePeru.WinApp
             // gratuitasTextBox
             // 
             this.gratuitasTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "Gratuitas", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.gratuitasTextBox.Location = new System.Drawing.Point(75, 630);
+            this.gratuitasTextBox.Location = new System.Drawing.Point(87, 630);
             this.gratuitasTextBox.Name = "gratuitasTextBox";
             this.gratuitasTextBox.Size = new System.Drawing.Size(100, 23);
             this.gratuitasTextBox.TabIndex = 43;
@@ -949,21 +948,25 @@ namespace OpenInvoicePeru.WinApp
             // 
             // btnAgregar
             // 
+            this.btnAgregar.AutoSize = true;
             this.btnAgregar.BackgroundImage = global::OpenInvoicePeru.WinApp.Properties.Resources.nuevo;
             this.btnAgregar.Location = new System.Drawing.Point(892, 403);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(88, 23);
+            this.btnAgregar.Size = new System.Drawing.Size(88, 24);
             this.btnAgregar.TabIndex = 33;
+            this.btnAgregar.Values.Image = global::OpenInvoicePeru.WinApp.Properties.Resources.nuevo;
             this.btnAgregar.Values.Text = "&Agregar";
             this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
+            this.btnEliminar.AutoSize = true;
             this.btnEliminar.BackgroundImage = global::OpenInvoicePeru.WinApp.Properties.Resources.delete;
             this.btnEliminar.Location = new System.Drawing.Point(892, 456);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(88, 23);
+            this.btnEliminar.Size = new System.Drawing.Size(88, 24);
             this.btnEliminar.TabIndex = 35;
+            this.btnEliminar.Values.Image = global::OpenInvoicePeru.WinApp.Properties.Resources.delete;
             this.btnEliminar.Values.Text = "&Eliminar";
             this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
@@ -1006,18 +1009,20 @@ namespace OpenInvoicePeru.WinApp
             // calculoDetraccionTextBox
             // 
             this.calculoDetraccionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "CalculoDetraccion", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.calculoDetraccionTextBox.Location = new System.Drawing.Point(697, 28);
+            this.calculoDetraccionTextBox.Location = new System.Drawing.Point(703, 28);
             this.calculoDetraccionTextBox.Name = "calculoDetraccionTextBox";
             this.calculoDetraccionTextBox.Size = new System.Drawing.Size(73, 23);
             this.calculoDetraccionTextBox.TabIndex = 7;
             // 
             // btnDuplicar
             // 
+            this.btnDuplicar.AutoSize = true;
             this.btnDuplicar.BackgroundImage = global::OpenInvoicePeru.WinApp.Properties.Resources.iconcopy;
             this.btnDuplicar.Location = new System.Drawing.Point(892, 429);
             this.btnDuplicar.Name = "btnDuplicar";
-            this.btnDuplicar.Size = new System.Drawing.Size(88, 23);
+            this.btnDuplicar.Size = new System.Drawing.Size(88, 24);
             this.btnDuplicar.TabIndex = 34;
+            this.btnDuplicar.Values.Image = global::OpenInvoicePeru.WinApp.Properties.Resources.iconcopy;
             this.btnDuplicar.Values.Text = "&Duplicar";
             this.btnDuplicar.Click += new System.EventHandler(this.btnDuplicar_Click);
             // 
@@ -1224,38 +1229,40 @@ namespace OpenInvoicePeru.WinApp
             // 
             // btnCalcDetraccion
             // 
+            this.btnCalcDetraccion.AutoSize = true;
             this.btnCalcDetraccion.Location = new System.Drawing.Point(615, 312);
             this.btnCalcDetraccion.Name = "btnCalcDetraccion";
-            this.btnCalcDetraccion.Size = new System.Drawing.Size(120, 23);
+            this.btnCalcDetraccion.Size = new System.Drawing.Size(120, 24);
             this.btnCalcDetraccion.TabIndex = 30;
             this.btnCalcDetraccion.Values.Text = "&Calcular Detracción";
             this.btnCalcDetraccion.Click += new System.EventHandler(this.btnCalcDetraccion_Click);
             // 
             // btnGuia
             // 
+            this.btnGuia.AutoSize = true;
             this.btnGuia.Location = new System.Drawing.Point(385, 312);
             this.btnGuia.Name = "btnGuia";
-            this.btnGuia.Size = new System.Drawing.Size(149, 23);
+            this.btnGuia.Size = new System.Drawing.Size(157, 24);
             this.btnGuia.TabIndex = 25;
             this.btnGuia.Values.Text = "G&uia de Rem. Transportista";
             this.btnGuia.Click += new System.EventHandler(this.btnGuia_Click);
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(764, 237);
+            this.groupBox1.Location = new System.Drawing.Point(746, 232);
             this.groupBox1.Name = "groupBox1";
             // 
             // groupBox1.Panel
             // 
-            this.groupBox1.Panel.Controls.Add(monedaAnticipoLabel);
             this.groupBox1.Panel.Controls.Add(this.monedaAnticipoComboBox);
-            this.groupBox1.Panel.Controls.Add(montoAnticipoLabel);
             this.groupBox1.Panel.Controls.Add(this.montoAnticipoTextBox);
-            this.groupBox1.Panel.Controls.Add(docAnticipoLabel);
             this.groupBox1.Panel.Controls.Add(this.docAnticipoTextBox);
-            this.groupBox1.Panel.Controls.Add(tipoDocAnticipoLabel);
             this.groupBox1.Panel.Controls.Add(this.tipoDocAnticipoComboBox);
-            this.groupBox1.Size = new System.Drawing.Size(232, 122);
+            this.groupBox1.Panel.Controls.Add(monedaAnticipoLabel);
+            this.groupBox1.Panel.Controls.Add(montoAnticipoLabel);
+            this.groupBox1.Panel.Controls.Add(docAnticipoLabel);
+            this.groupBox1.Panel.Controls.Add(tipoDocAnticipoLabel);
+            this.groupBox1.Size = new System.Drawing.Size(232, 128);
             this.groupBox1.TabIndex = 31;
             this.groupBox1.Values.Heading = "Regularización de Anticipos";
             // 
@@ -1266,7 +1273,7 @@ namespace OpenInvoicePeru.WinApp
             this.monedaAnticipoComboBox.DisplayMember = "Descripcion";
             this.monedaAnticipoComboBox.DropDownWidth = 100;
             this.monedaAnticipoComboBox.FormattingEnabled = true;
-            this.monedaAnticipoComboBox.Location = new System.Drawing.Point(109, 94);
+            this.monedaAnticipoComboBox.Location = new System.Drawing.Point(116, 74);
             this.monedaAnticipoComboBox.Name = "monedaAnticipoComboBox";
             this.monedaAnticipoComboBox.Size = new System.Drawing.Size(100, 21);
             this.monedaAnticipoComboBox.TabIndex = 7;
@@ -1275,7 +1282,7 @@ namespace OpenInvoicePeru.WinApp
             // montoAnticipoTextBox
             // 
             this.montoAnticipoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "MontoAnticipo", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.montoAnticipoTextBox.Location = new System.Drawing.Point(109, 70);
+            this.montoAnticipoTextBox.Location = new System.Drawing.Point(116, 50);
             this.montoAnticipoTextBox.Name = "montoAnticipoTextBox";
             this.montoAnticipoTextBox.Size = new System.Drawing.Size(100, 23);
             this.montoAnticipoTextBox.TabIndex = 5;
@@ -1283,7 +1290,7 @@ namespace OpenInvoicePeru.WinApp
             // docAnticipoTextBox
             // 
             this.docAnticipoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.documentoElectronicoBindingSource, "DocAnticipo", true));
-            this.docAnticipoTextBox.Location = new System.Drawing.Point(109, 46);
+            this.docAnticipoTextBox.Location = new System.Drawing.Point(116, 26);
             this.docAnticipoTextBox.Name = "docAnticipoTextBox";
             this.docAnticipoTextBox.Size = new System.Drawing.Size(100, 23);
             this.docAnticipoTextBox.TabIndex = 3;
@@ -1296,7 +1303,7 @@ namespace OpenInvoicePeru.WinApp
             this.tipoDocAnticipoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoDocAnticipoComboBox.DropDownWidth = 360;
             this.tipoDocAnticipoComboBox.FormattingEnabled = true;
-            this.tipoDocAnticipoComboBox.Location = new System.Drawing.Point(109, 19);
+            this.tipoDocAnticipoComboBox.Location = new System.Drawing.Point(116, 3);
             this.tipoDocAnticipoComboBox.Name = "tipoDocAnticipoComboBox";
             this.tipoDocAnticipoComboBox.Size = new System.Drawing.Size(100, 21);
             this.tipoDocAnticipoComboBox.TabIndex = 1;
@@ -1319,24 +1326,26 @@ namespace OpenInvoicePeru.WinApp
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(982, 672);
-            this.Controls.Add(placaVehiculoLabel);
+            this.Controls.Add(this.montoDetraccionTextBox);
+            this.Controls.Add(this.montoPercepcionTextBox);
+            this.Controls.Add(this.tipoOperacionComboBox);
+            this.Controls.Add(this.montoEnLetrasTextBox);
             this.Controls.Add(this.placaVehiculoTextBox);
+            this.Controls.Add(this.calculoDetraccionTextBox);
+            this.Controls.Add(this.calculoIscTextBox);
+            this.Controls.Add(this.calculoIgvTextBox);
+            this.Controls.Add(placaVehiculoLabel);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnGuia);
             this.Controls.Add(this.btnCalcDetraccion);
             this.Controls.Add(montoDetraccionLabel);
-            this.Controls.Add(this.montoDetraccionTextBox);
             this.Controls.Add(this.tbPaginas);
             this.Controls.Add(montoPercepcionLabel);
-            this.Controls.Add(this.montoPercepcionTextBox);
             this.Controls.Add(descuentoGlobalLabel);
             this.Controls.Add(this.descuentoGlobalTextBox);
             this.Controls.Add(calculoDetraccionLabel);
-            this.Controls.Add(this.calculoDetraccionTextBox);
             this.Controls.Add(calculoIscLabel);
-            this.Controls.Add(this.calculoIscTextBox);
             this.Controls.Add(calculoIgvLabel);
-            this.Controls.Add(this.calculoIgvTextBox);
             this.Controls.Add(this.toolStrip1);
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnDuplicar);
@@ -1350,7 +1359,6 @@ namespace OpenInvoicePeru.WinApp
             this.Controls.Add(totalIgvLabel);
             this.Controls.Add(this.totalIgvTextBox);
             this.Controls.Add(tipoOperacionLabel);
-            this.Controls.Add(this.tipoOperacionComboBox);
             this.Controls.Add(gratuitasLabel);
             this.Controls.Add(this.gratuitasTextBox);
             this.Controls.Add(inafectasLabel);
@@ -1360,7 +1368,6 @@ namespace OpenInvoicePeru.WinApp
             this.Controls.Add(gravadasLabel);
             this.Controls.Add(this.gravadasTextBox);
             this.Controls.Add(montoEnLetrasLabel);
-            this.Controls.Add(this.montoEnLetrasTextBox);
             this.Controls.Add(this.dtpFecha);
             this.Controls.Add(this.grpReceptor);
             this.Controls.Add(this.cboMoneda);
@@ -1371,14 +1378,10 @@ namespace OpenInvoicePeru.WinApp
             this.Controls.Add(this.textBox17);
             this.Controls.Add(this.label19);
             this.Controls.Add(this.label18);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmDocumento";
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "OpenInvoicePeru - Generación de Documento Electrónico";
             this.Load += new System.EventHandler(this.FrmDocumento_Load);
             ((System.ComponentModel.ISupportInitialize)(this.cboTipoDocRec)).EndInit();

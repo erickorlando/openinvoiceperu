@@ -86,7 +86,7 @@ namespace OpenInvoicePeru.WinApp
             // txtResult
             // 
             this.txtResult.BackColor = System.Drawing.SystemColors.Info;
-            this.txtResult.Location = new System.Drawing.Point(3, 464);
+            this.txtResult.Location = new System.Drawing.Point(3, 441);
             this.txtResult.Multiline = true;
             this.txtResult.Name = "txtResult";
             this.txtResult.ReadOnly = true;
@@ -113,7 +113,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // btnGen
             // 
-            this.btnGen.Location = new System.Drawing.Point(351, 464);
+            this.btnGen.Location = new System.Drawing.Point(348, 441);
             this.btnGen.Name = "btnGen";
             this.btnGen.Size = new System.Drawing.Size(115, 32);
             this.btnGen.TabIndex = 23;
@@ -173,7 +173,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // groupBox1
             // 
-            this.groupBox1.Location = new System.Drawing.Point(173, 46);
+            this.groupBox1.Location = new System.Drawing.Point(173, 44);
             this.groupBox1.Name = "groupBox1";
             // 
             // groupBox1.Panel
@@ -181,13 +181,13 @@ namespace OpenInvoicePeru.WinApp
             this.groupBox1.Panel.Controls.Add(this.rbResumen);
             this.groupBox1.Panel.Controls.Add(this.rbRetenciones);
             this.groupBox1.Panel.Controls.Add(this.rbDocumentos);
-            this.groupBox1.Size = new System.Drawing.Size(288, 104);
+            this.groupBox1.Size = new System.Drawing.Size(288, 111);
             this.groupBox1.TabIndex = 8;
             this.groupBox1.Values.Heading = "Grupo de Documentos";
             // 
             // rbResumen
             // 
-            this.rbResumen.Location = new System.Drawing.Point(28, 57);
+            this.rbResumen.Location = new System.Drawing.Point(28, 68);
             this.rbResumen.Name = "rbResumen";
             this.rbResumen.Size = new System.Drawing.Size(206, 20);
             this.rbResumen.TabIndex = 2;
@@ -195,7 +195,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // rbRetenciones
             // 
-            this.rbRetenciones.Location = new System.Drawing.Point(28, 30);
+            this.rbRetenciones.Location = new System.Drawing.Point(28, 36);
             this.rbRetenciones.Name = "rbRetenciones";
             this.rbRetenciones.Size = new System.Drawing.Size(173, 20);
             this.rbRetenciones.TabIndex = 1;
@@ -204,7 +204,7 @@ namespace OpenInvoicePeru.WinApp
             // rbDocumentos
             // 
             this.rbDocumentos.Checked = true;
-            this.rbDocumentos.Location = new System.Drawing.Point(28, 5);
+            this.rbDocumentos.Location = new System.Drawing.Point(28, 2);
             this.rbDocumentos.Name = "rbDocumentos";
             this.rbDocumentos.Size = new System.Drawing.Size(150, 20);
             this.rbDocumentos.TabIndex = 0;
@@ -240,7 +240,7 @@ namespace OpenInvoicePeru.WinApp
             this.txtPassCertificado.Location = new System.Drawing.Point(3, 298);
             this.txtPassCertificado.Name = "txtPassCertificado";
             this.txtPassCertificado.PasswordChar = '*';
-            this.txtPassCertificado.Size = new System.Drawing.Size(319, 23);
+            this.txtPassCertificado.Size = new System.Drawing.Size(341, 23);
             this.txtPassCertificado.TabIndex = 15;
             // 
             // btnBrowseCert
@@ -296,7 +296,7 @@ namespace OpenInvoicePeru.WinApp
             // btnGetStatus
             // 
             this.btnGetStatus.AutoSize = true;
-            this.btnGetStatus.Location = new System.Drawing.Point(351, 502);
+            this.btnGetStatus.Location = new System.Drawing.Point(348, 479);
             this.btnGetStatus.Name = "btnGetStatus";
             this.btnGetStatus.Size = new System.Drawing.Size(115, 64);
             this.btnGetStatus.TabIndex = 24;
@@ -341,7 +341,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.chkVoz.Checked = true;
             this.chkVoz.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chkVoz.Location = new System.Drawing.Point(350, 572);
+            this.chkVoz.Location = new System.Drawing.Point(347, 549);
             this.chkVoz.Name = "chkVoz";
             this.chkVoz.Size = new System.Drawing.Size(122, 20);
             this.chkVoz.TabIndex = 25;
@@ -378,7 +378,7 @@ namespace OpenInvoicePeru.WinApp
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 0);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(476, 611);
+            this.kryptonPanel1.Size = new System.Drawing.Size(476, 622);
             this.kryptonPanel1.TabIndex = 26;
             // 
             // FrmEnviarSunat
@@ -386,13 +386,14 @@ namespace OpenInvoicePeru.WinApp
             this.AcceptButton = this.btnGen;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(476, 611);
+            this.ClientSize = new System.Drawing.Size(476, 622);
             this.Controls.Add(this.kryptonPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "FrmEnviarSunat";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.ShowInTaskbar = true;
             this.Text = "OpenInvoicePeru - Prueba de Envio a SUNAT";
             ((System.ComponentModel.ISupportInitialize)(this.groupBox1.Panel)).EndInit();
             this.groupBox1.Panel.ResumeLayout(false);
