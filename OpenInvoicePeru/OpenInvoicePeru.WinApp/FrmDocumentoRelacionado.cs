@@ -5,10 +5,8 @@ using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
-    public partial class FrmDocumentoRelacionado : Form
+    public partial class FrmDocumentoRelacionado : PlantillaBase
     {
-        private readonly DocumentoRelacionado _documentoRelacionado;
-
         public FrmDocumentoRelacionado()
         {
             InitializeComponent();
@@ -17,8 +15,7 @@ namespace OpenInvoicePeru.WinApp
         public FrmDocumentoRelacionado(DocumentoRelacionado documentoRelacionado)
         {
             InitializeComponent();
-            _documentoRelacionado = documentoRelacionado;
-            documentoRelacionadoBindingSource.DataSource = _documentoRelacionado;
+            documentoRelacionadoBindingSource.DataSource = documentoRelacionado;
             documentoRelacionadoBindingSource.ResetBindings(false);
 
             Load += (s, e) =>

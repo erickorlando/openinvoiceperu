@@ -1,12 +1,11 @@
 ﻿using System.Linq;
 using System.Windows.Forms;
-using ComponentFactory.Krypton.Toolkit;
 using OpenInvoicePeru.Datos;
 using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
-    public partial class FrmDatosGuia : KryptonForm
+    public partial class FrmDatosGuia : PlantillaBase
     {
         private readonly DatosGuia _datosGuia;
 
