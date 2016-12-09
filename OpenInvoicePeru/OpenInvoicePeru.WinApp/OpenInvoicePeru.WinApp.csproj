@@ -280,9 +280,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="DireccionesSunat.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="openinvoiceperulogo.ico" />
     <None Include="Resources\iconcopy.png" />
     <None Include="Resources\iconxml.png" />
