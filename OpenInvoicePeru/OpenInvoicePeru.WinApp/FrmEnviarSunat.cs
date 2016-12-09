@@ -12,7 +12,7 @@ using OpenInvoicePeru.WinApp.Properties;
 
 namespace OpenInvoicePeru.WinApp
 {
-    public partial class FrmEnviarSunat : Form
+    public partial class FrmEnviarSunat : PlantillaBase
     {
         #region Variables Privadas
         private FrmDocumento _frmDocumento;

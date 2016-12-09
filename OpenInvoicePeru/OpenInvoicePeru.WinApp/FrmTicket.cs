@@ -2,7 +2,7 @@
 
 namespace OpenInvoicePeru.WinApp
 {
-    public partial class FrmTicket : Form
+    public partial class FrmTicket : PlantillaBase
     {
         public FrmTicket()
         {

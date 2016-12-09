@@ -6,7 +6,7 @@ using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
-    public partial class FrmDetalleDocumento : Form
+    public partial class FrmDetalleDocumento : PlantillaBase
     {
         private readonly DetalleDocumento _detalle;
         private readonly DocumentoElectronico _documento;

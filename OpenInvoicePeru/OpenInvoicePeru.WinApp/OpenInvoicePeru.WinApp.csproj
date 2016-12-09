@@ -59,9 +59,33 @@
     <ManifestKeyFile>ErickOrlando.FirmadoSunatWin_TemporaryKey.pfx</ManifestKeyFile>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>code.ico</ApplicationIcon>
+    <ApplicationIcon>openinvoiceperulogo.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ComponentFactory.Krypton.Design, Version=4.4.1.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\KryptonWinFormControls.4.4.1.0\lib\net40\ComponentFactory.Krypton.Design.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Docking, Version=4.4.1.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\KryptonWinFormControls.4.4.1.0\lib\net40\ComponentFactory.Krypton.Docking.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Navigator, Version=4.4.1.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\KryptonWinFormControls.4.4.1.0\lib\net40\ComponentFactory.Krypton.Navigator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Ribbon, Version=4.4.1.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\KryptonWinFormControls.4.4.1.0\lib\net40\ComponentFactory.Krypton.Ribbon.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.4.1.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\KryptonWinFormControls.4.4.1.0\lib\net40\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Workspace, Version=4.4.1.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <HintPath>..\packages\KryptonWinFormControls.4.4.1.0\lib\net40\ComponentFactory.Krypton.Workspace.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
       <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
       <Private>True</Private>
@@ -105,6 +129,7 @@
     </Reference>
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Speech" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
@@ -124,12 +149,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FrmConfiguracion.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FrmConfiguracion.Designer.cs">
-      <DependentUpon>FrmConfiguracion.cs</DependentUpon>
-    </Compile>
     <Compile Include="FrmDatosAdicionales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -178,11 +197,14 @@
     <Compile Include="FrmTicket.Designer.cs">
       <DependentUpon>FrmTicket.cs</DependentUpon>
     </Compile>
+    <Compile Include="PlantillaBase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PlantillaBase.Designer.cs">
+      <DependentUpon>PlantillaBase.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="FrmConfiguracion.resx">
-      <DependentUpon>FrmConfiguracion.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FrmDatosAdicionales.resx">
       <DependentUpon>FrmDatosAdicionales.cs</DependentUpon>
     </EmbeddedResource>
@@ -206,6 +228,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FrmTicket.resx">
       <DependentUpon>FrmTicket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PlantillaBase.resx">
+      <DependentUpon>PlantillaBase.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -255,10 +280,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="code.ico" />
     <Content Include="DireccionesSunat.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="openinvoiceperulogo.ico" />
     <None Include="Resources\iconcopy.png" />
     <None Include="Resources\iconxml.png" />
     <None Include="Resources\delete.png" />

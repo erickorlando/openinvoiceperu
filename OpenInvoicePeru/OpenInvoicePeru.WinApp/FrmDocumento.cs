@@ -9,7 +9,7 @@ using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
-    public partial class FrmDocumento : Form
+    public partial class FrmDocumento : PlantillaBase
     {
         #region Variables Privadas
         private readonly DocumentoElectronico _documento;

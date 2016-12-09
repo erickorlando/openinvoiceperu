@@ -5,7 +5,7 @@ using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
-    public partial class FrmDatosGuia : Form
+    public partial class FrmDatosGuia : PlantillaBase
     {
         private readonly DatosGuia _datosGuia;
 
