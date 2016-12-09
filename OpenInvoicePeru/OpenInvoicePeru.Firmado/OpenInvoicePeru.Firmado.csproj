@@ -91,7 +91,6 @@
     <Compile Include="Estructuras\PostalAddress.cs" />
     <Compile Include="Estructuras\Price.cs" />
     <Compile Include="Estructuras\PricingReference.cs" />
-    <Compile Include="Estructuras\ReceiverParty.cs" />
     <Compile Include="Estructuras\Retention.cs" />
     <Compile Include="Estructuras\SignatoryParty.cs" />
     <Compile Include="Estructuras\SignatureCac.cs" />
@@ -123,12 +122,14 @@
     <Compile Include="Models\DocumentoResumenDetalle.cs" />
     <Compile Include="Models\DocumentoElectronico.cs" />
     <Compile Include="Models\DocumentoRelacionado.cs" />
+    <Compile Include="Models\DocumentoRetencion.cs" />
     <Compile Include="Models\EnviarResumenResponse.cs" />
     <Compile Include="Models\EnvioDocumentoComun.cs" />
     <Compile Include="Models\FirmadoRequest.cs" />
     <Compile Include="Models\FirmadoResponse.cs" />
     <Compile Include="Models\DocumentoResponse.cs" />
     <Compile Include="Models\GrupoResumen.cs" />
+    <Compile Include="Models\ItemRetencion.cs" />
     <Compile Include="Models\RespuestaComun.cs" />
     <Compile Include="Models\ResumenDiario.cs" />
     <Compile Include="Models\EnviarDocumentoRequest.cs" />

@@ -362,7 +362,7 @@ namespace OpenInvoicePeru.Firmado
                             currencyID = documento.Moneda,
                             value = documento.MontoDetraccion
                         },
-                        Percent = documento.CalculoDetraccion *100
+                        Percent = documento.CalculoDetraccion * 100
                     });
             }
 
@@ -374,7 +374,7 @@ namespace OpenInvoicePeru.Firmado
                     {
                         DeliveryAddress = new PostalAddress
                         {
-                            ID =  documento.DatosGuiaTransportista.DireccionDestino.Ubigeo,
+                            ID = documento.DatosGuiaTransportista.DireccionDestino.Ubigeo,
                             StreetName = documento.DatosGuiaTransportista.DireccionDestino.Direccion,
                             CitySubdivisionName = documento.DatosGuiaTransportista.DireccionDestino.Urbanizacion,
                             CityName = documento.DatosGuiaTransportista.DireccionDestino.Departamento,
@@ -387,7 +387,7 @@ namespace OpenInvoicePeru.Firmado
                         },
                         OriginAddress = new PostalAddress
                         {
-                            ID =  documento.DatosGuiaTransportista.DireccionOrigen.Ubigeo,
+                            ID = documento.DatosGuiaTransportista.DireccionOrigen.Ubigeo,
                             StreetName = documento.DatosGuiaTransportista.DireccionOrigen.Direccion,
                             CitySubdivisionName = documento.DatosGuiaTransportista.DireccionOrigen.Urbanizacion,
                             CityName = documento.DatosGuiaTransportista.DireccionOrigen.Departamento,
@@ -1084,7 +1084,7 @@ namespace OpenInvoicePeru.Firmado
                         },
                         PartyName = new PartyName
                         {
-                            Name= comunicacion.Emisor.NombreLegal
+                            Name = comunicacion.Emisor.NombreLegal
                         }
                     },
                     DigitalSignatureAttachment = new DigitalSignatureAttachment
@@ -1108,7 +1108,7 @@ namespace OpenInvoicePeru.Firmado
                     }
                 }
             };
-            
+
             foreach (var baja in comunicacion.Bajas)
             {
                 voidedDocument.VoidedDocumentsLines.Add(new VoidedDocumentsLine
@@ -1118,7 +1118,7 @@ namespace OpenInvoicePeru.Firmado
                     DocumentSerialID = baja.Serie,
                     DocumentNumberID = Convert.ToInt32(baja.Correlativo),
                     VoidReasonDescription = baja.MotivoBaja
-                });    
+                });
             }
 
             return voidedDocument;
@@ -1214,7 +1214,7 @@ namespace OpenInvoicePeru.Firmado
                               value = grupo.Inafectas
                           },
                           InstructionId = "03"
-                      },  
+                      },
                     },
                     AllowanceCharge = new AllowanceCharge
                     {
@@ -1332,6 +1332,162 @@ namespace OpenInvoicePeru.Firmado
             }
 
             return summary;
+        }
+
+        public static Retention GenerarRetention(DocumentoRetencion documento)
+        {
+            var retention = new Retention
+            {
+                Id = documento.IdDocumento,
+                IssueDate = documento.FechaEmision,
+                Signature = new SignatureCac
+                {
+                    ID = documento.IdDocumento,
+                    SignatoryParty = new SignatoryParty
+                    {
+                        PartyIdentification = new PartyIdentification
+                        {
+                            ID = new PartyIdentificationID
+                            {
+                                value = documento.Emisor.NroDocumento
+                            }
+                        },
+                        PartyName = new PartyName
+                        {
+                            Name = documento.Emisor.NombreLegal
+                        }
+                    },
+                    DigitalSignatureAttachment = new DigitalSignatureAttachment
+                    {
+                        ExternalReference = new ExternalReference
+                        {
+                            URI = $"{documento.Emisor.NroDocumento}-{documento.IdDocumento}"
+                        }
+                    }
+                },
+                AgentParty = new AgentParty
+                {
+                    PartyIdentification = new PartyIdentification
+                    {
+                        ID = new PartyIdentificationID
+                        {
+                            schemeID = documento.Emisor.TipoDocumento,
+                            value = documento.Emisor.NroDocumento
+                        }
+                    },
+                    PartyName = new PartyName
+                    {
+                        Name = documento.Emisor.NombreComercial
+                    },
+                    PostalAddress = new PostalAddress
+                    {
+                        ID = documento.Emisor.Ubigeo,
+                        StreetName = documento.Emisor.Direccion,
+                        CitySubdivisionName = documento.Emisor.Urbanizacion,
+                        CountrySubentity = documento.Emisor.Departamento,
+                        CityName = documento.Emisor.Provincia,
+                        District = documento.Emisor.Distrito,
+                        Country = new Country { IdentificationCode = "PE" }
+                    },
+                    PartyLegalEntity = new PartyLegalEntity
+                    {
+                        RegistrationName = documento.Emisor.NombreLegal
+                    }
+                },
+                ReceiverParty = new AgentParty
+                {
+                    PartyIdentification = new PartyIdentification
+                    {
+                        ID = new PartyIdentificationID
+                        {
+                            schemeID = documento.Emisor.TipoDocumento,
+                            value = documento.Emisor.NroDocumento
+                        }
+                    },
+                    PartyName = new PartyName
+                    {
+                        Name = documento.Emisor.NombreComercial
+                    },
+                    PostalAddress = new PostalAddress
+                    {
+                        ID = documento.Emisor.Ubigeo,
+                        StreetName = documento.Emisor.Direccion,
+                        CitySubdivisionName = documento.Emisor.Urbanizacion,
+                        CountrySubentity = documento.Emisor.Departamento,
+                        CityName = documento.Emisor.Provincia,
+                        District = documento.Emisor.Distrito,
+                        Country = new Country { IdentificationCode = "PE" }
+                    },
+                    PartyLegalEntity = new PartyLegalEntity
+                    {
+                        RegistrationName = documento.Emisor.NombreLegal
+                    }
+                },
+                SunatRetentionSystemCode = documento.RegimenRetencion,
+                SunatRetentionPercent = documento.TasaRetencion,
+                Note = documento.Observaciones,
+                TotalInvoiceAmount = new PayableAmount
+                {
+                    currencyID = documento.Moneda,
+                    value = documento.ImporteTotalRetenido
+                },
+                TotalPaid = new PayableAmount
+                {
+                    currencyID = documento.Moneda,
+                    value = documento.ImporteTotalPagado
+                }
+            };
+
+            foreach (var relacionado in documento.DocumentosRelacionados)
+            {
+                retention.SunatRetentionDocumentReference.Add(new SUNATRetentionDocumentReference
+                {
+                    ID = new PartyIdentificationID
+                    {
+                        schemeID = relacionado.TipoDocumento,
+                        value = relacionado.NroDocumento
+                    },
+                    IssueDate = relacionado.FechaEmision,
+                    TotalInvoiceAmount = new PayableAmount
+                    {
+                        currencyID = documento.Moneda,
+                        value = relacionado.ImporteTotal
+                    },
+                    Payment = new Payment
+                    {
+                        IdPayment = relacionado.NumeroPago,
+                        PaidAmount = new PayableAmount
+                        {
+                            currencyID = relacionado.MonedaPago,
+                            value = relacionado.ImporteSinRetencion
+                        },
+                        PaidDate = relacionado.FechaPago
+                    },
+                    SUNATRetentionInformation = new SUNATRetentionInformation
+                    {
+                        SUNATRetentionAmount = new PayableAmount
+                        {
+                            currencyID = documento.Moneda,
+                            value = relacionado.ImporteRetenido
+                        },
+                        SUNATRetentionDate = relacionado.FechaRetencion,
+                        SUNATNetTotalPaid = new PayableAmount
+                        {
+                            currencyID = documento.Moneda,
+                            value = relacionado.ImporteTotalNeto
+                        },
+                        ExchangeRate = new ExchangeRate
+                        {
+                            SourceCurrencyCode = relacionado.MonedaPago,
+                            TargetCurrencyCode = documento.Moneda,
+                            CalculationRate = relacionado.TipoCambio,
+                            Date = relacionado.FechaTipoCambio
+                        }
+                    }
+                });
+            }
+
+            return retention;
         }
     }
 }
