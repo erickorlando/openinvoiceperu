@@ -187,7 +187,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // rbResumen
             // 
-            this.rbResumen.Location = new System.Drawing.Point(28, 68);
+            this.rbResumen.Location = new System.Drawing.Point(28, 58);
             this.rbResumen.Name = "rbResumen";
             this.rbResumen.Size = new System.Drawing.Size(206, 20);
             this.rbResumen.TabIndex = 2;
@@ -195,7 +195,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // rbRetenciones
             // 
-            this.rbRetenciones.Location = new System.Drawing.Point(28, 36);
+            this.rbRetenciones.Location = new System.Drawing.Point(28, 31);
             this.rbRetenciones.Name = "rbRetenciones";
             this.rbRetenciones.Size = new System.Drawing.Size(173, 20);
             this.rbRetenciones.TabIndex = 1;
