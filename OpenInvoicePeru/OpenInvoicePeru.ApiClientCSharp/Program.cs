@@ -11,7 +11,7 @@ namespace OpenInvoicePeru.ApiClientCSharp
         private static readonly string BaseUrl = "http://localhost:50888/OpenInvoicePeru/api";
         private static readonly string UrlSunat = "https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService";
 
-        private const string FormatoFecha = @"yyyy-MM-dd";
+        private const string FormatoFecha = "yyyy-MM-dd";
 
         static void Main()
         {
@@ -439,8 +439,6 @@ namespace OpenInvoicePeru.ApiClientCSharp
                 {
                     throw new ApplicationException(documentoResponse.Data.MensajeError);
                 }
-
-                File.WriteAllBytes("retencion.xml", Convert.FromBase64String(documentoResponse.Data.TramaXmlSinFirma));
 
                 Console.WriteLine("Firmando XML...");
                 // Firmado del Documento.
