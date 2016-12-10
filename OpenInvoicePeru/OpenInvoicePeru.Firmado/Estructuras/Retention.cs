@@ -10,32 +10,32 @@ namespace OpenInvoicePeru.Firmado.Estructuras
     [Serializable]
     public class Retention : IXmlSerializable
     {
-        public string UBLVersionID { get; set; }
-        public string CustomizationID { get; set; }
-        public UBLExtensions UBLExtensions { get; set; }
+        public string UblVersionId { get; set; }
+        public string CustomizationId { get; set; }
+        public UBLExtensions UblExtensions { get; set; }
         public SignatureCac Signature { get; set; }
-        public string ID { get; set; }
+        public string Id { get; set; }
         public string IssueDate { get; set; }
         public AgentParty AgentParty { get; set; }
-        public ReceiverParty ReceiverParty { get; set; }
-        public string SUNATRetentionSystemCode { get; set; }
-        public decimal SUNATRetentionPercent { get; set; }
+        public AgentParty ReceiverParty { get; set; }
+        public string SunatRetentionSystemCode { get; set; }
+        public decimal SunatRetentionPercent { get; set; }
         public string Note { get; set; }
         public PayableAmount TotalInvoiceAmount { get; set; }
         public PayableAmount TotalPaid { get; set; }
-        public List<SUNATRetentionDocumentReference> SUNATRetentionDocumentReference { get; set; }
+        public List<SUNATRetentionDocumentReference> SunatRetentionDocumentReference { get; set; }
         public IFormatProvider Formato { get; set; }
         public Retention()
         {
-            UBLExtensions = new UBLExtensions();
+            UblExtensions = new UBLExtensions();
             AgentParty = new AgentParty();
-            ReceiverParty = new ReceiverParty();
+            ReceiverParty = new AgentParty();
             TotalInvoiceAmount = new PayableAmount();
             TotalPaid = new PayableAmount();
-            SUNATRetentionDocumentReference = new List<SUNATRetentionDocumentReference>();
+            SunatRetentionDocumentReference = new List<SUNATRetentionDocumentReference>();
 
-            UBLVersionID = "2.0";
-            CustomizationID = "1.0";
+            UblVersionId = "2.0";
+            CustomizationId = "1.0";
             Formato = new System.Globalization.CultureInfo("es-PE");
         }
 
@@ -61,8 +61,6 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             writer.WriteAttributeString("xmlns:sac", EspacioNombres.sac);
             writer.WriteAttributeString("xmlns:udt", EspacioNombres.udt);
             writer.WriteAttributeString("xmlns:xsi", EspacioNombres.xsi);
-            //writer.WriteAttributeString("xmlns:schemaLocation", EspacioNombres.schemaLocation);
-
 
             #region UBLExtensions
             {
@@ -86,8 +84,8 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             }
             #endregion
 
-            writer.WriteElementString("cbc:UBLVersionID", UBLVersionID);
-            writer.WriteElementString("cbc:CustomizationID", CustomizationID);
+            writer.WriteElementString("cbc:UBLVersionID", UblVersionId);
+            writer.WriteElementString("cbc:CustomizationID", CustomizationId);
 
             #region Signature
             writer.WriteStartElement("cac:Signature");
@@ -133,7 +131,7 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             writer.WriteEndElement();
             #endregion
 
-            writer.WriteElementString("cbc:ID", ID);
+            writer.WriteElementString("cbc:ID", Id);
             writer.WriteElementString("cbc:IssueDate", IssueDate);
 
             #region AgentParty
@@ -272,8 +270,8 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             }
             #endregion
 
-            writer.WriteElementString("sac:SUNATRetentionSystemCode", SUNATRetentionSystemCode);
-            writer.WriteElementString("sac:SUNATRetentionPercent", SUNATRetentionPercent.ToString(Constantes.Constantes.FormatoNumerico, Formato));
+            writer.WriteElementString("sac:SUNATRetentionSystemCode", SunatRetentionSystemCode);
+            writer.WriteElementString("sac:SUNATRetentionPercent", SunatRetentionPercent.ToString(Constantes.Constantes.FormatoNumerico, Formato));
             if (!string.IsNullOrEmpty(Note))
                 writer.WriteElementString("cbc:Note", Note);
 
@@ -294,7 +292,7 @@ namespace OpenInvoicePeru.Firmado.Estructuras
 
 
             #region SUNATRetentionDocumentReference
-            foreach (var info in SUNATRetentionDocumentReference)
+            foreach (var info in SunatRetentionDocumentReference)
             {
                 writer.WriteStartElement("sac:SUNATRetentionDocumentReference");
 

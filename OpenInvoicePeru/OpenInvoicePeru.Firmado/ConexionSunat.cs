@@ -57,8 +57,7 @@ namespace OpenInvoicePeru.Firmado
             }
             catch (FaultException ex)
             {
-                response = new Tuple<string, bool>(!Retencion
-                    ? ex.Code.Name : ex.Message, false);
+                response = new Tuple<string, bool>(string.Concat(ex.Code.Name, ex.Message), false);
             }
             catch (Exception ex)
             {
@@ -137,7 +136,7 @@ namespace OpenInvoicePeru.Firmado
             }
             catch (FaultException ex)
             {
-                response = new Tuple<string, bool>(ex.Code.Name, false);
+                response = new Tuple<string, bool>(string.Concat(ex.Code.Name, ex.Message), false);
             }
             catch (Exception ex)
             {
