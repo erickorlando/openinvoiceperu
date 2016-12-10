@@ -1450,7 +1450,7 @@ namespace OpenInvoicePeru.Firmado
                     IssueDate = relacionado.FechaEmision,
                     TotalInvoiceAmount = new PayableAmount
                     {
-                        currencyID = documento.Moneda,
+                        currencyID = relacionado.MonedaDocumentoRelacionado,
                         value = relacionado.ImporteTotal
                     },
                     Payment = new Payment
@@ -1458,7 +1458,7 @@ namespace OpenInvoicePeru.Firmado
                         IdPayment = relacionado.NumeroPago,
                         PaidAmount = new PayableAmount
                         {
-                            currencyID = relacionado.MonedaPago,
+                            currencyID = relacionado.MonedaDocumentoRelacionado,
                             value = relacionado.ImporteSinRetencion
                         },
                         PaidDate = relacionado.FechaPago
@@ -1478,7 +1478,7 @@ namespace OpenInvoicePeru.Firmado
                         },
                         ExchangeRate = new ExchangeRate
                         {
-                            SourceCurrencyCode = relacionado.MonedaPago,
+                            SourceCurrencyCode = relacionado.MonedaDocumentoRelacionado,
                             TargetCurrencyCode = documento.Moneda,
                             CalculationRate = relacionado.TipoCambio,
                             Date = relacionado.FechaTipoCambio

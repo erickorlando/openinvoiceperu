@@ -78,6 +78,9 @@
     <Compile Include="..\OpenInvoicePeru.Firmado\models\DocumentoResumenDetalle.cs">
       <Link>Estructuras\DocumentoResumenDetalle.cs</Link>
     </Compile>
+    <Compile Include="..\OpenInvoicePeru.Firmado\Models\DocumentoRetencion.cs">
+      <Link>Estructuras\DocumentoRetencion.cs</Link>
+    </Compile>
     <Compile Include="..\OpenInvoicePeru.Firmado\Models\EnviarDocumentoRequest.cs">
       <Link>Estructuras\EnviarDocumentoRequest.cs</Link>
     </Compile>
@@ -98,6 +101,9 @@
     </Compile>
     <Compile Include="..\OpenInvoicePeru.Firmado\models\GrupoResumen.cs">
       <Link>Estructuras\GrupoResumen.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Firmado\Models\ItemRetencion.cs">
+      <Link>Estructuras\ItemRetencion.cs</Link>
     </Compile>
     <Compile Include="..\OpenInvoicePeru.Firmado\models\RespuestaComun.cs">
       <Link>Estructuras\RespuestaComun.cs</Link>
