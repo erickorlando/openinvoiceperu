@@ -585,7 +585,7 @@ namespace OpenInvoicePeru.Firmado.Estructuras
                 {
                     writer.WriteStartElement("cac:AllowanceCharge");
 
-                    writer.WriteElementString("cbc:ChargeIndicator", invoiceLine.AllowanceCharge.ChargeIndicator.ToString());
+                    writer.WriteElementString("cbc:ChargeIndicator", invoiceLine.AllowanceCharge.ChargeIndicator.ToString().ToLower());
 
                     #region Amount
                     writer.WriteStartElement("cbc:Amount");

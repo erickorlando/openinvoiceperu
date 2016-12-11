@@ -45,7 +45,7 @@ namespace OpenInvoicePeru.WinApp
             ComponentFactory.Krypton.Toolkit.KryptonLabel otroImpuestoLabel;
             ComponentFactory.Krypton.Toolkit.KryptonLabel totalVentaLabel;
             ComponentFactory.Krypton.Toolkit.KryptonLabel tipoPrecioLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetalleDocumento));
+            ComponentFactory.Krypton.Toolkit.KryptonLabel descuentoLabel;
             this.detalleDocumentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.codigoItemTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.descripcionTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -69,6 +69,7 @@ namespace OpenInvoicePeru.WinApp
             this.tipoPrecioBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.idNumericUpDown = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.descuentoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             idLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             codigoItemLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             descripcionLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -82,6 +83,7 @@ namespace OpenInvoicePeru.WinApp
             otroImpuestoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             totalVentaLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             tipoPrecioLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            descuentoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.unidadMedidaComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoComboBox)).BeginInit();
@@ -104,7 +106,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // codigoItemLabel
             // 
-            codigoItemLabel.Location = new System.Drawing.Point(3, 33);
+            codigoItemLabel.Location = new System.Drawing.Point(3, 31);
             codigoItemLabel.Name = "codigoItemLabel";
             codigoItemLabel.Size = new System.Drawing.Size(81, 20);
             codigoItemLabel.TabIndex = 2;
@@ -112,7 +114,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // descripcionLabel
             // 
-            descripcionLabel.Location = new System.Drawing.Point(3, 59);
+            descripcionLabel.Location = new System.Drawing.Point(3, 57);
             descripcionLabel.Name = "descripcionLabel";
             descripcionLabel.Size = new System.Drawing.Size(77, 20);
             descripcionLabel.TabIndex = 4;
@@ -120,7 +122,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // precioUnitarioLabel
             // 
-            precioUnitarioLabel.Location = new System.Drawing.Point(3, 85);
+            precioUnitarioLabel.Location = new System.Drawing.Point(3, 83);
             precioUnitarioLabel.Name = "precioUnitarioLabel";
             precioUnitarioLabel.Size = new System.Drawing.Size(94, 20);
             precioUnitarioLabel.TabIndex = 6;
@@ -128,7 +130,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // precioReferencialLabel
             // 
-            precioReferencialLabel.Location = new System.Drawing.Point(3, 111);
+            precioReferencialLabel.Location = new System.Drawing.Point(4, 109);
             precioReferencialLabel.Name = "precioReferencialLabel";
             precioReferencialLabel.Size = new System.Drawing.Size(110, 20);
             precioReferencialLabel.TabIndex = 8;
@@ -136,7 +138,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // cantidadLabel
             // 
-            cantidadLabel.Location = new System.Drawing.Point(3, 167);
+            cantidadLabel.Location = new System.Drawing.Point(3, 159);
             cantidadLabel.Name = "cantidadLabel";
             cantidadLabel.Size = new System.Drawing.Size(62, 20);
             cantidadLabel.TabIndex = 10;
@@ -144,7 +146,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // unidadMedidaLabel
             // 
-            unidadMedidaLabel.Location = new System.Drawing.Point(3, 193);
+            unidadMedidaLabel.Location = new System.Drawing.Point(4, 183);
             unidadMedidaLabel.Name = "unidadMedidaLabel";
             unidadMedidaLabel.Size = new System.Drawing.Size(97, 20);
             unidadMedidaLabel.TabIndex = 12;
@@ -152,7 +154,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // impuestoLabel
             // 
-            impuestoLabel.Location = new System.Drawing.Point(3, 219);
+            impuestoLabel.Location = new System.Drawing.Point(4, 235);
             impuestoLabel.Name = "impuestoLabel";
             impuestoLabel.Size = new System.Drawing.Size(65, 20);
             impuestoLabel.TabIndex = 14;
@@ -160,7 +162,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoImpuestoLabel
             // 
-            tipoImpuestoLabel.Location = new System.Drawing.Point(3, 245);
+            tipoImpuestoLabel.Location = new System.Drawing.Point(3, 258);
             tipoImpuestoLabel.Name = "tipoImpuestoLabel";
             tipoImpuestoLabel.Size = new System.Drawing.Size(92, 20);
             tipoImpuestoLabel.TabIndex = 16;
@@ -168,7 +170,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // impuestoSelectivoLabel
             // 
-            impuestoSelectivoLabel.Location = new System.Drawing.Point(3, 271);
+            impuestoSelectivoLabel.Location = new System.Drawing.Point(4, 285);
             impuestoSelectivoLabel.Name = "impuestoSelectivoLabel";
             impuestoSelectivoLabel.Size = new System.Drawing.Size(116, 20);
             impuestoSelectivoLabel.TabIndex = 18;
@@ -176,7 +178,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // otroImpuestoLabel
             // 
-            otroImpuestoLabel.Location = new System.Drawing.Point(3, 297);
+            otroImpuestoLabel.Location = new System.Drawing.Point(4, 311);
             otroImpuestoLabel.Name = "otroImpuestoLabel";
             otroImpuestoLabel.Size = new System.Drawing.Size(93, 20);
             otroImpuestoLabel.TabIndex = 20;
@@ -184,7 +186,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // totalVentaLabel
             // 
-            totalVentaLabel.Location = new System.Drawing.Point(3, 323);
+            totalVentaLabel.Location = new System.Drawing.Point(4, 337);
             totalVentaLabel.Name = "totalVentaLabel";
             totalVentaLabel.Size = new System.Drawing.Size(75, 20);
             totalVentaLabel.TabIndex = 22;
@@ -192,7 +194,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoPrecioLabel
             // 
-            tipoPrecioLabel.Location = new System.Drawing.Point(3, 138);
+            tipoPrecioLabel.Location = new System.Drawing.Point(4, 133);
             tipoPrecioLabel.Name = "tipoPrecioLabel";
             tipoPrecioLabel.Size = new System.Drawing.Size(74, 20);
             tipoPrecioLabel.TabIndex = 27;
@@ -205,7 +207,7 @@ namespace OpenInvoicePeru.WinApp
             // codigoItemTextBox
             // 
             this.codigoItemTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "CodigoItem", true));
-            this.codigoItemTextBox.Location = new System.Drawing.Point(120, 30);
+            this.codigoItemTextBox.Location = new System.Drawing.Point(120, 28);
             this.codigoItemTextBox.Name = "codigoItemTextBox";
             this.codigoItemTextBox.Size = new System.Drawing.Size(100, 23);
             this.codigoItemTextBox.TabIndex = 1;
@@ -213,7 +215,7 @@ namespace OpenInvoicePeru.WinApp
             // descripcionTextBox
             // 
             this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Descripcion", true));
-            this.descripcionTextBox.Location = new System.Drawing.Point(120, 56);
+            this.descripcionTextBox.Location = new System.Drawing.Point(120, 54);
             this.descripcionTextBox.Name = "descripcionTextBox";
             this.descripcionTextBox.Size = new System.Drawing.Size(240, 23);
             this.descripcionTextBox.TabIndex = 2;
@@ -221,7 +223,7 @@ namespace OpenInvoicePeru.WinApp
             // precioUnitarioTextBox
             // 
             this.precioUnitarioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "PrecioUnitario", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.precioUnitarioTextBox.Location = new System.Drawing.Point(120, 82);
+            this.precioUnitarioTextBox.Location = new System.Drawing.Point(120, 80);
             this.precioUnitarioTextBox.Name = "precioUnitarioTextBox";
             this.precioUnitarioTextBox.Size = new System.Drawing.Size(100, 23);
             this.precioUnitarioTextBox.TabIndex = 3;
@@ -229,7 +231,7 @@ namespace OpenInvoicePeru.WinApp
             // precioReferencialTextBox
             // 
             this.precioReferencialTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "PrecioReferencial", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.precioReferencialTextBox.Location = new System.Drawing.Point(120, 108);
+            this.precioReferencialTextBox.Location = new System.Drawing.Point(120, 106);
             this.precioReferencialTextBox.Name = "precioReferencialTextBox";
             this.precioReferencialTextBox.Size = new System.Drawing.Size(100, 23);
             this.precioReferencialTextBox.TabIndex = 4;
@@ -237,7 +239,7 @@ namespace OpenInvoicePeru.WinApp
             // cantidadTextBox
             // 
             this.cantidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Cantidad", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.cantidadTextBox.Location = new System.Drawing.Point(120, 164);
+            this.cantidadTextBox.Location = new System.Drawing.Point(120, 156);
             this.cantidadTextBox.Name = "cantidadTextBox";
             this.cantidadTextBox.Size = new System.Drawing.Size(100, 23);
             this.cantidadTextBox.TabIndex = 6;
@@ -252,7 +254,7 @@ namespace OpenInvoicePeru.WinApp
             "KG",
             "ONZ",
             "LTR"});
-            this.unidadMedidaComboBox.Location = new System.Drawing.Point(120, 190);
+            this.unidadMedidaComboBox.Location = new System.Drawing.Point(120, 182);
             this.unidadMedidaComboBox.Name = "unidadMedidaComboBox";
             this.unidadMedidaComboBox.Size = new System.Drawing.Size(100, 21);
             this.unidadMedidaComboBox.TabIndex = 7;
@@ -260,10 +262,10 @@ namespace OpenInvoicePeru.WinApp
             // impuestoTextBox
             // 
             this.impuestoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Impuesto", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.impuestoTextBox.Location = new System.Drawing.Point(120, 216);
+            this.impuestoTextBox.Location = new System.Drawing.Point(120, 232);
             this.impuestoTextBox.Name = "impuestoTextBox";
             this.impuestoTextBox.Size = new System.Drawing.Size(100, 23);
-            this.impuestoTextBox.TabIndex = 8;
+            this.impuestoTextBox.TabIndex = 9;
             // 
             // tipoImpuestoComboBox
             // 
@@ -273,10 +275,10 @@ namespace OpenInvoicePeru.WinApp
             this.tipoImpuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoImpuestoComboBox.DropDownWidth = 240;
             this.tipoImpuestoComboBox.FormattingEnabled = true;
-            this.tipoImpuestoComboBox.Location = new System.Drawing.Point(120, 242);
+            this.tipoImpuestoComboBox.Location = new System.Drawing.Point(120, 258);
             this.tipoImpuestoComboBox.Name = "tipoImpuestoComboBox";
             this.tipoImpuestoComboBox.Size = new System.Drawing.Size(240, 21);
-            this.tipoImpuestoComboBox.TabIndex = 10;
+            this.tipoImpuestoComboBox.TabIndex = 11;
             this.tipoImpuestoComboBox.ValueMember = "Codigo";
             // 
             // tipoImpuestoBindingSource
@@ -286,27 +288,27 @@ namespace OpenInvoicePeru.WinApp
             // impuestoSelectivoTextBox
             // 
             this.impuestoSelectivoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "ImpuestoSelectivo", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.impuestoSelectivoTextBox.Location = new System.Drawing.Point(120, 268);
+            this.impuestoSelectivoTextBox.Location = new System.Drawing.Point(120, 282);
             this.impuestoSelectivoTextBox.Name = "impuestoSelectivoTextBox";
             this.impuestoSelectivoTextBox.Size = new System.Drawing.Size(100, 23);
-            this.impuestoSelectivoTextBox.TabIndex = 11;
+            this.impuestoSelectivoTextBox.TabIndex = 12;
             // 
             // otroImpuestoTextBox
             // 
             this.otroImpuestoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "OtroImpuesto", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.otroImpuestoTextBox.Location = new System.Drawing.Point(120, 294);
+            this.otroImpuestoTextBox.Location = new System.Drawing.Point(120, 308);
             this.otroImpuestoTextBox.Name = "otroImpuestoTextBox";
             this.otroImpuestoTextBox.Size = new System.Drawing.Size(100, 23);
-            this.otroImpuestoTextBox.TabIndex = 13;
+            this.otroImpuestoTextBox.TabIndex = 14;
             // 
             // totalVentaTextBox
             // 
             this.totalVentaTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.totalVentaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "TotalVenta", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.totalVentaTextBox.Location = new System.Drawing.Point(120, 320);
+            this.totalVentaTextBox.Location = new System.Drawing.Point(120, 334);
             this.totalVentaTextBox.Name = "totalVentaTextBox";
             this.totalVentaTextBox.Size = new System.Drawing.Size(100, 23);
-            this.totalVentaTextBox.TabIndex = 14;
+            this.totalVentaTextBox.TabIndex = 15;
             // 
             // barraBotones
             // 
@@ -346,20 +348,20 @@ namespace OpenInvoicePeru.WinApp
             // btnCalcIgv
             // 
             this.btnCalcIgv.AutoSize = true;
-            this.btnCalcIgv.Location = new System.Drawing.Point(235, 214);
+            this.btnCalcIgv.Location = new System.Drawing.Point(235, 231);
             this.btnCalcIgv.Name = "btnCalcIgv";
             this.btnCalcIgv.Size = new System.Drawing.Size(125, 24);
-            this.btnCalcIgv.TabIndex = 9;
+            this.btnCalcIgv.TabIndex = 10;
             this.btnCalcIgv.Values.Text = "C&alcular IGV";
             this.btnCalcIgv.Click += new System.EventHandler(this.btnCalcIgv_Click);
             // 
             // btnCalcIsc
             // 
             this.btnCalcIsc.AutoSize = true;
-            this.btnCalcIsc.Location = new System.Drawing.Point(235, 266);
+            this.btnCalcIsc.Location = new System.Drawing.Point(235, 281);
             this.btnCalcIsc.Name = "btnCalcIsc";
             this.btnCalcIsc.Size = new System.Drawing.Size(125, 24);
-            this.btnCalcIsc.TabIndex = 12;
+            this.btnCalcIsc.TabIndex = 13;
             this.btnCalcIsc.Values.Text = "Ca&lcular ISC";
             this.btnCalcIsc.Click += new System.EventHandler(this.btnCalcIsc_Click);
             // 
@@ -371,7 +373,7 @@ namespace OpenInvoicePeru.WinApp
             this.tipoPrecioComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.tipoPrecioComboBox.DropDownWidth = 240;
             this.tipoPrecioComboBox.FormattingEnabled = true;
-            this.tipoPrecioComboBox.Location = new System.Drawing.Point(120, 135);
+            this.tipoPrecioComboBox.Location = new System.Drawing.Point(120, 132);
             this.tipoPrecioComboBox.Name = "tipoPrecioComboBox";
             this.tipoPrecioComboBox.Size = new System.Drawing.Size(240, 21);
             this.tipoPrecioComboBox.TabIndex = 5;
@@ -384,37 +386,39 @@ namespace OpenInvoicePeru.WinApp
             // kryptonPanel1
             // 
             this.kryptonPanel1.Controls.Add(this.idNumericUpDown);
-            this.kryptonPanel1.Controls.Add(idLabel);
-            this.kryptonPanel1.Controls.Add(tipoPrecioLabel);
             this.kryptonPanel1.Controls.Add(this.tipoPrecioComboBox);
             this.kryptonPanel1.Controls.Add(this.codigoItemTextBox);
+            this.kryptonPanel1.Controls.Add(this.descripcionTextBox);
+            this.kryptonPanel1.Controls.Add(this.precioUnitarioTextBox);
+            this.kryptonPanel1.Controls.Add(this.totalVentaTextBox);
+            this.kryptonPanel1.Controls.Add(this.precioReferencialTextBox);
+            this.kryptonPanel1.Controls.Add(this.otroImpuestoTextBox);
+            this.kryptonPanel1.Controls.Add(this.cantidadTextBox);
+            this.kryptonPanel1.Controls.Add(this.impuestoSelectivoTextBox);
+            this.kryptonPanel1.Controls.Add(this.unidadMedidaComboBox);
+            this.kryptonPanel1.Controls.Add(this.tipoImpuestoComboBox);
+            this.kryptonPanel1.Controls.Add(this.descuentoTextBox);
+            this.kryptonPanel1.Controls.Add(this.impuestoTextBox);
+            this.kryptonPanel1.Controls.Add(idLabel);
+            this.kryptonPanel1.Controls.Add(tipoPrecioLabel);
             this.kryptonPanel1.Controls.Add(this.btnCalcIsc);
             this.kryptonPanel1.Controls.Add(codigoItemLabel);
             this.kryptonPanel1.Controls.Add(this.btnCalcIgv);
-            this.kryptonPanel1.Controls.Add(this.descripcionTextBox);
             this.kryptonPanel1.Controls.Add(descripcionLabel);
             this.kryptonPanel1.Controls.Add(totalVentaLabel);
-            this.kryptonPanel1.Controls.Add(this.precioUnitarioTextBox);
-            this.kryptonPanel1.Controls.Add(this.totalVentaTextBox);
             this.kryptonPanel1.Controls.Add(precioUnitarioLabel);
             this.kryptonPanel1.Controls.Add(otroImpuestoLabel);
-            this.kryptonPanel1.Controls.Add(this.precioReferencialTextBox);
-            this.kryptonPanel1.Controls.Add(this.otroImpuestoTextBox);
             this.kryptonPanel1.Controls.Add(precioReferencialLabel);
             this.kryptonPanel1.Controls.Add(impuestoSelectivoLabel);
-            this.kryptonPanel1.Controls.Add(this.cantidadTextBox);
-            this.kryptonPanel1.Controls.Add(this.impuestoSelectivoTextBox);
             this.kryptonPanel1.Controls.Add(cantidadLabel);
             this.kryptonPanel1.Controls.Add(tipoImpuestoLabel);
-            this.kryptonPanel1.Controls.Add(this.unidadMedidaComboBox);
-            this.kryptonPanel1.Controls.Add(this.tipoImpuestoComboBox);
             this.kryptonPanel1.Controls.Add(unidadMedidaLabel);
+            this.kryptonPanel1.Controls.Add(descuentoLabel);
             this.kryptonPanel1.Controls.Add(impuestoLabel);
-            this.kryptonPanel1.Controls.Add(this.impuestoTextBox);
             this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.kryptonPanel1.Location = new System.Drawing.Point(0, 25);
             this.kryptonPanel1.Name = "kryptonPanel1";
-            this.kryptonPanel1.Size = new System.Drawing.Size(374, 351);
+            this.kryptonPanel1.Size = new System.Drawing.Size(374, 368);
             this.kryptonPanel1.TabIndex = 0;
             // 
             // idNumericUpDown
@@ -425,20 +429,33 @@ namespace OpenInvoicePeru.WinApp
             this.idNumericUpDown.Size = new System.Drawing.Size(100, 22);
             this.idNumericUpDown.TabIndex = 0;
             // 
+            // descuentoTextBox
+            // 
+            this.descuentoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Descuento", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "N2"));
+            this.descuentoTextBox.Location = new System.Drawing.Point(120, 206);
+            this.descuentoTextBox.Name = "descuentoTextBox";
+            this.descuentoTextBox.Size = new System.Drawing.Size(100, 23);
+            this.descuentoTextBox.TabIndex = 8;
+            // 
+            // descuentoLabel
+            // 
+            descuentoLabel.Location = new System.Drawing.Point(4, 209);
+            descuentoLabel.Name = "descuentoLabel";
+            descuentoLabel.Size = new System.Drawing.Size(71, 20);
+            descuentoLabel.TabIndex = 14;
+            descuentoLabel.Values.Text = "Descuento:";
+            // 
             // FrmDetalleDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(374, 376);
+            this.ClientSize = new System.Drawing.Size(374, 393);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.barraBotones);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmDetalleDocumento";
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle del Documento";
             ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.unidadMedidaComboBox)).EndInit();
@@ -482,5 +499,6 @@ namespace OpenInvoicePeru.WinApp
         private System.Windows.Forms.BindingSource tipoPrecioBindingSource;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown idNumericUpDown;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox descuentoTextBox;
     }
 }

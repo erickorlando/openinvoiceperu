@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using OpenInvoicePeru.Firmado.Estructuras;
 using OpenInvoicePeru.Firmado.Models;
 
@@ -286,7 +287,8 @@ namespace OpenInvoicePeru.Firmado
                             Value = "Articulos gratuitos"
                         });
             }
-            if (documento.DescuentoGlobal > 0)
+            var dctosPorItem = documento.Items.Sum(d => d.Descuento);
+            if (documento.DescuentoGlobal > 0 || dctosPorItem > 0)
             {
                 invoice.UblExtensions.Extension2.ExtensionContent
                     .AdditionalInformation.AdditionalMonetaryTotals.Add(new AdditionalMonetaryTotal
@@ -295,7 +297,7 @@ namespace OpenInvoicePeru.Firmado
                         PayableAmount = new PayableAmount
                         {
                             currencyID = documento.Moneda,
-                            value = documento.DescuentoGlobal
+                            value = documento.DescuentoGlobal + dctosPorItem
                         }
                     });
             }
