@@ -439,7 +439,7 @@ namespace OpenInvoicePeru.Firmado
             {
                 var linea = new InvoiceLine
                 {
-                    ID = detalleDocumento.Id,
+                    Id = detalleDocumento.Id,
                     InvoicedQuantity = new InvoicedQuantity
                     {
                         unitCode = detalleDocumento.UnidadMedida,
@@ -550,6 +550,17 @@ namespace OpenInvoicePeru.Firmado
                         },
                         PriceTypeCode = "02"
                     });
+
+                /* 51 - Descuentos por ítem */
+                if (detalleDocumento.Descuento > 0)
+                {
+                    linea.AllowanceCharge.ChargeIndicator = false;
+                    linea.AllowanceCharge.Amount = new PayableAmount
+                    {
+                        currencyID = documento.Moneda,
+                        value = detalleDocumento.Descuento
+                    };
+                }
 
                 invoice.InvoiceLines.Add(linea);
             }
@@ -744,7 +755,7 @@ namespace OpenInvoicePeru.Firmado
             {
                 var linea = new InvoiceLine
                 {
-                    ID = detalleDocumento.Id,
+                    Id = detalleDocumento.Id,
                     CreditedQuantity = new InvoicedQuantity
                     {
                         unitCode = detalleDocumento.UnidadMedida,
@@ -996,7 +1007,7 @@ namespace OpenInvoicePeru.Firmado
             {
                 var linea = new InvoiceLine
                 {
-                    ID = detalleDocumento.Id,
+                    Id = detalleDocumento.Id,
                     DebitedQuantity = new InvoicedQuantity
                     {
                         unitCode = detalleDocumento.UnidadMedida,
