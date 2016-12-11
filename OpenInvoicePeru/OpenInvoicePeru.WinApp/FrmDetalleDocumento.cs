@@ -52,7 +52,7 @@ namespace OpenInvoicePeru.WinApp
             if (!_detalle.TipoImpuesto.StartsWith("1"))
             {
                 _detalle.Suma = _detalle.PrecioUnitario * _detalle.Cantidad;
-                _detalle.TotalVenta = _detalle.Suma;
+                _detalle.TotalVenta = _detalle.Suma - _detalle.Descuento;
             }
             else
             {
@@ -67,7 +67,7 @@ namespace OpenInvoicePeru.WinApp
         {
             _detalle.Suma = _detalle.PrecioUnitario * _detalle.Cantidad;
             _detalle.Impuesto = _detalle.Suma * _documento.CalculoIgv;
-            _detalle.TotalVenta = _detalle.Suma ;
+            _detalle.TotalVenta = _detalle.Suma - _detalle.Descuento;
 
             detalleDocumentoBindingSource.ResetBindings(false);
         }

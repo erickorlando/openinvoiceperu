@@ -406,7 +406,7 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             {
                 writer.WriteStartElement("cac:DebitNoteLine");
 
-                writer.WriteElementString("cbc:ID", line.ID.ToString());
+                writer.WriteElementString("cbc:ID", line.Id.ToString());
 
                 #region DebitedQuantity
                 writer.WriteStartElement("cbc:DebitedQuantity");

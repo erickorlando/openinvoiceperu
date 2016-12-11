@@ -54,6 +54,14 @@ namespace OpenInvoicePeru.WinApp
             ComponentFactory.Krypton.Toolkit.KryptonLabel montoAnticipoLabel;
             ComponentFactory.Krypton.Toolkit.KryptonLabel monedaAnticipoLabel;
             ComponentFactory.Krypton.Toolkit.KryptonLabel placaVehiculoLabel;
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.label1 = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             this.cboTipoDocRec = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.receptorBindingSource = new System.Windows.Forms.BindingSource(this.components);
@@ -94,19 +102,6 @@ namespace OpenInvoicePeru.WinApp
             this.cboMoneda = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.monedaBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dgvDetalle = new ComponentFactory.Krypton.Toolkit.KryptonDataGridView();
-            this.idDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.codigoItemDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.descripcionDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.cantidadDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.unidadMedidaDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.precioUnitarioDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.precioReferencialDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.tipoPrecioDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.impuestoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.tipoImpuestoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.impuestoSelectivoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.otroImpuestoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
-            this.totalVentaDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             this.detallesBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.montoEnLetrasTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.gravadasTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -159,6 +154,20 @@ namespace OpenInvoicePeru.WinApp
             this.placaVehiculoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.idDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.codigoItemDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.descripcionDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.cantidadDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.unidadMedidaDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.precioUnitarioDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.precioReferencialDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.tipoPrecioDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.Descuento = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.impuestoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.tipoImpuestoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.impuestoSelectivoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.otroImpuestoDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
+            this.totalVentaDataGridViewTextBoxColumn = new ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn();
             montoEnLetrasLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             gravadasLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             exoneradasLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
@@ -752,6 +761,7 @@ namespace OpenInvoicePeru.WinApp
             this.precioUnitarioDataGridViewTextBoxColumn,
             this.precioReferencialDataGridViewTextBoxColumn,
             this.tipoPrecioDataGridViewTextBoxColumn,
+            this.Descuento,
             this.impuestoDataGridViewTextBoxColumn,
             this.tipoImpuestoDataGridViewTextBoxColumn,
             this.impuestoSelectivoDataGridViewTextBoxColumn,
@@ -764,97 +774,6 @@ namespace OpenInvoicePeru.WinApp
             this.dgvDetalle.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvDetalle.Size = new System.Drawing.Size(868, 156);
             this.dgvDetalle.TabIndex = 25;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.Width = 46;
-            // 
-            // codigoItemDataGridViewTextBoxColumn
-            // 
-            this.codigoItemDataGridViewTextBoxColumn.DataPropertyName = "CodigoItem";
-            this.codigoItemDataGridViewTextBoxColumn.HeaderText = "Codigo Item";
-            this.codigoItemDataGridViewTextBoxColumn.Name = "codigoItemDataGridViewTextBoxColumn";
-            this.codigoItemDataGridViewTextBoxColumn.Width = 102;
-            // 
-            // descripcionDataGridViewTextBoxColumn
-            // 
-            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
-            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
-            this.descripcionDataGridViewTextBoxColumn.Width = 98;
-            // 
-            // cantidadDataGridViewTextBoxColumn
-            // 
-            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad";
-            this.cantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad";
-            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
-            this.cantidadDataGridViewTextBoxColumn.Width = 84;
-            // 
-            // unidadMedidaDataGridViewTextBoxColumn
-            // 
-            this.unidadMedidaDataGridViewTextBoxColumn.DataPropertyName = "UnidadMedida";
-            this.unidadMedidaDataGridViewTextBoxColumn.HeaderText = "Unidad Medida";
-            this.unidadMedidaDataGridViewTextBoxColumn.Name = "unidadMedidaDataGridViewTextBoxColumn";
-            this.unidadMedidaDataGridViewTextBoxColumn.Width = 117;
-            // 
-            // precioUnitarioDataGridViewTextBoxColumn
-            // 
-            this.precioUnitarioDataGridViewTextBoxColumn.DataPropertyName = "PrecioUnitario";
-            this.precioUnitarioDataGridViewTextBoxColumn.HeaderText = "Precio Unitario";
-            this.precioUnitarioDataGridViewTextBoxColumn.Name = "precioUnitarioDataGridViewTextBoxColumn";
-            this.precioUnitarioDataGridViewTextBoxColumn.Width = 114;
-            // 
-            // precioReferencialDataGridViewTextBoxColumn
-            // 
-            this.precioReferencialDataGridViewTextBoxColumn.DataPropertyName = "PrecioReferencial";
-            this.precioReferencialDataGridViewTextBoxColumn.HeaderText = "Precio Referencial";
-            this.precioReferencialDataGridViewTextBoxColumn.Name = "precioReferencialDataGridViewTextBoxColumn";
-            this.precioReferencialDataGridViewTextBoxColumn.Width = 130;
-            // 
-            // tipoPrecioDataGridViewTextBoxColumn
-            // 
-            this.tipoPrecioDataGridViewTextBoxColumn.DataPropertyName = "TipoPrecio";
-            this.tipoPrecioDataGridViewTextBoxColumn.HeaderText = "Tipo Precio";
-            this.tipoPrecioDataGridViewTextBoxColumn.Name = "tipoPrecioDataGridViewTextBoxColumn";
-            this.tipoPrecioDataGridViewTextBoxColumn.Width = 96;
-            // 
-            // impuestoDataGridViewTextBoxColumn
-            // 
-            this.impuestoDataGridViewTextBoxColumn.DataPropertyName = "Impuesto";
-            this.impuestoDataGridViewTextBoxColumn.HeaderText = "Impuesto";
-            this.impuestoDataGridViewTextBoxColumn.Name = "impuestoDataGridViewTextBoxColumn";
-            this.impuestoDataGridViewTextBoxColumn.Width = 86;
-            // 
-            // tipoImpuestoDataGridViewTextBoxColumn
-            // 
-            this.tipoImpuestoDataGridViewTextBoxColumn.DataPropertyName = "TipoImpuesto";
-            this.tipoImpuestoDataGridViewTextBoxColumn.HeaderText = "Tipo Impuesto";
-            this.tipoImpuestoDataGridViewTextBoxColumn.Name = "tipoImpuestoDataGridViewTextBoxColumn";
-            this.tipoImpuestoDataGridViewTextBoxColumn.Width = 113;
-            // 
-            // impuestoSelectivoDataGridViewTextBoxColumn
-            // 
-            this.impuestoSelectivoDataGridViewTextBoxColumn.DataPropertyName = "ImpuestoSelectivo";
-            this.impuestoSelectivoDataGridViewTextBoxColumn.HeaderText = "Impuesto Selectivo";
-            this.impuestoSelectivoDataGridViewTextBoxColumn.Name = "impuestoSelectivoDataGridViewTextBoxColumn";
-            this.impuestoSelectivoDataGridViewTextBoxColumn.Width = 136;
-            // 
-            // otroImpuestoDataGridViewTextBoxColumn
-            // 
-            this.otroImpuestoDataGridViewTextBoxColumn.DataPropertyName = "OtroImpuesto";
-            this.otroImpuestoDataGridViewTextBoxColumn.HeaderText = "Otro Impuesto";
-            this.otroImpuestoDataGridViewTextBoxColumn.Name = "otroImpuestoDataGridViewTextBoxColumn";
-            this.otroImpuestoDataGridViewTextBoxColumn.Width = 113;
-            // 
-            // totalVentaDataGridViewTextBoxColumn
-            // 
-            this.totalVentaDataGridViewTextBoxColumn.DataPropertyName = "TotalVenta";
-            this.totalVentaDataGridViewTextBoxColumn.HeaderText = "Total Venta";
-            this.totalVentaDataGridViewTextBoxColumn.Name = "totalVentaDataGridViewTextBoxColumn";
-            this.totalVentaDataGridViewTextBoxColumn.Width = 94;
             // 
             // detallesBindingSource
             // 
@@ -1077,7 +996,7 @@ namespace OpenInvoicePeru.WinApp
             this.tpAdicionales.Location = new System.Drawing.Point(4, 22);
             this.tpAdicionales.Name = "tpAdicionales";
             this.tpAdicionales.Padding = new System.Windows.Forms.Padding(3);
-            this.tpAdicionales.Size = new System.Drawing.Size(874, 180);
+            this.tpAdicionales.Size = new System.Drawing.Size(874, 162);
             this.tpAdicionales.TabIndex = 1;
             this.tpAdicionales.Text = "Datos Adicionales";
             this.tpAdicionales.UseVisualStyleBackColor = true;
@@ -1125,7 +1044,7 @@ namespace OpenInvoicePeru.WinApp
             this.tpRelacionados.Location = new System.Drawing.Point(4, 22);
             this.tpRelacionados.Name = "tpRelacionados";
             this.tpRelacionados.Padding = new System.Windows.Forms.Padding(3);
-            this.tpRelacionados.Size = new System.Drawing.Size(874, 180);
+            this.tpRelacionados.Size = new System.Drawing.Size(874, 162);
             this.tpRelacionados.TabIndex = 2;
             this.tpRelacionados.Text = "Documentos Relacionados";
             this.tpRelacionados.UseVisualStyleBackColor = true;
@@ -1145,7 +1064,7 @@ namespace OpenInvoicePeru.WinApp
             this.relacionadosDataGridView.Location = new System.Drawing.Point(3, 3);
             this.relacionadosDataGridView.Name = "relacionadosDataGridView";
             this.relacionadosDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.relacionadosDataGridView.Size = new System.Drawing.Size(868, 174);
+            this.relacionadosDataGridView.Size = new System.Drawing.Size(868, 156);
             this.relacionadosDataGridView.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn4
@@ -1175,7 +1094,7 @@ namespace OpenInvoicePeru.WinApp
             this.tbDiscrepancias.Location = new System.Drawing.Point(4, 22);
             this.tbDiscrepancias.Name = "tbDiscrepancias";
             this.tbDiscrepancias.Padding = new System.Windows.Forms.Padding(3);
-            this.tbDiscrepancias.Size = new System.Drawing.Size(874, 180);
+            this.tbDiscrepancias.Size = new System.Drawing.Size(874, 162);
             this.tbDiscrepancias.TabIndex = 3;
             this.tbDiscrepancias.Text = "Discrepancias";
             this.tbDiscrepancias.UseVisualStyleBackColor = true;
@@ -1195,7 +1114,7 @@ namespace OpenInvoicePeru.WinApp
             this.discrepanciasDataGridView.Location = new System.Drawing.Point(3, 3);
             this.discrepanciasDataGridView.Name = "discrepanciasDataGridView";
             this.discrepanciasDataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.discrepanciasDataGridView.Size = new System.Drawing.Size(868, 174);
+            this.discrepanciasDataGridView.Size = new System.Drawing.Size(868, 156);
             this.discrepanciasDataGridView.TabIndex = 0;
             // 
             // dataGridViewTextBoxColumn5
@@ -1390,6 +1309,129 @@ namespace OpenInvoicePeru.WinApp
             this.errorProvider1.ContainerControl = this;
             this.errorProvider1.DataSource = this.documentoElectronicoBindingSource;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "Id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "Id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.Width = 46;
+            // 
+            // codigoItemDataGridViewTextBoxColumn
+            // 
+            this.codigoItemDataGridViewTextBoxColumn.DataPropertyName = "CodigoItem";
+            this.codigoItemDataGridViewTextBoxColumn.HeaderText = "Codigo Item";
+            this.codigoItemDataGridViewTextBoxColumn.Name = "codigoItemDataGridViewTextBoxColumn";
+            this.codigoItemDataGridViewTextBoxColumn.Width = 102;
+            // 
+            // descripcionDataGridViewTextBoxColumn
+            // 
+            this.descripcionDataGridViewTextBoxColumn.DataPropertyName = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.HeaderText = "Descripcion";
+            this.descripcionDataGridViewTextBoxColumn.Name = "descripcionDataGridViewTextBoxColumn";
+            this.descripcionDataGridViewTextBoxColumn.Width = 98;
+            // 
+            // cantidadDataGridViewTextBoxColumn
+            // 
+            this.cantidadDataGridViewTextBoxColumn.DataPropertyName = "Cantidad";
+            dataGridViewCellStyle1.Format = "N2";
+            dataGridViewCellStyle1.NullValue = null;
+            this.cantidadDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle1;
+            this.cantidadDataGridViewTextBoxColumn.HeaderText = "Cantidad";
+            this.cantidadDataGridViewTextBoxColumn.Name = "cantidadDataGridViewTextBoxColumn";
+            this.cantidadDataGridViewTextBoxColumn.Width = 84;
+            // 
+            // unidadMedidaDataGridViewTextBoxColumn
+            // 
+            this.unidadMedidaDataGridViewTextBoxColumn.DataPropertyName = "UnidadMedida";
+            this.unidadMedidaDataGridViewTextBoxColumn.HeaderText = "Unidad Medida";
+            this.unidadMedidaDataGridViewTextBoxColumn.Name = "unidadMedidaDataGridViewTextBoxColumn";
+            this.unidadMedidaDataGridViewTextBoxColumn.Width = 117;
+            // 
+            // precioUnitarioDataGridViewTextBoxColumn
+            // 
+            this.precioUnitarioDataGridViewTextBoxColumn.DataPropertyName = "PrecioUnitario";
+            dataGridViewCellStyle2.Format = "N2";
+            dataGridViewCellStyle2.NullValue = null;
+            this.precioUnitarioDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle2;
+            this.precioUnitarioDataGridViewTextBoxColumn.HeaderText = "Precio Unitario";
+            this.precioUnitarioDataGridViewTextBoxColumn.Name = "precioUnitarioDataGridViewTextBoxColumn";
+            this.precioUnitarioDataGridViewTextBoxColumn.Width = 114;
+            // 
+            // precioReferencialDataGridViewTextBoxColumn
+            // 
+            this.precioReferencialDataGridViewTextBoxColumn.DataPropertyName = "PrecioReferencial";
+            dataGridViewCellStyle3.Format = "N2";
+            dataGridViewCellStyle3.NullValue = null;
+            this.precioReferencialDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle3;
+            this.precioReferencialDataGridViewTextBoxColumn.HeaderText = "Precio Referencial";
+            this.precioReferencialDataGridViewTextBoxColumn.Name = "precioReferencialDataGridViewTextBoxColumn";
+            this.precioReferencialDataGridViewTextBoxColumn.Width = 130;
+            // 
+            // tipoPrecioDataGridViewTextBoxColumn
+            // 
+            this.tipoPrecioDataGridViewTextBoxColumn.DataPropertyName = "TipoPrecio";
+            this.tipoPrecioDataGridViewTextBoxColumn.HeaderText = "Tipo Precio";
+            this.tipoPrecioDataGridViewTextBoxColumn.Name = "tipoPrecioDataGridViewTextBoxColumn";
+            this.tipoPrecioDataGridViewTextBoxColumn.Width = 96;
+            // 
+            // Descuento
+            // 
+            this.Descuento.DataPropertyName = "Descuento";
+            dataGridViewCellStyle4.Format = "N2";
+            dataGridViewCellStyle4.NullValue = null;
+            this.Descuento.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Descuento.HeaderText = "Descuento";
+            this.Descuento.Name = "Descuento";
+            this.Descuento.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Descuento.Width = 92;
+            // 
+            // impuestoDataGridViewTextBoxColumn
+            // 
+            this.impuestoDataGridViewTextBoxColumn.DataPropertyName = "Impuesto";
+            dataGridViewCellStyle5.Format = "N2";
+            dataGridViewCellStyle5.NullValue = null;
+            this.impuestoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle5;
+            this.impuestoDataGridViewTextBoxColumn.HeaderText = "Impuesto";
+            this.impuestoDataGridViewTextBoxColumn.Name = "impuestoDataGridViewTextBoxColumn";
+            this.impuestoDataGridViewTextBoxColumn.Width = 86;
+            // 
+            // tipoImpuestoDataGridViewTextBoxColumn
+            // 
+            this.tipoImpuestoDataGridViewTextBoxColumn.DataPropertyName = "TipoImpuesto";
+            this.tipoImpuestoDataGridViewTextBoxColumn.HeaderText = "Tipo Impuesto";
+            this.tipoImpuestoDataGridViewTextBoxColumn.Name = "tipoImpuestoDataGridViewTextBoxColumn";
+            this.tipoImpuestoDataGridViewTextBoxColumn.Width = 113;
+            // 
+            // impuestoSelectivoDataGridViewTextBoxColumn
+            // 
+            this.impuestoSelectivoDataGridViewTextBoxColumn.DataPropertyName = "ImpuestoSelectivo";
+            dataGridViewCellStyle6.Format = "N2";
+            dataGridViewCellStyle6.NullValue = null;
+            this.impuestoSelectivoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle6;
+            this.impuestoSelectivoDataGridViewTextBoxColumn.HeaderText = "Impuesto Selectivo";
+            this.impuestoSelectivoDataGridViewTextBoxColumn.Name = "impuestoSelectivoDataGridViewTextBoxColumn";
+            this.impuestoSelectivoDataGridViewTextBoxColumn.Width = 136;
+            // 
+            // otroImpuestoDataGridViewTextBoxColumn
+            // 
+            this.otroImpuestoDataGridViewTextBoxColumn.DataPropertyName = "OtroImpuesto";
+            dataGridViewCellStyle7.Format = "N2";
+            dataGridViewCellStyle7.NullValue = null;
+            this.otroImpuestoDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle7;
+            this.otroImpuestoDataGridViewTextBoxColumn.HeaderText = "Otro Impuesto";
+            this.otroImpuestoDataGridViewTextBoxColumn.Name = "otroImpuestoDataGridViewTextBoxColumn";
+            this.otroImpuestoDataGridViewTextBoxColumn.Width = 113;
+            // 
+            // totalVentaDataGridViewTextBoxColumn
+            // 
+            this.totalVentaDataGridViewTextBoxColumn.DataPropertyName = "TotalVenta";
+            dataGridViewCellStyle8.Format = "N2";
+            dataGridViewCellStyle8.NullValue = null;
+            this.totalVentaDataGridViewTextBoxColumn.DefaultCellStyle = dataGridViewCellStyle8;
+            this.totalVentaDataGridViewTextBoxColumn.HeaderText = "Total Venta";
+            this.totalVentaDataGridViewTextBoxColumn.Name = "totalVentaDataGridViewTextBoxColumn";
+            this.totalVentaDataGridViewTextBoxColumn.Width = 94;
+            // 
             // FrmDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1516,19 +1558,6 @@ namespace OpenInvoicePeru.WinApp
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox descuentoGlobalTextBox;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox urbanizacionTextBox;
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox montoPercepcionTextBox;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn codigoItemDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn unidadMedidaDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn precioUnitarioDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn precioReferencialDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn tipoPrecioDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn impuestoDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn tipoImpuestoDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn impuestoSelectivoDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn otroImpuestoDataGridViewTextBoxColumn;
-        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn totalVentaDataGridViewTextBoxColumn;
         private System.Windows.Forms.TabControl tbPaginas;
         private System.Windows.Forms.TabPage tpDetalles;
         private System.Windows.Forms.TabPage tpAdicionales;
@@ -1563,5 +1592,19 @@ namespace OpenInvoicePeru.WinApp
         private ComponentFactory.Krypton.Toolkit.KryptonTextBox placaVehiculoTextBox;
         private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
         private ErrorProvider errorProvider1;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn codigoItemDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn descripcionDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn cantidadDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn unidadMedidaDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn precioUnitarioDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn precioReferencialDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn tipoPrecioDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn Descuento;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn impuestoDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn tipoImpuestoDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn impuestoSelectivoDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn otroImpuestoDataGridViewTextBoxColumn;
+        private ComponentFactory.Krypton.Toolkit.KryptonDataGridViewTextBoxColumn totalVentaDataGridViewTextBoxColumn;
     }
 }

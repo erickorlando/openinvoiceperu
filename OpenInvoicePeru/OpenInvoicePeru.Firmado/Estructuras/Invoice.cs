@@ -540,7 +540,7 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             {
                 writer.WriteStartElement("cac:InvoiceLine");
 
-                writer.WriteElementString("cbc:ID", invoiceLine.ID.ToString());
+                writer.WriteElementString("cbc:ID", invoiceLine.Id.ToString());
 
                 #region InvoicedQuantity
                 writer.WriteStartElement("cbc:InvoicedQuantity");
@@ -581,11 +581,11 @@ namespace OpenInvoicePeru.Firmado.Estructuras
                 #endregion
 
                 #region AllowanceCharge
-                if (invoiceLine.AllowanceCharge.ChargeIndicator)
+                if (invoiceLine.AllowanceCharge.Amount.value > 0)
                 {
                     writer.WriteStartElement("cac:AllowanceCharge");
 
-                    writer.WriteElementString("cbc:ChargeIndicator", invoiceLine.AllowanceCharge.ChargeIndicator.ToString());
+                    writer.WriteElementString("cbc:ChargeIndicator", invoiceLine.AllowanceCharge.ChargeIndicator.ToString().ToLower());
 
                     #region Amount
                     writer.WriteStartElement("cbc:Amount");
