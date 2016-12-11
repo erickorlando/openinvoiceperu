@@ -115,6 +115,7 @@
     <Compile Include="Controllers\EnviarResumenController.cs" />
     <Compile Include="Controllers\GenerarResumenDiarioController.cs" />
     <Compile Include="Controllers\GenerarComunicacionBajaController.cs" />
+    <Compile Include="Controllers\GenerarRetencionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

@@ -5,9 +5,8 @@ using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
-    public partial class FrmDiscrepancia : Form
+    public partial class FrmDiscrepancia : PlantillaBase
     {
-        private readonly Discrepancia _discrepancia;
         private readonly string _tipoDoc;
 
         public FrmDiscrepancia()
@@ -18,9 +17,8 @@ namespace OpenInvoicePeru.WinApp
         public FrmDiscrepancia(Discrepancia discrepancia, string tipoDoc)
         {
             InitializeComponent();
-            _discrepancia = discrepancia;
             _tipoDoc = tipoDoc;
-            discrepanciaBindingSource.DataSource = _discrepancia;
+            discrepanciaBindingSource.DataSource = discrepancia;
             discrepanciaBindingSource.ResetBindings(false);
 
             Load += (s, e) =>

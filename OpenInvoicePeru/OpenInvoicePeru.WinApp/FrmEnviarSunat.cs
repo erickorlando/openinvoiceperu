@@ -12,7 +12,7 @@ using OpenInvoicePeru.WinApp.Properties;
 
 namespace OpenInvoicePeru.WinApp
 {
-    public partial class FrmEnviarSunat : Form
+    public partial class FrmEnviarSunat : PlantillaBase
     {
         #region Variables Privadas
         private FrmDocumento _frmDocumento;
@@ -134,6 +134,9 @@ namespace OpenInvoicePeru.WinApp
                         break;
                 }
 
+                if (string.IsNullOrEmpty(txtSerieCorrelativo.Text))
+                    throw new InvalidOperationException("La Serie y el Correlativo no pueden estar vacíos");
+
                 var tramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(txtSource.Text));
 
                 var firmadoRequest = new FirmadoRequest
@@ -172,7 +175,7 @@ namespace OpenInvoicePeru.WinApp
                     txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{rpta.MensajeRespuesta} siendo las {DateTime.Now}";
                     try
                     {
-                        if (rpta.Exito)
+                        if (rpta.Exito && !string.IsNullOrEmpty(rpta.TramaZipCdr))
                         {
                             File.WriteAllBytes($"{Program.CarpetaXml}\\{respuestaEnvio.NombreArchivo}.xml",
                                 Convert.FromBase64String(respuestaFirmado.TramaXmlFirmado));

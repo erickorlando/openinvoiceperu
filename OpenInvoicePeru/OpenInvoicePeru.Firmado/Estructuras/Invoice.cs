@@ -234,8 +234,24 @@ namespace OpenInvoicePeru.Firmado.Estructuras
                 }
                 #endregion
 
+                #region SUNATCosts
+                if (!string.IsNullOrEmpty(ext2.SunatCosts.RoadTransport.LicensePlateId))
+                {
+                    writer.WriteStartElement("sac:SUNATCosts");
+                    {
+                        writer.WriteStartElement("cac:RoadTransport");
+                        {
+                            writer.WriteElementString("cbc:LicensePlateID", ext2.SunatCosts.RoadTransport.LicensePlateId);
+                        }
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                }
+                #endregion
+
                 #region SUNATTransaction
-                if (!string.IsNullOrEmpty(ext2.SunatTransaction.Id))
+                if (!string.IsNullOrEmpty(ext2.SunatTransaction.Id) 
+                    && string.IsNullOrEmpty(ext2.SunatCosts.RoadTransport.LicensePlateId))
                 {
                     writer.WriteStartElement("sac:SUNATTransaction");
                     {
@@ -524,7 +540,7 @@ namespace OpenInvoicePeru.Firmado.Estructuras
             {
                 writer.WriteStartElement("cac:InvoiceLine");
 
-                writer.WriteElementString("cbc:ID", invoiceLine.ID.ToString());
+                writer.WriteElementString("cbc:ID", invoiceLine.Id.ToString());
 
                 #region InvoicedQuantity
                 writer.WriteStartElement("cbc:InvoicedQuantity");
@@ -565,11 +581,11 @@ namespace OpenInvoicePeru.Firmado.Estructuras
                 #endregion
 
                 #region AllowanceCharge
-                if (invoiceLine.AllowanceCharge.ChargeIndicator)
+                if (invoiceLine.AllowanceCharge.Amount.value > 0)
                 {
                     writer.WriteStartElement("cac:AllowanceCharge");
 
-                    writer.WriteElementString("cbc:ChargeIndicator", invoiceLine.AllowanceCharge.ChargeIndicator.ToString());
+                    writer.WriteElementString("cbc:ChargeIndicator", invoiceLine.AllowanceCharge.ChargeIndicator.ToString().ToLower());
 
                     #region Amount
                     writer.WriteStartElement("cbc:Amount");

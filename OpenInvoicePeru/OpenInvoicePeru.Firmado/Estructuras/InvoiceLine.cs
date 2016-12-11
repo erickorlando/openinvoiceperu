@@ -6,7 +6,7 @@ namespace OpenInvoicePeru.Firmado.Estructuras
     [Serializable]
     public class InvoiceLine
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public InvoicedQuantity CreditedQuantity { get; set; }
         public InvoicedQuantity InvoicedQuantity { get; set; }
         public InvoicedQuantity DebitedQuantity { get; set; }

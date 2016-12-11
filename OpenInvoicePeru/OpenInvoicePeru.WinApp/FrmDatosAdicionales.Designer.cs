@@ -31,40 +31,42 @@ namespace OpenInvoicePeru.WinApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label codigoLabel;
-            System.Windows.Forms.Label contenidoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel codigoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel contenidoLabel;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDatosAdicionales));
             this.datoAdicionalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.codigoComboBox = new System.Windows.Forms.ComboBox();
+            this.codigoComboBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tipoDatoAdicionalBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contenidoTextBox = new System.Windows.Forms.TextBox();
+            this.contenidoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.barraBotones = new System.Windows.Forms.ToolStrip();
             this.toolOk = new System.Windows.Forms.ToolStripButton();
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
-            codigoLabel = new System.Windows.Forms.Label();
-            contenidoLabel = new System.Windows.Forms.Label();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            codigoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            contenidoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.codigoComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoDatoAdicionalBindingSource)).BeginInit();
             this.barraBotones.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // codigoLabel
             // 
-            codigoLabel.AutoSize = true;
-            codigoLabel.Location = new System.Drawing.Point(12, 43);
+            codigoLabel.Location = new System.Drawing.Point(11, 15);
             codigoLabel.Name = "codigoLabel";
-            codigoLabel.Size = new System.Drawing.Size(48, 13);
+            codigoLabel.Size = new System.Drawing.Size(53, 20);
             codigoLabel.TabIndex = 1;
-            codigoLabel.Text = "Codigo:";
+            codigoLabel.Values.Text = "Codigo:";
             // 
             // contenidoLabel
             // 
-            contenidoLabel.AutoSize = true;
-            contenidoLabel.Location = new System.Drawing.Point(12, 74);
+            contenidoLabel.Location = new System.Drawing.Point(11, 46);
             contenidoLabel.Name = "contenidoLabel";
-            contenidoLabel.Size = new System.Drawing.Size(65, 13);
+            contenidoLabel.Size = new System.Drawing.Size(70, 20);
             contenidoLabel.TabIndex = 3;
-            contenidoLabel.Text = "Contenido:";
+            contenidoLabel.Values.Text = "Contenido:";
             // 
             // datoAdicionalBindingSource
             // 
@@ -77,8 +79,9 @@ namespace OpenInvoicePeru.WinApp
             this.codigoComboBox.DataBindings.Add(new System.Windows.Forms.Binding("SelectedValue", this.datoAdicionalBindingSource, "Codigo", true));
             this.codigoComboBox.DataSource = this.tipoDatoAdicionalBindingSource;
             this.codigoComboBox.DisplayMember = "DescripcionCompleta";
+            this.codigoComboBox.DropDownWidth = 336;
             this.codigoComboBox.FormattingEnabled = true;
-            this.codigoComboBox.Location = new System.Drawing.Point(80, 40);
+            this.codigoComboBox.Location = new System.Drawing.Point(87, 12);
             this.codigoComboBox.Name = "codigoComboBox";
             this.codigoComboBox.Size = new System.Drawing.Size(336, 21);
             this.codigoComboBox.TabIndex = 2;
@@ -91,19 +94,20 @@ namespace OpenInvoicePeru.WinApp
             // contenidoTextBox
             // 
             this.contenidoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.datoAdicionalBindingSource, "Contenido", true));
-            this.contenidoTextBox.Location = new System.Drawing.Point(80, 71);
+            this.contenidoTextBox.Location = new System.Drawing.Point(87, 43);
             this.contenidoTextBox.Name = "contenidoTextBox";
-            this.contenidoTextBox.Size = new System.Drawing.Size(336, 22);
+            this.contenidoTextBox.Size = new System.Drawing.Size(336, 23);
             this.contenidoTextBox.TabIndex = 4;
             // 
             // barraBotones
             // 
+            this.barraBotones.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.barraBotones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolOk,
             this.toolCancel});
             this.barraBotones.Location = new System.Drawing.Point(0, 0);
             this.barraBotones.Name = "barraBotones";
-            this.barraBotones.Size = new System.Drawing.Size(440, 25);
+            this.barraBotones.Size = new System.Drawing.Size(448, 25);
             this.barraBotones.TabIndex = 5;
             this.barraBotones.Text = "toolStrip1";
             // 
@@ -124,19 +128,27 @@ namespace OpenInvoicePeru.WinApp
             this.toolCancel.Size = new System.Drawing.Size(73, 22);
             this.toolCancel.Text = "&Cancelar";
             // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Controls.Add(this.contenidoTextBox);
+            this.kryptonPanel1.Controls.Add(this.codigoComboBox);
+            this.kryptonPanel1.Controls.Add(contenidoLabel);
+            this.kryptonPanel1.Controls.Add(codigoLabel);
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 25);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(448, 78);
+            this.kryptonPanel1.TabIndex = 6;
+            // 
             // FrmDatosAdicionales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(440, 113);
+            this.ClientSize = new System.Drawing.Size(448, 103);
+            this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.barraBotones);
-            this.Controls.Add(contenidoLabel);
-            this.Controls.Add(this.contenidoTextBox);
-            this.Controls.Add(codigoLabel);
-            this.Controls.Add(this.codigoComboBox);
             this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmDatosAdicionales";
@@ -144,9 +156,13 @@ namespace OpenInvoicePeru.WinApp
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos Adicionales";
             ((System.ComponentModel.ISupportInitialize)(this.datoAdicionalBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.codigoComboBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoDatoAdicionalBindingSource)).EndInit();
             this.barraBotones.ResumeLayout(false);
             this.barraBotones.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,11 +171,12 @@ namespace OpenInvoicePeru.WinApp
         #endregion
 
         private System.Windows.Forms.BindingSource datoAdicionalBindingSource;
-        private System.Windows.Forms.ComboBox codigoComboBox;
-        private System.Windows.Forms.TextBox contenidoTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox codigoComboBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox contenidoTextBox;
         private System.Windows.Forms.ToolStrip barraBotones;
         private System.Windows.Forms.ToolStripButton toolOk;
         private System.Windows.Forms.ToolStripButton toolCancel;
         private System.Windows.Forms.BindingSource tipoDatoAdicionalBindingSource;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
     }
 }

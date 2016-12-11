@@ -16,6 +16,7 @@
         public string Descripcion { get; set; }
         public string CodigoItem { get; set; }
         public decimal PrecioReferencial { get; set; }
+        public decimal Descuento { get; set; }
 
         public DetalleDocumento()
         {

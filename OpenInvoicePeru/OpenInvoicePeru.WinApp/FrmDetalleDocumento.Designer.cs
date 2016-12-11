@@ -1,4 +1,5 @@
-﻿using OpenInvoicePeru.Firmado.Models;
+﻿using System.Windows.Forms;
+using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
@@ -31,192 +32,173 @@ namespace OpenInvoicePeru.WinApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.Label idLabel;
-            System.Windows.Forms.Label codigoItemLabel;
-            System.Windows.Forms.Label descripcionLabel;
-            System.Windows.Forms.Label precioUnitarioLabel;
-            System.Windows.Forms.Label precioReferencialLabel;
-            System.Windows.Forms.Label cantidadLabel;
-            System.Windows.Forms.Label unidadMedidaLabel;
-            System.Windows.Forms.Label impuestoLabel;
-            System.Windows.Forms.Label tipoImpuestoLabel;
-            System.Windows.Forms.Label impuestoSelectivoLabel;
-            System.Windows.Forms.Label otroImpuestoLabel;
-            System.Windows.Forms.Label totalVentaLabel;
-            System.Windows.Forms.Label tipoPrecioLabel;
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmDetalleDocumento));
-            this.idNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            ComponentFactory.Krypton.Toolkit.KryptonLabel idLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel codigoItemLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel descripcionLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel precioUnitarioLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel precioReferencialLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel cantidadLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel unidadMedidaLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel impuestoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel tipoImpuestoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel impuestoSelectivoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel otroImpuestoLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel totalVentaLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel tipoPrecioLabel;
+            ComponentFactory.Krypton.Toolkit.KryptonLabel descuentoLabel;
             this.detalleDocumentoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.codigoItemTextBox = new System.Windows.Forms.TextBox();
-            this.descripcionTextBox = new System.Windows.Forms.TextBox();
-            this.precioUnitarioTextBox = new System.Windows.Forms.TextBox();
-            this.precioReferencialTextBox = new System.Windows.Forms.TextBox();
-            this.cantidadTextBox = new System.Windows.Forms.TextBox();
-            this.unidadMedidaComboBox = new System.Windows.Forms.ComboBox();
-            this.impuestoTextBox = new System.Windows.Forms.TextBox();
-            this.tipoImpuestoComboBox = new System.Windows.Forms.ComboBox();
+            this.codigoItemTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.descripcionTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.precioUnitarioTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.precioReferencialTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.cantidadTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.unidadMedidaComboBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
+            this.impuestoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.tipoImpuestoComboBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tipoImpuestoBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.impuestoSelectivoTextBox = new System.Windows.Forms.TextBox();
-            this.otroImpuestoTextBox = new System.Windows.Forms.TextBox();
-            this.totalVentaTextBox = new System.Windows.Forms.TextBox();
+            this.impuestoSelectivoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.otroImpuestoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            this.totalVentaTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.barraBotones = new System.Windows.Forms.ToolStrip();
             this.toolOk = new System.Windows.Forms.ToolStripButton();
             this.toolCancel = new System.Windows.Forms.ToolStripButton();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnCalcIgv = new System.Windows.Forms.Button();
-            this.btnCalcIsc = new System.Windows.Forms.Button();
-            this.tipoPrecioComboBox = new System.Windows.Forms.ComboBox();
+            this.btnCalcIgv = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.btnCalcIsc = new ComponentFactory.Krypton.Toolkit.KryptonButton();
+            this.tipoPrecioComboBox = new ComponentFactory.Krypton.Toolkit.KryptonComboBox();
             this.tipoPrecioBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            idLabel = new System.Windows.Forms.Label();
-            codigoItemLabel = new System.Windows.Forms.Label();
-            descripcionLabel = new System.Windows.Forms.Label();
-            precioUnitarioLabel = new System.Windows.Forms.Label();
-            precioReferencialLabel = new System.Windows.Forms.Label();
-            cantidadLabel = new System.Windows.Forms.Label();
-            unidadMedidaLabel = new System.Windows.Forms.Label();
-            impuestoLabel = new System.Windows.Forms.Label();
-            tipoImpuestoLabel = new System.Windows.Forms.Label();
-            impuestoSelectivoLabel = new System.Windows.Forms.Label();
-            otroImpuestoLabel = new System.Windows.Forms.Label();
-            totalVentaLabel = new System.Windows.Forms.Label();
-            tipoPrecioLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.idNumericUpDown)).BeginInit();
+            this.kryptonPanel1 = new ComponentFactory.Krypton.Toolkit.KryptonPanel();
+            this.idNumericUpDown = new ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown();
+            this.descuentoTextBox = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
+            idLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            codigoItemLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            descripcionLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            precioUnitarioLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            precioReferencialLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            cantidadLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            unidadMedidaLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            impuestoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            tipoImpuestoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            impuestoSelectivoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            otroImpuestoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            totalVentaLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            tipoPrecioLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
+            descuentoLabel = new ComponentFactory.Krypton.Toolkit.KryptonLabel();
             ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unidadMedidaComboBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoBindingSource)).BeginInit();
             this.barraBotones.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoPrecioComboBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoPrecioBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).BeginInit();
+            this.kryptonPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // idLabel
             // 
-            idLabel.AutoSize = true;
-            idLabel.Location = new System.Drawing.Point(12, 35);
+            idLabel.Location = new System.Drawing.Point(3, 7);
             idLabel.Name = "idLabel";
-            idLabel.Size = new System.Drawing.Size(20, 13);
+            idLabel.Size = new System.Drawing.Size(24, 20);
             idLabel.TabIndex = 1;
-            idLabel.Text = "Id:";
+            idLabel.Values.Text = "Id:";
             // 
             // codigoItemLabel
             // 
-            codigoItemLabel.AutoSize = true;
-            codigoItemLabel.Location = new System.Drawing.Point(12, 61);
+            codigoItemLabel.Location = new System.Drawing.Point(3, 31);
             codigoItemLabel.Name = "codigoItemLabel";
-            codigoItemLabel.Size = new System.Drawing.Size(73, 13);
+            codigoItemLabel.Size = new System.Drawing.Size(81, 20);
             codigoItemLabel.TabIndex = 2;
-            codigoItemLabel.Text = "Código Item:";
+            codigoItemLabel.Values.Text = "Código Item:";
             // 
             // descripcionLabel
             // 
-            descripcionLabel.AutoSize = true;
-            descripcionLabel.Location = new System.Drawing.Point(12, 87);
+            descripcionLabel.Location = new System.Drawing.Point(3, 57);
             descripcionLabel.Name = "descripcionLabel";
-            descripcionLabel.Size = new System.Drawing.Size(70, 13);
+            descripcionLabel.Size = new System.Drawing.Size(77, 20);
             descripcionLabel.TabIndex = 4;
-            descripcionLabel.Text = "Descripcion:";
+            descripcionLabel.Values.Text = "Descripcion:";
             // 
             // precioUnitarioLabel
             // 
-            precioUnitarioLabel.AutoSize = true;
-            precioUnitarioLabel.Location = new System.Drawing.Point(12, 113);
+            precioUnitarioLabel.Location = new System.Drawing.Point(3, 83);
             precioUnitarioLabel.Name = "precioUnitarioLabel";
-            precioUnitarioLabel.Size = new System.Drawing.Size(86, 13);
+            precioUnitarioLabel.Size = new System.Drawing.Size(94, 20);
             precioUnitarioLabel.TabIndex = 6;
-            precioUnitarioLabel.Text = "Precio Unitario:";
+            precioUnitarioLabel.Values.Text = "Precio Unitario:";
             // 
             // precioReferencialLabel
             // 
-            precioReferencialLabel.AutoSize = true;
-            precioReferencialLabel.Location = new System.Drawing.Point(12, 139);
+            precioReferencialLabel.Location = new System.Drawing.Point(4, 109);
             precioReferencialLabel.Name = "precioReferencialLabel";
-            precioReferencialLabel.Size = new System.Drawing.Size(101, 13);
+            precioReferencialLabel.Size = new System.Drawing.Size(110, 20);
             precioReferencialLabel.TabIndex = 8;
-            precioReferencialLabel.Text = "Precio Referencial:";
+            precioReferencialLabel.Values.Text = "Precio Referencial:";
             // 
             // cantidadLabel
             // 
-            cantidadLabel.AutoSize = true;
-            cantidadLabel.Location = new System.Drawing.Point(12, 195);
+            cantidadLabel.Location = new System.Drawing.Point(3, 159);
             cantidadLabel.Name = "cantidadLabel";
-            cantidadLabel.Size = new System.Drawing.Size(57, 13);
+            cantidadLabel.Size = new System.Drawing.Size(62, 20);
             cantidadLabel.TabIndex = 10;
-            cantidadLabel.Text = "Cantidad:";
+            cantidadLabel.Values.Text = "Cantidad:";
             // 
             // unidadMedidaLabel
             // 
-            unidadMedidaLabel.AutoSize = true;
-            unidadMedidaLabel.Location = new System.Drawing.Point(12, 221);
+            unidadMedidaLabel.Location = new System.Drawing.Point(4, 183);
             unidadMedidaLabel.Name = "unidadMedidaLabel";
-            unidadMedidaLabel.Size = new System.Drawing.Size(90, 13);
+            unidadMedidaLabel.Size = new System.Drawing.Size(97, 20);
             unidadMedidaLabel.TabIndex = 12;
-            unidadMedidaLabel.Text = "Unidad Medida:";
+            unidadMedidaLabel.Values.Text = "Unidad Medida:";
             // 
             // impuestoLabel
             // 
-            impuestoLabel.AutoSize = true;
-            impuestoLabel.Location = new System.Drawing.Point(12, 247);
+            impuestoLabel.Location = new System.Drawing.Point(4, 235);
             impuestoLabel.Name = "impuestoLabel";
-            impuestoLabel.Size = new System.Drawing.Size(58, 13);
+            impuestoLabel.Size = new System.Drawing.Size(65, 20);
             impuestoLabel.TabIndex = 14;
-            impuestoLabel.Text = "Impuesto:";
+            impuestoLabel.Values.Text = "Impuesto:";
             // 
             // tipoImpuestoLabel
             // 
-            tipoImpuestoLabel.AutoSize = true;
-            tipoImpuestoLabel.Location = new System.Drawing.Point(12, 273);
+            tipoImpuestoLabel.Location = new System.Drawing.Point(3, 258);
             tipoImpuestoLabel.Name = "tipoImpuestoLabel";
-            tipoImpuestoLabel.Size = new System.Drawing.Size(83, 13);
+            tipoImpuestoLabel.Size = new System.Drawing.Size(92, 20);
             tipoImpuestoLabel.TabIndex = 16;
-            tipoImpuestoLabel.Text = "Tipo Impuesto:";
+            tipoImpuestoLabel.Values.Text = "Tipo Impuesto:";
             // 
             // impuestoSelectivoLabel
             // 
-            impuestoSelectivoLabel.AutoSize = true;
-            impuestoSelectivoLabel.Location = new System.Drawing.Point(12, 299);
+            impuestoSelectivoLabel.Location = new System.Drawing.Point(4, 285);
             impuestoSelectivoLabel.Name = "impuestoSelectivoLabel";
-            impuestoSelectivoLabel.Size = new System.Drawing.Size(106, 13);
+            impuestoSelectivoLabel.Size = new System.Drawing.Size(116, 20);
             impuestoSelectivoLabel.TabIndex = 18;
-            impuestoSelectivoLabel.Text = "Impuesto Selectivo:";
+            impuestoSelectivoLabel.Values.Text = "Impuesto Selectivo:";
             // 
             // otroImpuestoLabel
             // 
-            otroImpuestoLabel.AutoSize = true;
-            otroImpuestoLabel.Location = new System.Drawing.Point(12, 325);
+            otroImpuestoLabel.Location = new System.Drawing.Point(4, 311);
             otroImpuestoLabel.Name = "otroImpuestoLabel";
-            otroImpuestoLabel.Size = new System.Drawing.Size(85, 13);
+            otroImpuestoLabel.Size = new System.Drawing.Size(93, 20);
             otroImpuestoLabel.TabIndex = 20;
-            otroImpuestoLabel.Text = "Otro Impuesto:";
+            otroImpuestoLabel.Values.Text = "Otro Impuesto:";
             // 
             // totalVentaLabel
             // 
-            totalVentaLabel.AutoSize = true;
-            totalVentaLabel.Location = new System.Drawing.Point(12, 351);
+            totalVentaLabel.Location = new System.Drawing.Point(4, 337);
             totalVentaLabel.Name = "totalVentaLabel";
-            totalVentaLabel.Size = new System.Drawing.Size(66, 13);
+            totalVentaLabel.Size = new System.Drawing.Size(75, 20);
             totalVentaLabel.TabIndex = 22;
-            totalVentaLabel.Text = "Total Venta:";
+            totalVentaLabel.Values.Text = "Total Venta:";
             // 
             // tipoPrecioLabel
             // 
-            tipoPrecioLabel.AutoSize = true;
-            tipoPrecioLabel.Location = new System.Drawing.Point(12, 166);
+            tipoPrecioLabel.Location = new System.Drawing.Point(4, 133);
             tipoPrecioLabel.Name = "tipoPrecioLabel";
-            tipoPrecioLabel.Size = new System.Drawing.Size(66, 13);
+            tipoPrecioLabel.Size = new System.Drawing.Size(74, 20);
             tipoPrecioLabel.TabIndex = 27;
-            tipoPrecioLabel.Text = "Tipo Precio:";
-            // 
-            // idNumericUpDown
-            // 
-            this.idNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.detalleDocumentoBindingSource, "Id", true));
-            this.idNumericUpDown.Location = new System.Drawing.Point(118, 33);
-            this.idNumericUpDown.Name = "idNumericUpDown";
-            this.idNumericUpDown.Size = new System.Drawing.Size(100, 22);
-            this.idNumericUpDown.TabIndex = 0;
-            this.idNumericUpDown.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
+            tipoPrecioLabel.Values.Text = "Tipo Precio:";
             // 
             // detalleDocumentoBindingSource
             // 
@@ -225,53 +207,54 @@ namespace OpenInvoicePeru.WinApp
             // codigoItemTextBox
             // 
             this.codigoItemTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "CodigoItem", true));
-            this.codigoItemTextBox.Location = new System.Drawing.Point(118, 58);
+            this.codigoItemTextBox.Location = new System.Drawing.Point(120, 28);
             this.codigoItemTextBox.Name = "codigoItemTextBox";
-            this.codigoItemTextBox.Size = new System.Drawing.Size(100, 22);
+            this.codigoItemTextBox.Size = new System.Drawing.Size(100, 23);
             this.codigoItemTextBox.TabIndex = 1;
             // 
             // descripcionTextBox
             // 
             this.descripcionTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Descripcion", true));
-            this.descripcionTextBox.Location = new System.Drawing.Point(118, 84);
+            this.descripcionTextBox.Location = new System.Drawing.Point(120, 54);
             this.descripcionTextBox.Name = "descripcionTextBox";
-            this.descripcionTextBox.Size = new System.Drawing.Size(240, 22);
+            this.descripcionTextBox.Size = new System.Drawing.Size(240, 23);
             this.descripcionTextBox.TabIndex = 2;
             // 
             // precioUnitarioTextBox
             // 
             this.precioUnitarioTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "PrecioUnitario", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.precioUnitarioTextBox.Location = new System.Drawing.Point(118, 110);
+            this.precioUnitarioTextBox.Location = new System.Drawing.Point(120, 80);
             this.precioUnitarioTextBox.Name = "precioUnitarioTextBox";
-            this.precioUnitarioTextBox.Size = new System.Drawing.Size(100, 22);
+            this.precioUnitarioTextBox.Size = new System.Drawing.Size(100, 23);
             this.precioUnitarioTextBox.TabIndex = 3;
             // 
             // precioReferencialTextBox
             // 
             this.precioReferencialTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "PrecioReferencial", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.precioReferencialTextBox.Location = new System.Drawing.Point(118, 136);
+            this.precioReferencialTextBox.Location = new System.Drawing.Point(120, 106);
             this.precioReferencialTextBox.Name = "precioReferencialTextBox";
-            this.precioReferencialTextBox.Size = new System.Drawing.Size(100, 22);
+            this.precioReferencialTextBox.Size = new System.Drawing.Size(100, 23);
             this.precioReferencialTextBox.TabIndex = 4;
             // 
             // cantidadTextBox
             // 
             this.cantidadTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Cantidad", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.cantidadTextBox.Location = new System.Drawing.Point(118, 192);
+            this.cantidadTextBox.Location = new System.Drawing.Point(120, 156);
             this.cantidadTextBox.Name = "cantidadTextBox";
-            this.cantidadTextBox.Size = new System.Drawing.Size(100, 22);
+            this.cantidadTextBox.Size = new System.Drawing.Size(100, 23);
             this.cantidadTextBox.TabIndex = 6;
             // 
             // unidadMedidaComboBox
             // 
             this.unidadMedidaComboBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "UnidadMedida", true));
+            this.unidadMedidaComboBox.DropDownWidth = 100;
             this.unidadMedidaComboBox.FormattingEnabled = true;
             this.unidadMedidaComboBox.Items.AddRange(new object[] {
             "NIU",
             "KG",
             "ONZ",
             "LTR"});
-            this.unidadMedidaComboBox.Location = new System.Drawing.Point(118, 218);
+            this.unidadMedidaComboBox.Location = new System.Drawing.Point(120, 182);
             this.unidadMedidaComboBox.Name = "unidadMedidaComboBox";
             this.unidadMedidaComboBox.Size = new System.Drawing.Size(100, 21);
             this.unidadMedidaComboBox.TabIndex = 7;
@@ -279,10 +262,10 @@ namespace OpenInvoicePeru.WinApp
             // impuestoTextBox
             // 
             this.impuestoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Impuesto", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.impuestoTextBox.Location = new System.Drawing.Point(118, 244);
+            this.impuestoTextBox.Location = new System.Drawing.Point(120, 232);
             this.impuestoTextBox.Name = "impuestoTextBox";
-            this.impuestoTextBox.Size = new System.Drawing.Size(100, 22);
-            this.impuestoTextBox.TabIndex = 8;
+            this.impuestoTextBox.Size = new System.Drawing.Size(100, 23);
+            this.impuestoTextBox.TabIndex = 9;
             // 
             // tipoImpuestoComboBox
             // 
@@ -290,11 +273,12 @@ namespace OpenInvoicePeru.WinApp
             this.tipoImpuestoComboBox.DataSource = this.tipoImpuestoBindingSource;
             this.tipoImpuestoComboBox.DisplayMember = "DescripcionCompleta";
             this.tipoImpuestoComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoImpuestoComboBox.DropDownWidth = 240;
             this.tipoImpuestoComboBox.FormattingEnabled = true;
-            this.tipoImpuestoComboBox.Location = new System.Drawing.Point(118, 270);
+            this.tipoImpuestoComboBox.Location = new System.Drawing.Point(120, 258);
             this.tipoImpuestoComboBox.Name = "tipoImpuestoComboBox";
             this.tipoImpuestoComboBox.Size = new System.Drawing.Size(240, 21);
-            this.tipoImpuestoComboBox.TabIndex = 10;
+            this.tipoImpuestoComboBox.TabIndex = 11;
             this.tipoImpuestoComboBox.ValueMember = "Codigo";
             // 
             // tipoImpuestoBindingSource
@@ -304,36 +288,37 @@ namespace OpenInvoicePeru.WinApp
             // impuestoSelectivoTextBox
             // 
             this.impuestoSelectivoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "ImpuestoSelectivo", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.impuestoSelectivoTextBox.Location = new System.Drawing.Point(118, 296);
+            this.impuestoSelectivoTextBox.Location = new System.Drawing.Point(120, 282);
             this.impuestoSelectivoTextBox.Name = "impuestoSelectivoTextBox";
-            this.impuestoSelectivoTextBox.Size = new System.Drawing.Size(100, 22);
-            this.impuestoSelectivoTextBox.TabIndex = 11;
+            this.impuestoSelectivoTextBox.Size = new System.Drawing.Size(100, 23);
+            this.impuestoSelectivoTextBox.TabIndex = 12;
             // 
             // otroImpuestoTextBox
             // 
             this.otroImpuestoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "OtroImpuesto", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.otroImpuestoTextBox.Location = new System.Drawing.Point(118, 322);
+            this.otroImpuestoTextBox.Location = new System.Drawing.Point(120, 308);
             this.otroImpuestoTextBox.Name = "otroImpuestoTextBox";
-            this.otroImpuestoTextBox.Size = new System.Drawing.Size(100, 22);
-            this.otroImpuestoTextBox.TabIndex = 13;
+            this.otroImpuestoTextBox.Size = new System.Drawing.Size(100, 23);
+            this.otroImpuestoTextBox.TabIndex = 14;
             // 
             // totalVentaTextBox
             // 
             this.totalVentaTextBox.BackColor = System.Drawing.SystemColors.Info;
             this.totalVentaTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "TotalVenta", true, System.Windows.Forms.DataSourceUpdateMode.OnValidation, null, "N2"));
-            this.totalVentaTextBox.Location = new System.Drawing.Point(118, 348);
+            this.totalVentaTextBox.Location = new System.Drawing.Point(120, 334);
             this.totalVentaTextBox.Name = "totalVentaTextBox";
-            this.totalVentaTextBox.Size = new System.Drawing.Size(100, 22);
-            this.totalVentaTextBox.TabIndex = 14;
+            this.totalVentaTextBox.Size = new System.Drawing.Size(100, 23);
+            this.totalVentaTextBox.TabIndex = 15;
             // 
             // barraBotones
             // 
+            this.barraBotones.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.barraBotones.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.toolOk,
             this.toolCancel});
             this.barraBotones.Location = new System.Drawing.Point(0, 0);
             this.barraBotones.Name = "barraBotones";
-            this.barraBotones.Size = new System.Drawing.Size(397, 25);
+            this.barraBotones.Size = new System.Drawing.Size(374, 25);
             this.barraBotones.TabIndex = 24;
             this.barraBotones.Text = "toolStrip1";
             // 
@@ -362,22 +347,22 @@ namespace OpenInvoicePeru.WinApp
             // 
             // btnCalcIgv
             // 
-            this.btnCalcIgv.Location = new System.Drawing.Point(233, 242);
+            this.btnCalcIgv.AutoSize = true;
+            this.btnCalcIgv.Location = new System.Drawing.Point(235, 231);
             this.btnCalcIgv.Name = "btnCalcIgv";
-            this.btnCalcIgv.Size = new System.Drawing.Size(125, 23);
-            this.btnCalcIgv.TabIndex = 9;
-            this.btnCalcIgv.Text = "C&alcular IGV";
-            this.btnCalcIgv.UseVisualStyleBackColor = true;
+            this.btnCalcIgv.Size = new System.Drawing.Size(125, 24);
+            this.btnCalcIgv.TabIndex = 10;
+            this.btnCalcIgv.Values.Text = "C&alcular IGV";
             this.btnCalcIgv.Click += new System.EventHandler(this.btnCalcIgv_Click);
             // 
             // btnCalcIsc
             // 
-            this.btnCalcIsc.Location = new System.Drawing.Point(233, 294);
+            this.btnCalcIsc.AutoSize = true;
+            this.btnCalcIsc.Location = new System.Drawing.Point(235, 281);
             this.btnCalcIsc.Name = "btnCalcIsc";
-            this.btnCalcIsc.Size = new System.Drawing.Size(125, 23);
-            this.btnCalcIsc.TabIndex = 12;
-            this.btnCalcIsc.Text = "Ca&lcular ISC";
-            this.btnCalcIsc.UseVisualStyleBackColor = true;
+            this.btnCalcIsc.Size = new System.Drawing.Size(125, 24);
+            this.btnCalcIsc.TabIndex = 13;
+            this.btnCalcIsc.Values.Text = "Ca&lcular ISC";
             this.btnCalcIsc.Click += new System.EventHandler(this.btnCalcIsc_Click);
             // 
             // tipoPrecioComboBox
@@ -386,8 +371,9 @@ namespace OpenInvoicePeru.WinApp
             this.tipoPrecioComboBox.DataSource = this.tipoPrecioBindingSource;
             this.tipoPrecioComboBox.DisplayMember = "DescripcionCompleta";
             this.tipoPrecioComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.tipoPrecioComboBox.DropDownWidth = 240;
             this.tipoPrecioComboBox.FormattingEnabled = true;
-            this.tipoPrecioComboBox.Location = new System.Drawing.Point(118, 163);
+            this.tipoPrecioComboBox.Location = new System.Drawing.Point(120, 132);
             this.tipoPrecioComboBox.Name = "tipoPrecioComboBox";
             this.tipoPrecioComboBox.Size = new System.Drawing.Size(240, 21);
             this.tipoPrecioComboBox.TabIndex = 5;
@@ -397,56 +383,92 @@ namespace OpenInvoicePeru.WinApp
             // 
             this.tipoPrecioBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoPrecio);
             // 
+            // kryptonPanel1
+            // 
+            this.kryptonPanel1.Controls.Add(this.idNumericUpDown);
+            this.kryptonPanel1.Controls.Add(this.tipoPrecioComboBox);
+            this.kryptonPanel1.Controls.Add(this.codigoItemTextBox);
+            this.kryptonPanel1.Controls.Add(this.descripcionTextBox);
+            this.kryptonPanel1.Controls.Add(this.precioUnitarioTextBox);
+            this.kryptonPanel1.Controls.Add(this.totalVentaTextBox);
+            this.kryptonPanel1.Controls.Add(this.precioReferencialTextBox);
+            this.kryptonPanel1.Controls.Add(this.otroImpuestoTextBox);
+            this.kryptonPanel1.Controls.Add(this.cantidadTextBox);
+            this.kryptonPanel1.Controls.Add(this.impuestoSelectivoTextBox);
+            this.kryptonPanel1.Controls.Add(this.unidadMedidaComboBox);
+            this.kryptonPanel1.Controls.Add(this.tipoImpuestoComboBox);
+            this.kryptonPanel1.Controls.Add(this.descuentoTextBox);
+            this.kryptonPanel1.Controls.Add(this.impuestoTextBox);
+            this.kryptonPanel1.Controls.Add(idLabel);
+            this.kryptonPanel1.Controls.Add(tipoPrecioLabel);
+            this.kryptonPanel1.Controls.Add(this.btnCalcIsc);
+            this.kryptonPanel1.Controls.Add(codigoItemLabel);
+            this.kryptonPanel1.Controls.Add(this.btnCalcIgv);
+            this.kryptonPanel1.Controls.Add(descripcionLabel);
+            this.kryptonPanel1.Controls.Add(totalVentaLabel);
+            this.kryptonPanel1.Controls.Add(precioUnitarioLabel);
+            this.kryptonPanel1.Controls.Add(otroImpuestoLabel);
+            this.kryptonPanel1.Controls.Add(precioReferencialLabel);
+            this.kryptonPanel1.Controls.Add(impuestoSelectivoLabel);
+            this.kryptonPanel1.Controls.Add(cantidadLabel);
+            this.kryptonPanel1.Controls.Add(tipoImpuestoLabel);
+            this.kryptonPanel1.Controls.Add(unidadMedidaLabel);
+            this.kryptonPanel1.Controls.Add(descuentoLabel);
+            this.kryptonPanel1.Controls.Add(impuestoLabel);
+            this.kryptonPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.kryptonPanel1.Location = new System.Drawing.Point(0, 25);
+            this.kryptonPanel1.Name = "kryptonPanel1";
+            this.kryptonPanel1.Size = new System.Drawing.Size(374, 368);
+            this.kryptonPanel1.TabIndex = 0;
+            // 
+            // idNumericUpDown
+            // 
+            this.idNumericUpDown.DataBindings.Add(new System.Windows.Forms.Binding("Value", this.detalleDocumentoBindingSource, "Id", true));
+            this.idNumericUpDown.Location = new System.Drawing.Point(120, 3);
+            this.idNumericUpDown.Name = "idNumericUpDown";
+            this.idNumericUpDown.Size = new System.Drawing.Size(100, 22);
+            this.idNumericUpDown.TabIndex = 0;
+            // 
+            // descuentoTextBox
+            // 
+            this.descuentoTextBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.detalleDocumentoBindingSource, "Descuento", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged, null, "N2"));
+            this.descuentoTextBox.Location = new System.Drawing.Point(120, 206);
+            this.descuentoTextBox.Name = "descuentoTextBox";
+            this.descuentoTextBox.Size = new System.Drawing.Size(100, 23);
+            this.descuentoTextBox.TabIndex = 8;
+            // 
+            // descuentoLabel
+            // 
+            descuentoLabel.Location = new System.Drawing.Point(4, 209);
+            descuentoLabel.Name = "descuentoLabel";
+            descuentoLabel.Size = new System.Drawing.Size(71, 20);
+            descuentoLabel.TabIndex = 14;
+            descuentoLabel.Values.Text = "Descuento:";
+            // 
             // FrmDetalleDocumento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(397, 379);
-            this.Controls.Add(tipoPrecioLabel);
-            this.Controls.Add(this.tipoPrecioComboBox);
-            this.Controls.Add(this.btnCalcIsc);
-            this.Controls.Add(this.btnCalcIgv);
+            this.ClientSize = new System.Drawing.Size(374, 393);
+            this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.barraBotones);
-            this.Controls.Add(totalVentaLabel);
-            this.Controls.Add(this.totalVentaTextBox);
-            this.Controls.Add(otroImpuestoLabel);
-            this.Controls.Add(this.otroImpuestoTextBox);
-            this.Controls.Add(impuestoSelectivoLabel);
-            this.Controls.Add(this.impuestoSelectivoTextBox);
-            this.Controls.Add(tipoImpuestoLabel);
-            this.Controls.Add(this.tipoImpuestoComboBox);
-            this.Controls.Add(impuestoLabel);
-            this.Controls.Add(this.impuestoTextBox);
-            this.Controls.Add(unidadMedidaLabel);
-            this.Controls.Add(this.unidadMedidaComboBox);
-            this.Controls.Add(cantidadLabel);
-            this.Controls.Add(this.cantidadTextBox);
-            this.Controls.Add(precioReferencialLabel);
-            this.Controls.Add(this.precioReferencialTextBox);
-            this.Controls.Add(precioUnitarioLabel);
-            this.Controls.Add(this.precioUnitarioTextBox);
-            this.Controls.Add(descripcionLabel);
-            this.Controls.Add(this.descripcionTextBox);
-            this.Controls.Add(codigoItemLabel);
-            this.Controls.Add(this.codigoItemTextBox);
-            this.Controls.Add(idLabel);
-            this.Controls.Add(this.idNumericUpDown);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmDetalleDocumento";
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Detalle del Documento";
-            ((System.ComponentModel.ISupportInitialize)(this.idNumericUpDown)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.detalleDocumentoBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.unidadMedidaComboBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoComboBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoImpuestoBindingSource)).EndInit();
             this.barraBotones.ResumeLayout(false);
             this.barraBotones.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.tipoPrecioComboBox)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoPrecioBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.kryptonPanel1)).EndInit();
+            this.kryptonPanel1.ResumeLayout(false);
+            this.kryptonPanel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -455,26 +477,28 @@ namespace OpenInvoicePeru.WinApp
         #endregion
 
         private System.Windows.Forms.BindingSource detalleDocumentoBindingSource;
-        private System.Windows.Forms.NumericUpDown idNumericUpDown;
-        private System.Windows.Forms.TextBox codigoItemTextBox;
-        private System.Windows.Forms.TextBox descripcionTextBox;
-        private System.Windows.Forms.TextBox precioUnitarioTextBox;
-        private System.Windows.Forms.TextBox precioReferencialTextBox;
-        private System.Windows.Forms.TextBox cantidadTextBox;
-        private System.Windows.Forms.ComboBox unidadMedidaComboBox;
-        private System.Windows.Forms.TextBox impuestoTextBox;
-        private System.Windows.Forms.ComboBox tipoImpuestoComboBox;
-        private System.Windows.Forms.TextBox impuestoSelectivoTextBox;
-        private System.Windows.Forms.TextBox otroImpuestoTextBox;
-        private System.Windows.Forms.TextBox totalVentaTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox codigoItemTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox descripcionTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox precioUnitarioTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox precioReferencialTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox cantidadTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox unidadMedidaComboBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox impuestoTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox tipoImpuestoComboBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox impuestoSelectivoTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox otroImpuestoTextBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox totalVentaTextBox;
         private System.Windows.Forms.ToolStrip barraBotones;
         private System.Windows.Forms.ToolStripButton toolOk;
         private System.Windows.Forms.ToolStripButton toolCancel;
         private System.Windows.Forms.ErrorProvider errorProvider1;
-        private System.Windows.Forms.Button btnCalcIsc;
-        private System.Windows.Forms.Button btnCalcIgv;
-        private System.Windows.Forms.ComboBox tipoPrecioComboBox;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCalcIsc;
+        private ComponentFactory.Krypton.Toolkit.KryptonButton btnCalcIgv;
+        private ComponentFactory.Krypton.Toolkit.KryptonComboBox tipoPrecioComboBox;
         private System.Windows.Forms.BindingSource tipoImpuestoBindingSource;
         private System.Windows.Forms.BindingSource tipoPrecioBindingSource;
+        private ComponentFactory.Krypton.Toolkit.KryptonPanel kryptonPanel1;
+        private ComponentFactory.Krypton.Toolkit.KryptonNumericUpDown idNumericUpDown;
+        private ComponentFactory.Krypton.Toolkit.KryptonTextBox descuentoTextBox;
     }
 }
