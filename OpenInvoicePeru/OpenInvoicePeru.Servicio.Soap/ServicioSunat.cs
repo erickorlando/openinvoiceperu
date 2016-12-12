@@ -1,25 +1,29 @@
 ﻿using System;
 using System.ServiceModel;
-using OpenInvoicePeru.Servicio.Soap.Documentos;
 
 namespace OpenInvoicePeru.Servicio.Soap
 {
     public class ServicioSunat : IServicioSunat
     {
-        private readonly ParametrosConexion _parametros;
-        private billServiceClient _proxy;
+        private readonly Documentos.billServiceClient _proxyDocumentos;
+        private readonly Consultas.billServiceClient _proxyConsultas;
 
         public ServicioSunat(ParametrosConexion parametros)
         {
-            _parametros = parametros;
             System.Net.ServicePointManager.UseNagleAlgorithm = true;
             System.Net.ServicePointManager.Expect100Continue = false;
             System.Net.ServicePointManager.CheckCertificateRevocationList = true;
 
-            _proxy = new billServiceClient("ServicioSunat", parametros.EndPointUrl);
+            _proxyDocumentos = new Documentos.billServiceClient("ServicioSunat", parametros.EndPointUrl);
+            _proxyConsultas = new Consultas.billServiceClient("ConsultasSunat", parametros.EndPointUrl);
             // Agregamos el behavior configurado para soportar WS-Security.
-            var behavior = new PasswordDigestBehavior(string.Concat(parametros.Ruc, parametros.UserName), parametros.Password);
-            _proxy.Endpoint.EndpointBehaviors.Add(behavior);
+            var behavior = new PasswordDigestBehavior(
+                string.Concat(parametros.Ruc, 
+                parametros.UserName), 
+                parametros.Password);
+
+            _proxyDocumentos.Endpoint.EndpointBehaviors.Add(behavior);
+            _proxyConsultas.Endpoint.EndpointBehaviors.Add(behavior);
         }
 
         RespuestaSincrono IServicioSunat.EnviarDocumento(DocumentoSunat request)
@@ -29,10 +33,10 @@ namespace OpenInvoicePeru.Servicio.Soap
 
             try
             {
-                _proxy.Open();
-                var resultado = _proxy.sendBill(request.NombreArchivo, dataOrigen);
+                _proxyDocumentos.Open();
+                var resultado = _proxyDocumentos.sendBill(request.NombreArchivo, dataOrigen);
 
-                _proxy.Close();
+                _proxyDocumentos.Close();
 
                 response.ConstanciaDeRecepcion = Convert.ToBase64String(resultado);
                 response.Exito = true;
@@ -64,12 +68,13 @@ namespace OpenInvoicePeru.Servicio.Soap
 
             try
             {
-                _proxy.Open();
-                var resultado = _proxy.sendSummary(request.NombreArchivo, dataOrigen);
+                _proxyDocumentos.Open();
+                var resultado = _proxyDocumentos.sendSummary(request.NombreArchivo, dataOrigen);
 
-                _proxy.Close();
+                _proxyDocumentos.Close();
 
                 response.NumeroTicket = resultado;
+                response.Exito = true;
             }
             catch (FaultException ex)
             {
@@ -97,15 +102,16 @@ namespace OpenInvoicePeru.Servicio.Soap
 
             try
             {
-                _proxy.Open();
-                var resultado = _proxy.getStatus(numeroTicket);
+                _proxyDocumentos.Open();
+                var resultado = _proxyDocumentos.getStatus(numeroTicket);
 
-                _proxy.Close();
+                _proxyDocumentos.Close();
 
                 var estado = (resultado.statusCode != "98");
 
                 response.ConstanciaDeRecepcion = estado
                     ? Convert.ToBase64String(resultado.content) : "Aun en proceso";
+                response.Exito = true;
             }
             catch (FaultException ex)
             {
@@ -130,7 +136,43 @@ namespace OpenInvoicePeru.Servicio.Soap
 
         RespuestaSincrono IServicioSunat.ConsultarConstanciaDeRecepcion(DatosDocumento request)
         {
-            throw new System.NotImplementedException();
+            var response = new RespuestaSincrono();
+
+            try
+            {
+                _proxyConsultas.Open();
+                var resultado = _proxyConsultas.getStatusCdr(request.RucEmisor, 
+                    request.TipoComprobante, 
+                    request.Serie, 
+                    request.Numero);
+
+                _proxyConsultas.Close();
+
+                var estado = (resultado.statusCode != "98");
+
+                response.ConstanciaDeRecepcion = estado
+                    ? Convert.ToBase64String(resultado.content) : "Aun en proceso";
+                response.Exito = true;
+            }
+            catch (FaultException ex)
+            {
+                response.ConstanciaDeRecepcion = string.Concat(ex.Code.Name, ex.Message);
+            }
+            catch (Exception ex)
+            {
+                string msg;
+                msg = ex.InnerException != null ? string.Concat(ex.InnerException.Message, ex.Message) : ex.Message;
+                var faultCode = "<faultcode>";
+                if (msg.Contains(faultCode))
+                {
+                    var posicion = msg.IndexOf(faultCode, StringComparison.Ordinal);
+                    var codigoError = msg.Substring(posicion + faultCode.Length, 4);
+                    msg = $"El Código de Error es {codigoError}";
+                }
+                response.ConstanciaDeRecepcion = msg;
+            }
+
+            return response;
         }
     }
 }

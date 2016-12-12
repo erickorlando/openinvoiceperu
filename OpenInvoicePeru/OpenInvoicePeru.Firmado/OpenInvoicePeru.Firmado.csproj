@@ -51,15 +51,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConexionSunat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Serializador.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\OpenInvoicePeru.Comun.Dto\OpenInvoicePeru.Comun.Dto.csproj">
+      <Project>{a265a65a-c2a9-4f9e-b272-bed5ed04df98}</Project>
+      <Name>OpenInvoicePeru.Comun.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenInvoicePeru.Comun\OpenInvoicePeru.Comun.csproj">
+      <Project>{c6d3447f-6aed-4da5-b28c-7c0356f2f4a8}</Project>
+      <Name>OpenInvoicePeru.Comun</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

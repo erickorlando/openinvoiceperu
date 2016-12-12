@@ -7,7 +7,7 @@ using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 using Ionic.Zip;
-using OpenInvoicePeru.Firmado.Estructuras;
+using OpenInvoicePeru.Comun.Constantes;
 
 namespace OpenInvoicePeru.Firmado
 {
@@ -19,18 +19,21 @@ namespace OpenInvoicePeru.Firmado
         /// Cadena Base64 del certificado Digital
         /// </summary>
         public string RutaCertificadoDigital { get; set; }
+        
         /// <summary>
         /// Si el certificado digital tiene Clave se coloca aquí
         /// </summary>
         public string PasswordCertificado { get; set; }
+        
         /// <summary>
         /// Hash de la Firma del Documento
         /// </summary>
         public string DigestValue { get; set; }
+
         /// <summary>
-        /// Tipo de Documento segun SUNAT
+        /// Indicar si hay un solo nodo UBLExtension
         /// </summary>
-        public int TipoDocumento { get; set; }
+        public bool UnSoloNodoExtension { get; set; }
         
         /// <summary>
         /// Resumen de la Firma
@@ -39,8 +42,9 @@ namespace OpenInvoicePeru.Firmado
 
         public Serializador()
         {
-            TipoDocumento = 1; // Factura es Por Defecto.
+            UnSoloNodoExtension = false;
         }
+
         /// <summary>
         /// Genera el XML basado en una clase con el atributo Serializable
         /// </summary>
@@ -63,6 +67,7 @@ namespace OpenInvoicePeru.Firmado
             }
             return resultado;
         }
+
         /// <summary>
         /// Genera el ZIP del XML basandose en la trama del XML.
         /// </summary>
@@ -109,15 +114,11 @@ namespace OpenInvoicePeru.Firmado
             {
                 xmlDoc.PreserveWhitespace = true;
                 xmlDoc.Load(documento);
-                int tipo;
 
-                if (TipoDocumento == 1 || TipoDocumento == 2 || TipoDocumento == 3 || TipoDocumento == 4)
-                    tipo = 1;
-                else
-                    tipo = 0;
+                var indiceNodo = UnSoloNodoExtension ? 0 : 1;
 
                 var nodoExtension = xmlDoc.GetElementsByTagName("ExtensionContent", EspacioNombres.ext)
-                    .Item(tipo);
+                    .Item(indiceNodo);
                 if (nodoExtension == null)
                     throw new InvalidOperationException("No se pudo encontrar el nodo ExtensionContent en el XML");
                 nodoExtension.RemoveAll();

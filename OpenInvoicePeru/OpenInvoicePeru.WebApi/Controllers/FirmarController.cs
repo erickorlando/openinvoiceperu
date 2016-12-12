@@ -18,7 +18,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 {
                     RutaCertificadoDigital = request.CertificadoDigital,
                     PasswordCertificado = request.PasswordCertificado,
-                    TipoDocumento = request.UnSoloNodoExtension ? 0 : 1
+                    UnSoloNodoExtension = request.UnSoloNodoExtension ? 0 : 1
                 };
 
                 response.TramaXmlFirmado = serializador.FirmarXml(request.TramaXmlSinFirma);
