@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Firmado;
@@ -17,7 +18,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
             _serializador = serializador;
         }
 
-        public EnviarDocumentoResponse Post([FromBody] ConsultaConstanciaRequest request)
+        public async Task<EnviarDocumentoResponse> Post([FromBody] ConsultaConstanciaRequest request)
         {
             var response = new EnviarDocumentoResponse();
 
@@ -45,7 +46,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                     response.MensajeRespuesta = resultado.MensajeError;
                 }
                 else
-                    response = _serializador.GenerarDocumentoRespuesta(resultado.ConstanciaDeRecepcion);
+                    response = await _serializador.GenerarDocumentoRespuesta(resultado.ConstanciaDeRecepcion);
             }
             catch (Exception ex)
             {

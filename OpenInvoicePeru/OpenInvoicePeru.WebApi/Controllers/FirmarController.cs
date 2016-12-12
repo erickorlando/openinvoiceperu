@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Firmado;
@@ -14,13 +15,13 @@ namespace OpenInvoicePeru.WebApi.Controllers
             _certificador = certificador;
         }
 
-        public FirmadoResponse Post([FromBody]FirmadoRequest request)
+        public async Task<FirmadoResponse> Post([FromBody]FirmadoRequest request)
         {
             var response = new FirmadoResponse();
 
             try
             {
-                response = _certificador.FirmarXml(request);
+                response = await _certificador.FirmarXml(request);
                 response.Exito = true;
             }
             catch (Exception ex)

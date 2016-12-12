@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Comun.Dto.Modelos;
@@ -18,13 +19,13 @@ namespace OpenInvoicePeru.WebApi.Controllers
             _serializador = serializador;
         }
 
-        public DocumentoResponse Post([FromBody] DocumentoElectronico documento)
+        public async Task<DocumentoResponse> Post([FromBody] DocumentoElectronico documento)
         {
             var response = new DocumentoResponse();
             try
             {
                 var notaDebito = _documentoXml.Generar(documento);
-                response.TramaXmlSinFirma = _serializador.GenerarXml(notaDebito);
+                response.TramaXmlSinFirma = await _serializador.GenerarXml(notaDebito);
                 response.Exito = true;
             }
             catch (Exception ex)

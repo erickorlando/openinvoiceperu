@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Firmado;
@@ -17,14 +18,14 @@ namespace OpenInvoicePeru.WebApi.Controllers
             _servicioSunatDocumentos = servicioSunatDocumentos;
         }
 
-        public EnviarResumenResponse Post([FromBody]EnviarDocumentoRequest request)
+        public async Task<EnviarResumenResponse> Post([FromBody]EnviarDocumentoRequest request)
         {
             var response = new EnviarResumenResponse();
             var nombreArchivo = $"{request.Ruc}-{request.IdDocumento}";
 
             try
             {
-                var tramaZip = _serializador.GenerarZip(request.TramaXmlFirmado, nombreArchivo);
+                var tramaZip = await _serializador.GenerarZip(request.TramaXmlFirmado, nombreArchivo);
 
                 _servicioSunatDocumentos.Inicializar(new ParametrosConexion
                 {
