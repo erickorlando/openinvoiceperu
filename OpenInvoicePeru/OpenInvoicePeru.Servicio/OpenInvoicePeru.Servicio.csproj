@@ -43,6 +43,9 @@
     <Compile Include="DatosDocumento.cs" />
     <Compile Include="DocumentoSunat.cs" />
     <Compile Include="IServicioSunat.cs" />
+    <Compile Include="IServicioSunatConsultas.cs" />
+    <Compile Include="IServicioSunatDocumentos.cs" />
+    <Compile Include="ParametrosConexion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RespuestaAsincrono.cs" />
     <Compile Include="RespuestaSincrono.cs" />

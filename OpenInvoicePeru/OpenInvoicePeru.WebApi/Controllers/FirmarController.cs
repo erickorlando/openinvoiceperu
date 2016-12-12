@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Web.Http;
+using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Firmado;
-using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
     public class FirmarController : ApiController
     {
+        private readonly ICertificador _certificador;
+
+        public FirmarController(ICertificador certificador)
+        {
+            _certificador = certificador;
+        }
 
         public FirmadoResponse Post([FromBody]FirmadoRequest request)
         {
@@ -14,16 +20,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
 
             try
             {
-                var serializador = new Serializador
-                {
-                    RutaCertificadoDigital = request.CertificadoDigital,
-                    PasswordCertificado = request.PasswordCertificado,
-                    UnSoloNodoExtension = request.UnSoloNodoExtension ? 0 : 1
-                };
-
-                response.TramaXmlFirmado = serializador.FirmarXml(request.TramaXmlSinFirma);
-                response.ResumenFirma = serializador.DigestValue;
-                response.ValorFirma = serializador.ValorFirma;
+                response = _certificador.FirmarXml(request);
                 response.Exito = true;
             }
             catch (Exception ex)

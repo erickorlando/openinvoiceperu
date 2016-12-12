@@ -1,23 +1,32 @@
 ﻿using System;
 using System.Web.Http;
+using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Firmado;
-using OpenInvoicePeru.Firmado.Models;
+using OpenInvoicePeru.Servicio;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
     public class EnviarResumenController : ApiController
     {
+        private readonly ISerializador _serializador;
+        private readonly IServicioSunatDocumentos _servicioSunat;
+
+        public EnviarResumenController(ISerializador serializador, IServicioSunatDocumentos servicioSunat)
+        {
+            _serializador = serializador;
+            _servicioSunat = servicioSunat;
+        }
+
         public EnviarResumenResponse Post([FromBody]EnviarDocumentoRequest request)
         {
             var response = new EnviarResumenResponse();
-            var serializador = new Serializador();
             var nombreArchivo = $"{request.Ruc}-{request.IdDocumento}";
 
             try
             {
-                var tramaZip = serializador.GenerarZip(request.TramaXmlFirmado, nombreArchivo);
+                var tramaZip = _serializador.GenerarZip(request.TramaXmlFirmado, nombreArchivo);
 
-                var conexionSunat = new ConexionSunat(new ConexionSunat.Parametros
+                _servicioSunat.Inicializar(new ParametrosConexion
                 {
                     Ruc = request.Ruc,
                     UserName = request.UsuarioSol,
@@ -25,17 +34,21 @@ namespace OpenInvoicePeru.WebApi.Controllers
                     EndPointUrl = request.EndPointUrl
                 });
 
-                var resultado = conexionSunat.EnviarResumenBaja(tramaZip, $"{nombreArchivo}.zip");
-
-                if (resultado.Item2)
+                var resultado = _servicioSunat.EnviarResumen(new DocumentoSunat
                 {
-                    response.NroTicket = resultado.Item1;
+                    NombreArchivo = $"{nombreArchivo}.zip",
+                    TramaXml = tramaZip
+                });
+                
+                if (resultado.Exito)
+                {
+                    response.NroTicket = resultado.NumeroTicket;
                     response.Exito = true;
                     response.NombreArchivo = nombreArchivo;
                 }
                 else
                 {
-                    response.MensajeError = resultado.Item1;
+                    response.MensajeError = resultado.NumeroTicket;
                     response.Exito = false;
                 }
             }

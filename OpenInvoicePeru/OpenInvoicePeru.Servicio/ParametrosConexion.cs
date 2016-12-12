@@ -1,4 +1,4 @@
-﻿namespace OpenInvoicePeru.Servicio.Soap
+﻿namespace OpenInvoicePeru.Servicio
 {
     public class ParametrosConexion
     {

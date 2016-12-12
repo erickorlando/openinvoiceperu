@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ParametrosConexion.cs" />
     <Compile Include="PasswordDigestBehavior.cs" />
     <Compile Include="PasswordDigestMessageInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -60,7 +59,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="ServicioSunat.cs" />
+    <Compile Include="ServicioSunatConsultas.cs" />
+    <Compile Include="ServicioSunatDocumentos.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenInvoicePeru.Comun\OpenInvoicePeru.Comun.csproj">

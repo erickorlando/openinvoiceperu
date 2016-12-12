@@ -147,6 +147,10 @@
       <Project>{1cfd1d28-d342-413d-a6e1-7616cb9708e2}</Project>
       <Name>OpenInvoicePeru.Firmado</Name>
     </ProjectReference>
+    <ProjectReference Include="..\OpenInvoicePeru.Servicio\OpenInvoicePeru.Servicio.csproj">
+      <Project>{25D6B9AF-55A6-4E7F-A061-52A492CCDB6E}</Project>
+      <Name>OpenInvoicePeru.Servicio</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenInvoicePeru.Xml\OpenInvoicePeru.Xml.csproj">
       <Project>{eda74dc8-b11b-4c7c-b604-0763b210e7d4}</Project>
       <Name>OpenInvoicePeru.Xml</Name>
