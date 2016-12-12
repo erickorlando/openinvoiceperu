@@ -24,7 +24,6 @@ namespace OpenInvoicePeru.WebApi.Controllers
             try
             {
                 var invoice = _documentoXml.Generar(documento);
-
                 response.TramaXmlSinFirma = _serializador.GenerarXml(invoice);
                 response.Exito = true;
             }

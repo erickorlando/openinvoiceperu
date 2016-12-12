@@ -1,22 +1,30 @@
 ﻿using System;
 using System.Web.Http;
-using OpenInvoicePeru.Firmado.Models;
+using OpenInvoicePeru.Comun.Dto.Intercambio;
+using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Firmado;
+using OpenInvoicePeru.Xml;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
     public class GenerarRetencionController : ApiController
     {
+        private readonly IDocumentoXml _documentoXml;
+        private readonly ISerializador _serializador;
+
+        public GenerarRetencionController(IDocumentoXml documentoXml, ISerializador serializador)
+        {
+            _documentoXml = documentoXml;
+            _serializador = serializador;
+        }
+
         public DocumentoResponse Post([FromBody] DocumentoRetencion documento)
         {
             var response = new DocumentoResponse();
             try
             {
-                var invoice = Generador.GenerarRetention(documento);
-
-                var serializador = new Serializador();
-
-                response.TramaXmlSinFirma = serializador.GenerarXml(invoice);
+                var invoice = _documentoXml.Generar(documento);
+                response.TramaXmlSinFirma = _serializador.GenerarXml(invoice);
                 response.Exito = true;
             }
             catch (Exception ex)
