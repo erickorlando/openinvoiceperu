@@ -57,7 +57,6 @@
     <Compile Include="ExchangeRate.cs" />
     <Compile Include="ExtensionContent.cs" />
     <Compile Include="ExternalReference.cs" />
-    <Compile Include="IEstructuraXml.cs" />
     <Compile Include="Invoice.cs" />
     <Compile Include="InvoiceDocumentReference.cs" />
     <Compile Include="InvoicedQuantity.cs" />

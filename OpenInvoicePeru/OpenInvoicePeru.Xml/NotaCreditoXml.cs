@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
+using OpenInvoicePeru.Comun;
+using OpenInvoicePeru.Comun.Dto.Contratos;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Estructuras;
 
 namespace OpenInvoicePeru.Xml
 {
-    public class NotaCreditoXml : IDocumentoXml<DocumentoElectronico, CreditNote>
+    public class NotaCreditoXml : IDocumentoXml
     {
-        CreditNote IDocumentoXml<DocumentoElectronico, CreditNote>.Generar(DocumentoElectronico documento)
+        IEstructuraXml IDocumentoXml.Generar(IDocumentoElectronico request)
         {
+            var documento = (DocumentoElectronico)request;
             var creditNote = new CreditNote
             {
                 UblExtensions = new UblExtensions

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
+using OpenInvoicePeru.Comun;
 using OpenInvoicePeru.Comun.Constantes;
 
 namespace OpenInvoicePeru.Estructuras

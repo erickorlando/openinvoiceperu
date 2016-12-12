@@ -1,12 +1,15 @@
+using OpenInvoicePeru.Comun;
+using OpenInvoicePeru.Comun.Dto.Contratos;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Estructuras;
 
 namespace OpenInvoicePeru.Xml
 {
-    public class RetencionXml : IDocumentoXml<DocumentoRetencion, Retention>
+    public class RetencionXml : IDocumentoXml
     {
-        Retention IDocumentoXml<DocumentoRetencion, Retention>.Generar(DocumentoRetencion documento)
+        IEstructuraXml IDocumentoXml.Generar(IDocumentoElectronico request)
         {
+            var documento = (DocumentoRetencion)request;
             var retention = new Retention
             {
                 Id = documento.IdDocumento,

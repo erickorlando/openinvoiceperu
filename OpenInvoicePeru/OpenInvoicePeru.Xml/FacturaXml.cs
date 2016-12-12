@@ -1,15 +1,18 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using OpenInvoicePeru.Comun;
+using OpenInvoicePeru.Comun.Dto.Contratos;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Estructuras;
 
 namespace OpenInvoicePeru.Xml
 {
-    public class FacturaXml : IDocumentoXml<DocumentoElectronico, Invoice>
+    public class FacturaXml : IDocumentoXml
     {
-        Invoice IDocumentoXml<DocumentoElectronico, Invoice>.Generar(DocumentoElectronico documento)
+        IEstructuraXml IDocumentoXml.Generar(IDocumentoElectronico request)
         {
+            var documento = (DocumentoElectronico)request;
             var invoice = new Invoice
             {
                 UblExtensions = new UblExtensions

@@ -1,13 +1,16 @@
 using System;
+using OpenInvoicePeru.Comun;
+using OpenInvoicePeru.Comun.Dto.Contratos;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Estructuras;
 
 namespace OpenInvoicePeru.Xml
 {
-    public class ComunicacionBajaXml : IDocumentoXml<ComunicacionBaja, VoidedDocuments>
+    public class ComunicacionBajaXml : IDocumentoXml
     {
-        VoidedDocuments IDocumentoXml<ComunicacionBaja, VoidedDocuments>.Generar(ComunicacionBaja documento)
+        IEstructuraXml IDocumentoXml.Generar(IDocumentoElectronico request)
         {
+            var documento = (ComunicacionBaja)request;
             var voidedDocument = new VoidedDocuments
             {
                 Id = documento.IdDocumento,

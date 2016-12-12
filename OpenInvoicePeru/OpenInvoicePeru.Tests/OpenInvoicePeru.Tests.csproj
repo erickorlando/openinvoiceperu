@@ -61,13 +61,6 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\GenerarNotaCreditoControllerTests.cs" />
-    <Compile Include="Controllers\GenerarNotaDebitoControllerTests.cs" />
-    <Compile Include="Controllers\FirmarControllerTests.cs" />
-    <Compile Include="Controllers\GenerarFacturaControllerTests.cs" />
-    <Compile Include="Controllers\EnviarDocumentoControllerTests.cs" />
-    <Compile Include="Controllers\EnviarResumenControllerTests.cs" />
-    <Compile Include="Controllers\GenerarComunicacionBajaControllerTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

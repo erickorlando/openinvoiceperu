@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Constantes\EspacioNombres.cs" />
+    <Compile Include="IEstructuraXml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Constantes\Respuestas.cs" />
   </ItemGroup>

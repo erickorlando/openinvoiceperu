@@ -1,4 +1,4 @@
-﻿namespace OpenInvoicePeru.Estructuras
+﻿namespace OpenInvoicePeru.Comun
 {
     public interface IEstructuraXml
     {

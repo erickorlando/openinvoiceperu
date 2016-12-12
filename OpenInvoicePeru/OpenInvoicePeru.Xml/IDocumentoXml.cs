@@ -1,12 +1,10 @@
-﻿using OpenInvoicePeru.Comun.Dto.Contratos;
-using OpenInvoicePeru.Estructuras;
+﻿using OpenInvoicePeru.Comun;
+using OpenInvoicePeru.Comun.Dto.Contratos;
 
 namespace OpenInvoicePeru.Xml
 {
-    public interface IDocumentoXml<in TDocumento, out TEstructura>
-        where TDocumento : IDocumentoElectronico
-        where TEstructura : IEstructuraXml
+    public interface IDocumentoXml
     {
-        TEstructura Generar(TDocumento documento);
+        IEstructuraXml Generar(IDocumentoElectronico request);
     }
 }

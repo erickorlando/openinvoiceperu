@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
+using OpenInvoicePeru.Comun;
+using OpenInvoicePeru.Comun.Dto.Contratos;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Estructuras;
 
 namespace OpenInvoicePeru.Xml
 {
-    public class ResumenDiarioXml : IDocumentoXml<ResumenDiario, SummaryDocuments>
+    public class ResumenDiarioXml : IDocumentoXml
     {
-        SummaryDocuments IDocumentoXml<ResumenDiario, SummaryDocuments>.Generar(ResumenDiario documento)
+        IEstructuraXml IDocumentoXml.Generar(IDocumentoElectronico request)
         {
+            var documento = (ResumenDiario)request;
             var summary = new SummaryDocuments
             {
                 Id = documento.IdDocumento,
