@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contratos\IDocumentoElectronico.cs" />
+    <Compile Include="Intercambio\ConsultaConstanciaRequest.cs" />
     <Compile Include="Modelos\ComunicacionBaja.cs" />
     <Compile Include="Intercambio\ConsultaTicketRequest.cs" />
     <Compile Include="Modelos\Contribuyente.cs" />

@@ -47,7 +47,7 @@ namespace OpenInvoicePeru.Servicio.Soap
             }
             catch (FaultException ex)
             {
-                response.ConstanciaDeRecepcion = string.Concat(ex.Code.Name, ex.Message);
+                response.MensajeError = string.Concat(ex.Code.Name, ex.Message);
             }
             catch (Exception ex)
             {
@@ -58,7 +58,7 @@ namespace OpenInvoicePeru.Servicio.Soap
                     var codigoError = msg.Substring(posicion + Formatos.FaultCode.Length, 4);
                     msg = $"El Código de Error es {codigoError}";
                 }
-                response.ConstanciaDeRecepcion = msg;
+                response.MensajeError = msg;
             }
 
             return response;

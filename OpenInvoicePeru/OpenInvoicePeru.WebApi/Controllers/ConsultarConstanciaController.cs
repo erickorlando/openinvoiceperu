@@ -6,24 +6,24 @@ using OpenInvoicePeru.Servicio;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
-    public class ConsultarTicketController : ApiController
+    public class ConsultarConstanciaController : ApiController
     {
-        private readonly IServicioSunatDocumentos _servicioSunatDocumentos;
+        private readonly IServicioSunatConsultas _servicioSunatConsultas;
         private readonly ISerializador _serializador;
 
-        public ConsultarTicketController(IServicioSunatDocumentos servicioSunatDocumentos, ISerializador serializador)
+        public ConsultarConstanciaController(IServicioSunatConsultas servicioSunatConsultas, ISerializador serializador)
         {
-            _servicioSunatDocumentos = servicioSunatDocumentos;
+            _servicioSunatConsultas = servicioSunatConsultas;
             _serializador = serializador;
         }
 
-        public EnviarDocumentoResponse Post([FromBody] ConsultaTicketRequest request)
+        public EnviarDocumentoResponse Post([FromBody] ConsultaConstanciaRequest request)
         {
             var response = new EnviarDocumentoResponse();
 
             try
             {
-                _servicioSunatDocumentos.Inicializar(new ParametrosConexion
+                _servicioSunatConsultas.Inicializar(new ParametrosConexion
                 {
                     Ruc = request.Ruc,
                     UserName = request.UsuarioSol,
@@ -31,7 +31,13 @@ namespace OpenInvoicePeru.WebApi.Controllers
                     EndPointUrl = request.EndPointUrl
                 });
 
-                var resultado = _servicioSunatDocumentos.ConsultarTicket(request.NroTicket);
+                var resultado = _servicioSunatConsultas.ConsultarConstanciaDeRecepcion(new DatosDocumento
+                {
+                    RucEmisor = request.Ruc,
+                    TipoComprobante = request.TipoDocumento,
+                    Serie = request.Serie,
+                    Numero = request.Numero
+                });
 
                 if (!resultado.Exito)
                 {
