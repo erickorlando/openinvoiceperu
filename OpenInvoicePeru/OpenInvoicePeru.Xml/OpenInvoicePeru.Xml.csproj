@@ -4,21 +4,20 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{1CFD1D28-D342-413D-A6E1-7616CB9708E2}</ProjectGuid>
+    <ProjectGuid>{EDA74DC8-B11B-4C7C-B604-0763B210E7D4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>OpenInvoicePeru.Firmado</RootNamespace>
-    <AssemblyName>OpenInvoicePeru.Firmado</AssemblyName>
+    <RootNamespace>OpenInvoicePeru.Xml</RootNamespace>
+    <AssemblyName>OpenInvoicePeru.Xml</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG</DefineConstants>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
@@ -31,18 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetZip, Version=1.10.1.0, Culture=neutral, PublicKeyToken=6583c7c814667745, processorArchitecture=MSIL">
-      <HintPath>..\packages\DotNetZip.1.10.1\lib\net20\DotNetZip.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="Microsoft.Build.Framework" />
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Runtime.Serialization" />
-    <Reference Include="System.Security" />
-    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -51,15 +40,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConexionSunat.cs" />
+    <Compile Include="ComunicacionBajaXml.cs" />
+    <Compile Include="FacturaXml.cs" />
+    <Compile Include="IDocumentoXml.cs" />
+    <Compile Include="NotaCreditoXml.cs" />
+    <Compile Include="NotaDebitoXml.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Serializador.cs" />
+    <Compile Include="ResumenDiarioXml.cs" />
+    <Compile Include="RetencionXml.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="app.config" />
-    <None Include="packages.config" />
+    <ProjectReference Include="..\OpenInvoicePeru.Comun.Dto\OpenInvoicePeru.Comun.Dto.csproj">
+      <Project>{a265a65a-c2a9-4f9e-b272-bed5ed04df98}</Project>
+      <Name>OpenInvoicePeru.Comun.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenInvoicePeru.Comun\OpenInvoicePeru.Comun.csproj">
+      <Project>{c6d3447f-6aed-4da5-b28c-7c0356f2f4a8}</Project>
+      <Name>OpenInvoicePeru.Comun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenInvoicePeru.Estructuras\OpenInvoicePeru.Estructuras.csproj">
+      <Project>{e6926288-913c-43e2-92b5-3e05a058312f}</Project>
+      <Name>OpenInvoicePeru.Estructuras</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
