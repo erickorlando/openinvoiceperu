@@ -3,21 +3,28 @@ using System.IO;
 using System.Web.Http;
 using System.Xml;
 using Ionic.Zip;
-using OpenInvoicePeru.Firmado;
-using OpenInvoicePeru.Firmado.Estructuras;
-using OpenInvoicePeru.Firmado.Models;
+using OpenInvoicePeru.Comun.Constantes;
+using OpenInvoicePeru.Comun.Dto.Intercambio;
+using OpenInvoicePeru.Servicio;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
     public class ConsultarTicketController : ApiController
     {
+        private readonly IServicioSunatDocumentos _servicioSunatDocumentos;
+
+        public ConsultarTicketController(IServicioSunatDocumentos servicioSunatDocumentos)
+        {
+            _servicioSunatDocumentos = servicioSunatDocumentos;
+        }
+
         public EnviarDocumentoResponse Post([FromBody] ConsultaTicketRequest request)
         {
             var response = new EnviarDocumentoResponse();
 
             try
             {
-                var conexionSunat = new ConexionSunat(new ConexionSunat.Parametros
+                _servicioSunatDocumentos.Inicializar(new ParametrosConexion
                 {
                     Ruc = request.Ruc,
                     UserName = request.UsuarioSol,
@@ -25,11 +32,11 @@ namespace OpenInvoicePeru.WebApi.Controllers
                     EndPointUrl = request.EndPointUrl
                 });
 
-                var resultado = conexionSunat.ObtenerEstado(request.NroTicket);
+                var resultado = _servicioSunatDocumentos.ConsultarTicket(request.NroTicket);
 
-                if (resultado.Item2)
+                if (resultado.Exito)
                 {
-                    var returnByte = Convert.FromBase64String(resultado.Item1);
+                    var returnByte = Convert.FromBase64String(resultado.ConstanciaDeRecepcion);
                     using (var memRespuesta = new MemoryStream(returnByte))
                     {
                         using (var zipFile = ZipFile.Read(memRespuesta))
@@ -59,7 +66,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
 
                                         response.MensajeRespuesta = xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
                                             xmlnsManager)?.InnerText;
-                                        response.TramaZipCdr = resultado.Item1;
+                                        response.TramaZipCdr = resultado.ConstanciaDeRecepcion;
                                         response.Exito = true;
 
                                     }
@@ -77,7 +84,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 else
                 {
                     response.Exito = true;
-                    response.MensajeRespuesta = resultado.Item1;
+                    response.MensajeRespuesta = resultado.ConstanciaDeRecepcion;
                 }
             }
             catch (Exception ex)

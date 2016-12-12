@@ -9,12 +9,12 @@ namespace OpenInvoicePeru.WebApi.Controllers
     public class EnviarResumenController : ApiController
     {
         private readonly ISerializador _serializador;
-        private readonly IServicioSunatDocumentos _servicioSunat;
+        private readonly IServicioSunatDocumentos _servicioSunatDocumentos;
 
-        public EnviarResumenController(ISerializador serializador, IServicioSunatDocumentos servicioSunat)
+        public EnviarResumenController(ISerializador serializador, IServicioSunatDocumentos servicioSunatDocumentos)
         {
             _serializador = serializador;
-            _servicioSunat = servicioSunat;
+            _servicioSunatDocumentos = servicioSunatDocumentos;
         }
 
         public EnviarResumenResponse Post([FromBody]EnviarDocumentoRequest request)
@@ -26,7 +26,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
             {
                 var tramaZip = _serializador.GenerarZip(request.TramaXmlFirmado, nombreArchivo);
 
-                _servicioSunat.Inicializar(new ParametrosConexion
+                _servicioSunatDocumentos.Inicializar(new ParametrosConexion
                 {
                     Ruc = request.Ruc,
                     UserName = request.UsuarioSol,
@@ -34,7 +34,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                     EndPointUrl = request.EndPointUrl
                 });
 
-                var resultado = _servicioSunat.EnviarResumen(new DocumentoSunat
+                var resultado = _servicioSunatDocumentos.EnviarResumen(new DocumentoSunat
                 {
                     NombreArchivo = $"{nombreArchivo}.zip",
                     TramaXml = tramaZip
