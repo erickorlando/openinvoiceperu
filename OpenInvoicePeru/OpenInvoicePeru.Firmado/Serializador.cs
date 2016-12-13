@@ -23,7 +23,7 @@ namespace OpenInvoicePeru.Firmado
         {
             var task = Task.Factory.StartNew(() =>
             {
-                var serializer = new XmlSerializer(typeof(T));
+                var serializer = new XmlSerializer(objectToSerialize.GetType());
                 string resultado;
 
                 using (var memStr = new MemoryStream())

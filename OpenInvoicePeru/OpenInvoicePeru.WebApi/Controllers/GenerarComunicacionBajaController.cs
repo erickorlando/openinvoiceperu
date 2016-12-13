@@ -5,6 +5,7 @@ using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Firmado;
 using OpenInvoicePeru.Xml;
+using Microsoft.Practices.Unity;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
@@ -13,10 +14,11 @@ namespace OpenInvoicePeru.WebApi.Controllers
         private readonly IDocumentoXml _documentoXml;
         private readonly ISerializador _serializador;
 
-        public GenerarComunicacionBajaController(IDocumentoXml documentoXml, ISerializador serializador)
+        public GenerarComunicacionBajaController(ISerializador serializador)
         {
-            _documentoXml = documentoXml;
             _serializador = serializador;
+            _documentoXml = _documentoXml = UnityConfig.GetConfiguredContainer()
+                .Resolve<IDocumentoXml>(GetType().Name);
         }
 
         public async Task<DocumentoResponse> Post([FromBody]ComunicacionBaja baja)

@@ -1,4 +1,6 @@
-﻿namespace OpenInvoicePeru.Comun
+﻿using System;
+
+namespace OpenInvoicePeru.Comun
 {
     public interface IEstructuraXml
     {
