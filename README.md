@@ -46,16 +46,16 @@ Para poder ejecutar correctamente el proyecto debes iniciar la depuración de lo
 
 ![Open Invoice Perú](https://raw.githubusercontent.com/erickorlando/facturacionelectronicasunat/master/InicioMultiple.png "Open Invoice Perú")
 
-Si quieres colaborar con tu granito de arena puedes hacer un Fork.
+Si quieres colaborar con tu granito de arena puedes hacer un Fork y enviar tu Pull Request.
 
-Si tienes dudas escribeme a mi página de [Facebook](http://m.me/erickorlandoblog)
+Si tienes dudas con respecto al proyecto, escríbeme a mi página de [Facebook](http://m.me/erickorlandoblog)
 
 Y no te olvides de darte una vuelta por mi [Blog](http://erickorlando.com/2016/05/07/proyecto-opensource-facturacion-electronica-sunat/)
 
 ## Disclaimer ##
 
 Este software se entrega como tal y eres libre de modificarlo a tu gusto, copiarlo en su totalidad 
-o de manera parcial, lo unico que pido es que se respete la creación del autor.
+o de manera parcial, lo unico que pido es que se respete la creación del autor, un agradecimiento público no cuesta nada.
 
 Así mismo no hay garantía expresa de este producto, cualquier inconveniente que se presente con SUNAT 
 es enteramente responsabilidad del usuario al usar este Software. 
@@ -70,6 +70,5 @@ Si tienes mas dudas con SUNAT comunícate con ellos al +51 1 3150730.
 
 ## Asesoría personalizada ##
 
-Si necesitas que te apoye con la Homologación (Emisor o Proveedor) puedes contactarme 
-directamente a mi correo personal (erickorlando@live.com.pe) y podemos concertar una reunión virtual.
-Recuerda que si bien mi proyecto es de código abierto, yo vendo el soporte y consultoría técnica.
+Si necesitas que te apoye con la Homologación (Emisor o Proveedor) o necesitas que te ayude a integrar tu sistema con OpenInvoicePeru, puedes contactarme directamente a mi correo personal (erickorlando@live.com.pe) y podemos concertar una reunión virtual.
+Recuerda que si bien mi proyecto es de código abierto, yo vendo el soporte y asesoría técnica.
