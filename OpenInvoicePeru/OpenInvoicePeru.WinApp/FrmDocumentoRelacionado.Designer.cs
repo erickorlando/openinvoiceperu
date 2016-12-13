@@ -1,5 +1,4 @@
-﻿using OpenInvoicePeru.Firmado.Models;
-
+﻿
 namespace OpenInvoicePeru.WinApp
 {
     partial class FrmDocumentoRelacionado
@@ -98,7 +97,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // documentoRelacionadoBindingSource
             // 
-            this.documentoRelacionadoBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.DocumentoRelacionado);
+            this.documentoRelacionadoBindingSource.DataSource = typeof(OpenInvoicePeru.Comun.Dto.Modelos.DocumentoRelacionado);
             // 
             // tipoDocumentoComboBox
             // 

@@ -4,8 +4,9 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Windows.Forms;
+using OpenInvoicePeru.Comun.Dto.Intercambio;
+using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Datos;
-using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {

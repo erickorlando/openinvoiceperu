@@ -1,5 +1,4 @@
-﻿using OpenInvoicePeru.Firmado.Models;
-
+﻿
 namespace OpenInvoicePeru.WinApp
 {
     partial class FrmDiscrepancia
@@ -109,7 +108,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // discrepanciaBindingSource
             // 
-            this.discrepanciaBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.Discrepancia);
+            this.discrepanciaBindingSource.DataSource = typeof(OpenInvoicePeru.Comun.Dto.Modelos.Discrepancia);
             // 
             // tipoComboBox
             // 

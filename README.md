@@ -1,14 +1,24 @@
 ![Open Invoice Perú](https://raw.githubusercontent.com/erickorlando/facturacionelectronicasunat/master/openinvoiceperulogo.PNG "Open Invoice Perú")
-# OpenInvoicePeru v1.1.0.1205 #
-OpenInvoicePeru es un proyecto Open Source construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT, este proyecto está más orientado al desarrollador.
+# OpenInvoicePeru v1.2 #
+OpenInvoicePeru es un proyecto Open Source construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT, este proyecto está orientado al desarrollador (muy pronto para usuarios).
 Permite la generacion de XML, empaquetado, envío y recepción de documentos electrónicos a través de una API REST.
 
 Actualmente ya se puede usar en entornos de Producción, si encuentras algún bug por favor reportalo a la zona de [Issues de GitHub](https://github.com/erickorlando/facturacionelectronicasunat/issues).
 
 # Características #
-- Generacion de XML para Facturas, Boletas, Notas de Crédito, Notas de Débito, Resumen Diario de Boletas, Comunicaciones de Baja y Retenciones.
+- Generación de XML los siguientes documentos:
+  - Facturas
+  - Boletas 
+  - Notas de Crédito
+  - Notas de Débito
+  - Resumen Diario de Boletas
+  - Comunicaciones de Baja
+  - Retenciones
+  - Percepciones (en la versión 1.3)
+  - Guías de Remisión (en la versión 1.3)
+ 
 - Firmado del XML con un certificado digital elegido por el usuario.
-- Envío al servicio Web de SUNAT de los documentos electrónicos generados.
+- Envío al servicio Web de SUNAT de los documentos electrónicos generados (Beta, Homologación y Producción).
 - Envío de Resumen Diario y Comunicación de Baja.
 - Desempaquetado y Lectura del contenido del CDR de SUNAT.
 - Guardado de XML firmados y CDR de SUNAT.
@@ -36,16 +46,16 @@ Para poder ejecutar correctamente el proyecto debes iniciar la depuración de lo
 
 ![Open Invoice Perú](https://raw.githubusercontent.com/erickorlando/facturacionelectronicasunat/master/InicioMultiple.png "Open Invoice Perú")
 
-Si quieres colaborar con tu granito de arena puedes hacer un Fork.
+Si quieres colaborar con tu granito de arena puedes hacer un Fork y enviar tu Pull Request.
 
-Si tienes dudas escribeme a mi página de [Facebook](http://m.me/erickorlandoblog)
+Si tienes dudas con respecto al proyecto, escríbeme a mi página de [Facebook](http://m.me/erickorlandoblog)
 
 Y no te olvides de darte una vuelta por mi [Blog](http://erickorlando.com/2016/05/07/proyecto-opensource-facturacion-electronica-sunat/)
 
 ## Disclaimer ##
 
 Este software se entrega como tal y eres libre de modificarlo a tu gusto, copiarlo en su totalidad 
-o de manera parcial, lo unico que pido es que se respete la creación del autor.
+o de manera parcial, lo unico que pido es que se respete la creación del autor, un agradecimiento público no cuesta nada.
 
 Así mismo no hay garantía expresa de este producto, cualquier inconveniente que se presente con SUNAT 
 es enteramente responsabilidad del usuario al usar este Software. 
@@ -60,6 +70,5 @@ Si tienes mas dudas con SUNAT comunícate con ellos al +51 1 3150730.
 
 ## Asesoría personalizada ##
 
-Si necesitas que te apoye con la Homologación (Emisor o Proveedor) puedes contactarme 
-directamente a mi correo personal (erickorlando@live.com.pe) y podemos concertar una reunión virtual.
-Recuerda que si bien mi proyecto es de código abierto, yo vendo el soporte y consultoría técnica.
+Si necesitas que te apoye con la Homologación (Emisor o Proveedor) o necesitas que te ayude a integrar tu sistema con OpenInvoicePeru, puedes contactarme directamente a mi correo personal (erickorlando@live.com.pe) y podemos concertar una reunión virtual.
+Recuerda que si bien mi proyecto es de código abierto, yo vendo el soporte y asesoría técnica.

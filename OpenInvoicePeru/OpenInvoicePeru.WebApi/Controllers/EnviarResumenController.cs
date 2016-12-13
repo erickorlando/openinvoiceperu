@@ -1,23 +1,33 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
+using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Firmado;
-using OpenInvoicePeru.Firmado.Models;
+using OpenInvoicePeru.Servicio;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
     public class EnviarResumenController : ApiController
     {
-        public EnviarResumenResponse Post([FromBody]EnviarDocumentoRequest request)
+        private readonly ISerializador _serializador;
+        private readonly IServicioSunatDocumentos _servicioSunatDocumentos;
+
+        public EnviarResumenController(ISerializador serializador, IServicioSunatDocumentos servicioSunatDocumentos)
+        {
+            _serializador = serializador;
+            _servicioSunatDocumentos = servicioSunatDocumentos;
+        }
+
+        public async Task<EnviarResumenResponse> Post([FromBody]EnviarDocumentoRequest request)
         {
             var response = new EnviarResumenResponse();
-            var serializador = new Serializador();
             var nombreArchivo = $"{request.Ruc}-{request.IdDocumento}";
 
             try
             {
-                var tramaZip = serializador.GenerarZip(request.TramaXmlFirmado, nombreArchivo);
+                var tramaZip = await _serializador.GenerarZip(request.TramaXmlFirmado, nombreArchivo);
 
-                var conexionSunat = new ConexionSunat(new ConexionSunat.Parametros
+                _servicioSunatDocumentos.Inicializar(new ParametrosConexion
                 {
                     Ruc = request.Ruc,
                     UserName = request.UsuarioSol,
@@ -25,17 +35,21 @@ namespace OpenInvoicePeru.WebApi.Controllers
                     EndPointUrl = request.EndPointUrl
                 });
 
-                var resultado = conexionSunat.EnviarResumenBaja(tramaZip, $"{nombreArchivo}.zip");
-
-                if (resultado.Item2)
+                var resultado = _servicioSunatDocumentos.EnviarResumen(new DocumentoSunat
                 {
-                    response.NroTicket = resultado.Item1;
+                    NombreArchivo = $"{nombreArchivo}.zip",
+                    TramaXml = tramaZip
+                });
+                
+                if (resultado.Exito)
+                {
+                    response.NroTicket = resultado.NumeroTicket;
                     response.Exito = true;
                     response.NombreArchivo = nombreArchivo;
                 }
                 else
                 {
-                    response.MensajeError = resultado.Item1;
+                    response.MensajeError = resultado.MensajeError;
                     response.Exito = false;
                 }
             }

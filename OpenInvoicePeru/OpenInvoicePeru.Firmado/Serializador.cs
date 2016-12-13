@@ -1,171 +1,132 @@
 ﻿using System;
 using System.IO;
-using System.Security.Cryptography;
-using System.Security.Cryptography.X509Certificates;
-using System.Security.Cryptography.Xml;
 using System.Text;
+using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
 using Ionic.Zip;
-using OpenInvoicePeru.Firmado.Estructuras;
+using OpenInvoicePeru.Comun.Constantes;
+using OpenInvoicePeru.Comun.Dto.Intercambio;
 
 namespace OpenInvoicePeru.Firmado
 {
-    public class Serializador
+    public class Serializador : ISerializador
     {
-        private readonly string _encodingIso = "ISO-8859-1";
 
-        /// <summary>
-        /// Cadena Base64 del certificado Digital
-        /// </summary>
-        public string RutaCertificadoDigital { get; set; }
-        /// <summary>
-        /// Si el certificado digital tiene Clave se coloca aquí
-        /// </summary>
-        public string PasswordCertificado { get; set; }
-        /// <summary>
-        /// Hash de la Firma del Documento
-        /// </summary>
-        public string DigestValue { get; set; }
-        /// <summary>
-        /// Tipo de Documento segun SUNAT
-        /// </summary>
-        public int TipoDocumento { get; set; }
-        
-        /// <summary>
-        /// Resumen de la Firma
-        /// </summary>
-        public string ValorFirma { get; set; }
-
-        public Serializador()
-        {
-            TipoDocumento = 1; // Factura es Por Defecto.
-        }
         /// <summary>
         /// Genera el XML basado en una clase con el atributo Serializable
         /// </summary>
         /// <typeparam name="T">Clase a serializar</typeparam>
         /// <param name="objectToSerialize">Instancia de la Clase</param>
         /// <returns>Devuelve una cadena Base64 del archivo XML</returns>
-        public string GenerarXml<T>(T objectToSerialize)
+        async Task<string> ISerializador.GenerarXml<T>(T objectToSerialize)
         {
-            var serializer = new XmlSerializer(typeof(T));
-            string resultado;
-
-            using (var memStr = new MemoryStream())
+            var task = Task.Factory.StartNew(() =>
             {
-                using (var stream = new StreamWriter(memStr))
+                var serializer = new XmlSerializer(objectToSerialize.GetType());
+                string resultado;
+
+                using (var memStr = new MemoryStream())
                 {
-                    serializer.Serialize(stream, objectToSerialize);
+                    using (var stream = new StreamWriter(memStr))
+                    {
+                        serializer.Serialize(stream, objectToSerialize);
+                    }
+                    var betterBytes = Encoding.Convert(Encoding.UTF8,
+                        Encoding.GetEncoding(Formatos.EncodingIso),
+                        memStr.ToArray());
+                    resultado = Convert.ToBase64String(betterBytes);
                 }
-                var betterBytes = Encoding.Convert(Encoding.UTF8, Encoding.GetEncoding(_encodingIso), memStr.ToArray());
-                resultado = Convert.ToBase64String(betterBytes);
-            }
-            return resultado;
+                return resultado;
+            });
+            return await task;
         }
+
         /// <summary>
         /// Genera el ZIP del XML basandose en la trama del XML.
         /// </summary>
         /// <param name="tramaXml">Cadena Base64 con el contenido del XML</param>
         /// <param name="nombreArchivo">Nombre del archivo ZIP</param>
         /// <returns>Devuelve Cadena Base64 del archizo ZIP</returns>
-        public string GenerarZip(string tramaXml, string nombreArchivo)
+        async Task<string> ISerializador.GenerarZip(string tramaXml, string nombreArchivo)
         {
-            var memOrigen = new MemoryStream(Convert.FromBase64String(tramaXml));
-            var memDestino = new MemoryStream();
-            string resultado;
-
-            using (var fileZip = new ZipFile($"{nombreArchivo}.zip"))
+            var task = Task.Factory.StartNew(() =>
             {
-                fileZip.AddEntry($"{nombreArchivo}.xml", memOrigen);
-                fileZip.Save(memDestino);
-                resultado = Convert.ToBase64String(memDestino.ToArray());
-            }
-            // Liberamos memoria RAM.
-            memOrigen.Close();
-            memDestino.Close();
+                var memOrigen = new MemoryStream(Convert.FromBase64String(tramaXml));
+                var memDestino = new MemoryStream();
+                string resultado;
 
-            return resultado;
+                using (var fileZip = new ZipFile($"{nombreArchivo}.zip"))
+                {
+                    fileZip.AddEntry($"{nombreArchivo}.xml", memOrigen);
+                    fileZip.Save(memDestino);
+                    resultado = Convert.ToBase64String(memDestino.ToArray());
+                }
+                // Liberamos memoria RAM.
+                memOrigen.Close();
+                memDestino.Close();
+
+                return resultado;
+            });
+
+            return await task;
         }
 
-        public string FirmarXml(string tramaXml)
+        /// <summary>
+        /// Lee la Constancia de Recepción SUNAT y devuelve el contenido
+        /// </summary>
+        /// <param name="constanciaRecepcion">Trama ZIP del CDR</param>
+        /// <returns>Devuelve una clase <see cref="EnviarDocumentoResponse"/></returns>
+        public async Task<EnviarDocumentoResponse> GenerarDocumentoRespuesta(string constanciaRecepcion)
         {
-
-            // Vamos a firmar el XML con la ruta del certificado que está como serializado.
-
-            var certificate = new X509Certificate2();
-            certificate.Import(Convert.FromBase64String(RutaCertificadoDigital),
-                PasswordCertificado, X509KeyStorageFlags.MachineKeySet);
-
-            var xmlDoc = new XmlDocument();
-
-            string resultado;
-
-            var betterBytes = Encoding.Convert(Encoding.UTF8, 
-                Encoding.GetEncoding(_encodingIso), 
-                Convert.FromBase64String(tramaXml));
-
-            using (var documento = new MemoryStream(betterBytes))
+            var response = new EnviarDocumentoResponse();
+            var returnByte = Convert.FromBase64String(constanciaRecepcion);
+            using (var memRespuesta = new MemoryStream(returnByte))
             {
-                xmlDoc.PreserveWhitespace = true;
-                xmlDoc.Load(documento);
-                int tipo;
-
-                if (TipoDocumento == 1 || TipoDocumento == 2 || TipoDocumento == 3 || TipoDocumento == 4)
-                    tipo = 1;
-                else
-                    tipo = 0;
-
-                var nodoExtension = xmlDoc.GetElementsByTagName("ExtensionContent", EspacioNombres.ext)
-                    .Item(tipo);
-                if (nodoExtension == null)
-                    throw new InvalidOperationException("No se pudo encontrar el nodo ExtensionContent en el XML");
-                nodoExtension.RemoveAll();
-
-                // Creamos el objeto SignedXml.
-                var signedXml = new SignedXml(xmlDoc) { SigningKey = (RSA)certificate.PrivateKey };
-                signedXml.SigningKey = certificate.PrivateKey;
-                var xmlSignature = signedXml.Signature;
-
-                var env = new XmlDsigEnvelopedSignatureTransform();
-
-                var reference = new Reference(string.Empty);
-                reference.AddTransform(env);
-                xmlSignature.SignedInfo.AddReference(reference);
-
-                var keyInfo = new KeyInfo();
-                var x509Data = new KeyInfoX509Data(certificate);
-
-                x509Data.AddSubjectName(certificate.Subject);
-
-                keyInfo.AddClause(x509Data);
-                xmlSignature.KeyInfo = keyInfo;
-                xmlSignature.Id = "SignOpenInvoicePeru";
-                signedXml.ComputeSignature();
-
-                // Recuperamos el valor Hash de la firma para este documento.
-                if (reference.DigestValue != null)
-                    DigestValue = Convert.ToBase64String(reference.DigestValue);
-                ValorFirma = Convert.ToBase64String(signedXml.SignatureValue);
-
-                nodoExtension.AppendChild(signedXml.GetXml());
-
-                using (var memDoc = new MemoryStream())
+                using (var zipFile = ZipFile.Read(memRespuesta))
                 {
-
-                    using (var writer = XmlWriter.Create(memDoc, 
-                        new XmlWriterSettings { Encoding = Encoding.GetEncoding(_encodingIso) }))
+                    foreach (var entry in zipFile.Entries)
                     {
-                        xmlDoc.WriteTo(writer);
+                        if (!entry.FileName.EndsWith(".xml")) continue;
+                        using (var ms = new MemoryStream())
+                        {
+                            entry.Extract(ms);
+                            ms.Position = 0;
+                            var responseReader = new StreamReader(ms);
+                            var responseString = await responseReader.ReadToEndAsync();
+                            try
+                            {
+                                var xmlDoc = new XmlDocument();
+                                xmlDoc.LoadXml(responseString);
+
+                                var xmlnsManager = new XmlNamespaceManager(xmlDoc.NameTable);
+
+                                xmlnsManager.AddNamespace("ar", EspacioNombres.ar);
+                                xmlnsManager.AddNamespace("cac", EspacioNombres.cac);
+                                xmlnsManager.AddNamespace("cbc", EspacioNombres.cbc);
+
+                                response.CodigoRespuesta =
+                                    xmlDoc.SelectSingleNode(EspacioNombres.nodoResponseCode,
+                                        xmlnsManager)?.InnerText;
+
+                                response.MensajeRespuesta =
+                                    xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
+                                        xmlnsManager)?.InnerText;
+                                response.TramaZipCdr = constanciaRecepcion;
+                                response.NombreArchivo = entry.FileName;
+                                response.Exito = true;
+                            }
+                            catch (Exception ex)
+                            {
+                                response.MensajeError = ex.Message;
+                                response.Pila = ex.StackTrace;
+                                response.Exito = false;
+                            }
+                        }
                     }
-
-                    resultado = Convert.ToBase64String(memDoc.ToArray());
-
                 }
             }
-
-            return resultado;
+            return response;
         }
-
     }
 }
