@@ -49,7 +49,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 }
                 else
                 {
-                    response.MensajeError = resultado.NumeroTicket;
+                    response.MensajeError = resultado.MensajeError;
                     response.Exito = false;
                 }
             }
