@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
@@ -304,7 +303,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // datosGuiaBindingSource
             // 
-            this.datosGuiaBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.DatosGuia);
+            this.datosGuiaBindingSource.DataSource = typeof(OpenInvoicePeru.Comun.Dto.Modelos.DatosGuia);
             // 
             // rucTransportistaTextBox
             // 

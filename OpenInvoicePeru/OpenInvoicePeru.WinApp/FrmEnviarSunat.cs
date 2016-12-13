@@ -5,9 +5,10 @@ using System.Linq;
 using System.Net.Http;
 using System.Speech.Synthesis;
 using System.Windows.Forms;
+using OpenInvoicePeru.Comun.Dto.Intercambio;
+using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Datos;
 using OpenInvoicePeru.Datos.Entidades;
-using OpenInvoicePeru.Firmado.Models;
 using OpenInvoicePeru.WinApp.Properties;
 
 namespace OpenInvoicePeru.WinApp

@@ -5,6 +5,6 @@
     Renaming the file extension or editing the content of this file may   
     cause the file to be unrecognizable by the program.
 -->
-<GenericObjectDataSource DisplayName="DetalleDocumento" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>OpenInvoicePeru.Firmado.Models.DetalleDocumento, OpenInvoicePeru.Firmado, Version=1.1.0.1026, Culture=neutral, PublicKeyToken=null</TypeInfo>
+<GenericObjectDataSource DisplayName="DocumentoElectronico" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
+   <TypeInfo>OpenInvoicePeru.Comun.Dto.Modelos.DocumentoElectronico, OpenInvoicePeru.Comun.Dto, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

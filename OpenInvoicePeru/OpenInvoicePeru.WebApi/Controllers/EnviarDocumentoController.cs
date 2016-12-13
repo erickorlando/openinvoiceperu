@@ -40,7 +40,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
             if (!resultado.Exito)
             {
                 response.Exito = false;
-                response.MensajeRespuesta = resultado.ConstanciaDeRecepcion;
+                response.MensajeError = resultado.MensajeError;
             }
             else
                 response = await _serializador.GenerarDocumentoRespuesta(resultado.ConstanciaDeRecepcion);
