@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using System.Windows.Forms;
+using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Datos;
-using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {

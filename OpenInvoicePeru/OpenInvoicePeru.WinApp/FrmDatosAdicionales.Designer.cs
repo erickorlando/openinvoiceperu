@@ -1,5 +1,4 @@
-﻿using OpenInvoicePeru.Firmado.Models;
-
+﻿
 namespace OpenInvoicePeru.WinApp
 {
     partial class FrmDatosAdicionales
@@ -70,7 +69,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // datoAdicionalBindingSource
             // 
-            this.datoAdicionalBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.DatoAdicional);
+            this.datoAdicionalBindingSource.DataSource = typeof(OpenInvoicePeru.Comun.Dto.Modelos.DatoAdicional);
             // 
             // codigoComboBox
             // 

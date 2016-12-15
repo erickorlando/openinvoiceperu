@@ -1,23 +1,33 @@
 ﻿using System;
+using System.Threading.Tasks;
 using System.Web.Http;
+using OpenInvoicePeru.Comun.Dto.Intercambio;
+using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Firmado;
-using OpenInvoicePeru.Firmado.Models;
+using OpenInvoicePeru.Xml;
+using Microsoft.Practices.Unity;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
     public class GenerarNotaDebitoController : ApiController
     {
+        private readonly IDocumentoXml _documentoXml;
+        private readonly ISerializador _serializador;
 
-        public DocumentoResponse Post([FromBody] DocumentoElectronico documento)
+        public GenerarNotaDebitoController(ISerializador serializador)
+        {
+            _serializador = serializador;
+            _documentoXml = _documentoXml = UnityConfig.GetConfiguredContainer()
+                .Resolve<IDocumentoXml>(GetType().Name);
+        }
+
+        public async Task<DocumentoResponse> Post([FromBody] DocumentoElectronico documento)
         {
             var response = new DocumentoResponse();
             try
             {
-                var notaDebito = Generador.GenerarDebitNote(documento);
-
-                var serializador = new Serializador();
-
-                response.TramaXmlSinFirma = serializador.GenerarXml(notaDebito);
+                var notaDebito = _documentoXml.Generar(documento);
+                response.TramaXmlSinFirma = await _serializador.GenerarXml(notaDebito);
                 response.Exito = true;
             }
             catch (Exception ex)

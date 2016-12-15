@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
@@ -202,7 +201,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // detalleDocumentoBindingSource
             // 
-            this.detalleDocumentoBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.DetalleDocumento);
+            this.detalleDocumentoBindingSource.DataSource = typeof(OpenInvoicePeru.Comun.Dto.Modelos.DetalleDocumento);
             // 
             // codigoItemTextBox
             // 

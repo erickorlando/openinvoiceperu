@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using OpenInvoicePeru.Firmado.Models;
+using OpenInvoicePeru.Comun.Dto.Intercambio;
+using OpenInvoicePeru.Comun.Dto.Modelos;
 using RestSharp;
 
 namespace OpenInvoicePeru.ApiClientCSharp

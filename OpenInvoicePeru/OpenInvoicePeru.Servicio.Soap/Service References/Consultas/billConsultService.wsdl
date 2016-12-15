@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<definitions xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.sunat.gob.pe" targetNamespace="http://service.sunat.gob.pe" xmlns="http://schemas.xmlsoap.org/wsdl/">
+  <types>
+    <xsd:schema>
+      <xsd:import schemaLocation="https://www.sunat.gob.pe:443/ol-it-wsconscpegem/billConsultService?xsd=1" namespace="http://service.sunat.gob.pe" />
+    </xsd:schema>
+  </types>
+  <message name="getStatus">
+    <part name="parameters" element="tns:getStatus" />
+  </message>
+  <message name="getStatusResponse">
+    <part name="parameters" element="tns:getStatusResponse" />
+  </message>
+  <message name="getStatusCdr">
+    <part name="parameters" element="tns:getStatusCdr" />
+  </message>
+  <message name="getStatusCdrResponse">
+    <part name="parameters" element="tns:getStatusCdrResponse" />
+  </message>
+  <portType name="billService">
+    <operation name="getStatus">
+      <input message="tns:getStatus" />
+      <output message="tns:getStatusResponse" />
+    </operation>
+    <operation name="getStatusCdr">
+      <input message="tns:getStatusCdr" />
+      <output message="tns:getStatusCdrResponse" />
+    </operation>
+  </portType>
+</definitions>

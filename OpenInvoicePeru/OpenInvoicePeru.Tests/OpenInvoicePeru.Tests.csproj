@@ -32,8 +32,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Castle.Core, Version=3.3.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <HintPath>..\packages\Castle.Core.3.3.3\lib\net45\Castle.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+    <Reference Include="Moq, Version=4.5.29.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
+      <HintPath>..\packages\Moq.4.5.29\lib\net45\Moq.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
@@ -59,25 +67,53 @@
     <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Xml.Linq" />
+    <Reference Include="xunit.abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.abstractions.2.0.0\lib\net35\xunit.abstractions.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.assert, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.assert.2.1.0\lib\dotnet\xunit.assert.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.core, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.core.2.1.0\lib\dotnet\xunit.core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="xunit.execution.desktop, Version=2.1.0.3179, Culture=neutral, PublicKeyToken=8d05b1bb7a6fdb6c, processorArchitecture=MSIL">
+      <HintPath>..\packages\xunit.extensibility.execution.2.1.0\lib\net45\xunit.execution.desktop.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controllers\GenerarNotaCreditoControllerTests.cs" />
-    <Compile Include="Controllers\GenerarNotaDebitoControllerTests.cs" />
-    <Compile Include="Controllers\FirmarControllerTests.cs" />
-    <Compile Include="Controllers\GenerarFacturaControllerTests.cs" />
-    <Compile Include="Controllers\EnviarDocumentoControllerTests.cs" />
-    <Compile Include="Controllers\EnviarResumenControllerTests.cs" />
-    <Compile Include="Controllers\GenerarComunicacionBajaControllerTests.cs" />
+    <Compile Include="Fake\CertificadorFake.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Fake\SerializadorFake.cs" />
+    <Compile Include="SerializadorTests.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenInvoicePeru.Comun.Dto\OpenInvoicePeru.Comun.Dto.csproj">
+      <Project>{A265A65A-C2A9-4F9E-B272-BED5ED04DF98}</Project>
+      <Name>OpenInvoicePeru.Comun.Dto</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenInvoicePeru.Comun\OpenInvoicePeru.Comun.csproj">
+      <Project>{c6d3447f-6aed-4da5-b28c-7c0356f2f4a8}</Project>
+      <Name>OpenInvoicePeru.Comun</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenInvoicePeru.Estructuras\OpenInvoicePeru.Estructuras.csproj">
+      <Project>{e6926288-913c-43e2-92b5-3e05a058312f}</Project>
+      <Name>OpenInvoicePeru.Estructuras</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenInvoicePeru.Firmado\OpenInvoicePeru.Firmado.csproj">
       <Project>{1cfd1d28-d342-413d-a6e1-7616cb9708e2}</Project>
       <Name>OpenInvoicePeru.Firmado</Name>
     </ProjectReference>
-    <ProjectReference Include="..\OpenInvoicePeru.WebApi\OpenInvoicePeru.WebApi.csproj">
-      <Project>{82D7B299-2366-480A-B8FD-3F3B04AD3AFA}</Project>
-      <Name>OpenInvoicePeru.WebApi</Name>
+    <ProjectReference Include="..\OpenInvoicePeru.Servicio\OpenInvoicePeru.Servicio.csproj">
+      <Project>{25d6b9af-55a6-4e7f-a061-52a492ccdb6e}</Project>
+      <Name>OpenInvoicePeru.Servicio</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenInvoicePeru.Xml\OpenInvoicePeru.Xml.csproj">
+      <Project>{eda74dc8-b11b-4c7c-b604-0763b210e7d4}</Project>
+      <Name>OpenInvoicePeru.Xml</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

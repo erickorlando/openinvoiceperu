@@ -1,7 +1,8 @@
 ﻿Option Strict On
 
 Imports System.IO
-Imports OpenInvoicePeru.Firmado.Models
+Imports OpenInvoicePeru.Comun.Dto.Intercambio
+Imports OpenInvoicePeru.Comun.Dto.Modelos
 Imports RestSharp
 
 Module Program

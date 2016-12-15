@@ -1,5 +1,4 @@
 ﻿using System.Windows.Forms;
-using OpenInvoicePeru.Firmado.Models;
 
 namespace OpenInvoicePeru.WinApp
 {
@@ -435,7 +434,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // receptorBindingSource
             // 
-            this.receptorBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.Contribuyente);
+            this.receptorBindingSource.DataSource = typeof(OpenInvoicePeru.Comun.Dto.Modelos.Contribuyente);
             // 
             // tipoDocumentoContribuyenteBindingSource
             // 
@@ -459,7 +458,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // emisorBindingSource
             // 
-            this.emisorBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.Contribuyente);
+            this.emisorBindingSource.DataSource = typeof(OpenInvoicePeru.Comun.Dto.Modelos.Contribuyente);
             // 
             // grpEmisor
             // 
@@ -669,7 +668,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // documentoElectronicoBindingSource
             // 
-            this.documentoElectronicoBindingSource.DataSource = typeof(OpenInvoicePeru.Firmado.Models.DocumentoElectronico);
+            this.documentoElectronicoBindingSource.DataSource = typeof(OpenInvoicePeru.Comun.Dto.Modelos.DocumentoElectronico);
             // 
             // label18
             // 
