@@ -48,9 +48,9 @@ Para poder ejecutar correctamente el proyecto debes iniciar la depuración de lo
 
 Si quieres colaborar con tu granito de arena puedes hacer un Fork y enviar tu Pull Request.
 
-Si tienes dudas con respecto al proyecto, escríbeme a mi página de [Facebook](http://m.me/erickorlandoblog)
+Si tienes dudas con respecto al proyecto, escríbeme tu pregunta al [Foro Oficial](http://forotecnico.frameworkperu.com)
 
-Y no te olvides de darte una vuelta por mi [Blog](http://erickorlando.com/2016/05/07/proyecto-opensource-facturacion-electronica-sunat/)
+Y no te olvides de darte una vuelta por mi [Blog](http://erickorlando.com/2016/11/29/tutorial-creacion-de-facturas-con-openinvoiceperu/)
 
 ## Disclaimer ##
 
@@ -70,5 +70,5 @@ Si tienes mas dudas con SUNAT comunícate con ellos al +51 1 3150730.
 
 ## Asesoría personalizada ##
 
-Si necesitas que te apoye con la Homologación (Emisor o Proveedor) o necesitas que te ayude a integrar tu sistema con OpenInvoicePeru, puedes contactarme directamente a mi correo personal (erickorlando@live.com.pe) y podemos concertar una reunión virtual.
+Si necesitas que te apoye con la Homologación (Emisor o Proveedor) o necesitas que te ayude a integrar tu sistema con OpenInvoicePeru, puedes contactarme directamente a mi correo personal (evelascom@frameworkperu.com) y podemos concertar una reunión virtual.
 Recuerda que si bien mi proyecto es de código abierto, yo vendo el soporte y asesoría técnica.
