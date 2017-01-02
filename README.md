@@ -25,7 +25,9 @@ Actualmente ya se puede usar en entornos de Producción, si encuentras algún bu
 - Consulta de Tickets de los Resúmenes y Bajas.
 - API REST bajo ASP.NET Web API 2.
 - Aplicación Windows de prueba de envío a SUNAT.
-- Ejemplos en VB y C# para el consumo de la API REST con PostSharp bajo .NET 4.0.
+
+### Ejemplos de Clientes ###
+He movido los ejemplos en VB y C# para el consumo de la API REST con PostSharp bajo .NET 4.0 en el siguiente [repositorio](https://goo.gl/adgBmv).
 
 ## Ramas (branches) ##
 
@@ -70,5 +72,5 @@ Si tienes mas dudas con SUNAT comunícate con ellos al +51 1 3150730.
 
 ## Asesoría personalizada ##
 
-Si necesitas que te apoye con la Homologación (Emisor o Proveedor) o necesitas que te ayude a integrar tu sistema con OpenInvoicePeru, puedes contactarme directamente a mi correo personal (evelascom@frameworkperu.com) y podemos concertar una reunión virtual.
+Si necesitas que te apoye con la Homologación (Emisor o Proveedor) o necesitas que te ayude a integrar tu sistema con OpenInvoicePeru, puedes contactarme directamente a mi correo personal [evelascom@frameworkperu.com](mailto:evelascom@frameworkperu.com) y podemos concertar una reunión virtual.
 Recuerda que si bien mi proyecto es de código abierto, yo vendo el soporte y asesoría técnica.
