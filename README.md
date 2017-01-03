@@ -29,6 +29,8 @@ Actualmente ya se puede usar en entornos de Producción, si encuentras algún bu
 ### Ejemplos de Clientes ###
 He movido los ejemplos en VB y C# para el consumo de la API REST con PostSharp bajo .NET 4.0 en el siguiente [repositorio](https://goo.gl/adgBmv).
 
+Si quieres un ejemplo para conectarte a la API REST desde .NET Framework 2.0 revisa este [repositorio](https://goo.gl/wGkAmu).
+
 ## Ramas (branches) ##
 
 El proyecto contiene dos ramas:
@@ -45,9 +47,9 @@ Para poder ejecutar correctamente el proyecto **debes iniciar Visual Studio como
 
 Si quieres colaborar con tu granito de arena puedes hacer un Fork y enviar tu Pull Request.
 
-Si tienes dudas con respecto al proyecto, escríbeme tu pregunta al [Foro Oficial](http://forotecnico.frameworkperu.com)
+Si tienes dudas con respecto al proyecto, escríbeme tu pregunta al [Foro Oficial](http://forotecnico.frameworkperu.com).
 
-Y no te olvides de darte una vuelta por mi [Blog](http://erickorlando.com/2016/11/29/tutorial-creacion-de-facturas-con-openinvoiceperu/)
+Y no te olvides de darte una vuelta por mi [Blog](http://erickorlando.com/2016/11/29/tutorial-creacion-de-facturas-con-openinvoiceperu/).
 
 ## Disclaimer ##
 
