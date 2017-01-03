@@ -41,12 +41,7 @@ El proyecto se ha desarrollado con VS2015 Update 3, usando como base el .NET Fra
 Se recomienda usar encarecidamente VS2015, la edición [Community Edition](https://www.visualstudio.com/downloads/download-visual-studio-vs), es gratis y mucho mejor que sus predecesores.
 Puedes usar la versión Professional o Enterprise si lo deseas.
 
-Para poder ejecutar correctamente el proyecto debes iniciar la depuración de los siguientes proyectos al [mismo tiempo](https://msdn.microsoft.com/es-es/library/ms165413.aspx):
-
-* OpenInvoicePeru.WinApp (Proyecto Windows)
-* OpenInvoicePeru.WebApi (API REST)
-
-![Open Invoice Perú](https://raw.githubusercontent.com/erickorlando/facturacionelectronicasunat/master/InicioMultiple.png "Open Invoice Perú")
+Para poder ejecutar correctamente el proyecto **debes iniciar Visual Studio como Administrador** y tener instalado IIS 7.0 o posterior.
 
 Si quieres colaborar con tu granito de arena puedes hacer un Fork y enviar tu Pull Request.
 
@@ -68,7 +63,7 @@ Si tienes errores con SUNAT fijate en el código devuelto:
 - Del 2000 al 3999 Errores que generan rechazo (Se envia pero rebota)
 - Del 4000 en adelante Observaciones (Correcciones menores)
 
-Si tienes mas dudas con SUNAT comunícate con ellos al +51 1 3150730.
+Si tienes mas dudas con SUNAT comunícate con ellos al [+51 1 3150730](tel:+5113150730).
 
 ## Asesoría personalizada ##
 
