@@ -289,7 +289,7 @@ namespace OpenInvoicePeru.WinApp
         #region Botones Adicionales
         private void btnCalcDetraccion_Click(object sender, EventArgs e)
         {
-            _documento.MontoDetraccion = _documento.Gravadas * _documento.CalculoDetraccion;
+            _documento.MontoDetraccion = _documento.TotalVenta * _documento.CalculoDetraccion;
 
             documentoElectronicoBindingSource.ResetBindings(false);
         }
