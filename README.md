@@ -25,7 +25,11 @@ Actualmente ya se puede usar en entornos de Producción, si encuentras algún bu
 - Consulta de Tickets de los Resúmenes y Bajas.
 - API REST bajo ASP.NET Web API 2.
 - Aplicación Windows de prueba de envío a SUNAT.
-- Ejemplos en VB y C# para el consumo de la API REST con PostSharp bajo .NET 4.0.
+
+### Ejemplos de Clientes ###
+He movido los ejemplos en VB y C# para el consumo de la API REST con PostSharp bajo .NET 4.0 en el siguiente [repositorio](https://goo.gl/adgBmv).
+
+Si quieres un ejemplo para conectarte a la API REST desde .NET Framework 2.0 revisa este [repositorio](https://goo.gl/wGkAmu).
 
 ## Ramas (branches) ##
 
@@ -39,18 +43,13 @@ El proyecto se ha desarrollado con VS2015 Update 3, usando como base el .NET Fra
 Se recomienda usar encarecidamente VS2015, la edición [Community Edition](https://www.visualstudio.com/downloads/download-visual-studio-vs), es gratis y mucho mejor que sus predecesores.
 Puedes usar la versión Professional o Enterprise si lo deseas.
 
-Para poder ejecutar correctamente el proyecto debes iniciar la depuración de los siguientes proyectos al [mismo tiempo](https://msdn.microsoft.com/es-es/library/ms165413.aspx):
-
-* OpenInvoicePeru.WinApp (Proyecto Windows)
-* OpenInvoicePeru.WebApi (API REST)
-
-![Open Invoice Perú](https://raw.githubusercontent.com/erickorlando/facturacionelectronicasunat/master/InicioMultiple.png "Open Invoice Perú")
+Para poder ejecutar correctamente el proyecto **debes iniciar Visual Studio como Administrador** y tener instalado IIS 7.0 o posterior.
 
 Si quieres colaborar con tu granito de arena puedes hacer un Fork y enviar tu Pull Request.
 
-Si tienes dudas con respecto al proyecto, escríbeme tu pregunta al [Foro Oficial](http://forotecnico.frameworkperu.com)
+Si tienes dudas con respecto al proyecto, escríbeme tu pregunta al [Foro Oficial](http://forotecnico.frameworkperu.com).
 
-Y no te olvides de darte una vuelta por mi [Blog](http://erickorlando.com/2016/11/29/tutorial-creacion-de-facturas-con-openinvoiceperu/)
+Y no te olvides de darte una vuelta por mi [Blog](http://erickorlando.com/2016/11/29/tutorial-creacion-de-facturas-con-openinvoiceperu/).
 
 ## Disclaimer ##
 
@@ -66,9 +65,9 @@ Si tienes errores con SUNAT fijate en el código devuelto:
 - Del 2000 al 3999 Errores que generan rechazo (Se envia pero rebota)
 - Del 4000 en adelante Observaciones (Correcciones menores)
 
-Si tienes mas dudas con SUNAT comunícate con ellos al +51 1 3150730.
+Si tienes mas dudas con SUNAT comunícate con ellos al [+51 1 3150730](tel:+5113150730).
 
 ## Asesoría personalizada ##
 
-Si necesitas que te apoye con la Homologación (Emisor o Proveedor) o necesitas que te ayude a integrar tu sistema con OpenInvoicePeru, puedes contactarme directamente a mi correo personal (evelascom@frameworkperu.com) y podemos concertar una reunión virtual.
+Si necesitas que te apoye con la Homologación (Emisor o Proveedor) o necesitas que te ayude a integrar tu sistema con OpenInvoicePeru, puedes contactarme directamente a mi correo personal [evelascom@frameworkperu.com](mailto:evelascom@frameworkperu.com) y podemos concertar una reunión virtual.
 Recuerda que si bien mi proyecto es de código abierto, yo vendo el soporte y asesoría técnica.
