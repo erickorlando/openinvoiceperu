@@ -64,9 +64,21 @@ namespace OpenInvoicePeru.Xml
                 {
                     LineId = grupo.Id,
                     DocumentTypeCode = grupo.TipoDocumento,
-                    DocumentSerialId = grupo.Serie,
-                    StartDocumentNumberId = grupo.CorrelativoInicio,
-                    EndDocumentNumberId = grupo.CorrelativoFin,
+                    Id = grupo.IdDocumento,
+                    AccountingCustomerParty = new AccountingSupplierParty
+                    {
+                        AdditionalAccountId = grupo.TipoDocumentoReceptor,
+                        CustomerAssignedAccountId = grupo.NroDocumentoReceptor
+                    },
+                    BillingReference = new BillingReference
+                    {
+                        InvoiceDocumentReference = new InvoiceDocumentReference
+                        {
+                            Id = grupo.DocumentoRelacionado,
+                            DocumentTypeCode = grupo.TipoDocumentoRelacionado
+                        }
+                    },
+                    ConditionCode = grupo.CodigoEstadoItem,
                     TotalAmount = new PayableAmount
                     {
                         CurrencyId = grupo.Moneda,
@@ -110,86 +122,92 @@ namespace OpenInvoicePeru.Xml
                             CurrencyId = grupo.Moneda,
                             Value = grupo.TotalDescuentos
                         }
-                    },
-                    TaxTotals = new List<TaxTotal>()
+                    }
+                };
+                if (grupo.TotalIsc > 0)
+                {
+                    linea.TaxTotals.Add(new TaxTotal
                     {
-                        new TaxTotal
+                        TaxAmount = new PayableAmount
+                        {
+                            CurrencyId = grupo.Moneda,
+                            Value = grupo.TotalIsc
+                        },
+                        TaxSubtotal = new TaxSubtotal
                         {
                             TaxAmount = new PayableAmount
                             {
                                 CurrencyId = grupo.Moneda,
                                 Value = grupo.TotalIsc
                             },
-                            TaxSubtotal = new TaxSubtotal
+                            TaxCategory = new TaxCategory
                             {
-                                TaxAmount = new PayableAmount
+                                TaxScheme = new TaxScheme
                                 {
-                                    CurrencyId = grupo.Moneda,
-                                    Value = grupo.TotalIsc
-                                },
-                                TaxCategory = new TaxCategory
-                                {
-                                    TaxScheme = new TaxScheme
-                                    {
-                                        Id = "2000",
-                                        Name = "ISC",
-                                        TaxTypeCode = "EXC"
-                                    }
+                                    Id = "2000",
+                                    Name = "ISC",
+                                    TaxTypeCode = "EXC"
                                 }
                             }
+                        }
+                    });
+                }
+                if (grupo.TotalIgv > 0)
+                {
+                    linea.TaxTotals.Add(new TaxTotal
+                    {
+                        TaxAmount = new PayableAmount
+                        {
+                            CurrencyId = grupo.Moneda,
+                            Value = grupo.TotalIgv
                         },
-                        new TaxTotal
+                        TaxSubtotal = new TaxSubtotal
                         {
                             TaxAmount = new PayableAmount
                             {
                                 CurrencyId = grupo.Moneda,
                                 Value = grupo.TotalIgv
                             },
-                            TaxSubtotal = new TaxSubtotal
+                            TaxCategory = new TaxCategory
                             {
-                                TaxAmount = new PayableAmount
+                                TaxScheme = new TaxScheme
                                 {
-                                    CurrencyId = grupo.Moneda,
-                                    Value = grupo.TotalIgv
-                                },
-                                TaxCategory = new TaxCategory
-                                {
-                                    TaxScheme = new TaxScheme
-                                    {
-                                        Id = "1000",
-                                        Name = "IGV",
-                                        TaxTypeCode = "VAT"
-                                    }
+                                    Id = "1000",
+                                    Name = "IGV",
+                                    TaxTypeCode = "VAT"
                                 }
                             }
+                        }
+                    });
+                }
+                if (grupo.TotalOtrosImpuestos > 0)
+                {
+                    linea.TaxTotals.Add(new TaxTotal
+                    {
+                        TaxAmount = new PayableAmount
+                        {
+                            CurrencyId = grupo.Moneda,
+                            Value = grupo.TotalOtrosImpuestos
                         },
-                        new TaxTotal
+                        TaxSubtotal = new TaxSubtotal
                         {
                             TaxAmount = new PayableAmount
                             {
                                 CurrencyId = grupo.Moneda,
                                 Value = grupo.TotalOtrosImpuestos
                             },
-                            TaxSubtotal = new TaxSubtotal
+                            TaxCategory = new TaxCategory
                             {
-                                TaxAmount = new PayableAmount
+                                TaxScheme = new TaxScheme
                                 {
-                                    CurrencyId = grupo.Moneda,
-                                    Value = grupo.TotalOtrosImpuestos
-                                },
-                                TaxCategory = new TaxCategory
-                                {
-                                    TaxScheme = new TaxScheme
-                                    {
-                                        Id = "9999",
-                                        Name = "OTROS",
-                                        TaxTypeCode = "OTH"
-                                    }
+                                    Id = "9999",
+                                    Name = "OTROS",
+                                    TaxTypeCode = "OTH"
                                 }
                             }
-                        },
-                    }
-                };
+                        }
+                    });
+                }
                 if (grupo.Exportacion > 0)
                 {
                     linea.BillingPayments.Add(new BillingPayment
