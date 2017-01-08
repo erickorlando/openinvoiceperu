@@ -50,6 +50,7 @@ namespace OpenInvoicePeru.WebApi
                 .RegisterType<IDocumentoXml, NotaCreditoXml>(nameof(GenerarNotaCreditoController))
                 .RegisterType<IDocumentoXml, NotaDebitoXml>(nameof(GenerarNotaDebitoController))
                 .RegisterType<IDocumentoXml, ResumenDiarioXml>(nameof(GenerarResumenDiarioController))
+                .RegisterType<IDocumentoXml, ResumenDiarioNuevoXml>()
                 .RegisterType<IDocumentoXml, ComunicacionBajaXml>(nameof(GenerarComunicacionBajaController))
                 .RegisterType<IDocumentoXml, RetencionXml>(nameof(GenerarRetencionController));
         }
