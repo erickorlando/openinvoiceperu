@@ -158,9 +158,44 @@ namespace OpenInvoicePeru.Estructuras
                 {
                     writer.WriteElementString("cbc:LineID", item.LineId.ToString());
                     writer.WriteElementString("cbc:DocumentTypeCode", item.DocumentTypeCode);
-                    writer.WriteElementString("sac:DocumentSerialID", item.DocumentSerialId);
-                    writer.WriteElementString("sac:StartDocumentNumberID", item.StartDocumentNumberId.ToString());
-                    writer.WriteElementString("sac:EndDocumentNumberID", item.EndDocumentNumberId.ToString());
+                    if (!string.IsNullOrEmpty(item.Id))
+                        writer.WriteElementString("cbc:ID", item.Id);
+                    else
+                    {
+                        writer.WriteElementString("sac:DocumentSerialID", item.DocumentSerialId);
+                        writer.WriteElementString("sac:StartDocumentNumberID", item.StartDocumentNumberId.ToString());
+                        writer.WriteElementString("sac:EndDocumentNumberID", item.EndDocumentNumberId.ToString());
+                    }
+                    if (!string.IsNullOrEmpty(item.AccountingCustomerParty.AdditionalAccountId))
+                    {
+                        writer.WriteStartElement("cac:AccountingCustomerParty");
+                        {
+                            writer.WriteElementString("cbc:CustomerAssignedAccountID", item.AccountingCustomerParty.CustomerAssignedAccountId);
+                            writer.WriteElementString("cbc:AdditionalAccountID", item.AccountingCustomerParty.AdditionalAccountId);
+                        }
+                        writer.WriteEndElement();
+                    }
+                    if (!string.IsNullOrEmpty(item.BillingReference.InvoiceDocumentReference.Id))
+                    {
+                        writer.WriteStartElement("cac:BillingReference");
+                        {
+                            writer.WriteStartElement("cac:InvoiceDocumentReference");
+                            {
+                                writer.WriteElementString("cbc:ID", item.BillingReference.InvoiceDocumentReference.Id);
+                                writer.WriteElementString("cbc:DocumentTypeCode", item.BillingReference.InvoiceDocumentReference.DocumentTypeCode);
+                            }
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                    }
+                    if (item.ConditionCode.HasValue)
+                    {
+                        writer.WriteStartElement("cac:Status");
+                        {
+                            writer.WriteElementString("cbc:ConditionCode", item.ConditionCode.Value.ToString());
+                        }
+                        writer.WriteEndElement();
+                    }
                     writer.WriteStartElement("sac:TotalAmount");
                     {
                         writer.WriteAttributeString("currencyID", item.TotalAmount.CurrencyId);
