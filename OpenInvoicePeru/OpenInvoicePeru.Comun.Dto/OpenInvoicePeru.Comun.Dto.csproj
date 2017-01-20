@@ -59,7 +59,9 @@
     <Compile Include="Intercambio\FirmadoRequest.cs" />
     <Compile Include="Intercambio\FirmadoResponse.cs" />
     <Compile Include="Modelos\GrupoResumen.cs" />
+    <Compile Include="Modelos\GrupoResumenNuevo.cs" />
     <Compile Include="Modelos\ItemRetencion.cs" />
+    <Compile Include="Modelos\ResumenDiarioNuevo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Intercambio\RespuestaComun.cs" />
     <Compile Include="Modelos\ResumenDiario.cs" />
