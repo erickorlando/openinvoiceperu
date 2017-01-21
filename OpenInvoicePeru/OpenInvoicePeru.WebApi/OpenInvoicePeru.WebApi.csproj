@@ -16,7 +16,7 @@
     <RootNamespace>OpenInvoicePeru.WebApi</RootNamespace>
     <AssemblyName>OpenInvoicePeru.WebApi</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -181,7 +181,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>57780</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50888/OpenInvoicePeru</IISUrl>
+          <IISUrl>http://localhost/OpenInvoicePeru</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
