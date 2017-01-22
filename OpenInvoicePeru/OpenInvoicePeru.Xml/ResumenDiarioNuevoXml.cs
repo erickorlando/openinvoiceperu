@@ -94,25 +94,7 @@ namespace OpenInvoicePeru.Xml
                               Value = grupo.Gravadas
                           },
                           InstructionId = "01"
-                      },
-                      new BillingPayment
-                      {
-                          PaidAmount = new PayableAmount
-                          {
-                              CurrencyId = grupo.Moneda,
-                              Value = grupo.Exoneradas
-                          },
-                          InstructionId = "02"
-                      },
-                      new BillingPayment
-                      {
-                          PaidAmount = new PayableAmount
-                          {
-                              CurrencyId = grupo.Moneda,
-                              Value = grupo.Inafectas
-                          },
-                          InstructionId = "03"
-                      },
+                      }
                     },
                     AllowanceCharge = new AllowanceCharge
                     {
@@ -124,6 +106,57 @@ namespace OpenInvoicePeru.Xml
                         }
                     }
                 };
+
+                if (grupo.Exoneradas > 0)
+                {
+                    linea.BillingPayments.Add(new BillingPayment
+                    {
+                        PaidAmount = new PayableAmount
+                        {
+                            CurrencyId = grupo.Moneda,
+                            Value = grupo.Exoneradas
+                        },
+                        InstructionId = "02"
+                    });
+                }
+
+                if (grupo.Inafectas > 0)
+                {
+                    linea.BillingPayments.Add(new BillingPayment
+                    {
+                        PaidAmount = new PayableAmount
+                        {
+                            CurrencyId = grupo.Moneda,
+                            Value = grupo.Inafectas
+                        },
+                        InstructionId = "03"
+                    });
+                }
+                if (grupo.Exportacion > 0)
+                {
+                    linea.BillingPayments.Add(new BillingPayment
+                    {
+                        PaidAmount = new PayableAmount
+                        {
+                            CurrencyId = grupo.Moneda,
+                            Value = grupo.Exportacion
+                        },
+                        InstructionId = "04"
+                    });
+                }
+                if (grupo.Gratuitas > 0)
+                {
+                    linea.BillingPayments.Add(new BillingPayment
+                    {
+                        PaidAmount = new PayableAmount
+                        {
+                            CurrencyId = grupo.Moneda,
+                            Value = grupo.Gratuitas
+                        },
+                        InstructionId = "05"
+                    });
+                }
+
                 if (grupo.TotalIsc > 0)
                 {
                     linea.TaxTotals.Add(new TaxTotal
@@ -208,30 +241,7 @@ namespace OpenInvoicePeru.Xml
                         }
                     });
                 }
-                if (grupo.Exportacion > 0)
-                {
-                    linea.BillingPayments.Add(new BillingPayment
-                    {
-                        PaidAmount = new PayableAmount
-                        {
-                            CurrencyId = grupo.Moneda,
-                            Value = grupo.Exportacion
-                        },
-                        InstructionId = "04"
-                    });
-                }
-                if (grupo.Gratuitas > 0)
-                {
-                    linea.BillingPayments.Add(new BillingPayment
-                    {
-                        PaidAmount = new PayableAmount
-                        {
-                            CurrencyId = grupo.Moneda,
-                            Value = grupo.Gratuitas
-                        },
-                        InstructionId = "05"
-                    });
-                }
+                
                 summary.SummaryDocumentsLines.Add(linea);
             }
 
