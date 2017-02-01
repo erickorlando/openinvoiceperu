@@ -52,6 +52,7 @@
     <Compile Include="Country.cs" />
     <Compile Include="CreditNote.cs" />
     <Compile Include="DebitNote.cs" />
+    <Compile Include="DespatchAdvice.cs" />
     <Compile Include="DigitalSignatureAttachment.cs" />
     <Compile Include="DiscrepancyResponse.cs" />
     <Compile Include="ExchangeRate.cs" />
