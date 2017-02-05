@@ -130,6 +130,9 @@ namespace OpenInvoicePeru.WinApp
                     case 7:
                         codigoTipoDoc = "RA";
                         break;
+                    case 8:
+                        codigoTipoDoc = "T";
+                        break;
                     default:
                         codigoTipoDoc = "01";
                         break;

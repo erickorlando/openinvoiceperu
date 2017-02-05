@@ -18,7 +18,7 @@
     <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
     <cbc:CustomizationID>1.0</cbc:CustomizationID>
     <cbc:ID>T001-8958</cbc:ID>
-    <cbc:IssueDate>2016-01-01</cbc:IssueDate>
+    <cbc:IssueDate>2017-02-05</cbc:IssueDate>
     <cbc:DespatchAdviceTypeCode>09</cbc:DespatchAdviceTypeCode>
     <cbc:Note>Este es una guia de Remision</cbc:Note>
     <cac:OrderReference>
@@ -50,7 +50,7 @@
         </cac:Party>
     </cac:DespatchSupplierParty>
     <cac:DeliveryCustomerParty>
-        <cbc:CustomerAssignedAccountID schemeID="6">20154789587</cbc:CustomerAssignedAccountID>
+        <cbc:CustomerAssignedAccountID schemeID="6">20492858766</cbc:CustomerAssignedAccountID>
         <cac:Party>
             <cac:PartyLegalEntity>
                 <cbc:RegistrationName>Empresa Destinatario Guia Electronica</cbc:RegistrationName>

@@ -7,7 +7,7 @@ using SQLite.CodeFirst;
 
 namespace OpenInvoicePeru.Datos
 {
-    public class OpenInvoicePeruDbInitializer : SqliteDropCreateDatabaseWhenModelChanges<OpenInvoicePeruDb>
+    public class OpenInvoicePeruDbInitializer : SqliteDropCreateDatabaseAlways<OpenInvoicePeruDb>
     {
         public OpenInvoicePeruDbInitializer(DbModelBuilder modelBuilder)
             : base(modelBuilder)

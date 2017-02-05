@@ -53,6 +53,8 @@
     <Compile Include="CreditNote.cs" />
     <Compile Include="DebitNote.cs" />
     <Compile Include="DespatchAdvice.cs" />
+    <Compile Include="DespatchLine.cs" />
+    <Compile Include="DespatchLineItem.cs" />
     <Compile Include="DigitalSignatureAttachment.cs" />
     <Compile Include="DiscrepancyResponse.cs" />
     <Compile Include="ExchangeRate.cs" />
@@ -64,6 +66,8 @@
     <Compile Include="InvoiceLine.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="LegalMonetaryTotal.cs" />
+    <Compile Include="OrderReference.cs" />
+    <Compile Include="OrderTypeCode.cs" />
     <Compile Include="Party.cs" />
     <Compile Include="PartyIdentification.cs" />
     <Compile Include="PartyIdentificationID.cs" />
@@ -76,6 +80,8 @@
     <Compile Include="PricingReference.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Retention.cs" />
+    <Compile Include="Shipment.cs" />
+    <Compile Include="ShipmentStage.cs" />
     <Compile Include="SignatoryParty.cs" />
     <Compile Include="SignatureCac.cs" />
     <Compile Include="SummaryDocuments.cs" />
@@ -89,6 +95,8 @@
     <Compile Include="TaxScheme.cs" />
     <Compile Include="TaxSubtotal.cs" />
     <Compile Include="TaxTotal.cs" />
+    <Compile Include="TransportEquipment.cs" />
+    <Compile Include="TransportHandlingUnit.cs" />
     <Compile Include="UBLExtension.cs" />
     <Compile Include="UBLExtensions.cs" />
     <Compile Include="VoidedDocuments.cs" />
