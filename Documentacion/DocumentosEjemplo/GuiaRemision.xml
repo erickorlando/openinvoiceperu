@@ -10,21 +10,21 @@
     xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2" 
     xmlns:ccts="urn:un:unece:uncefact:documentation:2" 
     xmlns="urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2">
-    <ext:UBLExtensions>
-        <ext:UBLExtension>
-            <ext:ExtensionContent />
-        </ext:UBLExtension>
-    </ext:UBLExtensions>
-    <cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+    <cbc:UBLVersionID>2.0</cbc:UBLVersionID>
     <cbc:CustomizationID>1.0</cbc:CustomizationID>
     <cbc:ID>T001-8958</cbc:ID>
     <cbc:IssueDate>2017-02-05</cbc:IssueDate>
     <cbc:DespatchAdviceTypeCode>09</cbc:DespatchAdviceTypeCode>
     <cbc:Note>Este es una guia de Remision</cbc:Note>
     <cac:OrderReference>
-        <cbc:ID>G056-345</cbc:ID>
+        <cbc:ID>EG56-345</cbc:ID>
         <cbc:OrderTypeCode name="Guia de Remision">09</cbc:OrderTypeCode>
     </cac:OrderReference>
+    <ext:UBLExtensions>
+        <ext:UBLExtension>
+            <ext:ExtensionContent />
+        </ext:UBLExtension>
+    </ext:UBLExtensions>
     <cac:Signature>
         <cbc:ID>#SET001-8958</cbc:ID>
         <cac:SignatoryParty>
@@ -61,7 +61,7 @@
         <cbc:HandlingCode>01</cbc:HandlingCode>
         <cbc:Information>Venta</cbc:Information>
         <cbc:SplitConsignmentIndicator>true</cbc:SplitConsignmentIndicator>
-        <cbc:GrossWeightMeasure unitCode="KG">10000.000</cbc:GrossWeightMeasure>
+        <cbc:GrossWeightMeasure unitCode="KG">10000.00</cbc:GrossWeightMeasure>
         <cbc:TotalTransportHandlingUnitQuantity>5</cbc:TotalTransportHandlingUnitQuantity>
         <cac:ShipmentStage>
             <cbc:ID>1</cbc:ID>
@@ -75,19 +75,15 @@
                 </cac:PartyIdentification>
                 <cbc:RegistrationName>RANSA COMERCIAL S.A.</cbc:RegistrationName>
             </cac:CarrierParty>
-            <cac:TransportMeans>
-                <cac:RoadTransport>
-                    <cbc:LicensePlateID>XZY-342</cbc:LicensePlateID>
-                </cac:RoadTransport>
-            </cac:TransportMeans>
-            <cac:DriverPerson>
-                <cbc:ID schemeID="1">58478958</cbc:ID>
-            </cac:DriverPerson>
+            <!--<cac:TransportMeans><cac:RoadTransport><cbc:LicensePlateID>XZY-342</cbc:LicensePlateID></cac:RoadTransport></cac:TransportMeans>-->
+            <!--<cac:DriverPerson><cbc:ID schemeID="1">58478958</cbc:ID></cac:DriverPerson>-->
         </cac:ShipmentStage>
-        <cac:DeliveryAddress>
-            <cbc:ID>150101</cbc:ID>
-            <cbc:StreetName>Av. La Direccion de llegada 567</cbc:StreetName>
-        </cac:DeliveryAddress>
+        <cac:Delivery>
+            <cac:DeliveryAddress>
+                <cbc:ID>150101</cbc:ID>
+                <cbc:StreetName>Av. La Direccion de llegada 567</cbc:StreetName>
+            </cac:DeliveryAddress>
+        </cac:Delivery>
         <cac:TransportHandlingUnit>
             <cbc:ID>XYZ-342</cbc:ID>
             <cac:TransportEquipment>
@@ -104,10 +100,10 @@
     </cac:Shipment>
     <cac:DespatchLine>
         <cbc:ID>1</cbc:ID>
-        <cbc:DeliveredQuantity unitCode="KG">50</cbc:DeliveredQuantity>
         <cac:OrderLineReference>
             <cbc:LineID>1</cbc:LineID>
         </cac:OrderLineReference>
+        <cbc:DeliveredQuantity unitCode="KG">50</cbc:DeliveredQuantity>
         <cac:Item>
             <cbc:Description>Producto x 123</cbc:Description>
             <cac:SellersItemIdentification>
@@ -117,10 +113,10 @@
     </cac:DespatchLine>
     <cac:DespatchLine>
         <cbc:ID>2</cbc:ID>
-        <cbc:DeliveredQuantity unitCode="KG">10</cbc:DeliveredQuantity>
         <cac:OrderLineReference>
-            <cbc:LineID>2</cbc:LineID>
+            <cbc:LineID>1</cbc:LineID>
         </cac:OrderLineReference>
+        <cbc:DeliveredQuantity unitCode="KG">10</cbc:DeliveredQuantity>
         <cac:Item>
             <cbc:Name>Producto 2</cbc:Name>
             <cac:SellersItemIdentification>

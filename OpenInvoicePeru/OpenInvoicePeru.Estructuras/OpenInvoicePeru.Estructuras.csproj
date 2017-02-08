@@ -49,6 +49,7 @@
     <Compile Include="AlternativeConditionPrice.cs" />
     <Compile Include="BillingPayment.cs" />
     <Compile Include="BillingReference.cs" />
+    <Compile Include="CarrierParty.cs" />
     <Compile Include="Country.cs" />
     <Compile Include="CreditNote.cs" />
     <Compile Include="DebitNote.cs" />
