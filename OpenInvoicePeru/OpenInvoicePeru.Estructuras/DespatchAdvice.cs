@@ -2,6 +2,7 @@
 using OpenInvoicePeru.Comun.Constantes;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -113,6 +114,8 @@ namespace OpenInvoicePeru.Estructuras
             if (!string.IsNullOrEmpty(Note))
                 writer.WriteElementString("cbc:Note", Note);
 
+            #region OrderReference
+
             if (!string.IsNullOrEmpty(OrderReference.Id))
             {
                 writer.WriteStartElement("cac:OrderReference");
@@ -129,6 +132,10 @@ namespace OpenInvoicePeru.Estructuras
                 writer.WriteEndElement();
             }
 
+            #endregion OrderReference
+
+            #region AdditionalDocumentReference
+
             if (!string.IsNullOrEmpty(AdditionalDocumentReference.Id))
             {
                 writer.WriteStartElement("cac:AdditionalDocumentReference");
@@ -138,6 +145,8 @@ namespace OpenInvoicePeru.Estructuras
                 }
                 writer.WriteEndElement();
             }
+
+            #endregion AdditionalDocumentReference
 
             #region Signature
 
@@ -186,6 +195,253 @@ namespace OpenInvoicePeru.Estructuras
             writer.WriteEndElement();
 
             #endregion Signature
+
+            #region DespatchSupplierParty
+
+            writer.WriteStartElement("cac:DespatchSupplierParty");
+            {
+                writer.WriteStartElement("cbc:CustomerAssignedAccountID");
+                {
+                    writer.WriteAttributeString("schemeID", DespatchSupplierParty.AdditionalAccountId);
+                    writer.WriteValue(DespatchSupplierParty.CustomerAssignedAccountId);
+                }
+                writer.WriteEndElement();
+
+                writer.WriteStartElement("cac:Party");
+                {
+                    writer.WriteStartElement("cac:PartyLegalEntity");
+                    {
+                        writer.WriteElementString("cbc:RegistrationName", DespatchSupplierParty.Party.PartyLegalEntity.RegistrationName);
+                    }
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
+
+            #endregion DespatchSupplierParty
+
+            #region DeliveryCustomerParty
+
+            writer.WriteStartElement("cac:DeliveryCustomerParty");
+            {
+                writer.WriteStartElement("cbc:CustomerAssignedAccountID");
+                {
+                    writer.WriteAttributeString("schemeID", DeliveryCustomerParty.AdditionalAccountId);
+                    writer.WriteValue(DeliveryCustomerParty.CustomerAssignedAccountId);
+                }
+                writer.WriteEndElement();
+
+                writer.WriteStartElement("cac:Party");
+                {
+                    writer.WriteStartElement("cac:PartyLegalEntity");
+                    {
+                        writer.WriteElementString("cbc:RegistrationName", DeliveryCustomerParty.Party.PartyLegalEntity.RegistrationName);
+                    }
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
+            }
+            writer.WriteEndElement();
+
+            #endregion DeliveryCustomerParty
+
+            #region SellerSupplierParty
+
+            if (!string.IsNullOrEmpty(SellerSupplierParty.AdditionalAccountId))
+            {
+                writer.WriteStartElement("cac:SellerSupplierParty");
+                {
+                    writer.WriteStartElement("cbc:CustomerAssignedAccountID");
+                    {
+                        writer.WriteAttributeString("schemeID", SellerSupplierParty.AdditionalAccountId);
+                        writer.WriteValue(SellerSupplierParty.CustomerAssignedAccountId);
+                    }
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("cac:Party");
+                    {
+                        writer.WriteStartElement("cac:PartyLegalEntity");
+                        {
+                            writer.WriteElementString("cbc:RegistrationName", SellerSupplierParty.Party.PartyLegalEntity.RegistrationName);
+                        }
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
+            }
+
+            #endregion SellerSupplierParty
+
+            #region Shipment
+
+            writer.WriteStartElement("cac:Shipment");
+            {
+                writer.WriteElementString("cbc:HandlingCode", Shipment.HandlingCode);
+                writer.WriteElementString("cbc:Information", Shipment.Information);
+                writer.WriteElementString("cbc:SplitConsignmentIndicator",
+                    Shipment.SplitConsignmentIndicator.ToString().ToLower());
+
+                writer.WriteStartElement("cbc:GrossWeightMeasure");
+                {
+                    writer.WriteAttributeString("unitCode", Shipment.GrossWeightMeasure.UnitCode);
+                    writer.WriteValue(Shipment.GrossWeightMeasure.Value.ToString(Formatos.FormatoNumerico));
+                }
+                writer.WriteEndElement();
+                writer.WriteElementString("cbc:TotalTransportHandlingUnitQuantity", Shipment.TotalTransportHandlingUnitQuantity.ToString());
+
+                #region ShipmentStages
+
+                foreach (var shipmentStage in Shipment.ShipmentStages)
+                {
+                    writer.WriteElementString("cbc:ID", shipmentStage.Id.ToString());
+                    writer.WriteElementString("cbc:TransportModeCode", shipmentStage.TransportModeCode);
+
+                    writer.WriteStartElement("cac:TransitPeriod");
+                    {
+                        writer.WriteElementString("cbc:StartDate", shipmentStage.TransitPeriodStartPeriod.ToString(Formatos.FormatoFecha));
+                    }
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("cac:CarrierParty");
+                    {
+                        writer.WriteStartElement("cac:PartyIdentification");
+                        {
+                            writer.WriteStartElement("cbc:ID");
+                            {
+                                writer.WriteAttributeString("schemeID", shipmentStage.CarrierParty.PartyIdentification.Id.SchemeId);
+                                writer.WriteValue(shipmentStage.CarrierParty.PartyIdentification.Id.Value);
+                            }
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                        writer.WriteElementString("cbc:RegistrationName", shipmentStage.CarrierParty.PartyLegalEntity.RegistrationName);
+                    }
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("cac:TransportMeans");
+                    {
+                        writer.WriteStartElement("cac:RoadTransport");
+                        {
+                            writer.WriteElementString("cbc:LicensePlateID", shipmentStage.TransportMeans.LicensePlateId);
+                        }
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+
+                    writer.WriteStartElement("cac:DriverPerson");
+                    {
+                        writer.WriteStartElement("cbc:ID");
+                        {
+                            writer.WriteAttributeString("schemeID", shipmentStage.DriverPerson.Id.SchemeId);
+                            writer.WriteValue(shipmentStage.DriverPerson.Id.Value);
+                        }
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                }
+
+                #endregion ShipmentStages
+
+                #region DeliveryAddress
+
+                writer.WriteStartElement("cac:DeliveryAddress");
+                {
+                    writer.WriteElementString("cbc:ID", Shipment.DeliveryAddress.Id);
+                    writer.WriteElementString("cbc:StreetName", Shipment.DeliveryAddress.StreetName);
+                }
+                writer.WriteEndElement();
+
+                #endregion DeliveryAddress
+
+                #region TransportHandlingUnit
+
+                writer.WriteStartElement("cac:TransportHandlingUnit");
+                {
+                    // Se repite la misma placa del primer vehiculo
+                    writer.WriteElementString("cbc:ID", Shipment.ShipmentStages.First().TransportMeans.LicensePlateId);
+                    foreach (var transportEquipment in Shipment.TransportHandlingUnit.TransportEquipments)
+                    {
+                        writer.WriteStartElement("cac:TransportEquipment");
+                        {
+                            writer.WriteElementString("cbc:ID", transportEquipment.Id);
+                        }
+                        writer.WriteEndElement();
+                    }
+                }
+                writer.WriteEndElement();
+
+                #endregion TransportHandlingUnit
+
+                #region OriginAddress
+
+                writer.WriteStartElement("cac:OriginAddress");
+                {
+                    writer.WriteElementString("cbc:ID", Shipment.OriginAddress.Id);
+                    writer.WriteElementString("cbc:StreetName", Shipment.OriginAddress.StreetName);
+                }
+                writer.WriteEndElement();
+
+                #endregion OriginAddress
+
+                #region FirstArrivalPortLocation
+
+                if (!string.IsNullOrEmpty(Shipment.FirstArrivalPortLocationId))
+                {
+                    writer.WriteStartElement("cac:FirstArrivalPortLocation");
+                    {
+                        writer.WriteElementString("cbc:ID", Shipment.FirstArrivalPortLocationId);
+                    }
+                    writer.WriteEndElement();
+                }
+
+                #endregion FirstArrivalPortLocation
+            }
+            writer.WriteEndElement();
+
+            #endregion Shipment
+
+            #region DespatchLine
+
+            foreach (var despatchLine in DespatchLines)
+            {
+                writer.WriteStartElement("cac:DespatchLine");
+                {
+                    writer.WriteElementString("cbc:ID", despatchLine.Id.ToString());
+
+                    writer.WriteStartElement("cbc:DeliveredQuantity");
+                    {
+                        writer.WriteAttributeString("unitCode", despatchLine.DeliveredQuantity.UnitCode);
+                        writer.WriteValue(despatchLine.DeliveredQuantity.Value.ToString(Formatos.FormatoNumerico));
+                    }
+                    writer.WriteEndElement();
+
+                    if (despatchLine.OrderLineReferenceId > 0)
+                    {
+                        writer.WriteStartElement("cac:OrderLineReference");
+                        {
+                            writer.WriteElementString("cbc:LineID", despatchLine.OrderLineReferenceId.ToString());
+                        }
+                        writer.WriteEndElement();
+                    }
+
+                    writer.WriteStartElement("cac:Item");
+                    {
+                        writer.WriteElementString("cbc:Description", despatchLine.Item.Description);
+
+                        writer.WriteStartElement("cac:SellersItemIdentification");
+                        {
+                            writer.WriteElementString("cbc:ID", despatchLine.Item.SellersIdentificationId);
+                        }
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
+            }
+
+            #endregion DespatchLine
         }
     }
 }

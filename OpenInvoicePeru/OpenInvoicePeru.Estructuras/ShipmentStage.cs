@@ -5,7 +5,9 @@ namespace OpenInvoicePeru.Estructuras
     [Serializable]
     public class ShipmentStage
     {
-        public PartyIdentification CarrierParty { get; set; }
+        public int Id { get; set; }
+
+        public CarrierParty CarrierParty { get; set; }
 
         public PartyIdentification DriverPerson { get; set; }
 

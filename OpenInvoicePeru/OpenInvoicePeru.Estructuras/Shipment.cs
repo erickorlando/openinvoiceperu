@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace OpenInvoicePeru.Estructuras
 {
@@ -15,11 +16,8 @@ namespace OpenInvoicePeru.Estructuras
 
         public int TotalTransportHandlingUnitQuantity { get; set; }
 
-        public ShipmentStage ShipmentStage { get; set; }
+        public List<ShipmentStage> ShipmentStages { get; set; }
 
-        /// <remarks>
-        /// cac:Delivery/cac:DeliveryAddress
-        /// </remarks>>
         public PostalAddress DeliveryAddress { get; set; }
 
         public TransportHandlingUnit TransportHandlingUnit { get; set; }
@@ -34,7 +32,7 @@ namespace OpenInvoicePeru.Estructuras
         public Shipment()
         {
             GrossWeightMeasure = new InvoicedQuantity();
-            ShipmentStage = new ShipmentStage();
+            ShipmentStages = new List<ShipmentStage>();
             DeliveryAddress = new PostalAddress();
             TransportHandlingUnit = new TransportHandlingUnit();
             OriginAddress = new PostalAddress();

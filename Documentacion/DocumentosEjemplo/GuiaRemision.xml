@@ -64,27 +64,35 @@
         <cbc:GrossWeightMeasure unitCode="KG">10000.000</cbc:GrossWeightMeasure>
         <cbc:TotalTransportHandlingUnitQuantity>5</cbc:TotalTransportHandlingUnitQuantity>
         <cac:ShipmentStage>
-            <cac:DriverPerson>
-                <cbc:ID schemeID="1">58478958</cbc:ID>
-            </cac:DriverPerson>
+            <cbc:ID>1</cbc:ID>
             <cbc:TransportModeCode>01</cbc:TransportModeCode>
             <cac:TransitPeriod>
                 <cbc:StartDate>2016-01-01</cbc:StartDate>
             </cac:TransitPeriod>
+            <cac:CarrierParty>
+                <cac:PartyIdentification>
+                    <cbc:ID schemeID="6">20549202966</cbc:ID>
+                </cac:PartyIdentification>
+                <cbc:RegistrationName>RANSA COMERCIAL S.A.</cbc:RegistrationName>
+            </cac:CarrierParty>
             <cac:TransportMeans>
                 <cac:RoadTransport>
                     <cbc:LicensePlateID>XZY-342</cbc:LicensePlateID>
                 </cac:RoadTransport>
             </cac:TransportMeans>
+            <cac:DriverPerson>
+                <cbc:ID schemeID="1">58478958</cbc:ID>
+            </cac:DriverPerson>
         </cac:ShipmentStage>
-        <cac:Delivery>
-            <cac:DeliveryAddress>
-                <cbc:ID>150101</cbc:ID>
-                <cbc:StreetName>Av. La Direccion de llegada 567</cbc:StreetName>
-            </cac:DeliveryAddress>
-        </cac:Delivery>
+        <cac:DeliveryAddress>
+            <cbc:ID>150101</cbc:ID>
+            <cbc:StreetName>Av. La Direccion de llegada 567</cbc:StreetName>
+        </cac:DeliveryAddress>
         <cac:TransportHandlingUnit>
-            <cbc:ID>120606</cbc:ID>
+            <cbc:ID>XYZ-342</cbc:ID>
+            <cac:TransportEquipment>
+                <cbc:ID>120606</cbc:ID>
+            </cac:TransportEquipment>
         </cac:TransportHandlingUnit>
         <cac:OriginAddress>
             <cbc:ID>150101</cbc:ID>
@@ -101,7 +109,7 @@
             <cbc:LineID>1</cbc:LineID>
         </cac:OrderLineReference>
         <cac:Item>
-            <cbc:Name>Producto x 123</cbc:Name>
+            <cbc:Description>Producto x 123</cbc:Description>
             <cac:SellersItemIdentification>
                 <cbc:ID>XTOI932</cbc:ID>
             </cac:SellersItemIdentification>
