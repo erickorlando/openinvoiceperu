@@ -18,5 +18,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         [JsonProperty(Required = Required.Always)]
         public decimal Cantidad { get; set; }
+
+        public int LineaReferencia { get; set; }
     }
 }

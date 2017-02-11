@@ -1,6 +1,6 @@
 ﻿namespace OpenInvoicePeru.Comun.Dto.Intercambio
 {
-    public class EnviarDocumentoResponse : RespuestaComun
+    public class EnviarDocumentoResponse : RespuestaComunConArchivo
     {
         public string CodigoRespuesta { get; set; }
 

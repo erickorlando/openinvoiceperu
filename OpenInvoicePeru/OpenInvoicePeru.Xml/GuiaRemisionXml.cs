@@ -194,7 +194,8 @@ namespace OpenInvoicePeru.Xml
                     {
                         Description = detalleGuia.Descripcion,
                         SellersIdentificationId = detalleGuia.CodigoItem
-                    }
+                    },
+                    OrderLineReferenceId = detalleGuia.LineaReferencia
                 });
             }
 

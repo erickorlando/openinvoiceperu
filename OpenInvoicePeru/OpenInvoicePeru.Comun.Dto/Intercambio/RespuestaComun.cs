@@ -7,7 +7,5 @@
         public string MensajeError { get; set; }
 
         public string Pila { get; set; }
-
-        public string NombreArchivo { get; set; }
     }
 }

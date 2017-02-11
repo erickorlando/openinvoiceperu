@@ -304,21 +304,26 @@ namespace OpenInvoicePeru.Estructuras
                     }
                     writer.WriteEndElement();
 
-                    writer.WriteStartElement("cac:CarrierParty");
+                    if (!string.IsNullOrEmpty(shipmentStage.CarrierParty.PartyIdentification.Id.Value))
                     {
-                        writer.WriteStartElement("cac:PartyIdentification");
+                        writer.WriteStartElement("cac:CarrierParty");
                         {
-                            writer.WriteStartElement("cbc:ID");
+                            writer.WriteStartElement("cac:PartyIdentification");
                             {
-                                writer.WriteAttributeString("schemeID", shipmentStage.CarrierParty.PartyIdentification.Id.SchemeId);
-                                writer.WriteValue(shipmentStage.CarrierParty.PartyIdentification.Id.Value);
+                                writer.WriteStartElement("cbc:ID");
+                                {
+                                    writer.WriteAttributeString("schemeID",
+                                        shipmentStage.CarrierParty.PartyIdentification.Id.SchemeId);
+                                    writer.WriteValue(shipmentStage.CarrierParty.PartyIdentification.Id.Value);
+                                }
+                                writer.WriteEndElement();
                             }
                             writer.WriteEndElement();
+                            writer.WriteElementString("cbc:RegistrationName",
+                                shipmentStage.CarrierParty.PartyLegalEntity.RegistrationName);
                         }
                         writer.WriteEndElement();
-                        writer.WriteElementString("cbc:RegistrationName", shipmentStage.CarrierParty.PartyLegalEntity.RegistrationName);
                     }
-                    writer.WriteEndElement();
 
                     writer.WriteStartElement("cac:TransportMeans");
                     {
@@ -363,6 +368,7 @@ namespace OpenInvoicePeru.Estructuras
                     writer.WriteElementString("cbc:ID", Shipment.ShipmentStages.First().TransportMeans.LicensePlateId);
                     foreach (var transportEquipment in Shipment.TransportHandlingUnit.TransportEquipments)
                     {
+                        if (string.IsNullOrEmpty(transportEquipment.Id)) continue;
                         writer.WriteStartElement("cac:TransportEquipment");
                         {
                             writer.WriteElementString("cbc:ID", transportEquipment.Id);
