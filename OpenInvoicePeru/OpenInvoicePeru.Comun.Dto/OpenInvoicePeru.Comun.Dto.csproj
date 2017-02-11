@@ -44,6 +44,8 @@
     <Compile Include="Modelos\DatoAdicional.cs" />
     <Compile Include="Modelos\DatosGuia.cs" />
     <Compile Include="Modelos\DetalleDocumento.cs" />
+    <Compile Include="Modelos\DetalleGuia.cs" />
+    <Compile Include="Modelos\Direccion.cs" />
     <Compile Include="Modelos\Discrepancia.cs" />
     <Compile Include="Modelos\DocumentoBaja.cs" />
     <Compile Include="Modelos\DocumentoElectronico.cs" />
@@ -60,6 +62,7 @@
     <Compile Include="Intercambio\FirmadoResponse.cs" />
     <Compile Include="Modelos\GrupoResumen.cs" />
     <Compile Include="Modelos\GrupoResumenNuevo.cs" />
+    <Compile Include="Modelos\GuiaRemision.cs" />
     <Compile Include="Modelos\ItemRetencion.cs" />
     <Compile Include="Modelos\ResumenDiarioNuevo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
