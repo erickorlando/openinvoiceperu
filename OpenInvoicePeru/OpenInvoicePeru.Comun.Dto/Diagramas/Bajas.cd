@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.ComunicacionBaja">
+    <Position X="2" Y="3" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\ComunicacionBaja.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Bajas" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoResumen">
+    <Position X="2" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAABAAAAAAAAAQAAAAABAAAAAAAA=</HashCode>
+      <FileName>Modelos\DocumentoResumen.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoBaja">
+    <Position X="5.25" Y="2.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Modelos\DocumentoBaja.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoResumenDetalle">
+    <Position X="5.25" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Modelos\DocumentoResumenDetalle.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

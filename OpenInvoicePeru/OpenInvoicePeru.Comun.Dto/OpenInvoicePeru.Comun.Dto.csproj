@@ -67,6 +67,10 @@
     <Compile Include="Modelos\ResumenDiario.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Diagramas\DocumentosElectronicos.cd" />
+    <None Include="Diagramas\Bajas.cd" />
+    <None Include="Diagramas\ResumenesDiarios.cd" />
+    <None Include="Diagramas\Retenciones.cd" />
     <None Include="OpenInvoicePeru.DataTransfersObjects.1.3.0.nuspec" />
     <None Include="OpenInvoicePeru.DataTransfersObjects.1.2.0.nuspec" />
   </ItemGroup>

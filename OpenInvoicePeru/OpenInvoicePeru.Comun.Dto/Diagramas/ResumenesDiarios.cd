@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Comment CommentText="El Resumen Diario Nuevo hereda del anterior sus demás propiedades pero añade algunas nuevas.">
+    <Position X="5.135" Y="4.802" Height="0.772" Width="2.044" />
+  </Comment>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.GrupoResumen">
+    <Position X="1" Y="2.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AGIAAAAAAFAAgBACAAACAAAAAAEAACgAEAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\GrupoResumen.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.GrupoResumenNuevo">
+    <Position X="5" Y="2.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAoAAEAAAAAAAAAAAEAAAAAAAAAAQABAAAAAA=</HashCode>
+      <FileName>Modelos\GrupoResumenNuevo.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.ResumenDiario">
+    <Position X="1" Y="1" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\ResumenDiario.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Resumenes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.ResumenDiarioNuevo">
+    <Position X="5" Y="1" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\ResumenDiarioNuevo.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="Resumenes" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.Contribuyente">
+    <Position X="3" Y="4" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAACAAEACQAAAAACAAABAACwAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\Contribuyente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoResumen">
+    <Position X="3" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAABAAAAAAAAAQAAAAABAAAAAAAA=</HashCode>
+      <FileName>Modelos\DocumentoResumen.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Emisor" />
+    </ShowAsAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
