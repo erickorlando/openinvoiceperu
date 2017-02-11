@@ -130,6 +130,9 @@ namespace OpenInvoicePeru.WinApp
                     case 7:
                         codigoTipoDoc = "RA";
                         break;
+                    case 8:
+                        codigoTipoDoc = "09";
+                        break;
                     default:
                         codigoTipoDoc = "01";
                         break;
@@ -164,7 +167,7 @@ namespace OpenInvoicePeru.WinApp
                     TramaXmlFirmado = respuestaFirmado.TramaXmlFirmado
                 };
 
-                var apiMetodo = rbResumen.Checked ? "api/EnviarResumen" : "api/EnviarDocumento";
+                var apiMetodo = rbResumen.Checked && codigoTipoDoc != "09" ? "api/EnviarResumen" : "api/EnviarDocumento";
 
                 var jsonEnvioDocumento = await _client.PostAsJsonAsync(apiMetodo, enviarDocumentoRequest);
 
@@ -172,7 +175,7 @@ namespace OpenInvoicePeru.WinApp
                 if (!rbResumen.Checked)
                 {
                     respuestaEnvio = await jsonEnvioDocumento.Content.ReadAsAsync<EnviarDocumentoResponse>();
-                    var rpta = (EnviarDocumentoResponse) respuestaEnvio;
+                    var rpta = (EnviarDocumentoResponse)respuestaEnvio;
                     txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{rpta.MensajeRespuesta} siendo las {DateTime.Now}";
                     try
                     {
@@ -193,7 +196,7 @@ namespace OpenInvoicePeru.WinApp
                 else
                 {
                     respuestaEnvio = await jsonEnvioDocumento.Content.ReadAsAsync<EnviarResumenResponse>();
-                    var rpta = (EnviarResumenResponse) respuestaEnvio;
+                    var rpta = (EnviarResumenResponse)respuestaEnvio;
                     txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{rpta.NroTicket}";
                 }
 
@@ -311,7 +314,7 @@ namespace OpenInvoicePeru.WinApp
         {
             var direccionSunat = direccionSunatBindingSource.Current as DireccionSunat;
             return direccionSunat == null ? string.Empty : direccionSunat.Descripcion;
-        } 
+        }
         #endregion
     }
 }

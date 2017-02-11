@@ -6,14 +6,18 @@ namespace OpenInvoicePeru.Estructuras
     public class InvoiceDocumentReference : IEquatable<InvoiceDocumentReference>
     {
         public string Id { get; set; }
+
         public string DocumentTypeCode { get; set; }
 
         public InvoiceDocumentReference()
         {
             Id = string.Empty;
         }
+
         public bool Equals(InvoiceDocumentReference other)
         {
+            if (other == null) return false;
+
             if (string.IsNullOrEmpty(Id))
                 return false;
             return Id.Equals(other.Id);

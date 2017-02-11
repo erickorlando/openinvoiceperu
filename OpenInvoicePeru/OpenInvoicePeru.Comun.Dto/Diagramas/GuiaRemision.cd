@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.GuiaRemision">
+    <Position X="0.75" Y="0.5" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABEABEASAAAUAAAgIEAZCEhAQBABAAAQAI=</HashCode>
+      <FileName>Modelos\GuiaRemision.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Remitente" />
+      <Property Name="Destinatario" />
+      <Property Name="Tercero" />
+      <Property Name="DocumentoRelacionado" />
+      <Property Name="GuiaBaja" />
+      <Property Name="DireccionLlegada" />
+      <Property Name="DireccionPartida" />
+    </ShowAsAssociation>
+    <ShowAsCollectionAssociation>
+      <Property Name="BienesATransportar" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DetalleGuia">
+    <Position X="8.5" Y="1" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAwABAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>Modelos\DetalleGuia.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.Contribuyente">
+    <Position X="6" Y="3" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAACAAEACQAAAAACAAABAACwAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\Contribuyente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoRelacionado">
+    <Position X="0.5" Y="5.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\DocumentoRelacionado.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.Direccion">
+    <Position X="6" Y="0.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\Direccion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -10,6 +10,7 @@ namespace OpenInvoicePeru.Comun.Constantes
         public const string xmlnsDebitNote = "urn:oasis:names:specification:ubl:schema:xsd:DebitNote-2";
         public const string xmlnsVoidedDocuments = "urn:sunat:names:specification:ubl:peru:schema:xsd:VoidedDocuments-1";
         public const string xmlnsSummaryDocuments = "urn:sunat:names:specification:ubl:peru:schema:xsd:SummaryDocuments-1";
+        public const string xmlnsDespatchAdvice = "urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2";
         public const string sac = "urn:sunat:names:specification:ubl:peru:schema:xsd:SunatAggregateComponents-1";
         public const string cac = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2";
         public const string cbc = "urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2";

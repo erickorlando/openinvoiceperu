@@ -1,10 +1,10 @@
-﻿using System;
+﻿using OpenInvoicePeru.Comun;
+using OpenInvoicePeru.Comun.Constantes;
+using System;
 using System.Collections.Generic;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
-using OpenInvoicePeru.Comun;
-using OpenInvoicePeru.Comun.Constantes;
 
 namespace OpenInvoicePeru.Estructuras
 {
@@ -12,20 +12,35 @@ namespace OpenInvoicePeru.Estructuras
     public class Invoice : IXmlSerializable, IEstructuraXml
     {
         public DateTime IssueDate { get; set; }
+
         public UblExtensions UblExtensions { get; set; }
+
         public SignatureCac Signature { get; set; }
+
         public AccountingSupplierParty AccountingSupplierParty { get; set; }
+
         public string InvoiceTypeCode { get; set; }
+
         public string Id { get; set; }
+
         public AccountingSupplierParty AccountingCustomerParty { get; set; }
+
         public List<InvoiceLine> InvoiceLines { get; set; }
+
         public List<InvoiceDocumentReference> DespatchDocumentReferences { get; set; }
+
         public string DocumentCurrencyCode { get; set; }
+
         public List<TaxTotal> TaxTotals { get; set; }
+
         public LegalMonetaryTotal LegalMonetaryTotal { get; set; }
+
         public BillingPayment PrepaidPayment { get; set; }
+
         public string UblVersionId { get; set; }
+
         public string CustomizationId { get; set; }
+
         public IFormatProvider Formato { get; set; }
 
         public Invoice()
@@ -67,23 +82,25 @@ namespace OpenInvoicePeru.Estructuras
             writer.WriteAttributeString("xmlns:xsi", EspacioNombres.xsi);
 
             #region UBLExtensions
+
             writer.WriteStartElement("ext:UBLExtensions");
 
             #region UBLExtension
+
             var ext2 = UblExtensions.Extension2.ExtensionContent.AdditionalInformation;
             writer.WriteStartElement("ext:UBLExtension");
 
             #region ExtensionContent
+
             writer.WriteStartElement("ext:ExtensionContent");
 
             #region AdditionalInformation
+
             writer.WriteStartElement("sac:AdditionalInformation");
             {
-
                 #region AdditionalMonetaryTotal
 
                 {
-
                     foreach (var additionalMonetaryTotal in ext2.AdditionalMonetaryTotals)
                     {
                         writer.WriteStartElement("sac:AdditionalMonetaryTotal");
@@ -96,7 +113,6 @@ namespace OpenInvoicePeru.Estructuras
                             {
                                 writer.WriteAttributeString("currencyID", additionalMonetaryTotal.PayableAmount.CurrencyId);
                                 writer.WriteValue(additionalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
-
                             }
                             writer.WriteEndElement();
                         }
@@ -105,13 +121,14 @@ namespace OpenInvoicePeru.Estructuras
                             writer.WriteElementString("cbc:Percent",
                                 additionalMonetaryTotal.Percent.ToString(Formatos.FormatoNumerico));
                         }
-                        #endregion
+
+                        #endregion PayableAmount
 
                         writer.WriteEndElement();
                     }
                 }
 
-                #endregion
+                #endregion AdditionalMonetaryTotal
 
                 #region AdditionalProperty
 
@@ -125,21 +142,23 @@ namespace OpenInvoicePeru.Estructuras
 
                         writer.WriteElementString("cbc:Value", additionalProperty.Value);
 
-                        #endregion
+                        #endregion Value
 
                         writer.WriteEndElement();
                     }
                 }
 
-                #endregion
+                #endregion AdditionalProperty
 
                 #region SUNATEmbededDespatchAdvice
+
                 // Para el caso de Factura-Guia.
                 if (!string.IsNullOrEmpty(ext2.SunatEmbededDespatchAdvice.DeliveryAddress.Id))
                 {
                     writer.WriteStartElement("sac:SUNATEmbededDespatchAdvice");
                     {
                         #region DeliveryAddress
+
                         writer.WriteStartElement("cac:DeliveryAddress");
                         {
                             writer.WriteElementString("cbc:ID", ext2.SunatEmbededDespatchAdvice.DeliveryAddress.Id);
@@ -156,9 +175,11 @@ namespace OpenInvoicePeru.Estructuras
                             writer.WriteEndElement();
                         }
                         writer.WriteEndElement();
-                        #endregion
+
+                        #endregion DeliveryAddress
 
                         #region OriginAddress
+
                         writer.WriteStartElement("cac:OriginAddress");
                         {
                             writer.WriteElementString("cbc:ID", ext2.SunatEmbededDespatchAdvice.OriginAddress.Id);
@@ -175,9 +196,11 @@ namespace OpenInvoicePeru.Estructuras
                             writer.WriteEndElement();
                         }
                         writer.WriteEndElement();
-                        #endregion
+
+                        #endregion OriginAddress
 
                         #region SUNATCarrierParty
+
                         writer.WriteStartElement("sac:SUNATCarrierParty");
                         {
                             writer.WriteElementString("cbc:CustomerAssignedAccountID", ext2.SunatEmbededDespatchAdvice.SunatCarrierParty.CustomerAssignedAccountId);
@@ -193,9 +216,11 @@ namespace OpenInvoicePeru.Estructuras
                             writer.WriteEndElement();
                         }
                         writer.WriteEndElement();
-                        #endregion
+
+                        #endregion SUNATCarrierParty
 
                         #region DriverParty
+
                         writer.WriteStartElement("sac:DriverParty");
                         {
                             writer.WriteStartElement("cac:Party");
@@ -209,9 +234,11 @@ namespace OpenInvoicePeru.Estructuras
                             writer.WriteEndElement();
                         }
                         writer.WriteEndElement();
-                        #endregion
+
+                        #endregion DriverParty
 
                         #region SUNATRoadTransport
+
                         writer.WriteStartElement("sac:SUNATRoadTransport");
                         {
                             writer.WriteElementString("cbc:LicensePlateID", ext2.SunatEmbededDespatchAdvice.SunatRoadTransport.LicensePlateId);
@@ -219,24 +246,29 @@ namespace OpenInvoicePeru.Estructuras
                             writer.WriteElementString("cbc:BrandName", ext2.SunatEmbededDespatchAdvice.SunatRoadTransport.BrandName);
                         }
                         writer.WriteEndElement();
-                        #endregion
+
+                        #endregion SUNATRoadTransport
 
                         writer.WriteElementString("cbc:TransportModeCode", ext2.SunatEmbededDespatchAdvice.TransportModeCode);
 
                         #region GrossWeightMeasure
+
                         writer.WriteStartElement("cbc:GrossWeightMeasure");
                         {
                             writer.WriteAttributeString("unitCode", ext2.SunatEmbededDespatchAdvice.GrossWeightMeasure.UnitCode);
                             writer.WriteValue(ext2.SunatEmbededDespatchAdvice.GrossWeightMeasure.Value.ToString(Formatos.FormatoNumerico, Formato));
                         }
                         writer.WriteEndElement();
-                        #endregion
+
+                        #endregion GrossWeightMeasure
                     }
                     writer.WriteEndElement();
                 }
-                #endregion
+
+                #endregion SUNATEmbededDespatchAdvice
 
                 #region SUNATCosts
+
                 if (!string.IsNullOrEmpty(ext2.SunatCosts.RoadTransport.LicensePlateId))
                 {
                     writer.WriteStartElement("sac:SUNATCosts");
@@ -249,10 +281,12 @@ namespace OpenInvoicePeru.Estructuras
                     }
                     writer.WriteEndElement();
                 }
-                #endregion
+
+                #endregion SUNATCosts
 
                 #region SUNATTransaction
-                if (!string.IsNullOrEmpty(ext2.SunatTransaction.Id) 
+
+                if (!string.IsNullOrEmpty(ext2.SunatTransaction.Id)
                     && string.IsNullOrEmpty(ext2.SunatCosts.RoadTransport.LicensePlateId))
                 {
                     writer.WriteStartElement("sac:SUNATTransaction");
@@ -261,42 +295,52 @@ namespace OpenInvoicePeru.Estructuras
                     }
                     writer.WriteEndElement();
                 }
-                #endregion
 
+                #endregion SUNATTransaction
             }
             writer.WriteEndElement();
-            #endregion
+
+            #endregion AdditionalInformation
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion ExtensionContent
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion UBLExtension
 
             #region UBLExtension
 
             writer.WriteStartElement("ext:UBLExtension");
+
             #region ExtensionContent
+
             writer.WriteStartElement("ext:ExtensionContent");
 
             // En esta zona va el certificado digital.
 
             writer.WriteEndElement();
-            #endregion
-            writer.WriteEndElement();
-            #endregion
+
+            #endregion ExtensionContent
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion UBLExtension
+
+            writer.WriteEndElement();
+
+            #endregion UBLExtensions
 
             writer.WriteElementString("cbc:UBLVersionID", UblVersionId);
             writer.WriteElementString("cbc:CustomizationID", CustomizationId);
             writer.WriteElementString("cbc:ID", Id);
-            writer.WriteElementString("cbc:IssueDate", IssueDate.ToString("yyyy-MM-dd"));
+            writer.WriteElementString("cbc:IssueDate", IssueDate.ToString(Formatos.FormatoFecha));
             writer.WriteElementString("cbc:InvoiceTypeCode", InvoiceTypeCode);
             writer.WriteElementString("cbc:DocumentCurrencyCode", DocumentCurrencyCode);
 
             #region DespatchDocumentReferences
+
             foreach (var reference in DespatchDocumentReferences)
             {
                 writer.WriteStartElement("cac:DespatchDocumentReference");
@@ -306,9 +350,11 @@ namespace OpenInvoicePeru.Estructuras
                 }
                 writer.WriteEndElement();
             }
-            #endregion
+
+            #endregion DespatchDocumentReferences
 
             #region Signature
+
             writer.WriteStartElement("cac:Signature");
             writer.WriteElementString("cbc:ID", Signature.Id);
 
@@ -321,6 +367,7 @@ namespace OpenInvoicePeru.Estructuras
             writer.WriteEndElement();
 
             #region PartyName
+
             writer.WriteStartElement("cac:PartyName");
 
             //writer.WriteStartElement("cbc:Name");
@@ -329,12 +376,15 @@ namespace OpenInvoicePeru.Estructuras
             writer.WriteElementString("cbc:Name", Signature.SignatoryParty.PartyName.Name);
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion PartyName
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion SignatoryParty
 
             #region DigitalSignatureAttachment
+
             writer.WriteStartElement("cac:DigitalSignatureAttachment");
 
             writer.WriteStartElement("cac:ExternalReference");
@@ -342,12 +392,15 @@ namespace OpenInvoicePeru.Estructuras
             writer.WriteEndElement();
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion DigitalSignatureAttachment
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion Signature
 
             #region AccountingSupplierParty
+
             writer.WriteStartElement("cac:AccountingSupplierParty");
 
             writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingSupplierParty.CustomerAssignedAccountId);
@@ -355,9 +408,11 @@ namespace OpenInvoicePeru.Estructuras
                 AccountingSupplierParty.AdditionalAccountId);
 
             #region Party
+
             writer.WriteStartElement("cac:Party");
 
             #region PartyName
+
             writer.WriteStartElement("cac:PartyName");
 
             writer.WriteStartElement("cbc:Name");
@@ -365,9 +420,11 @@ namespace OpenInvoicePeru.Estructuras
             writer.WriteEndElement();
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion PartyName
 
             #region PostalAddress
+
             writer.WriteStartElement("cac:PostalAddress");
             writer.WriteElementString("cbc:ID", AccountingSupplierParty.Party.PostalAddress.Id);
             writer.WriteElementString("cbc:StreetName", AccountingSupplierParty.Party.PostalAddress.StreetName);
@@ -378,16 +435,20 @@ namespace OpenInvoicePeru.Estructuras
             writer.WriteElementString("cbc:District", AccountingSupplierParty.Party.PostalAddress.District);
 
             #region Country
+
             writer.WriteStartElement("cac:Country");
             writer.WriteElementString("cbc:IdentificationCode",
                 AccountingSupplierParty.Party.PostalAddress.Country.IdentificationCode);
             writer.WriteEndElement();
-            #endregion
+
+            #endregion Country
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion PostalAddress
 
             #region PartyLegalEntity
+
             writer.WriteStartElement("cac:PartyLegalEntity");
 
             writer.WriteStartElement("cbc:RegistrationName");
@@ -395,15 +456,19 @@ namespace OpenInvoicePeru.Estructuras
             writer.WriteEndElement();
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion PartyLegalEntity
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion Party
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion AccountingSupplierParty
 
             #region AccountingCustomerParty
+
             writer.WriteStartElement("cac:AccountingCustomerParty");
 
             writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingCustomerParty.CustomerAssignedAccountId);
@@ -411,9 +476,11 @@ namespace OpenInvoicePeru.Estructuras
                 AccountingCustomerParty.AdditionalAccountId);
 
             #region Party
+
             writer.WriteStartElement("cac:Party");
 
             #region cbc:PartyLegalEntity
+
             writer.WriteStartElement("cac:PartyLegalEntity");
 
             writer.WriteStartElement("cbc:RegistrationName");
@@ -421,15 +488,19 @@ namespace OpenInvoicePeru.Estructuras
             writer.WriteEndElement();
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion cbc:PartyLegalEntity
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion Party
 
             writer.WriteEndElement();
-            #endregion
+
+            #endregion AccountingCustomerParty
 
             #region PrepaidPayment
+
             if (PrepaidPayment != null)
             {
                 writer.WriteStartElement("cac:PrepaidPayment");
@@ -455,9 +526,11 @@ namespace OpenInvoicePeru.Estructuras
                 }
                 writer.WriteEndElement();
             }
-            #endregion
+
+            #endregion PrepaidPayment
 
             #region TaxTotal
+
             foreach (var taxTotal in TaxTotals)
             {
                 writer.WriteStartElement("cac:TaxTotal");
@@ -468,6 +541,7 @@ namespace OpenInvoicePeru.Estructuras
                 writer.WriteEndElement();
 
                 #region TaxSubtotal
+
                 {
                     writer.WriteStartElement("cac:TaxSubtotal");
 
@@ -482,6 +556,7 @@ namespace OpenInvoicePeru.Estructuras
                         writer.WriteStartElement("cac:TaxCategory");
 
                         #region TaxScheme
+
                         {
                             writer.WriteStartElement("cac:TaxScheme");
 
@@ -491,21 +566,26 @@ namespace OpenInvoicePeru.Estructuras
 
                             writer.WriteEndElement();
                         }
-                        #endregion
+
+                        #endregion TaxScheme
 
                         writer.WriteEndElement();
                     }
-                    #endregion
+
+                    #endregion TaxCategory
 
                     writer.WriteEndElement();
                 }
-                #endregion
+
+                #endregion TaxSubtotal
 
                 writer.WriteEndElement();
             }
-            #endregion
+
+            #endregion TaxTotal
 
             #region LegalMonetaryTotal
+
             writer.WriteStartElement("cac:LegalMonetaryTotal");
             {
                 if (LegalMonetaryTotal.AllowanceTotalAmount.Value > 0)
@@ -532,12 +612,13 @@ namespace OpenInvoicePeru.Estructuras
                     writer.WriteValue(LegalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                 }
                 writer.WriteEndElement();
-
             }
             writer.WriteEndElement();
-            #endregion
+
+            #endregion LegalMonetaryTotal
 
             #region InvoiceLines
+
             foreach (var invoiceLine in InvoiceLines)
             {
                 writer.WriteStartElement("cac:InvoiceLine");
@@ -545,44 +626,55 @@ namespace OpenInvoicePeru.Estructuras
                 writer.WriteElementString("cbc:ID", invoiceLine.Id.ToString());
 
                 #region InvoicedQuantity
+
                 writer.WriteStartElement("cbc:InvoicedQuantity");
                 writer.WriteAttributeString("unitCode", invoiceLine.InvoicedQuantity.UnitCode);
                 writer.WriteValue(invoiceLine.InvoicedQuantity.Value.ToString(Formatos.FormatoNumerico, Formato));
                 writer.WriteEndElement();
-                #endregion
+
+                #endregion InvoicedQuantity
 
                 #region LineExtensionAmount
+
                 writer.WriteStartElement("cbc:LineExtensionAmount");
                 writer.WriteAttributeString("currencyID", invoiceLine.LineExtensionAmount.CurrencyId);
                 writer.WriteValue(invoiceLine.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                 writer.WriteEndElement();
-                #endregion
+
+                #endregion LineExtensionAmount
 
                 #region PricingReference
+
                 writer.WriteStartElement("cac:PricingReference");
 
                 #region AlternativeConditionPrice
+
                 foreach (var item in invoiceLine.PricingReference.AlternativeConditionPrices)
                 {
                     writer.WriteStartElement("cac:AlternativeConditionPrice");
 
                     #region PriceAmount
+
                     writer.WriteStartElement("cbc:PriceAmount");
                     writer.WriteAttributeString("currencyID", item.PriceAmount.CurrencyId);
                     writer.WriteValue(item.PriceAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                     writer.WriteEndElement();
-                    #endregion
+
+                    #endregion PriceAmount
 
                     writer.WriteElementString("cbc:PriceTypeCode", item.PriceTypeCode);
 
                     writer.WriteEndElement();
                 }
-                #endregion
+
+                #endregion AlternativeConditionPrice
 
                 writer.WriteEndElement();
-                #endregion
+
+                #endregion PricingReference
 
                 #region AllowanceCharge
+
                 if (invoiceLine.AllowanceCharge.Amount.Value > 0)
                 {
                     writer.WriteStartElement("cac:AllowanceCharge");
@@ -590,17 +682,21 @@ namespace OpenInvoicePeru.Estructuras
                     writer.WriteElementString("cbc:ChargeIndicator", invoiceLine.AllowanceCharge.ChargeIndicator.ToString().ToLower());
 
                     #region Amount
+
                     writer.WriteStartElement("cbc:Amount");
                     writer.WriteAttributeString("currencyID", invoiceLine.AllowanceCharge.Amount.CurrencyId);
                     writer.WriteValue(invoiceLine.AllowanceCharge.Amount.Value.ToString(Formatos.FormatoNumerico, Formato));
                     writer.WriteEndElement();
-                    #endregion
+
+                    #endregion Amount
 
                     writer.WriteEndElement();
                 }
-                #endregion
+
+                #endregion AllowanceCharge
 
                 #region TaxTotal
+
                 {
                     foreach (var taxTotal in invoiceLine.TaxTotals)
                     {
@@ -612,6 +708,7 @@ namespace OpenInvoicePeru.Estructuras
                         writer.WriteEndElement();
 
                         #region TaxSubtotal
+
                         writer.WriteStartElement("cac:TaxSubtotal");
 
                         #region TaxableAmount
@@ -624,7 +721,7 @@ namespace OpenInvoicePeru.Estructuras
                             writer.WriteEndElement();
                         }
 
-                        #endregion
+                        #endregion TaxableAmount
 
                         writer.WriteStartElement("cbc:TaxAmount");
                         writer.WriteAttributeString("currencyID", taxTotal.TaxSubtotal.TaxAmount.CurrencyId);
@@ -634,6 +731,7 @@ namespace OpenInvoicePeru.Estructuras
                             writer.WriteElementString("cbc:Percent", taxTotal.TaxSubtotal.Percent.ToString(Formatos.FormatoNumerico, Formato));
 
                         #region TaxCategory
+
                         writer.WriteStartElement("cac:TaxCategory");
                         //writer.WriteElementString("cbc:ID", invoiceLine.TaxTotal.TaxSubtotal.TaxCategory.ID);
                         writer.WriteElementString("cbc:TaxExemptionReasonCode", taxTotal.TaxSubtotal.TaxCategory.TaxExemptionReasonCode);
@@ -641,6 +739,7 @@ namespace OpenInvoicePeru.Estructuras
                             writer.WriteElementString("cbc:TierRange", taxTotal.TaxSubtotal.TaxCategory.TierRange);
 
                         #region TaxScheme
+
                         {
                             writer.WriteStartElement("cac:TaxScheme");
 
@@ -650,40 +749,50 @@ namespace OpenInvoicePeru.Estructuras
 
                             writer.WriteEndElement();
                         }
-                        #endregion
+
+                        #endregion TaxScheme
 
                         writer.WriteEndElement();
-                        #endregion
+
+                        #endregion TaxCategory
 
                         writer.WriteEndElement();
-                        #endregion
+
+                        #endregion TaxSubtotal
 
                         writer.WriteEndElement();
                     }
                 }
-                #endregion
+
+                #endregion TaxTotal
 
                 #region Item
+
                 writer.WriteStartElement("cac:Item");
 
                 #region Description
+
                 writer.WriteElementString("cbc:Description", invoiceLine.Item.Description);
                 //writer.WriteStartElement("cbc:Description");
                 //writer.WriteCData(invoiceLine.Item.Description);
                 //writer.WriteEndElement();
-                #endregion
+
+                #endregion Description
 
                 #region SellersItemIdentification
+
                 writer.WriteStartElement("cac:SellersItemIdentification");
                 writer.WriteElementString("cbc:ID", invoiceLine.Item.SellersItemIdentification.Id);
                 writer.WriteEndElement();
-                #endregion
 
+                #endregion SellersItemIdentification
 
                 writer.WriteEndElement();
-                #endregion
+
+                #endregion Item
 
                 #region Price
+
                 writer.WriteStartElement("cac:Price");
 
                 writer.WriteStartElement("cbc:PriceAmount");
@@ -692,12 +801,13 @@ namespace OpenInvoicePeru.Estructuras
                 writer.WriteEndElement();
 
                 writer.WriteEndElement();
-                #endregion
+
+                #endregion Price
 
                 writer.WriteEndElement();
             }
-            #endregion
 
+            #endregion InvoiceLines
         }
     }
 }

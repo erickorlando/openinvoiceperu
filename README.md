@@ -1,5 +1,5 @@
 ![Open Invoice Perú](https://raw.githubusercontent.com/erickorlando/facturacionelectronicasunat/master/openinvoiceperulogo.PNG "Open Invoice Perú")
-# OpenInvoicePeru v1.2.5 #
+# OpenInvoicePeru v1.3.0 #
 OpenInvoicePeru es un proyecto Open Source construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT, este proyecto está orientado al desarrollador (muy pronto para usuarios).
 Permite la generacion de XML, empaquetado, envío y recepción de documentos electrónicos a través de una API REST.
 
@@ -16,8 +16,8 @@ Puedes leer la documentación del proyecto en la sección [Wiki](https://github.
   - Resumen Diario de Boletas
   - Comunicaciones de Baja
   - Retenciones
+  - Guías de Remisión
   - Percepciones (en la versión 1.3)
-  - Guías de Remisión (en la versión 1.3)
  
 - Firmado del XML con un certificado digital elegido por el usuario.
 - Envío al servicio Web de SUNAT de los documentos electrónicos generados (Beta, Homologación y Producción).

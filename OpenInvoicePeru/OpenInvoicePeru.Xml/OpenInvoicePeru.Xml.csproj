@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="ComunicacionBajaXml.cs" />
     <Compile Include="FacturaXml.cs" />
+    <Compile Include="GuiaRemisionXml.cs" />
     <Compile Include="IDocumentoXml.cs" />
     <Compile Include="NotaCreditoXml.cs" />
     <Compile Include="NotaDebitoXml.cs" />
