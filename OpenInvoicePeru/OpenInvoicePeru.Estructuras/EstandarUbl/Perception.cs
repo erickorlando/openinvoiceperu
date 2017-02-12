@@ -1,29 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-using OpenInvoicePeru.Comun;
+﻿using OpenInvoicePeru.Comun;
 using OpenInvoicePeru.Comun.Constantes;
 using OpenInvoicePeru.Estructuras.CommonAggregateComponents;
 using OpenInvoicePeru.Estructuras.CommonBasicComponents;
 using OpenInvoicePeru.Estructuras.CommonExtensionComponents;
 using OpenInvoicePeru.Estructuras.SunatAggregateComponents;
+using System;
+using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace OpenInvoicePeru.Estructuras.EstandarUbl
 {
     [Serializable]
-    public class Retention : IXmlSerializable, IEstructuraXml
+    public class Perception : IXmlSerializable, IEstructuraXml
     {
         public string UblVersionId { get; set; }
 
         public string CustomizationId { get; set; }
 
+        public string Id { get; set; }
+
         public UblExtensions UblExtensions { get; set; }
 
         public SignatureCac Signature { get; set; }
-
-        public string Id { get; set; }
 
         public string IssueDate { get; set; }
 
@@ -31,9 +31,9 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public AgentParty ReceiverParty { get; set; }
 
-        public string SunatRetentionSystemCode { get; set; }
+        public string SunatPerceptionSystemCode { get; set; }
 
-        public decimal SunatRetentionPercent { get; set; }
+        public decimal SunatPerceptionPercent { get; set; }
 
         public string Note { get; set; }
 
@@ -41,18 +41,18 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public PayableAmount TotalPaid { get; set; }
 
-        public List<SunatRetentionDocumentReference> SunatRetentionDocumentReference { get; set; }
+        public List<SunatRetentionDocumentReference> SunatPerceptionDocumentReference { get; set; }
 
         public IFormatProvider Formato { get; set; }
 
-        public Retention()
+        public Perception()
         {
             UblExtensions = new UblExtensions();
             AgentParty = new AgentParty();
             ReceiverParty = new AgentParty();
             TotalInvoiceAmount = new PayableAmount();
             TotalPaid = new PayableAmount();
-            SunatRetentionDocumentReference = new List<SunatRetentionDocumentReference>();
+            SunatPerceptionDocumentReference = new List<SunatRetentionDocumentReference>();
 
             UblVersionId = "2.0";
             CustomizationId = "1.0";
@@ -66,12 +66,12 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public void ReadXml(XmlReader reader)
         {
-            reader.ReadStartElement("ext:Extensions");
+            throw new NotImplementedException();
         }
 
         public void WriteXml(XmlWriter writer)
         {
-            writer.WriteAttributeString("xmlns", EspacioNombres.xmlnsRetention);
+            writer.WriteAttributeString("xmlns", EspacioNombres.xmlnsPerception);
             writer.WriteAttributeString("xmlns:cac", EspacioNombres.cac);
             writer.WriteAttributeString("xmlns:cbc", EspacioNombres.cbc);
             writer.WriteAttributeString("xmlns:ccts", EspacioNombres.ccts);
@@ -329,8 +329,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             #endregion ReceiverParty
 
-            writer.WriteElementString("sac:SUNATRetentionSystemCode", SunatRetentionSystemCode);
-            writer.WriteElementString("sac:SUNATRetentionPercent", SunatRetentionPercent.ToString(Formatos.FormatoNumerico, Formato));
+            writer.WriteElementString("sac:SUNATPerceptionSystemCode", SunatPerceptionSystemCode);
+            writer.WriteElementString("sac:SUNATPerceptionPercent", SunatPerceptionPercent.ToString(Formatos.FormatoNumerico, Formato));
             if (!string.IsNullOrEmpty(Note))
                 writer.WriteElementString("cbc:Note", Note);
 
@@ -341,18 +341,18 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             }
             writer.WriteEndElement();
 
-            writer.WriteStartElement("sac:SUNATTotalPaid");
+            writer.WriteStartElement("sac:SUNATTotalCashed");
             {
                 writer.WriteAttributeString("currencyID", TotalPaid.CurrencyId);
                 writer.WriteValue(TotalPaid.Value.ToString(Formatos.FormatoNumerico, Formato));
             }
             writer.WriteEndElement();
 
-            #region SUNATRetentionDocumentReference
+            #region SUNATPerceptionDocumentReference
 
-            foreach (var info in SunatRetentionDocumentReference)
+            foreach (var info in SunatPerceptionDocumentReference)
             {
-                writer.WriteStartElement("sac:SUNATRetentionDocumentReference");
+                writer.WriteStartElement("sac:SUNATPerceptionDocumentReference");
 
                 #region ID
 
@@ -396,38 +396,36 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                 #endregion Payment
 
-                #region SUNATRetentionInformation
+                #region SUNATPerceptionInformation
 
-                writer.WriteStartElement("sac:SUNATRetentionInformation");
+                writer.WriteStartElement("sac:SUNATPerceptionInformation");
                 {
-                    #region SUNATRetentionAmount
+                    #region SUNATPerceptionAmount
 
-                    writer.WriteStartElement("sac:SUNATRetentionAmount");
+                    writer.WriteStartElement("sac:SUNATPerceptionAmount");
                     {
                         writer.WriteAttributeString("currencyID", info.SunatRetentionInformation.SunatRetentionAmount.CurrencyId);
                         writer.WriteValue(info.SunatRetentionInformation.SunatRetentionAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                     }
                     writer.WriteEndElement();
 
-                    #endregion SUNATRetentionAmount
+                    #endregion SUNATPerceptionAmount
 
-                    writer.WriteElementString("sac:SUNATRetentionDate", info.SunatRetentionInformation.SunatRetentionDate);
+                    writer.WriteElementString("sac:SUNATPerceptionDate", info.SunatRetentionInformation.SunatRetentionDate);
 
-                    #region SUNATNetTotalPaid
+                    #region SUNATNetTotalCashed
 
-                    writer.WriteStartElement("sac:SUNATNetTotalPaid");
+                    writer.WriteStartElement("sac:SUNATNetTotalCashed");
                     {
                         writer.WriteAttributeString("currencyID", info.SunatRetentionInformation.SunatNetTotalPaid.CurrencyId);
                         writer.WriteValue(info.SunatRetentionInformation.SunatNetTotalPaid.Value.ToString(Formatos.FormatoNumerico, Formato));
                     }
                     writer.WriteEndElement();
 
-                    #endregion SUNATNetTotalPaid
+                    #endregion SUNATNetTotalCashed
 
                     #region ExchangeRate
 
-                    //if (info.Payment.PaidAmount.currencyID.Trim() != "PEN")
-                    //{
                     writer.WriteStartElement("cac:ExchangeRate");
                     {
                         writer.WriteElementString("cbc:SourceCurrencyCode", info.SunatRetentionInformation.ExchangeRate.SourceCurrencyCode);
@@ -439,18 +437,17 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                 : info.SunatRetentionInformation.SunatRetentionDate);
                     }
                     writer.WriteEndElement();
-                    //}
 
                     #endregion ExchangeRate
                 }
                 writer.WriteEndElement();
 
-                #endregion SUNATRetentionInformation
+                #endregion SUNATPerceptionInformation
 
                 writer.WriteEndElement();
             }
 
-            #endregion SUNATRetentionDocumentReference
+            #endregion SUNATPerceptionDocumentReference
         }
     }
 }

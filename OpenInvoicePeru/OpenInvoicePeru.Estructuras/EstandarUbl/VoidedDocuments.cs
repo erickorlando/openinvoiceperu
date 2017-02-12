@@ -31,6 +31,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public List<VoidedDocumentsLine> VoidedDocumentsLines { get; set; }
 
+        public IFormatProvider Formato { get; set; }
+
         public VoidedDocuments()
         {
             UblExtensions = new UblExtensions();
@@ -39,6 +41,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             VoidedDocumentsLines = new List<VoidedDocumentsLine>();
             UblVersionId = "2.0";
             CustomizationId = "1.0";
+            Formato = new System.Globalization.CultureInfo(Formatos.Cultura);
         }
 
         public XmlSchema GetSchema()

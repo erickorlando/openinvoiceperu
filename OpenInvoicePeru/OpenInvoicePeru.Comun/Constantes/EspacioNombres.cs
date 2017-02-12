@@ -4,12 +4,13 @@ namespace OpenInvoicePeru.Comun.Constantes
 {
     public static class EspacioNombres
     {
-        public const string xmlnsRetention = "urn:sunat:names:specification:ubl:peru:schema:xsd:Retention-1";
         public const string xmlnsInvoice = "urn:oasis:names:specification:ubl:schema:xsd:Invoice-2";
         public const string xmlnsCreditNote = "urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2";
         public const string xmlnsDebitNote = "urn:oasis:names:specification:ubl:schema:xsd:DebitNote-2";
         public const string xmlnsVoidedDocuments = "urn:sunat:names:specification:ubl:peru:schema:xsd:VoidedDocuments-1";
         public const string xmlnsSummaryDocuments = "urn:sunat:names:specification:ubl:peru:schema:xsd:SummaryDocuments-1";
+        public const string xmlnsRetention = "urn:sunat:names:specification:ubl:peru:schema:xsd:Retention-1";
+        public const string xmlnsPerception = "urn:sunat:names:specification:ubl:peru:schema:xsd:Perception-1";
         public const string xmlnsDespatchAdvice = "urn:oasis:names:specification:ubl:schema:xsd:DespatchAdvice-2";
         public const string sac = "urn:sunat:names:specification:ubl:peru:schema:xsd:SunatAggregateComponents-1";
         public const string cac = "urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2";

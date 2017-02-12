@@ -44,6 +44,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public List<InvoiceLine> DebitNoteLines { get; set; }
 
+        public IFormatProvider Formato { get; set; }
+
         public DebitNote()
         {
             UblExtensions = new UblExtensions();
@@ -59,6 +61,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             DebitNoteLines = new List<InvoiceLine>();
             UblVersionId = "2.0";
             CustomizationId = "1.0";
+            Formato = new System.Globalization.CultureInfo(Formatos.Cultura);
         }
 
         public XmlSchema GetSchema()

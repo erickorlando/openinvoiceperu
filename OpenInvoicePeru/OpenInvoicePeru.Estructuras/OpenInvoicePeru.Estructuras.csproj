@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonAggregateComponents\AccountingSupplierParty.cs" />
+    <Compile Include="EstandarUbl\Perception.cs" />
     <Compile Include="SunatAggregateComponents\AdditionalInformation.cs" />
     <Compile Include="SunatAggregateComponents\AdditionalMonetaryTotal.cs" />
     <Compile Include="SunatAggregateComponents\AdditionalProperty.cs" />

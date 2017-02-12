@@ -42,7 +42,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             SummaryDocumentsLines = new List<VoidedDocumentsLine>();
             UblVersionId = "2.0";
             CustomizationId = "1.0";
-            Formato = new System.Globalization.CultureInfo("es-PE");
+            Formato = new System.Globalization.CultureInfo(Formatos.Cultura);
         }
 
         public XmlSchema GetSchema()

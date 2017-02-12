@@ -44,6 +44,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public List<DespatchLine> DespatchLines { get; set; }
 
+        public IFormatProvider Formato { get; set; }
+
         public DespatchAdvice()
         {
             UblExtensions = new UblExtensions();
@@ -57,6 +59,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             DespatchLines = new List<DespatchLine>();
             UblVersionId = "2.0";
             CustomizationId = "1.0";
+            Formato = new System.Globalization.CultureInfo(Formatos.Cultura);
         }
 
         public XmlSchema GetSchema()
