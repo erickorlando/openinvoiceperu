@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>OpenInvoicePeru.DataTransfersObjects</id>
+        <version>1.3.6</version>
+        <title>OpenInvoicePeru DTO</title>
+        <authors>Erick Orlando</authors>
+        <owners>Erick Orlando</owners>
+        <licenseUrl>https://github.com/erickorlando/openinvoiceperu/blob/master/LICENSE</licenseUrl>
+        <projectUrl>https://github.com/erickorlando/openinvoiceperu</projectUrl>
+        <iconUrl>https://raw.githubusercontent.com/erickorlando/openinvoiceperu/master/openinvoiceperulogo.PNG</iconUrl>
+        <requireLicenseAcceptance>true</requireLicenseAcceptance>
+        <description>Objetos de Transferencia de Datos para la API REST de OpenInvoicePeru. Estas clases permiten enviar los JSON adecuados para la Facturacion Electronica SUNAT de OpenInvoicePeru. Se requiere mínimo .NET 4.0</description>
+        <releaseNotes>- Soporte para Creación de Documentos de Retención.
+- Soporte para consulta de CDR de SUNAT</releaseNotes>
+        <copyright>Erick Orlando © 2017</copyright>
+        <language>es-PE</language>
+        <tags>openinvoiceperu facturacion electronica sunat electronic billing</tags>
+    </metadata>
+    <files>
+        <file src="bin\Release\OpenInvoicePeru.Comun.Dto.dll" target="lib\net40\OpenInvoicePeru.Comun.Dto.dll" />
+    </files>
+</package>

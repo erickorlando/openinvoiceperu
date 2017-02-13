@@ -2,37 +2,15 @@
 
 namespace OpenInvoicePeru.Comun.Dto.Modelos
 {
-    public class ItemRetencion : DocumentoRelacionado
+    public class ItemRetencion : ItemSunatBase
     {
-        [JsonProperty(Required = Required.Always)]
-        public string FechaEmision { get; set; }
-
-        [JsonProperty(Required = Required.Always)]
-        public decimal ImporteTotal { get; set; }
-
-        [JsonProperty(Required = Required.Always)]
-        public string MonedaDocumentoRelacionado { get; set; }
-
-        [JsonProperty(Required = Required.Always)]
-        public string FechaPago { get; set; }
-
-        [JsonProperty(Required = Required.Always)]
-        public int NumeroPago { get; set; }
-
-        [JsonProperty(Required = Required.Always)]
+        [JsonProperty(Order = 8, Required = Required.Always)]
         public decimal ImporteSinRetencion { get; set; }
 
-        [JsonProperty(Required = Required.Always)]
+        [JsonProperty(Order = 10, Required = Required.Always)]
         public decimal ImporteRetenido { get; set; }
 
-        [JsonProperty(Required = Required.Always)]
+        [JsonProperty(Order = 11, Required = Required.Always)]
         public string FechaRetencion { get; set; }
-
-        [JsonProperty(Required = Required.Always)]
-        public decimal ImporteTotalNeto { get; set; }
-
-        public decimal TipoCambio { get; set; }
-
-        public string FechaTipoCambio { get; set; }
     }
 }

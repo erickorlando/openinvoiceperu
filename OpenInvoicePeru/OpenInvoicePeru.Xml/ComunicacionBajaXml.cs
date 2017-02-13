@@ -2,7 +2,10 @@ using System;
 using OpenInvoicePeru.Comun;
 using OpenInvoicePeru.Comun.Dto.Contratos;
 using OpenInvoicePeru.Comun.Dto.Modelos;
-using OpenInvoicePeru.Estructuras;
+using OpenInvoicePeru.Estructuras.CommonAggregateComponents;
+using OpenInvoicePeru.Estructuras.CommonBasicComponents;
+using OpenInvoicePeru.Estructuras.EstandarUbl;
+using OpenInvoicePeru.Estructuras.SunatAggregateComponents;
 
 namespace OpenInvoicePeru.Xml
 {

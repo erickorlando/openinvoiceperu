@@ -120,6 +120,7 @@
     <Compile Include="Controllers\GenerarFacturaController.cs" />
     <Compile Include="Controllers\EnviarDocumentoController.cs" />
     <Compile Include="Controllers\EnviarResumenController.cs" />
+    <Compile Include="Controllers\GenerarPercepcionController.cs" />
     <Compile Include="Controllers\GenerarResumenDiarioController.cs" />
     <Compile Include="Controllers\GenerarComunicacionBajaController.cs" />
     <Compile Include="Controllers\GenerarRetencionController.cs" />
