@@ -9,19 +9,19 @@ using System.Web.Http;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
-    public class GenerarRetencionController : ApiController
+    public class GenerarPercepcionController : ApiController
     {
         private readonly IDocumentoXml _documentoXml;
         private readonly ISerializador _serializador;
 
-        public GenerarRetencionController(ISerializador serializador)
+        public GenerarPercepcionController(ISerializador serializador)
         {
             _serializador = serializador;
             _documentoXml = _documentoXml = UnityConfig.GetConfiguredContainer()
                 .Resolve<IDocumentoXml>(GetType().Name);
         }
 
-        public async Task<DocumentoResponse> Post([FromBody] DocumentoRetencion documento)
+        public async Task<DocumentoResponse> Post([FromBody] DocumentoPercepcion documento)
         {
             var response = new DocumentoResponse();
             try

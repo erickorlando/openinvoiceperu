@@ -8,7 +8,7 @@ Actualmente ya se puede usar en entornos de Producción, si encuentras algún bu
 Puedes leer la documentación del proyecto en la sección [Wiki](https://github.com/erickorlando/openinvoiceperu/wiki).
 
 # Características #
-- Generación de XML los siguientes documentos:
+- Generación de XML los siguientes documentos electrónicos:
   - Facturas
   - Boletas 
   - Notas de Crédito
@@ -16,14 +16,14 @@ Puedes leer la documentación del proyecto en la sección [Wiki](https://github.
   - Resumen Diario de Boletas
   - Comunicaciones de Baja
   - Retenciones
+  - Percepciones
   - Guías de Remisión
-  - Percepciones (en la versión 1.3)
  
 - Firmado del XML con un certificado digital elegido por el usuario.
 - Envío al servicio Web de SUNAT de los documentos electrónicos generados (Beta, Homologación y Producción).
 - Envío de Resumen Diario y Comunicación de Baja.
 - Desempaquetado y Lectura del contenido del CDR de SUNAT.
-- Guardado de XML firmados y CDR de SUNAT.
+- Guardado de XML firmados y CDR de SUNAT en una carpeta local.
 - Consulta de Tickets de los Resúmenes y Bajas.
 - API REST bajo ASP.NET Web API 2.
 - Aplicación Windows de prueba de envío a SUNAT.

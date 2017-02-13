@@ -2,15 +2,15 @@
 
 namespace OpenInvoicePeru.Comun.Dto.Modelos
 {
-    public class ItemRetencion : ItemSunatBase
+    public class ItemPercepcion: ItemSunatBase
     {
         [JsonProperty(Order = 8, Required = Required.Always)]
-        public decimal ImporteSinRetencion { get; set; }
+        public decimal ImporteSinPercepcion { get; set; }
 
         [JsonProperty(Order = 10, Required = Required.Always)]
-        public decimal ImporteRetenido { get; set; }
+        public decimal ImportePercibido { get; set; }
 
         [JsonProperty(Order = 11, Required = Required.Always)]
-        public string FechaRetencion { get; set; }
+        public string FechaPercepcion { get; set; }
     }
 }
