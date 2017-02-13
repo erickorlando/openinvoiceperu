@@ -1,20 +1,16 @@
-﻿namespace OpenInvoicePeru.Comun.Dto.Modelos
-{
-    public class ItemRetencion : DocumentoRelacionado
-    {
-        public string FechaEmision { get; set; }
-        public decimal ImporteTotal { get; set; }
-        public string MonedaDocumentoRelacionado { get; set; }
+﻿using Newtonsoft.Json;
 
-        public string FechaPago { get; set; }
-        public int NumeroPago { get; set; }
+namespace OpenInvoicePeru.Comun.Dto.Modelos
+{
+    public class ItemRetencion : ItemSunatBase
+    {
+        [JsonProperty(Order = 8, Required = Required.Always)]
         public decimal ImporteSinRetencion { get; set; }
 
+        [JsonProperty(Order = 10, Required = Required.Always)]
         public decimal ImporteRetenido { get; set; }
-        public string FechaRetencion { get; set; }
-        public decimal ImporteTotalNeto { get; set; }
 
-        public decimal TipoCambio { get; set; }
-        public string FechaTipoCambio { get; set; }
+        [JsonProperty(Order = 11, Required = Required.Always)]
+        public string FechaRetencion { get; set; }
     }
 }

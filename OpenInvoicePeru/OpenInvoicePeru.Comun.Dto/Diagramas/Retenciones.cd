@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoRetencion">
+    <Position X="3.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAgAAAAAAAEAAQAAAAgAAAAAAAA=</HashCode>
+      <FileName>Modelos\DocumentoRetencion.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="DocumentosRelacionados" />
+    </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.ItemRetencion">
+    <Position X="6.5" Y="5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAACAAAAAAAAAEQAAAAA=</HashCode>
+      <FileName>Modelos\ItemRetencion.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoRelacionado">
+    <Position X="6.5" Y="0.5" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\DocumentoRelacionado.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.Contribuyente">
+    <Position X="0.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAACAAEACQAAAAACAAABAACwAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\Contribuyente.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoSunatBase">
+    <Position X="0.75" Y="0.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAEAAAAAABAAAAEAAAAQAAAAAAAAgAAAAA=</HashCode>
+      <FileName>Modelos\DocumentoSunatBase.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="Emisor" />
+      <Property Name="Receptor" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.ItemSunatBase">
+    <Position X="6.5" Y="2.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAACEAQAAAIQAAAAAAAAg=</HashCode>
+      <FileName>Modelos\ItemSunatBase.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

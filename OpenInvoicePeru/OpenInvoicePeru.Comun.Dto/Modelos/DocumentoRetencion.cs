@@ -1,24 +1,24 @@
-﻿using System.Collections.Generic;
+﻿using Newtonsoft.Json;
 using OpenInvoicePeru.Comun.Dto.Contratos;
+using System.Collections.Generic;
 
 namespace OpenInvoicePeru.Comun.Dto.Modelos
 {
-    public class DocumentoRetencion : IDocumentoElectronico
+    public class DocumentoRetencion : DocumentoSunatBase, IDocumentoElectronico
     {
-        public Contribuyente Emisor { get; set; }
-        public Contribuyente Receptor { get; set; }
-
-        public string IdDocumento { get; set; }
-        public string FechaEmision { get; set; }
-        public string Moneda { get; set; }
-
+        [JsonProperty(Order = 7, Required = Required.Always)]
         public string RegimenRetencion { get; set; }
-        public decimal TasaRetencion { get; set; }
-        public string Observaciones { get; set; }
 
+        [JsonProperty(Order = 8, Required = Required.Always)]
+        public decimal TasaRetencion { get; set; }
+
+        [JsonProperty(Order = 9, Required = Required.Always)]
         public decimal ImporteTotalRetenido { get; set; }
+
+        [JsonProperty(Order = 10, Required = Required.Always)]
         public decimal ImporteTotalPagado { get; set; }
 
+        [JsonProperty(Order = 11, Required = Required.Always)]
         public List<ItemRetencion> DocumentosRelacionados { get; set; }
     }
 }

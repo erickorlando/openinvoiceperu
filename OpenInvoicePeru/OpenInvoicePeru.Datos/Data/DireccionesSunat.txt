@@ -3,3 +3,5 @@ Homologación|https://www.sunat.gob.pe/ol-ti-itcpgem-sqa/billService
 Producción|https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService
 Retención/Percepción Desarrollo|https://e-beta.sunat.gob.pe/ol-ti-itemision-otroscpe-gem-beta/billService
 Retención/Percepción Produccion|https://www.sunat.gob.pe:443/ol-ti-itemision-otroscpe-gem/billService
+GuiaRemision/Desarrollo|https://e-beta.sunat.gob.pe/ol-ti-itemision-guia-gem-beta/billService
+GuiaRemision/Produccion|https://e-guiaremision.sunat.gob.pe/ol-ti-itemision-guia-gem/billService

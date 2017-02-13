@@ -187,7 +187,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // rbResumen
             // 
-            this.rbResumen.Location = new System.Drawing.Point(28, 58);
+            this.rbResumen.Location = new System.Drawing.Point(28, 61);
             this.rbResumen.Name = "rbResumen";
             this.rbResumen.Size = new System.Drawing.Size(206, 20);
             this.rbResumen.TabIndex = 2;
@@ -195,16 +195,16 @@ namespace OpenInvoicePeru.WinApp
             // 
             // rbRetenciones
             // 
-            this.rbRetenciones.Location = new System.Drawing.Point(28, 31);
+            this.rbRetenciones.Location = new System.Drawing.Point(28, 33);
             this.rbRetenciones.Name = "rbRetenciones";
-            this.rbRetenciones.Size = new System.Drawing.Size(173, 20);
+            this.rbRetenciones.Size = new System.Drawing.Size(195, 20);
             this.rbRetenciones.TabIndex = 1;
-            this.rbRetenciones.Values.Text = "Retenciones y Percepciones";
+            this.rbRetenciones.Values.Text = "Retenciones, Percepciones y GR";
             // 
             // rbDocumentos
             // 
             this.rbDocumentos.Checked = true;
-            this.rbDocumentos.Location = new System.Drawing.Point(28, 2);
+            this.rbDocumentos.Location = new System.Drawing.Point(28, 5);
             this.rbDocumentos.Name = "rbDocumentos";
             this.rbDocumentos.Size = new System.Drawing.Size(150, 20);
             this.rbDocumentos.TabIndex = 0;
@@ -264,7 +264,8 @@ namespace OpenInvoicePeru.WinApp
             "Retención",
             "Percepción",
             "Resumen Diario",
-            "Comunicacion de Baja"});
+            "Comunicacion de Baja",
+            "Guía de Remisión"});
             this.cboTipoDoc.Location = new System.Drawing.Point(173, 177);
             this.cboTipoDoc.Name = "cboTipoDoc";
             this.cboTipoDoc.Size = new System.Drawing.Size(201, 21);

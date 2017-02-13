@@ -31,6 +31,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="Microsoft.CSharp" />
@@ -38,15 +42,19 @@
   <ItemGroup>
     <Compile Include="Contratos\IDocumentoElectronico.cs" />
     <Compile Include="Intercambio\ConsultaConstanciaRequest.cs" />
+    <Compile Include="Intercambio\RespuestaComunConArchivo.cs" />
     <Compile Include="Modelos\ComunicacionBaja.cs" />
     <Compile Include="Intercambio\ConsultaTicketRequest.cs" />
     <Compile Include="Modelos\Contribuyente.cs" />
     <Compile Include="Modelos\DatoAdicional.cs" />
     <Compile Include="Modelos\DatosGuia.cs" />
     <Compile Include="Modelos\DetalleDocumento.cs" />
+    <Compile Include="Modelos\DetalleGuia.cs" />
+    <Compile Include="Modelos\Direccion.cs" />
     <Compile Include="Modelos\Discrepancia.cs" />
     <Compile Include="Modelos\DocumentoBaja.cs" />
     <Compile Include="Modelos\DocumentoElectronico.cs" />
+    <Compile Include="Modelos\DocumentoPercepcion.cs" />
     <Compile Include="Modelos\DocumentoRelacionado.cs" />
     <Compile Include="Intercambio\DocumentoResponse.cs" />
     <Compile Include="Modelos\DocumentoResumen.cs" />
@@ -58,17 +66,27 @@
     <Compile Include="Intercambio\EnvioDocumentoComun.cs" />
     <Compile Include="Intercambio\FirmadoRequest.cs" />
     <Compile Include="Intercambio\FirmadoResponse.cs" />
+    <Compile Include="Modelos\DocumentoSunatBase.cs" />
     <Compile Include="Modelos\GrupoResumen.cs" />
     <Compile Include="Modelos\GrupoResumenNuevo.cs" />
+    <Compile Include="Modelos\GuiaRemision.cs" />
+    <Compile Include="Modelos\ItemPercepcion.cs" />
     <Compile Include="Modelos\ItemRetencion.cs" />
+    <Compile Include="Modelos\ItemSunatBase.cs" />
     <Compile Include="Modelos\ResumenDiarioNuevo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Intercambio\RespuestaComun.cs" />
     <Compile Include="Modelos\ResumenDiario.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="OpenInvoicePeru.DataTransfersObjects.1.3.0.nuspec" />
-    <None Include="OpenInvoicePeru.DataTransfersObjects.1.2.0.nuspec" />
+    <None Include="Diagramas\DocumentosElectronicos.cd" />
+    <None Include="Diagramas\Bajas.cd" />
+    <None Include="Diagramas\GuiaRemision.cd" />
+    <None Include="Diagramas\Percepciones.cd" />
+    <None Include="Diagramas\ResumenesDiarios.cd" />
+    <None Include="Diagramas\Retenciones.cd" />
+    <None Include="OpenInvoicePeru.DataTransfersObjects.1.3.6.nuspec" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
