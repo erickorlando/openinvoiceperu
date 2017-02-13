@@ -122,7 +122,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                     {
                                         writer.WriteStartElement("cbc:PayableAmount");
                                         writer.WriteAttributeString("currencyID", additionalMonetaryTotal.PayableAmount.CurrencyId);
-                                        writer.WriteValue(additionalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico));
+                                        writer.WriteValue(additionalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                                         writer.WriteEndElement();
                                     }
 
@@ -416,7 +416,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                 writer.WriteStartElement("cbc:TaxAmount");
                 writer.WriteAttributeString("currencyID", taxTotal.TaxAmount.CurrencyId);
-                writer.WriteString(taxTotal.TaxAmount.Value.ToString(Formatos.FormatoNumerico));
+                writer.WriteString(taxTotal.TaxAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                 writer.WriteEndElement();
 
                 #region TaxSubtotal
@@ -426,7 +426,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                     writer.WriteStartElement("cbc:TaxAmount");
                     writer.WriteAttributeString("currencyID", taxTotal.TaxSubtotal.TaxAmount.CurrencyId);
-                    writer.WriteString(taxTotal.TaxAmount.Value.ToString(Formatos.FormatoNumerico));
+                    writer.WriteString(taxTotal.TaxAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                     writer.WriteEndElement();
 
                     #region TaxCategory
@@ -469,7 +469,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteStartElement("cbc:PayableAmount");
             writer.WriteAttributeString("currencyID", RequestedMonetaryTotal.PayableAmount.CurrencyId);
-            writer.WriteValue(RequestedMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico));
+            writer.WriteValue(RequestedMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
             writer.WriteEndElement();
 
             writer.WriteEndElement();
@@ -489,7 +489,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 writer.WriteStartElement("cbc:DebitedQuantity");
                 {
                     writer.WriteAttributeString("unitCode", line.DebitedQuantity.UnitCode);
-                    writer.WriteValue(line.DebitedQuantity.Value.ToString(Formatos.FormatoNumerico));
+                    writer.WriteValue(line.DebitedQuantity.Value.ToString(Formatos.FormatoNumerico, Formato));
                 }
                 writer.WriteEndElement();
 
@@ -500,7 +500,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 writer.WriteStartElement("cbc:LineExtensionAmount");
                 {
                     writer.WriteAttributeString("currencyID", line.LineExtensionAmount.CurrencyId);
-                    writer.WriteValue(line.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico));
+                    writer.WriteValue(line.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                 }
                 writer.WriteEndElement();
 
@@ -520,7 +520,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                     writer.WriteStartElement("cbc:PriceAmount");
                     writer.WriteAttributeString("currencyID", item.PriceAmount.CurrencyId);
-                    writer.WriteValue(item.PriceAmount.Value.ToString(Formatos.FormatoNumerico));
+                    writer.WriteValue(item.PriceAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                     writer.WriteEndElement();
 
                     #endregion PriceAmount
@@ -548,7 +548,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                     writer.WriteStartElement("cbc:Amount");
                     writer.WriteAttributeString("currencyID", line.AllowanceCharge.Amount.CurrencyId);
-                    writer.WriteValue(line.AllowanceCharge.Amount.Value.ToString(Formatos.FormatoNumerico));
+                    writer.WriteValue(line.AllowanceCharge.Amount.Value.ToString(Formatos.FormatoNumerico, Formato));
                     writer.WriteEndElement();
 
                     #endregion Amount
@@ -567,7 +567,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                         writer.WriteStartElement("cbc:TaxAmount");
                         writer.WriteAttributeString("currencyID", taxTotal.TaxAmount.CurrencyId);
-                        writer.WriteString(taxTotal.TaxAmount.Value.ToString(Formatos.FormatoNumerico));
+                        writer.WriteString(taxTotal.TaxAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                         writer.WriteEndElement();
 
                         #region TaxSubtotal
@@ -580,7 +580,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         {
                             writer.WriteStartElement("cbc:TaxableAmount");
                             writer.WriteAttributeString("currencyID", taxTotal.TaxableAmount.CurrencyId);
-                            writer.WriteString(taxTotal.TaxableAmount.Value.ToString(Formatos.FormatoNumerico));
+                            writer.WriteString(taxTotal.TaxableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                             writer.WriteEndElement();
                         }
 
@@ -588,10 +588,10 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                         writer.WriteStartElement("cbc:TaxAmount");
                         writer.WriteAttributeString("currencyID", taxTotal.TaxSubtotal.TaxAmount.CurrencyId);
-                        writer.WriteString(taxTotal.TaxAmount.Value.ToString(Formatos.FormatoNumerico));
+                        writer.WriteString(taxTotal.TaxAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                         writer.WriteEndElement();
                         if (taxTotal.TaxSubtotal.Percent > 0)
-                            writer.WriteElementString("cbc:Percent", taxTotal.TaxSubtotal.Percent.ToString(Formatos.FormatoNumerico));
+                            writer.WriteElementString("cbc:Percent", taxTotal.TaxSubtotal.Percent.ToString(Formatos.FormatoNumerico, Formato));
 
                         #region TaxCategory
 
@@ -660,7 +660,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                 writer.WriteStartElement("cbc:PriceAmount");
                 writer.WriteAttributeString("currencyID", line.Price.PriceAmount.CurrencyId);
-                writer.WriteString(line.Price.PriceAmount.Value.ToString(Formatos.FormatoNumerico));
+                writer.WriteString(line.Price.PriceAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                 writer.WriteEndElement();
 
                 writer.WriteEndElement();
