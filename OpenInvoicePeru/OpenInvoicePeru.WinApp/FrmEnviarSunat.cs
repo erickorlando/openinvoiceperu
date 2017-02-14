@@ -171,7 +171,7 @@ namespace OpenInvoicePeru.WinApp
 
                 var jsonEnvioDocumento = await _client.PostAsJsonAsync(apiMetodo, enviarDocumentoRequest);
 
-                RespuestaComun respuestaEnvio;
+                RespuestaComunConArchivo respuestaEnvio;
                 if (!rbResumen.Checked)
                 {
                     respuestaEnvio = await jsonEnvioDocumento.Content.ReadAsAsync<EnviarDocumentoResponse>();

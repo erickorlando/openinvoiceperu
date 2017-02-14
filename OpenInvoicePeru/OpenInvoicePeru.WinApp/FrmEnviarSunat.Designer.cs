@@ -31,7 +31,6 @@ namespace OpenInvoicePeru.WinApp
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmEnviarSunat));
             this.btnBrowse = new ComponentFactory.Krypton.Toolkit.KryptonButton();
             this.txtResult = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
             this.txtSource = new ComponentFactory.Krypton.Toolkit.KryptonTextBox();
@@ -187,7 +186,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // rbResumen
             // 
-            this.rbResumen.Location = new System.Drawing.Point(28, 61);
+            this.rbResumen.Location = new System.Drawing.Point(28, 66);
             this.rbResumen.Name = "rbResumen";
             this.rbResumen.Size = new System.Drawing.Size(206, 20);
             this.rbResumen.TabIndex = 2;
@@ -195,7 +194,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // rbRetenciones
             // 
-            this.rbRetenciones.Location = new System.Drawing.Point(28, 33);
+            this.rbRetenciones.Location = new System.Drawing.Point(28, 36);
             this.rbRetenciones.Name = "rbRetenciones";
             this.rbRetenciones.Size = new System.Drawing.Size(195, 20);
             this.rbRetenciones.TabIndex = 1;
@@ -391,7 +390,6 @@ namespace OpenInvoicePeru.WinApp
             this.Controls.Add(this.kryptonPanel1);
             this.Font = new System.Drawing.Font("Segoe UI", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
-            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "FrmEnviarSunat";
             this.ShowInTaskbar = true;

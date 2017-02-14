@@ -6,11 +6,11 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("OpenInvoicePeru")]
-[assembly: AssemblyDescription("Facturacion Electronica y Homologación")]
+[assembly: AssemblyDescription("Facturacion Electronica SUNAT OpenSource")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
+[assembly: AssemblyCompany("Erick Orlando ©")]
 [assembly: AssemblyProduct("OpenInvoicePeru")]
-[assembly: AssemblyCopyright("Copyright © Erick Orlando 2016")]
+[assembly: AssemblyCopyright("Copyright © Erick Orlando 2017")]
 [assembly: AssemblyTrademark("Erick Orlando")]
 [assembly: AssemblyCulture("")]
 
@@ -32,5 +32,5 @@ using System.Runtime.InteropServices;
 // You can specify all the values or you can default the Build and Revision Numbers 
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.1.0.1026")]
-[assembly: AssemblyFileVersion("1.1.0.1026")]
+[assembly: AssemblyVersion("1.4.0.0")]
+[assembly: AssemblyFileVersion("1.4.0.0")]
