@@ -1,8 +1,8 @@
 ﻿namespace OpenInvoicePeru.WebApi.Models
 {
-    public class CabeceraDocumento
+    public class CabeceraDocumento : IEntity
     {
-        public int IdCabeceraDocumento { get; set; }
+        public int Id { get; set; }
 
         public string IdDocumento { get; set; }
 
@@ -43,5 +43,8 @@
         public decimal MontoDetraccion { get; set; }
 
         public int? IdDocumentoAnticipo { get; set; }
+
+        public int? IdGuiaTransportista { get; set; }
+
     }
 }
