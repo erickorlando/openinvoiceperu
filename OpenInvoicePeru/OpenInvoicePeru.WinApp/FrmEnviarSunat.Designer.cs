@@ -335,7 +335,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // direccionSunatBindingSource
             // 
-            this.direccionSunatBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.DireccionSunat);
+            this.direccionSunatBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.DireccionSunat);
             // 
             // chkVoz
             // 

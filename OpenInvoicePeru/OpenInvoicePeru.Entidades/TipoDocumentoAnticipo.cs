@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OpenInvoicePeru.Datos.Entidades
+namespace OpenInvoicePeru.Entidades
 {
     [Table("TipoDocumentoAnticipos")]
     public class TipoDocumentoAnticipo : TipoValorBase

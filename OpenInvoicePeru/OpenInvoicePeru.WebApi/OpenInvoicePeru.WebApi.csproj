@@ -127,11 +127,6 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\CabeceraDocumento.cs" />
-    <Compile Include="Models\Contribuyente.cs" />
-    <Compile Include="Models\IEntity.cs" />
-    <Compile Include="Models\TipoDocumento.cs" />
-    <Compile Include="Models\Ubigeo.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -2,7 +2,7 @@
 using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
-using OpenInvoicePeru.Datos.Entidades;
+using OpenInvoicePeru.Entidades;
 using SQLite.CodeFirst;
 
 namespace OpenInvoicePeru.Datos

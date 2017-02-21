@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OpenInvoicePeru.Datos.Entidades
+namespace OpenInvoicePeru.Entidades
 {
     [Table("TipoDocumentoRelacionados")]
     public class TipoDocumentoRelacionado : TipoValorBase

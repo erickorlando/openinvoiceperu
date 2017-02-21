@@ -282,7 +282,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoImpuestoBindingSource
             // 
-            this.tipoImpuestoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoImpuesto);
+            this.tipoImpuestoBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.TipoImpuesto);
             // 
             // impuestoSelectivoTextBox
             // 
@@ -380,7 +380,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoPrecioBindingSource
             // 
-            this.tipoPrecioBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoPrecio);
+            this.tipoPrecioBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.TipoPrecio);
             // 
             // kryptonPanel1
             // 

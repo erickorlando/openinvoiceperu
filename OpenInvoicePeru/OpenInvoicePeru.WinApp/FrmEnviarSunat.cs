@@ -9,6 +9,7 @@ using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Datos;
 using OpenInvoicePeru.Datos.Entidades;
+using OpenInvoicePeru.Entidades;
 using OpenInvoicePeru.WinApp.Properties;
 
 namespace OpenInvoicePeru.WinApp

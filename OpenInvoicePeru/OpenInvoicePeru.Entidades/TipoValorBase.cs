@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace OpenInvoicePeru.Datos.Entidades
+namespace OpenInvoicePeru.Entidades
 {
     public class TipoValorBase : EntidadBase
     {

@@ -1,4 +1,4 @@
-﻿namespace OpenInvoicePeru.Datos.Entidades
+﻿namespace OpenInvoicePeru.Entidades
 {
     public class TipoDocumentoContribuyente : TipoValorBase
     {

@@ -329,7 +329,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoDocumentoContribuyenteBindingSource
             // 
-            this.tipoDocumentoContribuyenteBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoContribuyente);
+            this.tipoDocumentoContribuyenteBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.TipoDocumentoContribuyente);
             // 
             // nombreTransportistaTextBox
             // 
@@ -394,7 +394,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // modalidadTransporteBindingSource
             // 
-            this.modalidadTransporteBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.ModalidadTransporte);
+            this.modalidadTransporteBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.ModalidadTransporte);
             // 
             // codigoAutorizacionTextBox
             // 

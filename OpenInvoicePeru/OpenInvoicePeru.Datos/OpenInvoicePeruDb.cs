@@ -1,4 +1,4 @@
-using OpenInvoicePeru.Datos.Entidades;
+using OpenInvoicePeru.Entidades;
 
 namespace OpenInvoicePeru.Datos
 {

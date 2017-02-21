@@ -275,6 +275,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\OpenInvoicePeru.Entidades\OpenInvoicePeru.Entidades.csproj">
+      <Project>{6bf3676b-7da8-4bba-b034-3eb16283a761}</Project>
+      <Name>OpenInvoicePeru.Entidades</Name>
+    </ProjectReference>
     <ProjectReference Include="..\OpenInvoicePeru.Firmado\OpenInvoicePeru.Firmado.csproj">
       <Project>{1cfd1d28-d342-413d-a6e1-7616cb9708e2}</Project>
       <Name>OpenInvoicePeru.Firmado</Name>

@@ -1,9 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace OpenInvoicePeru.Datos.Entidades
+namespace OpenInvoicePeru.Entidades
 {
-    public abstract class EntidadBase
+    public abstract class EntidadBase : IEntity
     {
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]

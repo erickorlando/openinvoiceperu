@@ -1,9 +1,7 @@
-﻿namespace OpenInvoicePeru.WebApi.Models
+﻿namespace OpenInvoicePeru.Entidades
 {
-    public class Ubigeo : IEntity
+    public class Ubigeo : EntidadBase
     {
-        public int Id { get; set; }
-
         public string Codigo { get; set; }
 
         public string Descripcion { get; set; }

@@ -70,20 +70,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidades\CustomHistory.cs" />
-    <Compile Include="Entidades\DireccionSunat.cs" />
-    <Compile Include="Entidades\TipoDatoAdicional.cs" />
-    <Compile Include="Entidades\TipoDiscrepancia.cs" />
-    <Compile Include="Entidades\EntidadBase.cs" />
-    <Compile Include="Entidades\ModalidadTransporte.cs" />
-    <Compile Include="Entidades\Moneda.cs" />
-    <Compile Include="Entidades\TipoDocumento.cs" />
-    <Compile Include="Entidades\TipoDocumentoAnticipo.cs" />
-    <Compile Include="Entidades\TipoDocumentoContribuyente.cs" />
-    <Compile Include="Entidades\TipoDocumentoRelacionado.cs" />
-    <Compile Include="Entidades\TipoImpuesto.cs" />
-    <Compile Include="Entidades\TipoOperacion.cs" />
-    <Compile Include="Entidades\TipoPrecio.cs" />
-    <Compile Include="Entidades\TipoValorBase.cs" />
     <Compile Include="OpenInvoicePeruDb.cs" />
     <Compile Include="OpenInvoicePeruDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -129,6 +115,12 @@
     <Content Include="Data\TipoPrecios.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenInvoicePeru.Entidades\OpenInvoicePeru.Entidades.csproj">
+      <Project>{6bf3676b-7da8-4bba-b034-3eb16283a761}</Project>
+      <Name>OpenInvoicePeru.Entidades</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\System.Data.SQLite.Core.1.0.104.0\build\net46\System.Data.SQLite.Core.targets" Condition="Exists('..\packages\System.Data.SQLite.Core.1.0.104.0\build\net46\System.Data.SQLite.Core.targets')" />

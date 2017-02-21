@@ -114,7 +114,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoDocumentoRelacionadoBindingSource
             // 
-            this.tipoDocumentoRelacionadoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoRelacionado);
+            this.tipoDocumentoRelacionadoBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.TipoDocumentoRelacionado);
             // 
             // nroDocumentoTextBox
             // 

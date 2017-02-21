@@ -1,4 +1,4 @@
-﻿namespace OpenInvoicePeru.WebApi.Models
+﻿namespace OpenInvoicePeru.Entidades
 {
     public interface IEntity
     {
