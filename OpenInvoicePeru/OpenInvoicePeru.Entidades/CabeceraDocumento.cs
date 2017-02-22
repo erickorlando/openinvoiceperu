@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OpenInvoicePeru.Entidades
@@ -50,6 +51,7 @@ namespace OpenInvoicePeru.Entidades
 
         public decimal TotalOtrosTributos { get; set; }
 
+        [Required]
         public string MontoEnLetras { get; set; }
 
         public string PlacaVehiculo { get; set; }
@@ -60,9 +62,32 @@ namespace OpenInvoicePeru.Entidades
 
         public int? IdDocumentoAnticipo { get; set; }
 
+        [ForeignKey(nameof(IdDocumentoAnticipo))]
+        public DocumentoAnticipo DocumentoAnticipo { get; set; }
+
         public int? IdGuiaTransportista { get; set; }
 
-        public ICollection<DetalleDocumento> Detalles { get; set; }
+        [ForeignKey(nameof(IdGuiaTransportista))]
+        public GuiaTransportista GuiaTransportista { get; set; }
 
+        public ICollection<DetalleDocumento> Detalles { get; set; }
+    }
+
+    public class DocumentoAnticipo : EntidadBase
+    {
+        [Required]
+        public string NroDocAnticipo { get; set; }
+
+        public int IdTipoDocumento { get; set; }
+
+        [ForeignKey(nameof(IdTipoDocumento))]
+        public TipoDocumento TipoDocumento { get; set; }
+
+        public int IdMoneda { get; set; }
+
+        [ForeignKey(nameof(IdMoneda))]
+        public Moneda Moneda { get; set; }
+
+        public decimal MontoAnticipo { get; set; }
     }
 }

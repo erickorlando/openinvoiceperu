@@ -46,8 +46,10 @@
     <Compile Include="DetalleDocumento.cs" />
     <Compile Include="DireccionSunat.cs" />
     <Compile Include="EntidadBase.cs" />
+    <Compile Include="GuiaTransportista.cs" />
     <Compile Include="IEntity.cs" />
     <Compile Include="ModalidadTransporte.cs" />
+    <Compile Include="ModoTransporte.cs" />
     <Compile Include="Moneda.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TipoDatoAdicional.cs" />
