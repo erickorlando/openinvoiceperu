@@ -1,4 +1,5 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
@@ -58,7 +59,7 @@ namespace OpenInvoicePeru.Datos
                 {
                     Codigo = valores.First(),
                     Descripcion = valores[1],
-                    DocumentoAplicado = valores.Last()
+                    IdTipoDocumento = Convert.ToInt32(valores.Last())
                 }).ToArray());
 
             var tipoDocumentoAnticipos = File.ReadAllLines($"{carpeta}TipoDocumentoAnticipos.txt");

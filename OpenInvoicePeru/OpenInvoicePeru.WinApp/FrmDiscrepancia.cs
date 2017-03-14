@@ -26,7 +26,7 @@ namespace OpenInvoicePeru.WinApp
                 using (var ctx = new OpenInvoicePeruDb())
                 {
                     tipoDiscrepanciaBindingSource.DataSource = ctx.TipoDiscrepancias
-                            .Where(t => t.DocumentoAplicado == _tipoDoc).ToList();
+                            .Where(t => t.IdTipoDocumento == int.Parse(_tipoDoc)).ToList();
 
                     tipoDiscrepanciaBindingSource.ResetBindings(false);
                 }

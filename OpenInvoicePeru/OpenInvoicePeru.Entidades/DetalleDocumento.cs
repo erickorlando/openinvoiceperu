@@ -4,9 +4,9 @@ namespace OpenInvoicePeru.Entidades
 {
     public class DetalleDocumento : EntidadBase
     {
-        public int IdCabecera { get; set; }
+        public int IdCabeceraDocumento { get; set; }
 
-        [ForeignKey(nameof(IdCabecera))]
+        [ForeignKey(nameof(IdCabeceraDocumento))]
         public CabeceraDocumento Cabecera { get; set; }
 
         public decimal Cantidad { get; set; }

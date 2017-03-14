@@ -43,8 +43,12 @@
   <ItemGroup>
     <Compile Include="CabeceraDocumento.cs" />
     <Compile Include="Contribuyente.cs" />
+    <Compile Include="DatoAdicional.cs" />
     <Compile Include="DetalleDocumento.cs" />
     <Compile Include="DireccionSunat.cs" />
+    <Compile Include="Discrepancia.cs" />
+    <Compile Include="DocumentoAnticipo.cs" />
+    <Compile Include="DocumentoRelacionado.cs" />
     <Compile Include="EntidadBase.cs" />
     <Compile Include="GuiaTransportista.cs" />
     <Compile Include="IEntity.cs" />

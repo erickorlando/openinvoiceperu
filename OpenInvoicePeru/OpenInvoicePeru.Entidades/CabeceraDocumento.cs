@@ -71,23 +71,11 @@ namespace OpenInvoicePeru.Entidades
         public GuiaTransportista GuiaTransportista { get; set; }
 
         public ICollection<DetalleDocumento> Detalles { get; set; }
-    }
 
-    public class DocumentoAnticipo : EntidadBase
-    {
-        [Required]
-        public string NroDocAnticipo { get; set; }
+        public ICollection<DatoAdicional> DatoAdicionales { get; set; }
 
-        public int IdTipoDocumento { get; set; }
+        public ICollection<DocumentoRelacionado> DocumentoRelacionados { get; set; }
 
-        [ForeignKey(nameof(IdTipoDocumento))]
-        public TipoDocumento TipoDocumento { get; set; }
-
-        public int IdMoneda { get; set; }
-
-        [ForeignKey(nameof(IdMoneda))]
-        public Moneda Moneda { get; set; }
-
-        public decimal MontoAnticipo { get; set; }
+        public ICollection<Discrepancia> Discrepancias { get; set; }
     }
 }
