@@ -39,7 +39,7 @@ namespace OpenInvoicePeru.Datos
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            var initializer = new OpenInvoicePeruDbInitializer(modelBuilder);
+            var initializer = new OpenInvoicePeruDbInitializer();
             Database.SetInitializer(initializer);
         }
     }

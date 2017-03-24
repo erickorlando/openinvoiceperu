@@ -8,13 +8,13 @@ using SQLite.CodeFirst;
 
 namespace OpenInvoicePeru.Datos
 {
-    public class OpenInvoicePeruDbInitializer : SqliteDropCreateDatabaseAlways<OpenInvoicePeruDb>
+    public class OpenInvoicePeruDbInitializer : DropCreateDatabaseAlways<OpenInvoicePeruDb>
     {
-        public OpenInvoicePeruDbInitializer(DbModelBuilder modelBuilder)
-            : base(modelBuilder)
-        {
+        //public OpenInvoicePeruDbInitializer(DbModelBuilder modelBuilder)
+        //    : base(modelBuilder)
+        //{
 
-        }
+        //}
 
         protected override void Seed(OpenInvoicePeruDb context)
         {
