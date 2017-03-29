@@ -33,6 +33,8 @@ He movido los ejemplos en VB y C# para el consumo de la API REST con PostSharp b
 
 Si quieres un ejemplo para conectarte a la API REST desde .NET Framework 2.0 revisa este [repositorio](https://goo.gl/wGkAmu).
 
+Si en caso usas Silverlight 5.0 te dejo el [repositorio](https://github.com/erickorlando/ClienteSLOpenInvoicePeru).
+
 ## Ramas (branches) ##
 
 El proyecto contiene dos ramas:
