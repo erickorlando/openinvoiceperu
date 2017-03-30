@@ -1,5 +1,5 @@
 ![Open Invoice Perú](http://frameworkperu.com/OpenInvoicePeruLogo.png "Open Invoice Perú")
-# OpenInvoicePeru v1.3.0 #
+# OpenInvoicePeru v1.4.0 #
 OpenInvoicePeru es un proyecto Open Source construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT, este proyecto está orientado al desarrollador (muy pronto para usuarios).
 Permite la generacion de XML, empaquetado, envío y recepción de documentos electrónicos a través de una API REST.
 
@@ -23,7 +23,7 @@ Puedes leer la documentación del proyecto en la sección [Wiki](https://github.
 - Envío al servicio Web de SUNAT de los documentos electrónicos generados (Beta, Homologación y Producción).
 - Envío de Resumen Diario y Comunicación de Baja.
 - Desempaquetado y Lectura del contenido del CDR de SUNAT.
-- Guardado de XML firmados y CDR de SUNAT en una carpeta local.
+- Guardado de XML firmados y CDR de SUNAT en una base de datos.
 - Consulta de Tickets de los Resúmenes y Bajas.
 - API REST bajo ASP.NET Web API 2.
 - Aplicación Windows de prueba de envío a SUNAT.
@@ -32,6 +32,8 @@ Puedes leer la documentación del proyecto en la sección [Wiki](https://github.
 He movido los ejemplos en VB y C# para el consumo de la API REST con PostSharp bajo .NET 4.0 en el siguiente [repositorio](https://goo.gl/adgBmv).
 
 Si quieres un ejemplo para conectarte a la API REST desde .NET Framework 2.0 revisa este [repositorio](https://goo.gl/wGkAmu).
+
+Si en caso usas Silverlight 5.0 te dejo el [repositorio](https://github.com/erickorlando/ClienteSLOpenInvoicePeru).
 
 ## Ramas (branches) ##
 
@@ -71,5 +73,5 @@ Si tienes mas dudas con SUNAT comunícate con ellos al [+51 1 3150730](tel:+5113
 
 ## Asesoría personalizada ##
 
-Si necesitas que te apoye con la Homologación (Emisor o Proveedor) o necesitas que te ayude a integrar tu sistema con OpenInvoicePeru, puedes contactarme directamente a mi correo personal [evelascom@frameworkperu.com](mailto:evelascom@frameworkperu.com) y podemos concertar una reunión virtual.
+Si necesitas que te apoye con la Homologación (Emisor o Proveedor) o necesitas que te ayude a integrar tu sistema con **OpenInvoicePeru**, puedes contactarme directamente a mi correo personal [evelascom@frameworkperu.com](mailto:evelascom@frameworkperu.com) y podemos concertar una reunión virtual, ya sea Skype, Hangouts, [Telegram](http://t.me/ErickOrlando) o TeamViewer.
 Recuerda que si bien mi proyecto es de código abierto, yo vendo el soporte y asesoría técnica.

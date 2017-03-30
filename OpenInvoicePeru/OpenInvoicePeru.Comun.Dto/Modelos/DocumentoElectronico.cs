@@ -1,4 +1,7 @@
-﻿using Newtonsoft.Json;
+﻿#if !SILVERLIGHT
+using Newtonsoft.Json;
+#endif
+
 using OpenInvoicePeru.Comun.Dto.Contratos;
 using System.Collections.Generic;
 
@@ -6,25 +9,39 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 {
     public class DocumentoElectronico : IDocumentoElectronico
     {
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
+#endif
         public string IdDocumento { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
+#endif
         public string TipoDocumento { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
+#endif
         public Contribuyente Emisor { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
+#endif
         public Contribuyente Receptor { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
+#endif
         public string FechaEmision { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
+#endif
         public string Moneda { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.AllowNull)]
+#endif
         public string TipoOperacion { get; set; }
 
         public decimal Gravadas { get; set; }
@@ -37,20 +54,28 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public decimal DescuentoGlobal { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
+#endif
         public List<DetalleDocumento> Items { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
+#endif
         public decimal TotalVenta { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
+#endif
         public decimal TotalIgv { get; set; }
 
         public decimal TotalIsc { get; set; }
 
         public decimal TotalOtrosTributos { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
+#endif
         public string MontoEnLetras { get; set; }
 
         public string PlacaVehiculo { get; set; }
@@ -69,16 +94,24 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public decimal MontoAnticipo { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.AllowNull)]
+#endif
         public DatosGuia DatosGuiaTransportista { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.AllowNull)]
+#endif
         public List<DocumentoRelacionado> Relacionados { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.AllowNull)]
+#endif
         public List<Discrepancia> Discrepancias { get; set; }
 
+#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
+#endif
         public decimal CalculoIgv { get; set; }
 
         public decimal CalculoIsc { get; set; }
