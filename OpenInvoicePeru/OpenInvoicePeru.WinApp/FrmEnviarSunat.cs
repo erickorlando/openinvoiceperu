@@ -44,7 +44,7 @@ namespace OpenInvoicePeru.WinApp
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(ex.Message + ex.InnerException?.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 finally
                 {

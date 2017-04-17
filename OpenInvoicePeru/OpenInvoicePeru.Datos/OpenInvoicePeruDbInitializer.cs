@@ -107,6 +107,8 @@ namespace OpenInvoicePeru.Datos
                     Descripcion = valores.Last()
                 }).ToArray());
 
+            context.SaveChanges();
+
             var tipoDiscrepancias = File.ReadAllLines($"{carpeta}TipoDiscrepancias.txt");
             var listaDiscrepancias = new List<TipoDiscrepancia>();
             foreach (var discrepancia in tipoDiscrepancias.Select(linea => linea.Split(separador)))
@@ -124,6 +126,8 @@ namespace OpenInvoicePeru.Datos
                 }
             }
             context.TipoDiscrepancias.AddOrUpdate(listaDiscrepancias.ToArray());
+
+            context.SaveChanges();
         }
     }
 }

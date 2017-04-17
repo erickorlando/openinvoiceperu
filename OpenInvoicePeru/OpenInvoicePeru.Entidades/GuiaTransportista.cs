@@ -9,7 +9,7 @@ namespace OpenInvoicePeru.Entidades
         public int IdModoTransporte { get; set; }
 
         [ForeignKey(nameof(IdModoTransporte))]
-        public ModoTransporte ModoTransporte { get; set; }
+        public ModalidadTransporte ModalidadTransporte { get; set; }
 
         public int IdTipoDocTransportista { get; set; }
 

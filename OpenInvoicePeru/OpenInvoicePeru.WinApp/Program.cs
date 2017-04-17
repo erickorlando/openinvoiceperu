@@ -25,7 +25,7 @@ namespace OpenInvoicePeru.WinApp
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, Application.ProductName);
+                MessageBox.Show(ex.Message + ex.InnerException?.Message, Application.ProductName);
             }
             Application.Run(new FrmEnviarSunat());
         }
