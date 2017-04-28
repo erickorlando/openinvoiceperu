@@ -70,8 +70,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configurations\CabeceraDocumentoConfiguration.cs" />
+    <Compile Include="Configurations\ContribuyenteConfiguration.cs" />
     <Compile Include="Configurations\DetalleDocumentoConfiguration.cs" />
     <Compile Include="Configurations\EntityTypeConfigurationExtensions.cs" />
+    <Compile Include="Configurations\TipoDiscrepanciaConfiguration.cs" />
     <Compile Include="Entidades\CustomHistory.cs" />
     <Compile Include="OpenInvoicePeruDb.cs" />
     <Compile Include="OpenInvoicePeruDbInitializer.cs" />

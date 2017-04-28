@@ -11,9 +11,11 @@ namespace OpenInvoicePeru.Entidades
         public CabeceraDocumento CabeceraDocumento { get; set; }
 
         [Required]
+        [MaxLength(15)]
         public string NroDocumento { get; set; }
 
         [Required]
+        [MaxLength(2)]
         public string TipoDocumento { get; set; }
     }
 }

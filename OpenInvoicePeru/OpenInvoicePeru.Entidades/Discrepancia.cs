@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OpenInvoicePeru.Entidades
 {
@@ -9,6 +10,8 @@ namespace OpenInvoicePeru.Entidades
         [ForeignKey(nameof(IdCabeceraDocumento))]
         public CabeceraDocumento CabeceraDocumento { get; set; }
 
+        [Required]
+        [MaxLength(15)]
         public string NroReferencia { get; set; }
 
         public int IdTipoDiscrepancia { get; set; }

@@ -1,6 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OpenInvoicePeru.Entidades
 {
@@ -10,27 +8,22 @@ namespace OpenInvoicePeru.Entidades
 
         public int IdTipoDocumento { get; set; }
 
-        [ForeignKey(nameof(IdTipoDocumento))]
         public TipoDocumento TipoDocumento { get; set; }
 
         public int IdEmisor { get; set; }
 
-        [ForeignKey(nameof(IdEmisor))]
         public Contribuyente Emisor { get; set; }
 
         public int IdReceptor { get; set; }
 
-        [ForeignKey(nameof(IdReceptor))]
         public Contribuyente Receptor { get; set; }
 
         public int IdMoneda { get; set; }
 
-        [ForeignKey(nameof(IdMoneda))]
         public Moneda Moneda { get; set; }
 
         public int IdTipoOperacion { get; set; }
 
-        [ForeignKey(nameof(IdTipoOperacion))]
         public TipoOperacion TipoOperacion { get; set; }
 
         public decimal Gravadas { get; set; }
@@ -51,7 +44,6 @@ namespace OpenInvoicePeru.Entidades
 
         public decimal TotalOtrosTributos { get; set; }
 
-        [Required]
         public string MontoEnLetras { get; set; }
 
         public string PlacaVehiculo { get; set; }
@@ -60,14 +52,12 @@ namespace OpenInvoicePeru.Entidades
 
         public decimal MontoDetraccion { get; set; }
 
-        public int? IdDocumentoAnticipo { get; set; }
+        public int IdDocumentoAnticipo { get; set; }
 
-        [ForeignKey(nameof(IdDocumentoAnticipo))]
         public DocumentoAnticipo DocumentoAnticipo { get; set; }
 
-        public int? IdGuiaTransportista { get; set; }
+        public int IdGuiaTransportista { get; set; }
 
-        [ForeignKey(nameof(IdGuiaTransportista))]
         public GuiaTransportista GuiaTransportista { get; set; }
 
         public ICollection<DetalleDocumento> Detalles { get; set; }

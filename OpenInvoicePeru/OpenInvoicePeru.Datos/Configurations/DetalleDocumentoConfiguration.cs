@@ -7,10 +7,57 @@ namespace OpenInvoicePeru.Datos.Configurations
     {
         public DetalleDocumentoConfiguration()
         {
-            Property(e => e.IdUnidadMedida).HasIndex("IX_DetalleDocumento_IdUnidadMedida");
+            const string prefix = "IX_DetalleDocumento_";
 
-            Property(e => e.IdCabeceraDocumento).HasIndex("IX_DetalleDocumento_IdCabeceraDocumento");
-            
+            Property(e => e.IdUnidadMedida).HasIndex(prefix + "IdUnidadMedida");
+
+            Property(e => e.IdCabeceraDocumento).HasIndex(prefix + "IdCabeceraDocumento");
+
+            Property(e => e.IdTipoPrecio).HasIndex(prefix + "IdTipoPrecio");
+
+            HasRequired(p => p.Cabecera)
+                .WithMany()
+                .HasForeignKey(p => p.IdCabeceraDocumento)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(p => p.UnidadMedida)
+                .WithMany()
+                .HasForeignKey(p => p.IdUnidadMedida)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(p => p.TipoPrecio)
+                .WithMany()
+                .HasForeignKey(p => p.IdTipoPrecio)
+                .WillCascadeOnDelete(false);
+
+            Property(p => p.Cantidad)
+                .HasPrecision(11, 2);
+
+            Property(p => p.PrecioUnitario)
+                .HasPrecision(11, 2);
+
+            Property(p => p.Impuesto)
+                .HasPrecision(11, 2);
+
+            Property(p => p.ImpuestoSelectivo)
+                .HasPrecision(11, 2);
+
+            Property(p => p.OtroImpuesto)
+                .HasPrecision(11, 2);
+
+            Property(p => p.Descuento)
+                .HasPrecision(11, 2);
+
+            Property(p => p.TotalVenta)
+                .HasPrecision(11, 2);
+
+            Property(p => p.CodigoItem)
+                .HasMaxLength(50)
+                .IsRequired();
+
+            Property(p => p.Descripcion)
+                .HasMaxLength(250)
+                .IsRequired();
         }
     }
 }

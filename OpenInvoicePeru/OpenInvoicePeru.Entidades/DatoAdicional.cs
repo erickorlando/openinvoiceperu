@@ -16,6 +16,7 @@ namespace OpenInvoicePeru.Entidades
         public TipoDatoAdicional TipoDatoAdicional { get; set; }
 
         [Required]
+        [MaxLength(250)]
         public string Contenido { get; set; }
     }
 }

@@ -7,20 +7,22 @@ namespace OpenInvoicePeru.Datos.Configurations
     {
         public CabeceraDocumentoConfiguration()
         {
-            Property(e => e.IdReceptor).HasIndex("IX_CabeceraDocumento_IdReceptor");
+            const string prefix = "IX_CabeceraDocumento_";
 
-            Property(e => e.IdEmisor).HasIndex("IX_CabeceraDocumento_IdEmisor");
+            Property(e => e.IdReceptor).HasIndex(prefix + "IdReceptor");
 
-            Property(e => e.IdTipoDocumento).HasIndex("IX_CabeceraDocumento_IdTipoDocumento");
+            Property(e => e.IdEmisor).HasIndex(prefix + "IdEmisor");
 
-            Property(e => e.IdMoneda).HasIndex("IX_CabeceraDocumento_IdMoneda");
+            Property(e => e.IdTipoDocumento).HasIndex(prefix + "IdTipoDocumento");
 
-            Property(e => e.IdTipoOperacion).HasIndex("IX_CabeceraDocumento_IdTipoOperacion");
+            Property(e => e.IdMoneda).HasIndex(prefix + "IdMoneda");
 
-            Property(e => e.IdDocumentoAnticipo).HasIndex("IX_CabeceraDocumento_IdDocumentoAnticipo");
+            Property(e => e.IdTipoOperacion).HasIndex(prefix + "IdTipoOperacion");
 
-            Property(e => e.IdGuiaTransportista).HasIndex("IX_CabeceraDocumento_IdGuiaTransportista");
-            
+            Property(e => e.IdDocumentoAnticipo).HasIndex(prefix + "IdDocumentoAnticipo");
+
+            Property(e => e.IdGuiaTransportista).HasIndex(prefix + "IdGuiaTransportista");
+
             HasRequired(e => e.Emisor)
                 .WithMany()
                 .HasForeignKey(e => e.IdEmisor)
@@ -33,23 +35,28 @@ namespace OpenInvoicePeru.Datos.Configurations
 
             HasRequired(e => e.TipoDocumento)
                 .WithMany()
-                .HasForeignKey(e => e.IdTipoDocumento);
+                .HasForeignKey(e => e.IdTipoDocumento)
+                .WillCascadeOnDelete(false);
 
             HasRequired(e => e.Moneda)
                 .WithMany()
-                .HasForeignKey(e => e.IdMoneda);
+                .HasForeignKey(e => e.IdMoneda)
+                .WillCascadeOnDelete(false);
 
             HasRequired(e => e.TipoOperacion)
                 .WithMany()
-                .HasForeignKey(e => e.IdTipoOperacion);
+                .HasForeignKey(e => e.IdTipoOperacion)
+                .WillCascadeOnDelete(false);
 
             HasOptional(e => e.DocumentoAnticipo)
                 .WithMany()
-                .HasForeignKey(e => e.IdDocumentoAnticipo);
+                .HasForeignKey(e => e.IdDocumentoAnticipo)
+                .WillCascadeOnDelete(false);
 
             HasOptional(e => e.GuiaTransportista)
                 .WithMany()
-                .HasForeignKey(e => e.IdGuiaTransportista);
+                .HasForeignKey(e => e.IdGuiaTransportista)
+                .WillCascadeOnDelete(false);
 
             Property(e => e.TotalIsc)
                 .HasPrecision(11, 2);
@@ -79,11 +86,22 @@ namespace OpenInvoicePeru.Datos.Configurations
                 .HasPrecision(11, 2);
 
             Property(e => e.MontoPercepcion)
-                            .HasPrecision(11, 2);
+                .HasPrecision(11, 2);
 
             Property(e => e.DescuentoGlobal)
                 .HasPrecision(11, 2);
 
+            Property(p => p.IdDocumento)
+                .HasMaxLength(13)
+                .IsRequired();
+
+            Property(p => p.MontoEnLetras)
+                .HasMaxLength(250)
+                .IsRequired();
+
+            Property(p => p.PlacaVehiculo)
+                .HasMaxLength(15)
+                .IsOptional();
         }
     }
 }
