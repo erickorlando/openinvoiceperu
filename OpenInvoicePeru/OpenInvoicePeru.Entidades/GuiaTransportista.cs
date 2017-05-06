@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace OpenInvoicePeru.Entidades
+﻿namespace OpenInvoicePeru.Entidades
 {
     public class GuiaTransportista : EntidadBase
     {

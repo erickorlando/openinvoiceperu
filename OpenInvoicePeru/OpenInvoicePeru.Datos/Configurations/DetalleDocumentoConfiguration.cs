@@ -1,5 +1,4 @@
-﻿using System.Data.Entity.ModelConfiguration;
-using OpenInvoicePeru.Entidades;
+﻿using OpenInvoicePeru.Entidades;
 
 namespace OpenInvoicePeru.Datos.Configurations
 {
