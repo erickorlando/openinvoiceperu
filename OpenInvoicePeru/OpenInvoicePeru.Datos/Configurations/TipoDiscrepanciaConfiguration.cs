@@ -1,13 +1,12 @@
-﻿using System.Data.Entity.ModelConfiguration;
-using OpenInvoicePeru.Entidades;
+﻿using OpenInvoicePeru.Entidades;
 
 namespace OpenInvoicePeru.Datos.Configurations
 {
-    public class TipoDiscrepanciaConfiguration : EntityTypeConfiguration<TipoDiscrepancia>
+    public class TipoDiscrepanciaConfiguration : BaseConfigurationEntity<TipoDiscrepancia>
     {
         public TipoDiscrepanciaConfiguration()
         {
-            Property(p => p.IdTipoDocumento).HasIndex("IX_TipoDiscrepancia_IdTipoDoc");
+            Property(p => p.IdTipoDocumento).HasIndex(Prefix + "IdTipoDoc");
 
             HasRequired(p => p.TipoDocumento)
                 .WithMany()

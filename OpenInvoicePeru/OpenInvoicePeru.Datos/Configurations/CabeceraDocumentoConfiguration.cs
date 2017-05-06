@@ -1,27 +1,24 @@
-﻿using System.Data.Entity.ModelConfiguration;
-using OpenInvoicePeru.Entidades;
+﻿using OpenInvoicePeru.Entidades;
 
 namespace OpenInvoicePeru.Datos.Configurations
 {
-    public class CabeceraDocumentoConfiguration : EntityTypeConfiguration<CabeceraDocumento>
+    public class CabeceraDocumentoConfiguration : BaseConfigurationEntity<CabeceraDocumento>
     {
         public CabeceraDocumentoConfiguration()
         {
-            const string prefix = "IX_CabeceraDocumento_";
+            Property(e => e.IdReceptor).HasIndex(Prefix + "IdReceptor");
 
-            Property(e => e.IdReceptor).HasIndex(prefix + "IdReceptor");
+            Property(e => e.IdEmisor).HasIndex(Prefix + "IdEmisor");
 
-            Property(e => e.IdEmisor).HasIndex(prefix + "IdEmisor");
+            Property(e => e.IdTipoDocumento).HasIndex(Prefix + "IdTipoDocumento");
 
-            Property(e => e.IdTipoDocumento).HasIndex(prefix + "IdTipoDocumento");
+            Property(e => e.IdMoneda).HasIndex(Prefix + "IdMoneda");
 
-            Property(e => e.IdMoneda).HasIndex(prefix + "IdMoneda");
+            Property(e => e.IdTipoOperacion).HasIndex(Prefix + "IdTipoOperacion");
 
-            Property(e => e.IdTipoOperacion).HasIndex(prefix + "IdTipoOperacion");
+            Property(e => e.IdDocumentoAnticipo).HasIndex(Prefix + "IdDocumentoAnticipo");
 
-            Property(e => e.IdDocumentoAnticipo).HasIndex(prefix + "IdDocumentoAnticipo");
-
-            Property(e => e.IdGuiaTransportista).HasIndex(prefix + "IdGuiaTransportista");
+            Property(e => e.IdGuiaTransportista).HasIndex(Prefix + "IdGuiaTransportista");
 
             HasRequired(e => e.Emisor)
                 .WithMany()
@@ -48,14 +45,14 @@ namespace OpenInvoicePeru.Datos.Configurations
                 .HasForeignKey(e => e.IdTipoOperacion)
                 .WillCascadeOnDelete(false);
 
-            HasOptional(e => e.DocumentoAnticipo)
-                .WithMany()
-                .HasForeignKey(e => e.IdDocumentoAnticipo)
-                .WillCascadeOnDelete(false);
-
-            HasOptional(e => e.GuiaTransportista)
+            HasRequired(e => e.GuiaTransportista)
                 .WithMany()
                 .HasForeignKey(e => e.IdGuiaTransportista)
+                .WillCascadeOnDelete(false);
+
+            HasRequired(e => e.DocumentoAnticipo)
+                .WithMany()
+                .HasForeignKey(e => e.IdDocumentoAnticipo)
                 .WillCascadeOnDelete(false);
 
             Property(e => e.TotalIsc)

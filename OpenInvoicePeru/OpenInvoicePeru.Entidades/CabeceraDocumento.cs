@@ -4,8 +4,6 @@ namespace OpenInvoicePeru.Entidades
 {
     public class CabeceraDocumento : EntidadBase
     {
-        public string IdDocumento { get; set; }
-
         public int IdTipoDocumento { get; set; }
 
         public TipoDocumento TipoDocumento { get; set; }
@@ -25,6 +23,16 @@ namespace OpenInvoicePeru.Entidades
         public int IdTipoOperacion { get; set; }
 
         public TipoOperacion TipoOperacion { get; set; }
+
+        public int? IdDocumentoAnticipo { get; set; }
+
+        public virtual DocumentoAnticipo DocumentoAnticipo { get; set; }
+
+        public int? IdGuiaTransportista { get; set; }
+
+        public virtual GuiaTransportista GuiaTransportista { get; set; }
+
+        public string IdDocumento { get; set; }
 
         public decimal Gravadas { get; set; }
 
@@ -51,14 +59,6 @@ namespace OpenInvoicePeru.Entidades
         public decimal MontoPercepcion { get; set; }
 
         public decimal MontoDetraccion { get; set; }
-
-        public int IdDocumentoAnticipo { get; set; }
-
-        public DocumentoAnticipo DocumentoAnticipo { get; set; }
-
-        public int IdGuiaTransportista { get; set; }
-
-        public GuiaTransportista GuiaTransportista { get; set; }
 
         public ICollection<DetalleDocumento> Detalles { get; set; }
 

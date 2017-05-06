@@ -3,17 +3,15 @@ using OpenInvoicePeru.Entidades;
 
 namespace OpenInvoicePeru.Datos.Configurations
 {
-    public class DetalleDocumentoConfiguration : EntityTypeConfiguration<DetalleDocumento>
+    public class DetalleDocumentoConfiguration : BaseConfigurationEntity<DetalleDocumento>
     {
         public DetalleDocumentoConfiguration()
         {
-            const string prefix = "IX_DetalleDocumento_";
+            Property(e => e.IdUnidadMedida).HasIndex(Prefix + "IdUnidadMedida");
 
-            Property(e => e.IdUnidadMedida).HasIndex(prefix + "IdUnidadMedida");
+            Property(e => e.IdCabeceraDocumento).HasIndex(Prefix + "IdCabeceraDocumento");
 
-            Property(e => e.IdCabeceraDocumento).HasIndex(prefix + "IdCabeceraDocumento");
-
-            Property(e => e.IdTipoPrecio).HasIndex(prefix + "IdTipoPrecio");
+            Property(e => e.IdTipoPrecio).HasIndex(Prefix + "IdTipoPrecio");
 
             HasRequired(p => p.Cabecera)
                 .WithMany()

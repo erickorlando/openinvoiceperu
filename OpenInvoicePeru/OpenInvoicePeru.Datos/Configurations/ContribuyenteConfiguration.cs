@@ -1,19 +1,16 @@
-﻿using System.Data.Entity.ModelConfiguration;
-using OpenInvoicePeru.Entidades;
+﻿using OpenInvoicePeru.Entidades;
 
 namespace OpenInvoicePeru.Datos.Configurations
 {
-    public class ContribuyenteConfiguration : EntityTypeConfiguration<Contribuyente>
+    public class ContribuyenteConfiguration : BaseConfigurationEntity<Contribuyente>
     {
         public ContribuyenteConfiguration()
         {
-            const string prefix = "IX_Contribuyente_";
-
-            Property(p => p.IdPais).HasIndex(prefix + "IdPais");
-            Property(p => p.IdDepartamento).HasIndex(prefix + "IdDepartamento");
-            Property(p => p.IdProvincia).HasIndex(prefix + "IdProvincia");
-            Property(p => p.IdDistrito).HasIndex(prefix + "IdDistrito");
-            Property(p => p.IdTipoDocumento).HasIndex(prefix + "IdTipoDocumento");
+            Property(p => p.IdPais).HasIndex(Prefix + "IdPais");
+            Property(p => p.IdDepartamento).HasIndex(Prefix + "IdDepartamento");
+            Property(p => p.IdProvincia).HasIndex(Prefix + "IdProvincia");
+            Property(p => p.IdDistrito).HasIndex(Prefix + "IdDistrito");
+            Property(p => p.IdTipoDocumento).HasIndex(Prefix + "IdTipoDocumento");
 
             HasRequired(p => p.Pais)
                 .WithMany()
