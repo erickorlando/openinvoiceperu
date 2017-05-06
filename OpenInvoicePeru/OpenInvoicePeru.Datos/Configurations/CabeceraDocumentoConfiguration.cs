@@ -55,6 +55,11 @@ namespace OpenInvoicePeru.Datos.Configurations
                 .HasForeignKey(e => e.IdDocumentoAnticipo)
                 .WillCascadeOnDelete(false);
 
+            HasMany(e => e.Detalles)
+                .WithRequired(e => e.Cabecera)
+                .HasForeignKey(e => e.IdCabeceraDocumento)
+                .WillCascadeOnDelete(false);
+
             Property(e => e.TotalIsc)
                 .HasPrecision(11, 2);
 

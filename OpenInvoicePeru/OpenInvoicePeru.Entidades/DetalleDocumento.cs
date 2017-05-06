@@ -4,7 +4,7 @@
     {
         public int IdCabeceraDocumento { get; set; }
 
-        public CabeceraDocumento Cabecera { get; set; }
+        public virtual CabeceraDocumento Cabecera { get; set; }
 
         public decimal Cantidad { get; set; }
 
