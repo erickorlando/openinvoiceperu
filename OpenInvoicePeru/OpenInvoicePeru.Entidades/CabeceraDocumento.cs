@@ -32,6 +32,10 @@ namespace OpenInvoicePeru.Entidades
 
         public virtual GuiaTransportista GuiaTransportista { get; set; }
 
+        public int? IdAnexo { get; set; }
+
+        public virtual Anexo Anexo { get; set; }
+
         public string IdDocumento { get; set; }
 
         public decimal Gravadas { get; set; }
@@ -60,6 +64,8 @@ namespace OpenInvoicePeru.Entidades
 
         public decimal MontoDetraccion { get; set; }
 
+        public string EstadoDocumento { get; set; }
+
         public ICollection<DetalleDocumento> Detalles { get; set; }
 
         public ICollection<DatoAdicional> DatoAdicionales { get; set; }
@@ -67,5 +73,13 @@ namespace OpenInvoicePeru.Entidades
         public ICollection<DocumentoRelacionado> DocumentoRelacionados { get; set; }
 
         public ICollection<Discrepancia> Discrepancias { get; set; }
+
+        public CabeceraDocumento()
+        {
+            Detalles = new HashSet<DetalleDocumento>();
+            DatoAdicionales = new HashSet<DatoAdicional>();
+            DocumentoRelacionados = new HashSet<DocumentoRelacionado>();
+            Discrepancias = new HashSet<Discrepancia>();
+        }
     }
 }

@@ -20,6 +20,8 @@ namespace OpenInvoicePeru.Datos.Configurations
 
             Property(e => e.IdGuiaTransportista).HasIndex(Prefix + "IdGuiaTransportista");
 
+            Property(e => e.IdAnexo).HasIndex(Prefix + "IdAnexo");
+
             HasRequired(e => e.Emisor)
                 .WithMany()
                 .HasForeignKey(e => e.IdEmisor)
@@ -45,14 +47,19 @@ namespace OpenInvoicePeru.Datos.Configurations
                 .HasForeignKey(e => e.IdTipoOperacion)
                 .WillCascadeOnDelete(false);
 
-            HasRequired(e => e.GuiaTransportista)
+            HasOptional(p => p.GuiaTransportista)
                 .WithMany()
-                .HasForeignKey(e => e.IdGuiaTransportista)
+                .HasForeignKey(p => p.IdGuiaTransportista)
                 .WillCascadeOnDelete(false);
 
-            HasRequired(e => e.DocumentoAnticipo)
+            HasOptional(e => e.DocumentoAnticipo)
                 .WithMany()
                 .HasForeignKey(e => e.IdDocumentoAnticipo)
+                .WillCascadeOnDelete(false);
+
+            HasOptional(e => e.Anexo)
+                .WithMany()
+                .HasForeignKey(e => e.IdAnexo)
                 .WillCascadeOnDelete(false);
 
             HasMany(e => e.Detalles)
@@ -103,6 +110,10 @@ namespace OpenInvoicePeru.Datos.Configurations
 
             Property(p => p.PlacaVehiculo)
                 .HasMaxLength(15)
+                .IsOptional();
+
+            Property(p => p.EstadoDocumento)
+                .HasMaxLength(2)
                 .IsOptional();
         }
     }

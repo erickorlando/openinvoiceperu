@@ -69,12 +69,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configurations\AnexoConfiguration.cs" />
     <Compile Include="Configurations\BaseConfigurationEntity.cs" />
     <Compile Include="Configurations\CabeceraDocumentoConfiguration.cs" />
     <Compile Include="Configurations\ContribuyenteConfiguration.cs" />
     <Compile Include="Configurations\DetalleDocumentoConfiguration.cs" />
     <Compile Include="Configurations\EntityTypeConfigurationExtensions.cs" />
     <Compile Include="Configurations\GuiaTransportistaConfiguration.cs" />
+    <Compile Include="Configurations\ParametroConfiguration.cs" />
     <Compile Include="Configurations\TipoDiscrepanciaConfiguration.cs" />
     <Compile Include="Entidades\CustomHistory.cs" />
     <Compile Include="OpenInvoicePeruDb.cs" />
