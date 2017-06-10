@@ -7,7 +7,7 @@ using System.Linq;
 
 namespace OpenInvoicePeru.Datos
 {
-    public class OpenInvoicePeruDbInitializer : DropCreateDatabaseAlways<OpenInvoicePeruDb>
+    public class OpenInvoicePeruDbInitializer : CreateDatabaseIfNotExists<OpenInvoicePeruDb>
     {
         //public OpenInvoicePeruDbInitializer(DbModelBuilder modelBuilder)
         //    : base(modelBuilder)
