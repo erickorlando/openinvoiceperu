@@ -122,7 +122,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         if (additionalMonetaryTotal.Percent > 0)
                         {
                             writer.WriteElementString("cbc:Percent",
-                                additionalMonetaryTotal.Percent.ToString(Formatos.FormatoNumerico));
+                                additionalMonetaryTotal.Percent.ToString(Formatos.FormatoNumerico, Formato));
                         }
 
                         #endregion PayableAmount

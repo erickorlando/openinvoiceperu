@@ -123,7 +123,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                     {
                                         writer.WriteStartElement("cbc:PayableAmount");
                                         writer.WriteAttributeString("currencyID", additionalMonetaryTotal.PayableAmount.CurrencyId);
-                                        writer.WriteValue(additionalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico));
+                                        writer.WriteValue(additionalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                                         writer.WriteEndElement();
                                     }
 

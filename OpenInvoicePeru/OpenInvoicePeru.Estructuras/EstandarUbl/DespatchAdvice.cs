@@ -291,7 +291,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 writer.WriteStartElement("cbc:GrossWeightMeasure");
                 {
                     writer.WriteAttributeString("unitCode", Shipment.GrossWeightMeasure.UnitCode);
-                    writer.WriteValue(Shipment.GrossWeightMeasure.Value.ToString(Formatos.FormatoNumerico));
+                    writer.WriteValue(Shipment.GrossWeightMeasure.Value.ToString(Formatos.FormatoNumerico, Formato));
                 }
                 writer.WriteEndElement();
                 writer.WriteElementString("cbc:TotalTransportHandlingUnitQuantity", Shipment.TotalTransportHandlingUnitQuantity.ToString());
@@ -424,7 +424,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     writer.WriteStartElement("cbc:DeliveredQuantity");
                     {
                         writer.WriteAttributeString("unitCode", despatchLine.DeliveredQuantity.UnitCode);
-                        writer.WriteValue(despatchLine.DeliveredQuantity.Value.ToString(Formatos.FormatoNumerico));
+                        writer.WriteValue(despatchLine.DeliveredQuantity.Value.ToString(Formatos.FormatoNumerico, Formato));
                     }
                     writer.WriteEndElement();
 
