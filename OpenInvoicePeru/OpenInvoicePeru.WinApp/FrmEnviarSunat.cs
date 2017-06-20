@@ -181,10 +181,10 @@ namespace OpenInvoicePeru.WinApp
                     {
                         if (rpta.Exito && !string.IsNullOrEmpty(rpta.TramaZipCdr))
                         {
-                            File.WriteAllBytes($"{Program.CarpetaXml}\\{respuestaEnvio.NombreArchivo}.xml",
+                            File.WriteAllBytes($"{Program.CarpetaXml}\\{respuestaEnvio.NombreArchivo}",
                                 Convert.FromBase64String(respuestaFirmado.TramaXmlFirmado));
 
-                            File.WriteAllBytes($"{Program.CarpetaCdr}\\R-{respuestaEnvio.NombreArchivo}.zip",
+                            File.WriteAllBytes($"{Program.CarpetaCdr}\\R-{respuestaEnvio.NombreArchivo}",
                                 Convert.FromBase64String(rpta.TramaZipCdr));
                         }
                     }

@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+<ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.Contribuyente">
     <Position X="0.5" Y="1" Width="2" />
     <TypeIdentifier>
@@ -51,9 +51,9 @@
       <Property Name="DatosGuiaTransportista" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
+      <Property Name="Items" />
       <Property Name="DatoAdicionales" />
       <Property Name="Relacionados" />
-      <Property Name="Items" />
       <Property Name="Discrepancias" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />

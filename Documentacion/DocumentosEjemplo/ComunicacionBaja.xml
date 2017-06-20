@@ -8,67 +8,67 @@
 	</ext:UBLExtensions>
 	<cbc:UBLVersionID>2.0</cbc:UBLVersionID>
 	<cbc:CustomizationID>1.0</cbc:CustomizationID>
-	<cbc:ID>RA-20160701-1</cbc:ID>
-	<cbc:ReferenceDate>2016-07-01</cbc:ReferenceDate>
-	<cbc:IssueDate>2016-07-01</cbc:IssueDate>
+	<cbc:ID>RA-20170613-1</cbc:ID>
+	<cbc:ReferenceDate>2017-06-13</cbc:ReferenceDate>
+	<cbc:IssueDate>2017-06-13</cbc:IssueDate>
 	<cac:Signature>
-		<cbc:ID>IDSignErickOrlando</cbc:ID>
+		<cbc:ID>IdOpenInvoicePeru</cbc:ID>
 		<cac:SignatoryParty>
 			<cac:PartyIdentification>
-				<cbc:ID>20382567855</cbc:ID>
+				<cbc:ID>20439253852</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PartyName>
-				<cbc:Name>XXXXXXXXXX</cbc:Name>
+				<cbc:Name>KEYMARK S.A.</cbc:Name>
 			</cac:PartyName>
 		</cac:SignatoryParty>
 		<cac:DigitalSignatureAttachment>
 			<cac:ExternalReference>
-				<cbc:URI>#SignatureErickOrlando</cbc:URI>
+				<cbc:URI>#IdOpenInvoicePeru</cbc:URI>
 			</cac:ExternalReference>
 		</cac:DigitalSignatureAttachment>
 	</cac:Signature>
 	<cac:AccountingSupplierParty>
-		<cbc:CustomerAssignedAccountID>20382567854</cbc:CustomerAssignedAccountID>
+		<cbc:CustomerAssignedAccountID>20439253852</cbc:CustomerAssignedAccountID>
 		<cbc:AdditionalAccountID>6</cbc:AdditionalAccountID>
 		<cac:Party>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>XXXXXXXXXX</cbc:RegistrationName>
+				<cbc:RegistrationName>KEYMARK S.A.</cbc:RegistrationName>
 			</cac:PartyLegalEntity>
 		</cac:Party>
 	</cac:AccountingSupplierParty>
 	<sac:VoidedDocumentsLine>
 		<cbc:LineID>1</cbc:LineID>
 		<cbc:DocumentTypeCode>01</cbc:DocumentTypeCode>
-		<sac:DocumentSerialID>FF01</sac:DocumentSerialID>
-		<sac:DocumentNumberID>901</sac:DocumentNumberID>
-		<sac:VoidReasonDescription>ANULACIONDE LA FACTURA 1</sac:VoidReasonDescription>
+		<sac:DocumentSerialID>FF11</sac:DocumentSerialID>
+		<sac:DocumentNumberID>1</sac:DocumentNumberID>
+		<sac:VoidReasonDescription>ANULACION DE LA FACTURA 1</sac:VoidReasonDescription>
 	</sac:VoidedDocumentsLine>
 	<sac:VoidedDocumentsLine>
 		<cbc:LineID>2</cbc:LineID>
 		<cbc:DocumentTypeCode>01</cbc:DocumentTypeCode>
-		<sac:DocumentSerialID>FF01</sac:DocumentSerialID>
-		<sac:DocumentNumberID>902</sac:DocumentNumberID>
+		<sac:DocumentSerialID>FF11</sac:DocumentSerialID>
+		<sac:DocumentNumberID>2</sac:DocumentNumberID>
 		<sac:VoidReasonDescription>ANULACION DE LA FACTURA 2</sac:VoidReasonDescription>
 	</sac:VoidedDocumentsLine>
 	<sac:VoidedDocumentsLine>
 		<cbc:LineID>3</cbc:LineID>
 		<cbc:DocumentTypeCode>01</cbc:DocumentTypeCode>
-		<sac:DocumentSerialID>FF01</sac:DocumentSerialID>
-		<sac:DocumentNumberID>903</sac:DocumentNumberID>
+		<sac:DocumentSerialID>FF11</sac:DocumentSerialID>
+		<sac:DocumentNumberID>3</sac:DocumentNumberID>
 		<sac:VoidReasonDescription>ANULACIONDE LA FACTURA 3</sac:VoidReasonDescription>
 	</sac:VoidedDocumentsLine>
 	<sac:VoidedDocumentsLine>
 		<cbc:LineID>4</cbc:LineID>
 		<cbc:DocumentTypeCode>01</cbc:DocumentTypeCode>
-		<sac:DocumentSerialID>FF01</sac:DocumentSerialID>
-		<sac:DocumentNumberID>904</sac:DocumentNumberID>
+		<sac:DocumentSerialID>FF11</sac:DocumentSerialID>
+		<sac:DocumentNumberID>4</sac:DocumentNumberID>
 		<sac:VoidReasonDescription>ANULACIONDE LA FACTURA 4</sac:VoidReasonDescription>
 	</sac:VoidedDocumentsLine>
 	<sac:VoidedDocumentsLine>
 		<cbc:LineID>5</cbc:LineID>
 		<cbc:DocumentTypeCode>01</cbc:DocumentTypeCode>
-		<sac:DocumentSerialID>FF01</sac:DocumentSerialID>
-		<sac:DocumentNumberID>905</sac:DocumentNumberID>
+		<sac:DocumentSerialID>FF11</sac:DocumentSerialID>
+		<sac:DocumentNumberID>5</sac:DocumentNumberID>
 		<sac:VoidReasonDescription>ANULACIONDE LA FACTURA 5</sac:VoidReasonDescription>
 	</sac:VoidedDocumentsLine>
 </VoidedDocuments>
