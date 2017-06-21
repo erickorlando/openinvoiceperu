@@ -109,6 +109,16 @@ namespace OpenInvoicePeru.Datos
 
             context.SaveChanges();
 
+            var ubigeos = File.ReadAllLines($"{carpeta}Ubigeo.txt");
+            context.Ubigeos.AddOrUpdate(ubigeos.Select(linea => linea)
+                .Select(valores => new Ubigeo
+                {
+                    Codigo = valores.Substring(0, 6),
+                    Descripcion = valores.Substring(7).Trim()
+                }).ToArray());
+
+            context.SaveChanges();
+
             var tipoDiscrepancias = File.ReadAllLines($"{carpeta}TipoDiscrepancias.txt");
             var listaDiscrepancias = new List<TipoDiscrepancia>();
             foreach (var discrepancia in tipoDiscrepancias.Select(linea => linea.Split(separador)))

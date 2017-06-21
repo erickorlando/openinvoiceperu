@@ -1,6 +1,6 @@
 ﻿namespace OpenInvoicePeru.Entidades
 {
-    public class DetalleDocumento : EntidadBase
+    public class DocumentoDetalle : EntidadBase
     {
         public int IdCabeceraDocumento { get; set; }
 

@@ -8,7 +8,7 @@ namespace OpenInvoicePeru.Entidades
         public DateTime FechaReferencia { get; set; }
         public string IdResumen { get; set; }
         public int IdContribuyente { get; set; }
-        public Contribuyente Contribuyente { get; set; }
+        public Empresa Contribuyente { get; set; }
 
     }
 }

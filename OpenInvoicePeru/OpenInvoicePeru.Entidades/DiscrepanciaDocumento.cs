@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace OpenInvoicePeru.Entidades
 {
-    public class Discrepancia : EntidadBase
+    public class DiscrepanciaDocumento : EntidadBase
     {
         public int IdCabeceraDocumento { get; set; }
 

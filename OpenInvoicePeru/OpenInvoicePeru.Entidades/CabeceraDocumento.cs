@@ -10,11 +10,11 @@ namespace OpenInvoicePeru.Entidades
 
         public int IdEmisor { get; set; }
 
-        public Contribuyente Emisor { get; set; }
+        public Empresa Emisor { get; set; }
 
         public int IdReceptor { get; set; }
 
-        public Contribuyente Receptor { get; set; }
+        public Empresa Receptor { get; set; }
 
         public int IdMoneda { get; set; }
 
@@ -66,20 +66,20 @@ namespace OpenInvoicePeru.Entidades
 
         public string EstadoDocumento { get; set; }
 
-        public ICollection<DetalleDocumento> Detalles { get; set; }
+        public ICollection<DocumentoDetalle> Detalles { get; set; }
 
         public ICollection<DatoAdicional> DatoAdicionales { get; set; }
 
         public ICollection<DocumentoRelacionado> DocumentoRelacionados { get; set; }
 
-        public ICollection<Discrepancia> Discrepancias { get; set; }
+        public ICollection<DiscrepanciaDocumento> Discrepancias { get; set; }
 
         public CabeceraDocumento()
         {
-            Detalles = new HashSet<DetalleDocumento>();
+            Detalles = new HashSet<DocumentoDetalle>();
             DatoAdicionales = new HashSet<DatoAdicional>();
             DocumentoRelacionados = new HashSet<DocumentoRelacionado>();
-            Discrepancias = new HashSet<Discrepancia>();
+            Discrepancias = new HashSet<DiscrepanciaDocumento>();
         }
     }
 }

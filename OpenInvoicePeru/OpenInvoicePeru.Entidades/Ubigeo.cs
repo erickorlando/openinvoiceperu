@@ -5,17 +5,12 @@ namespace OpenInvoicePeru.Entidades
     public class Ubigeo : EntidadBase
     {
         [Required]
-        [MaxLength(2)]
+        [MaxLength(6)]
         public string Codigo { get; set; }
 
         [Required]
-        [MaxLength(200)]
+        [MaxLength(250)]
         public string Descripcion { get; set; }
 
-        public int Nivel { get; set; }
-
-        public int? IdParent { get; set; }
-
-        public virtual Ubigeo UbigeoPadre { get; set; }
     }
 }

@@ -43,11 +43,11 @@
   <ItemGroup>
     <Compile Include="Anexo.cs" />
     <Compile Include="CabeceraDocumento.cs" />
-    <Compile Include="Contribuyente.cs" />
+    <Compile Include="Empresa.cs" />
     <Compile Include="DatoAdicional.cs" />
-    <Compile Include="DetalleDocumento.cs" />
+    <Compile Include="DocumentoDetalle.cs" />
     <Compile Include="DireccionSunat.cs" />
-    <Compile Include="Discrepancia.cs" />
+    <Compile Include="DiscrepanciaDocumento.cs" />
     <Compile Include="DocumentoAnticipo.cs" />
     <Compile Include="DocumentoRelacionado.cs" />
     <Compile Include="EntidadBase.cs" />

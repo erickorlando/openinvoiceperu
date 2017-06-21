@@ -72,7 +72,7 @@
     <Compile Include="Configurations\AnexoConfiguration.cs" />
     <Compile Include="Configurations\BaseConfigurationEntity.cs" />
     <Compile Include="Configurations\CabeceraDocumentoConfiguration.cs" />
-    <Compile Include="Configurations\ContribuyenteConfiguration.cs" />
+    <Compile Include="Configurations\EmpresaConfiguration.cs" />
     <Compile Include="Configurations\DetalleDocumentoConfiguration.cs" />
     <Compile Include="Configurations\EntityTypeConfigurationExtensions.cs" />
     <Compile Include="Configurations\GuiaTransportistaConfiguration.cs" />
@@ -88,6 +88,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Data\Departamento.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Data\DireccionesSunat.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -95,6 +98,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\Monedas.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Provincia.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\TipoDatoAdicionales.txt">
@@ -122,6 +128,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Data\TipoPrecios.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Data\Ubigeo.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

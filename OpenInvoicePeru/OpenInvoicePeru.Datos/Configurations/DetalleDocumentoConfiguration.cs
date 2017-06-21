@@ -2,7 +2,7 @@
 
 namespace OpenInvoicePeru.Datos.Configurations
 {
-    public class DetalleDocumentoConfiguration : BaseConfigurationEntity<DetalleDocumento>
+    public class DetalleDocumentoConfiguration : BaseConfigurationEntity<DocumentoDetalle>
     {
         public DetalleDocumentoConfiguration()
         {

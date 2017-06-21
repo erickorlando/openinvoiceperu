@@ -33,16 +33,17 @@ namespace OpenInvoicePeru.Datos
         public virtual DbSet<Moneda> Monedas { get; set; }
         public virtual DbSet<ModalidadTransporte> ModalidadTransportes { get; set; }
         public virtual DbSet<DireccionSunat> DireccionesSunat { get; set; }
-        public virtual DbSet<Contribuyente> Contribuyentes { get; set; }
+        public virtual DbSet<Empresa> Empresas { get; set; }
         public virtual DbSet<DatoAdicional> DatosAdicionales { get; set; }
         public virtual DbSet<CabeceraDocumento> CabeceraDocumentos { get; set; }
-        public virtual DbSet<DetalleDocumento> DetalleDocumentos { get; set; }
-        public virtual DbSet<Discrepancia> Discrepancias { get; set; }
+        public virtual DbSet<DocumentoDetalle> DetalleDocumentos { get; set; }
+        public virtual DbSet<DiscrepanciaDocumento> Discrepancias { get; set; }
         public virtual DbSet<DocumentoAnticipo> DocumentoAnticipos { get; set; }
         public virtual DbSet<DocumentoRelacionado> DocumentoRelacionados { get; set; }
         public virtual DbSet<GuiaTransportista> GuiaTransportistas { get; set; }
         public virtual DbSet<Ubigeo> Ubigeos { get; set; }
         public virtual DbSet<UnidadMedida> UnidadMedidas { get; set; }
+        public virtual DbSet<ParametroConfiguracion> Parametros { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -51,6 +52,17 @@ namespace OpenInvoicePeru.Datos
             var initializer = new OpenInvoicePeruDbInitializer();
             Database.SetInitializer(initializer);
         }
+
+        public virtual void SetEntityState(IEntity entity)
+        {
+            SetEntityState(entity, entity.Id == 0 ? EntityState.Added : EntityState.Modified);
+        }
+
+        public virtual void SetEntityState(object entity, EntityState newState)
+        {
+            Entry(entity).State = newState;
+        }
+
     }
 
 }

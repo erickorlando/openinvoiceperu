@@ -4,7 +4,7 @@
     {
         public int IdContribuyente { get; set; }
 
-        public Contribuyente Contribuyente { get; set; }
+        public Empresa Contribuyente { get; set; }
 
         public decimal TasaIgv { get; set; }
 
