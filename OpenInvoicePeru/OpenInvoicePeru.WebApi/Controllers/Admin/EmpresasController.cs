@@ -7,7 +7,7 @@ using OpenInvoicePeru.Entidades;
 
 namespace OpenInvoicePeru.WebApi.Controllers.Admin
 {
-    [RoutePrefix("api/admin/empresas")]
+    [RoutePrefix("api/admin")]
     public class EmpresasController : ApiController
     {
         private readonly OpenInvoicePeruDb _context;
@@ -17,11 +17,15 @@ namespace OpenInvoicePeru.WebApi.Controllers.Admin
             _context = context;
         }
 
+        [HttpGet]
+        [Route("Empresas/{id}")]
         public async Task<Empresa> Get(int id)
         {
             return await _context.Set<Empresa>().FindAsync(id);
         }
 
+        [HttpGet]
+        [Route("Empresas/GetAll/")]
         public async Task<IEnumerable<Empresa>> GetAll()
         {
             return await _context.Set<Empresa>()
@@ -30,6 +34,8 @@ namespace OpenInvoicePeru.WebApi.Controllers.Admin
                 .AsNoTracking().ToListAsync();
         }
 
+        [HttpPost]
+        [Route("Empresas/")]
         public async Task<IHttpActionResult> Post(Empresa entity)
         {
             _context.Set<Empresa>().Add(entity);
@@ -38,7 +44,8 @@ namespace OpenInvoicePeru.WebApi.Controllers.Admin
             return Ok(entity);
         }
 
-        public async Task<IHttpActionResult> Put(int id, Empresa entity)
+        [Route("Empresas/")]
+        public async Task<IHttpActionResult> Put(Empresa entity)
         {
             _context.Set<Empresa>().Attach(entity);
             _context.SetEntityState(entity);
@@ -46,6 +53,7 @@ namespace OpenInvoicePeru.WebApi.Controllers.Admin
             return Ok();
         }
 
+        [Route("Empresas/")]
         public async Task<IHttpActionResult> Delete(int id)
         {
             var entity = await _context.Set<Empresa>().FindAsync(id);
