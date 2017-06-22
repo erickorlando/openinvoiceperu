@@ -1,7 +1,9 @@
-﻿using System.Linq;
+﻿using System.Data.Entity;
+using System.Linq;
 using System.Windows.Forms;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Datos;
+using OpenInvoicePeru.Entidades;
 
 namespace OpenInvoicePeru.WinApp
 {
@@ -25,8 +27,14 @@ namespace OpenInvoicePeru.WinApp
             {
                 using (var ctx = new OpenInvoicePeruDb())
                 {
-                    tipoDiscrepanciaBindingSource.DataSource = ctx.TipoDiscrepancias
-                            .Where(t => t.IdTipoDocumento == int.Parse(_tipoDoc)).ToList();
+                    var tipoDocumento = ctx.Set<TipoDocumento>()
+                        .AsNoTracking()
+                        .SingleOrDefault(p => p.Codigo == _tipoDoc);
+
+                    if (tipoDocumento == null) return;
+
+                    tipoDiscrepanciaBindingSource.DataSource = ctx.Set<TipoDiscrepancia>()
+                                .Where(t => t.IdTipoDocumento == tipoDocumento.Id).AsNoTracking().ToList();
 
                     tipoDiscrepanciaBindingSource.ResetBindings(false);
                 }
