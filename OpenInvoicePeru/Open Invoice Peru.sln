@@ -9,6 +9,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenInvoicePeru.WinApp", "O
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00. Archivos Adicionales", "00. Archivos Adicionales", "{6E1A7EDA-167E-4F0E-94F5-08DE9FF0AF78}"
 	ProjectSection(SolutionItems) = preProject
+		CHANGELOG.md = CHANGELOG.md
 		..\README.md = ..\README.md
 	EndProjectSection
 EndProject
