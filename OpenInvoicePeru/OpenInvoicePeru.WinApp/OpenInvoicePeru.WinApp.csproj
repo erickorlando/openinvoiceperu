@@ -153,6 +153,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Configuracion\FrmConfiguracion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Configuracion\FrmConfiguracion.Designer.cs">
+      <DependentUpon>FrmConfiguracion.cs</DependentUpon>
+    </Compile>
     <Compile Include="FrmDatosAdicionales.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -209,6 +215,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Configuracion\FrmConfiguracion.resx">
+      <DependentUpon>FrmConfiguracion.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FrmDatosAdicionales.resx">
       <DependentUpon>FrmDatosAdicionales.cs</DependentUpon>
     </EmbeddedResource>
@@ -286,6 +295,14 @@
     <ProjectReference Include="..\OpenInvoicePeru.Datos\OpenInvoicePeru.Datos.csproj">
       <Project>{562d08a8-ed00-4e21-9f48-3e391aad575e}</Project>
       <Name>OpenInvoicePeru.Datos</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenInvoicePeru.ViewModel\OpenInvoicePeru.ViewModel.csproj">
+      <Project>{28ab5b47-a3fa-472b-9ea2-a7b5ed7532f4}</Project>
+      <Name>OpenInvoicePeru.ViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OpenInvoicePeru.WinPart\OpenInvoicePeru.WinPart.csproj">
+      <Project>{be86b43a-c487-4f30-90ee-34c9c0429f90}</Project>
+      <Name>OpenInvoicePeru.WinPart</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

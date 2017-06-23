@@ -17,5 +17,14 @@
         public string UsuarioSol { get; set; }
         public string ClaveSol { get; set; }
 
+        public bool Guardar()
+        {
+            return true;
+        }
+
+        public void Cancelar()
+        {
+            
+        }
     }
 }

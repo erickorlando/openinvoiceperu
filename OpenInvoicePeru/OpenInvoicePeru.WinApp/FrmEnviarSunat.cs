@@ -258,6 +258,9 @@ namespace OpenInvoicePeru.WinApp
                     if (!respuestaEnvio.Exito)
                         throw new ApplicationException(respuestaEnvio.MensajeError);
 
+                    File.WriteAllBytes($"{Program.CarpetaCdr}\\R-{respuestaEnvio.NombreArchivo}.zip",
+                        Convert.FromBase64String(respuestaEnvio.TramaZipCdr));
+
                     txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{respuestaEnvio.MensajeRespuesta}";
 
                     Hablar();

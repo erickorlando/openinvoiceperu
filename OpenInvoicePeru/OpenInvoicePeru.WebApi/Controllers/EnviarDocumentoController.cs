@@ -43,7 +43,11 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 response.MensajeError = resultado.MensajeError;
             }
             else
+            {
                 response = await _serializador.GenerarDocumentoRespuesta(resultado.ConstanciaDeRecepcion);
+                // Quitamos la R y la extensión devueltas por el Servicio.
+                response.NombreArchivo = nombreArchivo;
+            }
 
             return response;
         }
