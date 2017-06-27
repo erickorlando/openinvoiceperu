@@ -21,6 +21,8 @@ namespace OpenInvoicePeru.Entidades
 
         public string Urbanizacion { get; set; }
 
+        public string CorreoElectronico { get; set; }
+
         public int IdUbigeo { get; set; }
 
         [ForeignKey(nameof(IdUbigeo))]

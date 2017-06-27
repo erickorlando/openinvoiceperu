@@ -34,6 +34,9 @@ namespace OpenInvoicePeru.Datos.Configurations
                 .HasMaxLength(500)
                 .IsRequired();
 
+            Property(p => p.CorreoElectronico)
+                .HasMaxLength(500);
+
             Property(p => p.Urbanizacion)
                 .HasMaxLength(50)
                 .IsRequired();

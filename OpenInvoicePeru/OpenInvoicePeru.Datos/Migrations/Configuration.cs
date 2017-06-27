@@ -1,19 +1,19 @@
-﻿using System.Collections.Generic;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
+using System.Collections.Generic;
 using System.IO;
-using System.Linq;
-using OpenInvoicePeru.Datos.Migrations;
 using OpenInvoicePeru.Entidades;
 
-namespace OpenInvoicePeru.Datos
+namespace OpenInvoicePeru.Datos.Migrations
 {
-    public class OpenInvoicePeruDbInitializer : CreateDatabaseIfNotExists<OpenInvoicePeruDb>
+    using System.Data.Entity.Migrations;
+    using System.Linq;
+
+    public sealed class Configuration : DbMigrationsConfiguration<OpenInvoicePeruDb>
     {
-        //public OpenInvoicePeruDbInitializer(DbModelBuilder modelBuilder)
-        //    : base(modelBuilder)
-        //{
-        //}
+        public Configuration()
+        {
+            AutomaticMigrationsEnabled = false;
+            ContextKey = "OpenInvoicePeru.Datos.OpenInvoicePeruDb";
+        }
 
         protected override void Seed(OpenInvoicePeruDb context)
         {
