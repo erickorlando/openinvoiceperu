@@ -1,0 +1,194 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.50727</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{BDD67581-12E9-438E-A559-5731D391A404}</ProjectGuid>
+    <ProjectTypeGuids>{A1591282-1198-4647-A2B1-27E5FF5F6F3B};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OpenInvoicePeru.Comun.Dto</RootNamespace>
+    <AssemblyName>OpenInvoicePeru.Comun.Dto</AssemblyName>
+    <TargetFrameworkIdentifier>Silverlight</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <SilverlightVersion>$(TargetFrameworkVersion)</SilverlightVersion>
+    <SilverlightApplication>false</SilverlightApplication>
+    <ValidateXaml>true</ValidateXaml>
+    <ThrowErrorsInValidation>true</ThrowErrorsInValidation>
+  </PropertyGroup>
+  <!-- This property group is only here to support building this project using the 
+       MSBuild 3.5 toolset. In order to work correctly with this older toolset, it needs 
+       to set the TargetFrameworkVersion to v3.5 -->
+  <PropertyGroup Condition="'$(MSBuildToolsVersion)' == '3.5'">
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>Bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>Bin\Release</OutputPath>
+    <DefineConstants>TRACE;SILVERLIGHT</DefineConstants>
+    <NoStdLib>true</NoStdLib>
+    <NoConfig>true</NoConfig>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>true</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <AssemblyOriginatorKeyFile>OpenInvoicePeru.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="mscorlib" />
+    <Reference Include="System.Windows" />
+    <Reference Include="system" />
+    <Reference Include="System.Core">
+      <HintPath>$(TargetFrameworkDirectory)System.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Windows.Browser" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Contratos\IDocumentoElectronico.cs">
+      <Link>Contratos\IDocumentoElectronico.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\ConsultaConstanciaRequest.cs">
+      <Link>Intercambio\ConsultaConstanciaRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\ConsultaTicketRequest.cs">
+      <Link>Intercambio\ConsultaTicketRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\DocumentoResponse.cs">
+      <Link>Intercambio\DocumentoResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\EnviarDocumentoRequest.cs">
+      <Link>Intercambio\EnviarDocumentoRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\EnviarDocumentoResponse.cs">
+      <Link>Intercambio\EnviarDocumentoResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\EnviarResumenResponse.cs">
+      <Link>Intercambio\EnviarResumenResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\EnvioDocumentoComun.cs">
+      <Link>Intercambio\EnvioDocumentoComun.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\FirmadoRequest.cs">
+      <Link>Intercambio\FirmadoRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\FirmadoResponse.cs">
+      <Link>Intercambio\FirmadoResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\RespuestaComun.cs">
+      <Link>Intercambio\RespuestaComun.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\RespuestaComunConArchivo.cs">
+      <Link>Intercambio\RespuestaComunConArchivo.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ComunicacionBaja.cs">
+      <Link>Modelos\ComunicacionBaja.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Contribuyente.cs">
+      <Link>Modelos\Contribuyente.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DatoAdicional.cs">
+      <Link>Modelos\DatoAdicional.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DatosGuia.cs">
+      <Link>Modelos\DatosGuia.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DetalleDocumento.cs">
+      <Link>Modelos\DetalleDocumento.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DetalleGuia.cs">
+      <Link>Modelos\DetalleGuia.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Direccion.cs">
+      <Link>Modelos\Direccion.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Discrepancia.cs">
+      <Link>Modelos\Discrepancia.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoBaja.cs">
+      <Link>Modelos\DocumentoBaja.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoElectronico.cs">
+      <Link>Modelos\DocumentoElectronico.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoPercepcion.cs">
+      <Link>Modelos\DocumentoPercepcion.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoRelacionado.cs">
+      <Link>Modelos\DocumentoRelacionado.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoResumen.cs">
+      <Link>Modelos\DocumentoResumen.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoResumenDetalle.cs">
+      <Link>Modelos\DocumentoResumenDetalle.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoRetencion.cs">
+      <Link>Modelos\DocumentoRetencion.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoSunatBase.cs">
+      <Link>Modelos\DocumentoSunatBase.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\GrupoResumen.cs">
+      <Link>Modelos\GrupoResumen.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\GrupoResumenNuevo.cs">
+      <Link>Modelos\GrupoResumenNuevo.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\GuiaRemision.cs">
+      <Link>Modelos\GuiaRemision.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ItemPercepcion.cs">
+      <Link>Modelos\ItemPercepcion.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ItemRetencion.cs">
+      <Link>Modelos\ItemRetencion.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ItemSunatBase.cs">
+      <Link>Modelos\ItemSunatBase.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ResumenDiario.cs">
+      <Link>Modelos\ResumenDiario.cs</Link>
+    </Compile>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ResumenDiarioNuevo.cs">
+      <Link>Modelos\ResumenDiarioNuevo.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="OpenInvoicePeru.snk" />
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Silverlight\$(SilverlightVersion)\Microsoft.Silverlight.CSharp.targets" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{A1591282-1198-4647-A2B1-27E5FF5F6F3B}">
+        <SilverlightProjectProperties />
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

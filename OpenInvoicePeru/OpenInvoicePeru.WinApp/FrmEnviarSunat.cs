@@ -1,26 +1,29 @@
-﻿using System;
+﻿using OpenInvoicePeru.Comun.Dto.Intercambio;
+using OpenInvoicePeru.Comun.Dto.Modelos;
+using OpenInvoicePeru.Datos;
+using OpenInvoicePeru.Entidades;
+using OpenInvoicePeru.WinApp.Properties;
+using System;
 using System.Configuration;
 using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Speech.Synthesis;
 using System.Windows.Forms;
-using OpenInvoicePeru.Comun.Dto.Intercambio;
-using OpenInvoicePeru.Comun.Dto.Modelos;
-using OpenInvoicePeru.Datos;
-using OpenInvoicePeru.Datos.Entidades;
-using OpenInvoicePeru.WinApp.Properties;
 
 namespace OpenInvoicePeru.WinApp
 {
     public partial class FrmEnviarSunat : PlantillaBase
     {
         #region Variables Privadas
+
         private FrmDocumento _frmDocumento;
         private readonly HttpClient _client;
-        #endregion
+
+        #endregion Variables Privadas
 
         #region Constructor
+
         public FrmEnviarSunat()
         {
             InitializeComponent();
@@ -29,7 +32,6 @@ namespace OpenInvoicePeru.WinApp
 
             Load += (s, e) =>
             {
-
                 try
                 {
                     Cursor.Current = Cursors.WaitCursor;
@@ -39,11 +41,10 @@ namespace OpenInvoicePeru.WinApp
                         direccionSunatBindingSource.DataSource = ctx.DireccionesSunat.ToList();
                         direccionSunatBindingSource.ResetBindings(false);
                     }
-
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    MessageBox.Show(ex.Message + ex.InnerException?.Message, Text, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 }
                 finally
                 {
@@ -51,9 +52,11 @@ namespace OpenInvoicePeru.WinApp
                 }
             };
         }
-        #endregion
+
+        #endregion Constructor
 
         #region Botones de Busqueda
+
         private void btnBrowse_Click(object sender, EventArgs e)
         {
             try
@@ -95,9 +98,11 @@ namespace OpenInvoicePeru.WinApp
                 MessageBox.Show(ex.Message);
             }
         }
-        #endregion
+
+        #endregion Botones de Busqueda
 
         #region LLamadas Asincronas
+
         private async void btnGen_Click(object sender, EventArgs e)
         {
             try
@@ -109,30 +114,39 @@ namespace OpenInvoicePeru.WinApp
                     case 0:
                         codigoTipoDoc = "01";
                         break;
+
                     case 1:
                         codigoTipoDoc = "03";
                         break;
+
                     case 2:
                         codigoTipoDoc = "07";
                         break;
+
                     case 3:
                         codigoTipoDoc = "08";
                         break;
+
                     case 4:
                         codigoTipoDoc = "20";
                         break;
+
                     case 5:
                         codigoTipoDoc = "40";
                         break;
+
                     case 6:
                         codigoTipoDoc = "RC";
                         break;
+
                     case 7:
                         codigoTipoDoc = "RA";
                         break;
+
                     case 8:
                         codigoTipoDoc = "09";
                         break;
+
                     default:
                         codigoTipoDoc = "01";
                         break;
@@ -227,7 +241,6 @@ namespace OpenInvoicePeru.WinApp
                     if (frm.ShowDialog() != DialogResult.OK) return;
                     if (string.IsNullOrEmpty(frm.txtNroTicket.Text)) return;
 
-
                     var consultaTicketRequest = new ConsultaTicketRequest
                     {
                         Ruc = txtNroRuc.Text,
@@ -245,6 +258,9 @@ namespace OpenInvoicePeru.WinApp
                     if (!respuestaEnvio.Exito)
                         throw new ApplicationException(respuestaEnvio.MensajeError);
 
+                    File.WriteAllBytes($"{Program.CarpetaCdr}\\R-{respuestaEnvio.NombreArchivo}.zip",
+                        Convert.FromBase64String(respuestaEnvio.TramaZipCdr));
+
                     txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{respuestaEnvio.MensajeRespuesta}";
 
                     Hablar();
@@ -259,9 +275,11 @@ namespace OpenInvoicePeru.WinApp
                 Cursor = Cursors.Default;
             }
         }
-        #endregion
+
+        #endregion LLamadas Asincronas
 
         #region Generacion de XML
+
         private void btnGenerar_Click(object sender, EventArgs e)
         {
             try
@@ -287,7 +305,6 @@ namespace OpenInvoicePeru.WinApp
 
                 txtSource.Text = _frmDocumento.RutaArchivo;
                 txtSerieCorrelativo.Text = _frmDocumento.IdDocumento;
-
             }
             catch (Exception ex)
             {
@@ -298,9 +315,11 @@ namespace OpenInvoicePeru.WinApp
                 Cursor.Current = Cursors.Default;
             }
         }
-        #endregion
+
+        #endregion Generacion de XML
 
         #region Metodos Privados
+
         private void Hablar()
         {
             if (string.IsNullOrEmpty(txtResult.Text)) return;
@@ -315,6 +334,7 @@ namespace OpenInvoicePeru.WinApp
             var direccionSunat = direccionSunatBindingSource.Current as DireccionSunat;
             return direccionSunat == null ? string.Empty : direccionSunat.Descripcion;
         }
-        #endregion
+
+        #endregion Metodos Privados
     }
 }

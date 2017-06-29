@@ -1,17 +1,23 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
   <Comment CommentText="El Resumen Diario Nuevo hereda del anterior sus demás propiedades pero añade algunas nuevas.">
-    <Position X="6.052" Y="4.833" Height="0.772" Width="2.044" />
+    <Position X="6.277" Y="7.341" Height="0.772" Width="2.044" />
+  </Comment>
+  <Comment CommentText="CustomizationID = 1.1">
+    <Position X="6.275" Y="0.583" Height="0.333" Width="1.7" />
+  </Comment>
+  <Comment CommentText="CustomizationID = 1.0">
+    <Position X="0.658" Y="0.517" Height="0.333" Width="1.7" />
   </Comment>
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.GrupoResumen">
-    <Position X="0.5" Y="2.5" Width="2.25" />
+    <Position X="0.5" Y="5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>AGIAAAAAAFAAgBACAAACAAAAAAEAACgAEAAAAAAAAAA=</HashCode>
       <FileName>Modelos\GrupoResumen.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.GrupoResumenNuevo">
-    <Position X="6" Y="2.5" Width="2.75" />
+    <Position X="6" Y="5" Width="2.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAoAAEAAAAAAAAAAAEAAAAAAAAAAQABAAAAAA=</HashCode>
       <FileName>Modelos\GrupoResumenNuevo.cs</FileName>
@@ -38,7 +44,7 @@
     </ShowAsCollectionAssociation>
   </Class>
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.Contribuyente">
-    <Position X="3" Y="4" Width="2" />
+    <Position X="3" Y="5" Width="2" />
     <TypeIdentifier>
       <HashCode>AAAAAAIAAAAACAAEACQAAAAACAAABAACwAAAAAAAAAA=</HashCode>
       <FileName>Modelos\Contribuyente.cs</FileName>
@@ -54,6 +60,13 @@
       <Property Name="Emisor" />
     </ShowAsAssociation>
     <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoResumenDetalle">
+    <Position X="2.25" Y="2.75" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Modelos\DocumentoResumenDetalle.cs</FileName>
+    </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

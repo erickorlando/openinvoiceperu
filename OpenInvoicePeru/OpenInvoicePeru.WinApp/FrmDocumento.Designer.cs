@@ -438,7 +438,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoDocumentoContribuyenteBindingSource
             // 
-            this.tipoDocumentoContribuyenteBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoContribuyente);
+            this.tipoDocumentoContribuyenteBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.TipoDocumentoContribuyente);
             // 
             // label2
             // 
@@ -719,7 +719,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoDocumentoBindingSource
             // 
-            this.tipoDocumentoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumento);
+            this.tipoDocumentoBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.TipoDocumento);
             // 
             // label21
             // 
@@ -744,7 +744,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // monedaBindingSource
             // 
-            this.monedaBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.Moneda);
+            this.monedaBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.Moneda);
             // 
             // dgvDetalle
             // 
@@ -835,7 +835,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoOperacionBindingSource
             // 
-            this.tipoOperacionBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoOperacion);
+            this.tipoOperacionBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.TipoOperacion);
             // 
             // totalIgvTextBox
             // 
@@ -1234,7 +1234,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoDocumentoAnticipoBindingSource
             // 
-            this.tipoDocumentoAnticipoBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoAnticipo);
+            this.tipoDocumentoAnticipoBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.TipoDocumentoAnticipo);
             // 
             // placaVehiculoTextBox
             // 
