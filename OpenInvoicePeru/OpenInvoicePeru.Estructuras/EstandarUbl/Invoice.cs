@@ -159,7 +159,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         else
                         {
                             writer.WriteElementString("cbc:ID", additionalMonetaryTotal.Id);
-
+                            
                             #region PayableAmount
 
                             {

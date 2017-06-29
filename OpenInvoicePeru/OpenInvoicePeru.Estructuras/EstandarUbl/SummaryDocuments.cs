@@ -232,7 +232,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     writer.WriteStartElement("sac:TotalAmount");
                     {
                         writer.WriteAttributeString("currencyID", item.TotalAmount.CurrencyId);
-                        writer.WriteValue(item.TotalAmount.Value.ToString(Formatos.FormatoNumerico));
+                        writer.WriteValue(item.TotalAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                     }
                     writer.WriteEndElement();
 
@@ -243,7 +243,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                             writer.WriteStartElement("cbc:PaidAmount");
                             {
                                 writer.WriteAttributeString("currencyID", item.TotalAmount.CurrencyId);
-                                writer.WriteValue(billing.PaidAmount.Value.ToString(Formatos.FormatoNumerico));
+                                writer.WriteValue(billing.PaidAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                             }
                             writer.WriteEndElement();
                             writer.WriteElementString("cbc:InstructionID", billing.InstructionId);
@@ -258,7 +258,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         writer.WriteStartElement("cbc:Amount");
                         {
                             writer.WriteAttributeString("currencyID", item.AllowanceCharge.Amount.CurrencyId);
-                            writer.WriteValue(item.AllowanceCharge.Amount.Value.ToString(Formatos.FormatoNumerico));
+                            writer.WriteValue(item.AllowanceCharge.Amount.Value.ToString(Formatos.FormatoNumerico, Formato));
                         }
                         writer.WriteEndElement();
                     }
