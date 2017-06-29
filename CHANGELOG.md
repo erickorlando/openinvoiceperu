@@ -10,3 +10,4 @@
 
 - Se corrige problema que provocaba que los archivos de XML Firmados y CDR se guarden de manera incorrecta.
 - Issue #78 problema en generacion de Nota de Crédito y Débito con los formatos decimales.
+- Issue #80 Generacion de Facturas con Percepción.

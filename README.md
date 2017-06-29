@@ -7,6 +7,8 @@ Actualmente ya se puede usar en entornos de Producción, si encuentra algún bug
 
 Puede leer la documentación del proyecto en la sección [Wiki](https://github.com/FrameworkPeru/openinvoiceperu/wiki).
 
+Para consultar las novedades y cambios del proyecto revisa el [Control de Cambios](CHANGELOG.md)
+
 # Características #
 - Generación de XML los siguientes documentos electrónicos:
   - Facturas
