@@ -28,11 +28,11 @@
 		</cac:DigitalSignatureAttachment>
 	</cac:Signature>
 	<cac:AccountingSupplierParty>
-		<cbc:CustomerAssignedAccountID>20439253852</cbc:CustomerAssignedAccountID>
+		<cbc:CustomerAssignedAccountID>20481452130</cbc:CustomerAssignedAccountID>
 		<cbc:AdditionalAccountID>6</cbc:AdditionalAccountID>
 		<cac:Party>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>KEYMARK S.A.</cbc:RegistrationName>
+				<cbc:RegistrationName>EXPRESO SOL PERU SRL</cbc:RegistrationName>
 			</cac:PartyLegalEntity>
 		</cac:Party>
 	</cac:AccountingSupplierParty>

@@ -329,7 +329,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoDocumentoContribuyenteBindingSource
             // 
-            this.tipoDocumentoContribuyenteBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDocumentoContribuyente);
+            this.tipoDocumentoContribuyenteBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.TipoDocumentoContribuyente);
             // 
             // nombreTransportistaTextBox
             // 
@@ -394,7 +394,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // modalidadTransporteBindingSource
             // 
-            this.modalidadTransporteBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.ModalidadTransporte);
+            this.modalidadTransporteBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.ModalidadTransporte);
             // 
             // codigoAutorizacionTextBox
             // 
@@ -619,13 +619,10 @@ namespace OpenInvoicePeru.WinApp
             this.ClientSize = new System.Drawing.Size(733, 382);
             this.Controls.Add(this.kryptonPanel1);
             this.Controls.Add(this.barraBotones);
-            this.Font = new System.Drawing.Font("Segoe UI", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FrmDatosGuia";
-            this.ShowInTaskbar = false;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Datos de Guia Remisión Transportista";
             ((System.ComponentModel.ISupportInitialize)(this.datosGuiaBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tipoDocTransportistaComboBox)).EndInit();

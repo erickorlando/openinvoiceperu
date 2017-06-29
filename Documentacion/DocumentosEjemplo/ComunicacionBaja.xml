@@ -40,7 +40,7 @@
 		<cbc:LineID>1</cbc:LineID>
 		<cbc:DocumentTypeCode>01</cbc:DocumentTypeCode>
 		<sac:DocumentSerialID>FF11</sac:DocumentSerialID>
-		<sac:DocumentNumberID>1</sac:DocumentNumberID>
+		<sac:DocumentNumberID>111</sac:DocumentNumberID>
 		<sac:VoidReasonDescription>ANULACION DE LA FACTURA 1</sac:VoidReasonDescription>
 	</sac:VoidedDocumentsLine>
 	<sac:VoidedDocumentsLine>
@@ -54,7 +54,7 @@
 		<cbc:LineID>3</cbc:LineID>
 		<cbc:DocumentTypeCode>01</cbc:DocumentTypeCode>
 		<sac:DocumentSerialID>FF11</sac:DocumentSerialID>
-		<sac:DocumentNumberID>3</sac:DocumentNumberID>
+		<sac:DocumentNumberID>30</sac:DocumentNumberID>
 		<sac:VoidReasonDescription>ANULACIONDE LA FACTURA 3</sac:VoidReasonDescription>
 	</sac:VoidedDocumentsLine>
 	<sac:VoidedDocumentsLine>
