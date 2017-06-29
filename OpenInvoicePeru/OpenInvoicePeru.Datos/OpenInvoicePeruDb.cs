@@ -44,7 +44,7 @@ namespace OpenInvoicePeru.Datos
         public virtual DbSet<Ubigeo> Ubigeos { get; set; }
         public virtual DbSet<UnidadMedida> UnidadMedidas { get; set; }
         public virtual DbSet<ParametroConfiguracion> Parametros { get; set; }
-
+             
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();

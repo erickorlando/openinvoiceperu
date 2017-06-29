@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="Anexo.cs" />
     <Compile Include="CabeceraDocumento.cs" />
+    <Compile Include="DocumentoBaja.cs" />
     <Compile Include="Empresa.cs" />
     <Compile Include="DatoAdicional.cs" />
     <Compile Include="DocumentoDetalle.cs" />

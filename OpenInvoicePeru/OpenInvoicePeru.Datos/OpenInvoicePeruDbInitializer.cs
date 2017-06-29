@@ -3,7 +3,6 @@ using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
-using OpenInvoicePeru.Datos.Migrations;
 using OpenInvoicePeru.Entidades;
 
 namespace OpenInvoicePeru.Datos
