@@ -314,6 +314,11 @@ namespace OpenInvoicePeru.Xml
                     .AdditionalInformation.AdditionalMonetaryTotals.Add(new AdditionalMonetaryTotal
                     {
                         Id = "2001",
+                        ReferenceAmount = new PayableAmount
+                        {
+                            CurrencyId = documento.Moneda,
+                            Value = documento.TotalVenta
+                        },
                         PayableAmount = new PayableAmount
                         {
                             CurrencyId = documento.Moneda,
@@ -322,7 +327,7 @@ namespace OpenInvoicePeru.Xml
                         TotalAmount = new PayableAmount
                         {
                             CurrencyId = documento.Moneda,
-                            Value = documento.Gravadas + documento.MontoPercepcion
+                            Value = documento.TotalVenta + documento.MontoPercepcion
                         }
                     });
             }
