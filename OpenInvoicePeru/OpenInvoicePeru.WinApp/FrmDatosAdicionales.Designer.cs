@@ -88,7 +88,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoDatoAdicionalBindingSource
             // 
-            this.tipoDatoAdicionalBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDatoAdicional);
+            this.tipoDatoAdicionalBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.TipoDatoAdicional);
             // 
             // contenidoTextBox
             // 

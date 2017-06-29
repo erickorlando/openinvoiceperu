@@ -1,19 +1,18 @@
-﻿using System.Data.Entity;
+﻿using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
-using OpenInvoicePeru.Datos.Entidades;
-using SQLite.CodeFirst;
+using OpenInvoicePeru.Entidades;
 
 namespace OpenInvoicePeru.Datos
 {
-    public class OpenInvoicePeruDbInitializer : SqliteDropCreateDatabaseAlways<OpenInvoicePeruDb>
+    public class OpenInvoicePeruDbInitializer : CreateDatabaseIfNotExists<OpenInvoicePeruDb>
     {
-        public OpenInvoicePeruDbInitializer(DbModelBuilder modelBuilder)
-            : base(modelBuilder)
-        {
-
-        }
+        //public OpenInvoicePeruDbInitializer(DbModelBuilder modelBuilder)
+        //    : base(modelBuilder)
+        //{
+        //}
 
         protected override void Seed(OpenInvoicePeruDb context)
         {
@@ -52,13 +51,12 @@ namespace OpenInvoicePeru.Datos
                     Descripcion = valores.Last()
                 }).ToArray());
 
-            var tipoDiscrepancias = File.ReadAllLines($"{carpeta}TipoDiscrepancias.txt");
-            context.TipoDiscrepancias.AddOrUpdate(tipoDiscrepancias.Select(linea => linea.Split(separador))
-                .Select(valores => new TipoDiscrepancia
+            var tipoDocumentos = File.ReadAllLines($"{carpeta}TipoDocumentos.txt");
+            context.TipoDocumentos.AddOrUpdate(tipoDocumentos.Select(linea => linea.Split(separador))
+                .Select(valores => new TipoDocumento
                 {
                     Codigo = valores.First(),
-                    Descripcion = valores[1],
-                    DocumentoAplicado = valores.Last()
+                    Descripcion = valores.Last()
                 }).ToArray());
 
             var tipoDocumentoAnticipos = File.ReadAllLines($"{carpeta}TipoDocumentoAnticipos.txt");
@@ -80,14 +78,6 @@ namespace OpenInvoicePeru.Datos
             var tipoDocumentoRelacionados = File.ReadAllLines($"{carpeta}TipoDocumentoRelacionados.txt");
             context.TipoDocumentoRelacionados.AddOrUpdate(tipoDocumentoRelacionados.Select(linea => linea.Split(separador))
                 .Select(valores => new TipoDocumentoRelacionado
-                {
-                    Codigo = valores.First(),
-                    Descripcion = valores.Last()
-                }).ToArray());
-
-            var tipoDocumentos = File.ReadAllLines($"{carpeta}TipoDocumentos.txt");
-            context.TipoDocumentos.AddOrUpdate(tipoDocumentos.Select(linea => linea.Split(separador))
-                .Select(valores => new TipoDocumento
                 {
                     Codigo = valores.First(),
                     Descripcion = valores.Last()
@@ -117,6 +107,37 @@ namespace OpenInvoicePeru.Datos
                     Descripcion = valores.Last()
                 }).ToArray());
 
+            context.SaveChanges();
+
+            var ubigeos = File.ReadAllLines($"{carpeta}Ubigeo.txt");
+            context.Ubigeos.AddOrUpdate(ubigeos.Select(linea => linea)
+                .Select(valores => new Ubigeo
+                {
+                    Codigo = valores.Substring(0, 6),
+                    Descripcion = valores.Substring(7).Trim()
+                }).ToArray());
+
+            context.SaveChanges();
+
+            var tipoDiscrepancias = File.ReadAllLines($"{carpeta}TipoDiscrepancias.txt");
+            var listaDiscrepancias = new List<TipoDiscrepancia>();
+            foreach (var discrepancia in tipoDiscrepancias.Select(linea => linea.Split(separador)))
+            {
+                var codigo = discrepancia.Last().Trim();
+                var tipoDoc = context.TipoDocumentos.SingleOrDefault(c => c.Codigo == codigo);
+                if (tipoDoc != null)
+                {
+                    listaDiscrepancias.Add(new TipoDiscrepancia
+                    {
+                        Codigo = discrepancia.First(),
+                        Descripcion = discrepancia[1],
+                        IdTipoDocumento = tipoDoc.Id
+                    });
+                }
+            }
+            context.TipoDiscrepancias.AddOrUpdate(listaDiscrepancias.ToArray());
+
+            context.SaveChanges();
         }
     }
 }

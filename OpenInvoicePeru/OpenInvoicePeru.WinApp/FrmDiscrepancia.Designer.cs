@@ -127,7 +127,7 @@ namespace OpenInvoicePeru.WinApp
             // 
             // tipoDiscrepanciaBindingSource
             // 
-            this.tipoDiscrepanciaBindingSource.DataSource = typeof(OpenInvoicePeru.Datos.Entidades.TipoDiscrepancia);
+            this.tipoDiscrepanciaBindingSource.DataSource = typeof(OpenInvoicePeru.Entidades.TipoDiscrepancia);
             // 
             // nroReferenciaTextBox
             // 

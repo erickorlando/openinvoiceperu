@@ -1,13 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Xml;
-using System.Xml.Schema;
-using System.Xml.Serialization;
-using OpenInvoicePeru.Comun;
+﻿using OpenInvoicePeru.Comun;
 using OpenInvoicePeru.Comun.Constantes;
 using OpenInvoicePeru.Estructuras.CommonAggregateComponents;
 using OpenInvoicePeru.Estructuras.CommonExtensionComponents;
 using OpenInvoicePeru.Estructuras.SunatAggregateComponents;
+using System;
+using System.Collections.Generic;
+using System.Xml;
+using System.Xml.Schema;
+using System.Xml.Serialization;
 
 namespace OpenInvoicePeru.Estructuras.EstandarUbl
 {
@@ -107,25 +107,77 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     foreach (var additionalMonetaryTotal in ext2.AdditionalMonetaryTotals)
                     {
                         writer.WriteStartElement("sac:AdditionalMonetaryTotal");
-                        writer.WriteElementString("cbc:ID", additionalMonetaryTotal.Id);
-
-                        #region PayableAmount
-
+                        if (additionalMonetaryTotal.ReferenceAmount.Value > 0)
                         {
-                            writer.WriteStartElement("cbc:PayableAmount");
+                            writer.WriteStartElement("cbc:ID");
                             {
-                                writer.WriteAttributeString("currencyID", additionalMonetaryTotal.PayableAmount.CurrencyId);
-                                writer.WriteValue(additionalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                                writer.WriteAttributeString("schemeID", "01");
+                                writer.WriteValue("2001");
                             }
                             writer.WriteEndElement();
-                        }
-                        if (additionalMonetaryTotal.Percent > 0)
-                        {
-                            writer.WriteElementString("cbc:Percent",
-                                additionalMonetaryTotal.Percent.ToString(Formatos.FormatoNumerico, Formato));
-                        }
 
-                        #endregion PayableAmount
+                            #region ReferenceAmount
+
+                            writer.WriteStartElement("sac:ReferenceAmount");
+                            {
+                                writer.WriteAttributeString("currencyID", additionalMonetaryTotal.ReferenceAmount.CurrencyId);
+                                writer.WriteValue(additionalMonetaryTotal.ReferenceAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                            }
+                            writer.WriteEndElement();
+
+                            #endregion ReferenceAmount
+
+                            #region PayableAmount
+
+                            {
+                                writer.WriteStartElement("cbc:PayableAmount");
+                                {
+                                    writer.WriteAttributeString("currencyID", additionalMonetaryTotal.PayableAmount.CurrencyId);
+                                    writer.WriteValue(additionalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                                }
+                                writer.WriteEndElement();
+                            }
+
+                            #endregion PayableAmount
+
+                            #region TotalAmount
+
+                            {
+                                writer.WriteStartElement("sac:TotalAmount");
+                                {
+                                    writer.WriteAttributeString("currencyID",
+                                        additionalMonetaryTotal.TotalAmount.CurrencyId);
+                                    writer.WriteValue(
+                                        additionalMonetaryTotal.TotalAmount.Value.ToString(Formatos.FormatoNumerico,
+                                            Formato));
+                                }
+                                writer.WriteEndElement();
+                            }
+
+                            #endregion TotalAmount
+                        }
+                        else
+                        {
+                            writer.WriteElementString("cbc:ID", additionalMonetaryTotal.Id);
+                            
+                            #region PayableAmount
+
+                            {
+                                writer.WriteStartElement("cbc:PayableAmount");
+                                {
+                                    writer.WriteAttributeString("currencyID", additionalMonetaryTotal.PayableAmount.CurrencyId);
+                                    writer.WriteValue(additionalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                                }
+                                writer.WriteEndElement();
+                            }
+                            if (additionalMonetaryTotal.Percent > 0)
+                            {
+                                writer.WriteElementString("cbc:Percent",
+                                    additionalMonetaryTotal.Percent.ToString(Formatos.FormatoNumerico, Formato));
+                            }
+
+                            #endregion PayableAmount
+                        }
 
                         writer.WriteEndElement();
                     }
