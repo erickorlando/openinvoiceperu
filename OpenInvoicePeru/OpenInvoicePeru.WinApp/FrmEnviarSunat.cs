@@ -255,8 +255,8 @@ namespace OpenInvoicePeru.WinApp
 
                     var respuestaEnvio = await jsonConsultaTicket.Content.ReadAsAsync<EnviarDocumentoResponse>();
 
-                    if (!respuestaEnvio.Exito)
-                        throw new ApplicationException(respuestaEnvio.MensajeError);
+                    if (!respuestaEnvio.Exito || !string.IsNullOrEmpty(respuestaEnvio.MensajeError))
+                        throw new InvalidOperationException(respuestaEnvio.MensajeError);
 
                     File.WriteAllBytes($"{Program.CarpetaCdr}\\R-{respuestaEnvio.NombreArchivo}.zip",
                         Convert.FromBase64String(respuestaEnvio.TramaZipCdr));
