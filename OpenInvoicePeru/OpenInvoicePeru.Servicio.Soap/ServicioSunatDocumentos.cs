@@ -1,6 +1,8 @@
 ﻿using System;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using OpenInvoicePeru.Comun.Constantes;
+using OpenInvoicePeru.Servicio.Soap.Documentos;
 
 namespace OpenInvoicePeru.Servicio.Soap
 {
@@ -8,20 +10,31 @@ namespace OpenInvoicePeru.Servicio.Soap
     {
         private Documentos.billServiceClient _proxyDocumentos;
 
+        Binding CreateBinding()
+        {
+            var binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
+            var elements = binding.CreateBindingElements();
+            elements.Find<SecurityBindingElement>().IncludeTimestamp = false;
+            return new CustomBinding(elements);
+        }
+
         void IServicioSunat.Inicializar(ParametrosConexion parametros)
         {
             System.Net.ServicePointManager.UseNagleAlgorithm = true;
             System.Net.ServicePointManager.Expect100Continue = false;
             System.Net.ServicePointManager.CheckCertificateRevocationList = true;
 
-            _proxyDocumentos = new Documentos.billServiceClient("ServicioSunat", parametros.EndPointUrl);
-            // Agregamos el behavior configurado para soportar WS-Security.
-            var behavior = new PasswordDigestBehavior(
-                string.Concat(parametros.Ruc,
-                parametros.UserName),
-                parametros.Password);
-
-            _proxyDocumentos.Endpoint.EndpointBehaviors.Add(behavior);
+            _proxyDocumentos = new billServiceClient(CreateBinding(), new EndpointAddress(parametros.EndPointUrl))
+            {
+                ClientCredentials =
+                {
+                    UserName =
+                    {
+                        UserName = parametros.Ruc + parametros.UserName,
+                        Password = parametros.Password
+                    }
+                }
+            };
         }
 
         RespuestaSincrono IServicioSunatDocumentos.EnviarDocumento(DocumentoSunat request)
