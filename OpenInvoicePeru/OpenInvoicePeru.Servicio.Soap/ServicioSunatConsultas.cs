@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ServiceModel;
+using System.ServiceModel.Channels;
 using OpenInvoicePeru.Comun.Constantes;
 using OpenInvoicePeru.Servicio.Soap.Consultas;
 
@@ -9,20 +10,31 @@ namespace OpenInvoicePeru.Servicio.Soap
     {
         private billServiceClient _proxyConsultas;
 
+        Binding CreateBinding()
+        {
+            var binding = new BasicHttpBinding(BasicHttpSecurityMode.TransportWithMessageCredential);
+            var elements = binding.CreateBindingElements();
+            elements.Find<SecurityBindingElement>().IncludeTimestamp = false;
+            return new CustomBinding(elements);
+        }
+
         void IServicioSunat.Inicializar(ParametrosConexion parametros)
         {
             System.Net.ServicePointManager.UseNagleAlgorithm = true;
             System.Net.ServicePointManager.Expect100Continue = false;
             System.Net.ServicePointManager.CheckCertificateRevocationList = true;
 
-            _proxyConsultas = new billServiceClient("ConsultasSunat", parametros.EndPointUrl);
-            // Agregamos el behavior configurado para soportar WS-Security.
-            var behavior = new PasswordDigestBehavior(
-                string.Concat(parametros.Ruc,
-                parametros.UserName),
-                parametros.Password);
-
-            _proxyConsultas.Endpoint.EndpointBehaviors.Add(behavior);
+            _proxyConsultas = new billServiceClient(CreateBinding(), new EndpointAddress(parametros.EndPointUrl))
+            {
+                ClientCredentials =
+                {
+                    UserName =
+                    {
+                        UserName = parametros.Ruc + parametros.UserName,
+                        Password = parametros.Password
+                    }
+                }
+            };
         }
 
         RespuestaSincrono IServicioSunatConsultas.ConsultarConstanciaDeRecepcion(DatosDocumento request)
