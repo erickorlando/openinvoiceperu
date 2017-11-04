@@ -7,7 +7,7 @@ Actualmente ya se puede usar en entornos de Producción, si encuentra algún bug
 
 Puede leer la documentación del proyecto en la sección [Wiki](https://github.com/FrameworkPeru/openinvoiceperu/wiki).
 
-Para consultar las novedades y cambios del proyecto revisa el [Control de Cambios](CHANGELOG.md)
+Para consultar las novedades y cambios del proyecto revise el [Control de Cambios](CHANGELOG.md)
 
 # Características #
 - Generación de XML los siguientes documentos electrónicos:
@@ -45,13 +45,19 @@ El proyecto contiene dos ramas:
 - develop (versión de desarrollo)
 
 ## Consideraciones ##
-- El proyecto se ha desarrollado con VS2015 Update 3, usando como base el .NET Framework 4.6.1.
-- Se recomienda usar encarecidamente VS2015 o superior, la edición [Community Edition](https://www.visualstudio.com/downloads/download-visual-studio-vs), es gratis y mucho mejor que sus predecesores.
+- El proyecto se ha desarrollado con VS2017, usando como base el .NET Framework 4.6.1.
+- Se recomienda usar encarecidamente VS2017 o superior, la edición [Community Edition](https://www.visualstudio.com/downloads/download-visual-studio-vs), es gratis y mucho mejor que sus predecesores.
 Puede usar la versión Professional o Enterprise si lo desea.
 
 - Para poder ejecutar correctamente el proyecto **debe iniciar Visual Studio como Administrador** y tener instalado IIS 7.0 o posterior.
 
 - Si quiere colaborar con su granito de arena puede hacer un Fork y enviar un Pull Request.
+
+## Formas de Colaborar ##
+
+1) Hacer un Fork al proyecto en su propio repositorio.
+2) Crear un branch con un prefijo que identfique el cambio **(feature/xxx o bugfix/xxx)**.
+3) Realizar el Pull Request con los comentarios que expliquen el cambio realizado.
 
 ## Enlaces de Interes ##
 
@@ -79,4 +85,4 @@ Si tiene mas dudas con SUNAT comuníquese con ellos al [+51 1 3150730](tel:+5113
 ## Asesoría y Soporte ##
 
 Si necesita apoyo con la Homologación (Emisor o Proveedor) o necesita integrar su sistema con **OpenInvoicePeru**, puede contactarnos al correo [soporte@frameworkperu.com](mailto:soporte@frameworkperu.com) y se puede concertar una reunión virtual, ya sea Skype, Hangouts, [Telegram](http://t.me/ErickOrlando) o TeamViewer.
-Recuerde que si bien el proyecto es de código abierto, el soporte y asesoría técnica tienen un costo.
+Recuerde que si bien el proyecto es de código abierto, el soporte y asesoría técnica son de pago.
