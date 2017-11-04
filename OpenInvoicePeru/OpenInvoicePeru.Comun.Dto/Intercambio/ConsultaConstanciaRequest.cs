@@ -1,18 +1,13 @@
-﻿#if !SILVERLIGHT
-using Newtonsoft.Json;
-#endif
+﻿using Newtonsoft.Json;
+
 namespace OpenInvoicePeru.Comun.Dto.Intercambio
 {
     public class ConsultaConstanciaRequest : EnvioDocumentoComun
     {
-#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
-#endif
         public string Serie { get; set; }
-#if !SILVERLIGHT
 
-        [JsonProperty(Required = Required.Always)] 
-#endif
+        [JsonProperty(Required = Required.Always)]
         public int Numero { get; set; }
     }
 }

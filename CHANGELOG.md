@@ -4,10 +4,15 @@
 
 ### Novedades
 
-- Issue #45 resuelto incluyendo Entity Framework Code First con SQL Server por Default con LocalDB.
+- Issue #85 combinado en el repositorio original.
+- Issue #77 Resuelto.
+- Issue #84 Proyecto Migrado a VS2017 y eliminada integracion con Silverlight.
+- Actualización de la Documentación Oficial de SUNAT.
 
 ### Bug Resueltos
 
 - Se corrige problema que provocaba que los archivos de XML Firmados y CDR se guarden de manera incorrecta.
-- Issue #78 problema en generacion de Nota de Crédito y Débito con los formatos decimales.
-- Issue #80 Generacion de Facturas con Percepción.
+
+### Bug Conocidos
+
+- Se presentan problemas para generar el XML de Guia de Remisión.

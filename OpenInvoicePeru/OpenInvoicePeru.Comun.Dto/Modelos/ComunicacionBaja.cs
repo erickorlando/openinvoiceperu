@@ -1,15 +1,11 @@
-﻿using System.Collections.Generic;
-#if !SILVERLIGHT
-using Newtonsoft.Json;
-#endif
+﻿using Newtonsoft.Json;
+using System.Collections.Generic;
 
 namespace OpenInvoicePeru.Comun.Dto.Modelos
 {
     public class ComunicacionBaja : DocumentoResumen
     {
-#if !SILVERLIGHT
         [JsonProperty(Required = Required.Always)]
-#endif
         public List<DocumentoBaja> Bajas { get; set; }
     }
 }
