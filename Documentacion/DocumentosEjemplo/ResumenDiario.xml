@@ -8,31 +8,31 @@
 	</ext:UBLExtensions>
 	<cbc:UBLVersionID>2.0</cbc:UBLVersionID>
 	<cbc:CustomizationID>1.0</cbc:CustomizationID>
-	<cbc:ID>RC-20170623-1</cbc:ID>
-	<cbc:ReferenceDate>2017-06-23</cbc:ReferenceDate>
-	<cbc:IssueDate>2017-06-23</cbc:IssueDate> 
+	<cbc:ID>RC-20171014-1</cbc:ID>
+	<cbc:ReferenceDate>2017-10-14</cbc:ReferenceDate>
+	<cbc:IssueDate>2017-10-14</cbc:IssueDate> 
 	<cac:Signature>
-		<cbc:ID>IDSignOpenInvoicePeru</cbc:ID>
+		<cbc:ID>IdOpenInvoicePeru</cbc:ID>
 		<cac:SignatoryParty>
 			<cac:PartyIdentification>
-				<cbc:ID>20481452130</cbc:ID>
+				<cbc:ID>20257471609</cbc:ID>
 			</cac:PartyIdentification>
 			<cac:PartyName>
-				<cbc:Name>EXPRESO SOL PERU SRL</cbc:Name>
+				<cbc:Name>FRAMEWORK PERU S.A.</cbc:Name>
 			</cac:PartyName>
 		</cac:SignatoryParty>
 		<cac:DigitalSignatureAttachment>
 			<cac:ExternalReference>
-				<cbc:URI>#SignatureErickOrlando</cbc:URI>
+				<cbc:URI>#IdOpenInvoicePeru</cbc:URI>
 			</cac:ExternalReference>
 		</cac:DigitalSignatureAttachment>
 	</cac:Signature>
 	<cac:AccountingSupplierParty>
-		<cbc:CustomerAssignedAccountID>20481452130</cbc:CustomerAssignedAccountID>
+		<cbc:CustomerAssignedAccountID>20257471609</cbc:CustomerAssignedAccountID>
 		<cbc:AdditionalAccountID>6</cbc:AdditionalAccountID>
 		<cac:Party>
 			<cac:PartyLegalEntity>
-				<cbc:RegistrationName>EXPRESO SOL PERU SRL</cbc:RegistrationName>
+				<cbc:RegistrationName>FRAMEWORK PERU</cbc:RegistrationName>
 			</cac:PartyLegalEntity>
 		</cac:Party>
 	</cac:AccountingSupplierParty>

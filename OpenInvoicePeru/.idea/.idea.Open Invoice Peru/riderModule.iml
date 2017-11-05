@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="RIDER_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$/../../../CHANGELOG.md">
+      <sourceFolder url="file://$MODULE_DIR$/../../../CHANGELOG.md" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../LICENSE">
+      <sourceFolder url="file://$MODULE_DIR$/../../../LICENSE" isTestSource="false" />
+    </content>
+    <content url="file://$MODULE_DIR$/../..">
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Comun" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Comun.Dto" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Comun.Dto.Silverlight" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Datos" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Entidades" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Estructuras" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Firmado" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Servicio" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Servicio.Soap" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Tests" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.ViewModel" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.WebApi" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.WinApp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.WinPart" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Xml" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/csc.exe" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/csc.exe.config" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/csc.rsp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/csi.exe" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/csi.exe.config" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/csi.rsp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/Microsoft.Build.Tasks.CodeAnalysis.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/Microsoft.CodeAnalysis.CSharp.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/Microsoft.CodeAnalysis.CSharp.Scripting.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/Microsoft.CodeAnalysis.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/Microsoft.CodeAnalysis.Scripting.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/Microsoft.CodeAnalysis.VisualBasic.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/Microsoft.CSharp.Core.targets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/Microsoft.DiaSymReader.Native.amd64.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/Microsoft.DiaSymReader.Native.x86.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/Microsoft.VisualBasic.Core.targets" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/Microsoft.Win32.Primitives.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.AppContext.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Collections.Immutable.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Console.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Diagnostics.FileVersionInfo.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Diagnostics.Process.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Diagnostics.StackTrace.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.IO.Compression.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.IO.FileSystem.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.IO.FileSystem.DriveInfo.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.IO.FileSystem.Primitives.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.IO.Pipes.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Reflection.Metadata.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Security.AccessControl.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Security.Claims.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Security.Cryptography.Algorithms.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Security.Cryptography.Encoding.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Security.Cryptography.Primitives.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Security.Cryptography.X509Certificates.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Security.Principal.Windows.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Text.Encoding.CodePages.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Threading.Thread.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.ValueTuple.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Xml.ReaderWriter.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Xml.XmlDocument.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Xml.XPath.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/System.Xml.XPath.XDocument.dll" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/vbc.exe" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/vbc.exe.config" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/vbc.rsp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/VBCSCompiler.exe" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/../../packages/Microsoft.Net.Compilers.2.2.0/tools/VBCSCompiler.exe.config" isTestSource="false" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Comun.Dto.Silverlight/Bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Comun.Dto.Silverlight/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Comun.Dto/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Comun.Dto/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Comun/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Comun/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Datos/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Datos/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Entidades/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Entidades/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Estructuras/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Estructuras/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Firmado/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Firmado/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Servicio.Soap/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Servicio.Soap/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Servicio/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Servicio/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Tests/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Tests/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.ViewModel/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.ViewModel/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.WebApi/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.WebApi/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.WinApp/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.WinPart/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.WinPart/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Xml/bin" />
+      <excludeFolder url="file://$MODULE_DIR$/../../OpenInvoicePeru.Xml/obj" />
+      <excludeFolder url="file://$MODULE_DIR$/../../artifacts" />
+      <excludeFolder url="file://$MODULE_DIR$/../../packages" />
+    </content>
+    <content url="file://$MODULE_DIR$/../../../README.md">
+      <sourceFolder url="file://$MODULE_DIR$/../../../README.md" isTestSource="false" />
+    </content>
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

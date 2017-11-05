@@ -37,14 +37,14 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 if (!resultado.Exito)
                 {
                     response.Exito = false;
-                    response.MensajeRespuesta = resultado.MensajeError;
+                    response.MensajeError = resultado.MensajeError;
                 }
                 else
                     response = await _serializador.GenerarDocumentoRespuesta(resultado.ConstanciaDeRecepcion);
             }
             catch (Exception ex)
             {
-                response.MensajeError = ex.Message;
+                response.MensajeError = ex.Source == "DotNetZip" ? "El Ticket no existe" : ex.Message;
                 response.Pila = ex.StackTrace;
                 response.Exito = false;
             }

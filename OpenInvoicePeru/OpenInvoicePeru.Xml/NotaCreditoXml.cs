@@ -16,6 +16,7 @@ namespace OpenInvoicePeru.Xml
         IEstructuraXml IDocumentoXml.Generar(IDocumentoElectronico request)
         {
             var documento = (DocumentoElectronico)request;
+            documento.MontoEnLetras = Conversion.Enletras(documento.TotalVenta);
             var creditNote = new CreditNote
             {
                 UblExtensions = new UblExtensions

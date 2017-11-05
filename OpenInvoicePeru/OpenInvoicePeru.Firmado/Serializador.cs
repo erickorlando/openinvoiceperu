@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
@@ -32,10 +31,7 @@ namespace OpenInvoicePeru.Firmado
                     {
                         serializer.Serialize(stream, objectToSerialize);
                     }
-                    var betterBytes = Encoding.Convert(Encoding.UTF8,
-                        Encoding.GetEncoding(Formatos.EncodingIso),
-                        memStr.ToArray());
-                    resultado = Convert.ToBase64String(betterBytes);
+                    resultado = Convert.ToBase64String(memStr.ToArray());
                 }
                 return resultado;
             });
