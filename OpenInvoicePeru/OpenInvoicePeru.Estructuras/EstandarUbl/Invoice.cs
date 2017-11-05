@@ -159,7 +159,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         else
                         {
                             writer.WriteElementString("cbc:ID", additionalMonetaryTotal.Id);
-                            
+
                             #region PayableAmount
 
                             {
@@ -471,7 +471,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteStartElement("cac:PartyName");
 
             writer.WriteStartElement("cbc:Name");
-            writer.WriteCData(AccountingSupplierParty.Party.PartyName.Name);
+            writer.WriteString(AccountingSupplierParty.Party.PartyName.Name);
             writer.WriteEndElement();
 
             writer.WriteEndElement();
@@ -507,7 +507,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteStartElement("cac:PartyLegalEntity");
 
             writer.WriteStartElement("cbc:RegistrationName");
-            writer.WriteCData(AccountingSupplierParty.Party.PartyLegalEntity.RegistrationName);
+            writer.WriteString(AccountingSupplierParty.Party.PartyLegalEntity.RegistrationName);
             writer.WriteEndElement();
 
             writer.WriteEndElement();
@@ -539,7 +539,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteStartElement("cac:PartyLegalEntity");
 
             writer.WriteStartElement("cbc:RegistrationName");
-            writer.WriteCData(AccountingCustomerParty.Party.PartyLegalEntity.RegistrationName);
+            writer.WriteString(AccountingCustomerParty.Party.PartyLegalEntity.RegistrationName);
             writer.WriteEndElement();
 
             writer.WriteEndElement();
