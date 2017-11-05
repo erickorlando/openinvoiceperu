@@ -136,7 +136,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     writer.WriteStartElement("cac:PartyName");
                     {
                         writer.WriteStartElement("cbc:Name");
-                        writer.WriteCData(Signature.SignatoryParty.PartyName.Name);
+                        writer.WriteString(Signature.SignatoryParty.PartyName.Name);
                         writer.WriteEndElement();
                         //writer.WriteElementString("cbc:Name", Signature.SignatoryParty.PartyName.Name);
                     }
@@ -192,7 +192,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             {
                 writer.WriteStartElement("cbc:Name");
                 {
-                    writer.WriteCData(AgentParty.PartyName.Name);
+                    writer.WriteString(AgentParty.PartyName.Name);
                 }
                 writer.WriteEndElement();
                 //writer.WriteElementString("cbc:Name", AgentParty.PartyName.Name);
@@ -207,7 +207,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteElementString("cbc:ID", AgentParty.PostalAddress.Id);
             writer.WriteStartElement("cbc:StreetName");
             {
-                writer.WriteCData(AgentParty.PostalAddress.StreetName);
+                writer.WriteString(AgentParty.PostalAddress.StreetName);
             }
             writer.WriteEndElement();
             //writer.WriteElementString("cbc:StreetName", AgentParty.PostalAddress.StreetName);
@@ -235,7 +235,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             {
                 writer.WriteStartElement("cbc:RegistrationName");
                 {
-                    writer.WriteCData(AgentParty.PartyLegalEntity.RegistrationName);
+                    writer.WriteString(AgentParty.PartyLegalEntity.RegistrationName);
                 }
                 writer.WriteEndElement();
                 //writer.WriteElementString("cbc:RegistrationName", AgentParty.PartyLegalEntity.RegistrationName);
@@ -273,7 +273,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 {
                     writer.WriteStartElement("cbc:Name");
                     {
-                        writer.WriteCData(ReceiverParty.PartyName.Name);
+                        writer.WriteString(ReceiverParty.PartyName.Name);
                     }
                     writer.WriteEndElement();
                     //writer.WriteElementString("cbc:Name", ReceiverParty.PartyName.Name);
@@ -315,7 +315,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 {
                     writer.WriteStartElement("cbc:RegistrationName");
                     {
-                        writer.WriteCData(ReceiverParty.PartyLegalEntity.RegistrationName);
+                        writer.WriteString(ReceiverParty.PartyLegalEntity.RegistrationName);
                     }
                     writer.WriteEndElement();
                     //writer.WriteElementString("cbc:RegistrationName", ReceiverParty.PartyLegalEntity.RegistrationName);

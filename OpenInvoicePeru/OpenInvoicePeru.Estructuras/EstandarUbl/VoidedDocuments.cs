@@ -166,7 +166,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             {
                 writer.WriteStartElement("cbc:RegistrationName");
-                writer.WriteCData(AccountingSupplierParty.Party.PartyLegalEntity.RegistrationName);
+                writer.WriteString(AccountingSupplierParty.Party.PartyLegalEntity.RegistrationName);
                 writer.WriteEndElement();
             }
 
