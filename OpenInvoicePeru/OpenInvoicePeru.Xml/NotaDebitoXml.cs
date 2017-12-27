@@ -198,6 +198,15 @@ namespace OpenInvoicePeru.Xml
                 });
             }
 
+            foreach (var relacionado in documento.OtrosDocumentosRelacionados)
+            {
+                debitNote.AdditionalDocumentReferences.Add(new InvoiceDocumentReference
+                {
+                    DocumentTypeCode = relacionado.TipoDocumento,
+                    Id = relacionado.NroDocumento
+                });
+            }
+
             foreach (var detalleDocumento in documento.Items)
             {
                 var linea = new InvoiceLine

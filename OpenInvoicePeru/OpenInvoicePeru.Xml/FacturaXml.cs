@@ -286,6 +286,15 @@ namespace OpenInvoicePeru.Xml
                 });
             }
 
+            foreach (var relacionado in documento.OtrosDocumentosRelacionados)
+            {
+                invoice.AdditionalDocumentReferences.Add(new InvoiceDocumentReference
+                {
+                    DocumentTypeCode = relacionado.TipoDocumento,
+                    Id = relacionado.NroDocumento
+                });
+            }
+
             if (documento.Gratuitas > 0)
             {
                 invoice.UblExtensions.Extension2.ExtensionContent
