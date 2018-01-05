@@ -40,8 +40,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PasswordDigestBehavior.cs" />
-    <Compile Include="PasswordDigestMessageInspector.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Service References\Consultas\Reference.cs">
       <AutoGen>True</AutoGen>
