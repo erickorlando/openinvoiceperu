@@ -77,6 +77,9 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         public List<DocumentoRelacionado> Relacionados { get; set; }
 
         [JsonProperty(Required = Required.AllowNull)]
+        public List<DocumentoRelacionado> OtrosDocumentosRelacionados { get; set; }
+
+        [JsonProperty(Required = Required.AllowNull)]
         public List<Discrepancia> Discrepancias { get; set; }
 
         [JsonProperty(Required = Required.Always)]
@@ -102,6 +105,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             Items = new List<DetalleDocumento>();
             DatoAdicionales = new List<DatoAdicional>();
             Relacionados = new List<DocumentoRelacionado>();
+            OtrosDocumentosRelacionados = new List<DocumentoRelacionado>();
             Discrepancias = new List<Discrepancia>();
             TipoDocumento = "01"; // Factura.
             TipoOperacion = "01"; // Venta Interna.

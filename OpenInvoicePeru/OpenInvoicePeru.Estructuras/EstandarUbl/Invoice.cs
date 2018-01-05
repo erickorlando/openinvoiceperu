@@ -32,6 +32,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public List<InvoiceDocumentReference> DespatchDocumentReferences { get; set; }
 
+        public List<InvoiceDocumentReference> AdditionalDocumentReferences { get; set; }
+
         public string DocumentCurrencyCode { get; set; }
 
         public List<TaxTotal> TaxTotals { get; set; }
@@ -51,6 +53,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             AccountingSupplierParty = new AccountingSupplierParty();
             AccountingCustomerParty = new AccountingSupplierParty();
             DespatchDocumentReferences = new List<InvoiceDocumentReference>();
+            AdditionalDocumentReferences = new List<InvoiceDocumentReference>();
             UblExtensions = new UblExtensions();
             Signature = new SignatureCac();
             InvoiceLines = new List<InvoiceLine>();
@@ -407,6 +410,20 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             }
 
             #endregion DespatchDocumentReferences
+
+            #region AdditionalDocumentReferences
+
+            foreach (var reference in AdditionalDocumentReferences)
+            {
+                writer.WriteStartElement("cac:AdditionalDocumentReference");
+                {
+                    writer.WriteElementString("cbc:ID", reference.Id);
+                    writer.WriteElementString("cbc:DocumentTypeCode", reference.DocumentTypeCode);
+                }
+                writer.WriteEndElement();
+            }
+
+            #endregion AdditionalDocumentReferences
 
             #region Signature
 
