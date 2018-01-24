@@ -86,4 +86,4 @@ Si tiene mas dudas con SUNAT comuníquese con ellos al [+51 1 3150730](tel:+5113
 
 
 Si necesita Asesoría, Desarrollo, Implementación o necesita Integrar su Sistema de Ventas o ERP con **OpenInvoicePeru**, puede contactarnos al correo [soporte@frameworkperu.com](mailto:soporte@frameworkperu.com) y se puede concertar una reunión virtual, ya sea Skype, Hangouts, [Telegram](http://t.me/ErickOrlando) o TeamViewer.
-Recuerde que si bien el proyecto es de código abierto, el soporte y asesoría técnica son de pago, para más información ingrese [aquí](http://pretty.link/iFsFF9).
+Recuerde que si bien el proyecto es de código abierto, el soporte y asesoría técnica son de pago, para más información ingrese [aquí](https://goo.gl/9xkUtB).
