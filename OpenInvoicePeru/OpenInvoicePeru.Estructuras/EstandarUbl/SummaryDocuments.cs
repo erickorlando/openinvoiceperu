@@ -238,12 +238,15 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                     foreach (var billing in item.BillingPayments)
                     {
+                        if (billing.PaidAmount.Value <= 0) continue;
+
                         writer.WriteStartElement("sac:BillingPayment");
                         {
                             writer.WriteStartElement("cbc:PaidAmount");
                             {
                                 writer.WriteAttributeString("currencyID", item.TotalAmount.CurrencyId);
-                                writer.WriteValue(billing.PaidAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                                writer.WriteValue(
+                                    billing.PaidAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                             }
                             writer.WriteEndElement();
                             writer.WriteElementString("cbc:InstructionID", billing.InstructionId);
@@ -251,18 +254,22 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         writer.WriteEndElement();
                     }
 
-                    writer.WriteStartElement("cac:AllowanceCharge");
+                    if (item.AllowanceCharge.Amount.Value > 0)
                     {
-                        writer.WriteElementString("cbc:ChargeIndicator", item.AllowanceCharge.ChargeIndicator ? "true" : "false");
-
-                        writer.WriteStartElement("cbc:Amount");
+                        writer.WriteStartElement("cac:AllowanceCharge");
                         {
-                            writer.WriteAttributeString("currencyID", item.AllowanceCharge.Amount.CurrencyId);
-                            writer.WriteValue(item.AllowanceCharge.Amount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                            writer.WriteElementString("cbc:ChargeIndicator", item.AllowanceCharge.ChargeIndicator ? "true" : "false");
+
+                            writer.WriteStartElement("cbc:Amount");
+                            {
+                                writer.WriteAttributeString("currencyID", item.AllowanceCharge.Amount.CurrencyId);
+                                writer.WriteValue(item.AllowanceCharge.Amount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                            }
+                            writer.WriteEndElement();
                         }
                         writer.WriteEndElement();
                     }
-                    writer.WriteEndElement();
+
 
                     foreach (var taxTotal in item.TaxTotals)
                     {
