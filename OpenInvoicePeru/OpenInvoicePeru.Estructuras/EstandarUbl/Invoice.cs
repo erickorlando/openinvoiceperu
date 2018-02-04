@@ -853,11 +853,22 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                 #region SellersItemIdentification
 
+                
                 writer.WriteStartElement("cac:SellersItemIdentification");
                 writer.WriteElementString("cbc:ID", invoiceLine.Item.SellersItemIdentification.Id);
                 writer.WriteEndElement();
 
                 #endregion SellersItemIdentification
+
+                #region AdditionalInformation
+                if (!string.IsNullOrEmpty(invoiceLine.Item.AdditionalItemIdentification.Id))
+                {
+                    writer.WriteStartElement("cac:AdditionalItemIdentification");
+                    writer.WriteElementString("cbc:ID", invoiceLine.Item.AdditionalItemIdentification.Id);
+                    writer.WriteEndElement();
+                }
+
+                #endregion AdditionalInformation
 
                 writer.WriteEndElement();
 

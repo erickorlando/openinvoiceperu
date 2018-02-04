@@ -484,6 +484,10 @@ namespace OpenInvoicePeru.Xml
                         SellersItemIdentification = new SellersItemIdentification
                         {
                             Id = detalleDocumento.CodigoItem
+                        },
+                        AdditionalItemIdentification = new AdditionalItemIdentification
+                        {
+                            Id = detalleDocumento.PlacaVehiculo
                         }
                     },
                     Price = new Price
@@ -574,6 +578,10 @@ namespace OpenInvoicePeru.Xml
                         },
                         PriceTypeCode = "02"
                     });
+
+                // linea.AditionalItemIdentification.Id = documento.PlacaVehiculo;
+
+                            
 
                 /* 51 - Descuentos por ítem */
                 if (detalleDocumento.Descuento > 0)
