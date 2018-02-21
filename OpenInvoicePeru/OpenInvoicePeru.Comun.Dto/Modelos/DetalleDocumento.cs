@@ -40,6 +40,8 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public decimal Descuento { get; set; }
 
+        public string PlacaVehiculo { get; set; }
+
         [JsonProperty(Required = Required.Always)]
         public decimal TotalVenta { get; set; }
 
