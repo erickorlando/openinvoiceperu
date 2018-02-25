@@ -16,7 +16,7 @@
     <RootNamespace>OpenInvoicePeru.WebApi</RootNamespace>
     <AssemblyName>OpenInvoicePeru.WebApi</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -25,6 +25,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -120,10 +121,8 @@
     <Compile Include="App_Start\UnityConfig.cs" />
     <Compile Include="App_Start\UnityWebApiActivator.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\Admin\EmpresasController.cs" />
     <Compile Include="Controllers\ConsultarConstanciaController.cs" />
     <Compile Include="Controllers\ConsultarTicketController.cs" />
-    <Compile Include="Controllers\Documentos\DocumentoElectronicoController.cs" />
     <Compile Include="Controllers\GenerarGuiaRemisionController.cs" />
     <Compile Include="Controllers\GenerarNotaCreditoController.cs" />
     <Compile Include="Controllers\GenerarNotaDebitoController.cs" />
@@ -135,7 +134,6 @@
     <Compile Include="Controllers\GenerarResumenDiarioController.cs" />
     <Compile Include="Controllers\GenerarComunicacionBajaController.cs" />
     <Compile Include="Controllers\GenerarRetencionController.cs" />
-    <Compile Include="Controllers\Admin\ParametroConfiguracionController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
