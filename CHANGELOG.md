@@ -8,6 +8,7 @@
 - Placa de Vehiculo
 - Resumen Diario 1.1 actualizado a normativa 2018.
 - XML para Boletas y Facturas más pequeños.
+- Proyectos innecesarios removidos.
 
 ### Bug Resueltos
 
