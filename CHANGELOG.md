@@ -1,20 +1,17 @@
 # Control de Cambios
 
-## v1.4
+## v1.5
 
 ### Novedades
 
-- Actualización de la Documentación Oficial de SUNAT.
+- Documentos Relacionados adicionales.
+- Placa de Vehiculo
+- Resumen Diario 1.1 actualizado a normativa 2018.
+- XML para Boletas y Facturas más pequeños.
+- Proyectos innecesarios removidos.
 
 ### Bug Resueltos
 
-- Se corrige problema que provocaba que los archivos de XML Firmados y CDR se guarden de manera incorrecta.
-- Issue #64 Reemplazar caracteres especiales en campos del XML.
-- Issue #77 Monto en Letras generado automaticamente.
-- Issue #84 Proyecto Migrado a VS2017 y eliminada integracion con Silverlight.
-- Issue #85 combinado en el repositorio original (Aporte de [giansalex](https://github.com/giansalex)).
-
-
-### Bug Conocidos
-
-- Se presentan problemas para generar el XML de Guia de Remisión.
+- Se corrige problema que provocaba que los nombres de los archivos de XML Firmados y CDR se guarden de manera incorrecta en el WinApp.
+- Correccion de Datos de Receptor en Percepciones y Retenciones.
+- Issue #95 Error al firmar documentos XML codificados con UTF-8.

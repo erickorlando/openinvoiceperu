@@ -203,34 +203,34 @@ namespace OpenInvoicePeru.Xml
                         }
                     });
                 }
-                if (grupo.TotalIgv > 0)
+                //if (grupo.TotalIgv > 0)
+                //{
+                linea.TaxTotals.Add(new TaxTotal
                 {
-                    linea.TaxTotals.Add(new TaxTotal
+                    TaxAmount = new PayableAmount
+                    {
+                        CurrencyId = grupo.Moneda,
+                        Value = grupo.TotalIgv
+                    },
+                    TaxSubtotal = new TaxSubtotal
                     {
                         TaxAmount = new PayableAmount
                         {
                             CurrencyId = grupo.Moneda,
                             Value = grupo.TotalIgv
                         },
-                        TaxSubtotal = new TaxSubtotal
+                        TaxCategory = new TaxCategory
                         {
-                            TaxAmount = new PayableAmount
+                            TaxScheme = new TaxScheme
                             {
-                                CurrencyId = grupo.Moneda,
-                                Value = grupo.TotalIgv
-                            },
-                            TaxCategory = new TaxCategory
-                            {
-                                TaxScheme = new TaxScheme
-                                {
-                                    Id = "1000",
-                                    Name = "IGV",
-                                    TaxTypeCode = "VAT"
-                                }
+                                Id = "1000",
+                                Name = "IGV",
+                                TaxTypeCode = "VAT"
                             }
                         }
-                    });
-                }
+                    }
+                });
+                //}
                 if (grupo.TotalOtrosImpuestos > 0)
                 {
                     linea.TaxTotals.Add(new TaxTotal
@@ -259,7 +259,7 @@ namespace OpenInvoicePeru.Xml
                         }
                     });
                 }
-                
+
                 summary.SummaryDocumentsLines.Add(linea);
             }
 

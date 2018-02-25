@@ -195,10 +195,10 @@ namespace OpenInvoicePeru.WinApp
                     {
                         if (rpta.Exito && !string.IsNullOrEmpty(rpta.TramaZipCdr))
                         {
-                            File.WriteAllBytes($"{Program.CarpetaXml}\\{respuestaEnvio.NombreArchivo}",
+                            File.WriteAllBytes($"{Program.CarpetaXml}\\{respuestaEnvio.NombreArchivo}.xml",
                                 Convert.FromBase64String(respuestaFirmado.TramaXmlFirmado));
 
-                            File.WriteAllBytes($"{Program.CarpetaCdr}\\R-{respuestaEnvio.NombreArchivo}",
+                            File.WriteAllBytes($"{Program.CarpetaCdr}\\R-{respuestaEnvio.NombreArchivo}.zip",
                                 Convert.FromBase64String(rpta.TramaZipCdr));
                         }
                     }
@@ -263,7 +263,8 @@ namespace OpenInvoicePeru.WinApp
 
                     txtResult.Text = $@"{Resources.procesoCorrecto}{Environment.NewLine}{respuestaEnvio.MensajeRespuesta}";
 
-                    Hablar();
+                    if (chkVoz.Checked)
+                        Hablar();
                 }
             }
             catch (Exception ex)

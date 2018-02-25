@@ -26,9 +26,9 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DetalleDocumento">
-    <Position X="9.5" Y="2.5" Width="2.25" />
+    <Position X="9.5" Y="2.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>QAASAgEAABAAAgAAAAAAAwABAgAAEAAAAIACIAAAAAA=</HashCode>
+      <HashCode>QAESAgEAABAAAgAAAAAAAwABAgAAEAAAAIACIAAAAAA=</HashCode>
       <FileName>Modelos\DetalleDocumento.cs</FileName>
     </TypeIdentifier>
   </Class>
@@ -42,7 +42,7 @@
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoElectronico" BaseTypeListCollapsed="true">
     <Position X="5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>gGMBEAAAABAUCAACAABDAAAAJJECRBAAMAAAAigAAAA=</HashCode>
+      <HashCode>gGMBEAAAABIUCAACAABDAAAAJJECRBAAMAAAAigAAAA=</HashCode>
       <FileName>Modelos\DocumentoElectronico.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -54,6 +54,7 @@
       <Property Name="Items" />
       <Property Name="DatoAdicionales" />
       <Property Name="Relacionados" />
+      <Property Name="OtrosDocumentosRelacionados" />
       <Property Name="Discrepancias" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
