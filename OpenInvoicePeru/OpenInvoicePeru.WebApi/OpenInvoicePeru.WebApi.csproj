@@ -78,6 +78,9 @@
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="OpenInvoicePeru.Comun.Dto, Version=1.3.6.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\OpenInvoicePeru.DataTransfersObjects.1.3.8\lib\net40\OpenInvoicePeru.Comun.Dto.dll</HintPath>
+    </Reference>
     <Reference Include="Swashbuckle.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cd1bb07a5ac7c7bc, processorArchitecture=MSIL">
       <HintPath>..\packages\Swashbuckle.Core.5.6.0\lib\net40\Swashbuckle.Core.dll</HintPath>
     </Reference>
@@ -145,10 +148,6 @@
     <Folder Include="App_Data\" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\OpenInvoicePeru.Comun.Dto\OpenInvoicePeru.Comun.Dto.csproj">
-      <Project>{A265A65A-C2A9-4F9E-B272-BED5ED04DF98}</Project>
-      <Name>OpenInvoicePeru.Comun.Dto</Name>
-    </ProjectReference>
     <ProjectReference Include="..\OpenInvoicePeru.Comun\OpenInvoicePeru.Comun.csproj">
       <Project>{C6D3447F-6AED-4DA5-B28C-7C0356F2F4A8}</Project>
       <Name>OpenInvoicePeru.Comun</Name>
