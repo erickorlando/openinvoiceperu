@@ -109,6 +109,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 {
                     foreach (var additionalMonetaryTotal in ext2.AdditionalMonetaryTotals)
                     {
+                        if (additionalMonetaryTotal.PayableAmount.Value == 0) continue;
+
                         writer.WriteStartElement("sac:AdditionalMonetaryTotal");
                         if (additionalMonetaryTotal.ReferenceAmount.Value > 0)
                         {
