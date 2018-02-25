@@ -108,7 +108,22 @@ namespace OpenInvoicePeru.Xml
                             Value = grupo.TotalDescuentos
                         }
                     }
+
                 };
+
+             /*  if (grupo.TotalDescuentos > 0)
+                {
+                    linea.AllowanceCharge = new AllowanceCharge
+                    {
+                        ChargeIndicator = true,
+                        Amount = new PayableAmount
+                        {
+                            CurrencyId = grupo.Moneda,
+                            Value = grupo.TotalDescuentos
+                        }
+
+                    };
+                }*/
 
                 if (grupo.Exoneradas > 0)
                 {
