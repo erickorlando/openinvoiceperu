@@ -9,6 +9,7 @@
 - Resumen Diario 1.1 actualizado a normativa 2018.
 - XML para Boletas y Facturas más pequeños.
 - Proyectos innecesarios removidos.
+- Documentacion removida al proyecto [openinvoiceperudocs](https://github.com/FrameworkPeru/openinvoiceperudocs).
 
 ### Bug Resueltos
 
