@@ -5,7 +5,7 @@ Permite la generacion de XML, empaquetado, envío y recepción de documentos ele
 
 Si encuentra algún bug por favor reportarlo a la zona de [Issues de GitHub](https://github.com/FrameworkPeru/facturacionelectronicasunat/issues).
 
-Puede leer la documentación del proyecto en la sección [Wiki](https://github.com/FrameworkPeru/openinvoiceperu/wiki).
+Puede leer la documentación de SUNAT en el repositorio de [OpenInvoicePeruDocs](https://github.com/FrameworkPeru/openinvoiceperudocs).
 
 Para consultar las novedades y cambios del proyecto revise el [Control de Cambios](CHANGELOG.md)
 
@@ -22,7 +22,7 @@ Para consultar las novedades y cambios del proyecto revise el [Control de Cambio
   - Guías de Remisión
  
 - Firmado del XML con un certificado digital elegido por el usuario.
-- Envío al servicio Web de SUNAT de los documentos electrónicos generados (Beta, Homologación y Producción).
+- Envío al servicio Web de SUNAT de los documentos electrónicos generados (Beta y Producción).
 - Envío de Resumen Diario y Comunicación de Baja.
 - Desempaquetado y Lectura del contenido del CDR de SUNAT.
 - Consulta de Tickets de los Resúmenes y Bajas.
@@ -36,12 +36,9 @@ Para consultar las novedades y cambios del proyecto revise el [Control de Cambio
 
 - Ejemplo de conexión en Silverlight 5.0 entre a [repositorio](https://github.com/FrameworkPeru/ClienteSLOpenInvoicePeru).
 
-## Ramas (branches) ##
+## Donaciones ##
 
-El proyecto contiene dos ramas:
-
-- master (versión estable)
-- develop (versión de desarrollo)
+Si cree que el proyecto lo ayuda con su labor, puede donar a través de PayPal [aquí](http://paypal.me/evelascom).
 
 ## Consideraciones ##
 - El proyecto se ha desarrollado con VS2017, usando como base el .NET Framework 4.6.1.
