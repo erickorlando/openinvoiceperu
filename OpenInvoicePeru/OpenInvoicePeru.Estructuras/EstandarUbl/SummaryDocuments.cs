@@ -238,15 +238,12 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                     foreach (var billing in item.BillingPayments)
                     {
-                        if (billing.PaidAmount.Value <= 0) continue;
-
                         writer.WriteStartElement("sac:BillingPayment");
                         {
                             writer.WriteStartElement("cbc:PaidAmount");
                             {
                                 writer.WriteAttributeString("currencyID", item.TotalAmount.CurrencyId);
-                                writer.WriteValue(
-                                    billing.PaidAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                                writer.WriteValue(billing.PaidAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                             }
                             writer.WriteEndElement();
                             writer.WriteElementString("cbc:InstructionID", billing.InstructionId);
@@ -269,7 +266,6 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         }
                         writer.WriteEndElement();
                     }
-
 
                     foreach (var taxTotal in item.TaxTotals)
                     {

@@ -30,6 +30,8 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
         /// </remarks>>
         public string FirstArrivalPortLocationId { get; set; }
 
+        public string Id { get; set; }
+
         public Shipment()
         {
             GrossWeightMeasure = new InvoicedQuantity();
