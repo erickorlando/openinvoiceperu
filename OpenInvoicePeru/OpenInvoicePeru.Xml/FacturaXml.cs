@@ -288,11 +288,11 @@ namespace OpenInvoicePeru.Xml
 
             foreach (var relacionado in documento.OtrosDocumentosRelacionados)
             {
-                invoice.AdditionalDocumentReferences.Add(new InvoiceDocumentReference
-                {
-                    DocumentTypeCode = relacionado.TipoDocumento,
-                    Id = relacionado.NroDocumento
-                });
+                //invoice.AdditionalDocumentReferences.Add(new InvoiceDocumentReference
+                //{
+                //    DocumentTypeCode = relacionado.TipoDocumento,
+                //    Id = relacionado.NroDocumento
+                //});
             }
 
             if (documento.Gratuitas > 0)
@@ -485,10 +485,10 @@ namespace OpenInvoicePeru.Xml
                         {
                             Id = detalleDocumento.CodigoItem
                         },
-                        AdditionalItemIdentification = new AdditionalItemIdentification
-                        {
-                            Id = detalleDocumento.PlacaVehiculo
-                        }
+                        //AdditionalItemIdentification = new AdditionalItemIdentification
+                        //{
+                        //    Id = detalleDocumento.PlacaVehiculo
+                        //}
                     },
                     Price = new Price
                     {
