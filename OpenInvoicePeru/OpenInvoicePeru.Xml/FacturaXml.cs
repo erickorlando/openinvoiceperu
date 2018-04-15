@@ -263,8 +263,7 @@ namespace OpenInvoicePeru.Xml
             if (!string.IsNullOrEmpty(documento.TipoOperacion)
                 && documento.DatosGuiaTransportista == null)
             {
-                invoice.UblExtensions.Extension2.ExtensionContent
-                    .AdditionalInformation.SunatTransaction.Id = documento.TipoOperacion;
+                invoice.ProfileId = documento.TipoOperacion;
                 // Si es Emisor Itinerante.
                 if (documento.TipoOperacion == "05")
                 {

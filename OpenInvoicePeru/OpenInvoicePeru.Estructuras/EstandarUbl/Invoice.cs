@@ -16,9 +16,13 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
     {
         public DateTime IssueDate { get; set; }
 
-        public DateTime DueDate { get; set; }
+        public DateTime? DueDate { get; set; }
 
         public DateTime IssueTime { get; set; }
+
+        public string ProfileId { get; set; }
+
+        public string Note { get; set; }
 
         public UblExtensions UblExtensions { get; set; }
 
@@ -115,11 +119,28 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteElementString("cbc:UBLVersionID", UblVersionId);
             writer.WriteElementString("cbc:CustomizationID", CustomizationId);
+            writer.WriteStartElement("cbc:ProfileID");
+            {
+                writer.WriteAttributeString("schemeName", ValoresUbl.TipoOperacionSchemeName);
+                writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
+                writer.WriteAttributeString("schemeURI", ValoresUbl.TipoOperacionSchemeUri);
+                writer.WriteValue(ProfileId);
+            }
+            writer.WriteEndElement();
             writer.WriteElementString("cbc:ID", Id);
             writer.WriteElementString("cbc:IssueDate", IssueDate.ToString(Formatos.FormatoFecha));
-            writer.WriteElementString("cbc:DueDate", DueDate.ToString(Formatos.FormatoFecha));
+            if (DueDate != null)
+                writer.WriteElementString("cbc:DueDate", DueDate?.ToString(Formatos.FormatoFecha));
+
             writer.WriteElementString("cbc:IssueTime", IssueTime.ToString(Formatos.FormatoHora));
-            writer.WriteElementString("cbc:InvoiceTypeCode", InvoiceTypeCode);
+            writer.WriteStartElement("cbc:InvoiceTypeCode");
+            {
+                writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
+                writer.WriteAttributeString("listName", ValoresUbl.InvoiceTypeCodeName);
+                writer.WriteAttributeString("listURI", ValoresUbl.InvoiceTypeCodeSchemeUri);
+                writer.WriteValue(InvoiceTypeCode); 
+            }
+            writer.WriteEndElement();
             writer.WriteElementString("cbc:DocumentCurrencyCode", DocumentCurrencyCode);
 
             #region DespatchDocumentReferences
