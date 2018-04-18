@@ -20,65 +20,7 @@ namespace OpenInvoicePeru.Xml
             documento.MontoEnLetras = Conversion.Enletras(documento.TotalVenta);
             var invoice = new Invoice
             {
-                UblExtensions = new UblExtensions
-                {
-                    Extension2 = new UblExtension
-                    {
-                        ExtensionContent = new ExtensionContent
-                        {
-                            AdditionalInformation = new AdditionalInformation
-                            {
-                                AdditionalMonetaryTotals = new List<AdditionalMonetaryTotal>()
-                                {
-                                    new AdditionalMonetaryTotal()
-                                    {
-                                        Id = "1001",
-                                        PayableAmount = new PayableAmount()
-                                        {
-                                            CurrencyId = documento.Moneda,
-                                            Value = documento.Gravadas
-                                        }
-                                    },
-                                    new AdditionalMonetaryTotal
-                                    {
-                                        Id = "1002",
-                                        PayableAmount = new PayableAmount
-                                        {
-                                            CurrencyId = documento.Moneda,
-                                            Value = documento.Inafectas
-                                        }
-                                    },
-                                    new AdditionalMonetaryTotal
-                                    {
-                                        Id = "1003",
-                                        PayableAmount = new PayableAmount
-                                        {
-                                            CurrencyId = documento.Moneda,
-                                            Value = documento.Exoneradas
-                                        }
-                                    },
-                                    new AdditionalMonetaryTotal
-                                    {
-                                        Id = "1004",
-                                        PayableAmount = new PayableAmount
-                                        {
-                                            CurrencyId = documento.Moneda,
-                                            Value = documento.Gratuitas
-                                        }
-                                    }
-                                },
-                                AdditionalProperties = new List<AdditionalProperty>()
-                                {
-                                    new AdditionalProperty
-                                    {
-                                        Id = "1000",
-                                        Value = documento.MontoEnLetras
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
+                Note = documento.MontoEnLetras,
                 Id = documento.IdDocumento,
                 IssueDate = DateTime.Parse(documento.FechaEmision),
                 InvoiceTypeCode = documento.TipoDocumento,
@@ -580,7 +522,7 @@ namespace OpenInvoicePeru.Xml
 
                 // linea.AditionalItemIdentification.Id = documento.PlacaVehiculo;
 
-                            
+
 
                 /* 51 - Descuentos por ítem */
                 if (detalleDocumento.Descuento > 0)

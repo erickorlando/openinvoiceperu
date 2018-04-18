@@ -5,6 +5,7 @@ using OpenInvoicePeru.Estructuras.CommonExtensionComponents;
 using OpenInvoicePeru.Estructuras.SunatAggregateComponents;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -141,7 +142,25 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 writer.WriteValue(InvoiceTypeCode); 
             }
             writer.WriteEndElement();
+
+            writer.WriteStartElement("cbc:Note");
+            {
+                writer.WriteAttributeString("languageLocaleID", "1000");
+                writer.WriteValue(Note);
+            }
+            writer.WriteEndElement();
+
             writer.WriteElementString("cbc:DocumentCurrencyCode", DocumentCurrencyCode);
+            writer.WriteStartElement("cbc:DocumentCurrencyCode");
+            {
+                writer.WriteAttributeString("listID", ValoresUbl.DocumentCurrencyCode);
+                writer.WriteAttributeString("listName", ValoresUbl.CurrencyListName);
+                writer.WriteAttributeString("listAgencyName", ValoresUbl.CurrencyAgencyName);
+                writer.WriteValue(DocumentCurrencyCode);
+            }
+            writer.WriteEndElement();
+
+            writer.WriteElementString("cbc:LineCountNumeric", InvoiceLines.Count.ToString());
 
             #region DespatchDocumentReferences
 
@@ -206,67 +225,62 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             #region AccountingSupplierParty
 
             writer.WriteStartElement("cac:AccountingSupplierParty");
+            {
+                #region Party
 
-            writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingSupplierParty.CustomerAssignedAccountId);
-            writer.WriteElementString("cbc:AdditionalAccountID",
-                AccountingSupplierParty.AdditionalAccountId);
+                writer.WriteStartElement("cac:Party");
+                {
+                    #region PartyName
 
-            #region Party
+                    writer.WriteStartElement("cac:PartyName");
 
-            writer.WriteStartElement("cac:Party");
+                    writer.WriteStartElement("cbc:Name");
+                    writer.WriteString(AccountingSupplierParty.Party.PartyName.Name);
+                    writer.WriteEndElement();
 
-            #region PartyName
+                    writer.WriteEndElement();
 
-            writer.WriteStartElement("cac:PartyName");
+                    #endregion PartyName
 
-            writer.WriteStartElement("cbc:Name");
-            writer.WriteString(AccountingSupplierParty.Party.PartyName.Name);
-            writer.WriteEndElement();
+                    #region PartyTaxScheme
 
-            writer.WriteEndElement();
+                    writer.WriteStartElement("cac:PartyTaxScheme");
+                    {
+                        writer.WriteElementString("cbc:RegistrationName", AccountingSupplierParty.PartyTaxScheme.RegistrationName);
+                        
+                        #region CompanyID
+                        writer.WriteStartElement("cbc:CompanyID");
+                        {
+                            writer.WriteAttributeString("schemeID", AccountingSupplierParty.PartyTaxScheme.CompanyId.SchemeId);
+                            writer.WriteAttributeString("schemeName", AccountingSupplierParty.PartyTaxScheme.CompanyId.SchemeName);
+                            writer.WriteAttributeString("schemeAgencyName", AccountingSupplierParty.PartyTaxScheme.CompanyId.SchemeAgencyName);
+                            writer.WriteAttributeString("schemeURI", AccountingSupplierParty.PartyTaxScheme.CompanyId.SchemeUri);
+                            writer.WriteValue(AccountingSupplierParty.PartyTaxScheme.CompanyId.Value);
+                        }
+                        writer.WriteEndElement();
+                        #endregion
 
-            #endregion PartyName
+                        writer.WriteStartElement("cac:RegistrationAddress");
+                        {
+                            writer.WriteElementString("cbc:AddressTypeCode", AccountingSupplierParty.PartyTaxScheme.RegistrationAddress.AddressTypeCode);
+                        }
+                        writer.WriteEndElement();
 
-            #region PostalAddress
+                        writer.WriteStartElement("cac:TaxScheme");
+                        {
+                            writer.WriteElementString("cbc:ID", "-");
+                        }
+                        writer.WriteEndElement();
+                    }
+                    writer.WriteEndElement();
 
-            writer.WriteStartElement("cac:PostalAddress");
-            writer.WriteElementString("cbc:ID", AccountingSupplierParty.Party.PostalAddress.Id);
-            writer.WriteElementString("cbc:StreetName", AccountingSupplierParty.Party.PostalAddress.StreetName);
-            if (!string.IsNullOrEmpty(AccountingSupplierParty.Party.PostalAddress.CitySubdivisionName))
-                writer.WriteElementString("cbc:CitySubdivisionName", AccountingSupplierParty.Party.PostalAddress.CitySubdivisionName);
-            writer.WriteElementString("cbc:CityName", AccountingSupplierParty.Party.PostalAddress.CityName);
-            writer.WriteElementString("cbc:CountrySubentity", AccountingSupplierParty.Party.PostalAddress.CountrySubentity);
-            writer.WriteElementString("cbc:District", AccountingSupplierParty.Party.PostalAddress.District);
+                    #endregion
 
-            #region Country
+                }
+                writer.WriteEndElement();
 
-            writer.WriteStartElement("cac:Country");
-            writer.WriteElementString("cbc:IdentificationCode",
-                AccountingSupplierParty.Party.PostalAddress.Country.IdentificationCode);
-            writer.WriteEndElement();
-
-            #endregion Country
-
-            writer.WriteEndElement();
-
-            #endregion PostalAddress
-
-            #region PartyLegalEntity
-
-            writer.WriteStartElement("cac:PartyLegalEntity");
-
-            writer.WriteStartElement("cbc:RegistrationName");
-            writer.WriteString(AccountingSupplierParty.Party.PartyLegalEntity.RegistrationName);
-            writer.WriteEndElement();
-
-            writer.WriteEndElement();
-
-            #endregion PartyLegalEntity
-
-            writer.WriteEndElement();
-
-            #endregion Party
-
+                #endregion Party
+            }
             writer.WriteEndElement();
 
             #endregion AccountingSupplierParty
