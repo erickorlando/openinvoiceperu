@@ -414,12 +414,27 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     {
                         writer.WriteStartElement("cac:TaxCategory");
 
+                        writer.WriteStartElement("cbc:ID");
+                        {
+                            writer.WriteAttributeString("schemeID", ValoresUbl.TaxCategorySchemeId);
+                            writer.WriteAttributeString("schemeName", ValoresUbl.TaxSchemeName);
+                            writer.WriteAttributeString("schemeAgencyName", ValoresUbl.CurrencyAgencyName);
+                            writer.WriteValue(taxTotal.TaxCategoryId); 
+                        }
+                        writer.WriteEndElement();
+
                         #region TaxScheme
 
                         {
                             writer.WriteStartElement("cac:TaxScheme");
 
-                            writer.WriteElementString("cbc:ID", taxTotal.TaxSubtotal.TaxCategory.TaxScheme.Id);
+                            writer.WriteStartElement("cbc:ID");
+                            {
+                                writer.WriteAttributeString("schemeID", ValoresUbl.TaxSchemeId);
+                                writer.WriteAttributeString("schemeAgencyID", "6");
+                                writer.WriteValue(taxTotal.TaxSubtotal.TaxCategory.TaxScheme.Id); 
+                            }
+                            writer.WriteEndElement();
                             writer.WriteElementString("cbc:Name", taxTotal.TaxSubtotal.TaxCategory.TaxScheme.Name);
                             writer.WriteElementString("cbc:TaxTypeCode", taxTotal.TaxSubtotal.TaxCategory.TaxScheme.TaxTypeCode);
 

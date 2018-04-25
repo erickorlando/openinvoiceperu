@@ -12,11 +12,20 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 
         public TaxSubtotal TaxSubtotal { get; set; }
 
+        /// <summary>
+        /// Tipo de Afectacion del IGV
+        /// S = Gravado
+        /// E = Exonerado
+        /// O = Inafecto
+        /// </summary>
+        public string TaxCategoryId { get; set; }
+
         public TaxTotal()
         {
             TaxableAmount = new PayableAmount();
             TaxAmount = new PayableAmount();
             TaxSubtotal = new TaxSubtotal();
+            TaxCategoryId = "S";
         }
     }
 }
