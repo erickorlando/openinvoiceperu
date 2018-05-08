@@ -20,6 +20,8 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
         /// </summary>
         public string TaxCategoryId { get; set; }
 
+        public TaxCategory TaxCategory { get; set; }
+
         public TaxTotal()
         {
             TaxableAmount = new PayableAmount();

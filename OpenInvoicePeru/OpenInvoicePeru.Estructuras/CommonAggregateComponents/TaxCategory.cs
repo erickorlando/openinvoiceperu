@@ -7,6 +7,8 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
     {
         public string TaxExemptionReasonCode { get; set; }
 
+        public decimal Percent { get; set; }
+
         public string TierRange { get; set; }
 
         public TaxScheme TaxScheme { get; set; }
