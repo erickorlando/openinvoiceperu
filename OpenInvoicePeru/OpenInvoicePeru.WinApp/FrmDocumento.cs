@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net.Http;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Datos;
@@ -349,6 +350,9 @@ namespace OpenInvoicePeru.WinApp
                 }
 
                 var response = await proxy.PostAsJsonAsync(metodoApi, _documento);
+
+                string json = JsonConvert.SerializeObject(_documento);
+
                 var respuesta = await response.Content.ReadAsAsync<DocumentoResponse>();
                 if (!respuesta.Exito)
                     throw new ApplicationException(respuesta.MensajeError);

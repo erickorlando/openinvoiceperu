@@ -49,8 +49,8 @@ namespace OpenInvoicePeru.Xml
                 },
                 AccountingSupplierParty = new AccountingSupplierParty
                 {
-                    CustomerAssignedAccountId = documento.Emisor.NroDocumento,
-                    AdditionalAccountId = documento.Emisor.TipoDocumento,
+                    //CustomerAssignedAccountId = documento.Emisor.NroDocumento,
+                    //AdditionalAccountId = documento.Emisor.TipoDocumento,
                     Party = new Party
                     {
                         PartyLegalEntity = new PartyLegalEntity
@@ -68,11 +68,11 @@ namespace OpenInvoicePeru.Xml
                     LineId = grupo.Id,
                     DocumentTypeCode = grupo.TipoDocumento,
                     Id = grupo.IdDocumento,
-                    AccountingCustomerParty = new AccountingSupplierParty
-                    {
-                        AdditionalAccountId = grupo.TipoDocumentoReceptor,
-                        CustomerAssignedAccountId = grupo.NroDocumentoReceptor
-                    },
+                    //AccountingCustomerParty = new AccountingSupplierParty
+                    //{
+                    //    AdditionalAccountId = grupo.TipoDocumentoReceptor,
+                    //    CustomerAssignedAccountId = grupo.NroDocumentoReceptor
+                    //},
                     BillingReference = new BillingReference
                     {
                         InvoiceDocumentReference = new InvoiceDocumentReference

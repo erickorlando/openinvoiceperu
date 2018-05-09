@@ -36,10 +36,9 @@ namespace OpenInvoicePeru.Firmado
                     xmlDoc.PreserveWhitespace = true;
                     xmlDoc.Load(documento);
 
-                    var indiceNodo = request.UnSoloNodoExtension ? 0 : 1;
+                    //var indiceNodo = request.UnSoloNodoExtension ? 0 : 1;
 
-                    var nodoExtension = xmlDoc.GetElementsByTagName("ExtensionContent", EspacioNombres.ext)
-                        .Item(indiceNodo);
+                    var nodoExtension = xmlDoc.GetElementsByTagName("ExtensionContent", EspacioNombres.ext).Item(0);
                     if (nodoExtension == null)
                         throw new InvalidOperationException("No se pudo encontrar el nodo ExtensionContent en el XML");
                     nodoExtension.RemoveAll();

@@ -81,10 +81,16 @@ namespace OpenInvoicePeru.Xml
                 },
                 AccountingSupplierParty = new AccountingSupplierParty
                 {
-                    CustomerAssignedAccountId = documento.Emisor.NroDocumento,
-                    AdditionalAccountId = documento.Emisor.TipoDocumento,
                     Party = new Party
                     {
+                        PartyIdentification = new PartyIdentification
+                        {
+                            Id = new PartyIdentificationId
+                            {
+                                SchemeId = documento.Emisor.TipoDocumento,
+                                Value = documento.Emisor.NroDocumento
+                            }
+                        },
                         PartyName = new PartyName
                         {
                             Name = documento.Emisor.NombreComercial
@@ -101,16 +107,26 @@ namespace OpenInvoicePeru.Xml
                         },
                         PartyLegalEntity = new PartyLegalEntity
                         {
-                            RegistrationName = documento.Emisor.NombreLegal
+                            RegistrationName = documento.Emisor.NombreLegal,
+                            RegistrationAddress = new RegistrationAddress
+                            {
+                                AddressTypeCode = "0000"
+                            }
                         }
                     }
                 },
                 AccountingCustomerParty = new AccountingSupplierParty
                 {
-                    CustomerAssignedAccountId = documento.Receptor.NroDocumento,
-                    AdditionalAccountId = documento.Receptor.TipoDocumento,
                     Party = new Party
                     {
+                        PartyIdentification = new PartyIdentification
+                        {
+                            Id = new PartyIdentificationId
+                            {
+                                SchemeId = documento.Receptor.TipoDocumento,
+                                Value = documento.Receptor.NroDocumento
+                            }
+                        },
                         PartyName = new PartyName
                         {
                             Name = documento.Receptor.NombreComercial
@@ -131,8 +147,6 @@ namespace OpenInvoicePeru.Xml
                         }
                     }
                 },
-                UblVersionId = "2.0",
-                CustomizationId = "1.0",
                 LegalMonetaryTotal = new LegalMonetaryTotal
                 {
                     PayableAmount = new PayableAmount
@@ -157,6 +171,11 @@ namespace OpenInvoicePeru.Xml
                         },
                         TaxSubtotal = new TaxSubtotal
                         {
+                            TaxableAmount = new PayableAmount
+                            {
+                                CurrencyId = documento.Moneda,
+                                Value = documento.TotalVenta
+                            },
                             TaxAmount = new PayableAmount
                             {
                                 CurrencyId = documento.Moneda,
@@ -253,6 +272,11 @@ namespace OpenInvoicePeru.Xml
                     },
                     TaxSubtotal = new TaxSubtotal
                     {
+                        TaxableAmount = new PayableAmount
+                        {
+                            CurrencyId = documento.Moneda,
+                            Value = detalleDocumento.TotalVenta
+                        },
                         TaxAmount = new PayableAmount
                         {
                             CurrencyId = documento.Moneda,
@@ -260,12 +284,13 @@ namespace OpenInvoicePeru.Xml
                         },
                         TaxCategory = new TaxCategory
                         {
+                            Percent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
                             TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
                             TaxScheme = new TaxScheme()
                             {
-                                Id = "1000",
-                                Name = "IGV",
-                                TaxTypeCode = "VAT"
+                                Id = AfectacionImpuesto.ObtenerCodigoTributo(detalleDocumento.TipoImpuesto),
+                                Name = AfectacionImpuesto.ObtenerDescripcionTributo(detalleDocumento.TipoImpuesto),
+                                TaxTypeCode = AfectacionImpuesto.ObtenerCodigoTipoTributo(detalleDocumento.TipoImpuesto)
                             }
                         }
                     }
