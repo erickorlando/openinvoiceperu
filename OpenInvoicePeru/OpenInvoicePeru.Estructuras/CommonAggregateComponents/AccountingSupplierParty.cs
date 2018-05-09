@@ -6,18 +6,11 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
     [Serializable]
     public class AccountingSupplierParty
     {
-        public string CustomerAssignedAccountId { get; set; }
-
-        public string AdditionalAccountId { get; set; }
-
         public Party Party { get; set; }
-
-        public PartyTaxScheme PartyTaxScheme { get; set; }
 
         public AccountingSupplierParty()
         {
             Party = new Party();
-            PartyTaxScheme = new PartyTaxScheme();
         }
     }
 
@@ -41,6 +34,25 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
     public class RegistrationAddress
     {
         public string AddressTypeCode { get; set; }
+        public AddressLine AddressLine { get; set; }
+        public string CitySubdivisionName { get; set; }
+        public string CityName { get; set; }
+        public string ID { get; set; }
+        public string CountrySubentity { get; set; }
+        public string District { get; set; }
+        public Country Country { get; set; }
+
+        public RegistrationAddress()
+        {
+            AddressLine = new AddressLine();
+            Country = new Country();
+        }
+    }
+
+    [Serializable]
+    public class AddressLine
+    {
+        public string Line { get; set; }
     }
 
     [Serializable]

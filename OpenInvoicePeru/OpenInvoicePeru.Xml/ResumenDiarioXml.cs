@@ -49,8 +49,8 @@ namespace OpenInvoicePeru.Xml
                 },
                 AccountingSupplierParty = new AccountingSupplierParty
                 {
-                    CustomerAssignedAccountId = documento.Emisor.NroDocumento,
-                    AdditionalAccountId = documento.Emisor.TipoDocumento,
+                    //CustomerAssignedAccountId = documento.Emisor.NroDocumento,
+                    //AdditionalAccountId = documento.Emisor.TipoDocumento,
                     Party = new Party
                     {
                         PartyLegalEntity = new PartyLegalEntity
