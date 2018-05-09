@@ -5,9 +5,9 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
     [Serializable]
     public class TaxCategory
     {
-        public string TaxExemptionReasonCode { get; set; }
-
         public decimal Percent { get; set; }
+
+        public string TaxExemptionReasonCode { get; set; }
 
         public string TierRange { get; set; }
 

@@ -3,13 +3,17 @@
 namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 {
     [Serializable]
-    public class PartyLegalEntity
+    public class PartyTaxScheme
     {
         public string RegistrationName { get; set; }
+
+        public CompanyId CompanyId { get; set; }
+
         public RegistrationAddress RegistrationAddress { get; set; }
 
-        public PartyLegalEntity()
+        public PartyTaxScheme()
         {
+            CompanyId = new CompanyId();
             RegistrationAddress = new RegistrationAddress();
         }
     }

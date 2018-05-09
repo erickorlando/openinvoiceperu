@@ -50,8 +50,8 @@ namespace OpenInvoicePeru.Xml
                 },
                 DespatchSupplierParty = new AccountingSupplierParty
                 {
-                    CustomerAssignedAccountId = documento.Remitente.NroDocumento,
-                    AdditionalAccountId = documento.Remitente.TipoDocumento,
+                    //CustomerAssignedAccountId = documento.Remitente.NroDocumento,
+                    //AdditionalAccountId = documento.Remitente.TipoDocumento,
                     Party = new Party
                     {
                         PartyLegalEntity = new PartyLegalEntity
@@ -62,8 +62,8 @@ namespace OpenInvoicePeru.Xml
                 },
                 DeliveryCustomerParty = new AccountingSupplierParty
                 {
-                    CustomerAssignedAccountId = documento.Destinatario.NroDocumento,
-                    AdditionalAccountId = documento.Destinatario.TipoDocumento,
+                    //CustomerAssignedAccountId = documento.Destinatario.NroDocumento,
+                    //AdditionalAccountId = documento.Destinatario.TipoDocumento,
                     Party = new Party
                     {
                         PartyLegalEntity = new PartyLegalEntity
@@ -78,8 +78,8 @@ namespace OpenInvoicePeru.Xml
             {
                 despatchAdvice.SellerSupplierParty = new AccountingSupplierParty
                 {
-                    CustomerAssignedAccountId = documento.Tercero.NroDocumento,
-                    AdditionalAccountId = documento.Tercero.TipoDocumento,
+                    //CustomerAssignedAccountId = documento.Tercero.NroDocumento,
+                    //AdditionalAccountId = documento.Tercero.TipoDocumento,
                     Party = new Party
                     {
                         PartyLegalEntity = new PartyLegalEntity

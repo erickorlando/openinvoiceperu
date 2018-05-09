@@ -205,12 +205,12 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteStartElement("cac:DespatchSupplierParty");
             {
-                writer.WriteStartElement("cbc:CustomerAssignedAccountID");
-                {
-                    writer.WriteAttributeString("schemeID", DespatchSupplierParty.AdditionalAccountId);
-                    writer.WriteValue(DespatchSupplierParty.CustomerAssignedAccountId);
-                }
-                writer.WriteEndElement();
+                //writer.WriteStartElement("cbc:CustomerAssignedAccountID");
+                //{
+                //    writer.WriteAttributeString("schemeID", DespatchSupplierParty.AdditionalAccountId);
+                //    writer.WriteValue(DespatchSupplierParty.CustomerAssignedAccountId);
+                //}
+                //writer.WriteEndElement();
 
                 writer.WriteStartElement("cac:Party");
                 {
@@ -230,12 +230,12 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteStartElement("cac:DeliveryCustomerParty");
             {
-                writer.WriteStartElement("cbc:CustomerAssignedAccountID");
-                {
-                    writer.WriteAttributeString("schemeID", DeliveryCustomerParty.AdditionalAccountId);
-                    writer.WriteValue(DeliveryCustomerParty.CustomerAssignedAccountId);
-                }
-                writer.WriteEndElement();
+                //writer.WriteStartElement("cbc:CustomerAssignedAccountID");
+                //{
+                //    writer.WriteAttributeString("schemeID", DeliveryCustomerParty.AdditionalAccountId);
+                //    writer.WriteValue(DeliveryCustomerParty.CustomerAssignedAccountId);
+                //}
+                //writer.WriteEndElement();
 
                 writer.WriteStartElement("cac:Party");
                 {
@@ -253,29 +253,29 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             #region SellerSupplierParty
 
-            if (!string.IsNullOrEmpty(SellerSupplierParty.AdditionalAccountId))
-            {
-                writer.WriteStartElement("cac:SellerSupplierParty");
-                {
-                    writer.WriteStartElement("cbc:CustomerAssignedAccountID");
-                    {
-                        writer.WriteAttributeString("schemeID", SellerSupplierParty.AdditionalAccountId);
-                        writer.WriteValue(SellerSupplierParty.CustomerAssignedAccountId);
-                    }
-                    writer.WriteEndElement();
+            //if (!string.IsNullOrEmpty(SellerSupplierParty.AdditionalAccountId))
+            //{
+            //    writer.WriteStartElement("cac:SellerSupplierParty");
+            //    {
+            //        writer.WriteStartElement("cbc:CustomerAssignedAccountID");
+            //        {
+            //            writer.WriteAttributeString("schemeID", SellerSupplierParty.AdditionalAccountId);
+            //            writer.WriteValue(SellerSupplierParty.CustomerAssignedAccountId);
+            //        }
+            //        writer.WriteEndElement();
 
-                    writer.WriteStartElement("cac:Party");
-                    {
-                        writer.WriteStartElement("cac:PartyLegalEntity");
-                        {
-                            writer.WriteElementString("cbc:RegistrationName", SellerSupplierParty.Party.PartyLegalEntity.RegistrationName);
-                        }
-                        writer.WriteEndElement();
-                    }
-                    writer.WriteEndElement();
-                }
-                writer.WriteEndElement();
-            }
+            //        writer.WriteStartElement("cac:Party");
+            //        {
+            //            writer.WriteStartElement("cac:PartyLegalEntity");
+            //            {
+            //                writer.WriteElementString("cbc:RegistrationName", SellerSupplierParty.Party.PartyLegalEntity.RegistrationName);
+            //            }
+            //            writer.WriteEndElement();
+            //        }
+            //        writer.WriteEndElement();
+            //    }
+            //    writer.WriteEndElement();
+            //}
 
             #endregion SellerSupplierParty
 

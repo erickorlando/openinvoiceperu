@@ -41,6 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonAggregateComponents\AccountingSupplierParty.cs" />
+    <Compile Include="CommonAggregateComponents\AddressLine.cs" />
+    <Compile Include="CommonAggregateComponents\CompanyId.cs" />
+    <Compile Include="CommonAggregateComponents\PartyTaxScheme.cs" />
+    <Compile Include="CommonAggregateComponents\RegistrationAddress.cs" />
     <Compile Include="EstandarUbl\Perception.cs" />
     <Compile Include="SunatAggregateComponents\AdditionalInformation.cs" />
     <Compile Include="SunatAggregateComponents\AdditionalMonetaryTotal.cs" />

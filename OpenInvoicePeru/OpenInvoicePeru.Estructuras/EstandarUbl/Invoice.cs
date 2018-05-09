@@ -244,9 +244,9 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                     #endregion PartyName
 
-                    #region PartyTaxScheme
+                    #region PartyLegalEntity
 
-                    writer.WriteStartElement("cac:PartyTaxScheme");
+                    writer.WriteStartElement("cac:PartyLegalEntity");
                     {
                         writer.WriteElementString("cbc:RegistrationName", AccountingSupplierParty.PartyTaxScheme.RegistrationName);
 
@@ -264,7 +264,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                         writer.WriteStartElement("cac:RegistrationAddress");
                         {
-                            writer.WriteElementString("cbc:AddressTypeCode", AccountingSupplierParty.PartyTaxScheme.RegistrationAddress.AddressTypeCode);
+                            writer.WriteElementString("cbc:AddressTypeCode", AccountingSupplierParty.Party.PartyLegalEntity.RegistrationAddress.AddressTypeCode);
                         }
                         writer.WriteEndElement();
 
@@ -490,7 +490,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             #endregion LegalMonetaryTotal
 
-            #region InvoiceLines
+            //#region InvoiceLines
 
             foreach (var invoiceLine in InvoiceLines)
             {
@@ -693,7 +693,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 writer.WriteEndElement();
             }
 
-            #endregion InvoiceLines
+            //#endregion InvoiceLines
         }
     }
 }

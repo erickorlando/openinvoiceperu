@@ -153,9 +153,9 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteStartElement("cac:AccountingSupplierParty");
 
-            writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingSupplierParty.CustomerAssignedAccountId);
-            writer.WriteElementString("cbc:AdditionalAccountID",
-                AccountingSupplierParty.AdditionalAccountId);
+            //writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingSupplierParty.CustomerAssignedAccountId);
+            //writer.WriteElementString("cbc:AdditionalAccountID",
+            //    AccountingSupplierParty.AdditionalAccountId);
 
             #region Party
 
@@ -199,15 +199,15 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         writer.WriteElementString("sac:StartDocumentNumberID", item.StartDocumentNumberId.ToString());
                         writer.WriteElementString("sac:EndDocumentNumberID", item.EndDocumentNumberId.ToString());
                     }
-                    if (!string.IsNullOrEmpty(item.AccountingCustomerParty.AdditionalAccountId))
-                    {
-                        writer.WriteStartElement("cac:AccountingCustomerParty");
-                        {
-                            writer.WriteElementString("cbc:CustomerAssignedAccountID", item.AccountingCustomerParty.CustomerAssignedAccountId);
-                            writer.WriteElementString("cbc:AdditionalAccountID", item.AccountingCustomerParty.AdditionalAccountId);
-                        }
-                        writer.WriteEndElement();
-                    }
+                    //if (!string.IsNullOrEmpty(item.AccountingCustomerParty.AdditionalAccountId))
+                    //{
+                    //    writer.WriteStartElement("cac:AccountingCustomerParty");
+                    //    {
+                    //        writer.WriteElementString("cbc:CustomerAssignedAccountID", item.AccountingCustomerParty.CustomerAssignedAccountId);
+                    //        writer.WriteElementString("cbc:AdditionalAccountID", item.AccountingCustomerParty.AdditionalAccountId);
+                    //    }
+                    //    writer.WriteEndElement();
+                    //}
                     if (!string.IsNullOrEmpty(item.BillingReference.InvoiceDocumentReference.Id))
                     {
                         writer.WriteStartElement("cac:BillingReference");

@@ -11,6 +11,8 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 
         public PartyLegalEntity PartyLegalEntity { get; set; }
 
+        public PartyIdentification PartyIdentification { get; set; }
+
         public Party()
         {
             PartyName = new PartyName();

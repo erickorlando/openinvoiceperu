@@ -313,10 +313,6 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteStartElement("cac:AccountingSupplierParty");
 
-            writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingSupplierParty.CustomerAssignedAccountId);
-            writer.WriteElementString("cbc:AdditionalAccountID",
-                AccountingSupplierParty.AdditionalAccountId);
-
             #region Party
 
             writer.WriteStartElement("cac:Party");
@@ -379,10 +375,6 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             #region AccountingCustomerParty
 
             writer.WriteStartElement("cac:AccountingCustomerParty");
-
-            writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingCustomerParty.CustomerAssignedAccountId);
-            writer.WriteElementString("cbc:AdditionalAccountID",
-                AccountingCustomerParty.AdditionalAccountId);
 
             #region Party
 
@@ -576,11 +568,11 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                         #region TaxableAmount
 
-                        if (!string.IsNullOrEmpty(taxTotal.TaxableAmount.CurrencyId))
+                        if (!string.IsNullOrEmpty(taxTotal.TaxSubtotal.TaxableAmount.CurrencyId))
                         {
                             writer.WriteStartElement("cbc:TaxableAmount");
-                            writer.WriteAttributeString("currencyID", taxTotal.TaxableAmount.CurrencyId);
-                            writer.WriteString(taxTotal.TaxableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                            writer.WriteAttributeString("currencyID", taxTotal.TaxSubtotal.TaxableAmount.CurrencyId);
+                            writer.WriteString(taxTotal.TaxSubtotal.TaxableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                             writer.WriteEndElement();
                         }
 
@@ -589,14 +581,14 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         writer.WriteStartElement("cbc:TaxAmount");
                         writer.WriteAttributeString("currencyID", taxTotal.TaxSubtotal.TaxAmount.CurrencyId);
                         writer.WriteString(taxTotal.TaxAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
-                        writer.WriteEndElement();
-                        if (taxTotal.TaxSubtotal.Percent > 0)
-                            writer.WriteElementString("cbc:Percent", taxTotal.TaxSubtotal.Percent.ToString(Formatos.FormatoNumerico, Formato));
+                        writer.WriteEndElement();                        
 
                         #region TaxCategory
 
                         writer.WriteStartElement("cac:TaxCategory");
                         //writer.WriteElementString("cbc:ID", invoiceLine.TaxTotal.TaxSubtotal.TaxCategory.ID);
+                        if (taxTotal.TaxSubtotal.TaxCategory.Percent > 0)
+                            writer.WriteElementString("cbc:Percent", taxTotal.TaxSubtotal.TaxCategory.Percent.ToString(Formatos.FormatoNumerico, Formato));
                         writer.WriteElementString("cbc:TaxExemptionReasonCode", taxTotal.TaxSubtotal.TaxCategory.TaxExemptionReasonCode);
                         if (!string.IsNullOrEmpty(taxTotal.TaxSubtotal.TaxCategory.TierRange))
                             writer.WriteElementString("cbc:TierRange", taxTotal.TaxSubtotal.TaxCategory.TierRange);
