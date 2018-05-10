@@ -92,8 +92,6 @@ namespace OpenInvoicePeru.Xml
                         }
                     }
                 },
-                UblVersionId = "2.0",
-                CustomizationId = "1.0",
                 LegalMonetaryTotal = new LegalMonetaryTotal
                 {
                     PayableAmount = new PayableAmount
