@@ -95,16 +95,16 @@ namespace OpenInvoicePeru.Xml
                         {
                             Name = documento.Emisor.NombreComercial
                         },
-                        PostalAddress = new PostalAddress
-                        {
-                            Id = documento.Emisor.Ubigeo,
-                            StreetName = documento.Emisor.Direccion,
-                            CitySubdivisionName = documento.Emisor.Urbanizacion,
-                            CountrySubentity = documento.Emisor.Departamento,
-                            CityName = documento.Emisor.Provincia,
-                            District = documento.Emisor.Distrito,
-                            Country = new Country { IdentificationCode = "PE" }
-                        },
+                        //PostalAddress = new PostalAddress
+                        //{
+                        //    Id = documento.Emisor.Ubigeo,
+                        //    StreetName = documento.Emisor.Direccion,
+                        //    CitySubdivisionName = documento.Emisor.Urbanizacion,
+                        //    CountrySubentity = documento.Emisor.Departamento,
+                        //    CityName = documento.Emisor.Provincia,
+                        //    District = documento.Emisor.Distrito,
+                        //    Country = new Country { IdentificationCode = "PE" }
+                        //},
                         PartyLegalEntity = new PartyLegalEntity
                         {
                             RegistrationName = documento.Emisor.NombreLegal,
@@ -131,16 +131,16 @@ namespace OpenInvoicePeru.Xml
                         {
                             Name = documento.Receptor.NombreComercial
                         },
-                        PostalAddress = new PostalAddress
-                        {
-                            Id = documento.Receptor.Ubigeo,
-                            StreetName = documento.Receptor.Direccion,
-                            CitySubdivisionName = documento.Receptor.Urbanizacion,
-                            CountrySubentity = documento.Receptor.Departamento,
-                            CityName = documento.Receptor.Provincia,
-                            District = documento.Receptor.Distrito,
-                            Country = new Country { IdentificationCode = "PE" }
-                        },
+                        //PostalAddress = new PostalAddress
+                        //{
+                        //    Id = documento.Receptor.Ubigeo,
+                        //    StreetName = documento.Receptor.Direccion,
+                        //    CitySubdivisionName = documento.Receptor.Urbanizacion,
+                        //    CountrySubentity = documento.Receptor.Departamento,
+                        //    CityName = documento.Receptor.Provincia,
+                        //    District = documento.Receptor.Distrito,
+                        //    Country = new Country { IdentificationCode = "PE" }
+                        //},
                         PartyLegalEntity = new PartyLegalEntity
                         {
                             RegistrationName = documento.Receptor.NombreLegal

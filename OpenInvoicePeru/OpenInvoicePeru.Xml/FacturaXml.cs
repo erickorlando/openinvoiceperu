@@ -6,7 +6,6 @@ using OpenInvoicePeru.Comun.Dto.Contratos;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Estructuras.CommonAggregateComponents;
 using OpenInvoicePeru.Estructuras.CommonBasicComponents;
-using OpenInvoicePeru.Estructuras.CommonExtensionComponents;
 using OpenInvoicePeru.Estructuras.EstandarUbl;
 using OpenInvoicePeru.Estructuras.SunatAggregateComponents;
 
@@ -52,39 +51,55 @@ namespace OpenInvoicePeru.Xml
                 },
                 AccountingSupplierParty = new AccountingSupplierParty
                 {
-                    //CustomerAssignedAccountId = documento.Emisor.NroDocumento,
-                    //AdditionalAccountId = documento.Emisor.TipoDocumento,
                     Party = new Party
                     {
+                        PartyIdentification = new PartyIdentification
+                        {
+                            Id = new PartyIdentificationId
+                            {
+                                SchemeId = documento.Emisor.TipoDocumento,
+                                Value = documento.Emisor.NroDocumento
+                            }
+                        },
                         PartyName = new PartyName
                         {
                             Name = documento.Emisor.NombreComercial
                         },
-                        PostalAddress = new PostalAddress
-                        {
-                            Id = documento.Emisor.Ubigeo,
-                            StreetName = documento.Emisor.Direccion,
-                            CitySubdivisionName = documento.Emisor.Urbanizacion,
-                            CountrySubentity = documento.Emisor.Departamento,
-                            CityName = documento.Emisor.Provincia,
-                            District = documento.Emisor.Distrito,
-                            Country = new Country { IdentificationCode = "PE" }
-                        },
+                        //PostalAddress = new PostalAddress
+                        //{
+                        //    Id = documento.Emisor.Ubigeo,
+                        //    StreetName = documento.Emisor.Direccion,
+                        //    CitySubdivisionName = documento.Emisor.Urbanizacion,
+                        //    CountrySubentity = documento.Emisor.Departamento,
+                        //    CityName = documento.Emisor.Provincia,
+                        //    District = documento.Emisor.Distrito,
+                        //    Country = new Country { IdentificationCode = "PE" }
+                        //},
                         PartyLegalEntity = new PartyLegalEntity
                         {
-                            RegistrationName = documento.Emisor.NombreLegal
+                            RegistrationName = documento.Emisor.NombreLegal,
+                            RegistrationAddress = new RegistrationAddress
+                            {
+                                AddressTypeCode = "0000"
+                            }
                         }
                     }
                 },
                 AccountingCustomerParty = new AccountingSupplierParty
                 {
-                    //CustomerAssignedAccountId = documento.Receptor.NroDocumento,
-                    //AdditionalAccountId = documento.Receptor.TipoDocumento,
                     Party = new Party
                     {
+                        PartyIdentification = new PartyIdentification
+                        {
+                            Id = new PartyIdentificationId
+                            {
+                                SchemeId = documento.Receptor.TipoDocumento,
+                                Value = documento.Receptor.NroDocumento
+                            }
+                        },
                         PartyName = new PartyName
                         {
-                            Name = documento.Receptor.NombreComercial ?? string.Empty
+                            Name = documento.Receptor.NombreComercial
                         },
                         PartyLegalEntity = new PartyLegalEntity
                         {

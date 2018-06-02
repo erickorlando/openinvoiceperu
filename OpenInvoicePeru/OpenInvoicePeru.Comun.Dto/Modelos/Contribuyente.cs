@@ -4,6 +4,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 {
     public class Contribuyente
     {
+
         [JsonProperty(Order = 1, Required = Required.Always)]
         public string NroDocumento { get; set; }
 
@@ -16,7 +17,5 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         [JsonProperty(Order = 4)]
         public string NombreComercial { get; set; }
 
-        [JsonProperty(Order = 5)]
-        public string CodigoAnexo { get; set; }
     }
 }

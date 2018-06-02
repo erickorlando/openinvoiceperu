@@ -5,10 +5,10 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
     public class DatosGuia
     {
         [JsonProperty(Required = Required.Always)]
-        public Contribuyente DireccionDestino { get; set; }
+        public Negocio DireccionDestino { get; set; }
 
         [JsonProperty(Required = Required.Always)]
-        public Contribuyente DireccionOrigen { get; set; }
+        public Negocio DireccionOrigen { get; set; }
 
         [JsonProperty(Required = Required.Always)]
         public string RucTransportista { get; set; }
