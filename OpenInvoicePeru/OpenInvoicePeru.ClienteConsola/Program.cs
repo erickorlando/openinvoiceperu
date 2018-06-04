@@ -11,14 +11,12 @@ namespace OpenInvoicePeru.ClienteConsola
         private const string UrlSunat = "https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService";
         private const string FormatoFecha = "yyyy-MM-dd";
 
-        static void Main(string[] args)
+        static void Main()
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "Prueba de Envio de Factura con UBL 2.1";
 
             CrearFactura();
-
-            Console.ReadLine();
         }
 
         private static Compania CrearEmisor()
