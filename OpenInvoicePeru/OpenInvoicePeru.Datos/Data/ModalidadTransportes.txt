@@ -1,2 +1,0 @@
-﻿01|Transporte público
-02|Transporte privado

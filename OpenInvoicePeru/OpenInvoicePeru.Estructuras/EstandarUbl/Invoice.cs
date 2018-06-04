@@ -138,7 +138,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteElementString("cbc:IssueTime", IssueTime.ToString(Formatos.FormatoHora));
             writer.WriteStartElement("cbc:InvoiceTypeCode");
             {
-                writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
+                writer.WriteAttributeString("listAgencyName", ValoresUbl.SchemeAgencyName);
                 writer.WriteAttributeString("listName", ValoresUbl.InvoiceTypeCodeName);
                 writer.WriteAttributeString("listURI", ValoresUbl.InvoiceTypeCodeSchemeUri);
                 writer.WriteValue(InvoiceTypeCode);
@@ -152,7 +152,6 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             }
             writer.WriteEndElement();
 
-            writer.WriteElementString("cbc:DocumentCurrencyCode", DocumentCurrencyCode);
             writer.WriteStartElement("cbc:DocumentCurrencyCode");
             {
                 writer.WriteAttributeString("listID", ValoresUbl.DocumentCurrencyCode);
@@ -268,11 +267,11 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         }
                         writer.WriteEndElement();
 
-                        writer.WriteStartElement("cac:TaxScheme");
-                        {
-                            writer.WriteElementString("cbc:ID", "-");
-                        }
-                        writer.WriteEndElement();
+                        //writer.WriteStartElement("cac:TaxScheme");
+                        //{
+                        //    writer.WriteElementString("cbc:ID", "-");
+                        //}
+                        //writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
 

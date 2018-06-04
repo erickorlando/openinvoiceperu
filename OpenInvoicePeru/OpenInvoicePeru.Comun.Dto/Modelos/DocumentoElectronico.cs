@@ -103,7 +103,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             OtrosDocumentosRelacionados = new List<DocumentoRelacionado>();
             Discrepancias = new List<Discrepancia>();
             TipoDocumento = "01"; // Factura.
-            TipoOperacion = "01"; // Venta Interna.
+            TipoOperacion = "0101"; // Venta Interna.
             Moneda = "PEN"; // Soles.
         }
     }
