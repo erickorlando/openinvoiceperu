@@ -2,9 +2,9 @@
 {
     public static class ValoresUbl
     {
-        public const string TipoOperacionSchemeName = "SUNAT:Identificador de Tipo de Operación";
+        public const string TipoOperacionSchemeName = "Tipo de Operacion";
         public const string SchemeAgencyName = "PE:SUNAT";
-        public const string TipoOperacionSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo17";
+        public const string TipoOperacionSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo51";
         public const string InvoiceTypeCodeName = "SUNAT:Identificador de Tipo de Documento";
         public const string InvoiceTypeCodeSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo01";
         public const string DocumentCurrencyCode = "ISO 4217 Alpha";

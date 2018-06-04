@@ -110,7 +110,7 @@ namespace OpenInvoicePeru.Xml
                             CurrencyId = documento.Moneda,
                             Value = documento.TotalIgv
                         },
-                        TaxCategoryId = "S",
+                        TaxCategoryId = "1000",
                         TaxSubtotal = new TaxSubtotal
                         {
                             TaxAmount = new PayableAmount
@@ -451,7 +451,7 @@ namespace OpenInvoicePeru.Xml
                         CurrencyId = documento.Moneda,
                         Value = detalleDocumento.Impuesto
                     },
-                    TaxCategoryId = "S",
+                    TaxCategoryId = "1000",
                     TaxCategory = new TaxCategory
                     {
                         Percent = 18,

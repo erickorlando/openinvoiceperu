@@ -122,14 +122,14 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteElementString("cbc:UBLVersionID", UblVersionId);
             writer.WriteElementString("cbc:CustomizationID", CustomizationId);
-            writer.WriteStartElement("cbc:ProfileID");
-            {
-                writer.WriteAttributeString("schemeName", ValoresUbl.TipoOperacionSchemeName);
-                writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
-                writer.WriteAttributeString("schemeURI", ValoresUbl.TipoOperacionSchemeUri);
-                writer.WriteValue(ProfileId);
-            }
-            writer.WriteEndElement();
+            //writer.WriteStartElement("cbc:ProfileID");
+            //{
+            //    writer.WriteAttributeString("schemeName", ValoresUbl.TipoOperacionSchemeName);
+            //    writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
+            //    writer.WriteAttributeString("schemeURI", ValoresUbl.TipoOperacionSchemeUri);
+            //    writer.WriteValue(ProfileId);
+            //}
+            //writer.WriteEndElement();
             writer.WriteElementString("cbc:ID", Id);
             writer.WriteElementString("cbc:IssueDate", IssueDate.ToString(Formatos.FormatoFecha));
             if (DueDate != null)
@@ -141,6 +141,10 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 writer.WriteAttributeString("listAgencyName", ValoresUbl.SchemeAgencyName);
                 writer.WriteAttributeString("listName", ValoresUbl.InvoiceTypeCodeName);
                 writer.WriteAttributeString("listURI", ValoresUbl.InvoiceTypeCodeSchemeUri);
+                writer.WriteAttributeString("listID", ProfileId);
+                writer.WriteAttributeString("name", ValoresUbl.TipoOperacionSchemeName);
+                writer.WriteAttributeString("listSchemeURI", ValoresUbl.TipoOperacionSchemeUri);
+
                 writer.WriteValue(InvoiceTypeCode);
             }
             writer.WriteEndElement();
