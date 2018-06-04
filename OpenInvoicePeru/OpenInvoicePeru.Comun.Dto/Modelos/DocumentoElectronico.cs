@@ -14,13 +14,18 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         public string TipoDocumento { get; set; }
 
         [JsonProperty(Required = Required.Always)]
-        public Contribuyente Emisor { get; set; }
+        public Compania Emisor { get; set; }
 
         [JsonProperty(Required = Required.Always)]
-        public Contribuyente Receptor { get; set; }
+        public Compania Receptor { get; set; }
 
         [JsonProperty(Required = Required.Always)]
         public string FechaEmision { get; set; }
+
+        [JsonProperty(Required = Required.Always)]
+        public string HoraEmision { get; set; }
+
+        public string FechaVencimiento { get; set; }
 
         [JsonProperty(Required = Required.Always)]
         public string Moneda { get; set; }
@@ -54,8 +59,6 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         [JsonProperty(Required = Required.Always)]
         public string MontoEnLetras { get; set; }
 
-        public string PlacaVehiculo { get; set; }
-
         public decimal MontoPercepcion { get; set; }
 
         public decimal MontoDetraccion { get; set; }
@@ -82,26 +85,18 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         [JsonProperty(Required = Required.AllowNull)]
         public List<Discrepancia> Discrepancias { get; set; }
 
-        [JsonProperty(Required = Required.Always)]
-        public decimal CalculoIgv { get; set; }
-
-        public decimal CalculoIsc { get; set; }
-
         public decimal CalculoDetraccion { get; set; }
 
         public DocumentoElectronico()
         {
-            Emisor = new Contribuyente
+            Emisor = new Compania
             {
                 TipoDocumento = "6" // RUC.
             };
-            Receptor = new Contribuyente
+            Receptor = new Compania
             {
                 TipoDocumento = "6" // RUC.
             };
-            CalculoIgv = 0.18m;
-            CalculoIsc = 0.10m;
-            CalculoDetraccion = 0.04m;
             Items = new List<DetalleDocumento>();
             DatoAdicionales = new List<DatoAdicional>();
             Relacionados = new List<DocumentoRelacionado>();

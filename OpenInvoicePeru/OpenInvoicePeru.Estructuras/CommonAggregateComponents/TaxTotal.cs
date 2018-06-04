@@ -25,6 +25,7 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
             TaxAmount = new PayableAmount();
             TaxSubtotal = new TaxSubtotal();
             TaxCategoryId = "S";
+            TaxCategory = new TaxCategory();
         }
     }
 }

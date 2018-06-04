@@ -45,9 +45,6 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         [JsonProperty(Required = Required.Always)]
         public decimal TotalVenta { get; set; }
 
-        [JsonProperty(Required = Required.Always)]
-        public decimal Suma { get; set; }        
-
         public DetalleDocumento()
         {
             Id = 1;

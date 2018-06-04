@@ -42,8 +42,8 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public DatosGuia()
         {
-            DireccionDestino = new Contribuyente();
-            DireccionOrigen = new Contribuyente();
+            DireccionDestino = new Negocio();
+            DireccionOrigen = new Negocio();
         }
     }
 }

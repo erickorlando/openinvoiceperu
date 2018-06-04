@@ -18,6 +18,7 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
         public TaxCategory()
         {
             TaxScheme = new TaxScheme();
+            Percent = 18;
         }
     }
 }
