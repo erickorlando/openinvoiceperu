@@ -71,6 +71,7 @@
     <Compile Include="Intercambio\FirmadoRequest.cs" />
     <Compile Include="Intercambio\FirmadoResponse.cs" />
     <Compile Include="Modelos\DocumentoSunatBase.cs" />
+    <Compile Include="Modelos\Leyenda.cs" />
     <Compile Include="Modelos\Negocio.cs" />
     <Compile Include="Modelos\GrupoResumen.cs" />
     <Compile Include="Modelos\GrupoResumenNuevo.cs" />

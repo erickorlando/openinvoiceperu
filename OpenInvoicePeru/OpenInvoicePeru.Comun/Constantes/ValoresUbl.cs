@@ -21,6 +21,8 @@
         public const string TaxExemptionUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07";
         public const string TaxSchemeId = "UN/ECE 5153";
         public const string TaxSchemeName = "Tax Scheme Identifier";
+        public const string PaymentMeansSchemeName = "Codigo de detraccion";
+        public const string PaymentMeansSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo54";
     }
 
 }

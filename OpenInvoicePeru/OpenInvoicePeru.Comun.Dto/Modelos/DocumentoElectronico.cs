@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-
 using OpenInvoicePeru.Comun.Dto.Contratos;
 using System.Collections.Generic;
 
@@ -63,6 +62,14 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public decimal MontoDetraccion { get; set; }
 
+        public decimal TasaDetraccion { get; set; }
+
+        public string CuentaBancoNacion { get; set; }
+
+        public string CodigoBienOServicio { get; set; }
+
+        public string CodigoMedioPago { get; set; }
+
         public List<DatoAdicional> DatoAdicionales { get; set; }
 
         public string TipoDocAnticipo { get; set; }
@@ -85,7 +92,8 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         [JsonProperty(Required = Required.AllowNull)]
         public List<Discrepancia> Discrepancias { get; set; }
 
-        public decimal CalculoDetraccion { get; set; }
+        [JsonProperty(Required = Required.AllowNull)]
+        public List<Leyenda> Leyendas { get; set; }
 
         public DocumentoElectronico()
         {
@@ -101,6 +109,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             DatoAdicionales = new List<DatoAdicional>();
             Relacionados = new List<DocumentoRelacionado>();
             OtrosDocumentosRelacionados = new List<DocumentoRelacionado>();
+            Leyendas = new List<Leyenda>();
             Discrepancias = new List<Discrepancia>();
             TipoDocumento = "01"; // Factura.
             TipoOperacion = "0101"; // Venta Interna.

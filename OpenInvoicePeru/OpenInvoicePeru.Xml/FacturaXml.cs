@@ -321,17 +321,16 @@ namespace OpenInvoicePeru.Xml
 
             if (documento.MontoDetraccion > 0)
             {
-                invoice.UblExtensions.Extension2.ExtensionContent
-                    .AdditionalInformation.AdditionalMonetaryTotals.Add(new AdditionalMonetaryTotal
-                    {
-                        Id = "2003",
-                        PayableAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = documento.MontoDetraccion
-                        },
-                        Percent = documento.CalculoDetraccion * 100
-                    });
+                invoice.PayeeFinancialAccountId = documento.CuentaBancoNacion;
+                invoice.PaymentTermsAmount = documento.MontoDetraccion;
+                invoice.PaymentTermsPercent = documento.TasaDetraccion;
+                invoice.PaymentMeansId = documento.CodigoBienOServicio;
+                invoice.PaymentMeansCode = documento.CodigoMedioPago;
+            }
+
+            foreach (var leyenda in documento.Leyendas)
+            {
+                invoice.NotesList.Add(leyenda.Codigo, leyenda.Descripcion);
             }
 
             // Para datos de Guia de Remision Transportista.
