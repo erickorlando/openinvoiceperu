@@ -11,10 +11,10 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         public string FechaEmision { get; set; }
 
         [JsonProperty(Order = 3, Required = Required.Always)]
-        public Contribuyente Emisor { get; set; }
+        public Negocio Emisor { get; set; }
 
         [JsonProperty(Order = 4, Required = Required.Always)]
-        public Contribuyente Receptor { get; set; }
+        public Negocio Receptor { get; set; }
 
         [JsonProperty(Order = 5, Required = Required.Always)]
         public string Moneda { get; set; }

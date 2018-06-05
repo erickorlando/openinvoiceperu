@@ -6,7 +6,6 @@ using OpenInvoicePeru.Comun.Dto.Contratos;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Estructuras.CommonAggregateComponents;
 using OpenInvoicePeru.Estructuras.CommonBasicComponents;
-using OpenInvoicePeru.Estructuras.CommonExtensionComponents;
 using OpenInvoicePeru.Estructuras.EstandarUbl;
 using OpenInvoicePeru.Estructuras.SunatAggregateComponents;
 
@@ -14,7 +13,7 @@ namespace OpenInvoicePeru.Xml
 {
     public class FacturaXml : IDocumentoXml
     {
-        IEstructuraXml IDocumentoXml.Generar(IDocumentoElectronico request)
+        public IEstructuraXml Generar(IDocumentoElectronico request)
         {
             var documento = (DocumentoElectronico)request;
             documento.MontoEnLetras = Conversion.Enletras(documento.TotalVenta);
@@ -23,6 +22,7 @@ namespace OpenInvoicePeru.Xml
                 Note = documento.MontoEnLetras,
                 Id = documento.IdDocumento,
                 IssueDate = DateTime.Parse(documento.FechaEmision),
+                IssueTime = DateTime.Parse(documento.HoraEmision),
                 InvoiceTypeCode = documento.TipoDocumento,
                 DocumentCurrencyCode = documento.Moneda,
                 Signature = new SignatureCac
@@ -52,48 +52,42 @@ namespace OpenInvoicePeru.Xml
                 },
                 AccountingSupplierParty = new AccountingSupplierParty
                 {
-                    //CustomerAssignedAccountId = documento.Emisor.NroDocumento,
-                    //AdditionalAccountId = documento.Emisor.TipoDocumento,
+                    PartyTaxScheme = new PartyTaxScheme
+                    {
+                        RegistrationName = documento.Emisor.NombreLegal,
+                        CompanyId = new CompanyId
+                        {
+                            SchemeId = documento.Emisor.TipoDocumento,
+                            Value = documento.Emisor.NroDocumento
+                        }
+                    },
                     Party = new Party
                     {
                         PartyName = new PartyName
                         {
                             Name = documento.Emisor.NombreComercial
                         },
-                        PostalAddress = new PostalAddress
-                        {
-                            Id = documento.Emisor.Ubigeo,
-                            StreetName = documento.Emisor.Direccion,
-                            CitySubdivisionName = documento.Emisor.Urbanizacion,
-                            CountrySubentity = documento.Emisor.Departamento,
-                            CityName = documento.Emisor.Provincia,
-                            District = documento.Emisor.Distrito,
-                            Country = new Country { IdentificationCode = "PE" }
-                        },
                         PartyLegalEntity = new PartyLegalEntity
                         {
-                            RegistrationName = documento.Emisor.NombreLegal
+                            RegistrationAddress = new RegistrationAddress
+                            {
+                                AddressTypeCode = documento.Emisor.CodigoAnexo
+                            }
                         }
                     }
                 },
                 AccountingCustomerParty = new AccountingSupplierParty
                 {
-                    //CustomerAssignedAccountId = documento.Receptor.NroDocumento,
-                    //AdditionalAccountId = documento.Receptor.TipoDocumento,
-                    Party = new Party
+                    PartyTaxScheme = new PartyTaxScheme
                     {
-                        PartyName = new PartyName
+                        RegistrationName = documento.Receptor.NombreLegal,
+                        CompanyId = new CompanyId
                         {
-                            Name = documento.Receptor.NombreComercial ?? string.Empty
-                        },
-                        PartyLegalEntity = new PartyLegalEntity
-                        {
-                            RegistrationName = documento.Receptor.NombreLegal
+                            SchemeId = documento.Receptor.TipoDocumento,
+                            Value = documento.Receptor.NroDocumento
                         }
                     }
                 },
-                UblVersionId = "2.0",
-                CustomizationId = "1.0",
                 LegalMonetaryTotal = new LegalMonetaryTotal
                 {
                     PayableAmount = new PayableAmount
@@ -116,12 +110,18 @@ namespace OpenInvoicePeru.Xml
                             CurrencyId = documento.Moneda,
                             Value = documento.TotalIgv
                         },
+                        TaxCategoryId = "1000",
                         TaxSubtotal = new TaxSubtotal
                         {
                             TaxAmount = new PayableAmount
                             {
                                 CurrencyId = documento.Moneda,
                                 Value = documento.TotalIgv,
+                            },
+                            TaxableAmount = new PayableAmount
+                            {
+                                CurrencyId = documento.Moneda,
+                                Value = documento.Gravadas
                             },
                             TaxCategory = new TaxCategory
                             {
@@ -136,6 +136,9 @@ namespace OpenInvoicePeru.Xml
                     }
                 }
             };
+            if (!string.IsNullOrEmpty(documento.FechaVencimiento))
+                invoice.DueDate = DateTime.Parse(documento.FechaVencimiento);
+
             if (documento.TotalIsc > 0)
             {
                 invoice.TaxTotals.Add(new TaxTotal
@@ -194,12 +197,12 @@ namespace OpenInvoicePeru.Xml
             }
 
             /* Numero de Placa del Vehiculo - Gastos art.37° Renta */
-            if (!string.IsNullOrEmpty(documento.PlacaVehiculo))
-            {
-                invoice.UblExtensions.Extension2.ExtensionContent
-                    .AdditionalInformation.SunatCosts.RoadTransport
-                    .LicensePlateId = documento.PlacaVehiculo;
-            }
+            //if (!string.IsNullOrEmpty(documento.PlacaVehiculo))
+            //{
+            //    invoice.UblExtensions.Extension2.ExtensionContent
+            //        .AdditionalInformation.SunatCosts.RoadTransport
+            //        .LicensePlateId = documento.PlacaVehiculo;
+            //}
 
             /* Tipo de Operación - Catalogo N° 17 */
             if (!string.IsNullOrEmpty(documento.TipoOperacion)
@@ -318,17 +321,16 @@ namespace OpenInvoicePeru.Xml
 
             if (documento.MontoDetraccion > 0)
             {
-                invoice.UblExtensions.Extension2.ExtensionContent
-                    .AdditionalInformation.AdditionalMonetaryTotals.Add(new AdditionalMonetaryTotal
-                    {
-                        Id = "2003",
-                        PayableAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = documento.MontoDetraccion
-                        },
-                        Percent = documento.CalculoDetraccion * 100
-                    });
+                invoice.PayeeFinancialAccountId = documento.CuentaBancoNacion;
+                invoice.PaymentTermsAmount = documento.MontoDetraccion;
+                invoice.PaymentTermsPercent = documento.TasaDetraccion;
+                invoice.PaymentMeansId = documento.CodigoBienOServicio;
+                invoice.PaymentMeansCode = documento.CodigoMedioPago;
+            }
+
+            foreach (var leyenda in documento.Leyendas)
+            {
+                invoice.NotesList.Add(leyenda.Codigo, leyenda.Descripcion);
             }
 
             // Para datos de Guia de Remision Transportista.
@@ -448,22 +450,16 @@ namespace OpenInvoicePeru.Xml
                         CurrencyId = documento.Moneda,
                         Value = detalleDocumento.Impuesto
                     },
-                    TaxSubtotal = new TaxSubtotal
+                    TaxCategoryId = "1000",
+                    TaxCategory = new TaxCategory
                     {
-                        TaxAmount = new PayableAmount
+                        Percent = 18,
+                        TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
+                        TaxScheme = new TaxScheme
                         {
-                            CurrencyId = documento.Moneda,
-                            Value = detalleDocumento.Impuesto
-                        },
-                        TaxCategory = new TaxCategory
-                        {
-                            TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
-                            TaxScheme = new TaxScheme()
-                            {
-                                Id = "1000",
-                                Name = "IGV",
-                                TaxTypeCode = "VAT"
-                            }
+                            Id = "1000",
+                            Name = "IGV",
+                            TaxTypeCode = "VAT"
                         }
                     }
                 });

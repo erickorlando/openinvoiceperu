@@ -13,7 +13,5 @@ namespace OpenInvoicePeru.Comun.Dto.Intercambio
         [JsonProperty(Required = Required.Always)]
         public string TramaXmlSinFirma { get; set; }
 
-        [JsonProperty(Required = Required.Always)]
-        public bool UnSoloNodoExtension { get; set; }
     }
 }
