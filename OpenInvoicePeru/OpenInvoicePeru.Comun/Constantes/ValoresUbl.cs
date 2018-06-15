@@ -23,6 +23,11 @@
         public const string TaxSchemeName = "Tax Scheme Identifier";
         public const string PaymentMeansSchemeName = "Codigo de detraccion";
         public const string PaymentMeansSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo54";
+        public const string DiscrepancyResponseCodeListName = "Tipo de nota de credito";
+        public const string DiscrepancyResponseCodeListUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo09";
+        public const string AdditionalDocumentsSchemeName = "Documentos Relacionados";
+        public const string AdditionalDocumentsSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo12";
+        public const string TaxSchemeSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05";
     }
 
 }

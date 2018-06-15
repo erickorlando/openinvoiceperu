@@ -14,10 +14,12 @@ namespace OpenInvoicePeru.ClienteConsola
         static void Main()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Title = "Prueba de Envio de Factura con UBL 2.1";
+            Console.Title = "OpenInvoicePeru - Prueba de Envio de Documentos Electrónicos con UBL 2.1";
 
-            CrearFactura();            
-            CrearFacturaConDetraccion();
+            CrearFactura();
+            //CrearFacturaConDetraccion();
+            //CrearBoleta();
+            CrearNotaCredito();
         }
 
         private static Compania CrearEmisor()
@@ -241,6 +243,231 @@ namespace OpenInvoicePeru.ClienteConsola
                 }
 
                 File.WriteAllBytes("facturadetraccioncdr.zip", Convert.FromBase64String(enviarDocumentoResponse.TramaZipCdr));
+
+                Console.WriteLine("Respuesta de SUNAT:");
+                Console.WriteLine(enviarDocumentoResponse.MensajeRespuesta);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        private static void CrearBoleta()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Boleta");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "88888888",
+                        TipoDocumento = "1",
+                        NombreLegal = "CLIENTE GENERICO"
+                    },
+                    IdDocumento = "BB11-001",
+                    FechaEmision = DateTime.Today.AddDays(-5).ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    MontoEnLetras = "SON CIENTO DIECIOCHO SOLES CON 0/100",
+                    TipoDocumento = "03",
+                    TotalIgv = 18,
+                    TotalVenta = 118,
+                    Gravadas = 100,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 10,
+                            PrecioReferencial = 10,
+                            PrecioUnitario = 10,
+                            TipoPrecio = "01",
+                            CodigoItem = "2435675",
+                            Descripcion = "USB Kingston ©",
+                            UnidadMedida = "NIU",
+                            Impuesto = 18,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 100,
+                        }
+                    }
+                };
+
+                Console.WriteLine("Generando XML....");
+
+                var documentoResponse = RestHelper<DocumentoElectronico, DocumentoResponse>.Execute("GenerarFactura", documento);
+
+                if (!documentoResponse.Exito)
+                {
+                    throw new InvalidOperationException(documentoResponse.MensajeError);
+                }
+
+                Console.WriteLine("Firmando XML...");
+                // Firmado del Documento.
+                var firmado = new FirmadoRequest
+                {
+                    TramaXmlSinFirma = documentoResponse.TramaXmlSinFirma,
+                    CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("certificado.pfx")),
+                    PasswordCertificado = string.Empty,
+                };
+
+                var responseFirma = RestHelper<FirmadoRequest, FirmadoResponse>.Execute("Firmar", firmado);
+
+                if (!responseFirma.Exito)
+                {
+                    throw new InvalidOperationException(responseFirma.MensajeError);
+                }
+
+                File.WriteAllBytes("boleta.xml", Convert.FromBase64String(responseFirma.TramaXmlFirmado));
+
+                Console.WriteLine("Enviando a SUNAT....");
+
+                var documentoRequest = new EnviarDocumentoRequest
+                {
+                    Ruc = documento.Emisor.NroDocumento,
+                    UsuarioSol = "MODDATOS",
+                    ClaveSol = "MODDATOS",
+                    EndPointUrl = UrlSunat,
+                    IdDocumento = documento.IdDocumento,
+                    TipoDocumento = documento.TipoDocumento,
+                    TramaXmlFirmado = responseFirma.TramaXmlFirmado
+                };
+
+                var enviarDocumentoResponse = RestHelper<EnviarDocumentoRequest, EnviarDocumentoResponse>.Execute("EnviarDocumento", documentoRequest);
+
+                if (!enviarDocumentoResponse.Exito)
+                {
+                    throw new InvalidOperationException(enviarDocumentoResponse.MensajeError);
+                }
+
+                File.WriteAllBytes("boletacdr.zip", Convert.FromBase64String(enviarDocumentoResponse.TramaZipCdr));
+
+                Console.WriteLine("Respuesta de SUNAT:");
+                Console.WriteLine(enviarDocumentoResponse.MensajeRespuesta);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        private static void CrearNotaCredito()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Nota de Crédito de Factura");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20257471609",
+                        TipoDocumento = "6",
+                        NombreLegal = "FRAMEWORK PERU"
+                    },
+                    IdDocumento = "FN11-001",
+                    FechaEmision = DateTime.Today.AddDays(-5).ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    MontoEnLetras = "SON CINCO SOLES CON 0/100",
+                    TipoDocumento = "07",
+                    TotalIgv = 0.76m,
+                    TotalVenta = 5,
+                    Gravadas = 4.24m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 1,
+                            PrecioReferencial = 4.24m,
+                            PrecioUnitario = 4.24m,
+                            TipoPrecio = "01",
+                            CodigoItem = "2435675",
+                            Descripcion = "Correcion Factura",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0.76m,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 5,
+                        }
+                    },
+                    Discrepancias = new List<Discrepancia>
+                    {
+                        new Discrepancia
+                        {
+                            NroReferencia = "FF11-001",
+                            Tipo = "01",
+                            Descripcion = "Anulacion de la operacion"
+                        }
+                    },
+                    Relacionados = new List<DocumentoRelacionado>
+                    {
+                        new DocumentoRelacionado
+                        {
+                            NroDocumento = "FF11-001",
+                            TipoDocumento = "01"
+                        }
+                    }
+                };
+
+                Console.WriteLine("Generando XML....");
+
+                var documentoResponse = RestHelper<DocumentoElectronico, DocumentoResponse>.Execute("GenerarNotaCredito", documento);
+
+                if (!documentoResponse.Exito)
+                {
+                    throw new InvalidOperationException($"{documentoResponse.MensajeError}\n{documentoResponse.Pila}");
+                }
+
+                Console.WriteLine("Firmando XML...");
+                // Firmado del Documento.
+                var firmado = new FirmadoRequest
+                {
+                    TramaXmlSinFirma = documentoResponse.TramaXmlSinFirma,
+                    CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("certificado.pfx")),
+                    PasswordCertificado = string.Empty,
+                };
+
+                var responseFirma = RestHelper<FirmadoRequest, FirmadoResponse>.Execute("Firmar", firmado);
+
+                if (!responseFirma.Exito)
+                {
+                    throw new InvalidOperationException(responseFirma.MensajeError);
+                }
+
+                File.WriteAllBytes("notacredito.xml", Convert.FromBase64String(responseFirma.TramaXmlFirmado));
+
+                Console.WriteLine("Enviando a SUNAT....");
+
+                var documentoRequest = new EnviarDocumentoRequest
+                {
+                    Ruc = documento.Emisor.NroDocumento,
+                    UsuarioSol = "MODDATOS",
+                    ClaveSol = "MODDATOS",
+                    EndPointUrl = UrlSunat,
+                    IdDocumento = documento.IdDocumento,
+                    TipoDocumento = documento.TipoDocumento,
+                    TramaXmlFirmado = responseFirma.TramaXmlFirmado
+                };
+
+                var enviarDocumentoResponse = RestHelper<EnviarDocumentoRequest, EnviarDocumentoResponse>.Execute("EnviarDocumento", documentoRequest);
+
+                if (!enviarDocumentoResponse.Exito)
+                {
+                    throw new InvalidOperationException(enviarDocumentoResponse.MensajeError);
+                }
+
+                File.WriteAllBytes("notacreditocdr.zip", Convert.FromBase64String(enviarDocumentoResponse.TramaZipCdr));
 
                 Console.WriteLine("Respuesta de SUNAT:");
                 Console.WriteLine(enviarDocumentoResponse.MensajeRespuesta);

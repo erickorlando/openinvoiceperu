@@ -214,45 +214,48 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             #region Signature
 
             writer.WriteStartElement("cac:Signature");
-            writer.WriteElementString("cbc:ID", Signature.Id);
+            {
+                writer.WriteElementString("cbc:ID", Signature.Id);
 
-            #region SignatoryParty
+                #region SignatoryParty
 
-            writer.WriteStartElement("cac:SignatoryParty");
+                writer.WriteStartElement("cac:SignatoryParty");
+                {
+                    writer.WriteStartElement("cac:PartyIdentification");
+                    {
+                        writer.WriteElementString("cbc:ID", Signature.SignatoryParty.PartyIdentification.Id.Value);
+                    }
+                    writer.WriteEndElement();
 
-            writer.WriteStartElement("cac:PartyIdentification");
-            writer.WriteElementString("cbc:ID", Signature.SignatoryParty.PartyIdentification.Id.Value);
-            writer.WriteEndElement();
+                    #region PartyName
 
-            #region PartyName
+                    writer.WriteStartElement("cac:PartyName");
+                    {
+                        writer.WriteElementString("cbc:Name", Signature.SignatoryParty.PartyName.Name);
+                    }
+                    writer.WriteEndElement();
 
-            writer.WriteStartElement("cac:PartyName");
+                    #endregion PartyName
+                }
+                writer.WriteEndElement();
 
-            //writer.WriteStartElement("cbc:Name");
-            //writer.WriteCData(Signature.SignatoryParty.PartyName.Name);
-            //writer.WriteEndElement();
-            writer.WriteElementString("cbc:Name", Signature.SignatoryParty.PartyName.Name);
+                #endregion SignatoryParty
 
-            writer.WriteEndElement();
+                #region DigitalSignatureAttachment
 
-            #endregion PartyName
+                writer.WriteStartElement("cac:DigitalSignatureAttachment");
+                {
+                    writer.WriteStartElement("cac:ExternalReference");
+                    {
+                        writer.WriteElementString("cbc:URI",
+                            Signature.DigitalSignatureAttachment.ExternalReference.Uri.Trim());
+                    }
+                    writer.WriteEndElement();
+                }
+                writer.WriteEndElement();
 
-            writer.WriteEndElement();
-
-            #endregion SignatoryParty
-
-            #region DigitalSignatureAttachment
-
-            writer.WriteStartElement("cac:DigitalSignatureAttachment");
-
-            writer.WriteStartElement("cac:ExternalReference");
-            writer.WriteElementString("cbc:URI", Signature.DigitalSignatureAttachment.ExternalReference.Uri.Trim());
-            writer.WriteEndElement();
-
-            writer.WriteEndElement();
-
-            #endregion DigitalSignatureAttachment
-
+                #endregion DigitalSignatureAttachment
+            }
             writer.WriteEndElement();
 
             #endregion Signature
