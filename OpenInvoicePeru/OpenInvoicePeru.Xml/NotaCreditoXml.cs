@@ -238,7 +238,7 @@ namespace OpenInvoicePeru.Xml
                         {
                             Percent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
                             TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
-                            TaxScheme = new TaxScheme()
+                            TaxScheme = new TaxScheme
                             {
                                 Id = AfectacionImpuesto.ObtenerCodigoTributo(detalleDocumento.TipoImpuesto),
                                 Name = AfectacionImpuesto.ObtenerDescripcionTributo(detalleDocumento.TipoImpuesto),

@@ -453,13 +453,13 @@ namespace OpenInvoicePeru.Xml
                     TaxCategoryId = "1000",
                     TaxCategory = new TaxCategory
                     {
-                        Percent = 18,
+                        Percent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
                         TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
                         TaxScheme = new TaxScheme
                         {
-                            Id = "1000",
-                            Name = "IGV",
-                            TaxTypeCode = "VAT"
+                            Id = AfectacionImpuesto.ObtenerCodigoTributo(detalleDocumento.TipoImpuesto),
+                            Name = AfectacionImpuesto.ObtenerDescripcionTributo(detalleDocumento.TipoImpuesto),
+                            TaxTypeCode = AfectacionImpuesto.ObtenerCodigoTipoTributo(detalleDocumento.TipoImpuesto)
                         }
                     }
                 });
