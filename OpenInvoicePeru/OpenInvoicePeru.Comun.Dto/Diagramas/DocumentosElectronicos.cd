@@ -1,69 +1,47 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.Contribuyente">
-    <Position X="0.5" Y="1" Width="2" />
+    <Position X="0.5" Y="2.75" Width="2" />
     <TypeIdentifier>
-      <HashCode>AAAAAAIAAAAACAAEACQAAAAACAAABAACwAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAACwAAAAAAAAAA=</HashCode>
       <FileName>Modelos\Contribuyente.cs</FileName>
     </TypeIdentifier>
-  </Class>
-  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DatoAdicional">
-    <Position X="5.25" Y="7.75" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAQAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>Modelos\DatoAdicional.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DatosGuia">
-    <Position X="0.5" Y="4.75" Width="2.5" />
-    <TypeIdentifier>
-      <HashCode>AAEAIAAAAABAAAAAAEACA0AAAAAACAAAEAAAAAAAEAA=</HashCode>
-      <FileName>Modelos\DatosGuia.cs</FileName>
-    </TypeIdentifier>
-    <ShowAsAssociation>
-      <Property Name="DireccionDestino" />
-      <Property Name="DireccionOrigen" />
-    </ShowAsAssociation>
   </Class>
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DetalleDocumento">
     <Position X="9.5" Y="2.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>QAESAgEAABAAAgAAAAAAAwABAgAAEAAAAIACIAAAAAA=</HashCode>
+      <HashCode>QAESAAEAABAAAgAAAAAAAwABAgAAEAAAAIACIAAAAAA=</HashCode>
       <FileName>Modelos\DetalleDocumento.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.Discrepancia">
-    <Position X="9.5" Y="0.5" Width="1.75" />
-    <TypeIdentifier>
-      <HashCode>AAAAAAAAAEAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAQ=</HashCode>
-      <FileName>Modelos\Discrepancia.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoElectronico" BaseTypeListCollapsed="true">
     <Position X="5" Y="0.5" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>gGMBEAAAABIUCAACAABDAAAAJJECRBAAMAAAAigAAAA=</HashCode>
+      <HashCode>lGIBAAAAABIUCABCCAJDAAAAJJEAREAAMAAAAigAAAA=</HashCode>
       <FileName>Modelos\DocumentoElectronico.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Property Name="Emisor" />
       <Property Name="Receptor" />
-      <Property Name="DatosGuiaTransportista" />
     </ShowAsAssociation>
     <ShowAsCollectionAssociation>
       <Property Name="Items" />
-      <Property Name="DatoAdicionales" />
-      <Property Name="Relacionados" />
-      <Property Name="OtrosDocumentosRelacionados" />
-      <Property Name="Discrepancias" />
+      <Property Name="Leyendas" />
     </ShowAsCollectionAssociation>
     <Lollipop Position="0.2" />
   </Class>
-  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoRelacionado">
-    <Position X="12" Y="2.25" Width="2" />
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.Compania">
+    <Position X="0.75" Y="1" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAABAACAAAAAAAAAAA=</HashCode>
-      <FileName>Modelos\DocumentoRelacionado.cs</FileName>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\Compania.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.Leyenda">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Modelos\Leyenda.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />
