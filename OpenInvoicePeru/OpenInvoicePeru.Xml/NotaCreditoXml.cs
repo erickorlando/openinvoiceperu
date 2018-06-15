@@ -19,38 +19,6 @@ namespace OpenInvoicePeru.Xml
             documento.MontoEnLetras = Conversion.Enletras(documento.TotalVenta);
             var creditNote = new CreditNote
             {
-                UblExtensions = new UblExtensions
-                {
-                    Extension2 = new UblExtension
-                    {
-                        ExtensionContent = new ExtensionContent
-                        {
-                            AdditionalInformation = new AdditionalInformation
-                            {
-                                AdditionalMonetaryTotals = new List<AdditionalMonetaryTotal>()
-                                {
-                                    new AdditionalMonetaryTotal()
-                                    {
-                                        Id ="1001",
-                                        PayableAmount = new PayableAmount()
-                                        {
-                                            CurrencyId = documento.Moneda,
-                                            Value = documento.Gravadas
-                                        }
-                                    }
-                                },
-                                AdditionalProperties = new List<AdditionalProperty>()
-                                {
-                                    new AdditionalProperty
-                                    {
-                                        Id = "1000",
-                                        Value = documento.MontoEnLetras
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
                 Id = documento.IdDocumento,
                 IssueDate = DateTime.Parse(documento.FechaEmision),
                 IssueTime = DateTime.Parse(documento.HoraEmision),

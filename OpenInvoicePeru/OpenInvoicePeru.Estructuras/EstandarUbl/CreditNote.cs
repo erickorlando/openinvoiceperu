@@ -122,7 +122,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteElementString("cbc:UBLVersionID", UblVersionId);
             writer.WriteElementString("cbc:CustomizationID", CustomizationId);
             writer.WriteElementString("cbc:ID", Id);
-            writer.WriteElementString("cbc:IssueDate", IssueDate.ToString("yyyy-MM-dd"));
+            writer.WriteElementString("cbc:IssueDate", IssueDate.ToString(Formatos.FormatoFecha));
             writer.WriteElementString("cbc:IssueTime", IssueTime.ToString(Formatos.FormatoHora));
             if (DueDate != null)
                 writer.WriteElementString("cbc:DueDate", DueDate?.ToString(Formatos.FormatoFecha));
@@ -137,6 +137,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 writer.WriteEndElement();
             }
 
+            #region DocumentCurrencyCode
             writer.WriteStartElement("cbc:DocumentCurrencyCode");
             {
                 writer.WriteAttributeString("listID", ValoresUbl.DocumentCurrencyCode);
@@ -144,7 +145,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 writer.WriteAttributeString("listAgencyName", ValoresUbl.CurrencyAgencyName);
                 writer.WriteValue(DocumentCurrencyCode);
             }
-            writer.WriteEndElement();
+            writer.WriteEndElement(); 
+            #endregion
 
             #region DiscrepancyResponse
 
