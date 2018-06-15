@@ -53,6 +53,7 @@ namespace OpenInvoicePeru.Xml
                 },
                 Id = documento.IdDocumento,
                 IssueDate = DateTime.Parse(documento.FechaEmision),
+                IssueTime = DateTime.Parse(documento.HoraEmision),
                 DocumentCurrencyCode = documento.Moneda,
                 Signature = new SignatureCac
                 {
@@ -164,6 +165,9 @@ namespace OpenInvoicePeru.Xml
                     }
                 }
             };
+
+            if (!string.IsNullOrEmpty(documento.FechaVencimiento))
+                creditNote.DueDate = DateTime.Parse(documento.FechaVencimiento);
 
             foreach (var discrepancia in documento.Discrepancias)
             {

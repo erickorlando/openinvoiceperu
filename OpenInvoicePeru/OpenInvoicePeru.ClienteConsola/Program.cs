@@ -14,9 +14,9 @@ namespace OpenInvoicePeru.ClienteConsola
         static void Main()
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.Title = "Prueba de Envio de Factura con UBL 2.1";
+            Console.Title = "OpenInvoicePeru - Prueba de Envio de Documentos Electrónicos con UBL 2.1";
 
-            //CrearFactura();            
+            CrearFactura();
             //CrearFacturaConDetraccion();
             //CrearBoleta();
             CrearNotaCredito();
