@@ -19,38 +19,6 @@ namespace OpenInvoicePeru.Xml
             documento.MontoEnLetras = Conversion.Enletras(documento.TotalVenta);
             var debitNote = new DebitNote
             {
-                UblExtensions = new UblExtensions
-                {
-                    Extension2 = new UblExtension
-                    {
-                        ExtensionContent = new ExtensionContent
-                        {
-                            AdditionalInformation = new AdditionalInformation
-                            {
-                                AdditionalMonetaryTotals = new List<AdditionalMonetaryTotal>()
-                                {
-                                    new AdditionalMonetaryTotal()
-                                    {
-                                        Id ="1001",
-                                        PayableAmount = new PayableAmount()
-                                        {
-                                            CurrencyId = documento.Moneda,
-                                            Value = documento.Gravadas
-                                        }
-                                    }
-                                },
-                                AdditionalProperties = new List<AdditionalProperty>()
-                                {
-                                    new AdditionalProperty
-                                    {
-                                        Id = "1000",
-                                        Value = documento.MontoEnLetras
-                                    }
-                                }
-                            }
-                        }
-                    }
-                },
                 Id = documento.IdDocumento,
                 IssueDate = DateTime.Parse(documento.FechaEmision),
                 DocumentCurrencyCode = documento.Moneda,
@@ -81,23 +49,23 @@ namespace OpenInvoicePeru.Xml
                 },
                 AccountingSupplierParty = new AccountingSupplierParty
                 {
+                    PartyTaxScheme = new PartyTaxScheme
+                    {
+                        RegistrationName = documento.Emisor.NombreLegal,
+                        CompanyId = new CompanyId
+                        {
+                            SchemeId = documento.Emisor.TipoDocumento,
+                            Value = documento.Emisor.NroDocumento
+                        }
+                    },
                     Party = new Party
                     {
-                        PartyIdentification = new PartyIdentification
-                        {
-                            Id = new PartyIdentificationId
-                            {
-                                SchemeId = documento.Emisor.TipoDocumento,
-                                Value = documento.Emisor.NroDocumento
-                            }
-                        },
                         PartyName = new PartyName
                         {
                             Name = documento.Emisor.NombreComercial
                         },
                         PartyLegalEntity = new PartyLegalEntity
                         {
-                            RegistrationName = documento.Emisor.NombreLegal,
                             RegistrationAddress = new RegistrationAddress
                             {
                                 AddressTypeCode = documento.Emisor.CodigoAnexo
@@ -107,28 +75,16 @@ namespace OpenInvoicePeru.Xml
                 },
                 AccountingCustomerParty = new AccountingSupplierParty
                 {
-                    Party = new Party
+                    PartyTaxScheme = new PartyTaxScheme
                     {
-                        PartyIdentification = new PartyIdentification
+                        RegistrationName = documento.Receptor.NombreLegal,
+                        CompanyId = new CompanyId
                         {
-                            Id = new PartyIdentificationId
-                            {
-                                SchemeId = documento.Receptor.TipoDocumento,
-                                Value = documento.Receptor.NroDocumento
-                            }
-                        },
-                        PartyName = new PartyName
-                        {
-                            Name = documento.Receptor.NombreComercial
-                        },
-                        PartyLegalEntity = new PartyLegalEntity
-                        {
-                            RegistrationName = documento.Receptor.NombreLegal
+                            SchemeId = documento.Receptor.TipoDocumento,
+                            Value = documento.Receptor.NroDocumento
                         }
                     }
                 },
-                UblVersionId = "2.0",
-                CustomizationId = "1.0",
                 RequestedMonetaryTotal = new LegalMonetaryTotal
                 {
                     PayableAmount = new PayableAmount
@@ -153,6 +109,11 @@ namespace OpenInvoicePeru.Xml
                         },
                         TaxSubtotal = new TaxSubtotal
                         {
+                            TaxableAmount = new PayableAmount
+                            {
+                                CurrencyId = documento.Moneda,
+                                Value = documento.TotalVenta
+                            },
                             TaxAmount = new PayableAmount
                             {
                                 CurrencyId = documento.Moneda,
@@ -171,6 +132,9 @@ namespace OpenInvoicePeru.Xml
                     }
                 }
             };
+
+            if (!string.IsNullOrEmpty(documento.FechaVencimiento))
+                debitNote.DueDate = DateTime.Parse(documento.FechaVencimiento);
 
             foreach (var discrepancia in documento.Discrepancias)
             {
@@ -239,6 +203,16 @@ namespace OpenInvoicePeru.Xml
                         }
                     },
                 };
+                linea.PricingReference.AlternativeConditionPrices.Add(new AlternativeConditionPrice
+                {
+                    PriceAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        // Comprobamos que sea una operacion gratuita.
+                        Value = documento.Gratuitas > 0 ? 0 : detalleDocumento.PrecioReferencial
+                    },
+                    PriceTypeCode = detalleDocumento.TipoPrecio
+                });
                 /* 16 - Afectación al IGV por ítem */
                 linea.TaxTotals.Add(new TaxTotal
                 {
@@ -249,6 +223,11 @@ namespace OpenInvoicePeru.Xml
                     },
                     TaxSubtotal = new TaxSubtotal
                     {
+                        TaxableAmount = new PayableAmount
+                        {
+                            CurrencyId = documento.Moneda,
+                            Value = detalleDocumento.TotalVenta
+                        },
                         TaxAmount = new PayableAmount
                         {
                             CurrencyId = documento.Moneda,
@@ -256,12 +235,13 @@ namespace OpenInvoicePeru.Xml
                         },
                         TaxCategory = new TaxCategory
                         {
+                            Percent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
                             TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
-                            TaxScheme = new TaxScheme()
+                            TaxScheme = new TaxScheme
                             {
-                                Id = "1000",
-                                Name = "IGV",
-                                TaxTypeCode = "VAT"
+                                Id = AfectacionImpuesto.ObtenerCodigoTributo(detalleDocumento.TipoImpuesto),
+                                Name = AfectacionImpuesto.ObtenerDescripcionTributo(detalleDocumento.TipoImpuesto),
+                                TaxTypeCode = AfectacionImpuesto.ObtenerCodigoTipoTributo(detalleDocumento.TipoImpuesto)
                             }
                         }
                     }
