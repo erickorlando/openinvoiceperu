@@ -16,11 +16,13 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envio de Documentos Electrónicos con UBL 2.1";
 
-            //CrearFactura();
-            //CrearFacturaConDetraccion();
-            //CrearBoleta();
+            CrearFactura();
+            CrearFacturaConDetraccion();
+            CrearBoleta();
             CrearNotaCredito();
             CrearNotaDebito();
+            CrearResumenDiario();
+            CrearComunicacionBaja();
         }
 
         private static Compania CrearEmisor()
@@ -588,6 +590,199 @@ namespace OpenInvoicePeru.ClienteConsola
 
                 Console.WriteLine("Respuesta de SUNAT:");
                 Console.WriteLine(enviarDocumentoResponse.MensajeRespuesta);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        private static void CrearResumenDiario()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo de Resumen Diario");
+                var documentoResumenDiario = new ResumenDiarioNuevo
+                {
+                    IdDocumento = $"RC-{DateTime.Today:yyyyMMdd}-001",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    FechaReferencia = DateTime.Today.AddDays(-1).ToString(FormatoFecha),
+                    Emisor = CrearEmisor(),
+                    Resumenes = new List<GrupoResumenNuevo>()
+                };
+
+                documentoResumenDiario.Resumenes.Add(new GrupoResumenNuevo
+                {
+                    Id = 1,
+                    TipoDocumento = "03",
+                    IdDocumento = "BB14-33386",
+                    NroDocumentoReceptor = "41614074",
+                    TipoDocumentoReceptor = "1",
+                    CodigoEstadoItem = 1, // 1 - Agregar. 2 - Modificar. 3 - Eliminar
+                    Moneda = "PEN",
+                    TotalVenta = 190.9m,
+                    TotalIgv = 29.12m,
+                    Gravadas = 161.78m,
+                });
+                // Para los casos de envio de boletas anuladas, se debe primero informar las boletas creadas (1) y luego en un segundo resumen se envian las anuladas. De lo contrario se presentará el error 'El documento indicado no existe no puede ser modificado/eliminado'
+                documentoResumenDiario.Resumenes.Add(new GrupoResumenNuevo
+                {
+                    Id = 2,
+                    TipoDocumento = "03",
+                    IdDocumento = "BB30-33384",
+                    NroDocumentoReceptor = "08506678",
+                    TipoDocumentoReceptor = "1",
+                    CodigoEstadoItem = 1, // 1 - Agregar. 2 - Modificar. 3 - Eliminar
+                    Moneda = "USD",
+                    TotalVenta = 9580m,
+                    TotalIgv = 1411.36m,
+                    Gravadas = 8168.64m,
+                });
+
+
+                Console.WriteLine("Generando XML....");
+
+                var documentoResponse = RestHelper<ResumenDiarioNuevo, DocumentoResponse>.Execute("GenerarResumenDiario/v2", documentoResumenDiario);
+
+                if (!documentoResponse.Exito)
+                    throw new InvalidOperationException(documentoResponse.MensajeError);
+
+                Console.WriteLine("Firmando XML...");
+                // Firmado del Documento.
+                var firmado = new FirmadoRequest
+                {
+                    TramaXmlSinFirma = documentoResponse.TramaXmlSinFirma,
+                    CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("Certificado.pfx")),
+                    PasswordCertificado = string.Empty,
+                };
+
+                var responseFirma = RestHelper<FirmadoRequest, FirmadoResponse>.Execute("Firmar", firmado);
+
+                if (!responseFirma.Exito)
+                {
+                    throw new InvalidOperationException(responseFirma.MensajeError);
+                }
+
+                Console.WriteLine("Guardando XML de Resumen....(Revisar carpeta del ejecutable)");
+
+                File.WriteAllBytes("resumendiario.xml", Convert.FromBase64String(responseFirma.TramaXmlFirmado));
+
+                Console.WriteLine("Enviando a SUNAT....");
+
+                var enviarDocumentoRequest = new EnviarDocumentoRequest
+                {
+                    Ruc = documentoResumenDiario.Emisor.NroDocumento,
+                    UsuarioSol = "MODDATOS",
+                    ClaveSol = "MODDATOS",
+                    EndPointUrl = UrlSunat,
+                    IdDocumento = documentoResumenDiario.IdDocumento,
+                    TramaXmlFirmado = responseFirma.TramaXmlFirmado
+                };
+
+                var enviarResumenResponse = RestHelper<EnviarDocumentoRequest, EnviarResumenResponse>.Execute("EnviarResumen", enviarDocumentoRequest);
+
+                if (!enviarResumenResponse.Exito)
+                {
+                    throw new InvalidOperationException(enviarResumenResponse.MensajeError);
+                }
+
+                Console.WriteLine("Nro de Ticket: {0}", enviarResumenResponse.NroTicket);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        private static void CrearComunicacionBaja()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo de Comunicación de Baja");
+                var documentoBaja = new ComunicacionBaja
+                {
+                    IdDocumento = $"RA-{DateTime.Today:yyyyMMdd}-001",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    FechaReferencia = DateTime.Today.AddDays(-1).ToString(FormatoFecha),
+                    Emisor = CrearEmisor(),
+                    Bajas = new List<DocumentoBaja>()
+                };
+
+                // En las comunicaciones de Baja ya no se pueden colocar boletas, ya que la anulacion de las mismas
+                // la realiza el resumen diario.
+                documentoBaja.Bajas.Add(new DocumentoBaja
+                {
+                    Id = 1,
+                    Correlativo = "33386",
+                    TipoDocumento = "01",
+                    Serie = "FA50",
+                    MotivoBaja = "Anulación por otro tipo de documento"
+                });
+                documentoBaja.Bajas.Add(new DocumentoBaja
+                {
+                    Id = 2,
+                    Correlativo = "86486",
+                    TipoDocumento = "01",
+                    Serie = "FF14",
+                    MotivoBaja = "Anulación por otro datos erroneos"
+                });
+
+                Console.WriteLine("Generando XML....");
+
+                var documentoResponse = RestHelper<ComunicacionBaja, DocumentoResponse>.Execute("GenerarComunicacionBaja", documentoBaja);
+                if (!documentoResponse.Exito)
+                {
+                    throw new InvalidOperationException(documentoResponse.MensajeError);
+                }
+
+                Console.WriteLine("Firmando XML...");
+                // Firmado del Documento.
+                var firmado = new FirmadoRequest
+                {
+                    TramaXmlSinFirma = documentoResponse.TramaXmlSinFirma,
+                    CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("Certificado.pfx")),
+                    PasswordCertificado = string.Empty,
+                };
+
+                var responseFirma = RestHelper<FirmadoRequest, FirmadoResponse>.Execute("Firmar", firmado);
+
+                if (!responseFirma.Exito)
+                {
+                    throw new InvalidOperationException(responseFirma.MensajeError);
+                }
+
+                Console.WriteLine("Guardando XML de la Comunicacion de Baja....(Revisar carpeta del ejecutable)");
+
+                File.WriteAllBytes("comunicacionbaja.xml", Convert.FromBase64String(responseFirma.TramaXmlFirmado));
+
+                Console.WriteLine("Enviando a SUNAT....");
+
+                var sendBill = new EnviarDocumentoRequest
+                {
+                    Ruc = documentoBaja.Emisor.NroDocumento,
+                    UsuarioSol = "MODDATOS",
+                    ClaveSol = "MODDATOS",
+                    EndPointUrl = UrlSunat,
+                    IdDocumento = documentoBaja.IdDocumento,
+                    TramaXmlFirmado = responseFirma.TramaXmlFirmado
+                };
+
+                var enviarResumenResponse = RestHelper<EnviarDocumentoRequest, EnviarResumenResponse>.Execute("EnviarResumen", sendBill);
+
+                if (!enviarResumenResponse.Exito)
+                {
+                    throw new InvalidOperationException(enviarResumenResponse.MensajeError);
+                }
+
+                Console.WriteLine("Nro de Ticket: {0}", enviarResumenResponse.NroTicket);
             }
             catch (Exception ex)
             {
