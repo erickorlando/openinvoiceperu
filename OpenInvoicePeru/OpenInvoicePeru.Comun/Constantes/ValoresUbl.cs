@@ -30,6 +30,10 @@
         public const string AdditionalDocumentsSchemeName = "Documentos Relacionados";
         public const string AdditionalDocumentsSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo12";
         public const string TaxSchemeSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05";
+        public const string UnspscListId = "UNSPSC";
+        public const string UnspscListAgencyName = "GS1 US";
+        public const string UnspscListName = "Item Classification";
+        public const string AdditionalPropertyListUri  = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo55";
     }
 
 }

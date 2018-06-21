@@ -773,6 +773,44 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                 writer.WriteStartElement("cac:Item");
                 {
+                    #region CommodytiClassification
+                    if (!string.IsNullOrEmpty(invoiceLine.Item.CommodityClassification.ItemClassificationCode))
+                    {
+                        writer.WriteStartElement("cac:CommodityClassification");
+                        {
+                            writer.WriteStartElement("cbc:ItemClassificationCode");
+                            {
+                                writer.WriteAttributeString("listID", ValoresUbl.UnspscListId);
+                                writer.WriteAttributeString("listAgencyName", ValoresUbl.UnspscListAgencyName);
+                                writer.WriteAttributeString("listName", ValoresUbl.UnspscListName);
+                                writer.WriteValue(invoiceLine.Item.CommodityClassification.ItemClassificationCode);
+                            }
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                    }
+                    #endregion
+
+                    #region AdditionalProperties
+                    foreach (var additionalProperty in invoiceLine.Item.AdditionalItemProperties)
+                    {
+                        writer.WriteStartElement("cac:AdditionalItemProperty");
+                        {
+                            writer.WriteElementString("cbc:Name", additionalProperty.Name);
+                            writer.WriteStartElement("cbc:NameCode");
+                            {
+                                writer.WriteAttributeString("listName", "Propiedad del Item");
+                                writer.WriteAttributeString("listAgencyName", ValoresUbl.SchemeAgencyName);
+                                writer.WriteAttributeString("listURI", ValoresUbl.AdditionalPropertyListUri);
+                                writer.WriteValue(additionalProperty.NameCode);
+                            }
+                            writer.WriteEndElement();
+                            writer.WriteElementString("cbc:Value", additionalProperty.Value);
+                        }
+                        writer.WriteEndElement();
+                    } 
+                    #endregion
+
                     #region Description
 
                     writer.WriteElementString("cbc:Description", invoiceLine.Item.Description);

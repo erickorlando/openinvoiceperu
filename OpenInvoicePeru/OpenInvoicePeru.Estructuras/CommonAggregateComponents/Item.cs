@@ -9,20 +9,21 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
         public string Description { get; set; }
 
         public SellersItemIdentification SellersItemIdentification { get; set; }
+
         public CommodityClassification CommodityClassification { get; set; }
+
         public StandardItemIdentification StandardItemIdentification { get; set; }
-        public AdditionalItemProperty AdditionalItemProperty { get; set; }
+
+        public List<AdditionalItemProperty> AdditionalItemProperties { get; set; }
 
         public Item()
         {
             SellersItemIdentification = new SellersItemIdentification();
             CommodityClassification = new CommodityClassification();
             StandardItemIdentification = new StandardItemIdentification();
-            AdditionalItemProperty = new AdditionalItemProperty();
+            AdditionalItemProperties = new List<AdditionalItemProperty>();
         }
     }
-
-    
 
     [Serializable]
     public class SellersItemIdentification
@@ -47,11 +48,15 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
     {
         public string Name { get; set; }
         public string NameCode { get; set; }
-        public List<ItemValue> Values { get; set; }
+        public string Value { get; set; }
+        public UsabilityPeriod UsabilityPeriod { get; set; }
     }
 
-    public class ItemValue
+    [Serializable]
+    public class UsabilityPeriod
     {
-        public string Value { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int DurationMeasure { get; set; }
     }
 }
