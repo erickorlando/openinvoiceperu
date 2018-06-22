@@ -806,9 +806,23 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                             }
                             writer.WriteEndElement();
                             writer.WriteElementString("cbc:Value", additionalProperty.Value);
+                            if (!string.IsNullOrEmpty(additionalProperty.UsabilityPeriod.StartDate))
+                            {
+                                writer.WriteStartElement("cac:UsabilityPeriod");
+                                {
+                                    writer.WriteElementString("cbc:StartDate", additionalProperty.UsabilityPeriod.StartDate);
+                                    writer.WriteElementString("cbc:EndDate", additionalProperty.UsabilityPeriod.EndDate);
+                                    if (additionalProperty.UsabilityPeriod.DurationMeasure > 0)
+                                    {
+                                        writer.WriteElementString("cbc:DurationMeasure", 
+                                            additionalProperty.UsabilityPeriod.DurationMeasure.ToString());
+                                    }
+                                }
+                                writer.WriteEndElement();
+                            }
                         }
                         writer.WriteEndElement();
-                    } 
+                    }
                     #endregion
 
                     #region Description

@@ -47,16 +47,26 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
     public class AdditionalItemProperty
     {
         public string Name { get; set; }
+
         public string NameCode { get; set; }
+
         public string Value { get; set; }
+
         public UsabilityPeriod UsabilityPeriod { get; set; }
+
+        public AdditionalItemProperty()
+        {
+            UsabilityPeriod = new UsabilityPeriod();
+        }
     }
 
     [Serializable]
     public class UsabilityPeriod
     {
-        public DateTime StartDate { get; set; }
-        public DateTime EndDate { get; set; }
+        public string StartDate { get; set; }
+
+        public string EndDate { get; set; }
+
         public int DurationMeasure { get; set; }
     }
 }
