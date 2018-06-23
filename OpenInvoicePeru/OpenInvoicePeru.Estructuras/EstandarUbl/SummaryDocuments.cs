@@ -152,33 +152,36 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             #region AccountingSupplierParty
 
             writer.WriteStartElement("cac:AccountingSupplierParty");
-
-            //writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingSupplierParty.CustomerAssignedAccountId);
-            //writer.WriteElementString("cbc:AdditionalAccountID",
-            //    AccountingSupplierParty.AdditionalAccountId);
-
-            #region Party
-
-            writer.WriteStartElement("cac:Party");
-
-            #region PartyLegalEntity
-
-            writer.WriteStartElement("cac:PartyLegalEntity");
-
             {
-                writer.WriteStartElement("cbc:RegistrationName");
-                writer.WriteString(AccountingSupplierParty.Party.PartyLegalEntity.RegistrationName);
+                writer.WriteElementString("cbc:CustomerAssignedAccountID", AccountingSupplierParty.CustomerAssignedAccountId);
+                writer.WriteElementString("cbc:AdditionalAccountID", AccountingSupplierParty.AdditionalAccountId);
+
+                #region Party
+
+                writer.WriteStartElement("cac:Party");
+                {
+
+                    #region PartyLegalEntity
+
+                    writer.WriteStartElement("cac:PartyLegalEntity");
+
+                    {
+                        writer.WriteStartElement("cbc:RegistrationName");
+                        {
+                            writer.WriteString(AccountingSupplierParty.Party.PartyLegalEntity.RegistrationName);
+                        }
+                        writer.WriteEndElement();
+                    }
+
+                    writer.WriteEndElement();
+
+                    #endregion PartyLegalEntity
+
+                }
                 writer.WriteEndElement();
+
+                #endregion Party
             }
-
-            writer.WriteEndElement();
-
-            #endregion PartyLegalEntity
-
-            writer.WriteEndElement();
-
-            #endregion Party
-
             writer.WriteEndElement();
 
             #endregion AccountingSupplierParty
@@ -199,15 +202,15 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         writer.WriteElementString("sac:StartDocumentNumberID", item.StartDocumentNumberId.ToString());
                         writer.WriteElementString("sac:EndDocumentNumberID", item.EndDocumentNumberId.ToString());
                     }
-                    //if (!string.IsNullOrEmpty(item.AccountingCustomerParty.AdditionalAccountId))
-                    //{
-                    //    writer.WriteStartElement("cac:AccountingCustomerParty");
-                    //    {
-                    //        writer.WriteElementString("cbc:CustomerAssignedAccountID", item.AccountingCustomerParty.CustomerAssignedAccountId);
-                    //        writer.WriteElementString("cbc:AdditionalAccountID", item.AccountingCustomerParty.AdditionalAccountId);
-                    //    }
-                    //    writer.WriteEndElement();
-                    //}
+                    if (!string.IsNullOrEmpty(item.AccountingCustomerParty.AdditionalAccountId))
+                    {
+                        writer.WriteStartElement("cac:AccountingCustomerParty");
+                        {
+                            writer.WriteElementString("cbc:CustomerAssignedAccountID", item.AccountingCustomerParty.CustomerAssignedAccountId);
+                            writer.WriteElementString("cbc:AdditionalAccountID", item.AccountingCustomerParty.AdditionalAccountId);
+                        }
+                        writer.WriteEndElement();
+                    }
                     if (!string.IsNullOrEmpty(item.BillingReference.InvoiceDocumentReference.Id))
                     {
                         writer.WriteStartElement("cac:BillingReference");

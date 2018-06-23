@@ -9,6 +9,10 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 
         public PartyTaxScheme PartyTaxScheme { get; set; }
 
+        public string CustomerAssignedAccountId { get; set; }
+
+        public string AdditionalAccountId { get; set; }
+
         public AccountingSupplierParty()
         {
             Party = new Party();
