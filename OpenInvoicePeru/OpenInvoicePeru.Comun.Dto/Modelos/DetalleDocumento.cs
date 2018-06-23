@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace OpenInvoicePeru.Comun.Dto.Modelos
 {
@@ -42,8 +43,12 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public string PlacaVehiculo { get; set; }
 
+        public string CodigoProductoSunat { get; set; }
+
         [JsonProperty(Required = Required.Always)]
         public decimal TotalVenta { get; set; }
+
+        public List<DatoAdicional> DatosAdcionales { get; set; }
 
         public DetalleDocumento()
         {
@@ -51,6 +56,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             UnidadMedida = "NIU";
             TipoPrecio = "01";
             TipoImpuesto = "10";
+            DatosAdcionales = new List<DatoAdicional>();
         }
     }
 }

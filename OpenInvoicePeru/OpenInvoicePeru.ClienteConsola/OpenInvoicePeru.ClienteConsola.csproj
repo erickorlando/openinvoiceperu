@@ -7,7 +7,7 @@
     <ProjectGuid>{B98EB8E3-7A4E-4AF0-BA61-90BF5DE13B60}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>OpenInvoicePeru.ClienteConsola</RootNamespace>
-    <AssemblyName>OpenInvoicePeru.ClienteConsola</AssemblyName>
+    <AssemblyName>OpenInvoicePeruClienteConsola</AssemblyName>
     <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>

@@ -736,6 +736,11 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                     }
                                     writer.WriteEndElement();
 
+                                    if (!string.IsNullOrEmpty(taxTotal.TaxCategory.TierRange))
+                                    {
+                                        writer.WriteElementString("cac:TierRange", taxTotal.TaxSubtotal.TaxCategory.TierRange);
+                                    }
+
                                     #region TaxScheme
 
                                     writer.WriteStartElement("cac:TaxScheme");
@@ -776,9 +781,6 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     #region Description
 
                     writer.WriteElementString("cbc:Description", invoiceLine.Item.Description);
-                    //writer.WriteStartElement("cbc:Description");
-                    //writer.WriteCData(invoiceLine.Item.Description);
-                    //writer.WriteEndElement();
 
                     #endregion Description
 
@@ -791,6 +793,58 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     writer.WriteEndElement();
 
                     #endregion SellersItemIdentification
+
+                    #region CommodytiClassification
+                    if (!string.IsNullOrEmpty(invoiceLine.Item.CommodityClassification.ItemClassificationCode))
+                    {
+                        writer.WriteStartElement("cac:CommodityClassification");
+                        {
+                            writer.WriteStartElement("cbc:ItemClassificationCode");
+                            {
+                                writer.WriteAttributeString("listID", ValoresUbl.UnspscListId);
+                                writer.WriteAttributeString("listAgencyName", ValoresUbl.UnspscListAgencyName);
+                                writer.WriteAttributeString("listName", ValoresUbl.UnspscListName);
+                                writer.WriteValue(invoiceLine.Item.CommodityClassification.ItemClassificationCode);
+                            }
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                    }
+                    #endregion
+
+                    #region AdditionalProperties
+                    foreach (var additionalProperty in invoiceLine.Item.AdditionalItemProperties)
+                    {
+                        writer.WriteStartElement("cac:AdditionalItemProperty");
+                        {
+                            writer.WriteElementString("cbc:Name", additionalProperty.Name);
+                            writer.WriteStartElement("cbc:NameCode");
+                            {
+                                writer.WriteAttributeString("listName", "Propiedad del Item");
+                                writer.WriteAttributeString("listAgencyName", ValoresUbl.SchemeAgencyName);
+                                writer.WriteAttributeString("listURI", ValoresUbl.AdditionalPropertyListUri);
+                                writer.WriteValue(additionalProperty.NameCode);
+                            }
+                            writer.WriteEndElement();
+                            writer.WriteElementString("cbc:Value", additionalProperty.Value);
+                            if (!string.IsNullOrEmpty(additionalProperty.UsabilityPeriod.StartDate))
+                            {
+                                writer.WriteStartElement("cac:UsabilityPeriod");
+                                {
+                                    writer.WriteElementString("cbc:StartDate", additionalProperty.UsabilityPeriod.StartDate);
+                                    writer.WriteElementString("cbc:EndDate", additionalProperty.UsabilityPeriod.EndDate);
+                                    if (additionalProperty.UsabilityPeriod.DurationMeasure > 0)
+                                    {
+                                        writer.WriteElementString("cbc:DurationMeasure",
+                                            additionalProperty.UsabilityPeriod.DurationMeasure.ToString());
+                                    }
+                                }
+                                writer.WriteEndElement();
+                            }
+                        }
+                        writer.WriteEndElement();
+                    }
+                    #endregion
                 }
                 writer.WriteEndElement();
 
