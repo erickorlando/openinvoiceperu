@@ -110,112 +110,91 @@ namespace OpenInvoicePeru.Xml
                             CurrencyId = documento.Moneda,
                             Value = documento.TotalIgv
                         },
-                        TaxCategoryId = "1000",
-                        TaxSubtotal = new TaxSubtotal
+                        TaxSubTotals = CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
                         {
-                            TaxAmount = new PayableAmount
-                            {
-                                CurrencyId = documento.Moneda,
-                                Value = documento.TotalIgv,
-                            },
-                            TaxableAmount = new PayableAmount
-                            {
-                                CurrencyId = documento.Moneda,
-                                Value = documento.Gravadas
-                            },
-                            TaxCategory = new TaxCategory
-                            {
-                                Percent = 18,
-                                TaxScheme = new TaxScheme
-                                {
-                                    Id = "1000",
-                                    Name = "IGV",
-                                    TaxTypeCode = "VAT"
-                                }
-                            }
-                        }
+                            CurrencyId = documento.Moneda,
+                            Monto = documento.TotalIgv,
+                            MontoBase = documento.Gravadas,
+                            CategoryId = "S",
+                            TaxSchemeId = "1000",
+                            Name = "IGV",
+                            TaxTypeCode = "VAT"
+                        })
                     }
                 }
             };
+
+            if (documento.Inafectas > 0)
+            {
+                invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Inafectas,
+                    CategoryId = "O",
+                    TaxSchemeId = "9998",
+                    Name = "INA",
+                    TaxTypeCode = "FRE"
+                }));
+            }
+
+            if (documento.Exoneradas > 0)
+            {
+                invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Exoneradas,
+                    CategoryId = "E",
+                    TaxSchemeId = "9997",
+                    Name = "EXO",
+                    TaxTypeCode = "VAT"
+                }));
+            }
+
+            if (documento.Gratuitas > 0)
+            {
+                invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Gratuitas,
+                    CategoryId = "E",
+                    TaxSchemeId = "9996",
+                    Name = "GRA",
+                    TaxTypeCode = "FRE"
+                }));
+            }
+
             if (!string.IsNullOrEmpty(documento.FechaVencimiento))
                 invoice.DueDate = DateTime.Parse(documento.FechaVencimiento);
 
             if (documento.TotalIsc > 0)
             {
-                invoice.TaxTotals.Add(new TaxTotal
+                invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
                 {
-                    TaxAmount = new PayableAmount
-                    {
-                        CurrencyId = documento.Moneda,
-                        Value = documento.TotalIsc,
-                    },
-                    TaxCategoryId = "2000",
-                    TaxSubtotal = new TaxSubtotal
-                    {
-                        TaxAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = documento.TotalIsc
-                        },
-                        TaxableAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = documento.Gravadas
-                        },
-                        TaxCategory = new TaxCategory
-                        {
-                            Percent = 10,
-                            TaxScheme = new TaxScheme
-                            {
-                                Id = "2000",
-                                Name = "ISC",
-                                TaxTypeCode = "EXC"
-                            }
-                        }
-                    }
-                });
+                    CurrencyId = documento.Moneda,
+                    Monto = documento.TotalIsc,
+                    MontoBase = documento.Gravadas,
+                    CategoryId = "S",
+                    TaxSchemeId = "2000",
+                    Name = "ISC",
+                    TaxTypeCode = "EXC"
+                }));
             }
             if (documento.TotalOtrosTributos > 0)
             {
-                invoice.TaxTotals.Add(new TaxTotal
+                invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
                 {
-                    TaxAmount = new PayableAmount
-                    {
-                        CurrencyId = documento.Moneda,
-                        Value = documento.TotalOtrosTributos,
-                    },
-                    TaxSubtotal = new TaxSubtotal
-                    {
-                        TaxAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = documento.TotalOtrosTributos
-                        },
-                        TaxableAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = documento.Gravadas
-                        },
-                        TaxCategory = new TaxCategory
-                        {
-                            TaxScheme = new TaxScheme
-                            {
-                                Id = "9999",
-                                Name = "OTROS",
-                                TaxTypeCode = "OTH"
-                            }
-                        }
-                    }
-                });
+                    CurrencyId = documento.Moneda,
+                    Monto = documento.TotalIsc,
+                    MontoBase = documento.Gravadas,
+                    CategoryId = "S",
+                    TaxSchemeId = "9999",
+                    Name = "OTROS",
+                    TaxTypeCode = "OTH"
+                }));
             }
-
-            /* Numero de Placa del Vehiculo - Gastos art.37° Renta */
-            //if (!string.IsNullOrEmpty(documento.PlacaVehiculo))
-            //{
-            //    invoice.UblExtensions.Extension2.ExtensionContent
-            //        .AdditionalInformation.SunatCosts.RoadTransport
-            //        .LicensePlateId = documento.PlacaVehiculo;
-            //}
 
             /* Tipo de Operación - Catalogo N° 17 */
             if (!string.IsNullOrEmpty(documento.TipoOperacion)
@@ -243,24 +222,16 @@ namespace OpenInvoicePeru.Xml
                 });
             }
 
-            foreach (var relacionado in documento.OtrosDocumentosRelacionados)
-            {
-                //invoice.AdditionalDocumentReferences.Add(new InvoiceDocumentReference
-                //{
-                //    DocumentTypeCode = relacionado.TipoDocumento,
-                //    Id = relacionado.NroDocumento
-                //});
-            }
+            //foreach (var relacionado in documento.OtrosDocumentosRelacionados)
+            //{
+            //    //invoice.AdditionalDocumentReferences.Add(new InvoiceDocumentReference
+            //    //{
+            //    //    DocumentTypeCode = relacionado.TipoDocumento,
+            //    //    Id = relacionado.NroDocumento
+            //    //});
+            //}
 
-            if (documento.Gratuitas > 0)
-            {
-                invoice.UblExtensions.Extension2.ExtensionContent
-                        .AdditionalInformation.AdditionalProperties.Add(new AdditionalProperty
-                        {
-                            Id = "1002",
-                            Value = "Articulos gratuitos"
-                        });
-            }
+           
             var dctosPorItem = documento.Items.Sum(d => d.Descuento);
             if (documento.DescuentoGlobal > 0 || dctosPorItem > 0)
             {

@@ -37,6 +37,8 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public decimal ImpuestoSelectivo { get; set; }
 
+        public decimal TasaImpuestoSelectivo { get; set; }
+
         public decimal OtroImpuesto { get; set; }
 
         public decimal Descuento { get; set; }

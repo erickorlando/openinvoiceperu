@@ -13,6 +13,12 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 
         public TaxScheme TaxScheme { get; set; }
 
+        /// <summary>
+        /// Tipo de Afectacion del IGV
+        /// S = Gravado
+        /// E = Exonerado
+        /// O = Inafecto
+        /// </summary>
         public string Id { get; set; }
 
         public TaxCategory()
