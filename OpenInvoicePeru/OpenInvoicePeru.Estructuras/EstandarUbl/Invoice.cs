@@ -736,6 +736,11 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                     }
                                     writer.WriteEndElement();
 
+                                    if (!string.IsNullOrEmpty(taxTotal.TaxCategory.TierRange))
+                                    {
+                                        writer.WriteElementString("cac:TierRange", taxTotal.TaxSubtotal.TaxCategory.TierRange);
+                                    }
+
                                     #region TaxScheme
 
                                     writer.WriteStartElement("cac:TaxScheme");
@@ -773,6 +778,22 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                 writer.WriteStartElement("cac:Item");
                 {
+                    #region Description
+
+                    writer.WriteElementString("cbc:Description", invoiceLine.Item.Description);
+
+                    #endregion Description
+
+                    #region SellersItemIdentification
+
+                    writer.WriteStartElement("cac:SellersItemIdentification");
+                    {
+                        writer.WriteElementString("cbc:ID", invoiceLine.Item.SellersItemIdentification.Id);
+                    }
+                    writer.WriteEndElement();
+
+                    #endregion SellersItemIdentification
+
                     #region CommodytiClassification
                     if (!string.IsNullOrEmpty(invoiceLine.Item.CommodityClassification.ItemClassificationCode))
                     {
@@ -814,7 +835,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                     writer.WriteElementString("cbc:EndDate", additionalProperty.UsabilityPeriod.EndDate);
                                     if (additionalProperty.UsabilityPeriod.DurationMeasure > 0)
                                     {
-                                        writer.WriteElementString("cbc:DurationMeasure", 
+                                        writer.WriteElementString("cbc:DurationMeasure",
                                             additionalProperty.UsabilityPeriod.DurationMeasure.ToString());
                                     }
                                 }
@@ -824,25 +845,6 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         writer.WriteEndElement();
                     }
                     #endregion
-
-                    #region Description
-
-                    writer.WriteElementString("cbc:Description", invoiceLine.Item.Description);
-                    //writer.WriteStartElement("cbc:Description");
-                    //writer.WriteCData(invoiceLine.Item.Description);
-                    //writer.WriteEndElement();
-
-                    #endregion Description
-
-                    #region SellersItemIdentification
-
-                    writer.WriteStartElement("cac:SellersItemIdentification");
-                    {
-                        writer.WriteElementString("cbc:ID", invoiceLine.Item.SellersItemIdentification.Id);
-                    }
-                    writer.WriteEndElement();
-
-                    #endregion SellersItemIdentification
                 }
                 writer.WriteEndElement();
 

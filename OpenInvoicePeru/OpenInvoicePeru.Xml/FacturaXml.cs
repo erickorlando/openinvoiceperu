@@ -125,6 +125,7 @@ namespace OpenInvoicePeru.Xml
                             },
                             TaxCategory = new TaxCategory
                             {
+                                Percent = 18,
                                 TaxScheme = new TaxScheme
                                 {
                                     Id = "1000",
@@ -148,6 +149,7 @@ namespace OpenInvoicePeru.Xml
                         CurrencyId = documento.Moneda,
                         Value = documento.TotalIsc,
                     },
+                    TaxCategoryId = "2000",
                     TaxSubtotal = new TaxSubtotal
                     {
                         TaxAmount = new PayableAmount
@@ -155,8 +157,14 @@ namespace OpenInvoicePeru.Xml
                             CurrencyId = documento.Moneda,
                             Value = documento.TotalIsc
                         },
+                        TaxableAmount = new PayableAmount
+                        {
+                            CurrencyId = documento.Moneda,
+                            Value = documento.Gravadas
+                        },
                         TaxCategory = new TaxCategory
                         {
+                            Percent = 10,
                             TaxScheme = new TaxScheme
                             {
                                 Id = "2000",
@@ -182,6 +190,11 @@ namespace OpenInvoicePeru.Xml
                         {
                             CurrencyId = documento.Moneda,
                             Value = documento.TotalOtrosTributos
+                        },
+                        TaxableAmount = new PayableAmount
+                        {
+                            CurrencyId = documento.Moneda,
+                            Value = documento.Gravadas
                         },
                         TaxCategory = new TaxCategory
                         {
@@ -308,17 +321,6 @@ namespace OpenInvoicePeru.Xml
                 };
             }
 
-            // Datos Adicionales a la Factura.
-            foreach (var adicional in documento.DatoAdicionales)
-            {
-                invoice.UblExtensions.Extension2.ExtensionContent
-                    .AdditionalInformation.AdditionalProperties.Add(new AdditionalProperty
-                    {
-                        Id = adicional.Codigo,
-                        Value = adicional.Contenido
-                    });
-            }
-
             if (documento.MontoDetraccion > 0)
             {
                 invoice.PayeeFinancialAccountId = documento.CuentaBancoNacion;
@@ -427,11 +429,7 @@ namespace OpenInvoicePeru.Xml
                         SellersItemIdentification = new SellersItemIdentification
                         {
                             Id = detalleDocumento.CodigoItem
-                        },
-                        //AdditionalItemIdentification = new AdditionalItemIdentification
-                        //{
-                        //    Id = detalleDocumento.PlacaVehiculo
-                        //}
+                        }
                     },
                     Price = new Price
                     {
@@ -442,6 +440,33 @@ namespace OpenInvoicePeru.Xml
                         }
                     },
                 };
+                if (!string.IsNullOrEmpty(detalleDocumento.PlacaVehiculo))
+                {
+                    linea.Item.AdditionalItemProperties.Add(new AdditionalItemProperty
+                    {
+                        Name = "Gastos Art. 37 Renta: Número de Placa",
+                        NameCode = "700",
+                        Value = detalleDocumento.PlacaVehiculo
+                    });
+                }
+
+                // Datos Adicionales a la Factura.
+                foreach (var adicional in detalleDocumento.DatosAdcionales)
+                {
+                    linea.Item.AdditionalItemProperties.Add(new AdditionalItemProperty
+                    {
+                        Name = adicional.Nombre,
+                        NameCode = adicional.Codigo ?? "-",
+                        Value = adicional.Contenido,
+                        UsabilityPeriod = new UsabilityPeriod
+                        {
+                            StartDate = adicional.FechaInicio,
+                            EndDate = adicional.FechaFin,
+                            DurationMeasure = adicional.Duracion
+                        }
+                    });
+                }
+
                 /* 16 - Afectación al IGV por ítem */
                 linea.TaxTotals.Add(new TaxTotal
                 {
