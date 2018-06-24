@@ -28,7 +28,7 @@ namespace OpenInvoicePeru.ClienteConsola
             CrearComunicacionBaja();
             CrearDocumentoRetencion();
             CrearDocumentoPercepcion();
-            //CrearGuiaRemision();
+            CrearGuiaRemision();
         }
 
         private static Compania CrearEmisor()
@@ -859,12 +859,6 @@ namespace OpenInvoicePeru.ClienteConsola
                         NroDocumento = "20100039207",
                         TipoDocumento = "6",
                         NombreLegal = "RANSA COMERCIAL S.A.",
-                        //Departamento = "CALLAO",
-                        //Provincia = "CALLAO",
-                        //Distrito = "CALLAO",
-                        //Direccion = "AV. ARGENTINA 2833",
-                        //Urbanizacion = "CENTENARIO",
-                        //Ubigeo = "140101"
                     },
                     ShipmentId = "001",
                     CodigoMotivoTraslado = "01",
