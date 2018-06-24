@@ -232,20 +232,21 @@ namespace OpenInvoicePeru.Xml
             //}
 
            
-            var dctosPorItem = documento.Items.Sum(d => d.Descuento);
-            if (documento.DescuentoGlobal > 0 || dctosPorItem > 0)
-            {
-                invoice.UblExtensions.Extension2.ExtensionContent
-                    .AdditionalInformation.AdditionalMonetaryTotals.Add(new AdditionalMonetaryTotal
-                    {
-                        Id = "2005",
-                        PayableAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = documento.DescuentoGlobal + dctosPorItem
-                        }
-                    });
-            }
+            //var dctosPorItem = documento.Items.Sum(d => d.Descuento);
+            //if (documento.DescuentoGlobal > 0 || dctosPorItem > 0)
+            //{
+            //    invoice.UblExtensions.Extension2.ExtensionContent
+            //        .AdditionalInformation.AdditionalMonetaryTotals.Add(new AdditionalMonetaryTotal
+            //        {
+            //            Id = "2005",
+            //            PayableAmount = new PayableAmount
+            //            {
+            //                CurrencyId = documento.Moneda,
+            //                Value = documento.DescuentoGlobal + dctosPorItem
+            //            }
+            //        });
+            //}
+
             if (documento.MontoPercepcion > 0)
             {
                 invoice.UblExtensions.Extension2.ExtensionContent
@@ -446,49 +447,32 @@ namespace OpenInvoicePeru.Xml
                         CurrencyId = documento.Moneda,
                         Value = detalleDocumento.Impuesto
                     },
-                    TaxCategoryId = "1000",
-                    TaxCategory = new TaxCategory
+                    TaxSubTotals = CalculoTotales.AgregarSubTotalDetalles(new TotalesDto
                     {
-                        Percent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
+                        CurrencyId = documento.Moneda,
+                        Monto = detalleDocumento.Impuesto,
+                        CategoryId = "S",
+                        TaxPercent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
                         TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
-                        TaxScheme = new TaxScheme
-                        {
-                            Id = AfectacionImpuesto.ObtenerCodigoTributo(detalleDocumento.TipoImpuesto),
-                            Name = AfectacionImpuesto.ObtenerDescripcionTributo(detalleDocumento.TipoImpuesto),
-                            TaxTypeCode = AfectacionImpuesto.ObtenerCodigoTipoTributo(detalleDocumento.TipoImpuesto)
-                        }
-                    }
+                        TaxSchemeId = AfectacionImpuesto.ObtenerCodigoTributo(detalleDocumento.TipoImpuesto),
+                        Name = AfectacionImpuesto.ObtenerDescripcionTributo(detalleDocumento.TipoImpuesto),
+                        TaxTypeCode = AfectacionImpuesto.ObtenerCodigoInternacionalTributo(detalleDocumento.TipoImpuesto)
+                    })
                 });
 
                 /* 17 - Sistema de ISC por ítem */
                 if (detalleDocumento.ImpuestoSelectivo > 0)
-                    linea.TaxTotals.Add(new TaxTotal
+                    linea.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalDetalles(new TotalesDto
                     {
-                        TaxAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = detalleDocumento.ImpuestoSelectivo
-                        },
-                        TaxSubtotal = new TaxSubtotal
-                        {
-                            TaxAmount = new PayableAmount
-                            {
-                                CurrencyId = documento.Moneda,
-                                Value = detalleDocumento.ImpuestoSelectivo
-                            },
-                            TaxCategory = new TaxCategory
-                            {
-                                TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
-                                TierRange = "01",
-                                TaxScheme = new TaxScheme()
-                                {
-                                    Id = "2000",
-                                    Name = "ISC",
-                                    TaxTypeCode = "EXC"
-                                }
-                            }
-                        }
-                    });
+                        CurrencyId = documento.Moneda,
+                        Monto = detalleDocumento.ImpuestoSelectivo,
+                        CategoryId = AfectacionImpuesto.ObtenerLetraTributo(detalleDocumento.TipoImpuesto),
+                        TaxPercent = detalleDocumento.TasaImpuestoSelectivo,
+                        TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
+                        TaxSchemeId = "2000",
+                        Name = "ISC",
+                        TaxTypeCode = "EXC"
+                    }));
 
                 linea.PricingReference.AlternativeConditionPrices.Add(new AlternativeConditionPrice
                 {
