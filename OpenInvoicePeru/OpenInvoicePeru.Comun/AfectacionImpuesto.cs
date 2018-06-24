@@ -2,6 +2,28 @@
 {
     public class AfectacionImpuesto
     {
+
+        public static string ObtenerLetraTributo(string tipoImpuesto)
+        {
+            string letra = "S";
+            switch (tipoImpuesto)
+            {
+                case "10":
+                    letra = "S";
+                    break;
+                case "20":
+                    letra = "O";
+                    break;
+                case "30":
+                    letra = "E";
+                    break;
+                default:
+                    letra = "S";
+                    break;
+            }
+            return letra;
+        }
+
         public static decimal ObtenerTasa(string tipoImpuesto)
         {
             decimal tasa;
@@ -68,7 +90,7 @@
             return descripcionTributo;
         }
 
-        public static string ObtenerCodigoTipoTributo(string tipoImpuesto)
+        public static string ObtenerCodigoInternacionalTributo(string tipoImpuesto)
         {
             string descripcionTributo;
             switch (tipoImpuesto)

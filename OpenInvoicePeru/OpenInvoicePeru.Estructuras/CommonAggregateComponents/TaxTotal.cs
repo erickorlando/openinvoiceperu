@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using OpenInvoicePeru.Estructuras.CommonBasicComponents;
 
 namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
@@ -9,6 +10,8 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
         public PayableAmount TaxAmount { get; set; }
 
         public TaxSubtotal TaxSubtotal { get; set; }
+
+        public List<TaxSubtotal> TaxSubTotals { get; set; }
 
         /// <summary>
         /// Tipo de Afectacion del IGV
@@ -24,8 +27,8 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
         {
             TaxAmount = new PayableAmount();
             TaxSubtotal = new TaxSubtotal();
-            TaxCategoryId = "S";
             TaxCategory = new TaxCategory();
+            TaxSubTotals = new List<TaxSubtotal>();
         }
     }
 }

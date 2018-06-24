@@ -1,18 +1,7 @@
 # Control de Cambios
 
-## v1.5
+## v2.0
 
 ### Novedades
-
-- Documentos Relacionados adicionales.
-- Placa de Vehiculo
-- Resumen Diario 1.1 actualizado a normativa 2018.
-- XML para Boletas y Facturas más pequeños.
-- Proyectos innecesarios removidos.
+- Actualización al UBL 2.1 de Factura, Boleta, Nota de Crédito, Nota de Débito y Guía de Remisión
 - Documentacion removida al proyecto [openinvoiceperudocs](https://github.com/FrameworkPeru/openinvoiceperudocs).
-
-### Bug Resueltos
-
-- Se corrige problema que provocaba que los nombres de los archivos de XML Firmados y CDR se guarden de manera incorrecta en el WinApp.
-- Correccion de Datos de Receptor en Percepciones y Retenciones.
-- Issue #95 Error al firmar documentos XML codificados con UTF-8.

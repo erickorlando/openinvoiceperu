@@ -74,5 +74,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         [JsonProperty(Required = Required.Always)]
         public List<DetalleGuia> BienesATransportar { get; set; }
+
+        public string ShipmentId { get; set; }
     }
 }
