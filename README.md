@@ -1,6 +1,6 @@
 ![Open Invoice Perú](http://frameworkperu.com/OpenInvoicePeruLogo.png "Open Invoice Perú")
-# OpenInvoicePeru v1.5.0 #
-OpenInvoicePeru es un proyecto Open Source construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT, este proyecto está orientado al desarrollador.
+# OpenInvoicePeru v2.0 #
+Esta es  una versión privada de OpenInvoicePeru construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT, este proyecto está orientado al desarrollador.
 Permite la generacion de XML, empaquetado, envío y recepción de documentos electrónicos a través de una API REST.
 
 Si encuentra algún bug por favor reportarlo a la zona de [Issues de GitHub](https://github.com/FrameworkPeru/facturacionelectronicasunat/issues).
@@ -11,15 +11,15 @@ Para consultar las novedades y cambios del proyecto revise el [Control de Cambio
 
 # Características #
 - Generación de XML los siguientes documentos electrónicos:
-  - Facturas
-  - Boletas 
-  - Notas de Crédito
-  - Notas de Débito
+  - Facturas (UBL 2.1)
+  - Boletas  (UBL 2.1)
+  - Notas de Crédito (UBL 2.1)
+  - Notas de Débito (UBL 2.1)
   - Resumen Diario de Boletas
   - Comunicaciones de Baja
   - Retenciones
   - Percepciones
-  - Guías de Remisión
+  - Guías de Remisión (UBL 2.1)
  
 - Firmado del XML con un certificado digital elegido por el usuario.
 - Envío al servicio Web de SUNAT de los documentos electrónicos generados (Beta y Producción).
@@ -27,33 +27,16 @@ Para consultar las novedades y cambios del proyecto revise el [Control de Cambio
 - Desempaquetado y Lectura del contenido del CDR de SUNAT.
 - Consulta de Tickets de los Resúmenes y Bajas.
 - API REST bajo ASP.NET Web API 2.
-- Aplicación Windows de prueba de envío a SUNAT.
 
-### Clientes API REST de Ejemplo ###
-- Los ejemplos en VB y C# para el consumo de la API REST con PostSharp bajo .NET 4.0 en el siguiente [repositorio](https://goo.gl/adgBmv).
-
-- Ejemplo para conectarte a la API REST desde .NET Framework 2.0 revisa este [repositorio](https://goo.gl/wGkAmu).
-
-- Ejemplo de conexión en Silverlight 5.0 entre a [repositorio](https://github.com/FrameworkPeru/ClienteSLOpenInvoicePeru).
-
-## Donaciones ##
-
-Si cree que el proyecto lo ayuda con su labor, puede donar a través de PayPal [aquí](http://paypal.me/evelascom).
+### Cliente API REST de Ejemplo ###
+- Ejemplos en C# para el consumo de la API REST con PostSharp.
 
 ## Consideraciones ##
-- El proyecto se ha desarrollado con VS2017, usando como base el .NET Framework 4.6.1.
+- El proyecto se ha desarrollado con VS2017, usando como base el .NET Framework 4.7.1.
 - Se recomienda usar encarecidamente VS2017 o superior, la edición [Community Edition](https://www.visualstudio.com/downloads/download-visual-studio-vs), es gratis y mucho mejor que sus predecesores.
 Puede usar la versión Professional o Enterprise si lo desea.
 
 - Para poder ejecutar correctamente el proyecto **debe iniciar Visual Studio como Administrador** y tener instalado IIS 7.0 o posterior.
-
-- Si quiere colaborar con su granito de arena puede hacer un Fork y enviar un Pull Request.
-
-## Formas de Colaborar ##
-
-1) Hacer un Fork al proyecto en su propio repositorio.
-2) Crear un branch con un prefijo que identfique el cambio **(feature/xxx o bugfix/xxx)**.
-3) Realizar el Pull Request con los comentarios que expliquen el cambio realizado.
 
 ## Enlaces de Interes ##
 
@@ -79,7 +62,6 @@ Si tiene errores con SUNAT fíjese en el código devuelto:
 Si tiene mas dudas con SUNAT comuníquese con ellos al [+51 1 3150730](tel:+5113150730).
 
 ## Asesoría y Soporte ##
-
 
 Si necesita Asesoría, Desarrollo, Implementación o necesita Integrar su Sistema de Ventas o ERP con **OpenInvoicePeru**, puede contactarnos al correo [soporte@frameworkperu.com](mailto:soporte@frameworkperu.com) y se puede concertar una reunión virtual, ya sea Skype, Hangouts, [Telegram](http://t.me/ErickOrlando) o TeamViewer.
 Recuerde que si bien el proyecto es de código abierto, el soporte y asesoría técnica son de pago, para más información ingrese [aquí](https://goo.gl/9xkUtB).
