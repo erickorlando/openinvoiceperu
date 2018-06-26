@@ -8,7 +8,7 @@ namespace OpenInvoicePeru.ClienteConsola
     {
         public static TResponse Execute(string metodo, TRequest request)
         {
-            var client = new RestClient("http://localhost/OpenInvoicePeru/api");
+            var client = new RestClient("http://localhost/OpenInvoicePeruUBL21/api");
 
             var restRequest = new RestRequest(metodo, Method.POST)
             {
