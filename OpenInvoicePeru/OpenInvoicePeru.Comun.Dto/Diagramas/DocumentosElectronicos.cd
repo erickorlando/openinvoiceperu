@@ -8,14 +8,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DetalleDocumento">
-    <Position X="9.5" Y="2.75" Width="2.25" />
+    <Position X="6.75" Y="2.75" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>QAESAAEAABAAAgAAAAAAAwABAgAAEAAAAIACIAAAAAA=</HashCode>
+      <HashCode>QAESACEAABAQAgAAAAAAAwABAgEAEAAAAIACIAAAAAA=</HashCode>
       <FileName>Modelos\DetalleDocumento.cs</FileName>
     </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="DatosAdcionales" />
+    </ShowAsCollectionAssociation>
   </Class>
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DocumentoElectronico" BaseTypeListCollapsed="true">
-    <Position X="5" Y="0.5" Width="2.25" />
+    <Position X="3.75" Y="0.5" Width="2.25" />
     <TypeIdentifier>
       <HashCode>lGIBAAAAABIUCABCCAJDAAAAJJEAREAAMAAAAigAAAA=</HashCode>
       <FileName>Modelos\DocumentoElectronico.cs</FileName>
@@ -38,10 +41,17 @@
     </TypeIdentifier>
   </Class>
   <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.Leyenda">
-    <Position X="9.25" Y="0.5" Width="1.5" />
+    <Position X="7" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAQAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>Modelos\Leyenda.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="OpenInvoicePeru.Comun.Dto.Modelos.DatoAdicional">
+    <Position X="10.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAAAAAAAAAAgABAAgABAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>Modelos\DatoAdicional.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Font Name="Segoe UI" Size="9" />

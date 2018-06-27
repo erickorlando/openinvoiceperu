@@ -350,7 +350,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     writer.WriteStartElement("cac:PartyLegalEntity");
                     {
                         writer.WriteElementString("cbc:RegistrationName",
-                            AccountingSupplierParty.PartyTaxScheme.RegistrationName);
+                            AccountingCustomerParty.PartyTaxScheme.RegistrationName);
                     }
                     writer.WriteEndElement();
                 }
