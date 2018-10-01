@@ -46,7 +46,7 @@ namespace OpenInvoicePeru.Xml
                     {
                         ExternalReference = new ExternalReference
                         {
-                            Uri = $"{documento.Emisor.NroDocumento}-{documento.IdDocumento}"
+                            Uri = $"{documento.Emisor.NroDocumento}-{documento.TipoDocumento}-{documento.IdDocumento}"
                         }
                     }
                 },
@@ -110,19 +110,34 @@ namespace OpenInvoicePeru.Xml
                             CurrencyId = documento.Moneda,
                             Value = documento.TotalIgv
                         },
-                        TaxSubTotals = CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
-                        {
-                            CurrencyId = documento.Moneda,
-                            Monto = documento.TotalIgv,
-                            MontoBase = documento.Gravadas,
-                            CategoryId = "S",
-                            TaxSchemeId = "1000",
-                            Name = "IGV",
-                            TaxTypeCode = "VAT"
-                        })
+                        //TaxSubTotals = CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                        //{
+                        //    CurrencyId = documento.Moneda,
+                        //    Monto = documento.TotalIgv,
+                        //    MontoBase = documento.Gravadas,
+                        //    CategoryId = "S",
+                        //    TaxSchemeId = "1000",
+                        //    Name = "IGV",
+                        //    TaxTypeCode = "VAT"
+                        //})
                     }
                 }
             };
+
+            if (documento.TotalIgv > 0)
+            {
+                invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = documento.TotalIgv,
+                    MontoBase = documento.Gravadas,
+                    CategoryId = "S",
+                    TaxSchemeId = "1000",
+                    Name = "IGV",
+                    TaxTypeCode = "VAT"
+                }));
+            }
+
 
             if (documento.Inafectas > 0)
             {
@@ -159,12 +174,27 @@ namespace OpenInvoicePeru.Xml
                     CurrencyId = documento.Moneda,
                     Monto = 0,
                     MontoBase = documento.Gratuitas,
-                    CategoryId = "E",
+                    CategoryId = "Z",
                     TaxSchemeId = "9996",
                     Name = "GRA",
                     TaxTypeCode = "FRE"
                 }));
             }
+
+            if (documento.Exportacion > 0)
+            {
+                invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Exportacion,
+                    CategoryId = "",
+                    TaxSchemeId = "9995",
+                    Name = "EXP",
+                    TaxTypeCode = "FRE"
+                }));
+            }
+
 
             if (!string.IsNullOrEmpty(documento.FechaVencimiento))
                 invoice.DueDate = DateTime.Parse(documento.FechaVencimiento);
@@ -401,6 +431,10 @@ namespace OpenInvoicePeru.Xml
                         SellersItemIdentification = new SellersItemIdentification
                         {
                             Id = detalleDocumento.CodigoItem
+                        },
+                        CommodityClassification = new CommodityClassification
+                        {
+                            ItemClassificationCode = detalleDocumento.CodigoProductoSunat
                         }
                     },
                     Price = new Price
@@ -451,7 +485,7 @@ namespace OpenInvoicePeru.Xml
                     {
                         CurrencyId = documento.Moneda,
                         Monto = detalleDocumento.Impuesto,
-                        CategoryId = "S",
+                        CategoryId = AfectacionImpuesto.ObtenerLetraTributo(detalleDocumento.TipoImpuesto),
                         TaxPercent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
                         TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
                         TaxSchemeId = AfectacionImpuesto.ObtenerCodigoTributo(detalleDocumento.TipoImpuesto),

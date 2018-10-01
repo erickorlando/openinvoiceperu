@@ -19,6 +19,7 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.Title = "OpenInvoicePeru - Prueba de Envio de Documentos Electrónicos con UBL 2.1";
 
             CrearFactura();
+            CrearFacturaConExonerado();
             CrearFacturaConPlaca();
             CrearFacturaConDetraccion();
             CrearBoleta();
@@ -95,6 +96,59 @@ namespace OpenInvoicePeru.ClienteConsola
                             UnidadMedida = "KG",
                             Impuesto = 18,
                             TipoImpuesto = "10", // Gravada
+                            TotalVenta = 100,
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+        
+        private static void CrearFacturaConExonerado()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100039207",
+                        TipoDocumento = "6",
+                        NombreLegal = "RANSA COMERCIAL S.A."
+                    },
+                    IdDocumento = "FF11-002",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "01",
+                    TotalIgv = 0,
+                    TotalVenta = 100,
+                    Exoneradas = 100,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 5,
+                            PrecioReferencial = 20,
+                            PrecioUnitario = 20,
+                            TipoPrecio = "01",
+                            CodigoItem = "1234234",
+                            Descripcion = "Arroz Costeño",
+                            UnidadMedida = "KGM",
+                            Impuesto = 0,
+                            TipoImpuesto = "20", // Exonerado
                             TotalVenta = 100,
                         }
                     }
