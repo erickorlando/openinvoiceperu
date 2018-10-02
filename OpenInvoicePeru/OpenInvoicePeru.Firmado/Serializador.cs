@@ -1,12 +1,11 @@
 ﻿using System;
 using System.IO;
-using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
 using System.Xml.Serialization;
-using Ionic.Zip;
 using OpenInvoicePeru.Comun.Constantes;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
+using System.IO.Compression;
 
 namespace OpenInvoicePeru.Firmado
 {
@@ -32,10 +31,7 @@ namespace OpenInvoicePeru.Firmado
                     {
                         serializer.Serialize(stream, objectToSerialize);
                     }
-                    var betterBytes = Encoding.Convert(Encoding.UTF8,
-                                      Encoding.GetEncoding(Formatos.EncodingIso),
-                                      memStr.ToArray());
-                    resultado = Convert.ToBase64String(betterBytes);
+                    resultado = Convert.ToBase64String(memStr.ToArray());
                 }
                 return resultado;
             });
@@ -52,19 +48,24 @@ namespace OpenInvoicePeru.Firmado
         {
             var task = Task.Factory.StartNew(() =>
             {
-                var memOrigen = new MemoryStream(Convert.FromBase64String(tramaXml));
-                var memDestino = new MemoryStream();
                 string resultado;
 
-                using (var fileZip = new ZipFile($"{nombreArchivo}.zip"))
+                using (var memDestino = new MemoryStream())
                 {
-                    fileZip.AddEntry($"{nombreArchivo}.xml", memOrigen);
-                    fileZip.Save(memDestino);
+                    using (var ziparchive = new ZipArchive(memDestino, ZipArchiveMode.Create))
+                    {
+
+                        var zipItem = ziparchive.CreateEntry($"{nombreArchivo}.xml");
+
+                        using (var zipFile = zipItem.Open())
+                        {
+                            var data = Convert.FromBase64String(tramaXml);
+                            zipFile.Write(data, 0, data.Length);
+                        }
+                    }
+
                     resultado = Convert.ToBase64String(memDestino.ToArray());
                 }
-                // Liberamos memoria RAM.
-                memOrigen.Close();
-                memDestino.Close();
 
                 return resultado;
             });
@@ -83,44 +84,55 @@ namespace OpenInvoicePeru.Firmado
             var returnByte = Convert.FromBase64String(constanciaRecepcion);
             using (var memRespuesta = new MemoryStream(returnByte))
             {
-                using (var zipFile = ZipFile.Read(memRespuesta))
+                if (memRespuesta.Length <= 0)
                 {
-                    foreach (var entry in zipFile.Entries)
+                    response.MensajeError = "Respuesta SUNAT Vacío";
+                    response.Exito = false;
+                }
+                else
+                {
+                    using (var zipFile = new ZipArchive(memRespuesta, ZipArchiveMode.Read))
                     {
-                        if (!entry.FileName.EndsWith(".xml")) continue;
-                        using (var ms = new MemoryStream())
+                        foreach (var entry in zipFile.Entries)
                         {
-                            entry.Extract(ms);
-                            ms.Position = 0;
-                            var responseReader = new StreamReader(ms);
-                            var responseString = await responseReader.ReadToEndAsync();
-                            try
+                            if (!entry.Name.EndsWith(".xml")) continue;
+                            using (var ms = entry.Open())
                             {
-                                var xmlDoc = new XmlDocument();
-                                xmlDoc.LoadXml(responseString);
+                                var responseReader = new StreamReader(ms);
+                                var responseString = await responseReader.ReadToEndAsync();
+                                try
+                                {
+                                    var xmlDoc = new XmlDocument();
+                                    xmlDoc.LoadXml(responseString);
 
-                                var xmlnsManager = new XmlNamespaceManager(xmlDoc.NameTable);
+                                    var xmlnsManager = new XmlNamespaceManager(xmlDoc.NameTable);
 
-                                xmlnsManager.AddNamespace("ar", EspacioNombres.ar);
-                                xmlnsManager.AddNamespace("cac", EspacioNombres.cac);
-                                xmlnsManager.AddNamespace("cbc", EspacioNombres.cbc);
+                                    xmlnsManager.AddNamespace("ar", EspacioNombres.ar);
+                                    xmlnsManager.AddNamespace("cac", EspacioNombres.cac);
+                                    xmlnsManager.AddNamespace("cbc", EspacioNombres.cbc);
 
-                                response.CodigoRespuesta =
-                                    xmlDoc.SelectSingleNode(EspacioNombres.nodoResponseCode,
-                                        xmlnsManager)?.InnerText;
+                                    response.CodigoRespuesta =
+                                        xmlDoc.SelectSingleNode(EspacioNombres.nodoResponseCode,
+                                            xmlnsManager)?.InnerText;
 
-                                response.MensajeRespuesta =
-                                    xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
-                                        xmlnsManager)?.InnerText;
-                                response.TramaZipCdr = constanciaRecepcion;
-                                response.NombreArchivo = entry.FileName;
-                                response.Exito = true;
-                            }
-                            catch (Exception ex)
-                            {
-                                response.MensajeError = ex.Message;
-                                response.Pila = ex.StackTrace;
-                                response.Exito = false;
+                                    response.MensajeRespuesta =
+                                        xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
+                                            xmlnsManager)?.InnerText;
+
+                                    response.NroTicketCdr =
+                                        xmlDoc.SelectSingleNode(EspacioNombres.nodoId,
+                                            xmlnsManager)?.InnerText;
+
+                                    response.TramaZipCdr = constanciaRecepcion;
+                                    response.NombreArchivo = entry.Name;
+                                    response.Exito = true;
+                                }
+                                catch (Exception ex)
+                                {
+                                    response.MensajeError = ex.Message;
+                                    response.Pila = ex.StackTrace;
+                                    response.Exito = false;
+                                }
                             }
                         }
                     }

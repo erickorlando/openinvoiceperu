@@ -7,5 +7,7 @@
         public string MensajeRespuesta { get; set; }
 
         public string TramaZipCdr { get; set; }
+
+        public string NroTicketCdr { get; set; }
     }
 }

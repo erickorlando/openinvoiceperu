@@ -13,11 +13,11 @@
         public const string CompanySchemeName = "Documento de Identidad";
         public const string CompanySchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06";
         public const string TaxCategorySchemeId = "UN/ECE 5305";
-        public const string TaxCategorySchemeName = "Tax Category Identifier";
+        public const string TaxCategorySchemeName = "Codigo de Tributos";
         public const string QuantityCodeListId = "UN/ECE rec 20";
-        public const string PriceTypeCodeListName = "SUNAT:Indicador de Tipo de Precio";
+        public const string PriceTypeCodeListName = "Indicador de Tipo de Precio";
         public const string PriceTypeCodeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo16";
-        public const string TaxExemptionListName = "SUNAT:Codigo de Tipo de Afectación del IGV";
+        public const string TaxExemptionListName = "Afectacion del IGV";
         public const string TaxExemptionUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07";
         public const string TaxSchemeId = "UN/ECE 5153";
         public const string TaxSchemeName = "Tax Scheme Identifier";

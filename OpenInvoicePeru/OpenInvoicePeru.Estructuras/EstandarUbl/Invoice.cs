@@ -491,7 +491,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                     {
                                         writer.WriteAttributeString("schemeID", ValoresUbl.TaxCategorySchemeId);
                                         writer.WriteAttributeString("schemeName", ValoresUbl.TaxCategorySchemeName);
-                                        writer.WriteAttributeString("schemeAgencyName", ValoresUbl.CurrencyAgencyName);
+                                        writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
                                         writer.WriteValue(taxSubTotal.TaxCategory.Id);
                                     }
                                     writer.WriteEndElement();
@@ -703,7 +703,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                         {
                                             writer.WriteAttributeString("schemeID", ValoresUbl.TaxCategorySchemeId);
                                             writer.WriteAttributeString("schemeName", ValoresUbl.TaxCategorySchemeName);
-                                            writer.WriteAttributeString("schemeAgencyName", ValoresUbl.CurrencyAgencyName);
+                                            writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
                                             writer.WriteValue(taxSubTotal.TaxCategory.Id);
                                         }
                                         writer.WriteEndElement();
