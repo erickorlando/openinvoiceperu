@@ -241,6 +241,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                     foreach (var billing in item.BillingPayments)
                     {
+                        if (billing.PaidAmount.Value == 0) continue;
                         writer.WriteStartElement("sac:BillingPayment");
                         {
                             writer.WriteStartElement("cbc:PaidAmount");
