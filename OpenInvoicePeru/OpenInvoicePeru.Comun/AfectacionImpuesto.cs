@@ -71,8 +71,6 @@ namespace OpenInvoicePeru.Comun
             switch (tipoImpuesto)
             {
                 case "10":
-                    codigoTributo = "1000";
-                    break;
                 case "11":
                 case "12":
                 case "13":
@@ -80,7 +78,7 @@ namespace OpenInvoicePeru.Comun
                 case "15":
                 case "16":
                 case "17": //Gravado - Operación Onerosa
-                    codigoTributo = "9996";
+                    codigoTributo = "1000";
                     break;
                 case "20":
                     codigoTributo = "9997";
@@ -89,15 +87,13 @@ namespace OpenInvoicePeru.Comun
                     codigoTributo = "9996";
                     break;
                 case "30":
-                    codigoTributo = "9998";
-                    break;
                 case "31":
                 case "32":
                 case "33":
                 case "34":
                 case "35":
                 case "36": //Inafecto - Operación Onerosa
-                    codigoTributo = "9996";
+                    codigoTributo = "9998";
                     break;
                 case "40": //Exportación de bienes o servicios
                     codigoTributo = "9995";
@@ -126,8 +122,10 @@ namespace OpenInvoicePeru.Comun
                     descripcionTributo = "IGV";
                     break;
                 case "20":
-                case "21": //Exonerado - Operación Onerosa 
                     descripcionTributo = "EXO";
+                    break;
+                case "21": //Exonerado - Operación Onerosa 
+                    descripcionTributo = "GRA";
                     break;
                 case "30":
                 case "31":
@@ -165,9 +163,11 @@ namespace OpenInvoicePeru.Comun
                 case "17": //Gravado - Operación Onerosa
                     descripcionTributo = "VAT";
                     break;
-                case "20":
-                case "21": //Exonerado - Operación Onerosa 
+                case "20": //Exonerado - Operación Onerosa 
                     descripcionTributo = "VAT";
+                    break;
+                case "21": 
+                    descripcionTributo = "FRE";
                     break;
                 case "30":
                 case "31":

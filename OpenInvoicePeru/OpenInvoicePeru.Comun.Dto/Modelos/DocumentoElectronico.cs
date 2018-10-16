@@ -57,7 +57,6 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public decimal TotalOtrosTributos { get; set; }
 
-        [JsonProperty(Required = Required.Always)]
         public string MontoEnLetras { get; set; }
 
         public decimal MontoPercepcion { get; set; }
@@ -82,19 +81,14 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public decimal MontoAnticipo { get; set; }
 
-        [JsonProperty(Required = Required.AllowNull)]
         public DatosGuia DatosGuiaTransportista { get; set; }
 
-        [JsonProperty(Required = Required.AllowNull)]
         public List<DocumentoRelacionado> Relacionados { get; set; }
 
-        [JsonProperty(Required = Required.AllowNull)]
         public List<DocumentoRelacionado> OtrosDocumentosRelacionados { get; set; }
 
-        [JsonProperty(Required = Required.AllowNull)]
         public List<Discrepancia> Discrepancias { get; set; }
 
-        [JsonProperty(Required = Required.AllowNull)]
         public List<Leyenda> Leyendas { get; set; }
 
         public DocumentoElectronico()

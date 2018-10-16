@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 
@@ -19,17 +20,17 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.Title = "OpenInvoicePeru - Prueba de Envio de Documentos Electrónicos con UBL 2.1";
 
             CrearFactura();
-            CrearFacturaConExonerado();
-            CrearFacturaConPlaca();
-            CrearFacturaConDetraccion();
-            CrearBoleta();
-            CrearNotaCredito();
-            CrearNotaDebito();
-            CrearResumenDiario();
-            CrearComunicacionBaja();
-            CrearDocumentoRetencion();
-            CrearDocumentoPercepcion();
-            CrearGuiaRemision();
+            //CrearFacturaConExonerado();
+            //CrearFacturaConPlaca();
+            //CrearFacturaConDetraccion();
+            //CrearBoleta();
+            //CrearNotaCredito();
+            //CrearNotaDebito();
+            //CrearResumenDiario();
+            //CrearComunicacionBaja();
+            //CrearDocumentoRetencion();
+            //CrearDocumentoPercepcion();
+            //CrearGuiaRemision();
         }
 
         private static Compania CrearEmisor()
@@ -65,41 +66,43 @@ namespace OpenInvoicePeru.ClienteConsola
             try
             {
                 Console.WriteLine("Ejemplo Factura");
-                var documento = new DocumentoElectronico
-                {
-                    Emisor = CrearEmisor(),
-                    Receptor = new Compania
-                    {
-                        NroDocumento = "20100039207",
-                        TipoDocumento = "6",
-                        NombreLegal = "RANSA COMERCIAL S.A."
-                    },
-                    IdDocumento = "FF11-001",
-                    FechaEmision = DateTime.Today.AddDays(-5).ToString(FormatoFecha),
-                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
-                    Moneda = "PEN",
-                    TipoDocumento = "01",
-                    TotalIgv = 18,
-                    TotalVenta = 118,
-                    Gravadas = 100,
-                    Items = new List<DetalleDocumento>
-                    {
-                        new DetalleDocumento
-                        {
-                            Id = 1,
-                            Cantidad = 5,
-                            PrecioReferencial = 20,
-                            PrecioUnitario = 20,
-                            TipoPrecio = "01",
-                            CodigoItem = "1234234",
-                            Descripcion = "Arroz Costeño",
-                            UnidadMedida = "KG",
-                            Impuesto = 18,
-                            TipoImpuesto = "10", // Gravada
-                            TotalVenta = 100,
-                        }
-                    }
-                };
+                //var documento = new DocumentoElectronico
+                //{
+                //    Emisor = CrearEmisor(),
+                //    Receptor = new Compania
+                //    {
+                //        NroDocumento = "20100039207",
+                //        TipoDocumento = "6",
+                //        NombreLegal = "RANSA COMERCIAL S.A."
+                //    },
+                //    IdDocumento = "FF11-001",
+                //    FechaEmision = DateTime.Today.AddDays(-5).ToString(FormatoFecha),
+                //    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                //    Moneda = "PEN",
+                //    TipoDocumento = "01",
+                //    TotalIgv = 18,
+                //    TotalVenta = 118,
+                //    Gravadas = 100,
+                //    Items = new List<DetalleDocumento>
+                //    {
+                //        new DetalleDocumento
+                //        {
+                //            Id = 1,
+                //            Cantidad = 5,
+                //            PrecioReferencial = 20,
+                //            PrecioUnitario = 20,
+                //            TipoPrecio = "01",
+                //            CodigoItem = "1234234",
+                //            Descripcion = "Arroz Costeño",
+                //            UnidadMedida = "KG",
+                //            Impuesto = 18,
+                //            TipoImpuesto = "10", // Gravada
+                //            TotalVenta = 100,
+                //        }
+                //    }
+                //};
+
+                var documento = JsonConvert.DeserializeObject<DocumentoElectronico>("{\"IdDocumento\":\"FM01-00001519\",\"TipoDocumento\":\"01\",\"Emisor\":{\"NroDocumento\":\"20167795120\",\"TipoDocumento\":\"6\",\"NombreLegal\":\"INVERSIONES ANCONA S.A.C\",\"NombreComercial\":\"INVERSIONES ANCONA\",\"CodigoAnexo\":\"0000\"},\"Receptor\":{\"NroDocumento\":\"20544705688\",\"TipoDocumento\":\"6\",\"NombreLegal\":\"INVERSIONES EDUCA S.A.\",\"CodigoAnexo\":\"0000\"},\"FechaEmision\":\"2018-10-09\",\"HoraEmision\":\"11:57:02\",\"Moneda\":\"PEN\",\"TipoOperacion\":\"0101\",\"MontoEnLetras\":\"-\",\"Gravadas\":0,\"Gratuitas\":120,\"Inafectas\":0,\"Exoneradas\":0,\"DescuentoGlobal\":0,\"Items\":[{\"Id\":1,\"Cantidad\":10,\"UnidadMedida\":\"NIU\",\"CodigoItem\":\"4X40K09936\",\"Descripcion\":\"LENOVO ESSENTIAL BACK PACK\",\"PrecioUnitario\":0,\"PrecioReferencial\":12,\"TipoPrecio\":\"01\",\"TipoImpuesto\":\"21\",\"Impuesto\":0,\"ImpuestoSelectivo\":0,\"OtroImpuesto\":0,\"Descuento\":0,\"TotalVenta\":0}],\"TotalVenta\":0,\"TotalIgv\":0,\"TotalIsc\":0,\"TotalOtrosTributos\":0,\"Leyendas\":[{\"Codigo\":\"1002\",\"Descripcion\":\"TRANSFERENCIA GRATUITA DE UN BIEN Y/O SERVICIO PRESTADO GRATUITAMENTE\"}]}");
 
                 FirmaryEnviar(documento, GenerarDocumento(documento));
             }

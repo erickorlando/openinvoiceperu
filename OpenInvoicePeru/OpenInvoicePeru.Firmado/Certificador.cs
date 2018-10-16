@@ -33,7 +33,7 @@ namespace OpenInvoicePeru.Firmado
 
                 using (var documento = new MemoryStream(betterBytes))
                 {
-                    xmlDoc.PreserveWhitespace = false;
+                    xmlDoc.PreserveWhitespace = true;
                     xmlDoc.Load(documento);
 
                     //var indiceNodo = request.UnSoloNodoExtension ? 0 : 1;

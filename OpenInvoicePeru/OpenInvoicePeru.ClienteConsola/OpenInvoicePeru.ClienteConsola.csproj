@@ -38,9 +38,6 @@
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="OpenInvoicePeru.Comun.Dto, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\OpenInvoicePeru.UBL21.2.0.3\lib\net45\OpenInvoicePeru.Comun.Dto.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp, Version=105.2.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RestSharp.105.2.3\lib\net46\RestSharp.dll</HintPath>
     </Reference>
@@ -68,6 +65,12 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="csharp.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\OpenInvoicePeru.Comun.Dto\OpenInvoicePeru.Comun.Dto.csproj">
+      <Project>{a265a65a-c2a9-4f9e-b272-bed5ed04df98}</Project>
+      <Name>OpenInvoicePeru.Comun.Dto</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

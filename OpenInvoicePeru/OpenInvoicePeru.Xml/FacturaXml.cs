@@ -518,17 +518,17 @@ namespace OpenInvoicePeru.Xml
                     },
                     PriceTypeCode = detalleDocumento.TipoPrecio
                 });
-                // Para operaciones no onerosas (gratuitas)
-                if (documento.Gratuitas > 0)
-                    linea.PricingReference.AlternativeConditionPrices.Add(new AlternativeConditionPrice
-                    {
-                        PriceAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = detalleDocumento.PrecioReferencial
-                        },
-                        PriceTypeCode = "02"
-                    });
+                //// Para operaciones no onerosas (gratuitas)
+                //if (documento.Gratuitas > 0)
+                //    linea.PricingReference.AlternativeConditionPrices.Add(new AlternativeConditionPrice
+                //    {
+                //        PriceAmount = new PayableAmount
+                //        {
+                //            CurrencyId = documento.Moneda,
+                //            Value = detalleDocumento.PrecioReferencial
+                //        },
+                //        PriceTypeCode = "02"
+                //    });
 
                 // linea.AditionalItemIdentification.Id = documento.PlacaVehiculo;
 
