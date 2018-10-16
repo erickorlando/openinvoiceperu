@@ -1,4 +1,6 @@
-﻿namespace OpenInvoicePeru.Comun
+﻿using System.CodeDom.Compiler;
+
+namespace OpenInvoicePeru.Comun
 {
     public class AfectacionImpuesto
     {
@@ -69,6 +71,8 @@
             switch (tipoImpuesto)
             {
                 case "10":
+                    codigoTributo = "1000";
+                    break;
                 case "11":
                 case "12":
                 case "13":
@@ -76,20 +80,24 @@
                 case "15":
                 case "16":
                 case "17": //Gravado - Operación Onerosa
-                    codigoTributo = "1000";
+                    codigoTributo = "9996";
                     break;
                 case "20":
-                case "21": //Exonerado - Operación Onerosa 
                     codigoTributo = "9997";
                     break;
+                case "21": //Exonerado - Operación Onerosa 
+                    codigoTributo = "9996";
+                    break;
                 case "30":
+                    codigoTributo = "9998";
+                    break;
                 case "31":
                 case "32":
                 case "33":
                 case "34":
                 case "35":
                 case "36": //Inafecto - Operación Onerosa
-                    codigoTributo = "9998";
+                    codigoTributo = "9996";
                     break;
                 case "40": //Exportación de bienes o servicios
                     codigoTributo = "9995";
