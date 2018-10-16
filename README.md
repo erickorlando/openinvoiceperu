@@ -3,7 +3,8 @@
 Esta es  una versión privada de OpenInvoicePeru construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT, este proyecto está orientado al desarrollador.
 Permite la generacion de XML, empaquetado, envío y recepción de documentos electrónicos a través de una API REST.
 
-Si encuentra algún bug por favor reportarlo a la zona de [Issues de GitHub](https://github.com/FrameworkPeru/facturacionelectronicasunat/issues).
+[![Build status](https://frameworkperu.visualstudio.com/OpenInvoicePeruUBL21/_apis/build/status/OpenInvoicePeruUBL21-WebAPI-CI)](https://frameworkperu.visualstudio.com/OpenInvoicePeruUBL21/_build/latest?definitionId=6)
+Si encuentra algún bug por favor reportarlo a la zona de [Issues](https://frameworkperu.visualstudio.com/OpenInvoicePeruUBL21/_workitems).
 
 Puede leer la documentación de SUNAT en el repositorio de [OpenInvoicePeruDocs](https://github.com/FrameworkPeru/openinvoiceperudocs).
 
@@ -41,7 +42,6 @@ Puede usar la versión Professional o Enterprise si lo desea.
 ## Enlaces de Interes ##
 
 - [Framework Peru](http://frameworkperu.com)
-- [Foro Técnico de OpenInvoicePeru](http://forotecnico.frameworkperu.com)
 - [Canal Oficial de OpenInvoicePeru en Telegram](http://t.me/OpenInvoicePeru)
 - [Framework Peru en Facebook](http://facebook.com/FrameworkPe)
 
