@@ -6,5 +6,5 @@
     cause the file to be unrecognizable by the program.
 -->
 <GenericObjectDataSource DisplayName="sendSummaryResponse" Version="1.0" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
-   <TypeInfo>OpenInvoicePeru.Servicio.Soap.Documentos.sendSummaryResponse</TypeInfo>
+   <TypeInfo>OpenInvoicePeru.Servicio.Soap.Documentos.sendSummaryResponse, Service References.Documentos.Reference.cs.dll, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</TypeInfo>
 </GenericObjectDataSource>

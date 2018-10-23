@@ -110,16 +110,6 @@ namespace OpenInvoicePeru.Xml
                             CurrencyId = documento.Moneda,
                             Value = documento.TotalIgv
                         },
-                        //TaxSubTotals = CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
-                        //{
-                        //    CurrencyId = documento.Moneda,
-                        //    Monto = documento.TotalIgv,
-                        //    MontoBase = documento.Gravadas,
-                        //    CategoryId = "S",
-                        //    TaxSchemeId = "1000",
-                        //    Name = "IGV",
-                        //    TaxTypeCode = "VAT"
-                        //})
                     }
                 }
             };
@@ -251,31 +241,6 @@ namespace OpenInvoicePeru.Xml
                     Id = relacionado.NroDocumento
                 });
             }
-
-            //foreach (var relacionado in documento.OtrosDocumentosRelacionados)
-            //{
-            //    //invoice.AdditionalDocumentReferences.Add(new InvoiceDocumentReference
-            //    //{
-            //    //    DocumentTypeCode = relacionado.TipoDocumento,
-            //    //    Id = relacionado.NroDocumento
-            //    //});
-            //}
-
-           
-            //var dctosPorItem = documento.Items.Sum(d => d.Descuento);
-            //if (documento.DescuentoGlobal > 0 || dctosPorItem > 0)
-            //{
-            //    invoice.UblExtensions.Extension2.ExtensionContent
-            //        .AdditionalInformation.AdditionalMonetaryTotals.Add(new AdditionalMonetaryTotal
-            //        {
-            //            Id = "2005",
-            //            PayableAmount = new PayableAmount
-            //            {
-            //                CurrencyId = documento.Moneda,
-            //                Value = documento.DescuentoGlobal + dctosPorItem
-            //            }
-            //        });
-            //}
 
             if (documento.MontoPercepcion > 0)
             {

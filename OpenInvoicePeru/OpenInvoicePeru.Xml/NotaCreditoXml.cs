@@ -222,30 +222,17 @@ namespace OpenInvoicePeru.Xml
                         CurrencyId = documento.Moneda,
                         Value = detalleDocumento.Impuesto
                     },
-                    TaxSubtotal = new TaxSubtotal
+                    TaxSubTotals = CalculoTotales.AgregarSubTotalDetalles(new TotalesDto
                     {
-                        TaxableAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = detalleDocumento.TotalVenta
-                        },
-                        TaxAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = detalleDocumento.Impuesto
-                        },
-                        TaxCategory = new TaxCategory
-                        {
-                            Percent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
-                            TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
-                            TaxScheme = new TaxScheme
-                            {
-                                Id = AfectacionImpuesto.ObtenerCodigoTributo(detalleDocumento.TipoImpuesto),
-                                Name = AfectacionImpuesto.ObtenerDescripcionTributo(detalleDocumento.TipoImpuesto),
-                                TaxTypeCode = AfectacionImpuesto.ObtenerCodigoInternacionalTributo(detalleDocumento.TipoImpuesto)
-                            }
-                        }
-                    }
+                        CurrencyId = documento.Moneda,
+                        Monto = detalleDocumento.Impuesto,
+                        CategoryId = AfectacionImpuesto.ObtenerLetraTributo(detalleDocumento.TipoImpuesto),
+                        TaxPercent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
+                        TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
+                        TaxSchemeId = AfectacionImpuesto.ObtenerCodigoTributo(detalleDocumento.TipoImpuesto),
+                        Name = AfectacionImpuesto.ObtenerDescripcionTributo(detalleDocumento.TipoImpuesto),
+                        TaxTypeCode = AfectacionImpuesto.ObtenerCodigoInternacionalTributo(detalleDocumento.TipoImpuesto)
+                    })
                 });
                 creditNote.CreditNoteLines.Add(linea);
             }
