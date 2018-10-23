@@ -1,13 +1,11 @@
-using System;
-using System.Collections.Generic;
 using OpenInvoicePeru.Comun;
 using OpenInvoicePeru.Comun.Dto.Contratos;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Estructuras.CommonAggregateComponents;
 using OpenInvoicePeru.Estructuras.CommonBasicComponents;
-using OpenInvoicePeru.Estructuras.CommonExtensionComponents;
 using OpenInvoicePeru.Estructuras.EstandarUbl;
-using OpenInvoicePeru.Estructuras.SunatAggregateComponents;
+using System;
+using System.Collections.Generic;
 
 namespace OpenInvoicePeru.Xml
 {
