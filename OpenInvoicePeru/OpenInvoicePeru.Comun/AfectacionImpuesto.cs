@@ -1,6 +1,4 @@
-﻿using System.CodeDom.Compiler;
-
-namespace OpenInvoicePeru.Comun
+﻿namespace OpenInvoicePeru.Comun
 {
     public class AfectacionImpuesto
     {

@@ -1,7 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using OpenInvoicePeru.Estructuras.CommonAggregateComponents;
+﻿using OpenInvoicePeru.Estructuras.CommonAggregateComponents;
 using OpenInvoicePeru.Estructuras.CommonBasicComponents;
+using System.Collections.Generic;
 
 namespace OpenInvoicePeru.Xml
 {

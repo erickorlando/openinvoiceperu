@@ -6,6 +6,7 @@ using OpenInvoicePeru.Estructuras.CommonBasicComponents;
 using OpenInvoicePeru.Estructuras.EstandarUbl;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenInvoicePeru.Xml
 {
@@ -106,34 +107,111 @@ namespace OpenInvoicePeru.Xml
                             CurrencyId = documento.Moneda,
                             Value = documento.TotalIgv
                         },
-                        TaxSubtotal = new TaxSubtotal
-                        {
-                            TaxableAmount = new PayableAmount
-                            {
-                                CurrencyId = documento.Moneda,
-                                Value = documento.TotalVenta
-                            },
-                            TaxAmount = new PayableAmount
-                            {
-                                CurrencyId = documento.Moneda,
-                                Value = documento.TotalIgv,
-                            },
-                            TaxCategory = new TaxCategory
-                            {
-                                TaxScheme = new TaxScheme
-                                {
-                                    Id = "1000",
-                                    Name = "IGV",
-                                    TaxTypeCode = "VAT"
-                                }
-                            }
-                        }
                     }
                 }
             };
 
+            if (documento.TotalIgv > 0)
+            {
+                creditNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = documento.TotalIgv,
+                    MontoBase = documento.Gravadas,
+                    CategoryId = "S",
+                    TaxSchemeId = "1000",
+                    Name = "IGV",
+                    TaxTypeCode = "VAT"
+                }));
+            }
+
+
+            if (documento.Inafectas > 0)
+            {
+                creditNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Inafectas,
+                    CategoryId = "O",
+                    TaxSchemeId = "9998",
+                    Name = "INA",
+                    TaxTypeCode = "FRE"
+                }));
+            }
+
+            if (documento.Exoneradas > 0)
+            {
+                creditNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Exoneradas,
+                    CategoryId = "E",
+                    TaxSchemeId = "9997",
+                    Name = "EXO",
+                    TaxTypeCode = "VAT"
+                }));
+            }
+
+            if (documento.Gratuitas > 0)
+            {
+                creditNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Gratuitas,
+                    CategoryId = "Z",
+                    TaxSchemeId = "9996",
+                    Name = "GRA",
+                    TaxTypeCode = "FRE"
+                }));
+            }
+
+            if (documento.Exportacion > 0)
+            {
+                creditNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Exportacion,
+                    CategoryId = "",
+                    TaxSchemeId = "9995",
+                    Name = "EXP",
+                    TaxTypeCode = "FRE"
+                }));
+            }
+
             if (!string.IsNullOrEmpty(documento.FechaVencimiento))
                 creditNote.DueDate = DateTime.Parse(documento.FechaVencimiento);
+
+            if (documento.TotalIsc > 0)
+            {
+                creditNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = documento.TotalIsc,
+                    MontoBase = documento.Gravadas,
+                    CategoryId = "S",
+                    TaxSchemeId = "2000",
+                    Name = "ISC",
+                    TaxTypeCode = "EXC"
+                }));
+            }
+            if (documento.TotalOtrosTributos > 0)
+            {
+                creditNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = documento.TotalIsc,
+                    MontoBase = documento.Gravadas,
+                    CategoryId = "S",
+                    TaxSchemeId = "9999",
+                    Name = "OTROS",
+                    TaxTypeCode = "OTH"
+                }));
+            }
+
 
             foreach (var discrepancia in documento.Discrepancias)
             {
@@ -191,6 +269,10 @@ namespace OpenInvoicePeru.Xml
                         SellersItemIdentification = new SellersItemIdentification
                         {
                             Id = detalleDocumento.CodigoItem
+                        },
+                        CommodityClassification = new CommodityClassification
+                        {
+                            ItemClassificationCode = detalleDocumento.CodigoProductoSunat
                         }
                     },
                     Price = new Price
