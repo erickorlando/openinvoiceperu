@@ -684,7 +684,10 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                 writer.WriteStartElement("cbc:TaxableAmount");
                                 {
                                     writer.WriteAttributeString("currencyID", taxSubTotal.TaxAmount.CurrencyId);
-                                    writer.WriteValue(invoiceLine.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                                    var monto = invoiceLine.Price.PriceAmount.Value *
+                                                invoiceLine.InvoicedQuantity.Value;
+
+                                    writer.WriteValue(monto.ToString(Formatos.FormatoNumerico, Formato));
                                 }
                                 writer.WriteEndElement();
 
