@@ -94,12 +94,16 @@ namespace OpenInvoicePeru.Xml
                     {
                         CurrencyId = documento.Moneda,
                         Value = documento.TotalVenta
-                    },
-                    AllowanceTotalAmount = new PayableAmount
+                    }
+                },
+                AllowanceCharge = new AllowanceCharge
+                {
+                    Amount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
                         Value = documento.DescuentoGlobal
-                    }
+                    },
+                    ReasonCode = "02"
                 },
                 TaxTotals = new List<TaxTotal>
                 {
@@ -188,6 +192,11 @@ namespace OpenInvoicePeru.Xml
 
             if (!string.IsNullOrEmpty(documento.FechaVencimiento))
                 invoice.DueDate = DateTime.Parse(documento.FechaVencimiento);
+
+            if (!string.IsNullOrEmpty(documento.NroOrdenCompra))
+            {
+                invoice.OrderReference = documento.NroOrdenCompra;
+            }
 
             if (documento.TotalIsc > 0)
             {
@@ -503,6 +512,7 @@ namespace OpenInvoicePeru.Xml
                 if (detalleDocumento.Descuento > 0)
                 {
                     linea.AllowanceCharge.ChargeIndicator = false;
+                    linea.AllowanceCharge.ReasonCode = "00";
                     linea.AllowanceCharge.Amount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,

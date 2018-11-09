@@ -50,6 +50,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public BillingPayment PrepaidPayment { get; set; }
 
+        public string OrderReference { get; set; }
+
         /// <summary>
         /// Codigo de BS de Detracciones
         /// </summary>
@@ -196,6 +198,17 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteEndElement();
 
             writer.WriteElementString("cbc:LineCountNumeric", InvoiceLines.Count.ToString());
+
+            #region OrderReference
+            if (!string.IsNullOrEmpty(OrderReference))
+            {
+                writer.WriteStartElement("cac:OrderReference");
+                {
+                    writer.WriteElementString("cbc:ID", OrderReference);
+                }
+                writer.WriteEndElement();
+            } 
+            #endregion
 
             #region DespatchDocumentReferences
 
@@ -536,15 +549,15 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteStartElement("cac:LegalMonetaryTotal");
             {
-                if (LegalMonetaryTotal.AllowanceTotalAmount.Value > 0)
-                {
-                    writer.WriteStartElement("cbc:AllowanceTotalAmount");
-                    {
-                        writer.WriteAttributeString("currencyID", LegalMonetaryTotal.AllowanceTotalAmount.CurrencyId);
-                        writer.WriteValue(LegalMonetaryTotal.AllowanceTotalAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
-                    }
-                    writer.WriteEndElement();
-                }
+                //if (LegalMonetaryTotal.AllowanceTotalAmount.Value > 0)
+                //{
+                //    writer.WriteStartElement("cbc:AllowanceTotalAmount");
+                //    {
+                //        writer.WriteAttributeString("currencyID", LegalMonetaryTotal.AllowanceTotalAmount.CurrencyId);
+                //        writer.WriteValue(LegalMonetaryTotal.AllowanceTotalAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                //    }
+                //    writer.WriteEndElement();
+                //}
 
                 writer.WriteStartElement("cbc:TaxInclusiveAmount");
                 {
@@ -650,6 +663,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     writer.WriteStartElement("cac:AllowanceCharge");
 
                     writer.WriteElementString("cbc:ChargeIndicator", invoiceLine.AllowanceCharge.ChargeIndicator.ToString().ToLower());
+                    writer.WriteElementString("cbc:AllowanceChargeReasonCode", invoiceLine.AllowanceCharge.ReasonCode);
 
                     #region Amount
 
