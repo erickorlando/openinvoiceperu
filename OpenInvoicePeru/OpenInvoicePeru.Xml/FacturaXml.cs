@@ -94,12 +94,16 @@ namespace OpenInvoicePeru.Xml
                     {
                         CurrencyId = documento.Moneda,
                         Value = documento.TotalVenta
-                    },
-                    AllowanceTotalAmount = new PayableAmount
+                    }
+                },
+                AllowanceCharge = new AllowanceCharge
+                {
+                    Amount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
                         Value = documento.DescuentoGlobal
-                    }
+                    },
+                    ReasonCode = "02"
                 },
                 TaxTotals = new List<TaxTotal>
                 {
@@ -503,6 +507,7 @@ namespace OpenInvoicePeru.Xml
                 if (detalleDocumento.Descuento > 0)
                 {
                     linea.AllowanceCharge.ChargeIndicator = false;
+                    linea.AllowanceCharge.ReasonCode = "00";
                     linea.AllowanceCharge.Amount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,

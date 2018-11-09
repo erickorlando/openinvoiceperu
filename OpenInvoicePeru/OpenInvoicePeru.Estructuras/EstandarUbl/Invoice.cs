@@ -536,15 +536,15 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteStartElement("cac:LegalMonetaryTotal");
             {
-                if (LegalMonetaryTotal.AllowanceTotalAmount.Value > 0)
-                {
-                    writer.WriteStartElement("cbc:AllowanceTotalAmount");
-                    {
-                        writer.WriteAttributeString("currencyID", LegalMonetaryTotal.AllowanceTotalAmount.CurrencyId);
-                        writer.WriteValue(LegalMonetaryTotal.AllowanceTotalAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
-                    }
-                    writer.WriteEndElement();
-                }
+                //if (LegalMonetaryTotal.AllowanceTotalAmount.Value > 0)
+                //{
+                //    writer.WriteStartElement("cbc:AllowanceTotalAmount");
+                //    {
+                //        writer.WriteAttributeString("currencyID", LegalMonetaryTotal.AllowanceTotalAmount.CurrencyId);
+                //        writer.WriteValue(LegalMonetaryTotal.AllowanceTotalAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                //    }
+                //    writer.WriteEndElement();
+                //}
 
                 writer.WriteStartElement("cbc:TaxInclusiveAmount");
                 {
@@ -650,6 +650,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     writer.WriteStartElement("cac:AllowanceCharge");
 
                     writer.WriteElementString("cbc:ChargeIndicator", invoiceLine.AllowanceCharge.ChargeIndicator.ToString().ToLower());
+                    writer.WriteElementString("cbc:AllowanceChargeReasonCode", invoiceLine.AllowanceCharge.ReasonCode);
 
                     #region Amount
 
