@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using OpenInvoicePeru.Comun.Dto.Contratos;
 using System.Collections.Generic;
 
@@ -89,6 +90,8 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public List<Discrepancia> Discrepancias { get; set; }
 
+        public string NroOrdenCompra { get; set; }
+
         public List<Leyenda> Leyendas { get; set; }
 
         public DocumentoElectronico()
@@ -110,6 +113,8 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             TipoDocumento = "01"; // Factura.
             TipoOperacion = "0101"; // Venta Interna.
             Moneda = "PEN"; // Soles.
+            FechaEmision = DateTime.Today.ToString("yyyy-MM-dd");
+            HoraEmision = DateTime.Now.ToString("HH:mm:ss");
         }
     }
 }

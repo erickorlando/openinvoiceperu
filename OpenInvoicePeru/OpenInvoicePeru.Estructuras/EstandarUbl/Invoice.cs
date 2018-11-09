@@ -50,6 +50,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public BillingPayment PrepaidPayment { get; set; }
 
+        public string OrderReference { get; set; }
+
         /// <summary>
         /// Codigo de BS de Detracciones
         /// </summary>
@@ -196,6 +198,17 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteEndElement();
 
             writer.WriteElementString("cbc:LineCountNumeric", InvoiceLines.Count.ToString());
+
+            #region OrderReference
+            if (!string.IsNullOrEmpty(OrderReference))
+            {
+                writer.WriteStartElement("cac:OrderReference");
+                {
+                    writer.WriteElementString("cbc:ID", OrderReference);
+                }
+                writer.WriteEndElement();
+            } 
+            #endregion
 
             #region DespatchDocumentReferences
 

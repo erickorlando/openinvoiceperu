@@ -193,6 +193,11 @@ namespace OpenInvoicePeru.Xml
             if (!string.IsNullOrEmpty(documento.FechaVencimiento))
                 invoice.DueDate = DateTime.Parse(documento.FechaVencimiento);
 
+            if (!string.IsNullOrEmpty(documento.NroOrdenCompra))
+            {
+                invoice.OrderReference = documento.NroOrdenCompra;
+            }
+
             if (documento.TotalIsc > 0)
             {
                 invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
