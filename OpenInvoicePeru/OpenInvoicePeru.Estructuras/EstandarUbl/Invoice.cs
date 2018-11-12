@@ -392,7 +392,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     writer.WriteElementString("cbc:PaymentPercent", PaymentTermsPercent.ToString(Formatos.FormatoNumerico, Formato));
                     writer.WriteStartElement("cbc:Amount");
                     {
-                        writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
+                        writer.WriteAttributeString("currencyID", DocumentCurrencyCode != "PEN" ? "PEN" : DocumentCurrencyCode);
                         writer.WriteValue(PaymentTermsAmount.ToString(Formatos.FormatoNumerico, Formato));
                     }
                     writer.WriteEndElement();
