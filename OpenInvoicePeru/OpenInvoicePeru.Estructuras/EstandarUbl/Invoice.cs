@@ -502,9 +502,9 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
                                     writer.WriteStartElement("cbc:ID");
                                     {
-                                        writer.WriteAttributeString("schemeID", ValoresUbl.TaxCategorySchemeId);
-                                        writer.WriteAttributeString("schemeName", ValoresUbl.TaxCategorySchemeName);
-                                        writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
+                                        //writer.WriteAttributeString("schemeID", ValoresUbl.TaxCategorySchemeId);
+                                        //writer.WriteAttributeString("schemeName", ValoresUbl.TaxCategorySchemeName);
+                                        //writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
                                         writer.WriteValue(taxSubTotal.TaxCategory.Id);
                                     }
                                     writer.WriteEndElement();
@@ -718,9 +718,9 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                     {
                                         writer.WriteStartElement("cbc:ID");
                                         {
-                                            writer.WriteAttributeString("schemeID", ValoresUbl.TaxCategorySchemeId);
-                                            writer.WriteAttributeString("schemeName", ValoresUbl.TaxCategorySchemeName);
-                                            writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
+                                            //writer.WriteAttributeString("schemeID", ValoresUbl.TaxCategorySchemeId);
+                                            //writer.WriteAttributeString("schemeName", ValoresUbl.TaxCategorySchemeName);
+                                            //writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
                                             writer.WriteValue(taxSubTotal.TaxCategory.Id);
                                         }
                                         writer.WriteEndElement();
