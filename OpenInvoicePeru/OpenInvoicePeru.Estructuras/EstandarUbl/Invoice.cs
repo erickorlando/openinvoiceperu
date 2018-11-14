@@ -751,8 +751,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                             writer.WriteStartElement("cbc:ID");
                                             {
                                                 writer.WriteAttributeString("schemeID", ValoresUbl.TaxSchemeId);
-                                                writer.WriteAttributeString("schemeName", ValoresUbl.TaxSchemeName);
-                                                writer.WriteAttributeString("schemeAgencyName", ValoresUbl.CurrencyAgencyName);
+                                                writer.WriteAttributeString("schemeName", ValoresUbl.TaxCategorySchemeName);
+                                                writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
 
                                                 writer.WriteValue(taxSubTotal.TaxCategory.TaxScheme.Id);
                                             }
