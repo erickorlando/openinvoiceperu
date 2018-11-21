@@ -94,6 +94,11 @@ namespace OpenInvoicePeru.Xml
                     {
                         CurrencyId = documento.Moneda,
                         Value = documento.TotalVenta
+                    },
+                    TaxInclusiveAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.Gravadas
                     }
                 },
                 AllowanceCharge = new AllowanceCharge
@@ -289,6 +294,14 @@ namespace OpenInvoicePeru.Xml
                         Value = documento.MontoAnticipo
                     },
                     InstructionId = documento.Emisor.NroDocumento
+                };
+                invoice.AdditionalDocumentReferences = new List<InvoiceDocumentReference>
+                {
+                   new InvoiceDocumentReference
+                   {
+                       DocumentTypeCode = documento.TipoDocAnticipo,
+                       Id = documento.DocAnticipo
+                   }
                 };
                 invoice.LegalMonetaryTotal.PrepaidAmount = new PayableAmount
                 {

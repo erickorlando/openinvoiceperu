@@ -230,6 +230,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         writer.WriteAttributeString("schemeUri", ValoresUbl.AdditionalDocumentsSchemeUri);
                         writer.WriteValue(item.DocumentTypeCode);
                     }
+                    writer.WriteEndElement();
                 }
                 writer.WriteEndElement();
             }
