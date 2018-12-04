@@ -602,12 +602,32 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteStartElement("cac:LegalMonetaryTotal");
             {
+                if (LegalMonetaryTotal.LineExtensionAmount.Value > 0)
+                {
+                    writer.WriteStartElement("cbc:LineExtensionAmount");
+                    {
+                        writer.WriteAttributeString("currencyID", LegalMonetaryTotal.LineExtensionAmount.CurrencyId);
+                        writer.WriteValue(LegalMonetaryTotal.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                    }
+                    writer.WriteEndElement();
+                }
+
                 writer.WriteStartElement("cbc:TaxInclusiveAmount");
                 {
                     writer.WriteAttributeString("currencyID", LegalMonetaryTotal.TaxInclusiveAmount.CurrencyId);
                     writer.WriteValue(LegalMonetaryTotal.TaxInclusiveAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                 }
                 writer.WriteEndElement();
+
+                if (LegalMonetaryTotal.AllowanceTotalAmount.Value > 0)
+                {
+                    writer.WriteStartElement("cbc:AllowanceTotalAmount");
+                    {
+                        writer.WriteAttributeString("currencyID", LegalMonetaryTotal.AllowanceTotalAmount.CurrencyId);
+                        writer.WriteValue(LegalMonetaryTotal.AllowanceTotalAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                    }
+                    writer.WriteEndElement();
+                }
 
                 if (LegalMonetaryTotal.PrepaidAmount.Value > 0)
                 {
@@ -698,6 +718,72 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 writer.WriteEndElement();
 
                 #endregion PricingReference
+
+                #region Delivery
+
+                if (!string.IsNullOrEmpty(invoiceLine.Delivery.Despatch.Instructions))
+                {
+                    writer.WriteStartElement("cac:Delivery");
+                    {
+                        writer.WriteStartElement("cac:DeliveryLocation");
+                        {
+                            writer.WriteStartElement("cac:Address");
+                            {
+                                writer.WriteStartElement("cbc:ID");
+                                {
+                                    writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyNameInei);
+                                    writer.WriteAttributeString("schemeName", "Ubigeos");
+                                    writer.WriteValue(invoiceLine.Delivery.DeliveryLocation.DespatchAddress.Id);
+                                }
+                                writer.WriteEndElement();
+                                writer.WriteStartElement("cac:AddressLine");
+                                {
+                                    writer.WriteElementString("cbc:Line", invoiceLine.Delivery.DeliveryLocation.DespatchAddress.AddressLine);
+                                }
+                                writer.WriteEndElement();
+                            }
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                        writer.WriteStartElement("cac:Despatch");
+                        {
+                            writer.WriteElementString("cbc:Instructions", invoiceLine.Delivery.Despatch.Instructions);
+                            writer.WriteStartElement("cac:DespatchAddress");
+                            {
+                                writer.WriteStartElement("cbc:ID");
+                                {
+                                    writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyNameInei);
+                                    writer.WriteAttributeString("schemeName", "Ubigeos");
+                                    writer.WriteValue(invoiceLine.Delivery.Despatch.DespatchAddress.Id);
+                                }
+                                writer.WriteEndElement();
+                                writer.WriteStartElement("cac:AddressLine");
+                                {
+                                    writer.WriteElementString("cbc:Line", invoiceLine.Delivery.Despatch.DespatchAddress.AddressLine);
+                                }
+                                writer.WriteEndElement();
+                            }
+                            writer.WriteEndElement();
+                        }
+                        writer.WriteEndElement();
+                        foreach (var deliveryTerm in invoiceLine.Delivery.DeliveryTerms)
+                        {
+                            writer.WriteStartElement("cac:DeliveryTerms");
+                            {
+                                writer.WriteElementString("cbc:ID", deliveryTerm.Id);
+                                writer.WriteStartElement("cbc:Amount");
+                                {
+                                    writer.WriteAttributeString("currencyID", deliveryTerm.Amount.CurrencyId);
+                                    writer.WriteValue(deliveryTerm.Amount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                                }
+                                writer.WriteEndElement();
+                            }
+                            writer.WriteEndElement();
+                        }
+                    }
+                    writer.WriteEndElement();
+                }
+                #endregion
 
                 #region AllowanceCharge
 
@@ -892,6 +978,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         writer.WriteEndElement();
                     }
                     #endregion
+
+                    
                 }
                 writer.WriteEndElement();
 

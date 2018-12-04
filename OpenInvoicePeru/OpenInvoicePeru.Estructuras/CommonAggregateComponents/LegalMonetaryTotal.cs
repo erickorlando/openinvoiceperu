@@ -16,6 +16,8 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 
         public PayableAmount TaxInclusiveAmount { get; set; }
 
+        public PayableAmount LineExtensionAmount { get; set; }
+
         public LegalMonetaryTotal()
         {
             PayableAmount = new PayableAmount();
@@ -23,6 +25,7 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
             ChargeTotalAmount = new PayableAmount();
             PrepaidAmount = new PayableAmount();
             TaxInclusiveAmount = new PayableAmount();
+            LineExtensionAmount = new PayableAmount();
         }
     }
 }

@@ -95,10 +95,15 @@ namespace OpenInvoicePeru.Xml
                         CurrencyId = documento.Moneda,
                         Value = documento.TotalVenta
                     },
+                    AllowanceTotalAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.DescuentoGlobal
+                    },
                     TaxInclusiveAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
-                        Value = documento.Gravadas
+                        Value = documento.TotalVenta
                     }
                 },
                 AllowanceCharge = new AllowanceCharge
@@ -122,6 +127,15 @@ namespace OpenInvoicePeru.Xml
                     }
                 }
             };
+
+            if (documento.Gravadas > 0)
+            {
+                invoice.LegalMonetaryTotal.LineExtensionAmount = new PayableAmount
+                {
+                    CurrencyId = documento.Moneda,
+                    Value = documento.Gravadas
+                };
+            }
 
             if (documento.TotalIgv > 0)
             {
@@ -458,6 +472,106 @@ namespace OpenInvoicePeru.Xml
                             DurationMeasure = adicional.Duracion
                         }
                     });
+                }
+
+                /* Detracciones Servicio de Transporte de Carga */
+                if (!string.IsNullOrEmpty(detalleDocumento.UbigeoOrigen) && !string.IsNullOrEmpty(detalleDocumento.UbigeoDestino))
+                {
+                    linea.Delivery = new Delivery
+                    {
+                        Despatch = new Despatch
+                        {
+                            DespatchAddress = new DespatchAddress
+                            {
+                                Id = detalleDocumento.UbigeoOrigen,
+                                AddressLine = detalleDocumento.DireccionOrigen
+                            },
+                            Instructions = detalleDocumento.DetalleViaje
+                        },
+                        DeliveryLocation = new Despatch
+                        {
+                            DespatchAddress = new DespatchAddress
+                            {
+                                Id = detalleDocumento.UbigeoDestino,
+                                AddressLine = detalleDocumento.DireccionDestino
+                            }
+                        },
+                        DeliveryTerms = new List<DeliveryTerms>
+                        {
+                            new DeliveryTerms
+                            {
+                                Id = "01",
+                                Amount = new PayableAmount
+                                {
+                                    CurrencyId = "PEN",
+                                    Value = detalleDocumento.ValorReferencial
+                                }
+                            },
+                            new DeliveryTerms
+                            {
+                                Id = "02",
+                                Amount = new PayableAmount
+                                {
+                                    CurrencyId = "PEN",
+                                    Value = detalleDocumento.ValorReferencialCargaEfectiva
+                                }
+                            },
+                            new DeliveryTerms
+                            {
+                                Id = "03",
+                                Amount = new PayableAmount
+                                {
+                                    CurrencyId = "PEN",
+                                    Value = detalleDocumento.ValorReferencialCargaUtil
+                                }
+                            },
+                        },
+                        Shipment = new Shipment
+                        {
+                            Consignment = new Consignment
+                            {
+                                TransportHandlingUnit = new TransportHandlingUnit
+                                {
+                                    TransportEquipments = new List<TransportEquipment>()
+                                    {
+                                        new TransportEquipment
+                                        {
+                                            SizeTypeCode = detalleDocumento.ConfiguracionVehicular,
+                                            Delivery = new Delivery
+                                            {
+                                                DeliveryTerms = new List<DeliveryTerms>()
+                                                {
+                                                    new DeliveryTerms
+                                                    {
+                                                        Amount = new PayableAmount
+                                                        {
+                                                            CurrencyId = "PEN",
+                                                            Value = detalleDocumento.ValorReferencialTm
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            ReturnabilityIndicator = detalleDocumento.ViajeConRetorno
+                                        }
+                                    },
+                                    MeasurementDimensions = new List<MeasurementDimension>()
+                                    {
+                                        new MeasurementDimension
+                                        {
+                                            AttributeId = "01",
+                                            Measure = detalleDocumento.CargaUtil
+                                        },
+                                        new MeasurementDimension
+                                        {
+                                            AttributeId = "02",
+                                            Measure = detalleDocumento.CargaUtil
+                                        },
+                                    }
+                                },
+                                DeclaredForCarriageValueAmount = detalleDocumento.ValorPreliminarReferencial
+                            }
+                        }
+                    };
                 }
 
                 /* 16 - Afectación al IGV por ítem */

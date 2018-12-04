@@ -51,6 +51,20 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         public decimal TotalVenta { get; set; }
 
         public List<DatoAdicional> DatosAdcionales { get; set; }
+        public string UbigeoOrigen { get; set; }
+        public string DireccionOrigen { get; set; }
+        public string UbigeoDestino { get; set; }
+        public string DireccionDestino { get; set; }
+        public string DetalleViaje { get; set; }
+        public decimal ValorReferencial { get; set; }
+        public decimal ValorReferencialCargaEfectiva { get; set; }
+        public decimal ValorReferencialCargaUtil { get; set; }
+        public string ConfiguracionVehicular { get; set; }
+        public decimal CargaUtil { get; set; }
+        public decimal CargaEfectiva { get; set; }
+        public decimal ValorReferencialTm { get; set; }
+        public decimal ValorPreliminarReferencial { get; set; }
+        public bool ViajeConRetorno { get; set; }
 
         public DetalleDocumento()
         {

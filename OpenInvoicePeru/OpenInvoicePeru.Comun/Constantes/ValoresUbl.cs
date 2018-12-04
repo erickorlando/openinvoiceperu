@@ -4,6 +4,7 @@
     {
         public const string TipoOperacionSchemeName = "Tipo de Operacion";
         public const string SchemeAgencyName = "PE:SUNAT";
+        public const string SchemeAgencyNameInei = "PE:INEI";
         public const string TipoOperacionSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo51";
         public const string InvoiceTypeCodeName = "Tipo de Documento";
         public const string InvoiceTypeCodeSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo01";
