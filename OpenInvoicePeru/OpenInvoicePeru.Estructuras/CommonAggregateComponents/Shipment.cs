@@ -7,6 +7,8 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
     [Serializable]
     public class Shipment
     {
+        public Consignment Consignment { get; set; }
+
         public string HandlingCode { get; set; }
 
         public string Information { get; set; }
@@ -34,11 +36,36 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 
         public Shipment()
         {
+            Consignment = new Consignment();
             GrossWeightMeasure = new InvoicedQuantity();
             ShipmentStages = new List<ShipmentStage>();
             DeliveryAddress = new PostalAddress();
             TransportHandlingUnit = new TransportHandlingUnit();
             OriginAddress = new PostalAddress();
         }
+    }
+
+    [Serializable]
+    public class Consignment
+    {
+        public PlannedPickupTransportEvent PlannedPickupTransportEvent { get; set; }
+        public string CarrierServiceInstructions { get; set; }
+        public string Id { get; set; }
+        public DeliveryTerms DeliveryTerms { get; set; }
+        public TransportHandlingUnit TransportHandlingUnit { get; set; }
+        public decimal DeclaredForCarriageValueAmount { get; set; }
+
+        public Consignment()
+        {
+            DeliveryTerms = new DeliveryTerms();
+            PlannedPickupTransportEvent = new PlannedPickupTransportEvent();
+            TransportHandlingUnit = new TransportHandlingUnit();
+        }
+    }
+
+    [Serializable]
+    public class PlannedPickupTransportEvent
+    {
+        public string LocationId { get; set; }
     }
 }

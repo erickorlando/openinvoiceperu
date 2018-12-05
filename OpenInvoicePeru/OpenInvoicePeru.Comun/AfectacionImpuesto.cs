@@ -32,7 +32,7 @@
                     letra = "O";
                     break;
                 case "40": //Exportación de bienes o servicios
-                    letra = "";
+                    letra = "E";
                     break;
                 default:
                     letra = "S";

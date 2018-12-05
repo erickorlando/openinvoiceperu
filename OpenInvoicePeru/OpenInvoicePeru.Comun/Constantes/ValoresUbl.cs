@@ -4,6 +4,7 @@
     {
         public const string TipoOperacionSchemeName = "Tipo de Operacion";
         public const string SchemeAgencyName = "PE:SUNAT";
+        public const string SchemeAgencyNameInei = "PE:INEI";
         public const string TipoOperacionSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo51";
         public const string InvoiceTypeCodeName = "Tipo de Documento";
         public const string InvoiceTypeCodeSchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo01";
@@ -12,7 +13,7 @@
         public const string CurrencyAgencyName = "United Nations Economic Commission for Europe";
         public const string CompanySchemeName = "Documento de Identidad";
         public const string CompanySchemeUri = "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06";
-        public const string TaxCategorySchemeId = "UN/ECE 5305";
+        public const string TaxCategorySchemeId = "UN/ECE 5153";
         public const string TaxCategorySchemeName = "Codigo de tributos";
         public const string QuantityCodeListId = "UN/ECE rec 20";
         public const string PriceTypeCodeListName = "Tipo de Precio";

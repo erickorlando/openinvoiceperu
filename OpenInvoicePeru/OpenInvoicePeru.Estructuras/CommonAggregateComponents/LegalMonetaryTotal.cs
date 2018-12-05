@@ -14,12 +14,18 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 
         public PayableAmount PrepaidAmount { get; set; }
 
+        public PayableAmount TaxInclusiveAmount { get; set; }
+
+        public PayableAmount LineExtensionAmount { get; set; }
+
         public LegalMonetaryTotal()
         {
             PayableAmount = new PayableAmount();
             AllowanceTotalAmount = new PayableAmount();
             ChargeTotalAmount = new PayableAmount();
             PrepaidAmount = new PayableAmount();
+            TaxInclusiveAmount = new PayableAmount();
+            LineExtensionAmount = new PayableAmount();
         }
     }
 }
