@@ -959,7 +959,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                 writer.WriteElementString("cbc:Name", additionalProperty.Name);
                                 writer.WriteStartElement("cbc:NameCode");
                                 {
-                                    writer.WriteAttributeString("listName", "Propiedad del Item");
+                                    writer.WriteAttributeString("listName", "Propiedad del item");
                                     writer.WriteAttributeString("listAgencyName", ValoresUbl.SchemeAgencyName);
                                     writer.WriteAttributeString("listURI", ValoresUbl.AdditionalPropertyListUri);
                                     writer.WriteValue(additionalProperty.NameCode);

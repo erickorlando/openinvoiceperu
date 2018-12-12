@@ -452,7 +452,7 @@ namespace OpenInvoicePeru.Xml
                     linea.Item.AdditionalItemProperties.Add(new AdditionalItemProperty
                     {
                         Name = "Gastos Art. 37 Renta: Número de Placa",
-                        NameCode = "700",
+                        NameCode = "5010",
                         Value = detalleDocumento.PlacaVehiculo
                     });
                 }
