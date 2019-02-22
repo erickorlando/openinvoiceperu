@@ -20,7 +20,9 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            CrearFacturaConDetraccionTransportes();
+            //CrearFacturaConDetraccionTransportes();
+            CrearDesdeArchivo();
+            Console.ReadLine();
         }
 
         private static Compania CrearEmisor()
@@ -116,6 +118,30 @@ namespace OpenInvoicePeru.ClienteConsola
             {
                 Console.ReadLine();
             }
+        }
+
+        private static void CrearDesdeArchivo()
+        {
+            var archivo = @"C:\Virtuales\FacturaHotelera.xml";
+            var documento = new DocumentoElectronico
+            {
+                Emisor = new Compania
+                {
+                    NroDocumento = "20101000975",
+                    TipoDocumento = "6",
+                    NombreComercial = "-",
+                    NombreLegal = "Miraflores de Turismo SAC",
+                    CodigoAnexo = "0000"
+                },
+                IdDocumento = "F002-7268"
+            };
+
+            var documentoResponse = new DocumentoResponse
+            {
+                TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(archivo))
+            };
+
+            FirmaryEnviar(documento, documentoResponse);
         }
 
         private static DocumentoResponse GenerarDocumento(DocumentoElectronico documento)

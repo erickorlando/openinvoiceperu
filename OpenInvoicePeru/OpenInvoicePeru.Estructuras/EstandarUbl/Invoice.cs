@@ -956,7 +956,9 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         {
                             writer.WriteStartElement("cac:AdditionalItemProperty");
                             {
-                                writer.WriteElementString("cbc:Name", additionalProperty.Name);
+                                if (!string.IsNullOrEmpty(additionalProperty.Name))
+                                    writer.WriteElementString("cbc:Name", additionalProperty.Name);
+
                                 writer.WriteStartElement("cbc:NameCode");
                                 {
                                     writer.WriteAttributeString("listName", "Propiedad del item");
@@ -965,7 +967,10 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                     writer.WriteValue(additionalProperty.NameCode);
                                 }
                                 writer.WriteEndElement();
-                                writer.WriteElementString("cbc:Value", additionalProperty.Value);
+
+                                if (!string.IsNullOrEmpty(additionalProperty.Value))
+                                    writer.WriteElementString("cbc:Value", additionalProperty.Value);
+
                                 if (!string.IsNullOrEmpty(additionalProperty.UsabilityPeriod.StartDate))
                                 {
                                     writer.WriteStartElement("cac:UsabilityPeriod");
@@ -974,8 +979,12 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                         writer.WriteElementString("cbc:EndDate", additionalProperty.UsabilityPeriod.EndDate);
                                         if (additionalProperty.UsabilityPeriod.DurationMeasure > 0)
                                         {
-                                            writer.WriteElementString("cbc:DurationMeasure",
-                                                additionalProperty.UsabilityPeriod.DurationMeasure.ToString());
+                                            writer.WriteStartElement("cbc:DurationMeasure");
+                                            {
+                                                writer.WriteAttributeString("unitCode","DAY");
+                                                writer.WriteValue(additionalProperty.UsabilityPeriod.DurationMeasure.ToString());
+                                            }
+                                            writer.WriteEndElement();
                                         }
                                     }
                                     writer.WriteEndElement();

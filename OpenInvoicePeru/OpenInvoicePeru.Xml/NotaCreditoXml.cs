@@ -314,6 +314,18 @@ namespace OpenInvoicePeru.Xml
                         TaxTypeCode = AfectacionImpuesto.ObtenerCodigoInternacionalTributo(detalleDocumento.TipoImpuesto)
                     })
                 });
+
+                if (detalleDocumento.Descuento > 0)
+                {
+                    linea.AllowanceCharge.ChargeIndicator = false;
+                    linea.AllowanceCharge.ReasonCode = "00";
+                    linea.AllowanceCharge.Amount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = detalleDocumento.Descuento
+                    };
+                }
+
                 creditNote.CreditNoteLines.Add(linea);
             }
 

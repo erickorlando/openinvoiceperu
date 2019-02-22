@@ -69,14 +69,18 @@
             switch (tipoImpuesto)
             {
                 case "10":
+                    codigoTributo = "1000";
+                    break;
                 case "11":
                 case "12":
                 case "13":
                 case "14":
                 case "15":
                 case "16":
+                    codigoTributo = "9996";
+                    break;
                 case "17": //Gravado - Operación Onerosa
-                    codigoTributo = "1000";
+                    codigoTributo = "1016";
                     break;
                 case "20":
                     codigoTributo = "9997";
@@ -86,12 +90,15 @@
                     break;
                 case "30":
                 case "31":
+                    codigoTributo = "9998";
+                    break;
                 case "32":
                 case "33":
                 case "34":
                 case "35":
-                case "36": //Inafecto - Operación Onerosa
-                    codigoTributo = "9998";
+                case "36": 
+                case "37": //Inafecto - Operación Onerosa
+                    codigoTributo = "9996";
                     break;
                 case "40": //Exportación de bienes o servicios
                     codigoTributo = "9995";
@@ -110,11 +117,15 @@
             switch (tipoImpuesto)
             {
                 case "10":
+                    descripcionTributo = "IGV";
+                    break;
                 case "11":
                 case "12":
                 case "13":
                 case "14":
                 case "15":
+                    descripcionTributo = "GRA";
+                    break;
                 case "16":
                 case "17": //Gravado - Operación Onerosa
                     descripcionTributo = "IGV";
@@ -152,11 +163,15 @@
             switch (tipoImpuesto)
             {
                 case "10":
+                    descripcionTributo = "VAT";
+                    break;
                 case "11":
                 case "12":
                 case "13":
                 case "14":
                 case "15":
+                    descripcionTributo = "FRE";
+                    break;
                 case "16":
                 case "17": //Gravado - Operación Onerosa
                     descripcionTributo = "VAT";

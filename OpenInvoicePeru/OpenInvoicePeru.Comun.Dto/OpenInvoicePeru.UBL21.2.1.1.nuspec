@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>OpenInvoicePeru.UBL21</id>
+    <version>2.1.1</version>
+    <title>OpenInvoicePeru DTO UBL 2.1</title>
+    <authors>Erick Orlando</authors>
+    <owners>Framework Peru</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <projectUrl>https://www.frameworkperu.com/</projectUrl>
+    <iconUrl>https://www.frameworkperu.com/wp-content/uploads/2018/11/FrameworkPeru_tiny.png</iconUrl>
+    <description>Objetos de Transferencia de Datos para la API REST de OpenInvoicePeru. Estas clases permiten enviar los JSON adecuados para la Facturacion Electronica SUNAT de OpenInvoicePeru. Se requiere mínimo .NET 4.5</description>
+    <summary>Objetos DTO para la API REST de OpenInvoicePeru UBL 2.1</summary>
+    <releaseNotes>- Datos Adicionales</releaseNotes>
+    <copyright>Erick Orlando © 2018</copyright>
+    <language>es-PE</language>
+    <tags>openinvoiceperu facturacion electronica sunat electronic billing ubl</tags>
+    <dependencies>
+      <group targetFramework=".NETFramework4.5">
+        <dependency id="Newtonsoft.Json" version="10.0.3" />
+      </group>
+    </dependencies>
+  </metadata>
+  <files>
+    <file src="lib\net45\OpenInvoicePeru.Comun.Dto.dll" target="lib\net45\OpenInvoicePeru.Comun.Dto.dll" />
+  </files>
+</package>

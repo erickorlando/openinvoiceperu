@@ -50,7 +50,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         [JsonProperty(Required = Required.Always)]
         public decimal TotalVenta { get; set; }
 
-        public List<DatoAdicional> DatosAdcionales { get; set; }
+        public List<DatoAdicional> DatosAdicionales { get; set; }
         public string UbigeoOrigen { get; set; }
         public string DireccionOrigen { get; set; }
         public string UbigeoDestino { get; set; }
@@ -72,7 +72,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             UnidadMedida = "NIU";
             TipoPrecio = "01";
             TipoImpuesto = "10";
-            DatosAdcionales = new List<DatoAdicional>();
+            DatosAdicionales = new List<DatoAdicional>();
         }
     }
 }

@@ -128,12 +128,12 @@ namespace OpenInvoicePeru.Xml
                 }
             };
 
-            if (documento.Gravadas > 0)
+            if (documento.TotalVenta > 0)
             {
                 invoice.LegalMonetaryTotal.LineExtensionAmount = new PayableAmount
                 {
                     CurrencyId = documento.Moneda,
-                    Value = documento.Gravadas
+                    Value = (documento.Gravadas + documento.Exoneradas + documento.Inafectas) - documento.DescuentoGlobal
                 };
             }
 
@@ -458,7 +458,7 @@ namespace OpenInvoicePeru.Xml
                 }
 
                 // Datos Adicionales a la Factura.
-                foreach (var adicional in detalleDocumento.DatosAdcionales)
+                foreach (var adicional in detalleDocumento.DatosAdicionales)
                 {
                     linea.Item.AdditionalItemProperties.Add(new AdditionalItemProperty
                     {
