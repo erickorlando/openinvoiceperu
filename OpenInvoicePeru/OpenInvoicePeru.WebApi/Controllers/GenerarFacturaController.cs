@@ -28,6 +28,8 @@ namespace OpenInvoicePeru.WebApi.Controllers
             {
                 var invoice = _documentoXml.Generar(documento);
                 response.TramaXmlSinFirma = await _serializador.GenerarXml(invoice);
+                var serieCorrelativo = documento.IdDocumento.Split('-');
+                response.ValoresParaQr = $"{documento.Emisor.NroDocumento}|{documento.TipoDocumento}|{serieCorrelativo[0]}|{serieCorrelativo[1]}|{documento.TotalIgv:N2}|{documento.TotalVenta:N2}|{documento.FechaEmision:yyyy-MM-dd}|{documento.Receptor.TipoDocumento}|{documento.Receptor.NroDocumento}";
                 response.Exito = true;
             }
             catch (Exception ex)

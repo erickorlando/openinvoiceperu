@@ -212,6 +212,8 @@ namespace OpenInvoicePeru.Xml
                 }));
             }
 
+            if (!string.IsNullOrEmpty(documento.FechaVencimiento))
+                creditNote.DueDate = DateTime.Parse(documento.FechaVencimiento);
 
             foreach (var discrepancia in documento.Discrepancias)
             {

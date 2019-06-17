@@ -7,5 +7,7 @@
         public string ResumenFirma { get; set; }
 
         public string ValorFirma { get; set; }
+
+        public string CodigoQr { get; set; }
     }
 }

@@ -53,6 +53,7 @@
                     tasa = 0.00m;
                     break;
                 case "21":
+                case "30":
                     tasa = 0.00m;
                     break;
                 default:

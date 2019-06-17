@@ -42,8 +42,11 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         public decimal Exoneradas { get; set; }
 
         public decimal Exportacion { get; set; }
-        
+
         public decimal DescuentoGlobal { get; set; }
+
+        public decimal FactorMultiplicadorDscto { get; set; }
+        public string CodigoRazonDcto { get; set; }
 
         [JsonProperty(Required = Required.Always)]
         public List<DetalleDocumento> Items { get; set; }

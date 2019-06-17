@@ -113,7 +113,8 @@ namespace OpenInvoicePeru.Xml
                         CurrencyId = documento.Moneda,
                         Value = documento.DescuentoGlobal
                     },
-                    ReasonCode = "02"
+                    ReasonCode = string.IsNullOrEmpty(documento.CodigoRazonDcto) ?  "02" : documento.CodigoRazonDcto,
+                    MultiplierFactorNumeric = documento.FactorMultiplicadorDscto
                 },
                 TaxTotals = new List<TaxTotal>
                 {

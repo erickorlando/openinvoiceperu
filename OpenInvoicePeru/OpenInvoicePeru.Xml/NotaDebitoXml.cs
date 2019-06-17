@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using OpenInvoicePeru.Comun;
 using OpenInvoicePeru.Comun.Dto.Contratos;
 using OpenInvoicePeru.Comun.Dto.Modelos;
@@ -105,31 +106,110 @@ namespace OpenInvoicePeru.Xml
                             CurrencyId = documento.Moneda,
                             Value = documento.TotalIgv
                         },
-                        TaxSubtotal = new TaxSubtotal
-                        {
-                            TaxableAmount = new PayableAmount
-                            {
-                                CurrencyId = documento.Moneda,
-                                Value = documento.TotalVenta
-                            },
-                            TaxAmount = new PayableAmount
-                            {
-                                CurrencyId = documento.Moneda,
-                                Value = documento.TotalIgv,
-                            },
-                            TaxCategory = new TaxCategory
-                            {
-                                TaxScheme = new TaxScheme
-                                {
-                                    Id = "1000",
-                                    Name = "IGV",
-                                    TaxTypeCode = "VAT"
-                                }
-                            }
-                        }
                     }
                 }
             };
+
+            if (documento.TotalIgv > 0)
+            {
+                debitNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = documento.TotalIgv,
+                    MontoBase = documento.Gravadas,
+                    CategoryId = "S",
+                    TaxSchemeId = "1000",
+                    Name = "IGV",
+                    TaxTypeCode = "VAT"
+                }));
+            }
+
+
+            if (documento.Inafectas > 0)
+            {
+                debitNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Inafectas,
+                    CategoryId = "O",
+                    TaxSchemeId = "9998",
+                    Name = "INA",
+                    TaxTypeCode = "FRE"
+                }));
+            }
+
+            if (documento.Exoneradas > 0)
+            {
+                debitNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Exoneradas,
+                    CategoryId = "E",
+                    TaxSchemeId = "9997",
+                    Name = "EXO",
+                    TaxTypeCode = "VAT"
+                }));
+            }
+
+            if (documento.Gratuitas > 0)
+            {
+                debitNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Gratuitas,
+                    CategoryId = "Z",
+                    TaxSchemeId = "9996",
+                    Name = "GRA",
+                    TaxTypeCode = "FRE"
+                }));
+            }
+
+            if (documento.Exportacion > 0)
+            {
+                debitNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = 0,
+                    MontoBase = documento.Exportacion,
+                    CategoryId = "",
+                    TaxSchemeId = "9995",
+                    Name = "EXP",
+                    TaxTypeCode = "FRE"
+                }));
+            }
+
+            if (!string.IsNullOrEmpty(documento.FechaVencimiento))
+                debitNote.DueDate = DateTime.Parse(documento.FechaVencimiento);
+
+            if (documento.TotalIsc > 0)
+            {
+                debitNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = documento.TotalIsc,
+                    MontoBase = documento.Gravadas,
+                    CategoryId = "S",
+                    TaxSchemeId = "2000",
+                    Name = "ISC",
+                    TaxTypeCode = "EXC"
+                }));
+            }
+            if (documento.TotalOtrosTributos > 0)
+            {
+                debitNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    Monto = documento.TotalIsc,
+                    MontoBase = documento.Gravadas,
+                    CategoryId = "S",
+                    TaxSchemeId = "9999",
+                    Name = "OTROS",
+                    TaxTypeCode = "OTH"
+                }));
+            }
 
             if (!string.IsNullOrEmpty(documento.FechaVencimiento))
                 debitNote.DueDate = DateTime.Parse(documento.FechaVencimiento);
@@ -219,31 +299,30 @@ namespace OpenInvoicePeru.Xml
                         CurrencyId = documento.Moneda,
                         Value = detalleDocumento.Impuesto
                     },
-                    TaxSubtotal = new TaxSubtotal
+                    TaxSubTotals = CalculoTotales.AgregarSubTotalDetalles(new TotalesDto
                     {
-                        TaxableAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = detalleDocumento.TotalVenta
-                        },
-                        TaxAmount = new PayableAmount
-                        {
-                            CurrencyId = documento.Moneda,
-                            Value = detalleDocumento.Impuesto
-                        },
-                        TaxCategory = new TaxCategory
-                        {
-                            Percent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
-                            TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
-                            TaxScheme = new TaxScheme
-                            {
-                                Id = AfectacionImpuesto.ObtenerCodigoTributo(detalleDocumento.TipoImpuesto),
-                                Name = AfectacionImpuesto.ObtenerDescripcionTributo(detalleDocumento.TipoImpuesto),
-                                TaxTypeCode = AfectacionImpuesto.ObtenerCodigoInternacionalTributo(detalleDocumento.TipoImpuesto)
-                            }
-                        }
-                    }
+                        CurrencyId = documento.Moneda,
+                        Monto = detalleDocumento.Impuesto,
+                        CategoryId = AfectacionImpuesto.ObtenerLetraTributo(detalleDocumento.TipoImpuesto),
+                        TaxPercent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
+                        TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
+                        TaxSchemeId = AfectacionImpuesto.ObtenerCodigoTributo(detalleDocumento.TipoImpuesto),
+                        Name = AfectacionImpuesto.ObtenerDescripcionTributo(detalleDocumento.TipoImpuesto),
+                        TaxTypeCode = AfectacionImpuesto.ObtenerCodigoInternacionalTributo(detalleDocumento.TipoImpuesto)
+                    })
                 });
+
+                if (detalleDocumento.Descuento > 0)
+                {
+                    linea.AllowanceCharge.ChargeIndicator = false;
+                    linea.AllowanceCharge.ReasonCode = "00";
+                    linea.AllowanceCharge.Amount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = detalleDocumento.Descuento
+                    };
+                }
+
                 debitNote.DebitNoteLines.Add(linea);
             }
 
