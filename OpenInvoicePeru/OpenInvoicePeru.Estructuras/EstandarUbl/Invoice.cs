@@ -491,7 +491,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 {
                     writer.WriteElementString("cbc:ChargeIndicator", AllowanceCharge.ChargeIndicator.ToString().ToLower());
                     writer.WriteElementString("cbc:AllowanceChargeReasonCode", AllowanceCharge.ReasonCode);
-                    writer.WriteElementString("cbc:MultiplierFactorNumeric", AllowanceCharge.MultiplierFactorNumeric.ToString(Formatos.FormatoNumerico, Formato));
+                    writer.WriteElementString("cbc:MultiplierFactorNumeric", AllowanceCharge.MultiplierFactorNumeric.ToString("###0.####0", Formato));
 
                     writer.WriteStartElement("cbc:Amount");
                     {

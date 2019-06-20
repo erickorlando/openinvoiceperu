@@ -47,6 +47,8 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public decimal FactorMultiplicadorDscto { get; set; }
         public string CodigoRazonDcto { get; set; }
+        public decimal MontoBaseParaDcto { get; set; }
+        public decimal LineExtensionAmount { get; set; }
 
         [JsonProperty(Required = Required.Always)]
         public List<DetalleDocumento> Items { get; set; }

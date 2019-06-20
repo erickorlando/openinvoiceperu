@@ -104,6 +104,11 @@ namespace OpenInvoicePeru.Xml
                     {
                         CurrencyId = documento.Moneda,
                         Value = documento.TotalVenta
+                    },
+                    LineExtensionAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.LineExtensionAmount > 0 ? documento.LineExtensionAmount : 0
                     }
                 },
                 AllowanceCharge = new AllowanceCharge
@@ -113,8 +118,13 @@ namespace OpenInvoicePeru.Xml
                         CurrencyId = documento.Moneda,
                         Value = documento.DescuentoGlobal
                     },
-                    ReasonCode = string.IsNullOrEmpty(documento.CodigoRazonDcto) ?  "02" : documento.CodigoRazonDcto,
-                    MultiplierFactorNumeric = documento.FactorMultiplicadorDscto
+                    ReasonCode = string.IsNullOrEmpty(documento.CodigoRazonDcto) ? "02" : documento.CodigoRazonDcto,
+                    MultiplierFactorNumeric = documento.FactorMultiplicadorDscto,
+                    BaseAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.MontoBaseParaDcto
+                    }
                 },
                 TaxTotals = new List<TaxTotal>
                 {
@@ -129,7 +139,7 @@ namespace OpenInvoicePeru.Xml
                 }
             };
 
-            if (documento.TotalVenta > 0)
+            if (documento.TotalVenta > 0 && documento.LineExtensionAmount == 0)
             {
                 invoice.LegalMonetaryTotal.LineExtensionAmount = new PayableAmount
                 {
