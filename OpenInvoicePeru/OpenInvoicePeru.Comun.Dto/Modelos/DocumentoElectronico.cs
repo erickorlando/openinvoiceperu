@@ -7,6 +7,8 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 {
     public class DocumentoElectronico : IDocumentoElectronico
     {
+        private const string ObsoleteAnticipo = "Use la coleccion Anticipos en su lugar";
+
         [JsonProperty(Required = Required.Always)]
         public string IdDocumento { get; set; }
 
@@ -77,15 +79,23 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public string CodigoMedioPago { get; set; }
 
-        public List<DatoAdicional> DatoAdicionales { get; set; }
+        public decimal MontoTotalAnticipo { get; set; }
 
+        [Obsolete(ObsoleteAnticipo)]
         public string TipoDocAnticipo { get; set; }
 
+        [Obsolete(ObsoleteAnticipo)]
         public string DocAnticipo { get; set; }
 
+        [Obsolete(ObsoleteAnticipo)]
         public string MonedaAnticipo { get; set; }
 
+        [Obsolete(ObsoleteAnticipo)]
         public decimal MontoAnticipo { get; set; }
+
+        public List<DatoAdicional> DatoAdicionales { get; set; }
+
+        public List<Anticipo> Anticipos { get; set; }
 
         public DatosGuia DatosGuiaTransportista { get; set; }
 
@@ -115,6 +125,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             OtrosDocumentosRelacionados = new List<DocumentoRelacionado>();
             Leyendas = new List<Leyenda>();
             Discrepancias = new List<Discrepancia>();
+            Anticipos = new List<Anticipo>();
             TipoDocumento = "01"; // Factura.
             TipoOperacion = "0101"; // Venta Interna.
             Moneda = "PEN"; // Soles.

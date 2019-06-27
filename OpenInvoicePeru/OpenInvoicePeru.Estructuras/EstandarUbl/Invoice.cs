@@ -52,6 +52,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public BillingPayment PrepaidPayment { get; set; }
 
+        public List<BillingPayment> PrepaidPayments { get; set; }
+
         public string OrderReference { get; set; }
 
         /// <summary>
@@ -93,6 +95,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             AccountingCustomerParty = new AccountingSupplierParty();
             DespatchDocumentReferences = new List<InvoiceDocumentReference>();
             AdditionalDocumentReferences = new List<InvoiceDocumentReference>();
+            PrepaidPayments = new List<BillingPayment>();
             UblExtensions = new UblExtensions();
             Signature = new SignatureCac();
             InvoiceLines = new List<InvoiceLine>();
@@ -452,35 +455,38 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             #endregion
 
             #region PrepaidPayment
-
-            if (PrepaidPayment != null)
-            {
-                writer.WriteStartElement("cac:PrepaidPayment");
+            if (PrepaidPayments != null)
+                foreach (var prepaidPayment in PrepaidPayments)
                 {
-                    writer.WriteStartElement("cbc:ID");
+                    writer.WriteComment("Inicio de Anticipo");
+                    writer.WriteStartElement("cac:PrepaidPayment");
                     {
-                        writer.WriteAttributeString("schemeName", "Anticipo");
-                        writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
-                        writer.WriteValue(PrepaidPayment.Id.Value);
-                    }
-                    writer.WriteEndElement();
+                        writer.WriteStartElement("cbc:ID");
+                        {
+                            writer.WriteAttributeString("schemeName", "Anticipo");
+                            writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
+                            writer.WriteValue(prepaidPayment.Id.Value);
+                        }
+                        writer.WriteEndElement();
 
-                    writer.WriteStartElement("cbc:PaidAmount");
-                    {
-                        writer.WriteAttributeString("currencyID", PrepaidPayment.PaidAmount.CurrencyId);
-                        writer.WriteValue(PrepaidPayment.PaidAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
-                    }
-                    writer.WriteEndElement();
+                        writer.WriteStartElement("cbc:PaidAmount");
+                        {
+                            writer.WriteAttributeString("currencyID", prepaidPayment.PaidAmount.CurrencyId);
+                            writer.WriteValue(prepaidPayment.PaidAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                        }
+                        writer.WriteEndElement();
 
-                    writer.WriteStartElement("cbc:InstructionID");
-                    {
-                        writer.WriteAttributeString("schemeID", "6");
-                        writer.WriteValue(PrepaidPayment.InstructionId);
+                        // Segun documentacion de SUNAT esto ya no va.
+                        //writer.WriteStartElement("cbc:InstructionID");
+                        //{
+                        //    writer.WriteAttributeString("schemeID", "6");
+                        //    writer.WriteValue(prepaidPayment.InstructionId);
+                        //}
+                        //writer.WriteEndElement();
                     }
                     writer.WriteEndElement();
+                    writer.WriteComment("Fin de Anticipo");
                 }
-                writer.WriteEndElement();
-            }
 
             #endregion PrepaidPayment
 
@@ -981,7 +987,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                         {
                                             writer.WriteStartElement("cbc:DurationMeasure");
                                             {
-                                                writer.WriteAttributeString("unitCode","DAY");
+                                                writer.WriteAttributeString("unitCode", "DAY");
                                                 writer.WriteValue(additionalProperty.UsabilityPeriod.DurationMeasure.ToString());
                                             }
                                             writer.WriteEndElement();

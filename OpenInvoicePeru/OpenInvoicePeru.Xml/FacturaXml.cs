@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using OpenInvoicePeru.Comun;
 using OpenInvoicePeru.Comun.Dto.Contratos;
 using OpenInvoicePeru.Comun.Dto.Modelos;
@@ -8,6 +5,9 @@ using OpenInvoicePeru.Estructuras.CommonAggregateComponents;
 using OpenInvoicePeru.Estructuras.CommonBasicComponents;
 using OpenInvoicePeru.Estructuras.EstandarUbl;
 using OpenInvoicePeru.Estructuras.SunatAggregateComponents;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace OpenInvoicePeru.Xml
 {
@@ -304,34 +304,37 @@ namespace OpenInvoicePeru.Xml
                         }
                     });
             }
-            if (documento.MontoAnticipo > 0)
+            if (documento.Anticipos != null)
             {
-                invoice.PrepaidPayment = new BillingPayment
+                foreach (var anticipo in documento.Anticipos)
                 {
-                    Id = new PartyIdentificationId
+                    invoice.PrepaidPayments.Add(new BillingPayment
                     {
-                        SchemeId = documento.TipoDocAnticipo,
-                        Value = documento.DocAnticipo
-                    },
-                    PaidAmount = new PayableAmount
-                    {
-                        CurrencyId = documento.MonedaAnticipo,
-                        Value = documento.MontoAnticipo
-                    },
-                    InstructionId = documento.Emisor.NroDocumento
-                };
-                invoice.AdditionalDocumentReferences = new List<InvoiceDocumentReference>
-                {
-                   new InvoiceDocumentReference
-                   {
-                       DocumentTypeCode = documento.TipoDocAnticipo,
-                       Id = documento.DocAnticipo
-                   }
-                };
+                        Id = new PartyIdentificationId
+                        {
+                            SchemeId = anticipo.TipoDocAnticipo,
+                            Value = anticipo.DocAnticipo
+                        },
+                        PaidAmount = new PayableAmount
+                        {
+                            CurrencyId = anticipo.MonedaAnticipo,
+                            Value = anticipo.MontoAnticipo
+                        },
+                        InstructionId = documento.Emisor.NroDocumento
+                    });
+
+                    invoice.AdditionalDocumentReferences.Add(new InvoiceDocumentReference
+                        {
+                            DocumentTypeCode = anticipo.TipoDocAnticipo,
+                            Id = anticipo.DocAnticipo
+                        }
+                    );
+                }
+
                 invoice.LegalMonetaryTotal.PrepaidAmount = new PayableAmount
                 {
-                    CurrencyId = documento.MonedaAnticipo,
-                    Value = documento.MontoAnticipo
+                    CurrencyId = documento.Moneda,
+                    Value = documento.MontoTotalAnticipo
                 };
             }
 

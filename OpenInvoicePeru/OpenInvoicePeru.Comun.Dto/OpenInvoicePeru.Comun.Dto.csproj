@@ -17,7 +17,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
+    <OutputPath>lib\net45\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -46,6 +46,7 @@
     <Compile Include="Contratos\IDocumentoElectronico.cs" />
     <Compile Include="Intercambio\ConsultaConstanciaRequest.cs" />
     <Compile Include="Intercambio\RespuestaComunConArchivo.cs" />
+    <Compile Include="Modelos\Anticipo.cs" />
     <Compile Include="Modelos\Compania.cs" />
     <Compile Include="Modelos\ComunicacionBaja.cs" />
     <Compile Include="Intercambio\ConsultaTicketRequest.cs" />
