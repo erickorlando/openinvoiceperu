@@ -7,17 +7,22 @@ using OpenInvoicePeru.Servicio;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
+    /// <inheritdoc />
     public class ConsultarTicketController : ApiController
     {
         private readonly IServicioSunatDocumentos _servicioSunatDocumentos;
         private readonly ISerializador _serializador;
 
+        /// <inheritdoc />
         public ConsultarTicketController(IServicioSunatDocumentos servicioSunatDocumentos, ISerializador serializador)
         {
             _servicioSunatDocumentos = servicioSunatDocumentos;
             _serializador = serializador;
         }
 
+        /// <summary>
+        /// Consulta el Ticket existen en SUNAT (Solo Produccion)
+        /// </summary>
         public async Task<EnviarDocumentoResponse> Post([FromBody] ConsultaTicketRequest request)
         {
             var response = new EnviarDocumentoResponse();

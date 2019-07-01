@@ -9,11 +9,13 @@ using Microsoft.Practices.Unity;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
+    /// <inheritdoc />
     public class GenerarComunicacionBajaController : ApiController
     {
         private readonly IDocumentoXml _documentoXml;
         private readonly ISerializador _serializador;
 
+        /// <inheritdoc />
         public GenerarComunicacionBajaController(ISerializador serializador)
         {
             _serializador = serializador;
@@ -21,6 +23,9 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 .Resolve<IDocumentoXml>(GetType().Name);
         }
 
+        /// <summary>
+        /// Genera la Comunicacion de Baja.
+        /// </summary>
         public async Task<DocumentoResponse> Post([FromBody]ComunicacionBaja baja)
         {
             var response = new DocumentoResponse();

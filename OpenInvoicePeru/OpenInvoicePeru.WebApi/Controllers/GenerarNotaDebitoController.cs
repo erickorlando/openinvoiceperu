@@ -9,11 +9,13 @@ using Microsoft.Practices.Unity;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
+    /// <inheritdoc />
     public class GenerarNotaDebitoController : ApiController
     {
         private readonly IDocumentoXml _documentoXml;
         private readonly ISerializador _serializador;
 
+        /// <inheritdoc />
         public GenerarNotaDebitoController(ISerializador serializador)
         {
             _serializador = serializador;
@@ -21,6 +23,9 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 .Resolve<IDocumentoXml>(GetType().Name);
         }
 
+        /// <summary>
+        /// Genera el XML para la Nota de Debito
+        /// </summary>
         public async Task<DocumentoResponse> Post([FromBody] DocumentoElectronico documento)
         {
             var response = new DocumentoResponse();

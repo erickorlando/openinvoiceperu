@@ -1,10 +1,10 @@
-﻿using System;
+﻿using OpenInvoicePeru.Comun.Dto.Intercambio;
+using OpenInvoicePeru.Comun.Dto.Modelos;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
-using Newtonsoft.Json;
-using OpenInvoicePeru.Comun.Dto.Intercambio;
-using OpenInvoicePeru.Comun.Dto.Modelos;
 
 namespace OpenInvoicePeru.ClienteConsola
 {
@@ -20,8 +20,8 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            //CrearFacturaConDetraccionTransportes();
-            CrearDesdeArchivo();
+            CrearFacturaConDetraccionTransportes();
+            //CrearDesdeArchivo();
             Console.ReadLine();
         }
 
@@ -182,6 +182,7 @@ namespace OpenInvoicePeru.ClienteConsola
                 TramaXmlSinFirma = documentoResponse.TramaXmlSinFirma,
                 CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("certificado.pfx")),
                 PasswordCertificado = string.Empty,
+                ValoresQr = documentoResponse.ValoresParaQr
             };
 
             var responseFirma = RestHelper<FirmadoRequest, FirmadoResponse>.Execute("Firmar", firmado);
@@ -189,6 +190,16 @@ namespace OpenInvoicePeru.ClienteConsola
             if (!responseFirma.Exito)
             {
                 throw new InvalidOperationException(responseFirma.MensajeError);
+            }
+
+            if (!string.IsNullOrEmpty(responseFirma.CodigoQr))
+            {
+                using (var mem = new MemoryStream(Convert.FromBase64String(responseFirma.CodigoQr)))
+                {
+                    Console.WriteLine("Guardando Imagen QR para el documento...");
+                    var imagen = Image.FromStream(mem);
+                    imagen.Save($"{documento.IdDocumento}.png");
+                }
             }
 
             Console.WriteLine("Escribiendo el archivo {0}.xml .....", documento.IdDocumento);

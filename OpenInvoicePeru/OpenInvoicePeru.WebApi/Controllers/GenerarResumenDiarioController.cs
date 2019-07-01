@@ -9,12 +9,14 @@ using Microsoft.Practices.Unity;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
+    /// <inheritdoc />
     [RoutePrefix("api/GenerarResumenDiario")]
     public class GenerarResumenDiarioController : ApiController
     {
         private IDocumentoXml _documentoXml;
         private readonly ISerializador _serializador;
 
+        /// <inheritdoc />
         public GenerarResumenDiarioController(ISerializador serializador)
         {
             _serializador = serializador;
@@ -23,6 +25,9 @@ namespace OpenInvoicePeru.WebApi.Controllers
         }
 
 
+        /// <summary>
+        /// Genera el XML para el Resumen Diario CustomizationID 1.0
+        /// </summary>
         [Route("v1")]
         [HttpPost]
         public async Task<DocumentoResponse> Post([FromBody] ResumenDiario resumen)
@@ -44,6 +49,9 @@ namespace OpenInvoicePeru.WebApi.Controllers
             return response;
         }
 
+        /// <summary>
+        /// Genera el XML para el Resumen Diario CustomizationID 1.1
+        /// </summary>
         [Route("v2")]
         [HttpPost]
         public async Task<DocumentoResponse> ResumenNuevo([FromBody] ResumenDiarioNuevo resumen)

@@ -15,7 +15,7 @@ namespace OpenInvoicePeru.ClienteConsola
                 RequestFormat = DataFormat.Json
             };
 
-            restRequest.AddBody(request);
+            restRequest.AddJsonBody(request);
 
             var restResponse = client.Execute<TResponse>(restRequest);
             return restResponse.Data;

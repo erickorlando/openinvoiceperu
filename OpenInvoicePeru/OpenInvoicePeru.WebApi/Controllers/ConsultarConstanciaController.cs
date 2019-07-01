@@ -7,17 +7,22 @@ using OpenInvoicePeru.Servicio;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
+    /// <inheritdoc />
     public class ConsultarConstanciaController : ApiController
     {
         private readonly IServicioSunatConsultas _servicioSunatConsultas;
         private readonly ISerializador _serializador;
 
+        /// <inheritdoc />
         public ConsultarConstanciaController(IServicioSunatConsultas servicioSunatConsultas, ISerializador serializador)
         {
             _servicioSunatConsultas = servicioSunatConsultas;
             _serializador = serializador;
         }
 
+        /// <summary>
+        /// Consulta el CDR existente en SUNAT (solo Produccion)
+        /// </summary>
         public async Task<EnviarDocumentoResponse> Post([FromBody] ConsultaConstanciaRequest request)
         {
             var response = new EnviarDocumentoResponse();

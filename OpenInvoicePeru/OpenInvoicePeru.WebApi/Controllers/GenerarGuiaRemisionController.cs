@@ -9,12 +9,14 @@ using OpenInvoicePeru.Xml;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
+    /// <inheritdoc />
     public class GenerarGuiaRemisionController : ApiController
     {
 
         private readonly IDocumentoXml _documentoXml;
         private readonly ISerializador _serializador;
 
+        /// <inheritdoc />
         public GenerarGuiaRemisionController(ISerializador serializador)
         {
             _serializador = serializador;
@@ -22,6 +24,9 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 .Resolve<IDocumentoXml>(GetType().Name);
         }
 
+        /// <summary>
+        /// Genera el XML para la Guia de Remision.
+        /// </summary>
         public async Task<DocumentoResponse> Post([FromBody] GuiaRemision documento)
         {
             var response = new DocumentoResponse();

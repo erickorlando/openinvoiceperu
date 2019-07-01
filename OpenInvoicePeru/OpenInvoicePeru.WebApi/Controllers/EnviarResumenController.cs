@@ -7,17 +7,22 @@ using OpenInvoicePeru.Servicio;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
+    /// <inheritdoc />
     public class EnviarResumenController : ApiController
     {
         private readonly ISerializador _serializador;
         private readonly IServicioSunatDocumentos _servicioSunatDocumentos;
 
+        /// <inheritdoc />
         public EnviarResumenController(ISerializador serializador, IServicioSunatDocumentos servicioSunatDocumentos)
         {
             _serializador = serializador;
             _servicioSunatDocumentos = servicioSunatDocumentos;
         }
 
+        /// <summary>
+        /// Envia el Resumen Diario/Comunicacion de Baja a SUNAT
+        /// </summary>
         public async Task<EnviarResumenResponse> Post([FromBody]EnviarDocumentoRequest request)
         {
             var response = new EnviarResumenResponse();

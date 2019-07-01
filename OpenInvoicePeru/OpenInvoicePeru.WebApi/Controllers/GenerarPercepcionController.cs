@@ -9,11 +9,13 @@ using System.Web.Http;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
+    /// <inheritdoc />
     public class GenerarPercepcionController : ApiController
     {
         private readonly IDocumentoXml _documentoXml;
         private readonly ISerializador _serializador;
 
+        /// <inheritdoc />
         public GenerarPercepcionController(ISerializador serializador)
         {
             _serializador = serializador;
@@ -21,6 +23,9 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 .Resolve<IDocumentoXml>(GetType().Name);
         }
 
+        /// <summary>
+        /// Genera el XML para la Percepcion
+        /// </summary>
         public async Task<DocumentoResponse> Post([FromBody] DocumentoPercepcion documento)
         {
             var response = new DocumentoResponse();

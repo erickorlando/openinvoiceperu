@@ -1,3 +1,6 @@
+using System;
+using System.IO;
+using System.Reflection;
 using System.Web.Http;
 using WebActivatorEx;
 using OpenInvoicePeru.WebApi;
@@ -32,7 +35,11 @@ namespace OpenInvoicePeru.WebApi
                         // hold additional metadata for an API. Version and title are required but you can also provide
                         // additional fields by chaining methods off SingleApiVersion.
                         //
-                        c.SingleApiVersion("v1", "OpenInvoicePeru API REST UBL 2.1");
+                        c.SingleApiVersion("v1", "OpenInvoicePeru API REST UBL 2.1")
+                            .Contact(o => o.Name("Erick Orlando ©")
+                                .Email("erickorlando@outlook.com")
+                                .Url("http://erickorlando.com"))
+                            .Description("API REST para Facturacion Electronica SUNAT");
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.
                         //
@@ -61,7 +68,7 @@ namespace OpenInvoicePeru.WebApi
                         //c.BasicAuth("basic")
                         //    .Description("Basic HTTP Authentication");
                         //
-						// NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
+                        // NOTE: You must also configure 'EnableApiKeySupport' below in the SwaggerUI section
                         //c.ApiKey("apiKey")
                         //    .Description("API Key Authentication")
                         //    .Name("apiKey")
@@ -101,7 +108,7 @@ namespace OpenInvoicePeru.WebApi
                         // those comments into the generated docs and UI. You can enable this by providing the path to one or
                         // more Xml comment files.
                         //
-                        //c.IncludeXmlComments(GetXmlCommentsPath());
+                        c.IncludeXmlComments(Path.Combine(AppContext.BaseDirectory, "OpenInvoicePeru.WebApi.xml"));
 
                         // Swashbuckle makes a best attempt at generating Swagger compliant JSON schemas for the various types
                         // exposed in your API. However, there may be occasions when more control of the output is needed.
@@ -176,13 +183,13 @@ namespace OpenInvoicePeru.WebApi
                         // alternative implementation for ISwaggerProvider with the CustomProvider option.
                         //
                         //c.CustomProvider((defaultProvider) => new CachingSwaggerProvider(defaultProvider));
-                    })
-                .EnableSwaggerUi(c =>
-                    {
+                        })
+                            .EnableSwaggerUi(c =>
+                        {
                         // Use the "DocumentTitle" option to change the Document title.
                         // Very helpful when you have multiple Swagger pages open, to tell them apart.
                         //
-                        //c.DocumentTitle("My Swagger UI");
+                        c.DocumentTitle("OIP UBL 2.1");
 
                         // Use the "InjectStylesheet" option to enrich the UI with one or more additional CSS stylesheets.
                         // The file must be included in your project as an "Embedded Resource", and then the resource's

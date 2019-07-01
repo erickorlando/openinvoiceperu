@@ -6,5 +6,6 @@ namespace OpenInvoicePeru.Comun.Dto.Intercambio
     {
         [JsonProperty(Required = Required.Always)]
         public string TramaXmlFirmado { get; set; }
+
     }
 }

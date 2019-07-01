@@ -1,22 +1,27 @@
-﻿using System.Threading.Tasks;
-using System.Web.Http;
-using OpenInvoicePeru.Comun.Dto.Intercambio;
+﻿using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Firmado;
 using OpenInvoicePeru.Servicio;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
+    /// <inheritdoc />
     public class EnviarDocumentoController : ApiController
     {
         private readonly ISerializador _serializador;
         private readonly IServicioSunatDocumentos _servicioSunatDocumentos;
 
+        /// <inheritdoc />
         public EnviarDocumentoController(ISerializador serializador, IServicioSunatDocumentos servicioSunatDocumentos)
         {
             _serializador = serializador;
             _servicioSunatDocumentos = servicioSunatDocumentos;
         }
 
+        /// <summary>
+        /// Envia el Documento a SUNAT/OSE
+        /// </summary>
         public async Task<EnviarDocumentoResponse> Post([FromBody]EnviarDocumentoRequest request)
         {
             var response = new EnviarDocumentoResponse();
@@ -47,6 +52,8 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 response = await _serializador.GenerarDocumentoRespuesta(resultado.ConstanciaDeRecepcion);
                 // Quitamos la R y la extensión devueltas por el Servicio.
                 response.NombreArchivo = nombreArchivo;
+
+             
             }
 
             return response;

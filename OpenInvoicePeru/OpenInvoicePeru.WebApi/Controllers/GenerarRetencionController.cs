@@ -9,11 +9,13 @@ using System.Web.Http;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
+    /// <inheritdoc />
     public class GenerarRetencionController : ApiController
     {
         private readonly IDocumentoXml _documentoXml;
         private readonly ISerializador _serializador;
 
+        /// <inheritdoc />
         public GenerarRetencionController(ISerializador serializador)
         {
             _serializador = serializador;
@@ -21,6 +23,9 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 .Resolve<IDocumentoXml>(GetType().Name);
         }
 
+        /// <summary>
+        /// Genera el XML para la Retencion
+        /// </summary>
         public async Task<DocumentoResponse> Post([FromBody] DocumentoRetencion documento)
         {
             var response = new DocumentoResponse();
