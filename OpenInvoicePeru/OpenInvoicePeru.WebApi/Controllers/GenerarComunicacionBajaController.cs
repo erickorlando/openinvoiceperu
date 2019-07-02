@@ -6,6 +6,7 @@ using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Firmado;
 using OpenInvoicePeru.Xml;
 using Microsoft.Practices.Unity;
+using Swashbuckle.Swagger.Annotations;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
@@ -26,7 +27,11 @@ namespace OpenInvoicePeru.WebApi.Controllers
         /// <summary>
         /// Genera la Comunicacion de Baja.
         /// </summary>
-        public async Task<DocumentoResponse> Post([FromBody]ComunicacionBaja baja)
+        [HttpPost]
+        [SwaggerResponse(200, "OK", typeof(DocumentoResponse))]
+        [SwaggerResponse(400, "Bad Request", typeof(string))]
+        [SwaggerResponse(209, "Conflicts", typeof(string))]
+        public async Task<IHttpActionResult> Post([FromBody]ComunicacionBaja baja)
         {
             var response = new DocumentoResponse();
 
@@ -43,7 +48,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 response.Exito = false;
             }
 
-            return response;
+            return Ok(response);
         }
     }
 }

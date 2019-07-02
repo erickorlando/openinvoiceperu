@@ -1,11 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Http;
+﻿using Microsoft.Practices.Unity;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Firmado;
 using OpenInvoicePeru.Xml;
-using Microsoft.Practices.Unity;
+using Swashbuckle.Swagger.Annotations;
+using System;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
@@ -30,7 +31,10 @@ namespace OpenInvoicePeru.WebApi.Controllers
         /// </summary>
         [Route("v1")]
         [HttpPost]
-        public async Task<DocumentoResponse> Post([FromBody] ResumenDiario resumen)
+        [SwaggerResponse(200, "OK", typeof(DocumentoResponse))]
+        [SwaggerResponse(400, "Bad Request", typeof(string))]
+        [SwaggerResponse(209, "Conflicts", typeof(string))]
+        public async Task<IHttpActionResult> Post([FromBody] ResumenDiario resumen)
         {
             var response = new DocumentoResponse();
             try
@@ -46,7 +50,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 response.Pila = ex.StackTrace;
             }
 
-            return response;
+            return Ok(response);
         }
 
         /// <summary>
@@ -54,7 +58,10 @@ namespace OpenInvoicePeru.WebApi.Controllers
         /// </summary>
         [Route("v2")]
         [HttpPost]
-        public async Task<DocumentoResponse> ResumenNuevo([FromBody] ResumenDiarioNuevo resumen)
+        [SwaggerResponse(200, "OK", typeof(DocumentoResponse))]
+        [SwaggerResponse(400, "Bad Request", typeof(string))]
+        [SwaggerResponse(209, "Conflicts", typeof(string))]
+        public async Task<IHttpActionResult> ResumenNuevo([FromBody] ResumenDiarioNuevo resumen)
         {
             var response = new DocumentoResponse();
             try
@@ -72,7 +79,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 response.Pila = ex.StackTrace;
             }
 
-            return response;
+            return Ok(response);
         }
     }
 }

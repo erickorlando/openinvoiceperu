@@ -2,6 +2,7 @@
 using System.Drawing.Imaging;
 using System.IO;
 using ZXing;
+using ZXing.QrCode;
 
 namespace OpenInvoicePeru.WebApi.Utils
 {
@@ -20,7 +21,12 @@ namespace OpenInvoicePeru.WebApi.Utils
 
             var barcodeWriter = new BarcodeWriter
             {
-                Format = BarcodeFormat.QR_CODE
+                Format = BarcodeFormat.QR_CODE,
+                Options = new QrCodeEncodingOptions
+                {
+                    Width = 800,
+                    Height = 800
+                }
             };
 
             using (var mem = new MemoryStream())

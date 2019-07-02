@@ -38,7 +38,7 @@ namespace OpenInvoicePeru.WebApi
                         c.SingleApiVersion("v1", "OpenInvoicePeru API REST UBL 2.1")
                             .Contact(o => o.Name("Erick Orlando ©")
                                 .Email("erickorlando@outlook.com")
-                                .Url("http://erickorlando.com"))
+                                .Url("http://about.me/erickorlando"))
                             .Description("API REST para Facturacion Electronica SUNAT");
 
                         // If you want the output Swagger docs to be indented properly, enable the "PrettyPrint" option.

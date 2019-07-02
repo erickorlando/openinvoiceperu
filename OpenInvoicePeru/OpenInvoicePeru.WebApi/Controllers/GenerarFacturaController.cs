@@ -29,7 +29,9 @@ namespace OpenInvoicePeru.WebApi.Controllers
         /// </summary>
         [HttpPost]
         [SwaggerResponse(200, "OK", typeof(DocumentoResponse))]
-        public async Task<DocumentoResponse> Post([FromBody] DocumentoElectronico documento)
+        [SwaggerResponse(400, "Bad Request", typeof(string))]
+        [SwaggerResponse(209, "Conflicts", typeof(string))]
+        public async Task<IHttpActionResult> Post([FromBody] DocumentoElectronico documento)
         {
             var response = new DocumentoResponse();
             try
@@ -49,7 +51,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 response.Exito = false;
             }
 
-            return response;
+            return Ok(response);
         }
     }
 }

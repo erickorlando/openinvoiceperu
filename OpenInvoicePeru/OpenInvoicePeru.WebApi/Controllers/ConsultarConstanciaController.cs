@@ -4,6 +4,7 @@ using System.Web.Http;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Firmado;
 using OpenInvoicePeru.Servicio;
+using Swashbuckle.Swagger.Annotations;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
@@ -23,7 +24,11 @@ namespace OpenInvoicePeru.WebApi.Controllers
         /// <summary>
         /// Consulta el CDR existente en SUNAT (solo Produccion)
         /// </summary>
-        public async Task<EnviarDocumentoResponse> Post([FromBody] ConsultaConstanciaRequest request)
+        [HttpPost]
+        [SwaggerResponse(200, "OK", typeof(EnviarDocumentoResponse))]
+        [SwaggerResponse(400, "Bad Request", typeof(string))]
+        [SwaggerResponse(209, "Conflicts", typeof(string))]
+        public async Task<IHttpActionResult> Post([FromBody] ConsultaConstanciaRequest request)
         {
             var response = new EnviarDocumentoResponse();
 
@@ -60,7 +65,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 response.Exito = false;
             }
 
-            return response;
+            return Ok(response);
         }
     }
 }

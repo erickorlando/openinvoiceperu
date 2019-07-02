@@ -3,6 +3,7 @@ using OpenInvoicePeru.Firmado;
 using OpenInvoicePeru.Servicio;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Swashbuckle.Swagger.Annotations;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
@@ -22,6 +23,10 @@ namespace OpenInvoicePeru.WebApi.Controllers
         /// <summary>
         /// Envia el Documento a SUNAT/OSE
         /// </summary>
+        [HttpPost]
+        [SwaggerResponse(200, "OK", typeof(EnviarDocumentoResponse))]
+        [SwaggerResponse(400, "Bad Request", typeof(string))]
+        [SwaggerResponse(209, "Conflicts", typeof(string))]
         public async Task<EnviarDocumentoResponse> Post([FromBody]EnviarDocumentoRequest request)
         {
             var response = new EnviarDocumentoResponse();

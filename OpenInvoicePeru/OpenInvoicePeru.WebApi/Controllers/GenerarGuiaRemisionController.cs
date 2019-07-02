@@ -1,11 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Http;
-using Microsoft.Practices.Unity;
+﻿using Microsoft.Practices.Unity;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Firmado;
 using OpenInvoicePeru.Xml;
+using Swashbuckle.Swagger.Annotations;
+using System;
+using System.Threading.Tasks;
+using System.Web.Http;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
@@ -27,7 +28,11 @@ namespace OpenInvoicePeru.WebApi.Controllers
         /// <summary>
         /// Genera el XML para la Guia de Remision.
         /// </summary>
-        public async Task<DocumentoResponse> Post([FromBody] GuiaRemision documento)
+        [HttpPost]
+        [SwaggerResponse(200, "OK", typeof(DocumentoResponse))]
+        [SwaggerResponse(400, "Bad Request", typeof(string))]
+        [SwaggerResponse(209, "Conflicts", typeof(string))]
+        public async Task<IHttpActionResult> Post([FromBody] GuiaRemision documento)
         {
             var response = new DocumentoResponse();
             try
@@ -43,7 +48,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 response.Exito = false;
             }
 
-            return response;
+            return Ok(response);
         }
     }
 }

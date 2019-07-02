@@ -4,6 +4,7 @@ using System.Web.Http;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Firmado;
 using OpenInvoicePeru.WebApi.Utils;
+using Swashbuckle.Swagger.Annotations;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
@@ -21,7 +22,11 @@ namespace OpenInvoicePeru.WebApi.Controllers
         /// <summary>
         /// Firma el Documento XML con el Certificado Digital.
         /// </summary>
-        public async Task<FirmadoResponse> Post([FromBody]FirmadoRequest request)
+        [HttpPost]
+        [SwaggerResponse(200, "OK", typeof(FirmadoResponse))]
+        [SwaggerResponse(400, "Bad Request", typeof(string))]
+        [SwaggerResponse(209, "Conflicts", typeof(string))]
+        public async Task<IHttpActionResult> Post([FromBody]FirmadoRequest request)
         {
             var response = new FirmadoResponse();
 
@@ -39,7 +44,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 response.Exito = false;
             }
 
-            return response;
+            return Ok(response);
         }
 
     }
