@@ -246,16 +246,16 @@ namespace OpenInvoicePeru.Xml
                 invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
                 {
                     CurrencyId = documento.Moneda,
-                    Monto = documento.TotalIsc,
+                    Monto = documento.TotalOtrosTributos,
                     MontoBase = documento.Gravadas,
                     CategoryId = "S",
-                    TaxSchemeId = "9999",
-                    Name = "OTROS",
+                    TaxSchemeId = "7152",
+                    Name = "ICBPER",
                     TaxTypeCode = "OTH"
                 }));
             }
 
-            /* Tipo de Operación - Catalogo N° 17 */
+            /* Tipo de OperaciÃ³n - Catalogo NÂ° 17 */
             if (!string.IsNullOrEmpty(documento.TipoOperacion)
                 && documento.DatosGuiaTransportista == null)
             {
@@ -465,7 +465,7 @@ namespace OpenInvoicePeru.Xml
                 {
                     linea.Item.AdditionalItemProperties.Add(new AdditionalItemProperty
                     {
-                        Name = "Gastos Art. 37 Renta: Número de Placa",
+                        Name = "Gastos Art. 37 Renta: NÃºmero de Placa",
                         NameCode = "5010",
                         Value = detalleDocumento.PlacaVehiculo
                     });
@@ -588,7 +588,7 @@ namespace OpenInvoicePeru.Xml
                     };
                 }
 
-                /* 16 - Afectación al IGV por ítem */
+                /* 16 - AfectaciÃ³n al IGV por Ã­tem */
                 linea.TaxTotals.Add(new TaxTotal
                 {
                     TaxAmount = new PayableAmount
@@ -609,7 +609,7 @@ namespace OpenInvoicePeru.Xml
                     })
                 });
 
-                /* 17 - Sistema de ISC por ítem */
+                /* 17 - Sistema de ISC por Ã­tem */
                 if (detalleDocumento.ImpuestoSelectivo > 0)
                     linea.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalDetalles(new TotalesDto
                     {
@@ -649,7 +649,7 @@ namespace OpenInvoicePeru.Xml
 
 
 
-                /* 51 - Descuentos por ítem */
+                /* 51 - Descuentos por Ã­tem */
                 if (detalleDocumento.Descuento > 0)
                 {
                     linea.AllowanceCharge.ChargeIndicator = false;

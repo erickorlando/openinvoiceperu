@@ -1,0 +1,331 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\GitProjects\openinvoiceperu-ubl21\CHANGELOG.md" t="Include" />
+    <e p="C:\GitProjects\openinvoiceperu-ubl21\LICENSE" t="Include" />
+    <e p="C:\GitProjects\openinvoiceperu-ubl21\OpenInvoicePeru" t="IncludeFlat">
+      <e p="00. Archivos Adicionales" t="Include" />
+      <e p="01. Ensamblados Nuget" t="Include" />
+      <e p="02. Comunes" t="Include" />
+      <e p="03. Comunicacion SUNAT" t="Include" />
+      <e p="04. Estructuras UBL" t="Include" />
+      <e p="05. Generacion XML" t="Include" />
+      <e p="06. API REST" t="Include" />
+      <e p="07. Proyecto Cliente" t="Include" />
+      <e p="artifacts" t="ExcludeRecursive" />
+      <e p="Open Invoice Peru UBL 2.1.sln" t="IncludeFlat" />
+      <e p="OpenInvoicePeru.ClienteConsola" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="certificado.pfx" t="Include" />
+        <e p="csharp.ico" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="OpenInvoicePeru.ClienteConsola.csproj" t="IncludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Program.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="RestHelper.cs" t="Include" />
+      </e>
+      <e p="OpenInvoicePeru.Comun" t="IncludeRecursive">
+        <e p="AfectacionImpuesto.cs" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Constantes" t="Include">
+          <e p="EspacioNombres.cs" t="Include" />
+          <e p="Formatos.cs" t="Include" />
+          <e p="ValoresUbl.cs" t="Include" />
+        </e>
+        <e p="Conversion.cs" t="Include" />
+        <e p="IEstructuraXml.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="OpenInvoicePeru.Comun.csproj" t="IncludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+      </e>
+      <e p="OpenInvoicePeru.Comun.Dto" t="IncludeRecursive">
+        <e p="Contratos" t="Include">
+          <e p="IDocumentoElectronico.cs" t="Include" />
+        </e>
+        <e p="Diagramas" t="Include">
+          <e p="Bajas.cd" t="Include" />
+          <e p="DocumentosElectronicos.cd" t="Include" />
+          <e p="GuiaRemision.cd" t="Include" />
+          <e p="Percepciones.cd" t="Include" />
+          <e p="ResumenesDiarios.cd" t="Include" />
+          <e p="Retenciones.cd" t="Include" />
+        </e>
+        <e p="Intercambio" t="Include">
+          <e p="ConsultaConstanciaRequest.cs" t="Include" />
+          <e p="ConsultaTicketRequest.cs" t="Include" />
+          <e p="DocumentoResponse.cs" t="Include" />
+          <e p="EnviarDocumentoRequest.cs" t="Include" />
+          <e p="EnviarDocumentoResponse.cs" t="Include" />
+          <e p="EnviarResumenResponse.cs" t="Include" />
+          <e p="EnvioDocumentoComun.cs" t="Include" />
+          <e p="FirmadoRequest.cs" t="Include" />
+          <e p="FirmadoResponse.cs" t="Include" />
+          <e p="RespuestaComun.cs" t="Include" />
+          <e p="RespuestaComunConArchivo.cs" t="Include" />
+        </e>
+        <e p="lib\net45" t="ExcludeRecursive" />
+        <e p="Modelos" t="Include">
+          <e p="Anticipo.cs" t="Include" />
+          <e p="Compania.cs" t="Include" />
+          <e p="ComunicacionBaja.cs" t="Include" />
+          <e p="Contribuyente.cs" t="Include" />
+          <e p="DatoAdicional.cs" t="Include" />
+          <e p="DatosGuia.cs" t="Include" />
+          <e p="DetalleDocumento.cs" t="Include" />
+          <e p="DetalleGuia.cs" t="Include" />
+          <e p="Direccion.cs" t="Include" />
+          <e p="Discrepancia.cs" t="Include" />
+          <e p="DocumentoBaja.cs" t="Include" />
+          <e p="DocumentoElectronico.cs" t="Include" />
+          <e p="DocumentoPercepcion.cs" t="Include" />
+          <e p="DocumentoRelacionado.cs" t="Include" />
+          <e p="DocumentoResumen.cs" t="Include" />
+          <e p="DocumentoResumenDetalle.cs" t="Include" />
+          <e p="DocumentoRetencion.cs" t="Include" />
+          <e p="DocumentoSunatBase.cs" t="Include" />
+          <e p="GrupoResumen.cs" t="Include" />
+          <e p="GrupoResumenNuevo.cs" t="Include" />
+          <e p="GuiaRemision.cs" t="Include" />
+          <e p="ItemPercepcion.cs" t="Include" />
+          <e p="ItemRetencion.cs" t="Include" />
+          <e p="ItemSunatBase.cs" t="Include" />
+          <e p="Leyenda.cs" t="Include" />
+          <e p="Negocio.cs" t="Include" />
+          <e p="ResumenDiario.cs" t="Include" />
+          <e p="ResumenDiarioNuevo.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="OpenInvoicePeru.Comun.Dto.csproj" t="IncludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+      </e>
+      <e p="OpenInvoicePeru.Estructuras" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CommonAggregateComponents" t="Include">
+          <e p="AccountingSupplierParty.cs" t="Include" />
+          <e p="AddressLine.cs" t="Include" />
+          <e p="AgentParty.cs" t="Include" />
+          <e p="AllowanceCharge.cs" t="Include" />
+          <e p="AlternativeConditionPrice.cs" t="Include" />
+          <e p="BillingReference.cs" t="Include" />
+          <e p="CarrierParty.cs" t="Include" />
+          <e p="CompanyId.cs" t="Include" />
+          <e p="Country.cs" t="Include" />
+          <e p="DespatchLine.cs" t="Include" />
+          <e p="DespatchLineItem.cs" t="Include" />
+          <e p="DigitalSignatureAttachment.cs" t="Include" />
+          <e p="DiscrepancyResponse.cs" t="Include" />
+          <e p="ExchangeRate.cs" t="Include" />
+          <e p="ExternalReference.cs" t="Include" />
+          <e p="InvoiceDocumentReference.cs" t="Include" />
+          <e p="InvoiceLine.cs" t="Include" />
+          <e p="Item.cs" t="Include" />
+          <e p="LegalMonetaryTotal.cs" t="Include" />
+          <e p="OrderReference.cs" t="Include" />
+          <e p="Party.cs" t="Include" />
+          <e p="PartyIdentification.cs" t="Include" />
+          <e p="PartyLegalEntity.cs" t="Include" />
+          <e p="PartyName.cs" t="Include" />
+          <e p="PartyTaxScheme.cs" t="Include" />
+          <e p="Payment.cs" t="Include" />
+          <e p="PostalAddress.cs" t="Include" />
+          <e p="Price.cs" t="Include" />
+          <e p="PricingReference.cs" t="Include" />
+          <e p="RegistrationAddress.cs" t="Include" />
+          <e p="Shipment.cs" t="Include" />
+          <e p="ShipmentStage.cs" t="Include" />
+          <e p="SignatoryParty.cs" t="Include" />
+          <e p="SignatureCac.cs" t="Include" />
+          <e p="TaxCategory.cs" t="Include" />
+          <e p="TaxScheme.cs" t="Include" />
+          <e p="TaxSubtotal.cs" t="Include" />
+          <e p="TaxTotal.cs" t="Include" />
+          <e p="TransportEquipment.cs" t="Include" />
+          <e p="TransportHandlingUnit.cs" t="Include" />
+        </e>
+        <e p="CommonBasicComponents" t="Include">
+          <e p="InvoicedQuantity.cs" t="Include" />
+          <e p="OrderTypeCode.cs" t="Include" />
+          <e p="PartyIdentificationID.cs" t="Include" />
+          <e p="PayableAmount.cs" t="Include" />
+        </e>
+        <e p="CommonExtensionComponents" t="Include">
+          <e p="ExtensionContent.cs" t="Include" />
+          <e p="UBLExtension.cs" t="Include" />
+          <e p="UBLExtensions.cs" t="Include" />
+        </e>
+        <e p="EstandarUbl" t="Include">
+          <e p="CreditNote.cs" t="Include" />
+          <e p="DebitNote.cs" t="Include" />
+          <e p="DespatchAdvice.cs" t="Include" />
+          <e p="Invoice.cs" t="Include" />
+          <e p="Perception.cs" t="Include" />
+          <e p="Retention.cs" t="Include" />
+          <e p="SummaryDocuments.cs" t="Include" />
+          <e p="VoidedDocuments.cs" t="Include" />
+        </e>
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="OpenInvoicePeru.Estructuras.csproj" t="IncludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="SunatAggregateComponents" t="Include">
+          <e p="AdditionalInformation.cs" t="Include" />
+          <e p="AdditionalMonetaryTotal.cs" t="Include" />
+          <e p="AdditionalProperty.cs" t="Include" />
+          <e p="BillingPayment.cs" t="Include" />
+          <e p="SunatCosts.cs" t="Include" />
+          <e p="SunatEmbededDespatchAdvice.cs" t="Include" />
+          <e p="SUNATRetentionDocumentReference.cs" t="Include" />
+          <e p="SUNATRetentionInformation.cs" t="Include" />
+          <e p="SunatRoadTransport.cs" t="Include" />
+          <e p="SunatTransaction.cs" t="Include" />
+          <e p="VoidedDocumentsLine.cs" t="Include" />
+        </e>
+      </e>
+      <e p="OpenInvoicePeru.Firmado" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Certificador.cs" t="Include" />
+        <e p="ICertificador.cs" t="Include" />
+        <e p="ISerializador.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="OpenInvoicePeru.Firmado.csproj" t="IncludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Serializador.cs" t="Include" />
+      </e>
+      <e p="OpenInvoicePeru.Servicio" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="DatosDocumento.cs" t="Include" />
+        <e p="DocumentoSunat.cs" t="Include" />
+        <e p="IServicioSunat.cs" t="Include" />
+        <e p="IServicioSunatConsultas.cs" t="Include" />
+        <e p="IServicioSunatDocumentos.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="OpenInvoicePeru.Servicio.csproj" t="IncludeRecursive" />
+        <e p="ParametrosConexion.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="RespuestaAsincrono.cs" t="Include" />
+        <e p="RespuestaSincrono.cs" t="Include" />
+      </e>
+      <e p="OpenInvoicePeru.Servicio.Soap" t="IncludeRecursive">
+        <e p="App.config" t="Include" />
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="OpenInvoicePeru.Servicio.Soap.csproj" t="IncludeRecursive" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="Service References\Consultas" t="Include">
+          <e p="billConsultService.wsdl" t="Include" />
+          <e p="billConsultService.xsd" t="Include" />
+          <e p="billConsultService1.wsdl" t="Include" />
+          <e p="configuration.svcinfo" t="Include" />
+          <e p="configuration91.svcinfo" t="Include" />
+          <e p="OpenInvoicePeru.Servicio.Soap.Consultas.getStatusCdrResponse.datasource" t="Include" />
+          <e p="OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse.datasource" t="Include" />
+          <e p="OpenInvoicePeru.Servicio.Soap.Consultas.statusResponse.datasource" t="Include" />
+          <e p="Reference.cs" t="Include" />
+          <e p="Reference.svcmap" t="Include" />
+        </e>
+        <e p="Service References\Documentos" t="Include">
+          <e p="billService.wsdl" t="Include" />
+          <e p="billService.xsd" t="Include" />
+          <e p="billService1.wsdl" t="Include" />
+          <e p="configuration.svcinfo" t="Include" />
+          <e p="configuration91.svcinfo" t="Include" />
+          <e p="OpenInvoicePeru.Servicio.Soap.Documentos.getStatusResponse.datasource" t="Include" />
+          <e p="OpenInvoicePeru.Servicio.Soap.Documentos.sendBillResponse.datasource" t="Include" />
+          <e p="OpenInvoicePeru.Servicio.Soap.Documentos.sendPackResponse.datasource" t="Include" />
+          <e p="OpenInvoicePeru.Servicio.Soap.Documentos.sendSummaryResponse.datasource" t="Include" />
+          <e p="OpenInvoicePeru.Servicio.Soap.Documentos.statusResponse.datasource" t="Include" />
+          <e p="Reference.cs" t="Include" />
+          <e p="Reference.svcmap" t="Include" />
+        </e>
+        <e p="ServicioSunatConsultas.cs" t="Include" />
+        <e p="ServicioSunatDocumentos.cs" t="Include" />
+      </e>
+      <e p="OpenInvoicePeru.WebApi" t="IncludeRecursive">
+        <e p="App_Data" t="Include" />
+        <e p="App_Start" t="Include">
+          <e p="SwaggerConfig.cs" t="Include" />
+          <e p="UnityConfig.cs" t="Include" />
+          <e p="UnityWebApiActivator.cs" t="Include" />
+          <e p="WebApiConfig.cs" t="Include" />
+        </e>
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="Controllers" t="Include">
+          <e p="ConsultarConstanciaController.cs" t="Include" />
+          <e p="ConsultarTicketController.cs" t="Include" />
+          <e p="EnviarDocumentoController.cs" t="Include" />
+          <e p="EnviarResumenController.cs" t="Include" />
+          <e p="FirmarController.cs" t="Include" />
+          <e p="GenerarComunicacionBajaController.cs" t="Include" />
+          <e p="GenerarFacturaController.cs" t="Include" />
+          <e p="GenerarGuiaRemisionController.cs" t="Include" />
+          <e p="GenerarNotaCreditoController.cs" t="Include" />
+          <e p="GenerarNotaDebitoController.cs" t="Include" />
+          <e p="GenerarPercepcionController.cs" t="Include" />
+          <e p="GenerarResumenDiarioController.cs" t="Include" />
+          <e p="GenerarRetencionController.cs" t="Include" />
+        </e>
+        <e p="Filters" t="Include">
+          <e p="ValidateModelAttribute.cs" t="Include" />
+        </e>
+        <e p="Global.asax" t="Include" />
+        <e p="Global.asax.cs" t="Include" />
+        <e p="index.html" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="OpenInvoicePeru.WebApi.csproj" t="IncludeRecursive" />
+        <e p="packages.config" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+          <e p="PublishProfiles" t="Include">
+            <e p="CustomProfile.pubxml" t="Include" />
+            <e p="FolderProfile.pubxml" t="Include" />
+            <e p="OpenInvoicePeruUBL21 - Web Deploy.pubxml" t="Include" />
+          </e>
+        </e>
+        <e p="Utils" t="Include">
+          <e p="QrHelper.cs" t="Include" />
+        </e>
+        <e p="Web.config" t="Include" />
+        <e p="Web.Debug.config" t="Include" />
+        <e p="Web.Release.config" t="Include" />
+      </e>
+      <e p="OpenInvoicePeru.Xml" t="IncludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+        <e p="CalculoTotales.cs" t="Include" />
+        <e p="ComunicacionBajaXml.cs" t="Include" />
+        <e p="FacturaXml.cs" t="Include" />
+        <e p="GuiaRemisionXml.cs" t="Include" />
+        <e p="IDocumentoXml.cs" t="Include" />
+        <e p="NotaCreditoXml.cs" t="Include" />
+        <e p="NotaDebitoXml.cs" t="Include" />
+        <e p="obj" t="ExcludeRecursive" />
+        <e p="OpenInvoicePeru.Xml.csproj" t="IncludeRecursive" />
+        <e p="PercepcionXml.cs" t="Include" />
+        <e p="Properties" t="Include">
+          <e p="AssemblyInfo.cs" t="Include" />
+        </e>
+        <e p="ResumenDiarioNuevoXml.cs" t="Include" />
+        <e p="ResumenDiarioXml.cs" t="Include" />
+        <e p="RetencionXml.cs" t="Include" />
+      </e>
+      <e p="packages" t="ExcludeRecursive" />
+    </e>
+    <e p="C:\GitProjects\openinvoiceperu-ubl21\README.md" t="Include" />
+    <e p="C:\Users\Erick Orlando\.Rider2019.2\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Erick Orlando\.Rider2019.2\system\resharper-host\local\Transient\ReSharperHost\v192\SolutionCaches\_Open Invoice Peru UBL 2.1.-1450373079.00" t="ExcludeRecursive" />
+  </component>
+</project>

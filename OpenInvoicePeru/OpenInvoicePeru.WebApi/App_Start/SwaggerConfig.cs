@@ -1,6 +1,3 @@
-using System;
-using System.IO;
-using System.Reflection;
 using System.Web.Http;
 using WebActivatorEx;
 using OpenInvoicePeru.WebApi;
@@ -36,7 +33,7 @@ namespace OpenInvoicePeru.WebApi
                         // additional fields by chaining methods off SingleApiVersion.
                         //
                         c.SingleApiVersion("v1", "OpenInvoicePeru API REST UBL 2.1")
-                            .Contact(o => o.Name("Erick Orlando ©")
+                            .Contact(o => o.Name("Erick Orlando Â©")
                                 .Email("erickorlando@outlook.com")
                                 .Url("http://about.me/erickorlando"))
                             .Description("API REST para Facturacion Electronica SUNAT");
