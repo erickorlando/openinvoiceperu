@@ -206,8 +206,8 @@ namespace OpenInvoicePeru.Xml
                     Monto = documento.TotalIsc,
                     MontoBase = documento.Gravadas,
                     CategoryId = "S",
-                    TaxSchemeId = "9999",
-                    Name = "OTROS",
+                    TaxSchemeId = "7152",
+                    Name = "ICBPER",
                     TaxTypeCode = "OTH"
                 }));
             }

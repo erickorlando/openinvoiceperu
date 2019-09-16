@@ -260,6 +260,35 @@ namespace OpenInvoicePeru.Xml
                     });
                 }
 
+                if (grupo.TotalImpuestoBolsas > 0)
+                {
+                    linea.TaxTotals.Add(new TaxTotal
+                    {
+                        TaxAmount = new PayableAmount
+                        {
+                            CurrencyId = grupo.Moneda,
+                            Value = grupo.TotalOtrosImpuestos
+                        },
+                        TaxSubtotal = new TaxSubtotal
+                        {
+                            TaxAmount = new PayableAmount
+                            {
+                                CurrencyId = grupo.Moneda,
+                                Value = grupo.TotalOtrosImpuestos
+                            },
+                            TaxCategory = new TaxCategory
+                            {
+                                TaxScheme = new TaxScheme
+                                {
+                                    Id = "7152",
+                                    Name = "ICBPER",
+                                    TaxTypeCode = "OTH"
+                                }
+                            }
+                        }
+                    });
+                }
+
                 summary.SummaryDocumentsLines.Add(linea);
             }
 

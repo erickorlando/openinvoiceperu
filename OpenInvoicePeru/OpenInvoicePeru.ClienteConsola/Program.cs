@@ -11,8 +11,6 @@ namespace OpenInvoicePeru.ClienteConsola
     class Program
     {
         private const string UrlSunat = "https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService";
-        private const string UrlOtroCpe = "https://e-beta.sunat.gob.pe/ol-ti-itemision-otroscpe-gem-beta/billService";
-        private const string UrlGuiaRemision = "https://e-beta.sunat.gob.pe/ol-ti-itemision-guia-gem-beta/billService";
         private const string FormatoFecha = "yyyy-MM-dd";
 
         static void Main()
@@ -20,8 +18,10 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
+            CrearFactura();
+            CrearResumenDiario();
             CrearFacturaConDetraccionTransportes();
-            //CrearDesdeArchivo();
+            
             Console.ReadLine();
         }
 
@@ -53,6 +53,86 @@ namespace OpenInvoicePeru.ClienteConsola
             };
         }
 
+        private static void CrearFactura()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura Gravada (FF11-001)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100039207",
+                        TipoDocumento = "6",
+                        NombreLegal = "RANSA COMERCIAL S.A."
+                    },
+                    IdDocumento = "FF11-001",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "01",
+                    TotalIgv = 125.7084m,
+                    TotalVenta = 824.0884m,
+                    Gravadas = 698.38m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 2,
+                            PrecioReferencial = 21.19m,
+                            PrecioUnitario = 21.19m,
+                            TipoPrecio = "01",
+                            CodigoItem = "1234234",
+                            Descripcion = "Arroz Costeño",
+                            UnidadMedida = "NIU",
+                            Impuesto = 7.62m, //Impuesto del Precio * Cantidad
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 50m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 10,
+                            PrecioReferencial = 45.60m,
+                            PrecioUnitario = 45.60m,
+                            TipoPrecio = "01",
+                            CodigoItem = "AER345667",
+                            Descripcion = "Aceite Primor",
+                            UnidadMedida = "NIU",
+                            Impuesto = 82.08m,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 538.08m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 3,
+                            Cantidad = 10,
+                            PrecioReferencial = 20,
+                            PrecioUnitario = 20,
+                            TipoPrecio = "01",
+                            CodigoItem = "3445666777",
+                            Descripcion = "Shampoo Palmolive",
+                            UnidadMedida = "NIU",
+                            Impuesto = 36,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 236,
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
         private static void CrearFacturaConDetraccionTransportes()
         {
             try
@@ -120,28 +200,228 @@ namespace OpenInvoicePeru.ClienteConsola
             }
         }
 
-        private static void CrearDesdeArchivo()
+        private static void CrearResumenDiario()
         {
-            var archivo = @"C:\Virtuales\FacturaHotelera.xml";
-            var documento = new DocumentoElectronico
+            try
             {
-                Emisor = new Compania
+                Console.WriteLine("Ejemplo de Resumen Diario");
+                var documentoResumenDiario = new ResumenDiarioNuevo
                 {
-                    NroDocumento = "20101000975",
-                    TipoDocumento = "6",
-                    NombreComercial = "-",
-                    NombreLegal = "Miraflores de Turismo SAC",
-                    CodigoAnexo = "0000"
-                },
-                IdDocumento = "F002-7268"
-            };
+                    IdDocumento = $"RC-{DateTime.Today:yyyyMMdd}-001",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    FechaReferencia = DateTime.Today.AddDays(-1).ToString(FormatoFecha),
+                    Emisor = CrearEmisor(),
+                    Resumenes = new List<GrupoResumenNuevo>()
+                };
 
-            var documentoResponse = new DocumentoResponse
+                documentoResumenDiario.Resumenes.Add(new GrupoResumenNuevo
+                {
+                    Id = 1,
+                    TipoDocumento = "03",
+                    IdDocumento = "BB14-33386",
+                    NroDocumentoReceptor = "41614074",
+                    TipoDocumentoReceptor = "1",
+                    CodigoEstadoItem = 1, // 1 - Agregar. 2 - Modificar. 3 - Eliminar
+                    Moneda = "PEN",
+                    TotalVenta = 190.9m,
+                    TotalIgv = 29.12m,
+                    Gravadas = 161.78m,
+                });
+                // Para los casos de envio de boletas anuladas, se debe primero informar las boletas creadas (1) y luego en un segundo resumen se envian las anuladas. De lo contrario se presentará el error 'El documento indicado no existe no puede ser modificado/eliminado'
+                documentoResumenDiario.Resumenes.Add(new GrupoResumenNuevo
+                {
+                    Id = 2,
+                    TipoDocumento = "03",
+                    IdDocumento = "BB30-33384",
+                    NroDocumentoReceptor = "08506678",
+                    TipoDocumentoReceptor = "1",
+                    CodigoEstadoItem = 1, // 1 - Agregar. 2 - Modificar. 3 - Eliminar
+                    Moneda = "USD",
+                    TotalVenta = 9580m,
+                    TotalIgv = 1411.36m,
+                    Gravadas = 8168.64m,
+                });
+
+
+                Console.WriteLine("Generando XML....");
+
+                var documentoResponse = RestHelper<ResumenDiarioNuevo, DocumentoResponse>.Execute("GenerarResumenDiario/v2", documentoResumenDiario);
+
+                if (!documentoResponse.Exito)
+                    throw new InvalidOperationException(documentoResponse.MensajeError);
+
+                Console.WriteLine("Firmando XML...");
+                // Firmado del Documento.
+                var firmado = new FirmadoRequest
+                {
+                    TramaXmlSinFirma = documentoResponse.TramaXmlSinFirma,
+                    CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("Certificado.pfx")),
+                    PasswordCertificado = string.Empty,
+                };
+
+                var responseFirma = RestHelper<FirmadoRequest, FirmadoResponse>.Execute("Firmar", firmado);
+
+                if (!responseFirma.Exito)
+                {
+                    throw new InvalidOperationException(responseFirma.MensajeError);
+                }
+
+                Console.WriteLine("Guardando XML de Resumen....(Revisar carpeta del ejecutable)");
+
+                File.WriteAllBytes("resumendiario.xml", Convert.FromBase64String(responseFirma.TramaXmlFirmado));
+
+                Console.WriteLine("Enviando a SUNAT....");
+
+                var enviarDocumentoRequest = new EnviarDocumentoRequest
+                {
+                    Ruc = documentoResumenDiario.Emisor.NroDocumento,
+                    UsuarioSol = "MODDATOS",
+                    ClaveSol = "MODDATOS",
+                    EndPointUrl = UrlSunat,
+                    IdDocumento = documentoResumenDiario.IdDocumento,
+                    TramaXmlFirmado = responseFirma.TramaXmlFirmado
+                };
+
+                var enviarResumenResponse = RestHelper<EnviarDocumentoRequest, EnviarResumenResponse>.Execute("EnviarResumen", enviarDocumentoRequest);
+
+                if (!enviarResumenResponse.Exito)
+                {
+                    throw new InvalidOperationException(enviarResumenResponse.MensajeError);
+                }
+
+                Console.WriteLine("Nro de Ticket: {0}", enviarResumenResponse.NroTicket);
+
+                ConsultarTicket(enviarResumenResponse.NroTicket, documentoResumenDiario.Emisor.NroDocumento);
+            }
+            catch (Exception ex)
             {
-                TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(archivo))
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        private static void CrearComunicacionBaja()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo de Comunicación de Baja");
+                var documentoBaja = new ComunicacionBaja
+                {
+                    IdDocumento = $"RA-{DateTime.Today:yyyyMMdd}-001",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    FechaReferencia = DateTime.Today.AddDays(-1).ToString(FormatoFecha),
+                    Emisor = CrearEmisor(),
+                    Bajas = new List<DocumentoBaja>()
+                };
+
+                // En las comunicaciones de Baja ya no se pueden colocar boletas, ya que la anulacion de las mismas
+                // la realiza el resumen diario.
+                documentoBaja.Bajas.Add(new DocumentoBaja
+                {
+                    Id = 1,
+                    Correlativo = "33386",
+                    TipoDocumento = "01",
+                    Serie = "FA50",
+                    MotivoBaja = "Anulación por otro tipo de documento"
+                });
+                documentoBaja.Bajas.Add(new DocumentoBaja
+                {
+                    Id = 2,
+                    Correlativo = "86486",
+                    TipoDocumento = "01",
+                    Serie = "FF14",
+                    MotivoBaja = "Anulación por otro datos erroneos"
+                });
+
+                Console.WriteLine("Generando XML....");
+
+                var documentoResponse = RestHelper<ComunicacionBaja, DocumentoResponse>.Execute("GenerarComunicacionBaja", documentoBaja);
+                if (!documentoResponse.Exito)
+                {
+                    throw new InvalidOperationException(documentoResponse.MensajeError);
+                }
+
+                Console.WriteLine("Firmando XML...");
+                // Firmado del Documento.
+                var firmado = new FirmadoRequest
+                {
+                    TramaXmlSinFirma = documentoResponse.TramaXmlSinFirma,
+                    CertificadoDigital = Convert.ToBase64String(File.ReadAllBytes("Certificado.pfx")),
+                    PasswordCertificado = string.Empty,
+                };
+
+                var responseFirma = RestHelper<FirmadoRequest, FirmadoResponse>.Execute("Firmar", firmado);
+
+                if (!responseFirma.Exito)
+                {
+                    throw new InvalidOperationException(responseFirma.MensajeError);
+                }
+
+                Console.WriteLine("Guardando XML de la Comunicacion de Baja....(Revisar carpeta del ejecutable)");
+
+                File.WriteAllBytes("comunicacionbaja.xml", Convert.FromBase64String(responseFirma.TramaXmlFirmado));
+
+                Console.WriteLine("Enviando a SUNAT....");
+
+                var sendBill = new EnviarDocumentoRequest
+                {
+                    Ruc = documentoBaja.Emisor.NroDocumento,
+                    UsuarioSol = "MODDATOS",
+                    ClaveSol = "MODDATOS",
+                    EndPointUrl = UrlSunat,
+                    IdDocumento = documentoBaja.IdDocumento,
+                    TramaXmlFirmado = responseFirma.TramaXmlFirmado
+                };
+
+                var enviarResumenResponse = RestHelper<EnviarDocumentoRequest, EnviarResumenResponse>.Execute("EnviarResumen", sendBill);
+
+                if (!enviarResumenResponse.Exito)
+                {
+                    throw new InvalidOperationException(enviarResumenResponse.MensajeError);
+                }
+
+                Console.WriteLine("Nro de Ticket: {0}", enviarResumenResponse.NroTicket);
+
+                ConsultarTicket(enviarResumenResponse.NroTicket, documentoBaja.Emisor.NroDocumento);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        private static void ConsultarTicket(string nroTicket, string nroRuc)
+        {
+            var consultarTicketRequest = new ConsultaTicketRequest
+            {
+                Ruc = nroRuc,
+                NroTicket = nroTicket,
+                UsuarioSol = "MODDATOS",
+                ClaveSol = "MODDATOS",
+                EndPointUrl = UrlSunat
             };
 
-            FirmaryEnviar(documento, documentoResponse);
+            var response = RestHelper<ConsultaTicketRequest, EnviarDocumentoResponse>.Execute("ConsultarTicket", consultarTicketRequest);
+
+            if (!response.Exito)
+            {
+                Console.WriteLine(response.MensajeError);
+                return;
+            }
+
+            var archivo = response.NombreArchivo.Replace(".xml", string.Empty);
+            Console.WriteLine($"Escribiendo documento en la carpeta del ejecutable... {archivo}");
+
+            File.WriteAllBytes($"{archivo}.zip", Convert.FromBase64String(response.TramaZipCdr));
+
+            Console.WriteLine($"Código: {response.CodigoRespuesta} => {response.MensajeRespuesta}");
         }
 
         private static DocumentoResponse GenerarDocumento(DocumentoElectronico documento)

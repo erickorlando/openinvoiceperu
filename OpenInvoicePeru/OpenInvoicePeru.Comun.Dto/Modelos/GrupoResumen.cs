@@ -23,6 +23,8 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public decimal TotalOtrosImpuestos { get; set; }
 
+        public decimal TotalImpuestoBolsas { get; set; }
+
         public decimal Gravadas { get; set; }
 
         public decimal Exoneradas { get; set; }
