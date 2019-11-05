@@ -51,11 +51,12 @@ namespace OpenInvoicePeru.Servicio.Soap
 
                 _proxyConsultas.Close();
 
-                var estado = (resultado.statusCode != "98");
+                response.CodigoRetorno = resultado.statusCode;
+                if (resultado.content != null)
+                    response.ConstanciaDeRecepcion = Convert.ToBase64String(resultado.content);
 
-                response.ConstanciaDeRecepcion = estado
-                    ? Convert.ToBase64String(resultado.content) : "Aun en proceso";
-                response.Exito = true;
+                response.Exito = resultado.content != null;
+                response.MensajeError = resultado.statusMessage;
             }
             catch (FaultException ex)
             {

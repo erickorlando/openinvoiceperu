@@ -15,27 +15,27 @@ namespace OpenInvoicePeru.Servicio.Soap.Consultas {
     [System.ServiceModel.ServiceContractAttribute(Namespace="http://service.sunat.gob.pe", ConfigurationName="Consultas.billService")]
     public interface billService {
         
-        // CODEGEN: Parameter 'status' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="urn:getStatus", ReplyAction="*")]
-        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
-        [return: System.ServiceModel.MessageParameterAttribute(Name="status")]
-        OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse getStatus(OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest request);
-        
-        [System.ServiceModel.OperationContractAttribute(Action="urn:getStatus", ReplyAction="*")]
-        System.Threading.Tasks.Task<OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse> getStatusAsync(OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest request);
-        
         // CODEGEN: Parameter 'statusCdr' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
-        [System.ServiceModel.OperationContractAttribute(Action="urn:getStatusCdr", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="urn:getStatusCdr", ReplyAction="http://service.sunat.gob.pe/billService/getStatusCdrResponse")]
         [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
         [return: System.ServiceModel.MessageParameterAttribute(Name="statusCdr")]
         OpenInvoicePeru.Servicio.Soap.Consultas.getStatusCdrResponse getStatusCdr(OpenInvoicePeru.Servicio.Soap.Consultas.getStatusCdrRequest request);
         
-        [System.ServiceModel.OperationContractAttribute(Action="urn:getStatusCdr", ReplyAction="*")]
+        [System.ServiceModel.OperationContractAttribute(Action="urn:getStatusCdr", ReplyAction="http://service.sunat.gob.pe/billService/getStatusCdrResponse")]
         System.Threading.Tasks.Task<OpenInvoicePeru.Servicio.Soap.Consultas.getStatusCdrResponse> getStatusCdrAsync(OpenInvoicePeru.Servicio.Soap.Consultas.getStatusCdrRequest request);
+        
+        // CODEGEN: Parameter 'status' requires additional schema information that cannot be captured using the parameter mode. The specific attribute is 'System.Xml.Serialization.XmlElementAttribute'.
+        [System.ServiceModel.OperationContractAttribute(Action="urn:getStatus", ReplyAction="http://service.sunat.gob.pe/billService/getStatusResponse")]
+        [System.ServiceModel.XmlSerializerFormatAttribute(SupportFaults=true)]
+        [return: System.ServiceModel.MessageParameterAttribute(Name="status")]
+        OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse getStatus(OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest request);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="urn:getStatus", ReplyAction="http://service.sunat.gob.pe/billService/getStatusResponse")]
+        System.Threading.Tasks.Task<OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse> getStatusAsync(OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest request);
     }
     
     /// <remarks/>
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.7.3056.0")]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.3752.0")]
     [System.SerializableAttribute()]
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.ComponentModel.DesignerCategoryAttribute("code")]
@@ -97,57 +97,6 @@ namespace OpenInvoicePeru.Servicio.Soap.Consultas {
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getStatus", WrapperNamespace="http://service.sunat.gob.pe", IsWrapped=true)]
-    public partial class getStatusRequest {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.sunat.gob.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string rucComprobante;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.sunat.gob.pe", Order=1)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string tipoComprobante;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.sunat.gob.pe", Order=2)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public string serieComprobante;
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.sunat.gob.pe", Order=3)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public int numeroComprobante;
-        
-        public getStatusRequest() {
-        }
-        
-        public getStatusRequest(string rucComprobante, string tipoComprobante, string serieComprobante, int numeroComprobante) {
-            this.rucComprobante = rucComprobante;
-            this.tipoComprobante = tipoComprobante;
-            this.serieComprobante = serieComprobante;
-            this.numeroComprobante = numeroComprobante;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-    [System.ServiceModel.MessageContractAttribute(WrapperName="getStatusResponse", WrapperNamespace="http://service.sunat.gob.pe", IsWrapped=true)]
-    public partial class getStatusResponse {
-        
-        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.sunat.gob.pe", Order=0)]
-        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
-        public OpenInvoicePeru.Servicio.Soap.Consultas.statusResponse status;
-        
-        public getStatusResponse() {
-        }
-        
-        public getStatusResponse(OpenInvoicePeru.Servicio.Soap.Consultas.statusResponse status) {
-            this.status = status;
-        }
-    }
-    
-    [System.Diagnostics.DebuggerStepThroughAttribute()]
-    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
     [System.ServiceModel.MessageContractAttribute(WrapperName="getStatusCdr", WrapperNamespace="http://service.sunat.gob.pe", IsWrapped=true)]
     public partial class getStatusCdrRequest {
         
@@ -196,6 +145,57 @@ namespace OpenInvoicePeru.Servicio.Soap.Consultas {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getStatus", WrapperNamespace="http://service.sunat.gob.pe", IsWrapped=true)]
+    public partial class getStatusRequest {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.sunat.gob.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string rucComprobante;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.sunat.gob.pe", Order=1)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string tipoComprobante;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.sunat.gob.pe", Order=2)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public string serieComprobante;
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.sunat.gob.pe", Order=3)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public int numeroComprobante;
+        
+        public getStatusRequest() {
+        }
+        
+        public getStatusRequest(string rucComprobante, string tipoComprobante, string serieComprobante, int numeroComprobante) {
+            this.rucComprobante = rucComprobante;
+            this.tipoComprobante = tipoComprobante;
+            this.serieComprobante = serieComprobante;
+            this.numeroComprobante = numeroComprobante;
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
+    [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+    [System.ServiceModel.MessageContractAttribute(WrapperName="getStatusResponse", WrapperNamespace="http://service.sunat.gob.pe", IsWrapped=true)]
+    public partial class getStatusResponse {
+        
+        [System.ServiceModel.MessageBodyMemberAttribute(Namespace="http://service.sunat.gob.pe", Order=0)]
+        [System.Xml.Serialization.XmlElementAttribute(Form=System.Xml.Schema.XmlSchemaForm.Unqualified)]
+        public OpenInvoicePeru.Servicio.Soap.Consultas.statusResponse status;
+        
+        public getStatusResponse() {
+        }
+        
+        public getStatusResponse(OpenInvoicePeru.Servicio.Soap.Consultas.statusResponse status) {
+            this.status = status;
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     public interface billServiceChannel : OpenInvoicePeru.Servicio.Soap.Consultas.billService, System.ServiceModel.IClientChannel {
     }
@@ -221,35 +221,6 @@ namespace OpenInvoicePeru.Servicio.Soap.Consultas {
         
         public billServiceClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse OpenInvoicePeru.Servicio.Soap.Consultas.billService.getStatus(OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest request) {
-            return base.Channel.getStatus(request);
-        }
-        
-        public OpenInvoicePeru.Servicio.Soap.Consultas.statusResponse getStatus(string rucComprobante, string tipoComprobante, string serieComprobante, int numeroComprobante) {
-            OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest inValue = new OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest();
-            inValue.rucComprobante = rucComprobante;
-            inValue.tipoComprobante = tipoComprobante;
-            inValue.serieComprobante = serieComprobante;
-            inValue.numeroComprobante = numeroComprobante;
-            OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse retVal = ((OpenInvoicePeru.Servicio.Soap.Consultas.billService)(this)).getStatus(inValue);
-            return retVal.status;
-        }
-        
-        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
-        System.Threading.Tasks.Task<OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse> OpenInvoicePeru.Servicio.Soap.Consultas.billService.getStatusAsync(OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest request) {
-            return base.Channel.getStatusAsync(request);
-        }
-        
-        public System.Threading.Tasks.Task<OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse> getStatusAsync(string rucComprobante, string tipoComprobante, string serieComprobante, int numeroComprobante) {
-            OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest inValue = new OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest();
-            inValue.rucComprobante = rucComprobante;
-            inValue.tipoComprobante = tipoComprobante;
-            inValue.serieComprobante = serieComprobante;
-            inValue.numeroComprobante = numeroComprobante;
-            return ((OpenInvoicePeru.Servicio.Soap.Consultas.billService)(this)).getStatusAsync(inValue);
         }
         
         [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
@@ -279,6 +250,35 @@ namespace OpenInvoicePeru.Servicio.Soap.Consultas {
             inValue.serieComprobante = serieComprobante;
             inValue.numeroComprobante = numeroComprobante;
             return ((OpenInvoicePeru.Servicio.Soap.Consultas.billService)(this)).getStatusCdrAsync(inValue);
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse OpenInvoicePeru.Servicio.Soap.Consultas.billService.getStatus(OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest request) {
+            return base.Channel.getStatus(request);
+        }
+        
+        public OpenInvoicePeru.Servicio.Soap.Consultas.statusResponse getStatus(string rucComprobante, string tipoComprobante, string serieComprobante, int numeroComprobante) {
+            OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest inValue = new OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest();
+            inValue.rucComprobante = rucComprobante;
+            inValue.tipoComprobante = tipoComprobante;
+            inValue.serieComprobante = serieComprobante;
+            inValue.numeroComprobante = numeroComprobante;
+            OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse retVal = ((OpenInvoicePeru.Servicio.Soap.Consultas.billService)(this)).getStatus(inValue);
+            return retVal.status;
+        }
+        
+        [System.ComponentModel.EditorBrowsableAttribute(System.ComponentModel.EditorBrowsableState.Advanced)]
+        System.Threading.Tasks.Task<OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse> OpenInvoicePeru.Servicio.Soap.Consultas.billService.getStatusAsync(OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest request) {
+            return base.Channel.getStatusAsync(request);
+        }
+        
+        public System.Threading.Tasks.Task<OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse> getStatusAsync(string rucComprobante, string tipoComprobante, string serieComprobante, int numeroComprobante) {
+            OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest inValue = new OpenInvoicePeru.Servicio.Soap.Consultas.getStatusRequest();
+            inValue.rucComprobante = rucComprobante;
+            inValue.tipoComprobante = tipoComprobante;
+            inValue.serieComprobante = serieComprobante;
+            inValue.numeroComprobante = numeroComprobante;
+            return ((OpenInvoicePeru.Servicio.Soap.Consultas.billService)(this)).getStatusAsync(inValue);
         }
     }
 }
