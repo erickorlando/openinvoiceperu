@@ -622,6 +622,20 @@ namespace OpenInvoicePeru.Xml
                         Name = "ISC",
                         TaxTypeCode = "EXC"
                     }));
+                
+                /* Otros Impuestos */
+                if (detalleDocumento.OtroImpuesto > 0)
+                    linea.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalDetalles(new TotalesDto
+                    {
+                        CurrencyId = documento.Moneda,
+                        Monto = detalleDocumento.OtroImpuesto,
+                        CategoryId = AfectacionImpuesto.ObtenerLetraTributo(detalleDocumento.TipoImpuesto),
+                        TaxPercent = detalleDocumento.TasaImpuestoSelectivo,
+                        TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
+                        TaxSchemeId = "7152",
+                        Name = "ICBPER",
+                        TaxTypeCode = "OTH"
+                    }));
 
                 linea.PricingReference.AlternativeConditionPrices.Add(new AlternativeConditionPrice
                 {

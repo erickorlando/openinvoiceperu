@@ -20,7 +20,7 @@ namespace OpenInvoicePeru.Xml
             {
                 Id = documento.IdDocumento,
                 IssueDate = DateTime.Parse(documento.FechaEmision),
-                IssueTime = DateTime.Parse(documento.HoraEmision),
+                IssueTime = string.IsNullOrEmpty(documento.HoraEmision) ? DateTime.Now : DateTime.Parse(documento.HoraEmision),
                 DocumentCurrencyCode = documento.Moneda,
                 Signature = new SignatureCac
                 {
@@ -206,14 +206,12 @@ namespace OpenInvoicePeru.Xml
                     Monto = documento.TotalIsc,
                     MontoBase = documento.Gravadas,
                     CategoryId = "S",
-                    TaxSchemeId = "7152",
-                    Name = "ICBPER",
+                    TaxSchemeId = "9999",
+                    Name = "OTROS",
                     TaxTypeCode = "OTH"
                 }));
             }
 
-            if (!string.IsNullOrEmpty(documento.FechaVencimiento))
-                creditNote.DueDate = DateTime.Parse(documento.FechaVencimiento);
 
             foreach (var discrepancia in documento.Discrepancias)
             {
@@ -259,7 +257,7 @@ namespace OpenInvoicePeru.Xml
                     LineExtensionAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
-                        Value = detalleDocumento.TotalVenta
+                        Value = detalleDocumento.PrecioUnitario * detalleDocumento.Cantidad
                     },
                     PricingReference = new PricingReference
                     {

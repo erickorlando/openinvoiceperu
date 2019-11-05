@@ -18,10 +18,25 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            CrearFactura();
-            CrearResumenDiario();
-            CrearFacturaConDetraccionTransportes();
-            
+            //CrearFactura();
+            //CrearResumenDiario();
+            //CrearFacturaConDetraccionTransportes();
+
+            var documento = new DocumentoElectronico
+            {
+                IdDocumento = "F001-0001140",
+                TipoDocumento = "01",
+                Emisor = new Compania
+                {
+                    NroDocumento = "10188789965"
+                }
+            };
+
+            FirmaryEnviar(documento, new DocumentoResponse
+            {
+                TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(@"C:\Users\erick.velasco\Downloads\Telegram Desktop\F001-0001140.xml"))
+            });
+
             Console.ReadLine();
         }
 
@@ -67,14 +82,15 @@ namespace OpenInvoicePeru.ClienteConsola
                         TipoDocumento = "6",
                         NombreLegal = "RANSA COMERCIAL S.A."
                     },
-                    IdDocumento = "FF11-001",
+                    IdDocumento = "FF11-008",
                     FechaEmision = DateTime.Today.ToString(FormatoFecha),
                     HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
                     Moneda = "PEN",
                     TipoDocumento = "01",
-                    TotalIgv = 125.7084m,
-                    TotalVenta = 824.0884m,
-                    Gravadas = 698.38m,
+                    TotalIgv = 125.7264m,
+                    TotalVenta = 824.2064m,
+                    TotalOtrosTributos = 0.10m,
+                    Gravadas = 698.48m,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
@@ -118,6 +134,21 @@ namespace OpenInvoicePeru.ClienteConsola
                             Impuesto = 36,
                             TipoImpuesto = "10", // Gravada
                             TotalVenta = 236,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 4,
+                            Cantidad = 1,
+                            PrecioReferencial = 0.10m,
+                            PrecioUnitario = 0.10m,
+                            TipoPrecio = "01",
+                            CodigoItem = "BOL",
+                            Descripcion = "Bolsa Plastica",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0.018m,
+                            TipoImpuesto = "10", // Gravada
+                            OtroImpuesto = 0.10m,
+                            TotalVenta = 0.20m,
                         }
                     }
                 };
@@ -225,6 +256,7 @@ namespace OpenInvoicePeru.ClienteConsola
                     Moneda = "PEN",
                     TotalVenta = 190.9m,
                     TotalIgv = 29.12m,
+                    TotalImpuestoBolsas = 6.50m,
                     Gravadas = 161.78m,
                 });
                 // Para los casos de envio de boletas anuladas, se debe primero informar las boletas creadas (1) y luego en un segundo resumen se envian las anuladas. De lo contrario se presentará el error 'El documento indicado no existe no puede ser modificado/eliminado'
