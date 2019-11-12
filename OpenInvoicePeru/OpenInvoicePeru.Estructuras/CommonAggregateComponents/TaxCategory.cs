@@ -1,4 +1,5 @@
 ﻿using System;
+using OpenInvoicePeru.Estructuras.CommonBasicComponents;
 
 namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 {
@@ -13,6 +14,8 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 
         public TaxScheme TaxScheme { get; set; }
 
+        public PayableAmount PerUnitAmount { get; set; }
+
         /// <summary>
         /// Tipo de Afectacion del IGV
         /// S = Gravado
@@ -24,6 +27,7 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
         public TaxCategory()
         {
             TaxScheme = new TaxScheme();
+            PerUnitAmount = new PayableAmount();
             Percent = 18;
         }
     }

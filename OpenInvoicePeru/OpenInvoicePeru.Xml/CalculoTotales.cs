@@ -15,6 +15,8 @@ namespace OpenInvoicePeru.Xml
         public string TaxTypeCode { get; set; }
         public string TaxExemptionReasonCode { get; set; }
         public decimal TaxPercent { get; set; }
+        public int CantidadBolsas { get; set; }
+        public decimal PrecioUnitarioBolsa { get; set; }
     }
 
     public static class CalculoTotales
@@ -69,6 +71,11 @@ namespace OpenInvoicePeru.Xml
                     TaxCategory = new TaxCategory
                     {
                         Id = totalesDto.CategoryId,
+                        PerUnitAmount = new PayableAmount
+                        {
+                            CurrencyId = totalesDto.CurrencyId,
+                            Value = totalesDto.PrecioUnitarioBolsa
+                        },
                         Percent = totalesDto.TaxPercent,
                         TaxExemptionReasonCode = totalesDto.TaxExemptionReasonCode,
                         TierRange = totalesDto.Name == "ISC" ? "03" : string.Empty,
@@ -78,6 +85,11 @@ namespace OpenInvoicePeru.Xml
                             Name = totalesDto.Name,
                             TaxTypeCode = totalesDto.TaxTypeCode
                         }
+                    },
+                    BaseUnitMeasure = new InvoicedQuantity
+                    {
+                        UnitCode = "NIU",
+                        Value = totalesDto.CantidadBolsas
                     }
                 }
             };

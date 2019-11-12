@@ -12,11 +12,14 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 
         public TaxCategory TaxCategory { get; set; }
 
+        public InvoicedQuantity BaseUnitMeasure { get; set; }
+
         public TaxSubtotal()
         {
             TaxableAmount = new PayableAmount();
             TaxAmount = new PayableAmount();
             TaxCategory = new TaxCategory();            
+            BaseUnitMeasure = new InvoicedQuantity();
         }
     }
 }
