@@ -10,7 +10,7 @@ namespace OpenInvoicePeru.ClienteConsola
 {
     class Program
     {
-        private const string UrlSunat = "https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService";
+        private const string UrlSunat = "https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService";
         private const string FormatoFecha = "yyyy-MM-dd";
 
         static void Main()
@@ -22,20 +22,22 @@ namespace OpenInvoicePeru.ClienteConsola
             //CrearResumenDiario();
             //CrearFacturaConDetraccionTransportes();
 
-            var documento = new DocumentoElectronico
-            {
-                IdDocumento = "F001-0001140",
-                TipoDocumento = "01",
-                Emisor = new Compania
-                {
-                    NroDocumento = "10188789965"
-                }
-            };
+            //var documento = new DocumentoElectronico
+            //{
+            //    IdDocumento = "F001-0001140",
+            //    TipoDocumento = "01",
+            //    Emisor = new Compania
+            //    {
+            //        NroDocumento = "10188789965"
+            //    }
+            //};
 
-            FirmaryEnviar(documento, new DocumentoResponse
-            {
-                TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(@"C:\Users\erick.velasco\Downloads\Telegram Desktop\F001-0001140.xml"))
-            });
+            //FirmaryEnviar(documento, new DocumentoResponse
+            //{
+            //    TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(@"C:\Users\erick.velasco\Downloads\Telegram Desktop\F001-0001140.xml"))
+            //});
+
+            ConsultarTicket("300000005449503", "20454791887");
 
             Console.ReadLine();
         }
@@ -435,8 +437,8 @@ namespace OpenInvoicePeru.ClienteConsola
             {
                 Ruc = nroRuc,
                 NroTicket = nroTicket,
-                UsuarioSol = "MODDATOS",
-                ClaveSol = "MODDATOS",
+                UsuarioSol = "VETERIF1",
+                ClaveSol = "FF4KG8SF4",
                 EndPointUrl = UrlSunat
             };
 
@@ -444,7 +446,7 @@ namespace OpenInvoicePeru.ClienteConsola
 
             if (!response.Exito)
             {
-                Console.WriteLine(response.MensajeError);
+                Console.WriteLine($"{response.MensajeError} {response.Pila}");
                 return;
             }
 
