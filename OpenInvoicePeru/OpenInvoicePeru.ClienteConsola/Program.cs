@@ -10,7 +10,7 @@ namespace OpenInvoicePeru.ClienteConsola
 {
     class Program
     {
-        private const string UrlSunat = "https://e-factura.sunat.gob.pe/ol-ti-itcpfegem/billService";
+        private const string UrlSunat = "https://e-beta.sunat.gob.pe/ol-ti-itcpfegem-beta/billService";
         private const string FormatoFecha = "yyyy-MM-dd";
 
         static void Main()
@@ -18,26 +18,27 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            //CrearFactura();
-            //CrearResumenDiario();
-            //CrearFacturaConDetraccionTransportes();
+            CrearFactura();
+            CrearBoleta();
+            CrearResumenDiario();
+            ////CrearFacturaConDetraccionTransportes();
 
-            //var documento = new DocumentoElectronico
-            //{
-            //    IdDocumento = "F001-0001140",
-            //    TipoDocumento = "01",
-            //    Emisor = new Compania
-            //    {
-            //        NroDocumento = "10188789965"
-            //    }
-            //};
+            var documento = new DocumentoElectronico
+            {
+                IdDocumento = "B001-124",
+                TipoDocumento = "03",
+                Emisor = new Compania
+                {
+                    NroDocumento = "20257471609"
+                }
+            };
 
-            //FirmaryEnviar(documento, new DocumentoResponse
-            //{
-            //    TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(@"C:\Users\erick.velasco\Downloads\Telegram Desktop\F001-0001140.xml"))
-            //});
+            FirmaryEnviar(documento, new DocumentoResponse
+            {
+                TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(@"C:\GitProjects\OpenInvoicePeruUBL21\OpenInvoicePeru\artifacts\B001-124.XML"))
+            });
 
-            ConsultarTicket("300000005449503", "20454791887");
+            //ConsultarTicket("300000005449503", "20454791887");
 
             Console.ReadLine();
         }
@@ -151,6 +152,107 @@ namespace OpenInvoicePeru.ClienteConsola
                             TipoImpuesto = "10", // Gravada
                             OtroImpuesto = 0.10m,
                             TotalVenta = 0.20m,
+                            CantidadBolsas = 1,
+                            PrecioUnitarioBolsa = 0.10m
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+        
+        private static void CrearBoleta()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura Gravada (BB11-001)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "88888888",
+                        TipoDocumento = "1",
+                        NombreLegal = "CLIENTES VARIOS"
+                    },
+                    IdDocumento = "BB11-008",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "03",
+                    TotalIgv = 125.7264m,
+                    TotalVenta = 824.2064m,
+                    TotalOtrosTributos = 0.10m,
+                    Gravadas = 698.48m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 2,
+                            PrecioReferencial = 21.19m,
+                            PrecioUnitario = 21.19m,
+                            TipoPrecio = "01",
+                            CodigoItem = "1234234",
+                            Descripcion = "Arroz Costeño",
+                            UnidadMedida = "NIU",
+                            Impuesto = 7.62m, //Impuesto del Precio * Cantidad
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 50m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 10,
+                            PrecioReferencial = 45.60m,
+                            PrecioUnitario = 45.60m,
+                            TipoPrecio = "01",
+                            CodigoItem = "AER345667",
+                            Descripcion = "Aceite Primor",
+                            UnidadMedida = "NIU",
+                            Impuesto = 82.08m,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 538.08m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 3,
+                            Cantidad = 10,
+                            PrecioReferencial = 20,
+                            PrecioUnitario = 20,
+                            TipoPrecio = "01",
+                            CodigoItem = "3445666777",
+                            Descripcion = "Shampoo Palmolive",
+                            UnidadMedida = "NIU",
+                            Impuesto = 36,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 236,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 4,
+                            Cantidad = 1,
+                            PrecioReferencial = 0.10m,
+                            PrecioUnitario = 0.10m,
+                            TipoPrecio = "01",
+                            CodigoItem = "BOL",
+                            Descripcion = "Bolsa Plastica",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0.00m,
+                            TipoImpuesto = "20", // Exonerada
+                            OtroImpuesto = 0.10m,
+                            TotalVenta = 0.20m,
+                            CantidadBolsas = 1,
+                            PrecioUnitarioBolsa = 0.10m
                         }
                     }
                 };

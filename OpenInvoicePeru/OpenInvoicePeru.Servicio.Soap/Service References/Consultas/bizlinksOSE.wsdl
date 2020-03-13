@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:ns2="http://schemas.xmlsoap.org/soap/http" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://service.sunat.gob.pe/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://service.sunat.gob.pe" name="bizlinksOSE" targetNamespace="http://service.sunat.gob.pe/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xs:schema xmlns:xmime="http://www.w3.org/2005/05/xmlmime" xmlns:tns="http://service.sunat.gob.pe" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://service.sunat.gob.pe" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://www.w3.org/2005/05/xmlmime" />
+      <xs:element name="getStatus" type="tns:getStatus" />
+      <xs:element name="getStatusResponse" type="tns:getStatusResponse" />
+      <xs:element name="sendBill" type="tns:sendBill" />
+      <xs:element name="sendBillResponse" type="tns:sendBillResponse" />
+      <xs:element name="sendPack" type="tns:sendPack" />
+      <xs:element name="sendPackResponse" type="tns:sendPackResponse" />
+      <xs:element name="sendSummary" type="tns:sendSummary" />
+      <xs:element name="sendSummaryResponse" type="tns:sendSummaryResponse" />
+      <xs:complexType name="getStatusCdr">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="statusCdr" type="tns:StatusCdr" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="StatusCdr">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="numeroComprobante" type="xs:string" />
+          <xs:element minOccurs="0" name="rucComprobante" type="xs:string" />
+          <xs:element minOccurs="0" name="serieComprobante" type="xs:string" />
+          <xs:element minOccurs="0" name="tipoComprobante" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="GetStatusCdrResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="document" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sendPack">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fileName" type="xs:string" />
+          <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="contentFile" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="partyType" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sendPackResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ticket" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sendBill">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fileName" type="xs:string" />
+          <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="contentFile" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="partyType" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sendBillResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="applicationResponse" type="xs:base64Binary" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ticket" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getStatusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="status" type="tns:statusResponse" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="statusResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="content" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="statusCode" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sendSummary">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="fileName" type="xs:string" />
+          <xs:element xmime:expectedContentTypes="application/octet-stream" minOccurs="0" name="contentFile" type="xs:base64Binary" />
+          <xs:element minOccurs="0" name="partyType" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="sendSummaryResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="ticket" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="getStatusCdr" nillable="true" type="tns:getStatusCdr" />
+      <xs:element name="getStatusCdrResponse" nillable="true" type="tns:GetStatusCdrResponse" />
+    </xs:schema>
+    <xsd:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://service.sunat.gob.pe/">
+      <xsd:element name="SOAPException" type="tns:SOAPException" />
+      <xsd:complexType name="SOAPException">
+        <xsd:sequence>
+          <xsd:element minOccurs="0" name="message" type="xsd:string" />
+        </xsd:sequence>
+      </xsd:complexType>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="sendSummaryResponse">
+    <wsdl:part name="parameters" element="ns1:sendSummaryResponse" />
+  </wsdl:message>
+  <wsdl:message name="getStatusCdrResponse">
+    <wsdl:part name="parameters" element="ns1:getStatusCdrResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendPack">
+    <wsdl:part name="parameters" element="ns1:sendPack" />
+  </wsdl:message>
+  <wsdl:message name="sendBillResponse">
+    <wsdl:part name="parameters" element="ns1:sendBillResponse" />
+  </wsdl:message>
+  <wsdl:message name="sendBill">
+    <wsdl:part name="parameters" element="ns1:sendBill" />
+  </wsdl:message>
+  <wsdl:message name="getStatus">
+    <wsdl:part name="parameters" element="ns1:getStatus" />
+  </wsdl:message>
+  <wsdl:message name="sendSummary">
+    <wsdl:part name="parameters" element="ns1:sendSummary" />
+  </wsdl:message>
+  <wsdl:message name="sendPackResponse">
+    <wsdl:part name="parameters" element="ns1:sendPackResponse" />
+  </wsdl:message>
+  <wsdl:message name="getStatusCdr">
+    <wsdl:part name="parameters" element="ns1:getStatusCdr" />
+  </wsdl:message>
+  <wsdl:message name="getStatusResponse">
+    <wsdl:part name="parameters" element="ns1:getStatusResponse" />
+  </wsdl:message>
+  <wsdl:message name="SOAPException">
+    <wsdl:part name="SOAPException" element="tns:SOAPException" />
+  </wsdl:message>
+  <wsdl:portType name="BizlinksOSE">
+    <wsdl:operation name="getStatusCdr">
+      <wsdl:input name="getStatusCdr" message="tns:getStatusCdr" />
+      <wsdl:output name="getStatusCdrResponse" message="tns:getStatusCdrResponse" />
+      <wsdl:fault name="SOAPException" message="tns:SOAPException" />
+    </wsdl:operation>
+    <wsdl:operation name="sendPack">
+      <wsdl:input name="sendPack" message="tns:sendPack" />
+      <wsdl:output name="sendPackResponse" message="tns:sendPackResponse" />
+      <wsdl:fault name="SOAPException" message="tns:SOAPException" />
+    </wsdl:operation>
+    <wsdl:operation name="sendBill">
+      <wsdl:input name="sendBill" message="tns:sendBill" />
+      <wsdl:output name="sendBillResponse" message="tns:sendBillResponse" />
+      <wsdl:fault name="SOAPException" message="tns:SOAPException" />
+    </wsdl:operation>
+    <wsdl:operation name="getStatus">
+      <wsdl:input name="getStatus" message="tns:getStatus" />
+      <wsdl:output name="getStatusResponse" message="tns:getStatusResponse" />
+      <wsdl:fault name="SOAPException" message="tns:SOAPException" />
+    </wsdl:operation>
+    <wsdl:operation name="sendSummary">
+      <wsdl:input name="sendSummary" message="tns:sendSummary" />
+      <wsdl:output name="sendSummaryResponse" message="tns:sendSummaryResponse" />
+      <wsdl:fault name="SOAPException" message="tns:SOAPException" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="bizlinksOSESoapBinding" type="tns:BizlinksOSE">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getStatusCdr">
+      <soap:operation soapAction="urn:getStatusCdr" style="document" />
+      <wsdl:input name="getStatusCdr">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getStatusCdrResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendPack">
+      <soap:operation soapAction="urn:sendPack" style="document" />
+      <wsdl:input name="sendPack">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sendPackResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendBill">
+      <soap:operation soapAction="urn:sendBill" style="document" />
+      <wsdl:input name="sendBill">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sendBillResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getStatus">
+      <soap:operation soapAction="urn:getStatus" style="document" />
+      <wsdl:input name="getStatus">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="getStatusResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sendSummary">
+      <soap:operation soapAction="urn:sendSummary" style="document" />
+      <wsdl:input name="sendSummary">
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output name="sendSummaryResponse">
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="SOAPException">
+        <soap:fault use="literal" name="SOAPException" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="bizlinksOSE">
+    <wsdl:port name="BizlinksOSEPort" binding="tns:bizlinksOSESoapBinding">
+      <soap:address location="https://ose.bizlinks.com.pe/ol-ti-itcpe/billService" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

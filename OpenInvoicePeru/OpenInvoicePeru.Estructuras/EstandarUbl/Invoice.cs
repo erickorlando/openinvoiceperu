@@ -836,15 +836,18 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                             {
                                 writer.WriteStartElement("cac:TaxSubtotal");
                                 {
-                                    writer.WriteStartElement("cbc:TaxableAmount");
+                                    if (taxSubTotal.TaxCategory.TaxScheme.Name != "ICBPER")
                                     {
-                                        writer.WriteAttributeString("currencyID", taxSubTotal.TaxAmount.CurrencyId);
-                                        var monto = invoiceLine.Price.PriceAmount.Value *
-                                                    invoiceLine.InvoicedQuantity.Value;
+                                        writer.WriteStartElement("cbc:TaxableAmount");
+                                        {
+                                            writer.WriteAttributeString("currencyID", taxSubTotal.TaxAmount.CurrencyId);
+                                            var monto = invoiceLine.Price.PriceAmount.Value *
+                                                        invoiceLine.InvoicedQuantity.Value;
 
-                                        writer.WriteValue(monto.ToString(Formatos.FormatoNumericoExtenso, Formato));
+                                            writer.WriteValue(monto.ToString(Formatos.FormatoNumericoExtenso, Formato));
+                                        }
+                                        writer.WriteEndElement();
                                     }
-                                    writer.WriteEndElement();
 
                                     writer.WriteStartElement("cbc:TaxAmount");
                                     {
@@ -862,43 +865,47 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                         }
                                         writer.WriteEndElement();
                                     }
+                                    if (taxSubTotal.TaxCategory.PerUnitAmount.Value > 0)
+                                    {
+                                        writer.WriteStartElement("cbc:PerUnitAmount");
+                                        {
+                                            writer.WriteAttributeString("currencyID", taxSubTotal.TaxAmount.CurrencyId);
+                                            writer.WriteValue(taxSubTotal.TaxCategory.PerUnitAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                                        }
+                                        writer.WriteEndElement();
+                                    }
 
                                     #region TaxCategory
                                     {
                                         writer.WriteStartElement("cac:TaxCategory");
                                         {
-                                            writer.WriteStartElement("cbc:ID");
+                                            if (taxSubTotal.TaxCategory.TaxScheme.Name != "ICBPER")
                                             {
-                                                //writer.WriteAttributeString("schemeID", ValoresUbl.TaxCategorySchemeId);
-                                                //writer.WriteAttributeString("schemeName", ValoresUbl.TaxCategorySchemeName);
-                                                //writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
-                                                writer.WriteValue(taxSubTotal.TaxCategory.Id);
-                                            }
-                                            writer.WriteEndElement();
-
-                                            //if (taxSubTotal.TaxCategory.Percent > 0)
-                                            //{
-                                            writer.WriteElementString("cbc:Percent",
-                                                taxSubTotal.TaxCategory.Percent.ToString("#0", Formato));
-                                            //}
-                                            if (taxSubTotal.TaxCategory.PerUnitAmount.Value > 0)
-                                            {
-                                                writer.WriteStartElement("cbc:PerUnitAmount");
+                                                writer.WriteStartElement("cbc:ID");
                                                 {
-                                                    writer.WriteAttributeString("currencyID", taxSubTotal.TaxAmount.CurrencyId);
-                                                    writer.WriteValue(taxSubTotal.TaxCategory.PerUnitAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                                                    //writer.WriteAttributeString("schemeID", ValoresUbl.TaxCategorySchemeId);
+                                                    //writer.WriteAttributeString("schemeName", ValoresUbl.TaxCategorySchemeName);
+                                                    //writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
+                                                    writer.WriteValue(taxSubTotal.TaxCategory.Id);
+                                                }
+                                                writer.WriteEndElement();
+                                                //if (taxSubTotal.TaxCategory.Percent > 0)
+                                                //{
+                                                writer.WriteElementString("cbc:Percent",
+                                                    taxSubTotal.TaxCategory.Percent.ToString("#0", Formato));
+                                                //}
+
+
+
+                                                writer.WriteStartElement("cbc:TaxExemptionReasonCode");
+                                                {
+                                                    //writer.WriteAttributeString("listAgencyName", ValoresUbl.SchemeAgencyName);
+                                                    //writer.WriteAttributeString("listName", ValoresUbl.TaxExemptionListName);
+                                                    //writer.WriteAttributeString("listURI", ValoresUbl.TaxExemptionUri);
+                                                    writer.WriteValue(taxSubTotal.TaxCategory.TaxExemptionReasonCode);
                                                 }
                                                 writer.WriteEndElement();
                                             }
-
-                                            writer.WriteStartElement("cbc:TaxExemptionReasonCode");
-                                            {
-                                                writer.WriteAttributeString("listAgencyName", ValoresUbl.SchemeAgencyName);
-                                                writer.WriteAttributeString("listName", ValoresUbl.TaxExemptionListName);
-                                                writer.WriteAttributeString("listURI", ValoresUbl.TaxExemptionUri);
-                                                writer.WriteValue(taxSubTotal.TaxCategory.TaxExemptionReasonCode);
-                                            }
-                                            writer.WriteEndElement();
 
                                             if (!string.IsNullOrEmpty(taxSubTotal.TaxCategory.TierRange))
                                             {
@@ -911,13 +918,13 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                             {
                                                 writer.WriteStartElement("cbc:ID");
                                                 {
-                                                    if (taxSubTotal.TaxCategory.TaxScheme.Name == "ICBPER")
-                                                        writer.WriteAttributeString("schemeURI",
-                                                            "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05");
-                                                    else
-                                                        writer.WriteAttributeString("schemeID", ValoresUbl.TaxSchemeId);
-                                                    writer.WriteAttributeString("schemeName", ValoresUbl.TaxCategorySchemeName);
-                                                    writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
+                                                    //if (taxSubTotal.TaxCategory.TaxScheme.Name == "ICBPER")
+                                                    //    writer.WriteAttributeString("schemeURI",
+                                                    //        "urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05");
+                                                    //else
+                                                    //    writer.WriteAttributeString("schemeID", ValoresUbl.TaxSchemeId);
+                                                    //writer.WriteAttributeString("schemeName", ValoresUbl.TaxCategorySchemeName);
+                                                    //writer.WriteAttributeString("schemeAgencyName", ValoresUbl.SchemeAgencyName);
 
                                                     writer.WriteValue(taxSubTotal.TaxCategory.TaxScheme.Id);
                                                 }

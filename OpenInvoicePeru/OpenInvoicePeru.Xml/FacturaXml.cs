@@ -627,7 +627,7 @@ namespace OpenInvoicePeru.Xml
                 if (detalleDocumento.OtroImpuesto > 0)
                 {
                     // Cuando hay impuesto de Bolsa no se deben considerar ningun otro tipo de impuesto mas.
-                    linea.TaxTotals.First().TaxSubTotals.Clear();
+                    //linea.TaxTotals.First().TaxSubTotals.Clear();
                     linea.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalDetalles(new TotalesDto
                     {
                         CurrencyId = documento.Moneda,
