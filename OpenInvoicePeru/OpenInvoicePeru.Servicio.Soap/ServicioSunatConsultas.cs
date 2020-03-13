@@ -3,12 +3,13 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using OpenInvoicePeru.Comun.Constantes;
 using OpenInvoicePeru.Servicio.Soap.Consultas;
+using OpenInvoicePeru.Servicio.Soap.Documentos;
 
 namespace OpenInvoicePeru.Servicio.Soap
 {
     public class ServicioSunatConsultas : IServicioSunatConsultas
     {
-        private billServiceClient _proxyConsultas;
+        private BizlinksOSEClient _proxyConsultas;
 
         Binding CreateBinding()
         {
@@ -24,7 +25,7 @@ namespace OpenInvoicePeru.Servicio.Soap
             System.Net.ServicePointManager.Expect100Continue = false;
             System.Net.ServicePointManager.CheckCertificateRevocationList = true;
 
-            _proxyConsultas = new billServiceClient(CreateBinding(), new EndpointAddress(parametros.EndPointUrl))
+            _proxyConsultas = new BizlinksOSEClient(CreateBinding(), new EndpointAddress(parametros.EndPointUrl))
             {
                 ClientCredentials =
                 {
@@ -44,19 +45,23 @@ namespace OpenInvoicePeru.Servicio.Soap
             try
             {
                 _proxyConsultas.Open();
-                var resultado = _proxyConsultas.getStatusCdr(request.RucEmisor,
-                    request.TipoComprobante,
-                    request.Serie,
-                    request.Numero);
+                
+                var resultado = _proxyConsultas.getStatusCdr(new StatusCdr
+                {
+                    rucComprobante = request.RucEmisor,
+                    tipoComprobante = request.TipoComprobante,
+                    numeroComprobante = request.Numero.ToString()
+                        .PadLeft(8,'0')
+                        .Substring(0,8),
+                    serieComprobante = request.Serie
+                });
 
                 _proxyConsultas.Close();
 
-                response.CodigoRetorno = resultado.statusCode;
-                if (resultado.content != null)
-                    response.ConstanciaDeRecepcion = Convert.ToBase64String(resultado.content);
+                if (resultado != null)
+                    response.ConstanciaDeRecepcion = Convert.ToBase64String(resultado);
 
-                response.Exito = resultado.content != null;
-                response.MensajeError = resultado.statusMessage;
+                response.Exito = resultado != null;
             }
             catch (FaultException ex)
             {
