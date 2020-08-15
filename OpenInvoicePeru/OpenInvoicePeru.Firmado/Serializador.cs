@@ -95,7 +95,7 @@ namespace OpenInvoicePeru.Firmado
                     {
                         foreach (var entry in zipFile.Entries)
                         {
-                            if (!entry.Name.EndsWith(".xml")) continue;
+                            if (!entry.Name.ToUpper().EndsWith(".XML")) continue;
                             using (var ms = entry.Open())
                             {
                                 var responseReader = new StreamReader(ms);

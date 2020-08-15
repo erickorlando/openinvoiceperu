@@ -182,8 +182,8 @@ namespace OpenInvoicePeru.Xml
                 }));
             }
 
-            if (!string.IsNullOrEmpty(documento.FechaVencimiento))
-                creditNote.DueDate = DateTime.Parse(documento.FechaVencimiento);
+            //if (!string.IsNullOrEmpty(documento.FechaVencimiento))
+            //    creditNote.DueDate = DateTime.Parse(documento.FechaVencimiento);
 
             if (documento.TotalIsc > 0)
             {
@@ -221,8 +221,19 @@ namespace OpenInvoicePeru.Xml
                     ResponseCode = discrepancia.Tipo,
                     Description = discrepancia.Descripcion
                 });
+                if (!documento.Relacionados.Any())
+                {
+                    creditNote.BillingReferences.Add(new BillingReference
+                    {
+                        InvoiceDocumentReference = new InvoiceDocumentReference
+                        {
+                            Id = discrepancia.NroReferencia,
+                            DocumentTypeCode = discrepancia.NroReferencia.StartsWith("F") ? "01" : "03"
+                        }
+                    });
+                }
             }
-
+           
             foreach (var relacionado in documento.Relacionados)
             {
                 creditNote.BillingReferences.Add(new BillingReference

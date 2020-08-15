@@ -70,15 +70,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Service References\Consultas\billConsultService.wsdl" />
-    <None Include="Service References\Consultas\billConsultService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\Consultas\billConsultService1.wsdl" />
+    <None Include="Service References\Consultas\bizlinksOSE.wsdl" />
     <None Include="Service References\Consultas\OpenInvoicePeru.Servicio.Soap.Consultas.getStatusCdrResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Consultas\OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Consultas\OpenInvoicePeru.Servicio.Soap.Consultas.sendBillResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Consultas\OpenInvoicePeru.Servicio.Soap.Consultas.sendPackResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\Consultas\OpenInvoicePeru.Servicio.Soap.Consultas.sendSummaryResponse.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\Consultas\OpenInvoicePeru.Servicio.Soap.Consultas.statusResponse.datasource">

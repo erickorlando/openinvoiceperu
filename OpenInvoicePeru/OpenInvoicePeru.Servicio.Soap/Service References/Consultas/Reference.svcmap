@@ -19,12 +19,10 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="https://www.sunat.gob.pe/ol-it-wsconscpegem/billConsultService?wsdl" Protocol="http" SourceId="1" />
+    <MetadataSource Address="https://ose.bizlinks.com.pe/ol-ti-itcpe/billService?wsdl" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="billConsultService.wsdl" MetadataType="Wsdl" ID="0fb663e6-5286-4e5e-a94f-3d86129ea2db" SourceId="1" SourceUrl="https://www.sunat.gob.pe/ol-it-wsconscpegem/billConsultService?wsdl=1" />
-    <MetadataFile FileName="billConsultService1.wsdl" MetadataType="Wsdl" ID="4e5db459-b6a4-4a47-9469-d50a1972b623" SourceId="1" SourceUrl="https://www.sunat.gob.pe/ol-it-wsconscpegem/billConsultService?wsdl" />
-    <MetadataFile FileName="billConsultService.xsd" MetadataType="Schema" ID="d1faca07-7ca2-4fc0-b9c5-3cbdac6c1585" SourceId="1" SourceUrl="https://www.sunat.gob.pe/ol-it-wsconscpegem/billConsultService?xsd=1" />
+    <MetadataFile FileName="bizlinksOSE.wsdl" MetadataType="Wsdl" ID="62da0ad6-700b-4949-8189-1a68c5a91b3b" SourceId="1" SourceUrl="https://ose.bizlinks.com.pe/ol-ti-itcpe/billService?wsdl" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
