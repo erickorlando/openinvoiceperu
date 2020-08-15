@@ -424,6 +424,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             {
                 writer.WriteStartElement("cac:PaymentMeans");
                 {
+                    writer.WriteElementString("cbc:ID", "Detraccion");
                     writer.WriteElementString("cbc:PaymentMeansCode", PaymentMeansCode); // Medio de Pago (Catalogo 59)
                     writer.WriteStartElement("cac:PayeeFinancialAccount");
                     {
@@ -434,6 +435,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 writer.WriteEndElement();
                 writer.WriteStartElement("cac:PaymentTerms");
                 {
+                    writer.WriteElementString("cbc:ID", "Detraccion");
                     writer.WriteStartElement("cbc:PaymentMeansID");
                     {
                         writer.WriteAttributeString("schemeName", ValoresUbl.PaymentMeansSchemeName);

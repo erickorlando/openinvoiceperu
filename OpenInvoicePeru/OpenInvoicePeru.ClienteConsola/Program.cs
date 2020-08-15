@@ -19,24 +19,24 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
             CrearFactura();
-            CrearBoleta();
+            //CrearBoleta();
             CrearResumenDiario();
-            ////CrearFacturaConDetraccionTransportes();
+            //CrearFacturaConDetraccionTransportes();
 
-            var documento = new DocumentoElectronico
-            {
-                IdDocumento = "B001-124",
-                TipoDocumento = "03",
-                Emisor = new Compania
-                {
-                    NroDocumento = "20257471609"
-                }
-            };
+            //var documento = new DocumentoElectronico
+            //{
+            //    IdDocumento = "B001-124",
+            //    TipoDocumento = "03",
+            //    Emisor = new Compania
+            //    {
+            //        NroDocumento = "20257471609"
+            //    }
+            //};
 
-            FirmaryEnviar(documento, new DocumentoResponse
-            {
-                TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(@"C:\GitProjects\OpenInvoicePeruUBL21\OpenInvoicePeru\artifacts\B001-124.XML"))
-            });
+            //FirmaryEnviar(documento, new DocumentoResponse
+            //{
+            //    TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(@"C:\GitProjects\OpenInvoicePeruUBL21\OpenInvoicePeru\artifacts\B001-124.XML"))
+            //});
 
             //ConsultarTicket("300000005449503", "20454791887");
 
@@ -47,10 +47,10 @@ namespace OpenInvoicePeru.ClienteConsola
         {
             return new Compania
             {
-                NroDocumento = "20257471609",
+                NroDocumento = "20167795120",
                 TipoDocumento = "6",
-                NombreComercial = "FRAMEWORK PERU",
-                NombreLegal = "EMPRESA DE SOFTWARE S.A.C.",
+                NombreComercial = "INVERSIONES ANCONA",
+                NombreLegal = "INVERSIONES ANCONA S.A.C",
                 CodigoAnexo = "0001"
             };
         }
@@ -81,19 +81,19 @@ namespace OpenInvoicePeru.ClienteConsola
                     Emisor = CrearEmisor(),
                     Receptor = new Compania
                     {
-                        NroDocumento = "20100039207",
+                        NroDocumento = "20100121809",
                         TipoDocumento = "6",
-                        NombreLegal = "RANSA COMERCIAL S.A."
+                        NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
                     },
-                    IdDocumento = "FF11-008",
-                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    IdDocumento = "FM01-00003422",
+                    FechaEmision = "2020-07-07",  // DateTime.Today.ToString(FormatoFecha),
                     HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
-                    Moneda = "PEN",
+                    Moneda = "USD",
                     TipoDocumento = "01",
-                    TotalIgv = 125.7264m,
-                    TotalVenta = 824.2064m,
-                    TotalOtrosTributos = 0.10m,
-                    Gravadas = 698.48m,
+                    TotalIgv = 300.6m,
+                    TotalVenta = 1967.06m,
+                    Gravadas = 1667m,
+                    Gratuitas = 300m,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
