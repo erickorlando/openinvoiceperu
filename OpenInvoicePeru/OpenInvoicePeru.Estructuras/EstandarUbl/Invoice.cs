@@ -5,6 +5,7 @@ using OpenInvoicePeru.Estructuras.CommonExtensionComponents;
 using OpenInvoicePeru.Estructuras.SunatAggregateComponents;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -845,6 +846,9 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                             writer.WriteAttributeString("currencyID", taxSubTotal.TaxAmount.CurrencyId);
                                             var monto = invoiceLine.Price.PriceAmount.Value *
                                                         invoiceLine.InvoicedQuantity.Value;
+                                            if (monto == 0)
+                                                monto = invoiceLine.PricingReference.AlternativeConditionPrices
+                                                    .First().PriceAmount.Value * invoiceLine.InvoicedQuantity.Value;
 
                                             writer.WriteValue(monto.ToString(Formatos.FormatoNumericoExtenso, Formato));
                                         }

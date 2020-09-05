@@ -649,7 +649,7 @@ namespace OpenInvoicePeru.Xml
                     {
                         CurrencyId = documento.Moneda,
                         // Comprobamos que sea una operacion gratuita.
-                        Value = documento.Gratuitas > 0 ? 0 : detalleDocumento.PrecioReferencial
+                        Value = detalleDocumento.PrecioReferencial
                     },
                     PriceTypeCode = detalleDocumento.TipoPrecio
                 });
