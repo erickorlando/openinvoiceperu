@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xsd:schema xmlns:ns0="http://service.sunat.gob.pe" targetNamespace="http://service.sunat.gob.pe" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <xsd:complexType name="getStatus">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="rucComprobante" type="xsd:string" />
+      <xsd:element minOccurs="0" name="tipoComprobante" type="xsd:string" />
+      <xsd:element minOccurs="0" name="serieComprobante" type="xsd:string" />
+      <xsd:element minOccurs="0" name="numeroComprobante" type="xsd:int" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getStatusResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="status" type="ns0:statusResponse" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getStatusCdrResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="statusCdr" type="ns0:statusResponse" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="statusResponse">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="content" type="xsd:base64Binary" />
+      <xsd:element minOccurs="0" name="statusCode" type="xsd:string" />
+      <xsd:element minOccurs="0" name="statusMessage" type="xsd:string" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="getStatusCdr">
+    <xsd:sequence>
+      <xsd:element minOccurs="0" name="rucComprobante" type="xsd:string" />
+      <xsd:element minOccurs="0" name="tipoComprobante" type="xsd:string" />
+      <xsd:element minOccurs="0" name="serieComprobante" type="xsd:string" />
+      <xsd:element minOccurs="0" name="numeroComprobante" type="xsd:int" />
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="getStatus" type="ns0:getStatus" />
+  <xsd:element name="getStatusResponse" type="ns0:getStatusResponse" />
+  <xsd:element name="getStatusCdrResponse" type="ns0:getStatusCdrResponse" />
+  <xsd:element name="getStatusCdr" type="ns0:getStatusCdr" />
+</xsd:schema>
