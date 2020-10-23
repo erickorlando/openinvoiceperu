@@ -222,6 +222,18 @@ namespace OpenInvoicePeru.Xml
                     ResponseCode = discrepancia.Tipo,
                     Description = discrepancia.Descripcion
                 });
+
+                if (!documento.Relacionados.Any())
+                {
+                    debitNote.BillingReferences.Add(new BillingReference
+                    {
+                        InvoiceDocumentReference = new InvoiceDocumentReference
+                        {
+                            Id = discrepancia.NroReferencia,
+                            DocumentTypeCode = "01"
+                        }
+                    });
+                }
             }
 
             foreach (var relacionado in documento.Relacionados)
@@ -235,6 +247,7 @@ namespace OpenInvoicePeru.Xml
                     }
                 });
             }
+
 
             foreach (var relacionado in documento.OtrosDocumentosRelacionados)
             {

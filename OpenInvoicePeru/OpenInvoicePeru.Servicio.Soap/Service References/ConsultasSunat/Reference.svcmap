@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="29e533d1-c156-40c5-9ef0-9ef0f5d56bba" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings>
+      <CollectionMapping TypeName="System.Collections.Generic.List`1" Category="List" />
+    </CollectionMappings>
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="https://e-factura.sunat.gob.pe/ol-it-wsconscpegem/billConsultService?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="billConsultService.wsdl" MetadataType="Wsdl" ID="175e72a6-f573-4896-9da7-d1f20307a907" SourceId="1" SourceUrl="https://e-factura.sunat.gob.pe/ol-it-wsconscpegem/billConsultService?wsdl" />
+    <MetadataFile FileName="billConsultService1.wsdl" MetadataType="Wsdl" ID="cb8dc2b1-bf40-4a9b-b912-b89639c32f26" SourceId="1" SourceUrl="https://e-factura.sunat.gob.pe/ol-it-wsconscpegem/billConsultService?wsdl=1" />
+    <MetadataFile FileName="billConsultService.xsd" MetadataType="Schema" ID="1ee45c93-e50d-4d0e-bdfd-721efb9d0ed2" SourceId="1" SourceUrl="https://e-factura.sunat.gob.pe/ol-it-wsconscpegem/billConsultService?xsd=1" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>
