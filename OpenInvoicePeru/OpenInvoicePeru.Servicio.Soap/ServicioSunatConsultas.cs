@@ -3,6 +3,7 @@ using System.ServiceModel;
 using System.ServiceModel.Channels;
 using OpenInvoicePeru.Comun.Constantes;
 using OpenInvoicePeru.Servicio.Soap.Consultas;
+using OpenInvoicePeru.Servicio.Soap.ConsultasSunat;
 using OpenInvoicePeru.Servicio.Soap.Documentos;
 
 namespace OpenInvoicePeru.Servicio.Soap
@@ -10,6 +11,7 @@ namespace OpenInvoicePeru.Servicio.Soap
     public class ServicioSunatConsultas : IServicioSunatConsultas
     {
         private BizlinksOSEClient _proxyConsultas;
+        private ConsultasSunat.billServiceClient _proxySunatConsultas;
 
         Binding CreateBinding()
         {
@@ -25,9 +27,10 @@ namespace OpenInvoicePeru.Servicio.Soap
             System.Net.ServicePointManager.Expect100Continue = false;
             System.Net.ServicePointManager.CheckCertificateRevocationList = true;
 
-            _proxyConsultas = new BizlinksOSEClient(CreateBinding(), new EndpointAddress(parametros.EndPointUrl))
-            {
-                ClientCredentials =
+            if (!parametros.EndPointUrl.Contains("sunat"))
+                _proxyConsultas = new BizlinksOSEClient(CreateBinding(), new EndpointAddress(parametros.EndPointUrl))
+                {
+                    ClientCredentials =
                 {
                     UserName =
                     {
@@ -35,7 +38,19 @@ namespace OpenInvoicePeru.Servicio.Soap
                         Password = parametros.Password
                     }
                 }
-            };
+                };
+            else
+                _proxySunatConsultas = new ConsultasSunat.billServiceClient(CreateBinding(), new EndpointAddress(parametros.EndPointUrl))
+                {
+                    ClientCredentials =
+                {
+                    UserName =
+                    {
+                        UserName = parametros.Ruc + parametros.UserName,
+                        Password = parametros.Password
+                    }
+                }
+                };
         }
 
         RespuestaSincrono IServicioSunatConsultas.ConsultarConstanciaDeRecepcion(DatosDocumento request)
@@ -44,24 +59,47 @@ namespace OpenInvoicePeru.Servicio.Soap
 
             try
             {
-                _proxyConsultas.Open();
-                
-                var resultado = _proxyConsultas.getStatusCdr(new StatusCdr
+                if (_proxyConsultas != null)
                 {
-                    rucComprobante = request.RucEmisor,
-                    tipoComprobante = request.TipoComprobante,
-                    numeroComprobante = request.Numero.ToString()
-                        .PadLeft(8,'0')
-                        .Substring(0,8),
-                    serieComprobante = request.Serie
-                });
+                    _proxyConsultas.Open();
 
-                _proxyConsultas.Close();
+                    var resultado = _proxyConsultas.getStatusCdr(new StatusCdr
+                    {
+                        rucComprobante = request.RucEmisor,
+                        tipoComprobante = request.TipoComprobante,
+                        numeroComprobante = request.Numero.ToString()
+                            .PadLeft(8, '0')
+                            .Substring(0, 8),
+                        serieComprobante = request.Serie
+                    });
 
-                if (resultado != null)
-                    response.ConstanciaDeRecepcion = Convert.ToBase64String(resultado);
+                    _proxyConsultas.Close();
 
-                response.Exito = resultado != null;
+                    if (resultado != null)
+                        response.ConstanciaDeRecepcion = Convert.ToBase64String(resultado);
+
+                    response.Exito = resultado != null;
+                }
+
+                if (_proxySunatConsultas != null)
+                {
+                    _proxySunatConsultas.Open();
+
+                    var resultado = _proxySunatConsultas.getStatusCdr(
+                        request.RucEmisor,
+                        request.TipoComprobante,
+                        request.Serie,
+                        Convert.ToInt32(request.Numero)
+                    );
+
+                    _proxySunatConsultas.Close();
+
+                    if (resultado.content != null)
+                        response.ConstanciaDeRecepcion = Convert.ToBase64String(resultado.content);
+
+                    response.Exito = resultado.statusCode != "98";
+                }
+
             }
             catch (FaultException ex)
             {

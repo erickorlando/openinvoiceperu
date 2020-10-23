@@ -123,8 +123,9 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteElementString("cbc:ID", Id);
             writer.WriteElementString("cbc:IssueDate", IssueDate.ToString(Formatos.FormatoFecha));
             writer.WriteElementString("cbc:IssueTime", IssueTime.ToString(Formatos.FormatoHora));
-            if (DueDate != null)
-                writer.WriteElementString("cbc:DueDate", DueDate?.ToString(Formatos.FormatoFecha));
+            // Parece que SUNAT quitó el DueDate, se remueve.
+            //if (DueDate != null)
+            //    writer.WriteElementString("cbc:DueDate", DueDate?.ToString(Formatos.FormatoFecha));
 
             if (!string.IsNullOrEmpty(Note))
             {
