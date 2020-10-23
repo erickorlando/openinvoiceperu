@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using OpenInvoicePeru.Comun.Constantes;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using System.IO.Compression;
+using System.Text;
 
 namespace OpenInvoicePeru.Firmado
 {
@@ -111,13 +112,28 @@ namespace OpenInvoicePeru.Firmado
                                     xmlnsManager.AddNamespace("cac", EspacioNombres.cac);
                                     xmlnsManager.AddNamespace("cbc", EspacioNombres.cbc);
 
+                                    var respuestaXml = new StringBuilder();
+
+                                    var warningNodes = xmlDoc.SelectNodes("/ar:ApplicationResponse/cbc:Note", xmlnsManager);
+
+                                    if (warningNodes?.Count > 0)
+                                    {
+                                        respuestaXml.AppendLine("Observaciones: ");
+                                        foreach (XmlNode warningNode in warningNodes)
+                                        {
+                                            respuestaXml.AppendLine(warningNode.InnerText);
+                                        }
+                                    }
+
+                                    respuestaXml.AppendLine(xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
+                                        xmlnsManager)?.InnerText);
+
                                     response.CodigoRespuesta =
                                         xmlDoc.SelectSingleNode(EspacioNombres.nodoResponseCode,
                                             xmlnsManager)?.InnerText;
 
-                                    response.MensajeRespuesta =
-                                        xmlDoc.SelectSingleNode(EspacioNombres.nodoDescription,
-                                            xmlnsManager)?.InnerText;
+                                    response.MensajeRespuesta = respuestaXml.ToString();
+                                    respuestaXml.Length = 0;
 
                                     response.NroTicketCdr =
                                         xmlDoc.SelectSingleNode(EspacioNombres.nodoId,
