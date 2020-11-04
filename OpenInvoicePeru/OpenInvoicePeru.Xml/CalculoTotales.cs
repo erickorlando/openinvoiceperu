@@ -1,6 +1,7 @@
 ﻿using OpenInvoicePeru.Estructuras.CommonAggregateComponents;
 using OpenInvoicePeru.Estructuras.CommonBasicComponents;
 using System.Collections.Generic;
+using System.IO;
 
 namespace OpenInvoicePeru.Xml
 {
@@ -40,7 +41,7 @@ namespace OpenInvoicePeru.Xml
                     },
                     TaxCategory = new TaxCategory
                     {
-                        Id = totalesDto.CategoryId,
+                        Id = totalesDto.CategoryId == "Z" ? string.Empty : totalesDto.CategoryId,
                         TaxScheme = new TaxScheme
                         {
                             Id = totalesDto.TaxSchemeId,

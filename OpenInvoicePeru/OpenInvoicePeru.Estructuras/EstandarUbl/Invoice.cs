@@ -844,11 +844,20 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                         writer.WriteStartElement("cbc:TaxableAmount");
                                         {
                                             writer.WriteAttributeString("currencyID", taxSubTotal.TaxAmount.CurrencyId);
-                                            var monto = invoiceLine.Price.PriceAmount.Value *
-                                                        invoiceLine.InvoicedQuantity.Value;
-                                            if (monto == 0)
-                                                monto = invoiceLine.PricingReference.AlternativeConditionPrices
-                                                    .First().PriceAmount.Value * invoiceLine.InvoicedQuantity.Value;
+                                            decimal monto;
+
+                                            if (taxSubTotal.TaxableAmount.Value > 0)
+                                                monto = taxSubTotal.TaxableAmount.Value;
+                                            else
+                                            {
+                                                monto = invoiceLine.Price.PriceAmount.Value * invoiceLine.InvoicedQuantity.Value;
+                                                if (monto == 0)
+                                                    monto = invoiceLine.PricingReference
+                                                                .AlternativeConditionPrices
+                                                                .First().PriceAmount.Value 
+                                                            * invoiceLine.InvoicedQuantity.Value;
+                                            }
+
 
                                             writer.WriteValue(monto.ToString(Formatos.FormatoNumericoExtenso, Formato));
                                         }
