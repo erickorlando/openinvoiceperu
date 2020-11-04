@@ -35,6 +35,9 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         [JsonProperty(Required = Required.Always)]
         public decimal Impuesto { get; set; }
 
+        [JsonProperty(Required = Required.AllowNull)]
+        public decimal? BaseImponible { get; set; }
+
         public decimal ImpuestoSelectivo { get; set; }
 
         public decimal TasaImpuestoSelectivo { get; set; }

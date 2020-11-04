@@ -600,6 +600,7 @@ namespace OpenInvoicePeru.Xml
                     {
                         CurrencyId = documento.Moneda,
                         Monto = detalleDocumento.Impuesto,
+                        MontoBase = detalleDocumento.BaseImponible ?? 0,
                         CategoryId = AfectacionImpuesto.ObtenerLetraTributo(detalleDocumento.TipoImpuesto),
                         TaxPercent = AfectacionImpuesto.ObtenerTasa(detalleDocumento.TipoImpuesto),
                         TaxExemptionReasonCode = detalleDocumento.TipoImpuesto,
