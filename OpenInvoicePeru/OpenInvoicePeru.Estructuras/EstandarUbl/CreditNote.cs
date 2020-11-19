@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -624,10 +625,19 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                     writer.WriteStartElement("cbc:TaxableAmount");
                                     {
                                         writer.WriteAttributeString("currencyID", taxSubTotal.TaxAmount.CurrencyId);
-                                        //var monto = creditNoteLine.Price.PriceAmount.Value *
-                                        //            creditNoteLine.CreditedQuantity.Value;
+                                        decimal monto;
 
-                                        var monto = creditNoteLine.LineExtensionAmount.Value;
+                                        if (taxSubTotal.TaxableAmount.Value > 0)
+                                            monto = taxSubTotal.TaxableAmount.Value;
+                                        else
+                                        {
+                                            monto = creditNoteLine.Price.PriceAmount.Value * creditNoteLine.InvoicedQuantity.Value;
+                                            if (monto == 0)
+                                                monto = creditNoteLine.PricingReference
+                                                            .AlternativeConditionPrices
+                                                            .First().PriceAmount.Value
+                                                        * creditNoteLine.InvoicedQuantity.Value;
+                                        }
                                         writer.WriteValue(monto.ToString(Formatos.FormatoNumerico, Formato));
                                     }
                                     writer.WriteEndElement();
