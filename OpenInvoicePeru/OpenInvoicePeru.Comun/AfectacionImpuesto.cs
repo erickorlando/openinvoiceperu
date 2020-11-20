@@ -141,7 +141,7 @@ namespace OpenInvoicePeru.Comun
                     descripcionTributo = "GRA";
                     break;
                 case "30":
-                    descripcionTributo = "FRE";
+                    descripcionTributo = "INA";
                     break;
                 case "31":
                     descripcionTributo = "GRA";
@@ -191,7 +191,7 @@ namespace OpenInvoicePeru.Comun
                     descripcionTributo = "FRE";
                     break;
                 case "30":
-                    descripcionTributo = "INA";
+                    descripcionTributo = "FRE";
                     break;
                 case "31":
                     descripcionTributo = "FRE";

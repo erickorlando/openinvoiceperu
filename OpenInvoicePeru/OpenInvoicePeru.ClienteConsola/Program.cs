@@ -360,8 +360,9 @@ namespace OpenInvoicePeru.ClienteConsola
                     Moneda = "USD",
                     TipoDocumento = "07",
                     TotalIgv = 435.60m,
-                    TotalVenta = 2855.60m,
+                    TotalVenta = 2865.60m,
                     Gravadas = 2420m,
+                    Inafectas = 10,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
@@ -370,6 +371,7 @@ namespace OpenInvoicePeru.ClienteConsola
                             Cantidad = 1,
                             PrecioReferencial = 2420.0m,
                             PrecioUnitario = 2420m,
+                            BaseImponible = 2420M,
                             TipoPrecio = "01",
                             CodigoItem = "2435675",
                             Descripcion = "Dproc (CCD)",
@@ -377,7 +379,22 @@ namespace OpenInvoicePeru.ClienteConsola
                             Impuesto = 435.60m,
                             TipoImpuesto = "10", // Gravada
                             TotalVenta = 2420m,
-                        }
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 1,
+                            PrecioReferencial = 10m,
+                            PrecioUnitario = 10m,
+                            BaseImponible = 0M,
+                            TipoPrecio = "01",
+                            CodigoItem = "98915",
+                            Descripcion = "equis",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 0m,
+                            TipoImpuesto = "30", // Inafecta
+                            TotalVenta = 10M
+                        },
                     },
                     Discrepancias = new List<Discrepancia>
                     {
