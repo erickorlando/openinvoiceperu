@@ -19,11 +19,12 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
             //CrearFactura();
+            CrearFacturaConAnticipo();
             //CrearBoleta();
             //CrearResumenDiario();
             //CrearFacturaConDetraccionTransportes();
-            CrearNotaCredito();
-            CrearNotaDebito();
+            //CrearNotaCredito();
+            //CrearNotaDebito();
 
             //var documento = new DocumentoElectronico
             //{
@@ -685,6 +686,112 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.WriteLine("Nro de Ticket: {0}", enviarResumenResponse.NroTicket);
 
                 ConsultarTicket(enviarResumenResponse.NroTicket, documentoBaja.Emisor.NroDocumento);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        private static void CrearFacturaConAnticipo()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura de Anticipo Y Regularización del mismo (FF60-1500 y FF60-1501)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20565211600",
+                        TipoDocumento = "6",
+                        NombreLegal = "WASPE PERU S.A.C."
+                    },
+                    IdDocumento = "FF60-1500",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    FechaVencimiento = DateTime.Today.AddDays(7).ToString(FormatoFecha),
+                    Moneda = "PEN",
+                    TipoDocumento = "01",
+                    TipoOperacion = "0101",
+                    TotalIgv = 90,
+                    TotalVenta = 590,
+                    Gravadas = 500,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 1,
+                            PrecioReferencial = 590,
+                            BaseImponible = 500,
+                            PrecioUnitario = 500,
+                            TipoPrecio = "01",
+                            CodigoItem = "DES-02",
+                            Descripcion = "OPENINVOICEPERU UBL 2.1 ANTICIPO 50%",
+                            UnidadMedida = "NIU",
+                            Impuesto = 90,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 500 // (PrecioUnitario * Cantidad) + IGV
+                        }
+                    }
+                };
+
+                var documentoRegularizador = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20565211600",
+                        TipoDocumento = "6",
+                        NombreLegal = "WASPE PERU S.A.C."
+                    },
+                    IdDocumento = "FF60-1501",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "01",
+                    TipoOperacion = "0101",
+                    Anticipos = new List<Anticipo>
+                    {
+                        new Anticipo
+                        {
+                            DocAnticipo = "FF60-1500", //Especificamos el Documento Previo
+                            MonedaAnticipo = "PEN", //Moneda del Documento Anterior
+                            MontoAnticipo = 500, //Monto Pagado previamente
+                            TipoDocAnticipo = "02", // Tipo de Documento del Anticipo (Catalogo 12),
+                        }
+                    },
+                    MontoTotalAnticipo = 500,
+                    TotalIgv = 360,
+                    TotalVenta = 2360,
+                    Gravadas = 2000,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 1,
+                            PrecioReferencial = 2360,
+                            PrecioUnitario = 2000,
+                            TipoPrecio = "01",
+                            CodigoItem = "DES-02",
+                            Descripcion = "OPENINVOICEPERU UBL 2.1",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 360,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 2000, // (PrecioUnitario * Cantidad)
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+
+                FirmaryEnviar(documentoRegularizador, GenerarDocumento(documentoRegularizador));
             }
             catch (Exception ex)
             {
