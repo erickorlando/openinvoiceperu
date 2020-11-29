@@ -18,7 +18,7 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            //CrearFactura();
+            CrearFactura();
             CrearFacturaConAnticipo();
             //CrearBoleta();
             //CrearResumenDiario();
@@ -28,17 +28,17 @@ namespace OpenInvoicePeru.ClienteConsola
 
             //var documento = new DocumentoElectronico
             //{
-            //    IdDocumento = "B001-124",
-            //    TipoDocumento = "03",
+            //    IdDocumento = "FFF1-15",
+            //    TipoDocumento = "01",
             //    Emisor = new Compania
             //    {
-            //        NroDocumento = "20257471609"
+            //        NroDocumento = "20600695771"
             //    }
             //};
 
             //FirmaryEnviar(documento, new DocumentoResponse
             //{
-            //    TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(@"C:\GitProjects\OpenInvoicePeruUBL21\OpenInvoicePeru\artifacts\B001-124.XML"))
+            //    TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(@"C:\GitProjects\Tipos de comprobantes\EJEMPLO XML FACTURA 15 ANTICIPO REGULARIZACION.xml"))
             //});
 
             //ConsultarTicket("300000005449503", "20454791887");
@@ -736,7 +736,7 @@ namespace OpenInvoicePeru.ClienteConsola
                             UnidadMedida = "NIU",
                             Impuesto = 90,
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 500 // (PrecioUnitario * Cantidad) + IGV
+                            TotalVenta = 500 // (PrecioUnitario * Cantidad)
                         }
                     }
                 };
