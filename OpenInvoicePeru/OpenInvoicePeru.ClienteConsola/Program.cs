@@ -18,10 +18,12 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            CrearFactura();
+            //CrearFactura();
             //CrearBoleta();
-            CrearResumenDiario();
+            //CrearResumenDiario();
             //CrearFacturaConDetraccionTransportes();
+            CrearNotaCredito();
+            CrearNotaDebito();
 
             //var documento = new DocumentoElectronico
             //{
@@ -335,6 +337,167 @@ namespace OpenInvoicePeru.ClienteConsola
             }
         }
 
+        private static void CrearNotaCredito()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Nota de Crédito de Factura (FN11-001)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20335955065",
+                        TipoDocumento = "6",
+                        NombreLegal = "MEDIA NETWORKS LATIN AMERICA S.A.C.",
+                        CodigoAnexo = ""
+                    },
+                    IdDocumento = "FC01-00000178",
+                    FechaEmision = DateTime.Today.AddDays(-5).ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    FechaVencimiento = "2020-02-29",
+                    MontoEnLetras = string.Empty,
+                    Moneda = "USD",
+                    TipoDocumento = "07",
+                    TotalIgv = 435.60m,
+                    TotalVenta = 2865.60m,
+                    Gravadas = 2420m,
+                    Inafectas = 10,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 1,
+                            PrecioReferencial = 2420.0m,
+                            PrecioUnitario = 2420m,
+                            BaseImponible = 2420M,
+                            TipoPrecio = "01",
+                            CodigoItem = "2435675",
+                            Descripcion = "Dproc (CCD)",
+                            UnidadMedida = "NIU",
+                            Impuesto = 435.60m,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 2420m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 1,
+                            PrecioReferencial = 10m,
+                            PrecioUnitario = 10m,
+                            BaseImponible = 0M,
+                            TipoPrecio = "01",
+                            CodigoItem = "98915",
+                            Descripcion = "equis",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 0m,
+                            TipoImpuesto = "30", // Inafecta
+                            TotalVenta = 10M
+                        },
+                    },
+                    Discrepancias = new List<Discrepancia>
+                    {
+                        new Discrepancia
+                        {
+                            NroReferencia = "FM01-00001318",
+                            Tipo = "01",
+                            Descripcion = "CANCELACION TOTAL"
+                        }
+                    },
+                    //Relacionados = new List<DocumentoRelacionado>
+                    //{
+                    //    new DocumentoRelacionado
+                    //    {
+                    //        NroDocumento = "FF11-001",
+                    //        TipoDocumento = "01"
+                    //    }
+                    //}
+                };
+
+                File.WriteAllText("notacredito.json", Newtonsoft.Json.JsonConvert.SerializeObject(documento));
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        private static void CrearNotaDebito()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Nota de Débito de Factura (FD11-001)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20257471609",
+                        TipoDocumento = "6",
+                        NombreLegal = "FRAMEWORK PERU"
+                    },
+                    IdDocumento = "FD11-001",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "08",
+                    TotalIgv = 0.76m,
+                    TotalVenta = 5,
+                    Gravadas = 4.24m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 1,
+                            PrecioReferencial = 4.24m,
+                            PrecioUnitario = 4.24m,
+                            TipoPrecio = "01",
+                            CodigoItem = "2435675",
+                            Descripcion = "Penalidad por atraso de pago",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0.76m,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 5,
+                        }
+                    },
+                    Discrepancias = new List<Discrepancia>
+                    {
+                        new Discrepancia
+                        {
+                            NroReferencia = "FF11-001",
+                            Tipo = "03",
+                            Descripcion = "Penalidad por falta de pago"
+                        }
+                    },
+                    Relacionados = new List<DocumentoRelacionado>
+                    {
+                        new DocumentoRelacionado
+                        {
+                            NroDocumento = "FF11-001",
+                            TipoDocumento = "01"
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
         private static void CrearResumenDiario()
         {
             try

@@ -1,4 +1,6 @@
-﻿namespace OpenInvoicePeru.Comun
+﻿using System.Security.Cryptography;
+
+namespace OpenInvoicePeru.Comun
 {
     public class AfectacionImpuesto
     {
@@ -54,6 +56,7 @@
                     break;
                 case "21":
                 case "30":
+                case "31":
                     tasa = 0.00m;
                     break;
                 default:
@@ -87,10 +90,10 @@
                     codigoTributo = "9997";
                     break;
                 case "21": //Exonerado - Operación Onerosa 
+                case "31": //Inafecto - Bonificacion
                     codigoTributo = "9996";
                     break;
                 case "30":
-                case "31":
                     codigoTributo = "9998";
                     break;
                 case "32":
@@ -138,7 +141,11 @@
                     descripcionTributo = "GRA";
                     break;
                 case "30":
+                    descripcionTributo = "INA";
+                    break;
                 case "31":
+                    descripcionTributo = "GRA";
+                    break;
                 case "32":
                 case "33":
                 case "34":
@@ -184,7 +191,11 @@
                     descripcionTributo = "FRE";
                     break;
                 case "30":
+                    descripcionTributo = "FRE";
+                    break;
                 case "31":
+                    descripcionTributo = "FRE";
+                    break;
                 case "32":
                 case "33":
                 case "34":
