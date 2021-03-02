@@ -90,6 +90,11 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public IFormatProvider Formato { get; set; }
 
+        public bool Credito { get; set; }
+        public int NroCuota { get; set; }
+        public decimal MontoCuota { get; set; }
+        public string FechaCredito { get; set; }
+
         public Invoice()
         {
             AccountingSupplierParty = new AccountingSupplierParty();
@@ -455,6 +460,41 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 }
                 writer.WriteEndElement();
             }
+            #endregion
+
+            #region Credito
+
+            writer.WriteComment("Inicio Credito o al Contado");
+            writer.WriteStartElement("cac:PaymentTerms");
+            {
+                writer.WriteElementString("cbc:ID", "FormaPago");
+                writer.WriteElementString("cbc:PaymentMeansID", Credito ? "Credito" : "Contado");
+
+                if (Credito)
+                {
+                    writer.WriteStartElement("cbc:Amount");
+                    {
+                        writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
+                        writer.WriteValue(MontoCuota > 0
+                            ? MontoCuota.ToString(Formatos.FormatoNumerico)
+                            : LegalMonetaryTotal.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico));
+                    }
+
+                    writer.WriteElementString("cbc:ID", "FormaPago");
+                    writer.WriteElementString("cbc:PaymentMeansID", $"Cuota{NroCuota:000}");
+
+                    writer.WriteStartElement("cbc:Amount");
+                    {
+                        writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
+                        writer.WriteValue(MontoCuota.ToString(Formatos.FormatoNumerico));
+                    }
+
+                    writer.WriteElementString("cbc:PaymentDueDate", FechaCredito);
+                }
+            }
+            writer.WriteEndElement();
+            writer.WriteComment("Fin Credito o al Contado");
+
             #endregion
 
             #region PrepaidPayment
@@ -854,7 +894,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                                 if (monto == 0)
                                                     monto = invoiceLine.PricingReference
                                                                 .AlternativeConditionPrices
-                                                                .First().PriceAmount.Value 
+                                                                .First().PriceAmount.Value
                                                             * invoiceLine.InvoicedQuantity.Value;
                                             }
 

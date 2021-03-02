@@ -139,6 +139,11 @@ namespace OpenInvoicePeru.Xml
                 }
             };
 
+            invoice.Credito = documento.Credito;
+            invoice.NroCuota = documento.NroCuota;
+            invoice.MontoCuota = documento.MontoCuota;
+            invoice.FechaCredito = documento.FechaCredito;
+
             if (documento.TotalVenta > 0 && documento.LineExtensionAmount == 0)
             {
                 invoice.LegalMonetaryTotal.LineExtensionAmount = new PayableAmount

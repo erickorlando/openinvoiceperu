@@ -93,6 +93,11 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         [Obsolete(ObsoleteAnticipo)]
         public decimal MontoAnticipo { get; set; }
 
+        public bool Credito { get; set; }
+        public int NroCuota { get; set; }
+        public decimal MontoCuota { get; set; }
+        public string FechaCredito { get; set; }
+
         public List<DatoAdicional> DatoAdicionales { get; set; }
 
         public List<Anticipo> Anticipos { get; set; }
@@ -131,6 +136,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             Moneda = "PEN"; // Soles.
             FechaEmision = DateTime.Today.ToString("yyyy-MM-dd");
             HoraEmision = DateTime.Now.ToString("HH:mm:ss");
+            FechaCredito = DateTime.Today.ToString("yyyy-MM-dd");
         }
     }
 }

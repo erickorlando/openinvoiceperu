@@ -91,47 +91,46 @@ namespace OpenInvoicePeru.ClienteConsola
                     IdDocumento = "FM01-00003422",
                     FechaEmision = "2020-07-07",  // DateTime.Today.ToString(FormatoFecha),
                     HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
-                    Moneda = "USD",
+                    Moneda = "PEN",
                     TipoDocumento = "01",
-                    TotalIgv = 300.6m,
-                    TotalVenta = 1967.06m,
-                    Gravadas = 1667m,
-                    Gratuitas = 300m,
+                    TotalIgv = 124.2m,
+                    TotalVenta = 814.2m,
+                    Gravadas = 690m,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
                         {
                             Id = 1,
                             Cantidad = 2,
-                            PrecioReferencial = 21.19m,
-                            PrecioUnitario = 21.19m,
+                            PrecioReferencial = 23.6m,
+                            PrecioUnitario = 20m,
                             TipoPrecio = "01",
                             CodigoItem = "1234234",
                             Descripcion = "Arroz Costeño",
                             UnidadMedida = "NIU",
-                            Impuesto = 7.62m, //Impuesto del Precio * Cantidad
+                            Impuesto = 7.2m, //Impuesto del Precio * Cantidad
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 50m,
+                            TotalVenta = 47.20m,
                         },
                         new DetalleDocumento
                         {
                             Id = 2,
                             Cantidad = 10,
-                            PrecioReferencial = 45.60m,
-                            PrecioUnitario = 45.60m,
+                            PrecioReferencial = 53.1m,
+                            PrecioUnitario = 45m,
                             TipoPrecio = "01",
                             CodigoItem = "AER345667",
                             Descripcion = "Aceite Primor",
                             UnidadMedida = "NIU",
-                            Impuesto = 82.08m,
+                            Impuesto = 81m,
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 538.08m,
+                            TotalVenta = 531m,
                         },
                         new DetalleDocumento
                         {
                             Id = 3,
                             Cantidad = 10,
-                            PrecioReferencial = 20,
+                            PrecioReferencial = 23.6m,
                             PrecioUnitario = 20,
                             TipoPrecio = "01",
                             CodigoItem = "3445666777",
@@ -140,23 +139,6 @@ namespace OpenInvoicePeru.ClienteConsola
                             Impuesto = 36,
                             TipoImpuesto = "10", // Gravada
                             TotalVenta = 236,
-                        },
-                        new DetalleDocumento
-                        {
-                            Id = 4,
-                            Cantidad = 1,
-                            PrecioReferencial = 0.10m,
-                            PrecioUnitario = 0.10m,
-                            TipoPrecio = "01",
-                            CodigoItem = "BOL",
-                            Descripcion = "Bolsa Plastica",
-                            UnidadMedida = "NIU",
-                            Impuesto = 0.018m,
-                            TipoImpuesto = "10", // Gravada
-                            OtroImpuesto = 0.10m,
-                            TotalVenta = 0.20m,
-                            CantidadBolsas = 1,
-                            PrecioUnitarioBolsa = 0.10m
                         }
                     }
                 };

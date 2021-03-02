@@ -1,6 +1,4 @@
-﻿using System.Security.Cryptography;
-
-namespace OpenInvoicePeru.Comun
+﻿namespace OpenInvoicePeru.Comun
 {
     public class AfectacionImpuesto
     {
