@@ -19,7 +19,7 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
             CrearFactura();
-            CrearFacturaConAnticipo();
+            //CrearFacturaConAnticipo();
             //CrearBoleta();
             //CrearResumenDiario();
             //CrearFacturaConDetraccionTransportes();
@@ -89,56 +89,66 @@ namespace OpenInvoicePeru.ClienteConsola
                         NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
                     },
                     IdDocumento = "FM01-00003422",
-                    FechaEmision = "2020-07-07",  // DateTime.Today.ToString(FormatoFecha),
+                    FechaEmision = "2021-03-02",  // DateTime.Today.ToString(FormatoFecha),
                     HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
                     Moneda = "PEN",
                     TipoDocumento = "01",
-                    TotalIgv = 124.2m,
-                    TotalVenta = 814.2m,
-                    Gravadas = 690m,
+                    Credito = true,
+                    MontoCuota = 40,
+                    FechaCredito = "2021-03-31",
+                    NroCuota = 1,
+                    TotalIgv = 0m,
+                    TotalVenta = 40m,
+                    Exoneradas = 40m,
+                    //TotalIgv = 124.2m,
+                    //TotalVenta = 814.2m,
+                    //Gravadas = 690m,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
                         {
                             Id = 1,
                             Cantidad = 2,
-                            PrecioReferencial = 23.6m,
+                            PrecioReferencial = 20m,
                             PrecioUnitario = 20m,
+                            BaseImponible = 40,
                             TipoPrecio = "01",
                             CodigoItem = "1234234",
                             Descripcion = "Arroz Costeño",
                             UnidadMedida = "NIU",
-                            Impuesto = 7.2m, //Impuesto del Precio * Cantidad
-                            TipoImpuesto = "10", // Gravada
-                            TotalVenta = 47.20m,
-                        },
-                        new DetalleDocumento
-                        {
-                            Id = 2,
-                            Cantidad = 10,
-                            PrecioReferencial = 53.1m,
-                            PrecioUnitario = 45m,
-                            TipoPrecio = "01",
-                            CodigoItem = "AER345667",
-                            Descripcion = "Aceite Primor",
-                            UnidadMedida = "NIU",
-                            Impuesto = 81m,
-                            TipoImpuesto = "10", // Gravada
-                            TotalVenta = 531m,
-                        },
-                        new DetalleDocumento
-                        {
-                            Id = 3,
-                            Cantidad = 10,
-                            PrecioReferencial = 23.6m,
-                            PrecioUnitario = 20,
-                            TipoPrecio = "01",
-                            CodigoItem = "3445666777",
-                            Descripcion = "Shampoo Palmolive",
-                            UnidadMedida = "NIU",
-                            Impuesto = 36,
-                            TipoImpuesto = "10", // Gravada
-                            TotalVenta = 236,
+                            Impuesto = 0m, //Impuesto del Precio * Cantidad
+                            TipoImpuesto = "20", // Gravada
+                            TotalVenta = 40m,
+                        //},
+                        //new DetalleDocumento
+                        //{
+                        //    Id = 2,
+                        //    Cantidad = 10,
+                        //    PrecioReferencial = 45m,
+                        //    PrecioUnitario = 45m,
+                        //    BaseImponible = 450,
+                        //    TipoPrecio = "01",
+                        //    CodigoItem = "AER345667",
+                        //    Descripcion = "Aceite Primor",
+                        //    UnidadMedida = "NIU",
+                        //    Impuesto = 81m,
+                        //    TipoImpuesto = "10", // Gravada
+                        //    TotalVenta = 531m,
+                        //},
+                        //new DetalleDocumento
+                        //{
+                        //    Id = 3,
+                        //    Cantidad = 10,
+                        //    PrecioReferencial = 20m,
+                        //    PrecioUnitario = 20,
+                        //    BaseImponible = 200,
+                        //    TipoPrecio = "01",
+                        //    CodigoItem = "3445666777",
+                        //    Descripcion = "Shampoo Palmolive",
+                        //    UnidadMedida = "NIU",
+                        //    Impuesto = 36m,
+                        //    TipoImpuesto = "10", // Gravada
+                        //    TotalVenta = 236,
                         }
                     }
                 };

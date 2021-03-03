@@ -462,41 +462,6 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             }
             #endregion
 
-            #region Credito
-
-            writer.WriteComment("Inicio Credito o al Contado");
-            writer.WriteStartElement("cac:PaymentTerms");
-            {
-                writer.WriteElementString("cbc:ID", "FormaPago");
-                writer.WriteElementString("cbc:PaymentMeansID", Credito ? "Credito" : "Contado");
-
-                if (Credito)
-                {
-                    writer.WriteStartElement("cbc:Amount");
-                    {
-                        writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
-                        writer.WriteValue(MontoCuota > 0
-                            ? MontoCuota.ToString(Formatos.FormatoNumerico)
-                            : LegalMonetaryTotal.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico));
-                    }
-
-                    writer.WriteElementString("cbc:ID", "FormaPago");
-                    writer.WriteElementString("cbc:PaymentMeansID", $"Cuota{NroCuota:000}");
-
-                    writer.WriteStartElement("cbc:Amount");
-                    {
-                        writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
-                        writer.WriteValue(MontoCuota.ToString(Formatos.FormatoNumerico));
-                    }
-
-                    writer.WriteElementString("cbc:PaymentDueDate", FechaCredito);
-                }
-            }
-            writer.WriteEndElement();
-            writer.WriteComment("Fin Credito o al Contado");
-
-            #endregion
-
             #region PrepaidPayment
             if (PrepaidPayments != null)
                 foreach (var prepaidPayment in PrepaidPayments)
@@ -1113,6 +1078,43 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             }
 
             #endregion InvoiceLines
+
+            #region Credito
+
+            writer.WriteComment("Inicio Credito o al Contado");
+            writer.WriteStartElement("cac:PaymentTerms");
+            {
+                writer.WriteElementString("cbc:ID", "FormaPago");
+                writer.WriteElementString("cbc:PaymentMeansID", Credito ? "Credito" : "Contado");
+
+                if (Credito)
+                {
+                    writer.WriteStartElement("cbc:Amount");
+                    {
+                        writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
+                        writer.WriteValue(MontoCuota > 0
+                            ? MontoCuota.ToString(Formatos.FormatoNumerico)
+                            : LegalMonetaryTotal.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico));
+                    }
+                    writer.WriteEndElement();
+
+                    writer.WriteElementString("cbc:ID", "FormaPago");
+                    writer.WriteElementString("cbc:PaymentMeansID", $"Cuota{NroCuota:000}");
+
+                    writer.WriteStartElement("cbc:Amount");
+                    {
+                        writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
+                        writer.WriteValue(MontoCuota.ToString(Formatos.FormatoNumerico));
+                    }
+                    writer.WriteEndElement();
+
+                    writer.WriteElementString("cbc:PaymentDueDate", FechaCredito);
+                }
+            }
+            writer.WriteEndElement();
+            writer.WriteComment("Fin Credito o al Contado");
+
+            #endregion
         }
     }
 }
