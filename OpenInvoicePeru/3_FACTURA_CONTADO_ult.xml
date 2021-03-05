@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<Invoice xmlns="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2"
+       	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+       	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+       	xmlns:ccts="urn:un:unece:uncefact:documentation:2"
+       	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+       	xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+       	xmlns:qdt="urn:oasis:names:specification:ubl:schema:xsd:QualifiedDatatypes-2"
+       	xmlns:sac="urn:sunat:names:specification:ubl:peru:schema:xsd:SunatAggregateComponents-1"
+       	xmlns:udt="urn:un:unece:uncefact:data:specification:UnqualifiedDataTypesSchemaModule:2"
+       	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       	xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:Invoice-2 2.1\maindoc\UBL-Invoice-2.1.xsd">
+	<ext:UBLExtensions>
+	</ext:UBLExtensions>
+	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+	<cbc:CustomizationID schemeAgencyName="PE:SUNAT">2.0</cbc:CustomizationID>
+	<cbc:ID>FB98-01801</cbc:ID>
+	<cbc:IssueDate>2021-01-31</cbc:IssueDate>
+	<cbc:InvoiceTypeCode listID="0101"
+                   		listAgencyName="PE:SUNAT"
+                   		listName="Tipo de Documento"
+                   		name="Tipo de Operacion"
+                   		listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo01"
+                   		listSchemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo51">01</cbc:InvoiceTypeCode>
+	<cbc:Note>Observaciones del comprobante</cbc:Note>
+	<cbc:DocumentCurrencyCode listID="ISO 4217 Alpha"
+                        		listName="Currency"
+                        		listAgencyName="United Nations Economic Commission for Europe">PEN</cbc:DocumentCurrencyCode>
+	<cac:Signature>
+		<cbc:ID>IDSignKG</cbc:ID>
+		<cac:SignatoryParty>
+			<cac:PartyIdentification>
+				<cbc:ID>RUC_EMISOR</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name><![CDATA[SUNAT]]></cbc:Name>
+			</cac:PartyName>
+		</cac:SignatoryParty>
+		<cac:DigitalSignatureAttachment>
+			<cac:ExternalReference>
+				<cbc:URI>signatureKG</cbc:URI>
+			</cac:ExternalReference>
+		</cac:DigitalSignatureAttachment>
+	</cac:Signature>
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="6"
+      					schemeName="Documento de Identidad"
+      					schemeAgencyName="PE:SUNAT"
+      					schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">RUC_EMISOR</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>XXXXXXXX</cbc:Name>
+			</cac:PartyName>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX</cbc:RegistrationName>
+				<cac:RegistrationAddress>
+					<cbc:AddressTypeCode listAgencyName="PE:SUNAT"
+                   						listName="Establecimientos anexos">0000</cbc:AddressTypeCode>
+				</cac:RegistrationAddress>
+			</cac:PartyLegalEntity>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="6"
+      					schemeName="Documento de Identidad"
+      					schemeAgencyName="PE:SUNAT"
+      					schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo06">RUC_RECEPTOR</cbc:ID>
+				</cac:PartyIdentification>
+				<cac:PartyLegalEntity>
+					<cbc:RegistrationName>ZZZZZZZZZZZZZZZZZZ</cbc:RegistrationName>
+				</cac:PartyLegalEntity>
+			</cac:Party>
+		</cac:AccountingCustomerParty>
+		<cac:PaymentTerms>
+			<cbc:ID>FormaPago</cbc:ID>
+			<cbc:PaymentMeansID>Contado</cbc:PaymentMeansID>
+		</cac:PaymentTerms>
+		<cac:AllowanceCharge>
+			<cbc:ChargeIndicator>false</cbc:ChargeIndicator>
+			<cbc:AllowanceChargeReasonCode listAgencyName="PE:SUNAT"
+                             				listName="Cargo/descuento"
+                             				listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo53">62</cbc:AllowanceChargeReasonCode>
+			<cbc:MultiplierFactorNumeric>0.03</cbc:MultiplierFactorNumeric>
+			<cbc:Amount currencyID="PEN">15.0</cbc:Amount>
+			<cbc:BaseAmount currencyID="PEN">500.00</cbc:BaseAmount>
+		</cac:AllowanceCharge>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="PEN">111.31</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxableAmount currencyID="PEN">618.40</cbc:TaxableAmount>
+				<cbc:TaxAmount currencyID="PEN">111.31</cbc:TaxAmount>
+				<cac:TaxCategory>
+					<cac:TaxScheme>
+						<cbc:ID schemeName="Codigo de tributos"
+      							schemeAgencyName="PE:SUNAT"
+      							schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05">1000</cbc:ID>
+						<cbc:Name>IGV</cbc:Name>
+						<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:LegalMonetaryTotal>
+			<cbc:LineExtensionAmount currencyID="PEN">618.40</cbc:LineExtensionAmount>
+			<cbc:TaxInclusiveAmount currencyID="PEN">729.71</cbc:TaxInclusiveAmount>
+			<cbc:ChargeTotalAmount currencyID="PEN">0.00</cbc:ChargeTotalAmount>
+			<cbc:PayableAmount currencyID="PEN">729.71</cbc:PayableAmount>
+		</cac:LegalMonetaryTotal>
+		<cac:InvoiceLine>
+			<cbc:ID>1</cbc:ID>
+			<cbc:InvoicedQuantity unitCode="BX">19.0</cbc:InvoicedQuantity>
+			<cbc:LineExtensionAmount currencyID="PEN">190.00</cbc:LineExtensionAmount>
+			<cac:PricingReference>
+				<cac:AlternativeConditionPrice>
+					<cbc:PriceAmount currencyID="PEN">11.80</cbc:PriceAmount>
+					<cbc:PriceTypeCode listName="Tipo de Precio"
+                 						listAgencyName="PE:SUNAT"
+                 						listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo16">01</cbc:PriceTypeCode>
+				</cac:AlternativeConditionPrice>
+			</cac:PricingReference>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="PEN">34.20</cbc:TaxAmount>
+				<cac:TaxSubtotal>
+					<cbc:TaxableAmount currencyID="PEN">190.00</cbc:TaxableAmount>
+					<cbc:TaxAmount currencyID="PEN">34.20</cbc:TaxAmount>
+					<cac:TaxCategory>
+						<cbc:Percent>18.0</cbc:Percent>
+						<cbc:TaxExemptionReasonCode listAgencyName="PE:SUNAT"
+                          							listName="Afectacion del IGV"
+                          							listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07">10</cbc:TaxExemptionReasonCode>
+						<cac:TaxScheme>
+							<cbc:ID schemeName="Codigo de tributos"
+      								schemeAgencyName="PE:SUNAT"
+      								schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05">1000</cbc:ID>
+							<cbc:Name>IGV</cbc:Name>
+							<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+						</cac:TaxScheme>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+			<cac:Item>
+				<cbc:Description>ABC</cbc:Description>
+				<cac:SellersItemIdentification>
+					<cbc:ID>9100</cbc:ID>
+				</cac:SellersItemIdentification>
+			</cac:Item>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="PEN">10.0</cbc:PriceAmount>
+			</cac:Price>
+		</cac:InvoiceLine>
+		<cac:InvoiceLine>
+			<cbc:ID>2</cbc:ID>
+			<cbc:InvoicedQuantity unitCode="BX">10.0</cbc:InvoicedQuantity>
+			<cbc:LineExtensionAmount currencyID="PEN">224.40</cbc:LineExtensionAmount>
+			<cac:PricingReference>
+				<cac:AlternativeConditionPrice>
+					<cbc:PriceAmount currencyID="PEN">26.48</cbc:PriceAmount>
+					<cbc:PriceTypeCode listName="Tipo de Precio"
+                 						listAgencyName="PE:SUNAT"
+                 						listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo16">01</cbc:PriceTypeCode>
+				</cac:AlternativeConditionPrice>
+			</cac:PricingReference>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="PEN">40.39</cbc:TaxAmount>
+				<cac:TaxSubtotal>
+					<cbc:TaxableAmount currencyID="PEN">224.40</cbc:TaxableAmount>
+					<cbc:TaxAmount currencyID="PEN">40.39</cbc:TaxAmount>
+					<cac:TaxCategory>
+						<cbc:Percent>18.0</cbc:Percent>
+						<cbc:TaxExemptionReasonCode listAgencyName="PE:SUNAT"
+                          							listName="Afectacion del IGV"
+                          							listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07">10</cbc:TaxExemptionReasonCode>
+						<cac:TaxScheme>
+							<cbc:ID schemeName="Codigo de tributos"
+      								schemeAgencyName="PE:SUNAT"
+      								schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05">1000</cbc:ID>
+							<cbc:Name>IGV</cbc:Name>
+							<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+						</cac:TaxScheme>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+			<cac:Item>
+				<cbc:Description>CDE</cbc:Description>
+				<cac:SellersItemIdentification>
+					<cbc:ID>8510</cbc:ID>
+				</cac:SellersItemIdentification>
+			</cac:Item>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="PEN">22.44</cbc:PriceAmount>
+			</cac:Price>
+		</cac:InvoiceLine>
+		<cac:InvoiceLine>
+			<cbc:ID>3</cbc:ID>
+			<cbc:InvoicedQuantity unitCode="BX">17.0</cbc:InvoicedQuantity>
+			<cbc:LineExtensionAmount currencyID="PEN">204.00</cbc:LineExtensionAmount>
+			<cac:PricingReference>
+				<cac:AlternativeConditionPrice>
+					<cbc:PriceAmount currencyID="PEN">14.16</cbc:PriceAmount>
+					<cbc:PriceTypeCode listName="Tipo de Precio"
+                 						listAgencyName="PE:SUNAT"
+                 						listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo16">01</cbc:PriceTypeCode>
+				</cac:AlternativeConditionPrice>
+			</cac:PricingReference>
+			<cac:TaxTotal>
+				<cbc:TaxAmount currencyID="PEN">36.72</cbc:TaxAmount>
+				<cac:TaxSubtotal>
+					<cbc:TaxableAmount currencyID="PEN">204.00</cbc:TaxableAmount>
+					<cbc:TaxAmount currencyID="PEN">36.72</cbc:TaxAmount>
+					<cac:TaxCategory>
+						<cbc:Percent>18.0</cbc:Percent>
+						<cbc:TaxExemptionReasonCode listAgencyName="PE:SUNAT"
+                          							listName="Afectacion del IGV"
+                          							listURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo07">10</cbc:TaxExemptionReasonCode>
+						<cac:TaxScheme>
+							<cbc:ID schemeName="Codigo de tributos"
+      								schemeAgencyName="PE:SUNAT"
+      								schemeURI="urn:pe:gob:sunat:cpe:see:gem:catalogos:catalogo05">1000</cbc:ID>
+							<cbc:Name>IGV</cbc:Name>
+							<cbc:TaxTypeCode>VAT</cbc:TaxTypeCode>
+						</cac:TaxScheme>
+					</cac:TaxCategory>
+				</cac:TaxSubtotal>
+			</cac:TaxTotal>
+			<cac:Item>
+				<cbc:Description>EFG</cbc:Description>
+				<cac:SellersItemIdentification>
+					<cbc:ID>8510</cbc:ID>
+				</cac:SellersItemIdentification>
+			</cac:Item>
+			<cac:Price>
+				<cbc:PriceAmount currencyID="PEN">12.0</cbc:PriceAmount>
+			</cac:Price>
+		</cac:InvoiceLine>
+	</Invoice>
