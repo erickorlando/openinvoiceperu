@@ -20,7 +20,7 @@ namespace OpenInvoicePeru.ClienteConsola
 
             CrearFactura();
             //CrearFacturaConAnticipo();
-            //CrearBoleta();
+            CrearBoleta();
             //CrearResumenDiario();
             //CrearFacturaConDetraccionTransportes();
             //CrearNotaCredito();
@@ -94,12 +94,12 @@ namespace OpenInvoicePeru.ClienteConsola
                     Moneda = "PEN",
                     TipoDocumento = "01",
                     Credito = true,
-                    MontoCuota = 40,
+                    MontoCuota = 490,
                     FechaCredito = "2021-03-31",
                     NroCuota = 1,
                     TotalIgv = 0m,
-                    TotalVenta = 40m,
-                    Exoneradas = 40m,
+                    TotalVenta = 490m,
+                    Exoneradas = 490m,
                     //TotalIgv = 124.2m,
                     //TotalVenta = 814.2m,
                     //Gravadas = 690m,
@@ -117,23 +117,23 @@ namespace OpenInvoicePeru.ClienteConsola
                             Descripcion = "Arroz Costeño",
                             UnidadMedida = "NIU",
                             Impuesto = 0m, //Impuesto del Precio * Cantidad
-                            TipoImpuesto = "20", // Gravada
+                            TipoImpuesto = "20", // Exonerada
                             TotalVenta = 40m,
-                        //},
-                        //new DetalleDocumento
-                        //{
-                        //    Id = 2,
-                        //    Cantidad = 10,
-                        //    PrecioReferencial = 45m,
-                        //    PrecioUnitario = 45m,
-                        //    BaseImponible = 450,
-                        //    TipoPrecio = "01",
-                        //    CodigoItem = "AER345667",
-                        //    Descripcion = "Aceite Primor",
-                        //    UnidadMedida = "NIU",
-                        //    Impuesto = 81m,
-                        //    TipoImpuesto = "10", // Gravada
-                        //    TotalVenta = 531m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 10,
+                            PrecioReferencial = 45m,
+                            PrecioUnitario = 45m,
+                            BaseImponible = 450,
+                            TipoPrecio = "01",
+                            CodigoItem = "AER345667",
+                            Descripcion = "Aceite Primor",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0m,
+                            TipoImpuesto = "20", // Exonerada
+                            TotalVenta = 450m,
                         //},
                         //new DetalleDocumento
                         //{
@@ -184,7 +184,7 @@ namespace OpenInvoicePeru.ClienteConsola
                     HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
                     Moneda = "PEN",
                     TipoDocumento = "03",
-                    TotalIgv = 125.7264m,
+                    TotalIgv = 0,
                     TotalVenta = 824.2064m,
                     TotalOtrosTributos = 0.10m,
                     Gravadas = 698.48m,
@@ -201,7 +201,7 @@ namespace OpenInvoicePeru.ClienteConsola
                             Descripcion = "Arroz Costeño",
                             UnidadMedida = "NIU",
                             Impuesto = 7.62m, //Impuesto del Precio * Cantidad
-                            TipoImpuesto = "10", // Gravada
+                            TipoImpuesto = "20", // Gravada
                             TotalVenta = 50m,
                         },
                         new DetalleDocumento
@@ -215,7 +215,7 @@ namespace OpenInvoicePeru.ClienteConsola
                             Descripcion = "Aceite Primor",
                             UnidadMedida = "NIU",
                             Impuesto = 82.08m,
-                            TipoImpuesto = "10", // Gravada
+                            TipoImpuesto = "20", // Gravada
                             TotalVenta = 538.08m,
                         },
                         new DetalleDocumento
@@ -229,7 +229,7 @@ namespace OpenInvoicePeru.ClienteConsola
                             Descripcion = "Shampoo Palmolive",
                             UnidadMedida = "NIU",
                             Impuesto = 36,
-                            TipoImpuesto = "10", // Gravada
+                            TipoImpuesto = "20", // Gravada
                             TotalVenta = 236,
                         },
                         new DetalleDocumento
