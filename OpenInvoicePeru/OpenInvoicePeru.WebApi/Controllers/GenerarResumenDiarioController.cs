@@ -1,5 +1,4 @@
-﻿using Microsoft.Practices.Unity;
-using OpenInvoicePeru.Comun.Dto.Intercambio;
+﻿using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Firmado;
 using OpenInvoicePeru.Xml;
@@ -7,6 +6,7 @@ using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Threading.Tasks;
 using System.Web.Http;
+using Unity;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
@@ -21,8 +21,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
         public GenerarResumenDiarioController(ISerializador serializador)
         {
             _serializador = serializador;
-            _documentoXml = UnityConfig.GetConfiguredContainer()
-                .Resolve<IDocumentoXml>(GetType().Name);
+            _documentoXml = (IDocumentoXml)UnityConfig.Container.Resolve(GetType());
         }
 
 
@@ -67,7 +66,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
             try
             {
                 // Solucion temporal --> Issue #58
-                _documentoXml = UnityConfig.GetConfiguredContainer().Resolve<IDocumentoXml>();
+                _documentoXml = new ResumenDiarioNuevoXml();
                 var summary = _documentoXml.Generar(resumen);
                 response.TramaXmlSinFirma = await _serializador.GenerarXml(summary);
                 response.Exito = true;

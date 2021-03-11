@@ -1,13 +1,12 @@
-﻿using Microsoft.Practices.Unity;
-using OpenInvoicePeru.Comun.Dto.Intercambio;
+﻿using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Firmado;
+using OpenInvoicePeru.WebApi.Utils;
 using OpenInvoicePeru.Xml;
 using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Threading.Tasks;
 using System.Web.Http;
-using OpenInvoicePeru.WebApi.Utils;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
@@ -22,8 +21,9 @@ namespace OpenInvoicePeru.WebApi.Controllers
         public GenerarFacturaController(ISerializador serializador)
         {
             _serializador = serializador;
-            _documentoXml = _documentoXml = UnityConfig.GetConfiguredContainer()
-                .Resolve<IDocumentoXml>(GetType().Name);
+            _documentoXml = new FacturaXml();
+            //_documentoXml = _documentoXml = UnityConfig.Container
+            //    .Resolve<IDocumentoXml>(GetType().Name);
             _telegramService = new TelegramService();
         }
 
