@@ -6,6 +6,7 @@ using OpenInvoicePeru.Estructuras.SunatAggregateComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -210,6 +211,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteEndElement();
 
             writer.WriteElementString("cbc:LineCountNumeric", InvoiceLines.Count.ToString());
+
+            writer.WriteComment(Properties.Resources.Comment);
 
             #region OrderReference
             if (!string.IsNullOrEmpty(OrderReference))
