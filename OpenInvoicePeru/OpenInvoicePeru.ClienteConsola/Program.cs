@@ -89,14 +89,26 @@ namespace OpenInvoicePeru.ClienteConsola
                         NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
                     },
                     IdDocumento = "FM01-00003422",
-                    FechaEmision = "2021-03-02",  // DateTime.Today.ToString(FormatoFecha),
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
                     HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
                     Moneda = "PEN",
                     TipoDocumento = "01",
                     Credito = true,
-                    MontoCuota = 490,
-                    FechaCredito = "2021-03-31",
-                    NroCuota = 1,
+                    DatoCreditos = new List<DatoCredito>()
+                    {
+                        new DatoCredito
+                        {
+                            NroCuota = 1,
+                            MontoCuota = 100,
+                            FechaCredito = DateTime.Today.AddDays(30).ToString(FormatoFecha),
+                        },
+                        new DatoCredito
+                        {
+                            NroCuota = 2,
+                            MontoCuota = 390,
+                            FechaCredito = DateTime.Today.AddDays(60).ToString(FormatoFecha),
+                        },
+                    },
                     TotalIgv = 0m,
                     TotalVenta = 490m,
                     Exoneradas = 490m,

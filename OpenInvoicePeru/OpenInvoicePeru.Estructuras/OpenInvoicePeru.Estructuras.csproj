@@ -46,6 +46,7 @@
     <Compile Include="CommonAggregateComponents\CompanyId.cs" />
     <Compile Include="CommonAggregateComponents\PartyTaxScheme.cs" />
     <Compile Include="CommonAggregateComponents\RegistrationAddress.cs" />
+    <Compile Include="EstandarUbl\InfoCredits.cs" />
     <Compile Include="EstandarUbl\Perception.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

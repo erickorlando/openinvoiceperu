@@ -94,9 +94,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         public decimal MontoAnticipo { get; set; }
 
         public bool Credito { get; set; }
-        public int NroCuota { get; set; }
-        public decimal MontoCuota { get; set; }
-        public string FechaCredito { get; set; }
+        public List<DatoCredito> DatoCreditos { get; set; }
 
         public List<DatoAdicional> DatoAdicionales { get; set; }
 
@@ -131,12 +129,13 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             Leyendas = new List<Leyenda>();
             Discrepancias = new List<Discrepancia>();
             Anticipos = new List<Anticipo>();
+            DatoCreditos = new List<DatoCredito>();
             TipoDocumento = "01"; // Factura.
             TipoOperacion = "0101"; // Venta Interna.
             Moneda = "PEN"; // Soles.
             FechaEmision = DateTime.Today.ToString("yyyy-MM-dd");
             HoraEmision = DateTime.Now.ToString("HH:mm:ss");
-            FechaCredito = DateTime.Today.ToString("yyyy-MM-dd");
+            
         }
     }
 }

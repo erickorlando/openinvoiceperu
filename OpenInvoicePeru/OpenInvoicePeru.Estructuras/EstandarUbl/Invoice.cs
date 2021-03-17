@@ -6,7 +6,6 @@ using OpenInvoicePeru.Estructuras.SunatAggregateComponents;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Xml;
 using System.Xml.Schema;
 using System.Xml.Serialization;
@@ -92,9 +91,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
         public IFormatProvider Formato { get; set; }
 
         public bool Credito { get; set; }
-        public int NroCuota { get; set; }
-        public decimal MontoCuota { get; set; }
-        public string FechaCredito { get; set; }
+
+        public List<InfoCredits> InfoCreditsList { get; set; }
 
         public Invoice()
         {
@@ -110,6 +108,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             TaxTotals = new List<TaxTotal>();
             NotesList = new Dictionary<string, string>();
             LegalMonetaryTotal = new LegalMonetaryTotal();
+            InfoCreditsList = new List<InfoCredits>();
             UblVersionId = "2.1";
             CustomizationId = "2.0";
             Formato = new System.Globalization.CultureInfo(Formatos.Cultura);
@@ -514,9 +513,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     writer.WriteStartElement("cbc:Amount");
                     {
                         writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
-                        writer.WriteValue(MontoCuota > 0
-                            ? MontoCuota.ToString(Formatos.FormatoNumerico)
-                            : LegalMonetaryTotal.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico));
+                        writer.WriteValue(LegalMonetaryTotal.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico));
                     }
                     writer.WriteEndElement();
                 }
@@ -525,21 +522,24 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             if (Credito)
             {
-                writer.WriteStartElement("cac:PaymentTerms");
+                foreach (var credit in InfoCreditsList)
                 {
-                    writer.WriteElementString("cbc:ID", "FormaPago");
-                    writer.WriteElementString("cbc:PaymentMeansID", $"Cuota{NroCuota:000}");
-
-                    writer.WriteStartElement("cbc:Amount");
+                    writer.WriteStartElement("cac:PaymentTerms");
                     {
-                        writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
-                        writer.WriteValue(MontoCuota.ToString(Formatos.FormatoNumerico));
+                        writer.WriteElementString("cbc:ID", "FormaPago");
+                        writer.WriteElementString("cbc:PaymentMeansID", $"Cuota{credit.NroCuota:000}");
+
+                        writer.WriteStartElement("cbc:Amount");
+                        {
+                            writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
+                            writer.WriteValue(credit.MontoCuota.ToString(Formatos.FormatoNumerico));
+                        }
+                        writer.WriteEndElement();
+
+                        writer.WriteElementString("cbc:PaymentDueDate", credit.FechaCredito);
                     }
                     writer.WriteEndElement();
-
-                    writer.WriteElementString("cbc:PaymentDueDate", FechaCredito);
                 }
-                writer.WriteEndElement();
             }
 
             writer.WriteComment("Fin Credito o al Contado");

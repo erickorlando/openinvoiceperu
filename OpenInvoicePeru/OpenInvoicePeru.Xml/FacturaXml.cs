@@ -140,9 +140,16 @@ namespace OpenInvoicePeru.Xml
             };
 
             invoice.Credito = documento.Credito;
-            invoice.NroCuota = documento.NroCuota;
-            invoice.MontoCuota = documento.MontoCuota;
-            invoice.FechaCredito = documento.FechaCredito;
+            if (invoice.Credito)
+            {
+                invoice.InfoCreditsList.AddRange(documento.DatoCreditos
+                    .Select(p => new InfoCredits
+                    {
+                        NroCuota = p.NroCuota,
+                        MontoCuota = p.MontoCuota,
+                        FechaCredito = p.FechaCredito
+                    }));
+            }
 
             if (documento.TotalVenta > 0 && documento.LineExtensionAmount == 0)
             {

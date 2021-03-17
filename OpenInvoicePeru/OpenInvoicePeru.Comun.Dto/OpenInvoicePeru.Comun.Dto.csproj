@@ -51,6 +51,7 @@
     <Compile Include="Intercambio\ConsultaTicketRequest.cs" />
     <Compile Include="Modelos\Contribuyente.cs" />
     <Compile Include="Modelos\DatoAdicional.cs" />
+    <Compile Include="Modelos\DatoCredito.cs" />
     <Compile Include="Modelos\DatosGuia.cs" />
     <Compile Include="Modelos\DetalleDocumento.cs" />
     <Compile Include="Modelos\DetalleGuia.cs" />
