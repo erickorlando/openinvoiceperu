@@ -109,6 +109,11 @@ namespace OpenInvoicePeru.Xml
                     {
                         CurrencyId = documento.Moneda,
                         Value = documento.LineExtensionAmount > 0 ? documento.LineExtensionAmount : 0
+                    },
+                    PayableRoundingAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.Redondeo
                     }
                 },
                 AllowanceCharge = new AllowanceCharge
