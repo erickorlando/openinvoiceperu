@@ -103,7 +103,7 @@ namespace OpenInvoicePeru.Xml
                     TaxInclusiveAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
-                        Value = documento.TotalVenta
+                        Value = documento.LineExtensionAmount > 0 ? documento.LineExtensionAmount : documento.TotalVenta
                     },
                     LineExtensionAmount = new PayableAmount
                     {

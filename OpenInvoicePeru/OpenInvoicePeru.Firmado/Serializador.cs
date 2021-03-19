@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.IO;
 using System.Threading.Tasks;
 using System.Xml;
@@ -116,12 +117,15 @@ namespace OpenInvoicePeru.Firmado
 
                                     var warningNodes = xmlDoc.SelectNodes("/ar:ApplicationResponse/cbc:Note", xmlnsManager);
 
-                                    if (warningNodes?.Count > 0)
+                                    if (ConfigurationManager.AppSettings["IncludeWarnings"] != null)
                                     {
-                                        respuestaXml.AppendLine("Observaciones: ");
-                                        foreach (XmlNode warningNode in warningNodes)
+                                        if (warningNodes?.Count > 0)
                                         {
-                                            respuestaXml.AppendLine(warningNode.InnerText);
+                                            respuestaXml.AppendLine("Observaciones: ");
+                                            foreach (XmlNode warningNode in warningNodes)
+                                            {
+                                                respuestaXml.AppendLine(warningNode.InnerText);
+                                            }
                                         }
                                     }
 

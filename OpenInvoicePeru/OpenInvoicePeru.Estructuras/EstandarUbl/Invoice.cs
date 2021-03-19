@@ -664,16 +664,6 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteStartElement("cac:LegalMonetaryTotal");
             {
-                if (LegalMonetaryTotal.PayableRoundingAmount.Value > 0)
-                {
-                    writer.WriteStartElement("cbc:PayableRoundingAmount");
-                    {
-                        writer.WriteAttributeString("currencyID", LegalMonetaryTotal.PayableRoundingAmount.CurrencyId);
-                        writer.WriteValue(LegalMonetaryTotal.PayableRoundingAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
-                    }
-                    writer.WriteEndElement();
-                }
-
                 if (LegalMonetaryTotal.LineExtensionAmount.Value > 0)
                 {
                     writer.WriteStartElement("cbc:LineExtensionAmount");
@@ -710,12 +700,25 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     }
                     writer.WriteEndElement();
                 }
+
+                if (LegalMonetaryTotal.PayableRoundingAmount.Value > 0)
+                {
+                    writer.WriteStartElement("cbc:PayableRoundingAmount");
+                    {
+                        writer.WriteAttributeString("currencyID", LegalMonetaryTotal.PayableRoundingAmount.CurrencyId);
+                        writer.WriteValue(LegalMonetaryTotal.PayableRoundingAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                    }
+                    writer.WriteEndElement();
+                }
+
                 writer.WriteStartElement("cbc:PayableAmount");
                 {
                     writer.WriteAttributeString("currencyID", LegalMonetaryTotal.PayableAmount.CurrencyId);
                     writer.WriteValue(LegalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                 }
                 writer.WriteEndElement();
+
+               
             }
             writer.WriteEndElement();
 

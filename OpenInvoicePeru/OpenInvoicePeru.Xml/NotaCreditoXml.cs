@@ -111,6 +111,18 @@ namespace OpenInvoicePeru.Xml
                 }
             };
 
+            creditNote.Credito = documento.Credito;
+            if (creditNote.Credito)
+            {
+                creditNote.InfoCreditsList.AddRange(documento.DatoCreditos
+                    .Select(p => new InfoCredits
+                    {
+                        NroCuota = p.NroCuota,
+                        MontoCuota = p.MontoCuota,
+                        FechaCredito = p.FechaCredito
+                    }));
+            }
+
             if (documento.TotalIgv > 0)
             {
                 creditNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
