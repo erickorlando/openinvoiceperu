@@ -20,7 +20,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
         public GenerarNotaCreditoController(ISerializador serializador)
         {
             _serializador = serializador;
-            _documentoXml = (IDocumentoXml)UnityConfig.Container.Resolve(GetType());
+            _documentoXml = new NotaCreditoXml();
         }
 
         /// <summary>

@@ -20,7 +20,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
         public GenerarPercepcionController(ISerializador serializador)
         {
             _serializador = serializador;
-            _documentoXml = (IDocumentoXml)UnityConfig.Container.Resolve(GetType());
+            _documentoXml = new PercepcionXml();
         }
 
         /// <summary>

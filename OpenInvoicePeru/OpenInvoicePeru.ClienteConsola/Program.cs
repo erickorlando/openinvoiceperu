@@ -18,12 +18,12 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            CrearFactura();
+            //CrearFactura();
             //CrearFacturaConAnticipo();
-            CrearBoleta();
+            //CrearBoleta();
             //CrearResumenDiario();
             //CrearFacturaConDetraccionTransportes();
-            //CrearNotaCredito();
+            CrearNotaCredito();
             //CrearNotaDebito();
 
             //var documento = new DocumentoElectronico
@@ -50,10 +50,10 @@ namespace OpenInvoicePeru.ClienteConsola
         {
             return new Compania
             {
-                NroDocumento = "20167795120",
+                NroDocumento = "20547471609",
                 TipoDocumento = "6",
-                NombreComercial = "INVERSIONES ANCONA",
-                NombreLegal = "INVERSIONES ANCONA S.A.C",
+                NombreComercial = "FRAMEWORK PERU",
+                NombreLegal = "FRAMEWORK PERU",
                 CodigoAnexo = "0001"
             };
         }

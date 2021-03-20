@@ -20,7 +20,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
         public GenerarRetencionController(ISerializador serializador)
         {
             _serializador = serializador;
-            _documentoXml = (IDocumentoXml)UnityConfig.Container.Resolve(GetType());
+            _documentoXml = new RetencionXml();
         }
 
         /// <summary>

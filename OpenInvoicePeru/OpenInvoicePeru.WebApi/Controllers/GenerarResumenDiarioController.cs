@@ -21,7 +21,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
         public GenerarResumenDiarioController(ISerializador serializador)
         {
             _serializador = serializador;
-            _documentoXml = (IDocumentoXml)UnityConfig.Container.Resolve(GetType());
+            _documentoXml = new ResumenDiarioNuevoXml();
         }
 
 

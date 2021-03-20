@@ -394,26 +394,26 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             #region Credito
 
-            writer.WriteComment("Inicio Credito o al Contado");
-
-            writer.WriteStartElement("cac:PaymentTerms");
-            {
-                writer.WriteElementString("cbc:ID", "FormaPago");
-                writer.WriteElementString("cbc:PaymentMeansID", Credito ? "Credito" : "Contado");
-                if (Credito)
-                {
-                    writer.WriteStartElement("cbc:Amount");
-                    {
-                        writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
-                        writer.WriteValue(LegalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
-                    }
-                    writer.WriteEndElement();
-                }
-            }
-            writer.WriteEndElement();
-
             if (Credito)
             {
+                writer.WriteComment("Inicio Credito");
+
+                writer.WriteStartElement("cac:PaymentTerms");
+                {
+                    writer.WriteElementString("cbc:ID", "FormaPago");
+                    writer.WriteElementString("cbc:PaymentMeansID", "Credito");
+                    if (Credito)
+                    {
+                        writer.WriteStartElement("cbc:Amount");
+                        {
+                            writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
+                            writer.WriteValue(LegalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                        }
+                        writer.WriteEndElement();
+                    }
+                }
+                writer.WriteEndElement();
+
                 foreach (var credit in InfoCreditsList)
                 {
                     writer.WriteStartElement("cac:PaymentTerms");
@@ -432,9 +432,9 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     }
                     writer.WriteEndElement();
                 }
-            }
 
-            writer.WriteComment("Fin Credito o al Contado");
+                writer.WriteComment("Fin Credito");
+            }
 
             #endregion
 
