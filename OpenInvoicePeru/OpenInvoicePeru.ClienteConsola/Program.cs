@@ -23,25 +23,11 @@ namespace OpenInvoicePeru.ClienteConsola
             //CrearBoleta();
             //CrearResumenDiario();
             //CrearFacturaConDetraccionTransportes();
-            CrearNotaCredito();
+            //CrearNotaCredito();
             //CrearNotaDebito();
 
-            //var documento = new DocumentoElectronico
-            //{
-            //    IdDocumento = "FFF1-15",
-            //    TipoDocumento = "01",
-            //    Emisor = new Compania
-            //    {
-            //        NroDocumento = "20600695771"
-            //    }
-            //};
-
-            //FirmaryEnviar(documento, new DocumentoResponse
-            //{
-            //    TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(@"C:\GitProjects\Tipos de comprobantes\EJEMPLO XML FACTURA 15 ANTICIPO REGULARIZACION.xml"))
-            //});
-
             //ConsultarTicket("300000005449503", "20454791887");
+            ConsultarComprobante();
 
             Console.ReadLine();
         }
@@ -832,6 +818,59 @@ namespace OpenInvoicePeru.ClienteConsola
             File.WriteAllBytes($"{archivo}.zip", Convert.FromBase64String(response.TramaZipCdr));
 
             Console.WriteLine($"Código: {response.CodigoRespuesta} => {response.MensajeRespuesta}");
+        }
+
+        private static void ConsultarComprobante()
+        {
+            try
+            {
+                Console.WriteLine("Consulta de Comprobantes Electrónicos (solo Producción)");
+                //var ruc = LeerLinea("Ingrese su Nro. de RUC");
+                //var usuario = LeerLinea("Ingrese usuario SOL");
+                //var clave = LeerLinea("Ingrese Clave SOL");
+                //var tipoDoc = LeerLinea("Ingrese Codigo Tipo de Documento a Consultar (01, 03, 07 o 08)");
+                //var serie = LeerLinea("Ingrese Serie Documento a Leer");
+                //var correlativo = LeerLinea("Ingrese el correlativo del documento sin ceros");
+
+                var consultaConstanciaRequest = new ConsultaConstanciaRequest
+                {
+                    UsuarioSol = "",
+                    ClaveSol = "XJZiGv0MyB",
+                    TipoDocumento = "03",
+                    Serie = "B003",
+                    Numero = 00417487,
+                    Ruc = "20493654463",
+                    EndPointUrl = "https://ose.efact.pe/ol-ti-itcpe/billService"
+                };
+
+                var documentoResponse =
+                    RestHelper<ConsultaConstanciaRequest, EnviarDocumentoResponse>.Execute("ConsultarConstancia",
+                        consultaConstanciaRequest);
+
+                if (!documentoResponse.Exito)
+                {
+                    Console.WriteLine(string.IsNullOrEmpty(documentoResponse.MensajeError) ?
+                        documentoResponse.MensajeRespuesta :
+                        documentoResponse.MensajeError);
+                    return;
+                }
+
+                var archivo = documentoResponse.NombreArchivo.ToUpper().Replace(".XML", string.Empty);
+                Console.WriteLine($"Escribiendo documento en la carpeta del ejecutable... {archivo}");
+
+                File.WriteAllBytes($"{archivo}.zip", Convert.FromBase64String(documentoResponse.TramaZipCdr));
+
+                Console.WriteLine(
+                    $"Código: {documentoResponse.CodigoRespuesta} => {documentoResponse.MensajeRespuesta}");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
         }
 
         private static DocumentoResponse GenerarDocumento(DocumentoElectronico documento)

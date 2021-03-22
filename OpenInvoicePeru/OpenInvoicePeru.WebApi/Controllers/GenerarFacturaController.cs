@@ -45,10 +45,10 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 response.ValoresParaQr =
                     $"{documento.Emisor.NroDocumento}|{documento.TipoDocumento}|{serieCorrelativo[0]}|{serieCorrelativo[1]}|{documento.TotalIgv:N2}|{documento.TotalVenta:N2}|{Convert.ToDateTime(documento.FechaEmision):yyyy-MM-dd}|{documento.Receptor.TipoDocumento}|{documento.Receptor.NroDocumento}|";
 
-                //await Task.Factory.StartNew(async () =>
-                //{
-                //    await _telegramService.EnviarMensaje($"{documento.Emisor.NombreLegal} => para {documento.Receptor.NombreLegal} | {documento.IdDocumento} con un Total de {documento.TotalVenta:N2}");
-                //});
+                await Task.Factory.StartNew(async () =>
+                {
+                    await _telegramService.EnviarMensaje($"{documento.Emisor.NombreLegal} => para {documento.Receptor.NombreLegal} | {documento.IdDocumento} con un Total de {documento.TotalVenta:N2}");
+                });
 
                 response.Exito = true;
             }
