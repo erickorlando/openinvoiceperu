@@ -18,7 +18,7 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            //CrearFactura();
+            CrearFactura();
             //CrearFacturaConAnticipo();
             //CrearBoleta();
             //CrearResumenDiario();
@@ -27,7 +27,7 @@ namespace OpenInvoicePeru.ClienteConsola
             //CrearNotaDebito();
 
             //ConsultarTicket("300000005449503", "20454791887");
-            ConsultarComprobante();
+            //ConsultarComprobante();
 
             Console.ReadLine();
         }
@@ -837,8 +837,8 @@ namespace OpenInvoicePeru.ClienteConsola
                     UsuarioSol = "",
                     ClaveSol = "XJZiGv0MyB",
                     TipoDocumento = "03",
-                    Serie = "B003",
-                    Numero = 00417487,
+                    Serie = "B001",
+                    Numero = 289579,
                     Ruc = "20493654463",
                     EndPointUrl = "https://ose.efact.pe/ol-ti-itcpe/billService"
                 };
