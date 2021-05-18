@@ -96,7 +96,17 @@ namespace OpenInvoicePeru.Xml
                     {
                         CurrencyId = documento.Moneda,
                         Value = documento.DescuentoGlobal
-                    }
+                    },
+                    PrepaidAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.MontoTotalAnticipo
+                    },
+                    LineExtensionAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.LineExtensionAmount > 0 ? documento.LineExtensionAmount : 0
+                    },
                 },
                 TaxTotals = new List<TaxTotal>
                 {
@@ -272,6 +282,7 @@ namespace OpenInvoicePeru.Xml
                 var linea = new InvoiceLine
                 {
                     Id = detalleDocumento.Id,
+                    BillingReference = detalleDocumento.Referencia,
                     CreditedQuantity = new InvoicedQuantity
                     {
                         UnitCode = detalleDocumento.UnidadMedida,

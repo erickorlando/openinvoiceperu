@@ -338,72 +338,58 @@ namespace OpenInvoicePeru.ClienteConsola
                     Emisor = CrearEmisor(),
                     Receptor = new Compania
                     {
-                        NroDocumento = "20335955065",
+                        NroDocumento = "20451060393",
                         TipoDocumento = "6",
-                        NombreLegal = "MEDIA NETWORKS LATIN AMERICA S.A.C.",
+                        NombreLegal = "DON POLLO LORETO S.A.C.",
                         CodigoAnexo = ""
                     },
-                    IdDocumento = "FC01-00000178",
+                    IdDocumento = "FN01-00000092",
                     FechaEmision = DateTime.Today.AddDays(-5).ToString(FormatoFecha),
                     HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
-                    FechaVencimiento = "2020-02-29",
+                    FechaVencimiento = "2021-05-14",
                     MontoEnLetras = string.Empty,
-                    Moneda = "USD",
+                    Moneda = "PEN",
                     TipoDocumento = "07",
-                    TotalIgv = 435.60m,
-                    TotalVenta = 2865.60m,
-                    Gravadas = 2420m,
-                    Inafectas = 10,
+                    TotalIgv = 0,
+                    TotalVenta = 0,
+                    Gravadas = 0,
+                    Inafectas = 0,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
                         {
                             Id = 1,
-                            Cantidad = 1,
-                            PrecioReferencial = 2420.0m,
-                            PrecioUnitario = 2420m,
-                            BaseImponible = 2420M,
+                            Referencia = 1,
+                            Cantidad = 32,
+                            PrecioReferencial = 186.58m,
+                            PrecioUnitario = 158.12m,
+                            BaseImponible = 5059.84M,
                             TipoPrecio = "01",
-                            CodigoItem = "2435675",
-                            Descripcion = "Dproc (CCD)",
+                            CodigoItem = "788",
+                            Descripcion = "DICE: POR SERVICIO DE TRANSPORTE DE CARGA DE TORTA DE SOYA BOLIVIANA ENVASADA DESDE LA CIUDAD DE TRUJILLO HASTA PICOTA - SAN MARTIN  DEBE DECIR: POR SERVICIO DE TRANSPORTE DE CARGA DE TORTA DE SOYA BOLIVIANA ENVASADA DESDE LA CIUDAD DE TRUJILLO HASTA YURIMAGUAS-LORETO.",
                             UnidadMedida = "NIU",
-                            Impuesto = 435.60m,
+                            Impuesto = 910.77m,
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 2420m,
-                        },
-                        new DetalleDocumento
-                        {
-                            Id = 2,
-                            Cantidad = 1,
-                            PrecioReferencial = 10m,
-                            PrecioUnitario = 10m,
-                            BaseImponible = 0M,
-                            TipoPrecio = "01",
-                            CodigoItem = "98915",
-                            Descripcion = "equis",
-                            UnidadMedida = "ZZ",
-                            Impuesto = 0m,
-                            TipoImpuesto = "30", // Inafecta
-                            TotalVenta = 10M
-                        },
+                            TotalVenta = 5059.84m,
+                        }
                     },
                     Discrepancias = new List<Discrepancia>
                     {
                         new Discrepancia
                         {
-                            NroReferencia = "FM01-00001318",
-                            Tipo = "01",
-                            Descripcion = "CANCELACION TOTAL"
+                            NroReferencia = "F001-00002142",
+                            Tipo = "03",
+                            Descripcion = "CORRECCIÓN POR ERROR EN LA DESCRIPCIÓN"
                         }
                     },
-                    //Relacionados = new List<DocumentoRelacionado>
-                    //{
-                    //    new DocumentoRelacionado
-                    //    {
-                    //        NroDocumento = "FF11-001",
-                    //        TipoDocumento = "01"
-                    //    }
-                    //}
+                    Relacionados = new List<DocumentoRelacionado>
+                    {
+                        new DocumentoRelacionado
+                        {
+                            NroDocumento = "F001-00002142",
+                            TipoDocumento = "01"
+                        }
+                    }
                 };
 
                 File.WriteAllText("notacredito.json", Newtonsoft.Json.JsonConvert.SerializeObject(documento));

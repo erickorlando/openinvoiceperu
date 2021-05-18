@@ -17,12 +17,4 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
             TransportEquipments = new List<TransportEquipment>();
         }
     }
-
-    [Serializable]
-    public class MeasurementDimension
-    {
-        public string AttributeId { get; set; }
-        public decimal Measure { get; set; }
-
-    }
 }

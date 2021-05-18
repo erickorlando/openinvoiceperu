@@ -70,6 +70,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         public decimal ValorReferencialTm { get; set; }
         public decimal ValorPreliminarReferencial { get; set; }
         public bool ViajeConRetorno { get; set; }
+        public int Referencia { get; set; }
 
         public DetalleDocumento()
         {
@@ -77,6 +78,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             UnidadMedida = "NIU";
             TipoPrecio = "01";
             TipoImpuesto = "10";
+            Referencia = 0;
             DatosAdicionales = new List<DatoAdicional>();
         }
     }

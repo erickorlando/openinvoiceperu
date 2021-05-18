@@ -5,10 +5,6 @@ using OpenInvoicePeru.WebApi.Utils;
 using OpenInvoicePeru.Xml;
 using Swashbuckle.Swagger.Annotations;
 using System;
-using System.Linq;
-using System.Net;
-using System.Net.NetworkInformation;
-using System.Net.Sockets;
 using System.Threading.Tasks;
 using System.Web.Http;
 
@@ -49,20 +45,20 @@ namespace OpenInvoicePeru.WebApi.Controllers
                 response.ValoresParaQr =
                     $"{documento.Emisor.NroDocumento}|{documento.TipoDocumento}|{serieCorrelativo[0]}|{serieCorrelativo[1]}|{documento.TotalIgv:N2}|{documento.TotalVenta:N2}|{Convert.ToDateTime(documento.FechaEmision):yyyy-MM-dd}|{documento.Receptor.TipoDocumento}|{documento.Receptor.NroDocumento}|";
 
-                string ipAddress;
-                await Task.Factory.StartNew(async () =>
-                {
-                    if (!NetworkInterface.GetIsNetworkAvailable())
-                        return;
+                //string ipAddress;
+                //await Task.Factory.StartNew(async () =>
+                //{
+                //    if (!NetworkInterface.GetIsNetworkAvailable())
+                //        return;
 
-                    var host = await Dns.GetHostEntryAsync(Environment.MachineName);
-                    ipAddress = host.AddressList
-                        .FirstOrDefault(p => p.AddressFamily == AddressFamily.InterNetwork)
-                        ?.ToString();
+                //    var host = await Dns.GetHostEntryAsync(Environment.MachineName);
+                //    ipAddress = host.AddressList
+                //        .FirstOrDefault(p => p.AddressFamily == AddressFamily.InterNetwork)
+                //        ?.ToString();
                     
-                    await _telegramService.EnviarMensaje($"{documento.Emisor.NroDocumento}: {documento.Emisor.NombreLegal} => {documento.Receptor.NombreLegal} | {documento.IdDocumento} desde {Environment.MachineName} en {ipAddress}");
+                //    await _telegramService.EnviarMensaje($"{documento.Emisor.NroDocumento}: {documento.Emisor.NombreLegal} => {documento.Receptor.NombreLegal} | {documento.IdDocumento} desde {Environment.MachineName} en {ipAddress}");
 
-                });
+                //});
 
                 response.Exito = true;
             }

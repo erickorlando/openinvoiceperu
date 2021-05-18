@@ -24,49 +24,4 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
             AdditionalItemProperties = new List<AdditionalItemProperty>();
         }
     }
-
-    [Serializable]
-    public class SellersItemIdentification
-    {
-        public string Id { get; set; }
-    }
-
-    [Serializable]
-    public class CommodityClassification
-    {
-        public string ItemClassificationCode { get; set; }
-    }
-
-    [Serializable]
-    public class StandardItemIdentification
-    {
-        public string Id { get; set; }
-    }
-
-    [Serializable]
-    public class AdditionalItemProperty
-    {
-        public string Name { get; set; }
-
-        public string NameCode { get; set; }
-
-        public string Value { get; set; }
-
-        public UsabilityPeriod UsabilityPeriod { get; set; }
-
-        public AdditionalItemProperty()
-        {
-            UsabilityPeriod = new UsabilityPeriod();
-        }
-    }
-
-    [Serializable]
-    public class UsabilityPeriod
-    {
-        public string StartDate { get; set; }
-
-        public string EndDate { get; set; }
-
-        public int DurationMeasure { get; set; }
-    }
 }
