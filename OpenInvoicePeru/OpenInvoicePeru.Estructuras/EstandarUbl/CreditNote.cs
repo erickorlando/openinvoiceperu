@@ -58,6 +58,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public List<InfoCredits> InfoCreditsList { get; set; }
 
+        public Dictionary<string, string> NotesList { get; set; }
+
         public CreditNote()
         {
             UblExtensions = new UblExtensions();
@@ -75,6 +77,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             UblVersionId = "2.1";
             CustomizationId = "2.0";
             Formato = new System.Globalization.CultureInfo(Formatos.Cultura);
+            NotesList = new Dictionary<string, string>();
         }
 
         public XmlSchema GetSchema()
@@ -133,12 +136,20 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             if (DueDate != null)
                 writer.WriteElementString("cbc:DueDate", DueDate?.ToString(Formatos.FormatoFecha));
 
-            if (!string.IsNullOrEmpty(Note))
+            writer.WriteStartElement("cbc:Note");
+            {
+                writer.WriteAttributeString("languageLocaleID", "1000");
+                writer.WriteCData(Note ?? string.Empty);
+            }
+            writer.WriteEndElement();
+
+            foreach (var note in NotesList)
             {
                 writer.WriteStartElement("cbc:Note");
                 {
-                    writer.WriteAttributeString("languageLocaleID", "1000");
-                    writer.WriteValue(Note);
+                    if (!string.IsNullOrEmpty(note.Key))
+                        writer.WriteAttributeString("languageLocaleID", note.Key);
+                    writer.WriteCData(note.Value);
                 }
                 writer.WriteEndElement();
             }
@@ -171,7 +182,11 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         writer.WriteValue(discrepancy.ResponseCode);
                     }
                     writer.WriteEndElement();
-                    writer.WriteElementString("cbc:Description", discrepancy.Description);
+                    writer.WriteStartElement("cbc:Description");
+                    {
+                        writer.WriteCData(discrepancy.Description);
+                    }
+                    writer.WriteEndElement();
                 }
                 writer.WriteEndElement();
             }
@@ -195,6 +210,12 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                             writer.WriteValue(item.InvoiceDocumentReference.DocumentTypeCode);
                         }
                         writer.WriteEndElement();
+                        if (!string.IsNullOrEmpty(item.InvoiceDocumentReference.DocumentTypeDescription))
+                        {
+                            writer.WriteStartElement("cbc:DocumentType");
+                            writer.WriteCData(item.InvoiceDocumentReference.DocumentTypeDescription);
+                            writer.WriteEndElement();
+                        }
                     }
                     writer.WriteEndElement();
                 }
@@ -605,7 +626,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                             writer.WriteEndElement();
                         }
                         writer.WriteEndElement();
-                    } 
+                    }
                     #endregion
 
                     #region PricingReference

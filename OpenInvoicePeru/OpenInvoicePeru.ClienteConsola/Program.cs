@@ -18,12 +18,12 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            CrearFactura();
+            //CrearFactura();
             //CrearFacturaConAnticipo();
             //CrearBoleta();
             //CrearResumenDiario();
             //CrearFacturaConDetraccionTransportes();
-            //CrearNotaCredito();
+            CrearNotaCredito();
             //CrearNotaDebito();
 
             //ConsultarTicket("300000005449503", "20454791887");
@@ -162,7 +162,7 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
-        
+
         private static void CrearBoleta()
         {
             try
@@ -373,13 +373,17 @@ namespace OpenInvoicePeru.ClienteConsola
                             TotalVenta = 5059.84m,
                         }
                     },
+                    Leyendas = new List<Leyenda>
+                    {
+                        new Leyenda { Codigo = "", Descripcion = "ERROR EN LA DESCRIPCION"}
+                    },
                     Discrepancias = new List<Discrepancia>
                     {
                         new Discrepancia
                         {
                             NroReferencia = "F001-00002142",
                             Tipo = "03",
-                            Descripcion = "CORRECCIÓN POR ERROR EN LA DESCRIPCIÓN"
+                            Descripcion = "Corrección por error en la descripción"
                         }
                     },
                     Relacionados = new List<DocumentoRelacionado>
@@ -387,7 +391,8 @@ namespace OpenInvoicePeru.ClienteConsola
                         new DocumentoRelacionado
                         {
                             NroDocumento = "F001-00002142",
-                            TipoDocumento = "01"
+                            TipoDocumento = "01",
+                            DescripcionTipoDocumento = "FACTURA ELECTRONICA BASICA"
                         }
                     }
                 };

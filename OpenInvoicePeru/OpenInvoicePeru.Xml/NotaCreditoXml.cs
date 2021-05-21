@@ -121,6 +121,13 @@ namespace OpenInvoicePeru.Xml
                 }
             };
 
+            creditNote.Note = documento.Notas;
+
+            foreach (var leyenda in documento.Leyendas)
+            {
+                creditNote.NotesList.Add(leyenda.Codigo, leyenda.Descripcion);
+            }
+
             creditNote.Credito = documento.Credito;
             if (creditNote.Credito)
             {
@@ -263,7 +270,8 @@ namespace OpenInvoicePeru.Xml
                     InvoiceDocumentReference = new InvoiceDocumentReference
                     {
                         Id = relacionado.NroDocumento,
-                        DocumentTypeCode = relacionado.TipoDocumento
+                        DocumentTypeCode = relacionado.TipoDocumento,
+                        DocumentTypeDescription = relacionado.DescripcionTipoDocumento
                     }
                 });
             }
