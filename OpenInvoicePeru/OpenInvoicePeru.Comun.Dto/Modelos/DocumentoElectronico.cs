@@ -113,6 +113,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public string NroOrdenCompra { get; set; }
 
+        public string Notas { get; set; }
         public List<Leyenda> Leyendas { get; set; }
 
         public DocumentoElectronico()

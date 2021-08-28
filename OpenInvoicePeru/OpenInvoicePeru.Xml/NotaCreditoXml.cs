@@ -96,7 +96,17 @@ namespace OpenInvoicePeru.Xml
                     {
                         CurrencyId = documento.Moneda,
                         Value = documento.DescuentoGlobal
-                    }
+                    },
+                    PrepaidAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.MontoTotalAnticipo
+                    },
+                    LineExtensionAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.LineExtensionAmount > 0 ? documento.LineExtensionAmount : 0
+                    },
                 },
                 TaxTotals = new List<TaxTotal>
                 {
@@ -110,6 +120,13 @@ namespace OpenInvoicePeru.Xml
                     }
                 }
             };
+
+            creditNote.Note = documento.Notas;
+
+            foreach (var leyenda in documento.Leyendas)
+            {
+                creditNote.NotesList.Add(leyenda.Codigo, leyenda.Descripcion);
+            }
 
             creditNote.Credito = documento.Credito;
             if (creditNote.Credito)
@@ -253,7 +270,8 @@ namespace OpenInvoicePeru.Xml
                     InvoiceDocumentReference = new InvoiceDocumentReference
                     {
                         Id = relacionado.NroDocumento,
-                        DocumentTypeCode = relacionado.TipoDocumento
+                        DocumentTypeCode = relacionado.TipoDocumento,
+                        DocumentTypeDescription = relacionado.DescripcionTipoDocumento
                     }
                 });
             }
@@ -272,6 +290,7 @@ namespace OpenInvoicePeru.Xml
                 var linea = new InvoiceLine
                 {
                     Id = detalleDocumento.Id,
+                    BillingReference = detalleDocumento.Referencia,
                     CreditedQuantity = new InvoicedQuantity
                     {
                         UnitCode = detalleDocumento.UnidadMedida,

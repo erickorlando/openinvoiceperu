@@ -21,6 +21,8 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
 
         public AllowanceCharge AllowanceCharge { get; set; }
 
+        public int BillingReference { get; set; }
+
         public List<TaxTotal> TaxTotals { get; set; }
 
         public Item Item { get; set; }
@@ -41,44 +43,5 @@ namespace OpenInvoicePeru.Estructuras.CommonAggregateComponents
             Item = new Item();
             Price = new Price();
         }
-    }
-
-    [Serializable]
-    public class Delivery
-    {
-        public Despatch Despatch { get; set; }
-        public Despatch DeliveryLocation { get; set; }
-        public List<DeliveryTerms> DeliveryTerms { get; set; }
-        public Shipment Shipment { get; set; }
-
-        public Delivery()
-        {
-            Despatch = new Despatch();
-            DeliveryLocation = new Despatch();
-            DeliveryTerms = new List<DeliveryTerms>();
-            Shipment = new Shipment();
-        }
-    }
-
-    [Serializable]
-    public class DeliveryTerms
-    {
-        public string Id { get; set; }
-        public PayableAmount Amount { get; set; }
-    }
-
-    [Serializable]
-    public class Despatch
-    {
-        public DespatchAddress DespatchAddress { get; set; }
-        public string Instructions { get; set; }
-
-    }
-
-    [Serializable]
-    public class DespatchAddress
-    {
-        public string Id { get; set; }
-        public string AddressLine { get; set; }
     }
 }
