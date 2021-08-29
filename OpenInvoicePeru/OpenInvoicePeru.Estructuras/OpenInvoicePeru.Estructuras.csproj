@@ -42,11 +42,29 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CommonAggregateComponents\AccountingSupplierParty.cs" />
+    <Compile Include="CommonAggregateComponents\AdditionalItemProperty.cs" />
     <Compile Include="CommonAggregateComponents\AddressLine.cs" />
+    <Compile Include="CommonAggregateComponents\CommodityClassification.cs" />
     <Compile Include="CommonAggregateComponents\CompanyId.cs" />
+    <Compile Include="CommonAggregateComponents\Consignment.cs" />
+    <Compile Include="CommonAggregateComponents\Delivery.cs" />
+    <Compile Include="CommonAggregateComponents\DeliveryTerms.cs" />
+    <Compile Include="CommonAggregateComponents\Despatch.cs" />
+    <Compile Include="CommonAggregateComponents\DespatchAddress.cs" />
+    <Compile Include="CommonAggregateComponents\MeasurementDimension.cs" />
     <Compile Include="CommonAggregateComponents\PartyTaxScheme.cs" />
+    <Compile Include="CommonAggregateComponents\PlannedPickupTransportEvent.cs" />
     <Compile Include="CommonAggregateComponents\RegistrationAddress.cs" />
+    <Compile Include="CommonAggregateComponents\SellersItemIdentification.cs" />
+    <Compile Include="CommonAggregateComponents\StandardItemIdentification.cs" />
+    <Compile Include="CommonAggregateComponents\UsabilityPeriod.cs" />
+    <Compile Include="EstandarUbl\InfoCredits.cs" />
     <Compile Include="EstandarUbl\Perception.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="SunatAggregateComponents\AdditionalInformation.cs" />
     <Compile Include="SunatAggregateComponents\AdditionalMonetaryTotal.cs" />
     <Compile Include="SunatAggregateComponents\AdditionalProperty.cs" />
@@ -115,7 +133,12 @@
       <Name>OpenInvoicePeru.Comun</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

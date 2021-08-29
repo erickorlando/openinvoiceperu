@@ -58,6 +58,9 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         [JsonProperty(Required = Required.Always)]
         public decimal TotalVenta { get; set; }
 
+        [JsonProperty(Required = Required.AllowNull)]
+        public decimal Redondeo { get; set; }
+
         [JsonProperty(Required = Required.Always)]
         public decimal TotalIgv { get; set; }
 
@@ -93,6 +96,9 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         [Obsolete(ObsoleteAnticipo)]
         public decimal MontoAnticipo { get; set; }
 
+        public bool Credito { get; set; }
+        public List<DatoCredito> DatoCreditos { get; set; }
+
         public List<DatoAdicional> DatoAdicionales { get; set; }
 
         public List<Anticipo> Anticipos { get; set; }
@@ -107,6 +113,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public string NroOrdenCompra { get; set; }
 
+        public string Notas { get; set; }
         public List<Leyenda> Leyendas { get; set; }
 
         public DocumentoElectronico()
@@ -126,11 +133,13 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             Leyendas = new List<Leyenda>();
             Discrepancias = new List<Discrepancia>();
             Anticipos = new List<Anticipo>();
+            DatoCreditos = new List<DatoCredito>();
             TipoDocumento = "01"; // Factura.
             TipoOperacion = "0101"; // Venta Interna.
             Moneda = "PEN"; // Soles.
             FechaEmision = DateTime.Today.ToString("yyyy-MM-dd");
             HoraEmision = DateTime.Now.ToString("HH:mm:ss");
+            
         }
     }
 }

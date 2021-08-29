@@ -137,6 +137,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 writer.WriteEndElement();
             }
 
+            writer.WriteComment(Properties.Resources.Comment);
+
             #region DocumentCurrencyCode
             writer.WriteStartElement("cbc:DocumentCurrencyCode");
             {

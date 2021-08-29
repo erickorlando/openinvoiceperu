@@ -103,12 +103,17 @@ namespace OpenInvoicePeru.Xml
                     TaxInclusiveAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
-                        Value = documento.TotalVenta
+                        Value = documento.LineExtensionAmount > 0 ? documento.LineExtensionAmount : documento.TotalVenta
                     },
                     LineExtensionAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
                         Value = documento.LineExtensionAmount > 0 ? documento.LineExtensionAmount : 0
+                    },
+                    PayableRoundingAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.Redondeo
                     }
                 },
                 AllowanceCharge = new AllowanceCharge
@@ -138,6 +143,18 @@ namespace OpenInvoicePeru.Xml
                     }
                 }
             };
+
+            invoice.Credito = documento.Credito;
+            if (invoice.Credito)
+            {
+                invoice.InfoCreditsList.AddRange(documento.DatoCreditos
+                    .Select(p => new InfoCredits
+                    {
+                        NroCuota = p.NroCuota,
+                        MontoCuota = p.MontoCuota,
+                        FechaCredito = p.FechaCredito
+                    }));
+            }
 
             if (documento.TotalVenta > 0 && documento.LineExtensionAmount == 0)
             {

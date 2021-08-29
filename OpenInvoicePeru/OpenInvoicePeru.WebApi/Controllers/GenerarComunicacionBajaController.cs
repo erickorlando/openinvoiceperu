@@ -1,12 +1,12 @@
-﻿using System;
-using System.Threading.Tasks;
-using System.Web.Http;
-using OpenInvoicePeru.Comun.Dto.Intercambio;
+﻿using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using OpenInvoicePeru.Firmado;
 using OpenInvoicePeru.Xml;
-using Microsoft.Practices.Unity;
 using Swashbuckle.Swagger.Annotations;
+using System;
+using System.Threading.Tasks;
+using System.Web.Http;
+using Unity;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
@@ -20,8 +20,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
         public GenerarComunicacionBajaController(ISerializador serializador)
         {
             _serializador = serializador;
-            _documentoXml = _documentoXml = UnityConfig.GetConfiguredContainer()
-                .Resolve<IDocumentoXml>(GetType().Name);
+            _documentoXml = new ComunicacionBajaXml();
         }
 
         /// <summary>

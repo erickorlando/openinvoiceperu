@@ -19,29 +19,13 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
             CrearFactura();
-            CrearFacturaConAnticipo();
-            //CrearBoleta();
-            //CrearResumenDiario();
-            //CrearFacturaConDetraccionTransportes();
-            //CrearNotaCredito();
-            //CrearNotaDebito();
+            CrearFacturaAlContado();
+            CrearBoleta();
 
-            //var documento = new DocumentoElectronico
-            //{
-            //    IdDocumento = "FFF1-15",
-            //    TipoDocumento = "01",
-            //    Emisor = new Compania
-            //    {
-            //        NroDocumento = "20600695771"
-            //    }
-            //};
-
-            //FirmaryEnviar(documento, new DocumentoResponse
-            //{
-            //    TramaXmlSinFirma = Convert.ToBase64String(File.ReadAllBytes(@"C:\GitProjects\Tipos de comprobantes\EJEMPLO XML FACTURA 15 ANTICIPO REGULARIZACION.xml"))
-            //});
-
-            //ConsultarTicket("300000005449503", "20454791887");
+            CrearResumenDiario();
+            CrearComunicacionBaja();
+            CrearNotaCredito();
+            CrearNotaDebito();
 
             Console.ReadLine();
         }
@@ -50,27 +34,11 @@ namespace OpenInvoicePeru.ClienteConsola
         {
             return new Compania
             {
-                NroDocumento = "20167795120",
+                NroDocumento = "20547471609",
                 TipoDocumento = "6",
-                NombreComercial = "INVERSIONES ANCONA",
-                NombreLegal = "INVERSIONES ANCONA S.A.C",
+                NombreComercial = "EMPRESA DE INFORMATICA",
+                NombreLegal = "EMPRESA DE INFORMATICA",
                 CodigoAnexo = "0001"
-            };
-        }
-
-        private static Negocio ToNegocio(Compania compania)
-        {
-            return new Negocio
-            {
-                NroDocumento = compania.NroDocumento,
-                TipoDocumento = compania.TipoDocumento,
-                NombreComercial = compania.NombreComercial,
-                NombreLegal = compania.NombreLegal,
-                Distrito = "LIMA",
-                Provincia = "LIMA",
-                Departamento = "LIMA",
-                Direccion = "AV. LIMA 123",
-                Ubigeo = "150101"
             };
         }
 
@@ -78,7 +46,7 @@ namespace OpenInvoicePeru.ClienteConsola
         {
             try
             {
-                Console.WriteLine("Ejemplo Factura Gravada (FF11-001)");
+                Console.WriteLine("Ejemplo Factura Gravada al crédito (FF11-001)");
                 var documento = new DocumentoElectronico
                 {
                     Emisor = CrearEmisor(),
@@ -88,75 +56,59 @@ namespace OpenInvoicePeru.ClienteConsola
                         TipoDocumento = "6",
                         NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
                     },
-                    IdDocumento = "FM01-00003422",
-                    FechaEmision = "2020-07-07",  // DateTime.Today.ToString(FormatoFecha),
+                    IdDocumento = "FF11-001",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
                     HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
-                    Moneda = "USD",
+                    Moneda = "PEN",
                     TipoDocumento = "01",
-                    TotalIgv = 300.6m,
-                    TotalVenta = 1967.06m,
-                    Gravadas = 1667m,
-                    Gratuitas = 300m,
+                    Credito = true,
+                    DatoCreditos = new List<DatoCredito>()
+                    {
+                        new DatoCredito
+                        {
+                            NroCuota = 1,
+                            MontoCuota = 10,
+                            FechaCredito = DateTime.Today.AddDays(30).ToString(FormatoFecha),
+                        },
+                        new DatoCredito
+                        {
+                            NroCuota = 2,
+                            MontoCuota = 63.75m,
+                            FechaCredito = DateTime.Today.AddDays(60).ToString(FormatoFecha),
+                        },
+                    },
+                    TotalIgv = 11.25m,
+                    TotalVenta = 73.75m,
+                    Gravadas = 62.50m,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
                         {
                             Id = 1,
                             Cantidad = 2,
-                            PrecioReferencial = 21.19m,
-                            PrecioUnitario = 21.19m,
+                            PrecioReferencial = 23.60m,
+                            PrecioUnitario = 20m,
                             TipoPrecio = "01",
                             CodigoItem = "1234234",
-                            Descripcion = "Arroz Costeño",
-                            UnidadMedida = "NIU",
-                            Impuesto = 7.62m, //Impuesto del Precio * Cantidad
+                            Descripcion = "Item 1",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 7.20m, // 
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 50m,
+                            TotalVenta = 40m,
                         },
                         new DetalleDocumento
                         {
                             Id = 2,
-                            Cantidad = 10,
-                            PrecioReferencial = 45.60m,
-                            PrecioUnitario = 45.60m,
+                            Cantidad = 5,
+                            PrecioReferencial = 5.31m,
+                            PrecioUnitario = 4.5m,
                             TipoPrecio = "01",
                             CodigoItem = "AER345667",
-                            Descripcion = "Aceite Primor",
-                            UnidadMedida = "NIU",
-                            Impuesto = 82.08m,
+                            Descripcion = "Item 2",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 4.05m,
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 538.08m,
-                        },
-                        new DetalleDocumento
-                        {
-                            Id = 3,
-                            Cantidad = 10,
-                            PrecioReferencial = 20,
-                            PrecioUnitario = 20,
-                            TipoPrecio = "01",
-                            CodigoItem = "3445666777",
-                            Descripcion = "Shampoo Palmolive",
-                            UnidadMedida = "NIU",
-                            Impuesto = 36,
-                            TipoImpuesto = "10", // Gravada
-                            TotalVenta = 236,
-                        },
-                        new DetalleDocumento
-                        {
-                            Id = 4,
-                            Cantidad = 1,
-                            PrecioReferencial = 0.10m,
-                            PrecioUnitario = 0.10m,
-                            TipoPrecio = "01",
-                            CodigoItem = "BOL",
-                            Descripcion = "Bolsa Plastica",
-                            UnidadMedida = "NIU",
-                            Impuesto = 0.018m,
-                            TipoImpuesto = "10", // Gravada
-                            OtroImpuesto = 0.10m,
-                            TotalVenta = 0.20m,
-                            CantidadBolsas = 1,
-                            PrecioUnitarioBolsa = 0.10m
+                            TotalVenta = 22.50m,
                         }
                     }
                 };
@@ -172,12 +124,79 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
-        
+        private static void CrearFacturaAlContado()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura Al Contado (FX01-00002298)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100121809",
+                        TipoDocumento = "6",
+                        NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
+                    },
+                    IdDocumento = "FX01-00002298",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "01",
+                    Credito = false,
+                    TotalIgv = 11.25m,
+                    TotalVenta = 73.75m,
+                    Gravadas = 62.50m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 2,
+                            PrecioReferencial = 23.60m,
+                            PrecioUnitario = 20m,
+                            TipoPrecio = "01",
+                            CodigoItem = "1234234",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 7.20m, // 
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 40m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 5,
+                            PrecioReferencial = 5.31m,
+                            PrecioUnitario = 4.5m,
+                            TipoPrecio = "01",
+                            CodigoItem = "AER345667",
+                            Descripcion = "Item 2",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 4.05m,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 22.50m,
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
         private static void CrearBoleta()
         {
             try
             {
-                Console.WriteLine("Ejemplo Factura Gravada (BB11-001)");
+                Console.WriteLine("Ejemplo Boleta Gravada al Contado (BB11-008)");
                 var documento = new DocumentoElectronico
                 {
                     Emisor = CrearEmisor(),
@@ -192,71 +211,39 @@ namespace OpenInvoicePeru.ClienteConsola
                     HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
                     Moneda = "PEN",
                     TipoDocumento = "03",
-                    TotalIgv = 125.7264m,
-                    TotalVenta = 824.2064m,
-                    TotalOtrosTributos = 0.10m,
-                    Gravadas = 698.48m,
+                    TotalIgv = 11.25m,
+                    TotalVenta = 73.75m,
+                    Gravadas = 62.50m,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
                         {
                             Id = 1,
                             Cantidad = 2,
-                            PrecioReferencial = 21.19m,
-                            PrecioUnitario = 21.19m,
+                            PrecioReferencial = 23.60m,
+                            PrecioUnitario = 20m,
                             TipoPrecio = "01",
                             CodigoItem = "1234234",
-                            Descripcion = "Arroz Costeño",
-                            UnidadMedida = "NIU",
-                            Impuesto = 7.62m, //Impuesto del Precio * Cantidad
+                            Descripcion = "Item 1",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 7.20m, // 
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 50m,
+                            TotalVenta = 40m,
                         },
                         new DetalleDocumento
                         {
                             Id = 2,
-                            Cantidad = 10,
-                            PrecioReferencial = 45.60m,
-                            PrecioUnitario = 45.60m,
+                            Cantidad = 5,
+                            PrecioReferencial = 5.31m,
+                            PrecioUnitario = 4.5m,
                             TipoPrecio = "01",
                             CodigoItem = "AER345667",
-                            Descripcion = "Aceite Primor",
-                            UnidadMedida = "NIU",
-                            Impuesto = 82.08m,
+                            Descripcion = "Item 2",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 4.05m,
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 538.08m,
+                            TotalVenta = 22.50m,
                         },
-                        new DetalleDocumento
-                        {
-                            Id = 3,
-                            Cantidad = 10,
-                            PrecioReferencial = 20,
-                            PrecioUnitario = 20,
-                            TipoPrecio = "01",
-                            CodigoItem = "3445666777",
-                            Descripcion = "Shampoo Palmolive",
-                            UnidadMedida = "NIU",
-                            Impuesto = 36,
-                            TipoImpuesto = "10", // Gravada
-                            TotalVenta = 236,
-                        },
-                        new DetalleDocumento
-                        {
-                            Id = 4,
-                            Cantidad = 1,
-                            PrecioReferencial = 0.10m,
-                            PrecioUnitario = 0.10m,
-                            TipoPrecio = "01",
-                            CodigoItem = "BOL",
-                            Descripcion = "Bolsa Plastica",
-                            UnidadMedida = "NIU",
-                            Impuesto = 0.00m,
-                            TipoImpuesto = "20", // Exonerada
-                            OtroImpuesto = 0.10m,
-                            TotalVenta = 0.20m,
-                            CantidadBolsas = 1,
-                            PrecioUnitarioBolsa = 0.10m
-                        }
                     }
                 };
 
@@ -271,78 +258,11 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
-        private static void CrearFacturaConDetraccionTransportes()
-        {
-            try
-            {
-                Console.WriteLine("Ejemplo Factura con Detracción de Transportes");
-                var documento = new DocumentoElectronico
-                {
-                    Emisor = CrearEmisor(),
-                    Receptor = new Compania
-                    {
-                        NroDocumento = "20100039207",
-                        TipoDocumento = "6",
-                        NombreLegal = "RANSA COMERCIAL S.A."
-                    },
-                    IdDocumento = "FF11-001",
-                    FechaEmision = DateTime.Today.AddDays(-5).ToString(FormatoFecha),
-                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
-                    Moneda = "PEN",
-                    TipoDocumento = "01",
-                    TipoOperacion = "1001",
-                    CuentaBancoNacion = "00047-345",
-                    MontoDetraccion = 99.12m,
-                    TasaDetraccion = 4, //4% de Detracción
-                    CodigoBienOServicio = "027",  //Servicio de Transporte de Carga (Catalogo 54)
-                    CodigoMedioPago = "001", // Medio de Pago (Catalogo 59)
-                    TotalIgv = 18,
-                    TotalVenta = 118,
-                    Gravadas = 100,
-                    Items = new List<DetalleDocumento>
-                    {
-                        new DetalleDocumento
-                        {
-                            Id = 1,
-                            Cantidad = 5,
-                            PrecioReferencial = 20,
-                            PrecioUnitario = 20,
-                            TipoPrecio = "01",
-                            CodigoItem = "1234234",
-                            Descripcion = "Transporte",
-                            UnidadMedida = "KG",
-                            Impuesto = 18,
-                            TipoImpuesto = "10", // Gravada
-                            TotalVenta = 100,
-                            UbigeoOrigen = "150101",
-                            DireccionOrigen = "Av. Argentina 2388",
-                            UbigeoDestino = "160101",
-                            DireccionDestino = "Jr. Morona 171",
-                            DetalleViaje = "Viaje con carga pesada",
-                            ValorReferencial = 500,
-                            ValorReferencialCargaEfectiva = 520,
-                            ValorReferencialCargaUtil = 480
-                        }
-                    }
-                };
-
-                FirmaryEnviar(documento, GenerarDocumento(documento));
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                Console.ReadLine();
-            }
-        }
-
         private static void CrearNotaCredito()
         {
             try
             {
-                Console.WriteLine("Ejemplo Nota de Crédito de Factura (FN11-001)");
+                Console.WriteLine("Ejemplo Nota de Crédito de Factura (FC01-00000178)");
                 var documento = new DocumentoElectronico
                 {
                     Emisor = CrearEmisor(),
@@ -356,46 +276,45 @@ namespace OpenInvoicePeru.ClienteConsola
                     IdDocumento = "FC01-00000178",
                     FechaEmision = DateTime.Today.AddDays(-5).ToString(FormatoFecha),
                     HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
-                    FechaVencimiento = "2020-02-29",
+                    FechaVencimiento = "2021-12-29",
                     MontoEnLetras = string.Empty,
-                    Moneda = "USD",
+                    Moneda = "PEN",
                     TipoDocumento = "07",
-                    TotalIgv = 435.60m,
-                    TotalVenta = 2865.60m,
-                    Gravadas = 2420m,
-                    Inafectas = 10,
+                    TotalIgv = 11.25m,
+                    TotalVenta = 73.75m,
+                    Gravadas = 62.50m,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
                         {
                             Id = 1,
-                            Cantidad = 1,
-                            PrecioReferencial = 2420.0m,
-                            PrecioUnitario = 2420m,
-                            BaseImponible = 2420M,
+                            Cantidad = 2,
+                            PrecioReferencial = 23.60m,
+                            PrecioUnitario = 20m,
+                            BaseImponible = 40m,
                             TipoPrecio = "01",
-                            CodigoItem = "2435675",
-                            Descripcion = "Dproc (CCD)",
-                            UnidadMedida = "NIU",
-                            Impuesto = 435.60m,
+                            CodigoItem = "1234234",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 7.20m, // 
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 2420m,
+                            TotalVenta = 40m,
                         },
                         new DetalleDocumento
                         {
                             Id = 2,
-                            Cantidad = 1,
-                            PrecioReferencial = 10m,
-                            PrecioUnitario = 10m,
-                            BaseImponible = 0M,
+                            Cantidad = 5,
+                            PrecioReferencial = 5.31m,
+                            PrecioUnitario = 4.5m,
+                            BaseImponible = 22.50m,
                             TipoPrecio = "01",
-                            CodigoItem = "98915",
-                            Descripcion = "equis",
+                            CodigoItem = "AER345667",
+                            Descripcion = "Item 2",
                             UnidadMedida = "ZZ",
-                            Impuesto = 0m,
-                            TipoImpuesto = "30", // Inafecta
-                            TotalVenta = 10M
-                        },
+                            Impuesto = 4.05m,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 22.50m,
+                        }
                     },
                     Discrepancias = new List<Discrepancia>
                     {
@@ -449,24 +368,38 @@ namespace OpenInvoicePeru.ClienteConsola
                     HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
                     Moneda = "PEN",
                     TipoDocumento = "08",
-                    TotalIgv = 0.76m,
-                    TotalVenta = 5,
-                    Gravadas = 4.24m,
+                    TotalIgv = 11.25m,
+                    TotalVenta = 73.75m,
+                    Gravadas = 62.50m,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
                         {
                             Id = 1,
-                            Cantidad = 1,
-                            PrecioReferencial = 4.24m,
-                            PrecioUnitario = 4.24m,
+                            Cantidad = 2,
+                            PrecioReferencial = 23.60m,
+                            PrecioUnitario = 20m,
                             TipoPrecio = "01",
-                            CodigoItem = "2435675",
-                            Descripcion = "Penalidad por atraso de pago",
-                            UnidadMedida = "NIU",
-                            Impuesto = 0.76m,
+                            CodigoItem = "1234234",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 7.20m, // 
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 5,
+                            TotalVenta = 40m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 5,
+                            PrecioReferencial = 5.31m,
+                            PrecioUnitario = 4.5m,
+                            TipoPrecio = "01",
+                            CodigoItem = "AER345667",
+                            Descripcion = "Item 2",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 4.05m,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 22.50m,
                         }
                     },
                     Discrepancias = new List<Discrepancia>
@@ -686,112 +619,6 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.WriteLine("Nro de Ticket: {0}", enviarResumenResponse.NroTicket);
 
                 ConsultarTicket(enviarResumenResponse.NroTicket, documentoBaja.Emisor.NroDocumento);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                Console.ReadLine();
-            }
-        }
-
-        private static void CrearFacturaConAnticipo()
-        {
-            try
-            {
-                Console.WriteLine("Ejemplo Factura de Anticipo Y Regularización del mismo (FF60-1500 y FF60-1501)");
-                var documento = new DocumentoElectronico
-                {
-                    Emisor = CrearEmisor(),
-                    Receptor = new Compania
-                    {
-                        NroDocumento = "20565211600",
-                        TipoDocumento = "6",
-                        NombreLegal = "WASPE PERU S.A.C."
-                    },
-                    IdDocumento = "FF60-1500",
-                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
-                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
-                    FechaVencimiento = DateTime.Today.AddDays(7).ToString(FormatoFecha),
-                    Moneda = "PEN",
-                    TipoDocumento = "01",
-                    TipoOperacion = "0101",
-                    TotalIgv = 90,
-                    TotalVenta = 590,
-                    Gravadas = 500,
-                    Items = new List<DetalleDocumento>
-                    {
-                        new DetalleDocumento
-                        {
-                            Id = 1,
-                            Cantidad = 1,
-                            PrecioReferencial = 590,
-                            BaseImponible = 500,
-                            PrecioUnitario = 500,
-                            TipoPrecio = "01",
-                            CodigoItem = "DES-02",
-                            Descripcion = "OPENINVOICEPERU UBL 2.1 ANTICIPO 50%",
-                            UnidadMedida = "NIU",
-                            Impuesto = 90,
-                            TipoImpuesto = "10", // Gravada
-                            TotalVenta = 500 // (PrecioUnitario * Cantidad)
-                        }
-                    }
-                };
-
-                var documentoRegularizador = new DocumentoElectronico
-                {
-                    Emisor = CrearEmisor(),
-                    Receptor = new Compania
-                    {
-                        NroDocumento = "20565211600",
-                        TipoDocumento = "6",
-                        NombreLegal = "WASPE PERU S.A.C."
-                    },
-                    IdDocumento = "FF60-1501",
-                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
-                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
-                    Moneda = "PEN",
-                    TipoDocumento = "01",
-                    TipoOperacion = "0101",
-                    Anticipos = new List<Anticipo>
-                    {
-                        new Anticipo
-                        {
-                            DocAnticipo = "FF60-1500", //Especificamos el Documento Previo
-                            MonedaAnticipo = "PEN", //Moneda del Documento Anterior
-                            MontoAnticipo = 500, //Monto Pagado previamente
-                            TipoDocAnticipo = "02", // Tipo de Documento del Anticipo (Catalogo 12),
-                        }
-                    },
-                    MontoTotalAnticipo = 500,
-                    TotalIgv = 360,
-                    TotalVenta = 2360,
-                    Gravadas = 2000,
-                    Items = new List<DetalleDocumento>
-                    {
-                        new DetalleDocumento
-                        {
-                            Id = 1,
-                            Cantidad = 1,
-                            PrecioReferencial = 2360,
-                            PrecioUnitario = 2000,
-                            TipoPrecio = "01",
-                            CodigoItem = "DES-02",
-                            Descripcion = "OPENINVOICEPERU UBL 2.1",
-                            UnidadMedida = "ZZ",
-                            Impuesto = 360,
-                            TipoImpuesto = "10", // Gravada
-                            TotalVenta = 2000, // (PrecioUnitario * Cantidad)
-                        }
-                    }
-                };
-
-                FirmaryEnviar(documento, GenerarDocumento(documento));
-
-                FirmaryEnviar(documentoRegularizador, GenerarDocumento(documentoRegularizador));
             }
             catch (Exception ex)
             {

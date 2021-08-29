@@ -90,6 +90,10 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
         public IFormatProvider Formato { get; set; }
 
+        public bool Credito { get; set; }
+
+        public List<InfoCredits> InfoCreditsList { get; set; }
+
         public Invoice()
         {
             AccountingSupplierParty = new AccountingSupplierParty();
@@ -104,6 +108,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             TaxTotals = new List<TaxTotal>();
             NotesList = new Dictionary<string, string>();
             LegalMonetaryTotal = new LegalMonetaryTotal();
+            InfoCreditsList = new List<InfoCredits>();
             UblVersionId = "2.1";
             CustomizationId = "2.0";
             Formato = new System.Globalization.CultureInfo(Formatos.Cultura);
@@ -205,6 +210,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteEndElement();
 
             writer.WriteElementString("cbc:LineCountNumeric", InvoiceLines.Count.ToString());
+
+            writer.WriteComment(Properties.Resources.Comment);
 
             #region OrderReference
             if (!string.IsNullOrEmpty(OrderReference))
@@ -493,6 +500,52 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             #endregion PrepaidPayment
 
+            //#region Credito
+
+            //writer.WriteComment("Inicio Credito o al Contado");
+
+            //writer.WriteStartElement("cac:PaymentTerms");
+            //{
+            //    writer.WriteElementString("cbc:ID", "FormaPago");
+            //    writer.WriteElementString("cbc:PaymentMeansID", Credito ? "Credito" : "Contado");
+            //    if (Credito)
+            //    {
+            //        writer.WriteStartElement("cbc:Amount");
+            //        {
+            //            writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
+            //            writer.WriteValue(LegalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+            //        }
+            //        writer.WriteEndElement();
+            //    }
+            //}
+            //writer.WriteEndElement();
+
+            //if (Credito)
+            //{
+            //    foreach (var credit in InfoCreditsList)
+            //    {
+            //        writer.WriteStartElement("cac:PaymentTerms");
+            //        {
+            //            writer.WriteElementString("cbc:ID", "FormaPago");
+            //            writer.WriteElementString("cbc:PaymentMeansID", $"Cuota{credit.NroCuota:000}");
+
+            //            writer.WriteStartElement("cbc:Amount");
+            //            {
+            //                writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
+            //                writer.WriteValue(credit.MontoCuota.ToString(Formatos.FormatoNumerico, Formato));
+            //            }
+            //            writer.WriteEndElement();
+
+            //            writer.WriteElementString("cbc:PaymentDueDate", credit.FechaCredito);
+            //        }
+            //        writer.WriteEndElement();
+            //    }
+            //}
+
+            //writer.WriteComment("Fin Credito o al Contado");
+
+            //#endregion
+
             #region AllowanceCharge
             if (AllowanceCharge.Amount.Value > 0)
             {
@@ -647,12 +700,25 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     }
                     writer.WriteEndElement();
                 }
+
+                if (LegalMonetaryTotal.PayableRoundingAmount.Value > 0)
+                {
+                    writer.WriteStartElement("cbc:PayableRoundingAmount");
+                    {
+                        writer.WriteAttributeString("currencyID", LegalMonetaryTotal.PayableRoundingAmount.CurrencyId);
+                        writer.WriteValue(LegalMonetaryTotal.PayableRoundingAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                    }
+                    writer.WriteEndElement();
+                }
+
                 writer.WriteStartElement("cbc:PayableAmount");
                 {
                     writer.WriteAttributeString("currencyID", LegalMonetaryTotal.PayableAmount.CurrencyId);
                     writer.WriteValue(LegalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                 }
                 writer.WriteEndElement();
+
+               
             }
             writer.WriteEndElement();
 
@@ -854,7 +920,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                                 if (monto == 0)
                                                     monto = invoiceLine.PricingReference
                                                                 .AlternativeConditionPrices
-                                                                .First().PriceAmount.Value 
+                                                                .First().PriceAmount.Value
                                                             * invoiceLine.InvoicedQuantity.Value;
                                             }
 
@@ -1073,6 +1139,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             }
 
             #endregion InvoiceLines
+
+
         }
     }
 }
