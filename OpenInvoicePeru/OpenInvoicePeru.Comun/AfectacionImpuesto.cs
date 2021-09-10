@@ -19,6 +19,8 @@
                     letra = "S";
                     break;
                 case "20":
+                    letra = "S";
+                    break;
                 case "21": //Exonerado - Operación Onerosa 
                     letra = "E";
                     break;
@@ -50,7 +52,7 @@
                     tasa = 18.00m;
                     break;
                 case "20":
-                    tasa = 0.00m;
+                    tasa = 18m;
                     break;
                 case "21":
                 case "30":

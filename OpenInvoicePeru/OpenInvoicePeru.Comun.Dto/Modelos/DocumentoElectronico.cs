@@ -46,11 +46,11 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         public decimal Exportacion { get; set; }
 
         public decimal DescuentoGlobal { get; set; }
-
         public decimal FactorMultiplicadorDscto { get; set; }
         public string CodigoRazonDcto { get; set; }
         public decimal MontoBaseParaDcto { get; set; }
         public decimal LineExtensionAmount { get; set; }
+        public decimal TaxInclusiveAmount { get; set; }
 
         [JsonProperty(Required = Required.Always)]
         public List<DetalleDocumento> Items { get; set; }
@@ -115,6 +115,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public string Notas { get; set; }
         public List<Leyenda> Leyendas { get; set; }
+        public decimal OtrosCargos { get; set; }
 
         public DocumentoElectronico()
         {

@@ -139,7 +139,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteStartElement("cbc:Note");
             {
                 writer.WriteAttributeString("languageLocaleID", "1000");
-                writer.WriteCData(Note ?? string.Empty);
+                writer.WriteCData(Note ?? "Nota de Credito");
             }
             writer.WriteEndElement();
 
@@ -596,7 +596,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         writer.WriteAttributeString("unitCodeListID", ValoresUbl.QuantityCodeListId);
                         writer.WriteAttributeString("unitCodeListAgencyName", ValoresUbl.CurrencyAgencyName);
                         writer.WriteValue(
-                            creditNoteLine.CreditedQuantity.Value.ToString(Formatos.FormatoNumerico, Formato));
+                            creditNoteLine.CreditedQuantity.Value.ToString(Formatos.FormatoNumericoExtenso, Formato));
                     }
                     writer.WriteEndElement();
 
@@ -645,7 +645,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                 {
                                     writer.WriteAttributeString("currencyID", item.PriceAmount.CurrencyId);
                                     writer.WriteValue(
-                                        item.PriceAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                                        item.PriceAmount.Value.ToString(Formatos.FormatoNumericoExtenso, Formato));
                                 }
                                 writer.WriteEndElement();
 
@@ -828,7 +828,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         {
                             writer.WriteAttributeString("currencyID", creditNoteLine.Price.PriceAmount.CurrencyId);
                             writer.WriteValue(
-                                creditNoteLine.Price.PriceAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                                creditNoteLine.Price.PriceAmount.Value.ToString(Formatos.FormatoNumericoExtenso, Formato));
                         }
                         writer.WriteEndElement();
                     }

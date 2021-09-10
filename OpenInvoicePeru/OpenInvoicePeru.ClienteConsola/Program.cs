@@ -18,14 +18,16 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            CrearFactura();
-            CrearFacturaAlContado();
-            CrearBoleta();
+            //CrearFactura();
+            //CrearFacturaAlContado();
+            //CrearBoleta();
 
-            CrearResumenDiario();
-            CrearComunicacionBaja();
-            CrearNotaCredito();
-            CrearNotaDebito();
+            //CrearResumenDiario();
+            //CrearComunicacionBaja();
+            //CrearNotaCredito();
+            //CrearNotaDebito();
+
+            CrearFacturaAlContadoConDscto();
 
             Console.ReadLine();
         }
@@ -34,10 +36,10 @@ namespace OpenInvoicePeru.ClienteConsola
         {
             return new Compania
             {
-                NroDocumento = "20547471609",
+                NroDocumento = "20493654463",
                 TipoDocumento = "6",
-                NombreComercial = "EMPRESA DE INFORMATICA",
-                NombreLegal = "EMPRESA DE INFORMATICA",
+                NombreComercial = "CSM CORPORACION ORIENTE",
+                NombreLegal = "CSM CORPORACION ORIENTE",
                 CodigoAnexo = "0001"
             };
         }
@@ -191,7 +193,79 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
+        
+        private static void CrearFacturaAlContadoConDscto()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura Al Contado (FX01-00001364)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100121809",
+                        TipoDocumento = "6",
+                        NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
+                    },
+                    IdDocumento = "FX01-00001364",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "01",
+                    Credito = false,
+                    TotalVenta = 63.45m,
+                    Exoneradas = 70.50m,
+                    LineExtensionAmount = 63.45m,
+                    TaxInclusiveAmount = 63.45m,
+                    DescuentoGlobal = 7.05m,
+                    FactorMultiplicadorDscto = 0.10m,
+                    MontoBaseParaDcto = 70.50m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 3,
+                            PrecioReferencial = 16m,
+                            PrecioUnitario = 16m,
+                            TipoPrecio = "01",
+                            CodigoItem = "8888",
+                            Descripcion = "AJI CHARAPITA",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0m, // 
+                            TipoImpuesto = "20", // Exonerada
+                            TotalVenta = 48m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 5,
+                            PrecioReferencial = 4.5m,
+                            PrecioUnitario = 4.5m,
+                            TipoPrecio = "01",
+                            CodigoItem = "9999",
+                            Descripcion = "CEBOLLA CHINA",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0m,
+                            TipoImpuesto = "20", // Exonerada
+                            TotalVenta = 22.50m,
+                        }
+                    }
+                };
 
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+        
         private static void CrearBoleta()
         {
             try

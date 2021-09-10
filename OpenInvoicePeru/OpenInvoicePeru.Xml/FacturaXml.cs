@@ -98,17 +98,22 @@ namespace OpenInvoicePeru.Xml
                     AllowanceTotalAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
-                        Value = documento.DescuentoGlobal
+                        Value = documento.Items.Sum(x => x.Descuento)
                     },
                     TaxInclusiveAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
-                        Value = documento.LineExtensionAmount > 0 ? documento.LineExtensionAmount : documento.TotalVenta
+                        Value = documento.TaxInclusiveAmount > 0 ? documento.TaxInclusiveAmount : documento.TotalVenta
                     },
                     LineExtensionAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
                         Value = documento.LineExtensionAmount > 0 ? documento.LineExtensionAmount : 0
+                    },
+                    ChargeTotalAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.OtrosCargos
                     },
                     PayableRoundingAmount = new PayableAmount
                     {
@@ -179,32 +184,31 @@ namespace OpenInvoicePeru.Xml
                 }));
             }
 
+            if (documento.Exoneradas > 0)
+            {
+                invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
+                {
+                    CurrencyId = documento.Moneda,
+                    MontoBase = documento.Exoneradas,
+                    Monto = 0,
+                    CategoryId = "E",
+                    TaxSchemeId = "9997",
+                    Name = "EXO",
+                    TaxTypeCode = "VAT"
+                }));
+            }
 
             if (documento.Inafectas > 0)
             {
                 invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
                 {
                     CurrencyId = documento.Moneda,
-                    Monto = 0,
                     MontoBase = documento.Inafectas,
+                    Monto = 0,
                     CategoryId = "O",
                     TaxSchemeId = "9998",
                     Name = "INA",
                     TaxTypeCode = "FRE"
-                }));
-            }
-
-            if (documento.Exoneradas > 0)
-            {
-                invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
-                {
-                    CurrencyId = documento.Moneda,
-                    Monto = 0,
-                    MontoBase = documento.Exoneradas,
-                    CategoryId = "E",
-                    TaxSchemeId = "9997",
-                    Name = "EXO",
-                    TaxTypeCode = "VAT"
                 }));
             }
 

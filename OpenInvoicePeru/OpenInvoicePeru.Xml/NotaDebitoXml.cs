@@ -20,6 +20,7 @@ namespace OpenInvoicePeru.Xml
             {
                 Id = documento.IdDocumento,
                 IssueDate = DateTime.Parse(documento.FechaEmision),
+                IssueTime = string.IsNullOrWhiteSpace(documento.HoraEmision) ? DateTime.Now : DateTime.Parse(documento.HoraEmision),
                 DocumentCurrencyCode = documento.Moneda,
                 Signature = new SignatureCac
                 {

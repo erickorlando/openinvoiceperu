@@ -127,15 +127,12 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             //if (DueDate != null)
             //    writer.WriteElementString("cbc:DueDate", DueDate?.ToString(Formatos.FormatoFecha));
 
-            if (!string.IsNullOrEmpty(Note))
+            writer.WriteStartElement("cbc:Note");
             {
-                writer.WriteStartElement("cbc:Note");
-                {
-                    writer.WriteAttributeString("languageLocaleID", "1000");
-                    writer.WriteValue(Note);
-                }
-                writer.WriteEndElement();
+                writer.WriteAttributeString("languageLocaleID", "1000");
+                writer.WriteValue(Note ?? "Nota de Debito");
             }
+            writer.WriteEndElement();
 
             writer.WriteComment(Properties.Resources.Comment);
 
