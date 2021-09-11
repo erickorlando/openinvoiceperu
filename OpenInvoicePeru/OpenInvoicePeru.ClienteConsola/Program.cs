@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
 using System.IO;
+using Newtonsoft.Json;
 
 namespace OpenInvoicePeru.ClienteConsola
 {
@@ -18,8 +19,9 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            //CrearFactura();
-            //CrearFacturaAlContado();
+            //CrearFacturaAlCredito();
+            //CrearFacturaConMuchosDecimales();
+            CrearFacturaAlContado();
             //CrearBoleta();
 
             //CrearResumenDiario();
@@ -27,7 +29,8 @@ namespace OpenInvoicePeru.ClienteConsola
             //CrearNotaCredito();
             //CrearNotaDebito();
 
-            CrearFacturaAlContadoConDscto();
+            //CrearFacturaAlContadoConDscto();
+            //CrearFacturaAlContadoConDsctoYRedondeo();
 
             Console.ReadLine();
         }
@@ -44,7 +47,7 @@ namespace OpenInvoicePeru.ClienteConsola
             };
         }
 
-        private static void CrearFactura()
+        private static void CrearFacturaAlCredito()
         {
             try
             {
@@ -126,6 +129,7 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
+        
         private static void CrearFacturaAlContado()
         {
             try
@@ -149,6 +153,8 @@ namespace OpenInvoicePeru.ClienteConsola
                     TotalIgv = 11.25m,
                     TotalVenta = 73.75m,
                     Gravadas = 62.50m,
+                    LineExtensionAmount = 62.50m,
+                    TaxInclusiveAmount = 73.75m,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
@@ -214,19 +220,19 @@ namespace OpenInvoicePeru.ClienteConsola
                     Moneda = "PEN",
                     TipoDocumento = "01",
                     Credito = false,
-                    TotalVenta = 63.45m,
-                    Exoneradas = 70.50m,
-                    LineExtensionAmount = 63.45m,
-                    TaxInclusiveAmount = 63.45m,
-                    DescuentoGlobal = 7.05m,
+                    TotalVenta = 90.41m, // MENOS EL 2%
+                    Exoneradas = 102.50m,
+                    LineExtensionAmount = 92.25m, //TOTAL - DESCUENTO.
+                    TaxInclusiveAmount = 90.41m, // MENOS EL 2%
+                    DescuentoGlobal = 10.25m,
                     FactorMultiplicadorDscto = 0.10m,
-                    MontoBaseParaDcto = 70.50m,
+                    MontoBaseParaDcto = 102.50m,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
                         {
                             Id = 1,
-                            Cantidad = 3,
+                            Cantidad = 5,
                             PrecioReferencial = 16m,
                             PrecioUnitario = 16m,
                             TipoPrecio = "01",
@@ -235,7 +241,7 @@ namespace OpenInvoicePeru.ClienteConsola
                             UnidadMedida = "NIU",
                             Impuesto = 0m, // 
                             TipoImpuesto = "20", // Exonerada
-                            TotalVenta = 48m,
+                            TotalVenta = 80m,
                         },
                         new DetalleDocumento
                         {
@@ -266,6 +272,133 @@ namespace OpenInvoicePeru.ClienteConsola
             }
         }
         
+        private static void CrearFacturaAlContadoConDsctoYRedondeo()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura Al Contado (FX01-00001364)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100121809",
+                        TipoDocumento = "6",
+                        NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
+                    },
+                    IdDocumento = "FX01-00001364",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "01",
+                    Credito = false,
+                    TotalVenta = 37.05m,
+                    Exoneradas = 30m,
+                    LineExtensionAmount = 37m,
+                    TaxInclusiveAmount = 37m,
+                    DescuentoGlobal = 3m,
+                    Redondeo = 0.05m,
+                    //FactorMultiplicadorDscto = 0.10m,
+                    //MontoBaseParaDcto = 102.50m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 2,
+                            PrecioReferencial = 20m,
+                            PrecioUnitario = 20m,
+                            TipoPrecio = "01",
+                            CodigoItem = "8888",
+                            Descripcion = "AJI CHARAPITA",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0m, // 
+                            TipoImpuesto = "20", // Exonerada
+                            TotalVenta = 20m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 1,
+                            PrecioReferencial = 20m,
+                            PrecioUnitario = 20m,
+                            TipoPrecio = "01",
+                            CodigoItem = "9999",
+                            Descripcion = "CEBOLLA CHINA",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0m,
+                            TipoImpuesto = "20", // Exonerada
+                            TotalVenta = 20m,
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        private static void CrearFacturaConMuchosDecimales()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura Gravada con muchos decimales (FX50-100)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100121809",
+                        TipoDocumento = "6",
+                        NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
+                    },
+                    IdDocumento = "FX50-100",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "01",
+                    Credito = false,
+                    TotalIgv = 305.08m,
+                    TotalVenta = 2000m,
+                    Gravadas = 1694.914m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 20000,
+                            PrecioReferencial = 0.1m,
+                            PrecioUnitario = 0.0847457m,
+                            TipoPrecio = "01",
+                            CodigoItem = "1234234",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 305.08m, // 
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 2000m,
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
         private static void CrearBoleta()
         {
             try
@@ -749,6 +882,13 @@ namespace OpenInvoicePeru.ClienteConsola
                     metodo = "GenerarNotaDebito";
                     break;
             }
+
+            var json = JsonConvert.SerializeObject(documento, Formatting.Indented, new JsonSerializerSettings
+            {
+                NullValueHandling = NullValueHandling.Ignore
+            });
+
+            File.WriteAllText($"{documento.IdDocumento}.json", json);
 
             var documentoResponse = RestHelper<DocumentoElectronico, DocumentoResponse>.Execute(metodo, documento);
 
