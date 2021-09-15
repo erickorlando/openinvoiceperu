@@ -1,12 +1,9 @@
-![Open Invoice Perú](http://frameworkperu.com/OpenInvoicePeruLogo.png "Open Invoice Perú")
-# OpenInvoicePeru v2.0 #
-Esta es  una versión privada de OpenInvoicePeru construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT, este proyecto está orientado al desarrollador.
+# OpenInvoicePeru v3.0 #
+Esta es una versión gratuita de OpenInvoicePeru construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT, este proyecto está orientado al desarrollador.
 Permite la generacion de XML, empaquetado, envío y recepción de documentos electrónicos a través de una API REST.
 
 [![Build status](https://frameworkperu.visualstudio.com/OpenInvoicePeruUBL21/_apis/build/status/OpenInvoicePeruUBL21-WebAPI-CI)](https://frameworkperu.visualstudio.com/OpenInvoicePeruUBL21/_build/latest?definitionId=6)
 Si encuentra algún bug por favor reportarlo a la zona de [Issues](https://frameworkperu.visualstudio.com/OpenInvoicePeruUBL21/_workitems).
-
-Puede leer la documentación de SUNAT en el repositorio de [OpenInvoicePeruDocs](https://github.com/FrameworkPeru/openinvoiceperudocs).
 
 Para consultar las novedades y cambios del proyecto revise el [Control de Cambios](CHANGELOG.md)
 
@@ -33,17 +30,11 @@ Para consultar las novedades y cambios del proyecto revise el [Control de Cambio
 - Ejemplos en C# para el consumo de la API REST con PostSharp.
 
 ## Consideraciones ##
-- El proyecto se ha desarrollado con VS2017, usando como base el .NET Framework 4.7.1.
-- Se recomienda usar encarecidamente VS2017 o superior, la edición [Community Edition](https://www.visualstudio.com/downloads/download-visual-studio-vs), es gratis y mucho mejor que sus predecesores.
+- El proyecto se ha desarrollado con VS2019, usando como base el .NET Framework 4.7.1.
+- Se recomienda usar encarecidamente VS2019 o superior, la edición [Community Edition](https://www.visualstudio.com/downloads/download-visual-studio-vs), es gratis y mucho mejor que sus predecesores.
 Puede usar la versión Professional o Enterprise si lo desea.
 
-- Para poder ejecutar correctamente el proyecto **debe iniciar Visual Studio como Administrador** y tener instalado IIS 7.0 o posterior.
-
-## Enlaces de Interes ##
-
-- [Framework Peru](http://frameworkperu.com)
-- [Canal Oficial de OpenInvoicePeru en Telegram](http://t.me/OpenInvoicePeru)
-- [Framework Peru en Facebook](http://facebook.com/FrameworkPe)
+- Para poder ejecutar correctamente el proyecto **debe iniciar Visual Studio como Administrador** y tener instalado IIS 10.0 o posterior.
 
 ## Descargo de Responsabilidad ##
 
@@ -51,7 +42,7 @@ Este software se entrega como tal y es libre de modificarlo a su gusto, copiarlo
 o de manera parcial, un agradecimiento público no cuesta nada.
 
 Así mismo no hay garantía expresa de este producto, cualquier inconveniente que se presente con SUNAT 
-es enteramente responsabilidad del usuario al usar este Software, a menos que haya recibido soporte por parte de **Framework Peru**. 
+es enteramente responsabilidad del usuario al usar este Software. 
 
 Si tiene errores con SUNAT fíjese en el código devuelto:
 
@@ -63,5 +54,4 @@ Si tiene mas dudas con SUNAT comuníquese con ellos al [+51 1 3150730](tel:+5113
 
 ## Asesoría y Soporte ##
 
-Si necesita Asesoría, Desarrollo, Implementación o necesita Integrar su Sistema de Ventas o ERP con **OpenInvoicePeru**, puede contactarnos al correo [soporte@frameworkperu.com](mailto:soporte@frameworkperu.com) y se puede concertar una reunión virtual, ya sea Skype, Hangouts, [Telegram](http://t.me/ErickOrlando) o TeamViewer.
-Recuerde que si bien el proyecto es de código abierto, el soporte y asesoría técnica son de pago, para más información ingrese [aquí](https://goo.gl/9xkUtB).
+Este proyecto no cuenta con soporte, por ello el código es libre para su revisión, reproducción total o parcial sin pago de regalías ni tampoco derecho a reclamos por parte del creador.
