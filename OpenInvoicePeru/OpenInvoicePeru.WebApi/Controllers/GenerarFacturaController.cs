@@ -15,7 +15,6 @@ namespace OpenInvoicePeru.WebApi.Controllers
     {
         private readonly IDocumentoXml _documentoXml;
         private readonly ISerializador _serializador;
-        private readonly TelegramService _telegramService;
 
         /// <inheritdoc />
         public GenerarFacturaController(ISerializador serializador)
@@ -24,7 +23,6 @@ namespace OpenInvoicePeru.WebApi.Controllers
             _documentoXml = new FacturaXml();
             //_documentoXml = _documentoXml = UnityConfig.Container
             //    .Resolve<IDocumentoXml>(GetType().Name);
-            _telegramService = new TelegramService();
         }
 
         /// <summary>
