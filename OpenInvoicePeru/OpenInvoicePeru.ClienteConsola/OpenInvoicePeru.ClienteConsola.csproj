@@ -76,11 +76,5 @@
   <ItemGroup>
     <Content Include="csharp.ico" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\OpenInvoicePeru.Comun.Dto\OpenInvoicePeru.Comun.Dto.csproj">
-      <Project>{a265a65a-c2a9-4f9e-b272-bed5ed04df98}</Project>
-      <Name>OpenInvoicePeru.Comun.Dto</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
