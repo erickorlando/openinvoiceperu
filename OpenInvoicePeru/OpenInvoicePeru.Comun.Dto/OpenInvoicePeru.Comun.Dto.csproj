@@ -52,7 +52,6 @@
     <Compile Include="Modelos\Contribuyente.cs" />
     <Compile Include="Modelos\DatoAdicional.cs" />
     <Compile Include="Modelos\DatoCredito.cs" />
-    <Compile Include="Modelos\DatosGuia.cs" />
     <Compile Include="Modelos\DetalleDocumento.cs" />
     <Compile Include="Modelos\DetalleGuia.cs" />
     <Compile Include="Modelos\Direccion.cs" />
@@ -86,12 +85,6 @@
     <Compile Include="Modelos\ResumenDiario.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Diagramas\DocumentosElectronicos.cd" />
-    <None Include="Diagramas\Bajas.cd" />
-    <None Include="Diagramas\GuiaRemision.cd" />
-    <None Include="Diagramas\Percepciones.cd" />
-    <None Include="Diagramas\ResumenesDiarios.cd" />
-    <None Include="Diagramas\Retenciones.cd" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

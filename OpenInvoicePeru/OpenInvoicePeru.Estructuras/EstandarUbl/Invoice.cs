@@ -681,15 +681,13 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
 
             writer.WriteStartElement("cac:LegalMonetaryTotal");
             {
-                if (LegalMonetaryTotal.LineExtensionAmount.Value > 0)
+
+                writer.WriteStartElement("cbc:LineExtensionAmount");
                 {
-                    writer.WriteStartElement("cbc:LineExtensionAmount");
-                    {
-                        writer.WriteAttributeString("currencyID", LegalMonetaryTotal.LineExtensionAmount.CurrencyId);
-                        writer.WriteValue(LegalMonetaryTotal.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
-                    }
-                    writer.WriteEndElement();
+                    writer.WriteAttributeString("currencyID", LegalMonetaryTotal.LineExtensionAmount.CurrencyId);
+                    writer.WriteValue(LegalMonetaryTotal.LineExtensionAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
                 }
+                writer.WriteEndElement();
 
                 writer.WriteStartElement("cbc:TaxInclusiveAmount");
                 {

@@ -7,7 +7,6 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 {
     public class DocumentoElectronico : IDocumentoElectronico
     {
-        private const string ObsoleteAnticipo = "Use la coleccion Anticipos en su lugar";
 
         [JsonProperty(Required = Required.Always)]
         public string IdDocumento { get; set; }
@@ -68,6 +67,8 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public decimal TotalOtrosTributos { get; set; }
 
+        public decimal TasaImpuesto { get; set; }
+
         public string MontoEnLetras { get; set; }
 
         public decimal MontoPercepcion { get; set; }
@@ -84,26 +85,13 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public decimal MontoTotalAnticipo { get; set; }
 
-        [Obsolete(ObsoleteAnticipo)]
-        public string TipoDocAnticipo { get; set; }
-
-        [Obsolete(ObsoleteAnticipo)]
-        public string DocAnticipo { get; set; }
-
-        [Obsolete(ObsoleteAnticipo)]
-        public string MonedaAnticipo { get; set; }
-
-        [Obsolete(ObsoleteAnticipo)]
-        public decimal MontoAnticipo { get; set; }
-
         public bool Credito { get; set; }
+
         public List<DatoCredito> DatoCreditos { get; set; }
 
         public List<DatoAdicional> DatoAdicionales { get; set; }
 
         public List<Anticipo> Anticipos { get; set; }
-
-        public DatosGuia DatosGuiaTransportista { get; set; }
 
         public List<DocumentoRelacionado> Relacionados { get; set; }
 
@@ -114,7 +102,9 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
         public string NroOrdenCompra { get; set; }
 
         public string Notas { get; set; }
+
         public List<Leyenda> Leyendas { get; set; }
+
         public decimal OtrosCargos { get; set; }
 
         public DocumentoElectronico()
@@ -138,6 +128,7 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
             TipoDocumento = "01"; // Factura.
             TipoOperacion = "0101"; // Venta Interna.
             Moneda = "PEN"; // Soles.
+            TasaImpuesto = 0.18m;
             FechaEmision = DateTime.Today.ToString("yyyy-MM-dd");
             HoraEmision = DateTime.Now.ToString("HH:mm:ss");
             

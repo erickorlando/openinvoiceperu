@@ -24,6 +24,7 @@ namespace OpenInvoicePeru.Xml
                 IssueDate = DateTime.Parse(documento.FechaEmision),
                 IssueTime = DateTime.Parse(documento.HoraEmision),
                 InvoiceTypeCode = documento.TipoDocumento,
+                ProfileId = documento.TipoOperacion,
                 DocumentCurrencyCode = documento.Moneda,
                 Signature = new SignatureCac
                 {
@@ -217,7 +218,7 @@ namespace OpenInvoicePeru.Xml
                 invoice.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
                 {
                     CurrencyId = documento.Moneda,
-                    Monto = 0,
+                    Monto = documento.Gratuitas * documento.TasaImpuesto,
                     MontoBase = documento.Gratuitas,
                     CategoryId = "Z",
                     TaxSchemeId = "9996",
@@ -274,23 +275,6 @@ namespace OpenInvoicePeru.Xml
                     Name = "ICBPER",
                     TaxTypeCode = "OTH"
                 }));
-            }
-
-            /* Tipo de Operación - Catalogo N° 17 */
-            if (!string.IsNullOrEmpty(documento.TipoOperacion)
-                && documento.DatosGuiaTransportista == null)
-            {
-                invoice.ProfileId = documento.TipoOperacion;
-                // Si es Emisor Itinerante.
-                if (documento.TipoOperacion == "05")
-                {
-                    invoice.UblExtensions.Extension2.ExtensionContent
-                        .AdditionalInformation.AdditionalProperties.Add(new AdditionalProperty
-                        {
-                            Id = "3000", // En el catalogo aparece como 2005 pero es 3000
-                            Value = "Venta realizada por emisor itinerante"
-                        });
-                }
             }
 
             foreach (var relacionado in documento.Relacionados)
@@ -371,75 +355,6 @@ namespace OpenInvoicePeru.Xml
             foreach (var leyenda in documento.Leyendas)
             {
                 invoice.NotesList.Add(leyenda.Codigo, leyenda.Descripcion);
-            }
-
-            // Para datos de Guia de Remision Transportista.
-            if (!string.IsNullOrEmpty(documento.DatosGuiaTransportista?.RucTransportista))
-            {
-                invoice.UblExtensions.Extension2.ExtensionContent
-                    .AdditionalInformation.SunatEmbededDespatchAdvice = new SunatEmbededDespatchAdvice
-                    {
-                        DeliveryAddress = new PostalAddress
-                        {
-                            Id = documento.DatosGuiaTransportista.DireccionDestino.Ubigeo,
-                            StreetName = documento.DatosGuiaTransportista.DireccionDestino.Direccion,
-                            CitySubdivisionName = documento.DatosGuiaTransportista.DireccionDestino.Urbanizacion,
-                            CityName = documento.DatosGuiaTransportista.DireccionDestino.Departamento,
-                            CountrySubentity = documento.DatosGuiaTransportista.DireccionDestino.Provincia,
-                            District = documento.DatosGuiaTransportista.DireccionDestino.Distrito,
-                            Country = new Country
-                            {
-                                IdentificationCode = "PE"
-                            }
-                        },
-                        OriginAddress = new PostalAddress
-                        {
-                            Id = documento.DatosGuiaTransportista.DireccionOrigen.Ubigeo,
-                            StreetName = documento.DatosGuiaTransportista.DireccionOrigen.Direccion,
-                            CitySubdivisionName = documento.DatosGuiaTransportista.DireccionOrigen.Urbanizacion,
-                            CityName = documento.DatosGuiaTransportista.DireccionOrigen.Departamento,
-                            CountrySubentity = documento.DatosGuiaTransportista.DireccionOrigen.Provincia,
-                            District = documento.DatosGuiaTransportista.DireccionOrigen.Distrito,
-                            Country = new Country
-                            {
-                                IdentificationCode = "PE"
-                            }
-                        },
-                        SunatCarrierParty = new AccountingSupplierParty
-                        {
-                            //CustomerAssignedAccountId = documento.DatosGuiaTransportista.RucTransportista,
-                            //AdditionalAccountId = "06",
-                            Party = new Party
-                            {
-                                PartyLegalEntity = new PartyLegalEntity
-                                {
-                                    RegistrationName = documento.DatosGuiaTransportista.NombreTransportista
-                                }
-                            }
-                        },
-                        DriverParty = new AgentParty
-                        {
-                            PartyIdentification = new PartyIdentification
-                            {
-                                Id = new PartyIdentificationId
-                                {
-                                    Value = documento.DatosGuiaTransportista.NroLicenciaConducir
-                                }
-                            }
-                        },
-                        SunatRoadTransport = new SunatRoadTransport
-                        {
-                            LicensePlateId = documento.DatosGuiaTransportista.PlacaVehiculo,
-                            TransportAuthorizationCode = documento.DatosGuiaTransportista.CodigoAutorizacion,
-                            BrandName = documento.DatosGuiaTransportista.MarcaVehiculo
-                        },
-                        TransportModeCode = documento.DatosGuiaTransportista.ModoTransporte,
-                        GrossWeightMeasure = new InvoicedQuantity
-                        {
-                            UnitCode = documento.DatosGuiaTransportista.UnidadMedida,
-                            Value = documento.DatosGuiaTransportista.PesoBruto
-                        }
-                    };
             }
 
             foreach (var detalleDocumento in documento.Items)

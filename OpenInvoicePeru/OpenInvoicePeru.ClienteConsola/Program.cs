@@ -19,18 +19,19 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            //CrearFacturaAlCredito();
-            //CrearFacturaConMuchosDecimales();
+            CrearFacturaAlCredito();
+            CrearFacturaConMuchosDecimales();
             CrearFacturaAlContado();
-            //CrearBoleta();
+            CrearFacturaGratuita();
+            CrearFacturaMixta();
+            CrearBoleta();
+            CrearFacturaAlContadoConDscto();
+            CrearFacturaAlContadoConDsctoYRedondeo();
 
-            //CrearResumenDiario();
-            //CrearComunicacionBaja();
-            //CrearNotaCredito();
-            //CrearNotaDebito();
-
-            //CrearFacturaAlContadoConDscto();
-            //CrearFacturaAlContadoConDsctoYRedondeo();
+            CrearResumenDiario();
+            CrearComunicacionBaja();
+            CrearNotaCredito();
+            CrearNotaDebito();
 
             Console.ReadLine();
         }
@@ -134,7 +135,7 @@ namespace OpenInvoicePeru.ClienteConsola
         {
             try
             {
-                Console.WriteLine("Ejemplo Factura Al Contado (FX01-00002298)");
+                Console.WriteLine("Ejemplo Factura Al Contado (FXC1-00001010)");
                 var documento = new DocumentoElectronico
                 {
                     Emisor = CrearEmisor(),
@@ -144,7 +145,7 @@ namespace OpenInvoicePeru.ClienteConsola
                         TipoDocumento = "6",
                         NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
                     },
-                    IdDocumento = "FX01-00002298",
+                    IdDocumento = "FXC1-00001010",
                     FechaEmision = DateTime.Today.ToString(FormatoFecha),
                     HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
                     Moneda = "PEN",
@@ -200,11 +201,159 @@ namespace OpenInvoicePeru.ClienteConsola
             }
         }
         
+        private static void CrearFacturaGratuita()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura Gratuita (FG01-00005599)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100121809",
+                        TipoDocumento = "6",
+                        NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
+                    },
+                    IdDocumento = "FG01-00005599",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoOperacion = "0101",
+                    TipoDocumento = "01",
+                    Credito = false,
+                    Gratuitas = 200m,
+                    TasaImpuesto = 0.18m,
+                    LineExtensionAmount = 0m,
+                    TaxInclusiveAmount = 0m,
+                    TotalIgv = 0,
+                    TotalVenta = 0m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 2,
+                            PrecioReferencial = 100m,
+                            PrecioUnitario = 0m,
+                            BaseImponible = 200m, 
+                            TipoPrecio = "02",
+                            CodigoItem = "P001",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 36m, 
+                            TipoImpuesto = "11",
+                            TotalVenta = 200m,
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+        
+        private static void CrearFacturaMixta()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura Mixta (FMX7-00006678)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100121809",
+                        TipoDocumento = "6",
+                        NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
+                    },
+                    IdDocumento = "FMX7-00006678",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoOperacion = "0101",
+                    TipoDocumento = "01",
+                    Credito = false,
+                    Gratuitas = 200m,
+                    Exoneradas = 200m,
+                    Gravadas = 100m,
+                    TasaImpuesto = 0m,
+                    LineExtensionAmount = 300m,
+                    TaxInclusiveAmount = 318m,
+                    TotalIgv = 18m,
+                    TotalVenta = 318m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 2,
+                            PrecioReferencial = 100m,
+                            PrecioUnitario = 0m,
+                            BaseImponible = 200m, 
+                            TipoPrecio = "02",
+                            CodigoItem = "P001",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0m, 
+                            TipoImpuesto = "21",
+                            TotalVenta = 200m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 2,
+                            PrecioReferencial = 100m,
+                            PrecioUnitario = 100m,
+                            TipoPrecio = "01",
+                            CodigoItem = "P002",
+                            Descripcion = "Item 2",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0m, 
+                            TipoImpuesto = "20",
+                            TotalVenta = 200m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 3,
+                            Cantidad = 1,
+                            PrecioReferencial = 118m,
+                            PrecioUnitario = 100m,
+                            TipoPrecio = "01",
+                            CodigoItem = "P003",
+                            Descripcion = "Item 3",
+                            UnidadMedida = "NIU",
+                            Impuesto = 18m, 
+                            TipoImpuesto = "10",
+                            TotalVenta = 100m,
+                        },
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+        
         private static void CrearFacturaAlContadoConDscto()
         {
             try
             {
-                Console.WriteLine("Ejemplo Factura Al Contado (FX01-00001364)");
+                Console.WriteLine("Ejemplo Factura Al Contado con Dcto (FX01-00001364)");
                 var documento = new DocumentoElectronico
                 {
                     Emisor = CrearEmisor(),
@@ -276,7 +425,7 @@ namespace OpenInvoicePeru.ClienteConsola
         {
             try
             {
-                Console.WriteLine("Ejemplo Factura Al Contado (FX01-00001364)");
+                Console.WriteLine("Ejemplo Factura Al Contado con Descuento (FXD1-00001364)");
                 var documento = new DocumentoElectronico
                 {
                     Emisor = CrearEmisor(),
@@ -286,7 +435,7 @@ namespace OpenInvoicePeru.ClienteConsola
                         TipoDocumento = "6",
                         NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
                     },
-                    IdDocumento = "FX01-00001364",
+                    IdDocumento = "FXD1-00001364",
                     FechaEmision = DateTime.Today.ToString(FormatoFecha),
                     HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
                     Moneda = "PEN",
@@ -465,6 +614,7 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
+
         private static void CrearNotaCredito()
         {
             try
@@ -542,7 +692,7 @@ namespace OpenInvoicePeru.ClienteConsola
                     //}
                 };
 
-                File.WriteAllText("notacredito.json", Newtonsoft.Json.JsonConvert.SerializeObject(documento));
+                File.WriteAllText("notacredito.json", JsonConvert.SerializeObject(documento));
 
                 FirmaryEnviar(documento, GenerarDocumento(documento));
             }
@@ -639,6 +789,7 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
+
         private static void CrearResumenDiario()
         {
             try
