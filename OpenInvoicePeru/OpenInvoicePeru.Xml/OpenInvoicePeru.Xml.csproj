@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenInvoicePeru.Xml</RootNamespace>
     <AssemblyName>OpenInvoicePeru.Xml</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\OpenInvoicePeru.Comun.Dto\OpenInvoicePeru.Comun.Dto.csproj">
-      <Project>{a265a65a-c2a9-4f9e-b272-bed5ed04df98}</Project>
+      <Project>{54eb4da6-9a5b-4faf-9699-a5876fabd6c5}</Project>
       <Name>OpenInvoicePeru.Comun.Dto</Name>
     </ProjectReference>
     <ProjectReference Include="..\OpenInvoicePeru.Comun\OpenInvoicePeru.Comun.csproj">
