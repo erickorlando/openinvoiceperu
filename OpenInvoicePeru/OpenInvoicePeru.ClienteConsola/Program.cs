@@ -1,11 +1,10 @@
-﻿using OpenInvoicePeru.Comun.Dto.Intercambio;
+﻿using Newtonsoft.Json;
+using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.Comun.Dto.Modelos;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Drawing;
 using System.IO;
-using Newtonsoft.Json;
 
 namespace OpenInvoicePeru.ClienteConsola
 {
@@ -130,7 +129,7 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
-        
+
         private static void CrearFacturaAlContado()
         {
             try
@@ -200,7 +199,7 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
-        
+
         private static void CrearFacturaGratuita()
         {
             try
@@ -236,12 +235,12 @@ namespace OpenInvoicePeru.ClienteConsola
                             Cantidad = 2,
                             PrecioReferencial = 100m,
                             PrecioUnitario = 0m,
-                            BaseImponible = 200m, 
+                            BaseImponible = 200m,
                             TipoPrecio = "02",
                             CodigoItem = "P001",
                             Descripcion = "Item 1",
                             UnidadMedida = "ZZ",
-                            Impuesto = 36m, 
+                            Impuesto = 36m,
                             TipoImpuesto = "11",
                             TotalVenta = 200m,
                         }
@@ -259,7 +258,7 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
-        
+
         private static void CrearFacturaMixta()
         {
             try
@@ -297,12 +296,12 @@ namespace OpenInvoicePeru.ClienteConsola
                             Cantidad = 2,
                             PrecioReferencial = 100m,
                             PrecioUnitario = 0m,
-                            BaseImponible = 200m, 
+                            BaseImponible = 200m,
                             TipoPrecio = "02",
                             CodigoItem = "P001",
                             Descripcion = "Item 1",
                             UnidadMedida = "NIU",
-                            Impuesto = 0m, 
+                            Impuesto = 0m,
                             TipoImpuesto = "21",
                             TotalVenta = 200m,
                         },
@@ -316,7 +315,7 @@ namespace OpenInvoicePeru.ClienteConsola
                             CodigoItem = "P002",
                             Descripcion = "Item 2",
                             UnidadMedida = "NIU",
-                            Impuesto = 0m, 
+                            Impuesto = 0m,
                             TipoImpuesto = "20",
                             TotalVenta = 200m,
                         },
@@ -330,7 +329,7 @@ namespace OpenInvoicePeru.ClienteConsola
                             CodigoItem = "P003",
                             Descripcion = "Item 3",
                             UnidadMedida = "NIU",
-                            Impuesto = 18m, 
+                            Impuesto = 18m,
                             TipoImpuesto = "10",
                             TotalVenta = 100m,
                         },
@@ -348,7 +347,7 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
-        
+
         private static void CrearFacturaAlContadoConDscto()
         {
             try
@@ -369,19 +368,19 @@ namespace OpenInvoicePeru.ClienteConsola
                     Moneda = "PEN",
                     TipoDocumento = "01",
                     Credito = false,
-                    TotalVenta = 90.41m, // MENOS EL 2%
-                    Exoneradas = 102.50m,
-                    LineExtensionAmount = 92.25m, //TOTAL - DESCUENTO.
-                    TaxInclusiveAmount = 90.41m, // MENOS EL 2%
-                    DescuentoGlobal = 10.25m,
+                    TotalVenta = 62.18m, 
+                    Exoneradas = 70.50m,
+                    LineExtensionAmount = 63.45m, //TOTAL - DESCUENTO.
+                    TaxInclusiveAmount = 62.18m, //TOTAL - EL IGV DEL DESCUENTO
+                    DescuentoGlobal = 7.05m,
                     FactorMultiplicadorDscto = 0.10m,
-                    MontoBaseParaDcto = 102.50m,
+                    MontoBaseParaDcto = 70.50m,
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
                         {
                             Id = 1,
-                            Cantidad = 5,
+                            Cantidad = 3,
                             PrecioReferencial = 16m,
                             PrecioUnitario = 16m,
                             TipoPrecio = "01",
@@ -390,7 +389,7 @@ namespace OpenInvoicePeru.ClienteConsola
                             UnidadMedida = "NIU",
                             Impuesto = 0m, // 
                             TipoImpuesto = "20", // Exonerada
-                            TotalVenta = 80m,
+                            TotalVenta = 48m,
                         },
                         new DetalleDocumento
                         {
@@ -420,12 +419,12 @@ namespace OpenInvoicePeru.ClienteConsola
                 Console.ReadLine();
             }
         }
-        
+
         private static void CrearFacturaAlContadoConDsctoYRedondeo()
         {
             try
             {
-                Console.WriteLine("Ejemplo Factura Al Contado con Descuento (FXD1-00001364)");
+                Console.WriteLine("Ejemplo Factura Al Contado con Descuento y Redondeo (FXD1-00001999)");
                 var documento = new DocumentoElectronico
                 {
                     Emisor = CrearEmisor(),
@@ -435,16 +434,16 @@ namespace OpenInvoicePeru.ClienteConsola
                         TipoDocumento = "6",
                         NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
                     },
-                    IdDocumento = "FXD1-00001364",
+                    IdDocumento = "FXD1-00001999",
                     FechaEmision = DateTime.Today.ToString(FormatoFecha),
                     HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
                     Moneda = "PEN",
                     TipoDocumento = "01",
                     Credito = false,
-                    TotalVenta = 37.05m,
-                    Exoneradas = 30m,
-                    LineExtensionAmount = 37m,
-                    TaxInclusiveAmount = 37m,
+                    TotalVenta = 57.05m,
+                    Exoneradas = 60m,
+                    LineExtensionAmount = 57m,
+                    TaxInclusiveAmount = 57m,
                     DescuentoGlobal = 3m,
                     Redondeo = 0.05m,
                     //FactorMultiplicadorDscto = 0.10m,
@@ -463,7 +462,7 @@ namespace OpenInvoicePeru.ClienteConsola
                             UnidadMedida = "NIU",
                             Impuesto = 0m, // 
                             TipoImpuesto = "20", // Exonerada
-                            TotalVenta = 20m,
+                            TotalVenta = 40m,
                         },
                         new DetalleDocumento
                         {
@@ -1084,7 +1083,6 @@ namespace OpenInvoicePeru.ClienteConsola
 
             var path = $"{documento.IdDocumento}.xml";
             File.WriteAllBytes(path, Convert.FromBase64String(responseFirma.TramaXmlFirmado));
-            Process.Start(path);
 
             Console.WriteLine("Enviando a SUNAT....");
 

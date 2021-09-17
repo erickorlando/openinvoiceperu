@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Contratos\IDocumentoElectronico.cs" Link="IDocumentoElectronico.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\ConsultaConstanciaRequest.cs" Link="ConsultaConstanciaRequest.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\ConsultaTicketRequest.cs" Link="ConsultaTicketRequest.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\DocumentoResponse.cs" Link="DocumentoResponse.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\EnviarDocumentoRequest.cs" Link="EnviarDocumentoRequest.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\EnviarDocumentoResponse.cs" Link="EnviarDocumentoResponse.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\EnviarResumenResponse.cs" Link="EnviarResumenResponse.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\EnvioDocumentoComun.cs" Link="EnvioDocumentoComun.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\FirmadoRequest.cs" Link="FirmadoRequest.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\FirmadoResponse.cs" Link="FirmadoResponse.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\RespuestaComun.cs" Link="RespuestaComun.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\RespuestaComunConArchivo.cs" Link="RespuestaComunConArchivo.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Anticipo.cs" Link="Anticipo.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Compania.cs" Link="Compania.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ComunicacionBaja.cs" Link="ComunicacionBaja.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Contribuyente.cs" Link="Contribuyente.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DatoAdicional.cs" Link="DatoAdicional.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DatoCredito.cs" Link="DatoCredito.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DetalleDocumento.cs" Link="DetalleDocumento.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DetalleGuia.cs" Link="DetalleGuia.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Direccion.cs" Link="Direccion.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Discrepancia.cs" Link="Discrepancia.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoBaja.cs" Link="DocumentoBaja.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoElectronico.cs" Link="DocumentoElectronico.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoPercepcion.cs" Link="DocumentoPercepcion.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoRelacionado.cs" Link="DocumentoRelacionado.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoResumen.cs" Link="DocumentoResumen.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoResumenDetalle.cs" Link="DocumentoResumenDetalle.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoRetencion.cs" Link="DocumentoRetencion.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\DocumentoSunatBase.cs" Link="DocumentoSunatBase.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\GrupoResumen.cs" Link="GrupoResumen.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\GrupoResumenNuevo.cs" Link="GrupoResumenNuevo.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\GuiaRemision.cs" Link="GuiaRemision.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ItemPercepcion.cs" Link="ItemPercepcion.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ItemRetencion.cs" Link="ItemRetencion.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ItemSunatBase.cs" Link="ItemSunatBase.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Leyenda.cs" Link="Leyenda.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Negocio.cs" Link="Negocio.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ResumenDiario.cs" Link="ResumenDiario.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ResumenDiarioNuevo.cs" Link="ResumenDiarioNuevo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+  </ItemGroup>
+
+</Project>
