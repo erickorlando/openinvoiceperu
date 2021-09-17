@@ -1,4 +1,4 @@
-![](openinvoiceperulogo.png)
+![](openinvoiceperulogo.PNG)
 # OpenInvoicePeru v3.0 #
 Esta es una versión gratuita de OpenInvoicePeru construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT, este proyecto está orientado al desarrollador.
 Permite la generacion de XML, empaquetado, envío y recepción de documentos electrónicos a través de una API REST.
