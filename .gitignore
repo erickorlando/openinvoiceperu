@@ -352,14 +352,3 @@ MigrationBackup/
 
 # Ionide (cross platform F# VS Code tools) working folder
 .ionide/
-/OpenInvoicePeru/OpenInvoicePeru.WebApi/zxing.xml
-/OpenInvoicePeru/OpenInvoicePeru.WebApi/zxing.presentation.xml
-/OpenInvoicePeru/OpenInvoicePeru.WebApi/Unity.AspNet.WebApi.xml
-/OpenInvoicePeru/OpenInvoicePeru.WebApi/System.Web.Http.xml
-/OpenInvoicePeru/OpenInvoicePeru.WebApi/System.Web.Http.WebHost.xml
-/OpenInvoicePeru/OpenInvoicePeru.WebApi/System.Threading.Tasks.Extensions.xml
-/OpenInvoicePeru/OpenInvoicePeru.WebApi/System.Runtime.CompilerServices.Unsafe.xml
-/OpenInvoicePeru/OpenInvoicePeru.WebApi/System.Net.Http.Formatting.xml
-/OpenInvoicePeru/OpenInvoicePeru.WebApi/OpenInvoicePeru.WebApi.dll.config
-/OpenInvoicePeru/OpenInvoicePeru.WebApi/OpenInvoicePeru.Servicio.Soap.dll.config
-/OpenInvoicePeru/OpenInvoicePeru.WebApi/Newtonsoft.Json.xml

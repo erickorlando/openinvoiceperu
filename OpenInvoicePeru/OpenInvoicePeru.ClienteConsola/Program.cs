@@ -18,19 +18,19 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            //CrearFacturaAlCredito();
+            CrearFacturaAlCredito();
             CrearFacturaConMuchosDecimales();
-            //CrearFacturaAlContado();
-            //CrearFacturaGratuita();
-            //CrearFacturaMixta();
-            //CrearBoleta();
-            //CrearFacturaAlContadoConDscto();
-            //CrearFacturaAlContadoConDsctoYRedondeo();
+            CrearFacturaAlContado();
+            CrearFacturaGratuita();
+            CrearFacturaMixta();
+            CrearBoleta();
+            CrearFacturaAlContadoConDscto();
+            CrearFacturaAlContadoConDsctoYRedondeo();
 
-            //CrearResumenDiario();
-            //CrearComunicacionBaja();
-            //CrearNotaCredito();
-            //CrearNotaDebito();
+            CrearResumenDiario();
+            CrearComunicacionBaja();
+            CrearNotaCredito();
+            CrearNotaDebito();
 
             Console.ReadLine();
         }
@@ -523,14 +523,14 @@ namespace OpenInvoicePeru.ClienteConsola
                             Id = 1,
                             Cantidad = 20000,
                             PrecioReferencial = 0.1m,
-                            PrecioUnitario = 0.0847460m,
+                            PrecioUnitario = 0.0847457m,
                             TipoPrecio = "01",
                             CodigoItem = "1234234",
                             Descripcion = "Item 1",
                             UnidadMedida = "ZZ",
-                            Impuesto = 305.085600m, // 
+                            Impuesto = 305.08m, // 
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 1694.920000m,
+                            TotalVenta = 2000m,
                         }
                     }
                 };
