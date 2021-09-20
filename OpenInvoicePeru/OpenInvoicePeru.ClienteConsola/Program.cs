@@ -523,14 +523,14 @@ namespace OpenInvoicePeru.ClienteConsola
                             Id = 1,
                             Cantidad = 20000,
                             PrecioReferencial = 0.1m,
-                            PrecioUnitario = 0.0847457m,
+                            PrecioUnitario = 0.0847460m,
                             TipoPrecio = "01",
                             CodigoItem = "1234234",
                             Descripcion = "Item 1",
                             UnidadMedida = "ZZ",
-                            Impuesto = 305.08m, // 
+                            Impuesto = 305.085600m, // 
                             TipoImpuesto = "10", // Gravada
-                            TotalVenta = 2000m,
+                            TotalVenta = 1694.920000m
                         }
                     }
                 };
