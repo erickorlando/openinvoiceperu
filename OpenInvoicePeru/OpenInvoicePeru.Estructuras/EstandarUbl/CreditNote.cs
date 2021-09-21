@@ -555,6 +555,13 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                 }
                 writer.WriteEndElement();
 
+                writer.WriteStartElement("cbc:TaxInclusiveAmount");
+                {
+                    writer.WriteAttributeString("currencyID", LegalMonetaryTotal.TaxInclusiveAmount.CurrencyId);
+                    writer.WriteValue(LegalMonetaryTotal.TaxInclusiveAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                }
+                writer.WriteEndElement();
+
                 writer.WriteStartElement("cbc:AllowanceTotalAmount");
                 {
                     writer.WriteAttributeString("currencyID", LegalMonetaryTotal.AllowanceTotalAmount.CurrencyId);

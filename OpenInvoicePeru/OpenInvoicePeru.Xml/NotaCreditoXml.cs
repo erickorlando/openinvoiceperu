@@ -97,6 +97,11 @@ namespace OpenInvoicePeru.Xml
                         CurrencyId = documento.Moneda,
                         Value = documento.DescuentoGlobal
                     },
+                    TaxInclusiveAmount = new PayableAmount
+                    {
+                        CurrencyId = documento.Moneda,
+                        Value = documento.TaxInclusiveAmount > 0 ? documento.TaxInclusiveAmount : documento.TotalVenta
+                    },
                     PrepaidAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
@@ -188,7 +193,7 @@ namespace OpenInvoicePeru.Xml
                 creditNote.TaxTotals.First().TaxSubTotals.AddRange(CalculoTotales.AgregarSubTotalCabecera(new TotalesDto
                 {
                     CurrencyId = documento.Moneda,
-                    Monto = 0,
+                    Monto = documento.Gratuitas * documento.TasaImpuesto,
                     MontoBase = documento.Gratuitas,
                     CategoryId = "Z",
                     TaxSchemeId = "9996",
@@ -299,7 +304,7 @@ namespace OpenInvoicePeru.Xml
                     LineExtensionAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
-                        Value = detalleDocumento.PrecioUnitario * detalleDocumento.Cantidad
+                        Value = detalleDocumento.TotalVenta
                     },
                     PricingReference = new PricingReference
                     {
@@ -331,8 +336,7 @@ namespace OpenInvoicePeru.Xml
                     PriceAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
-                        // Comprobamos que sea una operacion gratuita.
-                        Value = documento.Gratuitas > 0 ? 0 : detalleDocumento.PrecioReferencial
+                        Value = detalleDocumento.PrecioReferencial
                     },
                     PriceTypeCode = detalleDocumento.TipoPrecio
                 });

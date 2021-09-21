@@ -31,6 +31,7 @@ namespace OpenInvoicePeru.ClienteConsola
             CrearComunicacionBaja();
             CrearNotaCredito();
             CrearNotaDebito();
+            CrearNotaCreditoConMontosGratuitos();
 
             Console.ReadLine();
         }
@@ -368,7 +369,7 @@ namespace OpenInvoicePeru.ClienteConsola
                     Moneda = "PEN",
                     TipoDocumento = "01",
                     Credito = false,
-                    TotalVenta = 62.18m, 
+                    TotalVenta = 62.18m,
                     Exoneradas = 70.50m,
                     LineExtensionAmount = 63.45m, //TOTAL - DESCUENTO.
                     TaxInclusiveAmount = 62.18m, //TOTAL - EL IGV DEL DESCUENTO
@@ -692,6 +693,99 @@ namespace OpenInvoicePeru.ClienteConsola
                 };
 
                 File.WriteAllText("notacredito.json", JsonConvert.SerializeObject(documento));
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+
+        private static void CrearNotaCreditoConMontosGratuitos()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Nota de Credito con Montos Gratuitos (FMC1-00009900)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100121809",
+                        TipoDocumento = "6",
+                        NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
+                    },
+                    IdDocumento = "FMC1-00009900",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoOperacion = "0101",
+                    TipoDocumento = "07",
+                    Credito = false,
+                    Gratuitas = 200m,
+                    Exoneradas = 200m,
+                    Gravadas = 0m,
+                    TasaImpuesto = 0.0m,
+                    LineExtensionAmount = 200,
+                    TaxInclusiveAmount = 200,
+                    TotalIgv = 0,
+                    TotalVenta = 200,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 2,
+                            PrecioReferencial = 100m,
+                            PrecioUnitario = 0m,
+                            BaseImponible = 200m,
+                            TipoPrecio = "02",
+                            CodigoItem = "P001",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0m,
+                            TipoImpuesto = "21",
+                            TotalVenta = 200m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 2,
+                            PrecioReferencial = 100m,
+                            PrecioUnitario = 100m,
+                            BaseImponible = 200m,
+                            TipoPrecio = "01",
+                            CodigoItem = "P002",
+                            Descripcion = "Item 2",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0m,
+                            TipoImpuesto = "20",
+                            TotalVenta = 200m,
+                        }
+                    },
+                    Relacionados = new List<DocumentoRelacionado>
+                    {
+                        new DocumentoRelacionado
+                        {
+                            NroDocumento = "F001-00165004",
+                            TipoDocumento = "01",
+                        }
+                    },
+                    Discrepancias = new List<Discrepancia>
+                    {
+                        new Discrepancia
+                        {
+                            Descripcion = "ERROR EN LA OPERACION",
+                            NroReferencia = "F001-00165004",
+                            Tipo = "01"
+                        }
+                    }
+                };
 
                 FirmaryEnviar(documento, GenerarDocumento(documento));
             }
