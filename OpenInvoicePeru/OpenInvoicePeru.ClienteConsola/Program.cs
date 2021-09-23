@@ -32,6 +32,7 @@ namespace OpenInvoicePeru.ClienteConsola
             CrearNotaCredito();
             CrearNotaDebito();
             CrearNotaCreditoConMontosGratuitos();
+            CrearFacturaGratuitaConDscto();
 
             Console.ReadLine();
         }
@@ -405,6 +406,81 @@ namespace OpenInvoicePeru.ClienteConsola
                             Impuesto = 0m,
                             TipoImpuesto = "20", // Exonerada
                             TotalVenta = 22.50m,
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+        
+        private static void CrearFacturaGratuitaConDscto()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura Gratuita con Dcto (FDS1-00001111)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100121809",
+                        TipoDocumento = "6",
+                        NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
+                    },
+                    IdDocumento = "FDS1-00001111",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "01",
+                    Credito = false,
+                    Gravadas = 45.20m,
+                    Gratuitas = 7.62m,
+                    TotalVenta = 53.33m,
+                    LineExtensionAmount = 45.20m, //TOTAL - DESCUENTO.
+                    TaxInclusiveAmount = 53.33m, //TOTAL - EL IGV DEL DESCUENTO
+                    TotalIgv = 8.13m,
+                    TasaImpuesto = 0,
+                    DescuentoGlobal = 6.46m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 6,
+                            PrecioReferencial = 1.27m,
+                            PrecioUnitario = 0m,
+                            TipoPrecio = "02",
+                            CodigoItem = "8888",
+                            Descripcion = "ITEM 01",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0.22m, // 
+                            TipoImpuesto = "15", // Bonificacion Gravada
+                            TotalVenta = 7.62m,
+                            BaseImponible = 7.62m
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 48,
+                            PrecioReferencial = 1.27m,
+                            PrecioUnitario = 1.076271m,
+                            TipoPrecio = "01",
+                            CodigoItem = "9999",
+                            Descripcion = "ITEM 02",
+                            UnidadMedida = "NIU",
+                            Impuesto = 9.3m,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 51.66m,
+                            BaseImponible = 51.66m
                         }
                     }
                 };
