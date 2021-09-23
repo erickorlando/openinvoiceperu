@@ -564,9 +564,9 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                     }
                     writer.WriteEndElement();
 
-
-                    writer.WriteElementString("cbc:MultiplierFactorNumeric",
-                        AllowanceCharge.MultiplierFactorNumeric.ToString("###0.####0", Formato));
+                    if (AllowanceCharge.MultiplierFactorNumeric > 0)
+                        writer.WriteElementString("cbc:MultiplierFactorNumeric",
+                            AllowanceCharge.MultiplierFactorNumeric.ToString("###0.####0", Formato));
 
                     writer.WriteStartElement("cbc:Amount");
                     {
