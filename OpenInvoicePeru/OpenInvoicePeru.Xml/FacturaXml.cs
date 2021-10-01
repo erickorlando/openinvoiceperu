@@ -530,7 +530,7 @@ namespace OpenInvoicePeru.Xml
                     TaxAmount = new PayableAmount
                     {
                         CurrencyId = documento.Moneda,
-                        Value = detalleDocumento.Impuesto
+                        Value = detalleDocumento.PrecioUnitario == 0 ? 0 : detalleDocumento.Impuesto
                     },
                     TaxSubTotals = CalculoTotales.AgregarSubTotalDetalles(new TotalesDto
                     {

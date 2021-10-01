@@ -45,7 +45,7 @@ namespace OpenInvoicePeru.ClienteConsola
                 TipoDocumento = "6",
                 NombreComercial = "CSM CORPORACION ORIENTE",
                 NombreLegal = "CSM CORPORACION ORIENTE",
-                CodigoAnexo = "0001"
+                CodigoAnexo = "0000"
             };
         }
 
@@ -223,7 +223,7 @@ namespace OpenInvoicePeru.ClienteConsola
                     TipoOperacion = "0101",
                     TipoDocumento = "01",
                     Credito = false,
-                    Gratuitas = 200m,
+                    Gratuitas = 410m,
                     TasaImpuesto = 0.18m,
                     LineExtensionAmount = 0m,
                     TaxInclusiveAmount = 0m,
@@ -234,18 +234,48 @@ namespace OpenInvoicePeru.ClienteConsola
                         new DetalleDocumento
                         {
                             Id = 1,
-                            Cantidad = 2,
+                            Cantidad = 1,
                             PrecioReferencial = 100m,
                             PrecioUnitario = 0m,
-                            BaseImponible = 200m,
+                            BaseImponible = 100m,
                             TipoPrecio = "02",
                             CodigoItem = "P001",
                             Descripcion = "Item 1",
-                            UnidadMedida = "ZZ",
-                            Impuesto = 36m,
-                            TipoImpuesto = "11",
-                            TotalVenta = 200m,
-                        }
+                            UnidadMedida = "NIU",
+                            Impuesto = 18m,
+                            TipoImpuesto = "15",
+                            TotalVenta = 100m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 1,
+                            PrecioReferencial = 250m,
+                            PrecioUnitario = 0m,
+                            BaseImponible = 250m,
+                            TipoPrecio = "02",
+                            CodigoItem = "P001",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "NIU",
+                            Impuesto = 45m,
+                            TipoImpuesto = "15",
+                            TotalVenta = 250m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 3,
+                            Cantidad = 1,
+                            PrecioReferencial = 60m,
+                            PrecioUnitario = 0m,
+                            BaseImponible = 60m,
+                            TipoPrecio = "02",
+                            CodigoItem = "P001",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "NIU",
+                            Impuesto = 10.80m,
+                            TipoImpuesto = "15",
+                            TotalVenta = 60m,
+                        },
                     }
                 };
 
@@ -1163,8 +1193,8 @@ namespace OpenInvoicePeru.ClienteConsola
             {
                 Ruc = nroRuc,
                 NroTicket = nroTicket,
-                UsuarioSol = "VETERIF1",
-                ClaveSol = "FF4KG8SF4",
+                UsuarioSol = "MODDATOS",
+                ClaveSol = "MODDATOS",
                 EndPointUrl = UrlSunat
             };
 
