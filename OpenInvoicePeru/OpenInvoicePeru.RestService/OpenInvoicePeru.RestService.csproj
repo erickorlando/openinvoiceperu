@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>OpenInvoicePeru.RestService</RootNamespace>
     <AssemblyName>OpenInvoicePeru.RestService</AssemblyName>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -52,6 +53,7 @@
     <Compile Include="ApiSunatDto\TokenResponseDto.cs" />
     <Compile Include="ApiSunatDto\ValidacionRequest.cs" />
     <Compile Include="ApiSunatDto\ValidacionResponse.cs" />
+    <Compile Include="IValidezComprobanteHelper.cs" />
     <Compile Include="ValidezComprobanteHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

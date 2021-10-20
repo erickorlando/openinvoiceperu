@@ -23,7 +23,7 @@ namespace PruebaConexion
                 new ValidacionRequest
                 {
                     RucEmisor = "20493654463",
-                    CodigoComprobante = "01",
+                    CodigoComprobante = "03",
                     NumeroSerie = "F004",
                     Numero = 34275,
                     FechaEmision = "02/09/2021",

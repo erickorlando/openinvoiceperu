@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
-using OpenInvoicePeru.Comun.Dto.Intercambio;
+﻿using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.RestService;
 using OpenInvoicePeru.RestService.ApiSunatDto;
 using Swashbuckle.Swagger.Annotations;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Http;
 
@@ -10,6 +11,13 @@ namespace OpenInvoicePeru.WebApi.Controllers
 {
     public class ConsultaValidezController : ApiController
     {
+        private readonly IValidezComprobanteHelper _helper;
+
+        public ConsultaValidezController(IValidezComprobanteHelper helper)
+        {
+            _helper = helper;
+        }
+
         [HttpPost]
         [Route("api/ConsultaValidez/GenerarToken")]
         [SwaggerResponse(200, "OK", typeof(TokenResponse))]
@@ -19,9 +27,7 @@ namespace OpenInvoicePeru.WebApi.Controllers
         {
             var response = new TokenResponse();
 
-            var helper = new ValidezComprobanteHelper();
-
-            var result = helper.GenerarToken(request.ClientId,
+            var result = _helper.GenerarToken(request.ClientId,
                 request.ClientSecret);
 
             response.AccessToken = result.Result.AccessToken;
@@ -70,43 +76,51 @@ namespace OpenInvoicePeru.WebApi.Controllers
         {
             var response = new ValidaComprobanteResponse();
 
-            var helper = new ValidezComprobanteHelper();
+            try
+            {
+                var result = _helper.Validar(request.RucReceptor,
+                    request.Token, new ValidacionRequest
+                    {
+                        RucEmisor = request.RucEmisor,
+                        CodigoComprobante = request.TipoComprobante,
+                        FechaEmision = request.FechaEmision,
+                        NumeroSerie = request.NumeroSerie,
+                        Numero = request.Numero,
+                        Monto = request.Monto
+                    });
 
-            var result = helper.Validar(request.RucReceptor,
-                request.Token, new ValidacionRequest
+                response.Exito = result.Success;
+
+                if (result.Data.Observaciones != null)
                 {
-                    RucEmisor = request.RucEmisor,
-                    CodigoComprobante = request.TipoComprobante,
-                    FechaEmision = request.FechaEmision,
-                    NumeroSerie = request.NumeroSerie,
-                    Numero = request.Numero,
-                    Monto = request.Monto
-                });
+                    var obs = result.Data.Observaciones
+                        .SelectMany(xc => xc)
+                        .Select(x => x);
 
-            response.Exito = result.Success;
+                    response.Observaciones = string.Join(" ", obs);
+                }
 
-            if (result.Data.Observaciones != null)
-            {
-                var obs = result.Data.Observaciones
-                    .SelectMany(xc => xc)
-                    .Select(x => x);
+                if (response.Exito)
+                {
+                    response.CodigoEstadoComprobante = result.Data.EstadoComprobante;
+                    response.CodigoEstadoRuc = result.Data.EstadoRuc;
+                    response.CodigoEstadoDomicilio = result.Data.CondicionDomicilio;
 
-                response.Observaciones = string.Join(" ", obs);
+                    response.EstadoComprobante = _estadosComprobante[response.CodigoEstadoComprobante ?? "0"];
+                    response.EstadoRuc = _estadosContribuyente[response.CodigoEstadoRuc ?? "22"];
+                    response.EstadoDomicilio = _estadosCondicionDomicilio[response.CodigoEstadoDomicilio ?? "20"];
+                }
+                else
+                {
+                    response.MensajeError = result.Message;
+                }
+
+                return Ok(response);
             }
-
-            if (response.Exito)
+            catch (Exception ex)
             {
-                response.CodigoEstadoComprobante = result.Data.EstadoComprobante;
-                response.CodigoEstadoRuc = result.Data.EstadoRuc;
-                response.CodigoEstadoDomicilio = result.Data.CondicionDomicilio;
-
-                response.EstadoComprobante = _estadosComprobante[response.CodigoEstadoComprobante ?? "0"];
-                response.EstadoRuc = _estadosContribuyente[response.CodigoEstadoRuc ?? "22"];
-                response.EstadoDomicilio = _estadosCondicionDomicilio[response.CodigoEstadoDomicilio ?? "20"];
-            }
-            else
-            {
-                response.MensajeError = result.Message;
+                response.MensajeError = ex.Message;
+                response.Pila = ex.StackTrace;
             }
 
             return Ok(response);

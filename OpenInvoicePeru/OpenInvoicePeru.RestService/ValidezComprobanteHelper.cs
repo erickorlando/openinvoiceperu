@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 
 namespace OpenInvoicePeru.RestService
 {
-    public class ValidezComprobanteHelper
+    public class ValidezComprobanteHelper : IValidezComprobanteHelper
     {
         public BaseResponseDto<TokenResponseDto> GenerarToken(string clientId, string clientSecret)
         {

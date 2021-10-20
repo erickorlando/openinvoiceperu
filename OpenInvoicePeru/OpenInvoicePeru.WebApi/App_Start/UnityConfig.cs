@@ -1,9 +1,10 @@
-using System;
 using OpenInvoicePeru.Firmado;
+using OpenInvoicePeru.RestService;
 using OpenInvoicePeru.Servicio;
 using OpenInvoicePeru.Servicio.Soap;
 using OpenInvoicePeru.WebApi.Controllers;
 using OpenInvoicePeru.Xml;
+using System;
 using Unity;
 
 namespace OpenInvoicePeru.WebApi
@@ -50,7 +51,8 @@ namespace OpenInvoicePeru.WebApi
                 .RegisterType<ISerializador, Serializador>()
                 .RegisterType<ICertificador, Certificador>()
                 .RegisterType<IServicioSunatDocumentos, ServicioSunatDocumentos>()
-                .RegisterType<IServicioSunatConsultas, ServicioSunatConsultas>();
+                .RegisterType<IServicioSunatConsultas, ServicioSunatConsultas>()
+                .RegisterType<IValidezComprobanteHelper, ValidezComprobanteHelper>();
 
             container
                 .RegisterType<IDocumentoXml, FacturaXml>(nameof(GenerarFacturaController))
