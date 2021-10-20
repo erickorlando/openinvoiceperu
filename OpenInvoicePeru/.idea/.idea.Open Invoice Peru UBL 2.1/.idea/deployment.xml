@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="PublishConfigData" remoteFilesAllowedToDisappearOnAutoupload="false">
+    <serverData>
+      <paths name="localhost">
+        <serverdata>
+          <mappings>
+            <mapping local="$PROJECT_DIR$/../.gitignore" web="/" />
+            <mapping local="$PROJECT_DIR$/../CHANGELOG.md" web="/" />
+            <mapping local="$PROJECT_DIR$/../LICENSE" web="/" />
+            <mapping local="$PROJECT_DIR$/Open Invoice Peru UBL 2.1.sln" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.ClienteConsola/OpenInvoicePeru.ClienteConsola.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.ClienteConsola/Program.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.ClienteConsola/RestHelper.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.ClienteConsola/certificado.pfx" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.ClienteConsola/obj/Debug/net5.0/OpenInvoicePeru.ClienteConsola.AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Contratos/IDocumentoElectronico.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Contratos/IDocumentoElectronico.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/ConsultaConstanciaRequest.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/ConsultaConstanciaRequest.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/ConsultaTicketRequest.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/ConsultaTicketRequest.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/CrearTokenRequest.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/DocumentoResponse.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/DocumentoResponse.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/EnviarDocumentoRequest.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/EnviarDocumentoRequest.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/EnviarDocumentoResponse.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/EnviarDocumentoResponse.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/EnviarResumenResponse.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/EnviarResumenResponse.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/EnvioDocumentoComun.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/EnvioDocumentoComun.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/FirmadoRequest.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/FirmadoRequest.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/FirmadoResponse.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/FirmadoResponse.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/RespuestaComun.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/RespuestaComun.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/RespuestaComunConArchivo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/RespuestaComunConArchivo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Intercambio/TokenResponse.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Anticipo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Anticipo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Compania.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Compania.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ComunicacionBaja.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ComunicacionBaja.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Contribuyente.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Contribuyente.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DatoAdicional.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DatoAdicional.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DatoCredito.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DatoCredito.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DetalleDocumento.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DetalleDocumento.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DetalleGuia.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DetalleGuia.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Direccion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Direccion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Discrepancia.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Discrepancia.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoBaja.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoBaja.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoElectronico.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoElectronico.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoPercepcion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoPercepcion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoRelacionado.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoRelacionado.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoResumen.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoResumen.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoResumenDetalle.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoResumenDetalle.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoRetencion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoRetencion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoSunatBase.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/DocumentoSunatBase.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/GrupoResumen.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/GrupoResumen.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/GrupoResumenNuevo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/GrupoResumenNuevo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/GuiaRemision.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/GuiaRemision.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ItemPercepcion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ItemPercepcion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ItemRetencion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ItemRetencion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ItemSunatBase.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ItemSunatBase.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Leyenda.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Leyenda.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Negocio.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/Negocio.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ResumenDiario.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ResumenDiario.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ResumenDiarioNuevo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Modelos/ResumenDiarioNuevo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/OpenInvoicePeru.Comun.Dto.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/Properties/AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun.Dto/packages.config" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun/AfectacionImpuesto.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun/Constantes/EspacioNombres.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun/Constantes/Formatos.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun/Constantes/ValoresUbl.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun/Conversion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun/IEstructuraXml.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun/OpenInvoicePeru.Comun.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Comun/Properties/AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/AccountingSupplierParty.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/AdditionalItemProperty.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/AddressLine.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/AgentParty.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/AllowanceCharge.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/AlternativeConditionPrice.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/BillingReference.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/CarrierParty.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/CommodityClassification.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/CompanyId.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/Consignment.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/Country.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/Delivery.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/DeliveryTerms.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/Despatch.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/DespatchAddress.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/DespatchLine.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/DespatchLineItem.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/DigitalSignatureAttachment.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/DiscrepancyResponse.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/ExchangeRate.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/ExternalReference.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/InvoiceDocumentReference.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/InvoiceLine.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/Item.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/LegalMonetaryTotal.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/MeasurementDimension.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/OrderReference.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/Party.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/PartyIdentification.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/PartyLegalEntity.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/PartyName.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/PartyTaxScheme.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/Payment.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/PlannedPickupTransportEvent.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/PostalAddress.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/Price.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/PricingReference.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/RegistrationAddress.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/SellersItemIdentification.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/Shipment.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/ShipmentStage.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/SignatoryParty.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/SignatureCac.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/StandardItemIdentification.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/TaxCategory.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/TaxScheme.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/TaxSubtotal.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/TaxTotal.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/TransportEquipment.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/TransportHandlingUnit.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonAggregateComponents/UsabilityPeriod.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonBasicComponents/InvoicedQuantity.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonBasicComponents/OrderTypeCode.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonBasicComponents/PartyIdentificationID.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonBasicComponents/PayableAmount.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonExtensionComponents/ExtensionContent.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonExtensionComponents/UBLExtension.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/CommonExtensionComponents/UBLExtensions.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/EstandarUbl/CreditNote.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/EstandarUbl/DebitNote.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/EstandarUbl/DespatchAdvice.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/EstandarUbl/InfoCredits.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/EstandarUbl/Invoice.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/EstandarUbl/Perception.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/EstandarUbl/Retention.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/EstandarUbl/SummaryDocuments.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/EstandarUbl/VoidedDocuments.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/OpenInvoicePeru.Estructuras.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/Properties/AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/Properties/Resources.Designer.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/Properties/Resources.resx" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/SunatAggregateComponents/AdditionalInformation.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/SunatAggregateComponents/AdditionalMonetaryTotal.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/SunatAggregateComponents/AdditionalProperty.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/SunatAggregateComponents/BillingPayment.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/SunatAggregateComponents/SUNATRetentionDocumentReference.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/SunatAggregateComponents/SUNATRetentionInformation.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/SunatAggregateComponents/SunatCosts.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/SunatAggregateComponents/SunatEmbededDespatchAdvice.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/SunatAggregateComponents/SunatRoadTransport.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/SunatAggregateComponents/SunatTransaction.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Estructuras/SunatAggregateComponents/VoidedDocumentsLine.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Firmado/Certificador.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Firmado/ICertificador.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Firmado/ISerializador.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Firmado/OpenInvoicePeru.Firmado.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Firmado/Properties/AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Firmado/Serializador.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/OpenInvoicePeru.Servicio.Soap.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Properties/AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Consultas/OpenInvoicePeru.Servicio.Soap.Consultas.getStatusCdrResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Consultas/OpenInvoicePeru.Servicio.Soap.Consultas.getStatusResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Consultas/OpenInvoicePeru.Servicio.Soap.Consultas.sendBillResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Consultas/OpenInvoicePeru.Servicio.Soap.Consultas.sendPackResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Consultas/OpenInvoicePeru.Servicio.Soap.Consultas.sendSummaryResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Consultas/OpenInvoicePeru.Servicio.Soap.Consultas.statusResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Consultas/Reference.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Consultas/Reference.svcmap" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Consultas/bizlinksOSE.wsdl" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Consultas/configuration.svcinfo" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Consultas/configuration91.svcinfo" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/ConsultasSunat/OpenInvoicePeru.Servicio.Soap.ConsultasSunat.getStatusCdrResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/ConsultasSunat/OpenInvoicePeru.Servicio.Soap.ConsultasSunat.getStatusResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/ConsultasSunat/OpenInvoicePeru.Servicio.Soap.ConsultasSunat.statusResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/ConsultasSunat/Reference.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/ConsultasSunat/Reference.svcmap" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/ConsultasSunat/billConsultService.wsdl" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/ConsultasSunat/billConsultService.xsd" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/ConsultasSunat/billConsultService1.wsdl" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/ConsultasSunat/configuration.svcinfo" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/ConsultasSunat/configuration91.svcinfo" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/OpenInvoicePeru.Servicio.Soap.Documentos.getStatusResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/OpenInvoicePeru.Servicio.Soap.Documentos.sendBillResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/OpenInvoicePeru.Servicio.Soap.Documentos.sendPackResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/OpenInvoicePeru.Servicio.Soap.Documentos.sendSummaryResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/OpenInvoicePeru.Servicio.Soap.Documentos.statusResponse.datasource" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/Reference.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/Reference.svcmap" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/billService.wsdl" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/billService.xsd" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/billService1.wsdl" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/configuration.svcinfo" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/Service References/Documentos/configuration91.svcinfo" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/ServicioSunatConsultas.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/ServicioSunatDocumentos.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio.Soap/app.config" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio/DatosDocumento.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio/DocumentoSunat.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio/IServicioSunat.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio/IServicioSunatConsultas.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio/IServicioSunatDocumentos.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio/OpenInvoicePeru.Servicio.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio/ParametrosConexion.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio/Properties/AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio/RespuestaAsincrono.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Servicio/RespuestaSincrono.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Standard.Dto/OpenInvoicePeru.Standard.Dto.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Standard.Dto/obj/Debug/netstandard2.0/OpenInvoicePeru.Standard.Dto.AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/ApiSunatDto/TokenResponseDto.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/App_Start/SwaggerConfig.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/App_Start/UnityConfig.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/App_Start/UnityWebApiActivator.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/App_Start/WebApiConfig.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/ConsultaValidezController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/ConsultarConstanciaController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/ConsultarTicketController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/EnviarDocumentoController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/EnviarResumenController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/FirmarController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/GenerarComunicacionBajaController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/GenerarFacturaController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/GenerarGuiaRemisionController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/GenerarNotaCreditoController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/GenerarNotaDebitoController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/GenerarPercepcionController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/GenerarResumenDiarioController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Controllers/GenerarRetencionController.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Filters/ValidateModelAttribute.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Global.asax" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Global.asax.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/OpenInvoicePeru.WebApi.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Properties/AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Properties/PublishProfiles/Local.pubxml" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Properties/PublishProfiles/SERVERIIS.pubxml" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Properties/PublishProfiles/SVRDISTRI.pubxml" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Utils/QrHelper.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Web.Debug.config" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Web.Release.config" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/Web.config" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/index.html" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.WebApi/packages.config" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/CalculoTotales.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/ComunicacionBajaXml.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/FacturaXml.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/GuiaRemisionXml.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/IDocumentoXml.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/NotaCreditoXml.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/NotaDebitoXml.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/OpenInvoicePeru.Xml.csproj" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/PercepcionXml.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/Properties/AssemblyInfo.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/ResumenDiarioNuevoXml.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/ResumenDiarioXml.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/OpenInvoicePeru.Xml/RetencionXml.cs" web="/" />
+            <mapping local="$PROJECT_DIR$/../README.md" web="/" />
+            <mapping local="$PROJECT_DIR$" web="/" />
+          </mappings>
+        </serverdata>
+      </paths>
+    </serverData>
+  </component>
+</project>

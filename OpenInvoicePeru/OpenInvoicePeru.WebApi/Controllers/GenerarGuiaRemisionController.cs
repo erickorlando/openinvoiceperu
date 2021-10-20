@@ -6,7 +6,6 @@ using Swashbuckle.Swagger.Annotations;
 using System;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Unity;
 
 namespace OpenInvoicePeru.WebApi.Controllers
 {
