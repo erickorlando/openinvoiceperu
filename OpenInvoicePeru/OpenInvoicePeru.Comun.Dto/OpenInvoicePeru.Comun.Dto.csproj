@@ -48,6 +48,7 @@
     <Compile Include="Contratos\IDocumentoElectronico.cs" />
     <Compile Include="Intercambio\ConsultaConstanciaRequest.cs" />
     <Compile Include="Intercambio\ConsultaTicketRequest.cs" />
+    <Compile Include="Intercambio\CrearTokenRequest.cs" />
     <Compile Include="Intercambio\DocumentoResponse.cs" />
     <Compile Include="Intercambio\EnviarDocumentoRequest.cs" />
     <Compile Include="Intercambio\EnviarDocumentoResponse.cs" />
@@ -57,6 +58,9 @@
     <Compile Include="Intercambio\FirmadoResponse.cs" />
     <Compile Include="Intercambio\RespuestaComun.cs" />
     <Compile Include="Intercambio\RespuestaComunConArchivo.cs" />
+    <Compile Include="Intercambio\TokenResponse.cs" />
+    <Compile Include="Intercambio\ValidaComprobanteRequest.cs" />
+    <Compile Include="Intercambio\ValidaComprobanteResponse.cs" />
     <Compile Include="Modelos\Anticipo.cs" />
     <Compile Include="Modelos\Compania.cs" />
     <Compile Include="Modelos\ComunicacionBaja.cs" />
