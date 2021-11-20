@@ -87,6 +87,7 @@ namespace OpenInvoicePeru.ClienteConsola
                     TotalIgv = 11.25m,
                     TotalVenta = 73.75m,
                     Gravadas = 62.50m,
+                    Notas = "Este es un comentario",
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
