@@ -171,6 +171,8 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             if (DueDate != null)
                 writer.WriteElementString("cbc:DueDate", DueDate?.ToString(Formatos.FormatoFecha));
 
+
+
             writer.WriteStartElement("cbc:InvoiceTypeCode");
             {
                 writer.WriteAttributeString("listAgencyName", ValoresUbl.SchemeAgencyName);
@@ -184,12 +186,12 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             }
             writer.WriteEndElement();
 
-            writer.WriteStartElement("cbc:Note");
-            {
-                writer.WriteAttributeString("languageLocaleID", "1000");
-                writer.WriteValue(Note);
-            }
-            writer.WriteEndElement();
+            //writer.WriteStartElement("cbc:Note");
+            //{
+            //    writer.WriteAttributeString("languageLocaleID", "2010");
+            //    writer.WriteValue(Note);
+            //}
+            //writer.WriteEndElement();
 
             foreach (var note in NotesList)
             {
