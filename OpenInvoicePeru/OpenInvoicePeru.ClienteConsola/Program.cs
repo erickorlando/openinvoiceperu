@@ -69,6 +69,7 @@ namespace OpenInvoicePeru.ClienteConsola
                     Moneda = "PEN",
                     TipoDocumento = "01",
                     Credito = true,
+                    MontoCredito = 73.74m,
                     DatoCreditos = new List<DatoCredito>()
                     {
                         new DatoCredito

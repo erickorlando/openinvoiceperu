@@ -87,6 +87,8 @@ namespace OpenInvoicePeru.Comun.Dto.Modelos
 
         public bool Credito { get; set; }
 
+        public decimal MontoCredito { get; set; }
+
         public List<DatoCredito> DatoCreditos { get; set; }
 
         public List<DatoAdicional> DatoAdicionales { get; set; }
