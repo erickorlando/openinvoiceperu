@@ -19,7 +19,6 @@ namespace OpenInvoicePeru.Xml
             documento.MontoEnLetras = Conversion.Enletras(documento.TotalVenta);
             var invoice = new Invoice
             {
-                Note = documento.MontoEnLetras,
                 Id = documento.IdDocumento,
                 IssueDate = DateTime.Parse(documento.FechaEmision),
                 IssueTime = DateTime.Parse(documento.HoraEmision),
@@ -352,6 +351,16 @@ namespace OpenInvoicePeru.Xml
                 invoice.PaymentTermsPercent = documento.TasaDetraccion;
                 invoice.PaymentMeansId = documento.CodigoBienOServicio;
                 invoice.PaymentMeansCode = documento.CodigoMedioPago;
+            }
+
+            if (!string.IsNullOrEmpty(documento.MontoEnLetras))
+            {
+                invoice.NotesList.Add("1000", documento.MontoEnLetras);
+            }
+
+            if (!string.IsNullOrEmpty(documento.Notas))
+            {
+                invoice.NotesList.Add("2010", documento.Notas);
             }
 
             foreach (var leyenda in documento.Leyendas)
