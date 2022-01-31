@@ -153,7 +153,9 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             {
                 writer.WriteStartElement("cac:DiscrepancyResponse");
                 {
-                    writer.WriteElementString("cbc:ReferenceID", discrepancy.ReferenceId);
+                    if (!string.IsNullOrEmpty(discrepancy.ReferenceId))
+                        writer.WriteElementString("cbc:ReferenceID", discrepancy.ReferenceId);
+
                     writer.WriteStartElement("cbc:ResponseCode");
                     {
                         writer.WriteAttributeString("listAgencyName", ValoresUbl.SchemeAgencyName);

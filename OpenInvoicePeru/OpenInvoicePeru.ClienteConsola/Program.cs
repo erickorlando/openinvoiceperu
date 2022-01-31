@@ -18,21 +18,24 @@ namespace OpenInvoicePeru.ClienteConsola
             Console.ForegroundColor = ConsoleColor.Green;
             Console.Title = "OpenInvoicePeru - Prueba de Envío de Documentos Electrónicos con UBL 2.1";
 
-            CrearFacturaAlCredito();
-            CrearFacturaConMuchosDecimales();
-            CrearFacturaAlContado();
-            CrearFacturaGratuita();
-            CrearFacturaMixta();
-            CrearBoleta();
-            CrearFacturaAlContadoConDscto();
-            CrearFacturaAlContadoConDsctoYRedondeo();
+            //CrearFacturaAlCredito();
+            //CrearFacturaConMuchosDecimales();
+            //CrearFacturaAlContado();
+            //CrearFacturaDetraccion();
+            //CrearFacturaGratuita();
+            //CrearFacturaMixta();
+            //CrearBoleta();
+            //CrearFacturaAlContadoConDscto();
+            //CrearFacturaAlContadoConDsctoYRedondeo();
 
-            CrearResumenDiario();
-            CrearComunicacionBaja();
-            CrearNotaCredito();
-            CrearNotaDebito();
-            CrearNotaCreditoConMontosGratuitos();
-            CrearFacturaGratuitaConDscto();
+            //CrearResumenDiario();
+            //CrearComunicacionBaja();
+            //CrearNotaCredito();
+            //CrearNotaDebito();
+            CrearNotaDebitoPorPenalidad();
+
+            //CrearNotaCreditoConMontosGratuitos();
+            //CrearFacturaGratuitaConDscto();
 
             Console.ReadLine();
         }
@@ -159,6 +162,81 @@ namespace OpenInvoicePeru.ClienteConsola
                     Gravadas = 62.50m,
                     LineExtensionAmount = 62.50m,
                     TaxInclusiveAmount = 73.75m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 2,
+                            PrecioReferencial = 23.60m,
+                            PrecioUnitario = 20m,
+                            TipoPrecio = "01",
+                            CodigoItem = "1234234",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 7.20m, // 
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 40m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 5,
+                            PrecioReferencial = 5.31m,
+                            PrecioUnitario = 4.5m,
+                            TipoPrecio = "01",
+                            CodigoItem = "AER345667",
+                            Descripcion = "Item 2",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 4.05m,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 22.50m,
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+        
+        private static void CrearFacturaDetraccion()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Factura Al Contado con Detraccion (FXC1-00001011)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100121809",
+                        TipoDocumento = "6",
+                        NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
+                    },
+                    IdDocumento = "FXC1-00001011",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "01",
+                    Credito = false,
+                    TotalIgv = 11.25m,
+                    TotalVenta = 73.75m,
+                    Gravadas = 62.50m,
+                    LineExtensionAmount = 62.50m,
+                    TaxInclusiveAmount = 73.75m,
+                    MontoDetraccion = 1,
+                    TasaDetraccion = 0.12m,
+                    CodigoBienOServicio = "01",
+                    CodigoMedioPago = "01",
+                    CuentaBancoNacion = "5046949",
                     Items = new List<DetalleDocumento>
                     {
                         new DetalleDocumento
@@ -975,6 +1053,81 @@ namespace OpenInvoicePeru.ClienteConsola
                         {
                             NroDocumento = "FF11-001",
                             TipoDocumento = "01"
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
+        
+        private static void CrearNotaDebitoPorPenalidad()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Nota de Débito de Factura (FD11-002)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20257471609",
+                        TipoDocumento = "6",
+                        NombreLegal = "FRAMEWORK PERU"
+                    },
+                    IdDocumento = "FD11-002",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoDocumento = "08",
+                    TotalIgv = 11.25m,
+                    TotalVenta = 73.75m,
+                    Gravadas = 62.50m,
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 2,
+                            PrecioReferencial = 23.60m,
+                            PrecioUnitario = 20m,
+                            TipoPrecio = "01",
+                            CodigoItem = "1234234",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 7.20m, // 
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 40m,
+                        },
+                        new DetalleDocumento
+                        {
+                            Id = 2,
+                            Cantidad = 5,
+                            PrecioReferencial = 5.31m,
+                            PrecioUnitario = 4.5m,
+                            TipoPrecio = "01",
+                            CodigoItem = "AER345667",
+                            Descripcion = "Item 2",
+                            UnidadMedida = "ZZ",
+                            Impuesto = 4.05m,
+                            TipoImpuesto = "10", // Gravada
+                            TotalVenta = 22.50m,
+                        }
+                    },
+                    Discrepancias = new List<Discrepancia>
+                    {
+                        new Discrepancia
+                        {
+                            Tipo = "03",
+                            Descripcion = "Penalidad por falta de pago"
                         }
                     }
                 };

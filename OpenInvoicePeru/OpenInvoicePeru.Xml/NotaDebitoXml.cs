@@ -219,22 +219,22 @@ namespace OpenInvoicePeru.Xml
             {
                 debitNote.DiscrepancyResponses.Add(new DiscrepancyResponse
                 {
-                    ReferenceId = discrepancia.NroReferencia,
+                    ReferenceId = discrepancia.NroReferencia ?? string.Empty,
                     ResponseCode = discrepancia.Tipo,
                     Description = discrepancia.Descripcion
                 });
 
-                if (!documento.Relacionados.Any())
-                {
-                    debitNote.BillingReferences.Add(new BillingReference
-                    {
-                        InvoiceDocumentReference = new InvoiceDocumentReference
-                        {
-                            Id = discrepancia.NroReferencia,
-                            DocumentTypeCode = "01"
-                        }
-                    });
-                }
+                //if (!documento.Relacionados.Any() && discrepancia.Tipo != "03")
+                //{
+                //    debitNote.BillingReferences.Add(new BillingReference
+                //    {
+                //        InvoiceDocumentReference = new InvoiceDocumentReference
+                //        {
+                //            Id = discrepancia.NroReferencia,
+                //            DocumentTypeCode = "01"
+                //        }
+                //    });
+                //}
             }
 
             foreach (var relacionado in documento.Relacionados)
