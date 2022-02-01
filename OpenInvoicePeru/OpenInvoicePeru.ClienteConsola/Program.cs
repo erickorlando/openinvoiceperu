@@ -21,7 +21,7 @@ namespace OpenInvoicePeru.ClienteConsola
             //CrearFacturaAlCredito();
             //CrearFacturaConMuchosDecimales();
             //CrearFacturaAlContado();
-            //CrearFacturaDetraccion();
+            CrearFacturaDetraccion();
             //CrearFacturaGratuita();
             //CrearFacturaMixta();
             //CrearBoleta();
@@ -31,7 +31,7 @@ namespace OpenInvoicePeru.ClienteConsola
             //CrearResumenDiario();
             //CrearComunicacionBaja();
             //CrearNotaCredito();
-            //CrearNotaDebito();
+            CrearNotaDebito();
             CrearNotaDebitoPorPenalidad();
 
             //CrearNotaCreditoConMontosGratuitos();
@@ -226,6 +226,7 @@ namespace OpenInvoicePeru.ClienteConsola
                     HoraEmision = "12:00:00", //DateTime.Now.ToString("HH:mm:ss"),
                     Moneda = "PEN",
                     TipoDocumento = "01",
+                    TipoOperacion = "1001",
                     Credito = false,
                     TotalIgv = 11.25m,
                     TotalVenta = 73.75m,
@@ -234,8 +235,8 @@ namespace OpenInvoicePeru.ClienteConsola
                     TaxInclusiveAmount = 73.75m,
                     MontoDetraccion = 1,
                     TasaDetraccion = 0.12m,
-                    CodigoBienOServicio = "01",
-                    CodigoMedioPago = "01",
+                    CodigoBienOServicio = "022",
+                    CodigoMedioPago = "001",
                     CuentaBancoNacion = "5046949",
                     Items = new List<DetalleDocumento>
                     {
@@ -267,6 +268,10 @@ namespace OpenInvoicePeru.ClienteConsola
                             TipoImpuesto = "10", // Gravada
                             TotalVenta = 22.50m,
                         }
+                    },
+                    Leyendas = new List<Leyenda>
+                    {
+                        new Leyenda { Codigo = "2006", Descripcion = "Operacion Sujeta a Detraccion"}
                     }
                 };
 
