@@ -134,6 +134,8 @@ namespace OpenInvoicePeru.Xml
             }
 
             creditNote.Credito = documento.Credito;
+            creditNote.MontoCredito = documento.MontoCredito == 0 ? documento.TotalVenta : documento.MontoCredito;
+
             if (creditNote.Credito)
             {
                 creditNote.InfoCreditsList.AddRange(documento.DatoCreditos
