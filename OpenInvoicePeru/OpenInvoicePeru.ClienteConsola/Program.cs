@@ -21,7 +21,9 @@ namespace OpenInvoicePeru.ClienteConsola
             //CrearFacturaAlCredito();
             //CrearFacturaConMuchosDecimales();
             //CrearFacturaAlContado();
-            CrearFacturaDetraccion();
+
+            //CrearFacturaDetraccion();
+
             //CrearFacturaGratuita();
             //CrearFacturaMixta();
             //CrearBoleta();
@@ -31,10 +33,15 @@ namespace OpenInvoicePeru.ClienteConsola
             //CrearResumenDiario();
             //CrearComunicacionBaja();
             //CrearNotaCredito();
-            CrearNotaDebito();
-            CrearNotaDebitoPorPenalidad();
+
+
+            //CrearNotaDebito();
+            //CrearNotaDebitoPorPenalidad();
 
             //CrearNotaCreditoConMontosGratuitos();
+
+            CrearNotaCreditoModificacionDeFecha();
+
             //CrearFacturaGratuitaConDscto();
 
             Console.ReadLine();
@@ -990,6 +997,97 @@ namespace OpenInvoicePeru.ClienteConsola
             }
         }
 
+        private static void CrearNotaCreditoModificacionDeFecha()
+        {
+            try
+            {
+                Console.WriteLine("Ejemplo Nota de Credito con Montos Gratuitos (FMC1-00009900)");
+                var documento = new DocumentoElectronico
+                {
+                    Emisor = CrearEmisor(),
+                    Receptor = new Compania
+                    {
+                        NroDocumento = "20100121809",
+                        TipoDocumento = "6",
+                        NombreLegal = "ADMINISTRADORA CLINICA RICARDO PALMA S.A."
+                    },
+                    IdDocumento = "FMC1-00009900",
+                    FechaEmision = DateTime.Today.ToString(FormatoFecha),
+                    HoraEmision = DateTime.Now.ToString("HH:mm:ss"),
+                    Moneda = "PEN",
+                    TipoOperacion = "0101",
+                    TipoDocumento = "07",
+                    Credito = true,
+                    Gratuitas = 0m,
+                    Exoneradas = 0m,
+                    Gravadas = 0m,
+                    TasaImpuesto = 0.0m,
+                    LineExtensionAmount = 0m,
+                    TaxInclusiveAmount = 0m,
+                    TotalIgv = 0,
+                    TotalVenta = 0,
+
+                    MontoCredito = 90.00m,
+                    DatoCreditos = new List<DatoCredito>()
+                    {
+                        new DatoCredito
+                        {
+                            NroCuota = 1,
+                            MontoCuota = 90,
+                            FechaCredito = DateTime.Today.AddDays(30).ToString(FormatoFecha),
+                        },
+                      
+                    },
+
+                    Items = new List<DetalleDocumento>
+                    {
+                        new DetalleDocumento
+                        {
+                            Id = 1,
+                            Cantidad = 1,
+                            PrecioReferencial = 0m,
+                            PrecioUnitario = 0m,
+                            BaseImponible = 0m,
+                            TipoPrecio = "02",
+                            CodigoItem = "P001",
+                            Descripcion = "Item 1",
+                            UnidadMedida = "NIU",
+                            Impuesto = 0m,
+                            TipoImpuesto = "21",
+                            TotalVenta = 0m
+                        }
+                      
+                    },
+                    Relacionados = new List<DocumentoRelacionado>
+                    {
+                        new DocumentoRelacionado
+                        {
+                            NroDocumento = "F001-00165004",
+                            TipoDocumento = "01",
+                        }
+                    },
+                    Discrepancias = new List<Discrepancia>
+                    {
+                        new Discrepancia
+                        {
+                            Descripcion = "CAMBIO DE FECHA DE PAGO",
+                            NroReferencia = "F001-00165004",
+                            Tipo = "13"
+                        }
+                    }
+                };
+
+                FirmaryEnviar(documento, GenerarDocumento(documento));
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                Console.ReadLine();
+            }
+        }
         private static void CrearNotaDebito()
         {
             try

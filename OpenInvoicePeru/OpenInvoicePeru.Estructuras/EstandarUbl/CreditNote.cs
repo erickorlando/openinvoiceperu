@@ -55,7 +55,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
         public IFormatProvider Formato { get; set; }
 
         public bool Credito { get; set; }
-
+        public decimal MontoCredito { get; set; }
         public List<InfoCredits> InfoCreditsList { get; set; }
 
         public Dictionary<string, string> NotesList { get; set; }
@@ -428,7 +428,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                         writer.WriteStartElement("cbc:Amount");
                         {
                             writer.WriteAttributeString("currencyID", DocumentCurrencyCode);
-                            writer.WriteValue(LegalMonetaryTotal.PayableAmount.Value.ToString(Formatos.FormatoNumerico, Formato));
+                            writer.WriteValue(MontoCredito.ToString(Formatos.FormatoNumerico, Formato));
                         }
                         writer.WriteEndElement();
                     }
@@ -586,6 +586,7 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
             writer.WriteEndElement();
 
             #endregion LegalMonetaryTotal
+
 
             #region CreditNoteLines
 
