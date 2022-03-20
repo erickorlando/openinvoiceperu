@@ -723,12 +723,12 @@ namespace OpenInvoicePeru.Estructuras.EstandarUbl
                                             monto = taxSubTotal.TaxableAmount.Value;
                                         else
                                         {
-                                            monto = creditNoteLine.Price.PriceAmount.Value * creditNoteLine.InvoicedQuantity.Value;
+                                            monto = creditNoteLine.Price.PriceAmount.Value * creditNoteLine.CreditedQuantity.Value;
                                             if (monto == 0)
                                                 monto = creditNoteLine.PricingReference
                                                             .AlternativeConditionPrices
                                                             .First().PriceAmount.Value
-                                                        * creditNoteLine.InvoicedQuantity.Value;
+                                                        * creditNoteLine.CreditedQuantity.Value;
                                         }
                                         writer.WriteValue(monto.ToString(Formatos.FormatoNumerico, Formato));
                                     }
