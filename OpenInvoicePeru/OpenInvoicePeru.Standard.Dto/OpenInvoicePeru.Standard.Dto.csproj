@@ -4,10 +4,20 @@
     <TargetFramework>netstandard2.0</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <Optimize>True</Optimize>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <Optimize>False</Optimize>
+  </PropertyGroup>
+
   <ItemGroup>
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Contratos\IDocumentoElectronico.cs" Link="IDocumentoElectronico.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\ComprobanteRequest.cs" Link="ComprobanteRequest.cs" />
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\ConsultaConstanciaRequest.cs" Link="ConsultaConstanciaRequest.cs" />
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\ConsultaTicketRequest.cs" Link="ConsultaTicketRequest.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\CrearTokenRequest.cs" Link="CrearTokenRequest.cs" />
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\DocumentoResponse.cs" Link="DocumentoResponse.cs" />
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\EnviarDocumentoRequest.cs" Link="EnviarDocumentoRequest.cs" />
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\EnviarDocumentoResponse.cs" Link="EnviarDocumentoResponse.cs" />
@@ -17,6 +27,9 @@
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\FirmadoResponse.cs" Link="FirmadoResponse.cs" />
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\RespuestaComun.cs" Link="RespuestaComun.cs" />
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\RespuestaComunConArchivo.cs" Link="RespuestaComunConArchivo.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\TokenResponse.cs" Link="TokenResponse.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\ValidacionBathRequest.cs" Link="ValidacionBathRequest.cs" />
+    <Compile Include="..\OpenInvoicePeru.Comun.Dto\Intercambio\ValidaComprobanteResponse.cs" Link="ValidaComprobanteResponse.cs" />
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Anticipo.cs" Link="Anticipo.cs" />
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\Compania.cs" Link="Compania.cs" />
     <Compile Include="..\OpenInvoicePeru.Comun.Dto\Modelos\ComunicacionBaja.cs" Link="ComunicacionBaja.cs" />

@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using Newtonsoft.Json;
-
-namespace OpenInvoicePeru.Comun.Dto.Intercambio
+﻿namespace OpenInvoicePeru.Comun.Dto.Intercambio
 {
     public class ValidaComprobanteResponse : RespuestaComun
     {
@@ -13,5 +10,7 @@ namespace OpenInvoicePeru.Comun.Dto.Intercambio
         public string EstadoComprobante { get; set; }
         public string EstadoRuc { get; set; }
         public string EstadoDomicilio { get; set; }
+        
+        public string NroCpe { get; set; }
     }
 }

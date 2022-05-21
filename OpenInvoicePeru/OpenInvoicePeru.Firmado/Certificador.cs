@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Reflection;
+using System.Security.Cryptography;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Cryptography.Xml;
 using System.Text;
@@ -22,7 +23,7 @@ namespace OpenInvoicePeru.Firmado
 
                 var certificate = new X509Certificate2();
                 certificate.Import(Convert.FromBase64String(request.CertificadoDigital),
-                    request.PasswordCertificado, X509KeyStorageFlags.MachineKeySet);
+                    request.PasswordCertificado, X509KeyStorageFlags.DefaultKeySet);
 
                 var xmlDoc = new XmlDocument();
 
@@ -62,7 +63,7 @@ namespace OpenInvoicePeru.Firmado
                     keyInfo.AddClause(x509Data);
                     xmlSignature.KeyInfo = keyInfo;
                     xmlSignature.Id = Assembly.GetExecutingAssembly().GetName().Name;
-                    signedXml.ComputeSignature();
+                    signedXml.ComputeSignature(KeyedHashAlgorithm.Create());
 
                     // Recuperamos el valor Hash de la firma para este documento.
                     if (reference.DigestValue != null)

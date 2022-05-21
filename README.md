@@ -1,5 +1,5 @@
 ![](openinvoiceperulogo.PNG)
-# OpenInvoicePeru v3.0 #
+# OpenInvoicePeru v3.1 #
 Esta es una versión gratuita de OpenInvoicePeru construido con C#, haciendo sencilla la Facturación Electrónica de SUNAT, este proyecto está orientado al desarrollador.
 Permite la generacion de XML, empaquetado, envío y recepción de documentos electrónicos a través de una API REST.
 
@@ -31,8 +31,8 @@ Para consultar las novedades y cambios del proyecto revise el [Control de Cambio
 - Ejemplos en C# para el consumo de la API REST con PostSharp.
 
 ## Consideraciones ##
-- El proyecto se ha desarrollado con VS2019, usando como base el .NET Framework 4.7.1.
-- Se recomienda usar encarecidamente VS2019 o superior, la edición [Community Edition](https://www.visualstudio.com/downloads/download-visual-studio-vs), es gratis y mucho mejor que sus predecesores.
+- El proyecto se ha desarrollado con VS2022, usando como base el .NET Framework 4.7.2.
+- Se recomienda usar encarecidamente VS2022 o superior, la edición [Community Edition](https://www.visualstudio.com/downloads/download-visual-studio-vs), es gratis y mucho mejor que sus predecesores.
 Puede usar la versión Professional o Enterprise si lo desea.
 
 - Para poder ejecutar correctamente el proyecto **debe iniciar Visual Studio como Administrador** y tener instalado IIS 10.0 o posterior.
