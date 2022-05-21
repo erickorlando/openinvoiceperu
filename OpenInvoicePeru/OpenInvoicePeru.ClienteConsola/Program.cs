@@ -1429,15 +1429,15 @@ namespace OpenInvoicePeru.ClienteConsola
                 throw new InvalidOperationException(responseFirma.MensajeError);
             }
 
-            //if (!string.IsNullOrEmpty(responseFirma.CodigoQr))
-            //{
-            //    using (var mem = new MemoryStream(Convert.FromBase64String(responseFirma.CodigoQr)))
-            //    {
-            //        Console.WriteLine("Guardando Imagen QR para el documento...");
-            //        var imagen = Image.FromStream(mem);
-            //        imagen.Save($"{documento.IdDocumento}.png");
-            //    }
-            //}
+            if (!string.IsNullOrEmpty(responseFirma.CodigoQr))
+            {
+                using (var mem = new MemoryStream(Convert.FromBase64String(responseFirma.CodigoQr)))
+                {
+                    Console.WriteLine("Guardando Imagen QR para el documento...");
+                    var imagen = Image.FromStream(mem);
+                    imagen.Save($"{documento.IdDocumento}.png");
+                }
+            }
 
             Console.WriteLine("Escribiendo el archivo {0}.xml .....", documento.IdDocumento);
 
