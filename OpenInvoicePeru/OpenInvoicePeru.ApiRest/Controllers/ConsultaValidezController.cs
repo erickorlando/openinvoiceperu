@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Http;
-using OpenInvoicePeru.Comun.Dto.Exceptions;
+﻿using OpenInvoicePeru.Comun.Dto.Exceptions;
 using OpenInvoicePeru.Comun.Dto.Intercambio;
 using OpenInvoicePeru.RestService;
 using OpenInvoicePeru.RestService.ApiSunatDto;
@@ -11,6 +7,10 @@ using Serilog;
 using Serilog.Core;
 using Serilog.Events;
 using Swashbuckle.Swagger.Annotations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web.Http;
 
 namespace OpenInvoicePeru.ApiRest.Controllers
 {
@@ -24,7 +24,7 @@ namespace OpenInvoicePeru.ApiRest.Controllers
             _helper = new ValidezComprobanteHelper();
             _logger = new LoggerConfiguration()
                 .MinimumLevel.Information()
-                .WriteTo.File("..\\webapi-.log", LogEventLevel.Information,
+                .WriteTo.File(@".\webapi-.log", LogEventLevel.Information,
                     outputTemplate: "[{Timestamp:yyyy-MM-dd HH:mm:ss} {CorrelationId} {Level:u3}] {UserName} {Message:lj}{NewLine}{Exception}",
                     rollingInterval: RollingInterval.Day)
                 .CreateLogger();
@@ -97,10 +97,16 @@ namespace OpenInvoicePeru.ApiRest.Controllers
             {
                 foreach (var comprobanteRequest in request.Comprobantes)
                 {
-                    var response = ValidarComprobante(request, comprobanteRequest);
+                    try
+                    {
+                        var response = ValidarComprobante(request, comprobanteRequest);
 
-                    responseList.Add(response);
-
+                        responseList.Add(response);
+                    }
+                    catch (Exception)
+                    {
+                        // Do Nothing
+                    }
                 }
             });
 
@@ -130,7 +136,7 @@ namespace OpenInvoicePeru.ApiRest.Controllers
 
             response.Exito = result.Success;
 
-            if (result.Data.Observaciones != null)
+            if (result.Data?.Observaciones != null)
             {
                 var obs = result.Data.Observaciones
                     .SelectMany(xc => xc)
@@ -141,9 +147,9 @@ namespace OpenInvoicePeru.ApiRest.Controllers
 
             if (response.Exito)
             {
-                response.CodigoEstadoComprobante = result.Data.EstadoComprobante;
-                response.CodigoEstadoRuc = result.Data.EstadoRuc;
-                response.CodigoEstadoDomicilio = result.Data.CondicionDomicilio;
+                response.CodigoEstadoComprobante = result.Data?.EstadoComprobante;
+                response.CodigoEstadoRuc = result.Data?.EstadoRuc;
+                response.CodigoEstadoDomicilio = result.Data?.CondicionDomicilio;
 
                 response.EstadoComprobante = _estadosComprobante[response.CodigoEstadoComprobante ?? "0"];
                 response.EstadoRuc = _estadosContribuyente[response.CodigoEstadoRuc ?? "22"];
@@ -153,6 +159,7 @@ namespace OpenInvoicePeru.ApiRest.Controllers
             else
             {
                 response.MensajeError = result.Message;
+                response.NroCpe = $"{comprobanteRequest.NumeroSerie}-{comprobanteRequest.Numero:00000000}";
                 if (response.EstadoComprobante == "0")
                     throw new NoExisteCpeException(response.MensajeError);
             }
